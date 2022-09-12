@@ -16,9 +16,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
+import com.bnyro.translate.ext.getAppName
 import com.bnyro.translate.obj.MenuItemData
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,7 +32,9 @@ fun TopBar() {
 
     TopAppBar(
         title = {
-            Text("Translate You")
+            Text(
+                LocalContext.current.applicationContext.getAppName()
+            )
         },
         actions = {
             // 3 vertical dots icon
