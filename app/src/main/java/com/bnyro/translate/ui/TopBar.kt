@@ -17,9 +17,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
+import com.bnyro.translate.R
 import com.bnyro.translate.ext.getAppName
 import com.bnyro.translate.obj.MenuItemData
 
@@ -29,6 +31,15 @@ fun TopBar() {
     var expanded by remember {
         mutableStateOf(false)
     }
+
+    val menuItemsList: ArrayList<MenuItemData> = arrayListOf(
+        MenuItemData(
+            text = stringResource(
+                id = R.string.options
+            ),
+            icon = Icons.Outlined.Menu
+        )
+    )
 
     TopAppBar(
         title = {
@@ -67,10 +78,3 @@ fun TopBar() {
         }
     )
 }
-
-val menuItemsList: ArrayList<MenuItemData> = arrayListOf(
-    MenuItemData(
-        text = "Options",
-        icon = Icons.Outlined.Menu
-    )
-)

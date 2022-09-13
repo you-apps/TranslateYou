@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Translate You</string>
+
+    <string name="okay">Okay</string>
+    <string name="cancel">Cancel</string>
+
     <string name="enter_text">Enter text</string>
+    <string name="instance">Instance</string>
+    <string name="options">Options</string>
 </resources>
