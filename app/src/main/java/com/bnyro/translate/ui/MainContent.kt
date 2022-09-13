@@ -39,7 +39,7 @@ fun MainContent(
                         .padding(0.dp, 50.dp, 0.dp, 0.dp)
                 )
                 StyledTextField(
-                    text = viewModel.translation,
+                    text = viewModel.translatedText,
                     onValueChange = {},
                     readOnly = true
                 )

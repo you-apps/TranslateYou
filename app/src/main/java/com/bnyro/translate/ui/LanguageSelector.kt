@@ -11,6 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.obj.Language
 
 @Composable
@@ -18,6 +20,8 @@ fun LanguageSelector(
     languages: List<Language>,
     onClick: (String) -> Unit
 ) {
+    val viewModel: MainModel = viewModel()
+
     var expanded by remember {
         mutableStateOf(false)
     }
@@ -40,6 +44,7 @@ fun LanguageSelector(
                 onClick = {
                     expanded = false
                     text = it.name!!
+                    viewModel.translate()
                     onClick.invoke(it.code!!)
                 },
                 text = {

@@ -3,7 +3,6 @@ package com.bnyro.translate.util
 import com.bnyro.translate.api.LibreTranslate
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
-import retrofit2.create
 
 object RetrofitInstance {
     val url = "https://libretranslate.de"
