@@ -5,13 +5,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
 object RetrofitInstance {
-    val url = "https://libretranslate.de"
+    var url = "https://libretranslate.de"
 
-    val api = Retrofit.Builder()
-        .baseUrl(url)
-        .addConverterFactory(
-            JacksonConverterFactory.create()
-        )
-        .build()
-        .create(LibreTranslate::class.java)
+    lateinit var api: LibreTranslate
+
+    fun createApi() {
+        api = Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(
+                JacksonConverterFactory.create()
+            )
+            .build()
+            .create(LibreTranslate::class.java)
+    }
 }

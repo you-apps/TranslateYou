@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import com.bnyro.translate.R
+import com.bnyro.translate.util.RetrofitInstance
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -20,7 +21,9 @@ fun OptionsDialog(
     onDismissRequest: () -> Unit
 ) {
     var instanceUrl by remember {
-        mutableStateOf("")
+        mutableStateOf(
+            RetrofitInstance.url
+        )
     }
 
     AlertDialog(
@@ -52,18 +55,24 @@ fun OptionsDialog(
         confirmButton = {
             Button(
                 onClick = {
+                    RetrofitInstance.url = instanceUrl
+                    RetrofitInstance.createApi()
                     onDismissRequest.invoke()
                 }
             ) {
                 Text(
-                    text = stringResource(id = R.string.okay)
+                    text = stringResource(
+                        id = R.string.okay
+                    )
                 )
             }
         },
         dismissButton = {
-            Button(onClick = {
-                onDismissRequest.invoke()
-            }) {
+            Button(
+                onClick = {
+                    onDismissRequest.invoke()
+                }
+            ) {
                 Text(
                     text = stringResource(
                         id = R.string.cancel
