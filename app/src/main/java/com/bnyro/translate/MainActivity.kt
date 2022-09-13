@@ -14,9 +14,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import com.bnyro.translate.models.MainModel
@@ -28,12 +29,13 @@ import com.bnyro.translate.ui.theme.TranslateYouTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = ViewModelProvider(this)[MainModel::class.java]
         setContent {
             TranslateYouTheme {
                 ScreenContent()
             }
         }
-        ViewModelProvider(this)[MainModel::class.java].translate()
+        viewModel.fetchLanguages()
     }
 }
 
@@ -62,7 +64,9 @@ fun ScreenContent() {
 }
 
 @Composable
-fun MainContent() {
+fun MainContent(
+    viewModel: MainModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
     Card(
         modifier = Modifier
             .fillMaxSize()
@@ -86,15 +90,17 @@ fun MainContent() {
                 )
             }
             Row {
-                LanguageSelector()
-                LanguageSelector()
+                LanguageSelector(
+                    viewModel.availableLanguages
+                ) { source ->
+                    viewModel.sourceLanguage = source
+                }
+                LanguageSelector(
+                    viewModel.availableLanguages
+                ) { target ->
+                    viewModel.targetLanguage = target
+                }
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MainContent()
 }

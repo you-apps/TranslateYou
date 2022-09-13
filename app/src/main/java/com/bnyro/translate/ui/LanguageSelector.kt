@@ -11,16 +11,27 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bnyro.translate.models.MainModel
+import com.bnyro.translate.obj.Language
 
 @Composable
-fun LanguageSelector() {
+fun LanguageSelector(
+    languages: List<Language>,
+    onClick: (String) -> Unit
+) {
     var expanded by remember {
         mutableStateOf(false)
     }
-    val suggestions = listOf("Item1", "Item2", "Item3")
+
+    var text by remember {
+        mutableStateOf("English")
+    }
+
+    val viewModel: MainModel = viewModel()
 
     ElevatedButton(onClick = { expanded = !expanded }) {
-        Text("DropDown")
+        Text(text)
     }
     DropdownMenu(
         expanded = expanded,
@@ -28,13 +39,15 @@ fun LanguageSelector() {
         modifier = Modifier
             .fillMaxWidth()
     ) {
-        suggestions.forEach { label ->
+        languages.forEach {
             DropdownMenuItem(
                 onClick = {
                     expanded = false
+                    text = it.name!!
+                    onClick.invoke(it.code!!)
                 },
                 text = {
-                    Text(text = label)
+                    Text(text = it.name!!)
                 }
             )
         }
