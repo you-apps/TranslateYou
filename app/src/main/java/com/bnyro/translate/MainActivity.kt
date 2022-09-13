@@ -6,7 +6,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -16,6 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.bnyro.translate.ui.StyledTextField
 import com.bnyro.translate.ui.theme.TopBar
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 
@@ -34,7 +40,6 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent() {
-    // A surface container using the 'background' color from the theme
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -46,9 +51,8 @@ fun ScreenContent() {
             }
         ) {
             Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier
+                    .fillMaxSize()
             ) {
                 MainContent()
             }
@@ -58,7 +62,33 @@ fun ScreenContent() {
 
 @Composable
 fun MainContent() {
-    Text(text = "UI Placeholder")
+    Card(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            StyledTextField(
+                modifier = Modifier
+                    .padding(0.dp, 50.dp, 0.dp, 0.dp)
+            )
+            StyledTextField(
+                modifier = Modifier,
+                readOnly = true
+            )
+            Row {
+                ElevatedButton(onClick = { /*TODO*/ }) {
+                    Text("English")
+                }
+                ElevatedButton(onClick = { /*TODO*/ }) {
+                    Text("German")
+                }
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
