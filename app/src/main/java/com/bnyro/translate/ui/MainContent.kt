@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,19 +15,18 @@ import com.bnyro.translate.models.MainModel
 fun MainContent(
     viewModel: MainModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    Card(
+    Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
+        ElevatedCard(
             modifier = Modifier
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .weight(1.0f)
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .weight(1.0f)
             ) {
                 StyledTextField(
                     text = viewModel.insertedText,
@@ -44,17 +43,19 @@ fun MainContent(
                     readOnly = true
                 )
             }
-            Row {
-                LanguageSelector(
-                    viewModel.availableLanguages
-                ) { source ->
-                    viewModel.sourceLanguage = source
-                }
-                LanguageSelector(
-                    viewModel.availableLanguages
-                ) { target ->
-                    viewModel.targetLanguage = target
-                }
+        }
+        Row(
+            modifier = Modifier.padding(10.dp)
+        ) {
+            LanguageSelector(
+                viewModel.availableLanguages
+            ) { source ->
+                viewModel.sourceLanguage = source
+            }
+            LanguageSelector(
+                viewModel.availableLanguages
+            ) { target ->
+                viewModel.targetLanguage = target
             }
         }
     }

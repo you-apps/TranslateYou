@@ -7,10 +7,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.obj.Language
-import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitInstance
 import kotlinx.coroutines.launch
-import retrofit2.Call
 
 class MainModel : ViewModel() {
     var availableLanguages: List<Language> by mutableStateOf(
@@ -33,8 +31,6 @@ class MainModel : ViewModel() {
         ""
     )
 
-    var call: Call<Translation>? = null
-
     fun translate() {
         if (insertedText == "" || targetLanguage == sourceLanguage) {
             translatedText = ""
@@ -42,7 +38,6 @@ class MainModel : ViewModel() {
         }
 
         viewModelScope.launch {
-            call?.cancel()
             val response = try {
                 RetrofitInstance.api.translate(
                     insertedText,
