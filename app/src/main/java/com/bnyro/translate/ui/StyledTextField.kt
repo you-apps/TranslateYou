@@ -1,29 +1,53 @@
 package com.bnyro.translate.ui
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.sp
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StyledTextField(
     text: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    readOnly: Boolean = false
+    placeholder: String? = null,
+    readOnly: Boolean = false,
+    fontSize: TextUnit = 25.sp
 ) {
-    BasicTextField(
+    TextField(
         value = text,
         onValueChange = {
             onValueChange.invoke(it)
         },
         readOnly = readOnly,
         modifier = modifier
-            .fillMaxWidth()
-            .padding(20.dp)
+            .fillMaxWidth(),
+        colors = TextFieldDefaults.textFieldColors(
+            focusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            containerColor = Color.Transparent
+        ),
+        placeholder = {
+            if (placeholder != null) {
+                Text(
+                    text = placeholder,
+                    fontSize = fontSize
+                )
+            }
+        },
+        textStyle = TextStyle(
+            fontSize = fontSize
+        )
     )
 }
 

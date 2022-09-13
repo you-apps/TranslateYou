@@ -8,7 +8,9 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.bnyro.translate.R
 import com.bnyro.translate.models.MainModel
 
 @Composable
@@ -26,6 +28,7 @@ fun MainContent(
         ) {
             Column(
                 modifier = Modifier
+                    .padding(20.dp)
                     .fillMaxSize()
             ) {
                 StyledTextField(
@@ -34,8 +37,7 @@ fun MainContent(
                         viewModel.insertedText = it
                         viewModel.translate()
                     },
-                    modifier = Modifier
-                        .padding(0.dp, 50.dp, 0.dp, 0.dp)
+                    placeholder = stringResource(R.string.enter_text)
                 )
                 StyledTextField(
                     text = viewModel.translatedText,

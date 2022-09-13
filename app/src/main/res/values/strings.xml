@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Translate You</string>
+    <string name="enter_text">Enter text</string>
 </resources>
