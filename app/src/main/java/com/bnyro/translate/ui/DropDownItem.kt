@@ -18,7 +18,6 @@ import com.bnyro.translate.obj.MenuItemData
 
 @Composable
 fun DropDownItem(menuItemData: MenuItemData, updateExpanded: (newState: Boolean) -> Unit) {
-    val iconAndTextColor: Color = Color.DarkGray
     val context = LocalContext.current.applicationContext
 
     DropdownMenuItem(
@@ -32,8 +31,7 @@ fun DropDownItem(menuItemData: MenuItemData, updateExpanded: (newState: Boolean)
             Row {
                 Icon(
                     imageVector = menuItemData.icon,
-                    contentDescription = menuItemData.text,
-                    tint = iconAndTextColor
+                    contentDescription = menuItemData.text
                 )
 
                 Spacer(modifier = Modifier.width(width = 8.dp))
@@ -41,8 +39,7 @@ fun DropDownItem(menuItemData: MenuItemData, updateExpanded: (newState: Boolean)
                 Text(
                     text = menuItemData.text,
                     fontWeight = FontWeight.Medium,
-                    fontSize = 16.sp,
-                    color = iconAndTextColor
+                    fontSize = 16.sp
                 )
             }
         }

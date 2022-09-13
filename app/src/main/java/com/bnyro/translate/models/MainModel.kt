@@ -40,6 +40,7 @@ class MainModel : ViewModel() {
                     targetLanguage
                 )
             } catch (e: Exception) {
+                Log.e("error", e.message.toString())
                 return@launch
             }
             this@MainModel.translation = translation.translatedText ?: ""
