@@ -4,7 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,6 +42,15 @@ fun MainContent(
                     },
                     placeholder = stringResource(R.string.enter_text)
                 )
+
+                Divider(
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .align(alignment = Alignment.CenterHorizontally)
+                        .size(70.dp, 1.dp)
+                )
+
                 StyledTextField(
                     text = viewModel.translatedText,
                     onValueChange = {},
@@ -54,6 +66,7 @@ fun MainContent(
             ) { source ->
                 viewModel.sourceLanguage = source
             }
+
             LanguageSelector(
                 viewModel.availableLanguages
             ) { target ->

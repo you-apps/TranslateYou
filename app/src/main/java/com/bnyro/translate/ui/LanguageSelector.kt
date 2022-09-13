@@ -1,6 +1,7 @@
 package com.bnyro.translate.ui
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedButton
@@ -11,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.obj.Language
@@ -30,7 +32,11 @@ fun LanguageSelector(
         mutableStateOf("English")
     }
 
-    ElevatedButton(onClick = { expanded = !expanded }) {
+    ElevatedButton(
+        onClick = { expanded = !expanded },
+        modifier = Modifier
+            .padding(5.dp)
+    ) {
         Text(text)
     }
     DropdownMenu(
