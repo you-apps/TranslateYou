@@ -23,7 +23,7 @@ class MainModel : ViewModel() {
         "en"
     )
 
-    val text: String by mutableStateOf(
+    var insertedText: String by mutableStateOf(
         "en"
     )
 
@@ -35,7 +35,7 @@ class MainModel : ViewModel() {
         viewModelScope.launch {
             val translation = try {
                 RetrofitInstance.api.translate(
-                    text,
+                    insertedText,
                     sourceLanguage,
                     targetLanguage
                 )
