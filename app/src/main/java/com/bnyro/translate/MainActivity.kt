@@ -14,8 +14,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -82,10 +80,16 @@ fun MainContent(
                     .weight(1.0f)
             ) {
                 StyledTextField(
+                    text = viewModel.text,
+                    onValueChange = {
+                        viewModel.translate()
+                    },
                     modifier = Modifier
                         .padding(0.dp, 50.dp, 0.dp, 0.dp)
                 )
                 StyledTextField(
+                    text = viewModel.translation,
+                    onValueChange = { },
                     readOnly = true
                 )
             }

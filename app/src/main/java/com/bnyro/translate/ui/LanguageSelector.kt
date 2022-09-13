@@ -28,8 +28,6 @@ fun LanguageSelector(
         mutableStateOf("English")
     }
 
-    val viewModel: MainModel = viewModel()
-
     ElevatedButton(onClick = { expanded = !expanded }) {
         Text(text)
     }
