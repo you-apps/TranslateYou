@@ -18,6 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
+import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.ui.LanguageSelector
 import com.bnyro.translate.ui.StyledTextField
 import com.bnyro.translate.ui.theme.TopBar
@@ -31,6 +33,7 @@ class MainActivity : ComponentActivity() {
                 ScreenContent()
             }
         }
+        ViewModelProvider(this)[MainModel::class.java].translate()
     }
 }
 
