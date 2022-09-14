@@ -14,6 +14,7 @@ interface LibreTranslate {
     suspend fun translate(
         @Query("q") query: String,
         @Query("source") source: String,
-        @Query("target") target: String
+        @Query("target") target: String,
+        @Query("api_key") apikey: String?
     ): Translation
 }

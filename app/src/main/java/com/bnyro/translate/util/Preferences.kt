@@ -4,8 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 
 object Preferences {
-    val instanceUrlKey = "instanceUrl"
-    val defaultInstanceUrl = "https://libretranslate.de"
+    const val instanceUrlKey = "instanceUrl"
+    const val apiKey = "apiKey"
+    const val defaultInstanceUrl = "https://libretranslate.de"
 
     private lateinit var prefs: SharedPreferences
 

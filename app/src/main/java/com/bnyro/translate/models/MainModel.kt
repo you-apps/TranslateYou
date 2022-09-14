@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.obj.Language
+import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
 import kotlinx.coroutines.launch
 
@@ -37,12 +38,19 @@ class MainModel : ViewModel() {
             return
         }
 
+        var apiKey: String? = Preferences.get(
+            Preferences.apiKey,
+            ""
+        )
+        if (apiKey == "") apiKey = null
+
         viewModelScope.launch {
             val response = try {
                 RetrofitInstance.api.translate(
                     insertedText,
                     sourceLanguage.code!!,
-                    targetLanguage.code!!
+                    targetLanguage.code!!,
+                    apiKey
                 )
             } catch (e: Exception) {
                 Log.e("error", e.message.toString())
