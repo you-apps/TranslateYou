@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CompareArrows
-import androidx.compose.material.icons.outlined.CompareArrows
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -18,12 +17,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.models.MainModel
+import com.bnyro.translate.models.OptionsModel
 
 @Composable
 fun MainContent(
-    viewModel: MainModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    mainModel: MainModel = viewModel(),
+    optionsModel: OptionsModel = viewModel()
 ) {
     Column(
         modifier = Modifier
@@ -40,10 +42,10 @@ fun MainContent(
                     .fillMaxSize()
             ) {
                 StyledTextField(
-                    text = viewModel.insertedText,
+                    text = mainModel.insertedText,
                     onValueChange = {
-                        viewModel.insertedText = it
-                        viewModel.translate()
+                        mainModel.insertedText = it
+                        mainModel.translate()
                     },
                     placeholder = stringResource(R.string.enter_text)
                 )
@@ -57,7 +59,7 @@ fun MainContent(
                 )
 
                 StyledTextField(
-                    text = viewModel.translatedText,
+                    text = mainModel.translatedText,
                     onValueChange = {},
                     readOnly = true
                 )
@@ -69,17 +71,17 @@ fun MainContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             LanguageSelector(
-                viewModel.availableLanguages,
-                viewModel.sourceLanguage
+                mainModel.availableLanguages,
+                mainModel.sourceLanguage
             ) {
-                viewModel.sourceLanguage = it
+                mainModel.sourceLanguage = it
             }
 
             IconButton(
                 onClick = {
-                    val temp = viewModel.sourceLanguage
-                    viewModel.sourceLanguage = viewModel.targetLanguage
-                    viewModel.targetLanguage = temp
+                    val temp = mainModel.sourceLanguage
+                    mainModel.sourceLanguage = mainModel.targetLanguage
+                    mainModel.targetLanguage = temp
                 }
             ) {
                 Icon(
@@ -89,11 +91,19 @@ fun MainContent(
             }
 
             LanguageSelector(
-                viewModel.availableLanguages,
-                viewModel.targetLanguage
+                mainModel.availableLanguages,
+                mainModel.targetLanguage
             ) {
-                viewModel.targetLanguage = it
+                mainModel.targetLanguage = it
             }
         }
+    }
+
+    if (optionsModel.openDialog) {
+        OptionsDialog(
+            onDismissRequest = {
+                optionsModel.openDialog = false
+            }
+        )
     }
 }

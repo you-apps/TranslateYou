@@ -33,7 +33,7 @@ class MainModel : ViewModel() {
 
     fun translate() {
         if (insertedText == "" || targetLanguage == sourceLanguage) {
-            translatedText
+            translatedText = ""
             return
         }
 
