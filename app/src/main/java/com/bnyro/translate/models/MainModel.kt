@@ -15,12 +15,12 @@ class MainModel : ViewModel() {
         emptyList()
     )
 
-    var sourceLanguage: String by mutableStateOf(
-        "auto"
+    var sourceLanguage: Language by mutableStateOf(
+        Language("auto", "Auto")
     )
 
-    var targetLanguage: String by mutableStateOf(
-        "en"
+    var targetLanguage: Language by mutableStateOf(
+        Language("en", "English")
     )
 
     var insertedText: String by mutableStateOf(
@@ -41,8 +41,8 @@ class MainModel : ViewModel() {
             val response = try {
                 RetrofitInstance.api.translate(
                     insertedText,
-                    sourceLanguage,
-                    targetLanguage
+                    sourceLanguage.code!!,
+                    targetLanguage.code!!
                 )
             } catch (e: Exception) {
                 Log.e("error", e.message.toString())

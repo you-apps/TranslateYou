@@ -69,13 +69,17 @@ fun MainContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             LanguageSelector(
-                viewModel.availableLanguages
-            ) { source ->
-                viewModel.sourceLanguage = source
+                viewModel.availableLanguages,
+                viewModel.sourceLanguage
+            ) {
+                viewModel.sourceLanguage = it
             }
 
             IconButton(
                 onClick = {
+                    val temp = viewModel.sourceLanguage
+                    viewModel.sourceLanguage = viewModel.targetLanguage
+                    viewModel.targetLanguage = temp
                 }
             ) {
                 Icon(
@@ -85,9 +89,10 @@ fun MainContent(
             }
 
             LanguageSelector(
-                viewModel.availableLanguages
-            ) { target ->
-                viewModel.targetLanguage = target
+                viewModel.availableLanguages,
+                viewModel.targetLanguage
+            ) {
+                viewModel.targetLanguage = it
             }
         }
     }

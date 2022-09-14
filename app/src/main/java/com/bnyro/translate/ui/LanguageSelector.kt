@@ -20,7 +20,8 @@ import com.bnyro.translate.obj.Language
 @Composable
 fun LanguageSelector(
     languages: List<Language>,
-    onClick: (String) -> Unit
+    selectedLanguage: Language,
+    onClick: (Language) -> Unit
 ) {
     val viewModel: MainModel = viewModel()
 
@@ -28,16 +29,14 @@ fun LanguageSelector(
         mutableStateOf(false)
     }
 
-    var text by remember {
-        mutableStateOf("English")
-    }
-
     ElevatedButton(
         onClick = { expanded = !expanded },
         modifier = Modifier
             .padding(5.dp)
     ) {
-        Text(text)
+        Text(
+            text = selectedLanguage.name!!
+        )
     }
     DropdownMenu(
         expanded = expanded,
@@ -49,9 +48,8 @@ fun LanguageSelector(
             DropdownMenuItem(
                 onClick = {
                     expanded = false
-                    text = it.name!!
                     viewModel.translate()
-                    onClick.invoke(it.code!!)
+                    onClick.invoke(it)
                 },
                 text = {
                     Text(text = it.name!!)
