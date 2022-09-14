@@ -48,7 +48,7 @@ class MainModel : ViewModel() {
                 Log.e("error", e.message.toString())
                 return@launch
             }
-            translatedText = response.translatedText ?: ""
+            if (insertedText != "") translatedText = response.translatedText ?: ""
         }
     }
 

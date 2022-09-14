@@ -2,6 +2,7 @@ package com.bnyro.translate.ui.theme
 
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.DropdownMenu
@@ -21,13 +22,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.ext.getAppName
+import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.obj.MenuItemData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar() {
+fun TopBar(
+    mainModel: MainModel = viewModel()
+) {
     var expanded by remember {
         mutableStateOf(false)
     }
@@ -48,13 +53,28 @@ fun TopBar() {
             )
         },
         actions = {
+            if (mainModel.insertedText != "") {
+                IconButton(
+                    onClick = {
+                        mainModel.insertedText = ""
+                        mainModel.translatedText = ""
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Clear,
+                        null
+                    )
+                }
+            }
             // 3 vertical dots icon
-            IconButton(onClick = {
-                expanded = true
-            }) {
+            IconButton(
+                onClick = {
+                    expanded = true
+                }
+            ) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
-                    contentDescription = "Open Options"
+                    null
                 )
             }
 
