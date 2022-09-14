@@ -14,8 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.models.MainModel
+import com.bnyro.translate.models.OptionsModel
 import com.bnyro.translate.ui.MainContent
+import com.bnyro.translate.ui.OptionsDialog
 import com.bnyro.translate.ui.theme.TopBar
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 
@@ -36,6 +39,8 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent() {
+    val optionsModel: OptionsModel = viewModel()
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -51,5 +56,13 @@ fun ScreenContent() {
         ) {
             MainContent()
         }
+    }
+
+    if (optionsModel.openDialog) {
+        OptionsDialog(
+            onDismissRequest = {
+                optionsModel.openDialog = false
+            }
+        )
     }
 }

@@ -25,13 +25,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.models.MainModel
-import com.bnyro.translate.models.OptionsModel
 import com.bnyro.translate.util.ClipboardHelper
 
 @Composable
 fun MainContent(
-    mainModel: MainModel = viewModel(),
-    optionsModel: OptionsModel = viewModel()
+    viewModel: MainModel = viewModel()
 ) {
     Column(
         modifier = Modifier
@@ -48,10 +46,10 @@ fun MainContent(
                     .fillMaxSize()
             ) {
                 StyledTextField(
-                    text = mainModel.insertedText,
+                    text = viewModel.insertedText,
                     onValueChange = {
-                        mainModel.insertedText = it
-                        mainModel.translate()
+                        viewModel.insertedText = it
+                        viewModel.translate()
                     },
                     maxLines = 8,
                     placeholder = stringResource(R.string.enter_text)
@@ -70,11 +68,11 @@ fun MainContent(
                 )
                 val copiedText = clipboardHelper.get()
 
-                if (copiedText != null && mainModel.insertedText == "") {
+                if (copiedText != null && viewModel.insertedText == "") {
                     Button(
                         onClick = {
-                            mainModel.insertedText = copiedText
-                            mainModel.translate()
+                            viewModel.insertedText = copiedText
+                            viewModel.translate()
                         },
                         modifier = Modifier
                             .padding(15.dp, 0.dp)
@@ -100,7 +98,7 @@ fun MainContent(
                 }
 
                 StyledTextField(
-                    text = mainModel.translatedText,
+                    text = viewModel.translatedText,
                     onValueChange = {},
                     readOnly = true,
                     modifier = Modifier
@@ -121,17 +119,17 @@ fun MainContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             LanguageSelector(
-                mainModel.availableLanguages,
-                mainModel.sourceLanguage
+                viewModel.availableLanguages,
+                viewModel.sourceLanguage
             ) {
-                mainModel.sourceLanguage = it
+                viewModel.sourceLanguage = it
             }
 
             IconButton(
                 onClick = {
-                    val temp = mainModel.sourceLanguage
-                    mainModel.sourceLanguage = mainModel.targetLanguage
-                    mainModel.targetLanguage = temp
+                    val temp = viewModel.sourceLanguage
+                    viewModel.sourceLanguage = viewModel.targetLanguage
+                    viewModel.targetLanguage = temp
                 }
             ) {
                 Icon(
@@ -141,19 +139,11 @@ fun MainContent(
             }
 
             LanguageSelector(
-                mainModel.availableLanguages,
-                mainModel.targetLanguage
+                viewModel.availableLanguages,
+                viewModel.targetLanguage
             ) {
-                mainModel.targetLanguage = it
+                viewModel.targetLanguage = it
             }
         }
-    }
-
-    if (optionsModel.openDialog) {
-        OptionsDialog(
-            onDismissRequest = {
-                optionsModel.openDialog = false
-            }
-        )
     }
 }
