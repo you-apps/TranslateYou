@@ -53,6 +53,7 @@ fun MainContent(
                         mainModel.insertedText = it
                         mainModel.translate()
                     },
+                    maxLines = 8,
                     placeholder = stringResource(R.string.enter_text)
                 )
 
@@ -70,10 +71,14 @@ fun MainContent(
                 val copiedText = clipboardHelper.get()
 
                 if (copiedText != null && mainModel.insertedText == "") {
-                    Button(onClick = {
-                        mainModel.insertedText = copiedText
-                        mainModel.translate()
-                    }) {
+                    Button(
+                        onClick = {
+                            mainModel.insertedText = copiedText
+                            mainModel.translate()
+                        },
+                        modifier = Modifier
+                            .padding(15.dp, 0.dp)
+                    ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically
                         ) {

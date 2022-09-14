@@ -19,9 +19,10 @@ fun StyledTextField(
     text: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    maxLines: Int = 10,
     placeholder: String? = null,
     readOnly: Boolean = false,
-    fontSize: TextUnit = 25.sp
+    fontSize: TextUnit = 23.sp
 ) {
     TextField(
         value = text,
@@ -47,7 +48,8 @@ fun StyledTextField(
         },
         textStyle = TextStyle(
             fontSize = fontSize
-        )
+        ),
+        maxLines = maxLines
     )
 }
 
