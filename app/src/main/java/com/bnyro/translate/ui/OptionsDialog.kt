@@ -12,23 +12,29 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
+import com.bnyro.translate.models.OptionsModel
+import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OptionsDialog(
-    onDismissRequest: () -> Unit
+    viewModel: OptionsModel = viewModel()
 ) {
     var instanceUrl by remember {
         mutableStateOf(
-            RetrofitInstance.url
+            Preferences.get(
+                Preferences.instanceUrlKey,
+                Preferences.defaultInstanceUrl
+            )
         )
     }
 
     AlertDialog(
         onDismissRequest = {
-            onDismissRequest.invoke()
+            viewModel.openDialog = false
         },
         title = {
             Text(
@@ -55,9 +61,12 @@ fun OptionsDialog(
         confirmButton = {
             Button(
                 onClick = {
-                    RetrofitInstance.url = instanceUrl
+                    Preferences.put(
+                        Preferences.instanceUrlKey,
+                        instanceUrl
+                    )
                     RetrofitInstance.createApi()
-                    onDismissRequest.invoke()
+                    viewModel.openDialog = false
                 }
             ) {
                 Text(
@@ -70,7 +79,7 @@ fun OptionsDialog(
         dismissButton = {
             Button(
                 onClick = {
-                    onDismissRequest.invoke()
+                    viewModel.openDialog = false
                 }
             ) {
                 Text(

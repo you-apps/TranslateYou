@@ -59,10 +59,6 @@ fun ScreenContent() {
     }
 
     if (optionsModel.openDialog) {
-        OptionsDialog(
-            onDismissRequest = {
-                optionsModel.openDialog = false
-            }
-        )
+        OptionsDialog()
     }
 }
