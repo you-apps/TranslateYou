@@ -49,7 +49,7 @@ fun MainContent(
                     text = viewModel.insertedText,
                     onValueChange = {
                         viewModel.insertedText = it
-                        viewModel.translate()
+                        viewModel.enqueueTranslation()
                     },
                     maxLines = 8,
                     placeholder = stringResource(R.string.enter_text)
@@ -72,7 +72,7 @@ fun MainContent(
                     Button(
                         onClick = {
                             viewModel.insertedText = copiedText
-                            viewModel.translate()
+                            viewModel.enqueueTranslation()
                         },
                         modifier = Modifier
                             .padding(15.dp, 0.dp)

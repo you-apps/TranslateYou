@@ -65,7 +65,7 @@ fun LanguageSelector(
                                 text = it.name!!,
                                 onClick = {
                                     showDialog = false
-                                    viewModel.translate()
+                                    viewModel.enqueueTranslation()
                                     onClick.invoke(it)
                                 }
                             )
@@ -76,7 +76,7 @@ fun LanguageSelector(
                             text = it.name!!,
                             onClick = {
                                 showDialog = false
-                                viewModel.translate()
+                                viewModel.enqueueTranslation()
                                 onClick.invoke(it)
                             }
                         )

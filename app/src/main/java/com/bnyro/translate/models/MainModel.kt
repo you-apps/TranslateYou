@@ -1,5 +1,6 @@
 package com.bnyro.translate.models
 
+import android.os.Looper
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,6 +11,7 @@ import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
 import kotlinx.coroutines.launch
+import java.util.logging.Handler
 
 class MainModel : ViewModel() {
     var availableLanguages: List<Language> by mutableStateOf(
@@ -32,7 +34,19 @@ class MainModel : ViewModel() {
         ""
     )
 
-    fun translate() {
+    fun enqueueTranslation() {
+        val insertedTextTemp = insertedText
+        android.os.Handler(
+            Looper.getMainLooper()
+        ).postDelayed(
+            {
+                if (insertedTextTemp == insertedText) translate()
+            },
+            700
+        )
+    }
+
+    private fun translate() {
         if (insertedText == "" || targetLanguage == sourceLanguage) {
             translatedText = ""
             return
