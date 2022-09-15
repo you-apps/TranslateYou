@@ -128,6 +128,7 @@ fun MainContent(
 
             IconButton(
                 onClick = {
+                    if (viewModel.sourceLanguage.code == "auto") return@IconButton
                     val temp = viewModel.sourceLanguage
                     viewModel.sourceLanguage = viewModel.targetLanguage
                     viewModel.targetLanguage = temp
@@ -137,7 +138,12 @@ fun MainContent(
                     painterResource(R.drawable.ic_switch),
                     null,
                     modifier = Modifier
-                        .size(18.dp)
+                        .size(18.dp),
+                    tint = if (viewModel.sourceLanguage.code == "auto") {
+                        Color.Gray
+                    } else {
+                        MaterialTheme.colorScheme.onSurface
+                    }
                 )
             }
 
