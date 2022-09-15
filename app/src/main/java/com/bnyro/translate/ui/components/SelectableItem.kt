@@ -1,4 +1,4 @@
-package com.bnyro.translate.ui.views
+package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth

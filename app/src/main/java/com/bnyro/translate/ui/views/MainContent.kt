@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.models.MainModel
+import com.bnyro.translate.ui.components.LanguageSelector
+import com.bnyro.translate.ui.components.StyledTextField
 import com.bnyro.translate.util.ClipboardHelper
 
 @Composable

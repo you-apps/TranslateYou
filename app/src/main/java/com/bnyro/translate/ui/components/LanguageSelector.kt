@@ -1,4 +1,4 @@
-package com.bnyro.translate.ui.views
+package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn

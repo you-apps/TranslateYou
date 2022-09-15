@@ -28,6 +28,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.ext.getAppName
 import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.obj.MenuItemData
+import com.bnyro.translate.ui.components.DropDownItem
 import com.bnyro.translate.util.ClipboardHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
