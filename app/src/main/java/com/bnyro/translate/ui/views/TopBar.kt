@@ -3,6 +3,7 @@ package com.bnyro.translate.ui.views
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.DropdownMenu
@@ -27,12 +28,15 @@ import com.bnyro.translate.R
 import com.bnyro.translate.ext.getAppName
 import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.obj.MenuItemData
+import com.bnyro.translate.util.ClipboardHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
     mainModel: MainModel = viewModel()
 ) {
+    val context = LocalContext.current.applicationContext
+
     var expanded by remember {
         mutableStateOf(false)
     }
@@ -53,6 +57,23 @@ fun TopBar(
             )
         },
         actions = {
+            if (mainModel.translatedText != "") {
+                IconButton(
+                    onClick = {
+                        ClipboardHelper(
+                            context
+                        ).write(
+                            mainModel.translatedText
+                        )
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ContentCopy,
+                        null
+                    )
+                }
+            }
+
             if (mainModel.insertedText != "") {
                 IconButton(
                     onClick = {
