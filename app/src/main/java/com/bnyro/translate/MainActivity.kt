@@ -17,10 +17,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.models.OptionsModel
-import com.bnyro.translate.ui.MainContent
-import com.bnyro.translate.ui.OptionsDialog
-import com.bnyro.translate.ui.theme.TopBar
 import com.bnyro.translate.ui.theme.TranslateYouTheme
+import com.bnyro.translate.ui.views.MainContent
+import com.bnyro.translate.ui.views.OptionsDialog
+import com.bnyro.translate.ui.views.TopBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

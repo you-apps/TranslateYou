@@ -1,9 +1,8 @@
-package com.bnyro.translate.ui
+package com.bnyro.translate.ui.views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -57,7 +56,7 @@ fun OptionsDialog(
             )
         },
         text = {
-            Column() {
+            Column {
                 OutlinedTextField(
                     value = instanceUrl,
                     onValueChange = { instanceUrl = it },

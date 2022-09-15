@@ -1,4 +1,4 @@
-package com.bnyro.translate.ui
+package com.bnyro.translate.ui.views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

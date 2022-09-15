@@ -1,4 +1,4 @@
-package com.bnyro.translate.ui.theme
+package com.bnyro.translate.ui.views
 
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons

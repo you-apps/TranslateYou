@@ -1,4 +1,4 @@
-package com.bnyro.translate.ui
+package com.bnyro.translate.ui.views
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -56,5 +56,5 @@ fun StyledTextField(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    StyledTextField("", { _ -> })
+    StyledTextField("", { })
 }
