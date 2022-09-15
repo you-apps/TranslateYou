@@ -11,18 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bnyro.translate.models.OptionsModel
 import com.bnyro.translate.obj.MenuItemData
 
 @Composable
 fun DropDownItem(
     menuItemData: MenuItemData,
-    viewModel: OptionsModel = androidx.lifecycle.viewmodel.compose.viewModel(),
     updateExpanded: (newState: Boolean) -> Unit
 ) {
     DropdownMenuItem(
         onClick = {
-            viewModel.openDialog = true
+            menuItemData.action.invoke()
             updateExpanded.invoke(false)
         },
         enabled = true,

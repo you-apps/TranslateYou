@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
-class OptionsModel : ViewModel() {
-    var openDialog by mutableStateOf(false)
+class NavigationModel : ViewModel() {
+    var showOptions by mutableStateOf(false)
+    var showAbout by mutableStateOf(false)
 }

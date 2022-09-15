@@ -17,14 +17,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.models.OptionsModel
+import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OptionsDialog(
-    viewModel: OptionsModel = viewModel()
+    viewModel: NavigationModel = viewModel()
 ) {
     var instanceUrl by remember {
         mutableStateOf(
@@ -46,7 +46,7 @@ fun OptionsDialog(
 
     AlertDialog(
         onDismissRequest = {
-            viewModel.openDialog = false
+            viewModel.showOptions = false
         },
         title = {
             Text(
@@ -92,7 +92,7 @@ fun OptionsDialog(
                         instanceUrl
                     )
                     RetrofitInstance.createApi()
-                    viewModel.openDialog = false
+                    viewModel.showOptions = false
                 }
             ) {
                 Text(
@@ -105,7 +105,7 @@ fun OptionsDialog(
         dismissButton = {
             TextButton(
                 onClick = {
-                    viewModel.openDialog = false
+                    viewModel.showOptions = false
                 }
             ) {
                 Text(

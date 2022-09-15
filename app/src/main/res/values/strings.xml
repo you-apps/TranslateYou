@@ -14,4 +14,5 @@
     <string name="instance">Instance</string>
     <string name="api_key">Api Key</string>
     <string name="options">Options</string>
+    <string name="about">About</string>
 </resources>

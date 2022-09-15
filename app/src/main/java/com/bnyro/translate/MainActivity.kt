@@ -16,8 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.models.MainModel
-import com.bnyro.translate.models.OptionsModel
+import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.ui.theme.TranslateYouTheme
+import com.bnyro.translate.ui.views.AboutPage
 import com.bnyro.translate.ui.views.MainContent
 import com.bnyro.translate.ui.views.OptionsDialog
 import com.bnyro.translate.ui.views.TopBar
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent() {
-    val optionsModel: OptionsModel = viewModel()
+    val navigationModel: NavigationModel = viewModel()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -58,7 +59,11 @@ fun ScreenContent() {
         }
     }
 
-    if (optionsModel.openDialog) {
+    if (navigationModel.showOptions) {
         OptionsDialog()
+    }
+
+    if (navigationModel.showAbout) {
+        AboutPage()
     }
 }

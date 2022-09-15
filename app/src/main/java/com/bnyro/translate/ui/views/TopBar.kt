@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.DropdownMenu
@@ -27,6 +29,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.ext.getAppName
 import com.bnyro.translate.models.MainModel
+import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.DropDownItem
 import com.bnyro.translate.util.ClipboardHelper
@@ -34,7 +37,8 @@ import com.bnyro.translate.util.ClipboardHelper
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    mainModel: MainModel = viewModel()
+    mainModel: MainModel = viewModel(),
+    navigationModel: NavigationModel = viewModel()
 ) {
     val context = LocalContext.current.applicationContext
 
@@ -47,8 +51,18 @@ fun TopBar(
             text = stringResource(
                 id = R.string.options
             ),
-            icon = Icons.Outlined.Menu
-        )
+            icon = Icons.Default.Menu
+        ) {
+            navigationModel.showOptions = true
+        },
+        MenuItemData(
+            text = stringResource(
+                id = R.string.about
+            ),
+            icon = Icons.Default.Info
+        ) {
+            navigationModel.showAbout = true
+        }
     )
 
     TopAppBar(
