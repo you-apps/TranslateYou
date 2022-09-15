@@ -1,6 +1,7 @@
 package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
@@ -21,6 +22,7 @@ fun RoundIconButton(
 ) {
     IconButton(
         modifier = Modifier
+            .padding(5.dp, 0.dp)
             .size(70.dp)
             .background(
                 color = backgroundColor,

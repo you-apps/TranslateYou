@@ -137,8 +137,18 @@ fun AboutPage(
 
 val aboutIcons = listOf(
     AboutIcon(
+        "GitHub",
+        R.drawable.ic_github,
+        "https://github.com/Bnyro/TranslateYou"
+    ),
+    AboutIcon(
         "",
-        R.drawable.ic_switch,
-        ""
+        R.drawable.ic_author,
+        "https://bnyro.github.io"
+    ),
+    AboutIcon(
+        "",
+        R.drawable.ic_license,
+        "https://gnu.org"
     )
 )
