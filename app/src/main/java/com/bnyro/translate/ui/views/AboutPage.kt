@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -32,8 +31,6 @@ import androidx.compose.material.icons.rounded.VolunteerActivism
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -61,7 +58,8 @@ import androidx.compose.ui.unit.dp
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.models.NavigationModel
-import com.bnyro.translate.ui.components.FeedbackIconButton
+import com.bnyro.translate.ui.components.RoundIconButton
+import com.bnyro.translate.ui.components.StyledIconButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,7 +70,6 @@ fun AboutPage(
     val view = LocalView.current
     var currentVersion by remember { mutableStateOf("") }
     var clickTime by remember { mutableStateOf(System.currentTimeMillis() - 2000) }
-    var pressAMP by remember { mutableStateOf(16f) }
 
     LaunchedEffect(Unit) {
         currentVersion = BuildConfig.VERSION_CODE.toString()
@@ -85,20 +82,15 @@ fun AboutPage(
             TopAppBar(
                 title = {},
                 navigationIcon = {
-                    FeedbackIconButton(
-                        imageVector = Icons.Rounded.ArrowBack,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurface
+                    StyledIconButton(
+                        imageVector = Icons.Rounded.ArrowBack
                     ) {
                         viewModel.showAbout = false
                     }
                 },
                 actions = {
-                    FeedbackIconButton(
-                        modifier = Modifier.size(20.dp),
-                        imageVector = Icons.Rounded.Balance,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurface
+                    StyledIconButton(
+                        imageVector = Icons.Rounded.Balance
                     )
                 }
             )
@@ -118,11 +110,9 @@ fun AboutPage(
                                 detectTapGestures(
                                     onPress = {
                                         view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-                                        pressAMP = 0f
                                         tryAwaitRelease()
                                         view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
                                         view.playSoundEffect(SoundEffectConstants.CLICK)
-                                        pressAMP = 16f
                                     },
                                     onTap = {
                                         clickTime = if (System.currentTimeMillis() - clickTime > 2000) {
@@ -308,37 +298,4 @@ sealed class RoundIconButtonType(
         backgroundColor = backgroundColor,
         onClick = onClick
     )
-}
-
-@Composable
-private fun RoundIconButton(type: RoundIconButtonType) {
-    IconButton(
-        modifier = Modifier
-            .size(70.dp)
-            .background(
-                color = type.backgroundColor,
-                shape = CircleShape
-            ),
-        onClick = { type.onClick() }
-    ) {
-        when (type) {
-            is RoundIconButtonType.Sponsor, is RoundIconButtonType.Help -> {
-                Icon(
-                    modifier = type.offset.size(type.size),
-                    imageVector = type.iconVector!!,
-                    contentDescription = stringResource(type.descResource!!),
-                    tint = MaterialTheme.colorScheme.onSurface
-                )
-            }
-
-            is RoundIconButtonType.GitHub, is RoundIconButtonType.Telegram -> {
-                Icon(
-                    modifier = type.offset.size(type.size),
-                    painter = painterResource(type.iconResource!!),
-                    contentDescription = type.descString,
-                    tint = MaterialTheme.colorScheme.onSurface
-                )
-            }
-        }
-    }
 }

@@ -10,8 +10,6 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -32,6 +30,7 @@ import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.DropDownItem
+import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.util.ClipboardHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -73,7 +72,8 @@ fun TopBar(
         },
         actions = {
             if (mainModel.translatedText != "") {
-                IconButton(
+                StyledIconButton(
+                    imageVector = Icons.Default.ContentCopy,
                     onClick = {
                         ClipboardHelper(
                             context
@@ -81,38 +81,25 @@ fun TopBar(
                             mainModel.translatedText
                         )
                     }
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.ContentCopy,
-                        null
-                    )
-                }
+                )
             }
 
             if (mainModel.insertedText != "") {
-                IconButton(
+                StyledIconButton(
+                    imageVector = Icons.Default.Clear,
                     onClick = {
                         mainModel.insertedText = ""
                         mainModel.translatedText = ""
                     }
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Clear,
-                        null
-                    )
-                }
+                )
             }
             // 3 vertical dots icon
-            IconButton(
+            StyledIconButton(
+                imageVector = Icons.Default.MoreVert,
                 onClick = {
                     expanded = true
                 }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.MoreVert,
-                    null
-                )
-            }
+            )
 
             DropdownMenu(
                 modifier = Modifier.width(width = 150.dp),
