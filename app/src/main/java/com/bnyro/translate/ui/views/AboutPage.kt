@@ -26,11 +26,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -84,10 +81,9 @@ fun AboutPage(
                             verticalArrangement = Arrangement.Center
                         ) {
                             Image(
-                                modifier = Modifier.size(90.dp),
-                                painter = painterResource(R.mipmap.ic_launcher),
-                                contentDescription = stringResource(R.string.app_name),
-                                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
+                                modifier = Modifier.size(150.dp),
+                                painter = painterResource(R.mipmap.ic_launcher_round),
+                                contentDescription = stringResource(R.string.app_name)
                             )
                             Spacer(modifier = Modifier.height(48.dp))
                             BadgedBox(

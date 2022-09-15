@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.ext.getAppName
 import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.obj.MenuItemData
@@ -67,7 +66,7 @@ fun TopBar(
     TopAppBar(
         title = {
             Text(
-                LocalContext.current.applicationContext.getAppName()
+                text = stringResource(id = R.string.app_name)
             )
         },
         actions = {
