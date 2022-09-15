@@ -11,12 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun RoundIconButton(
     backgroundColor: Color,
-    contentDescription: String,
+    contentDescription: Int,
     iconResourceId: Int,
     onClick: () -> Unit
 ) {
@@ -34,7 +35,9 @@ fun RoundIconButton(
     ) {
         Icon(
             painter = painterResource(iconResourceId),
-            contentDescription = contentDescription,
+            contentDescription = stringResource(
+                contentDescription
+            ),
             tint = MaterialTheme.colorScheme.onSurface
         )
     }

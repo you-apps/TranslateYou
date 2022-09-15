@@ -15,4 +15,9 @@
     <string name="api_key">Api Key</string>
     <string name="options">Options</string>
     <string name="about">About</string>
+
+    <!-- About -->
+    <string name="github" translatable="false">GitHub</string>
+    <string name="author">Author</string>
+    <string name="license">License</string>
 </resources>
