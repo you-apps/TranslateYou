@@ -8,6 +8,7 @@
     <!-- Text -->
     <string name="enter_text">Enter text</string>
     <string name="paste">Paste</string>
+    <string name="auto">Auto</string>
 
     <!-- Options -->
     <string name="instance">Instance</string>

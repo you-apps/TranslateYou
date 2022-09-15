@@ -120,7 +120,8 @@ fun MainContent(
         ) {
             LanguageSelector(
                 viewModel.availableLanguages,
-                viewModel.sourceLanguage
+                viewModel.sourceLanguage,
+                autoLanguageEnabled = true
             ) {
                 viewModel.sourceLanguage = it
             }

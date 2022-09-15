@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -25,6 +24,7 @@ import com.bnyro.translate.obj.Language
 fun LanguageSelector(
     languages: List<Language>,
     selectedLanguage: Language,
+    autoLanguageEnabled: Boolean = false,
     onClick: (Language) -> Unit
 ) {
     val viewModel: MainModel = viewModel()
@@ -43,6 +43,10 @@ fun LanguageSelector(
         )
     }
 
+    val autoText = stringResource(
+        id = R.string.auto
+    )
+
     if (showDialog) {
         AlertDialog(
             onDismissRequest = {
@@ -50,15 +54,30 @@ fun LanguageSelector(
             },
             text = {
                 LazyColumn {
+                    if (autoLanguageEnabled) {
+                        item() {
+                            val it = Language(
+                                code = "auto",
+                                name = autoText
+                            )
+
+                            SelectableItem(
+                                text = it.name!!,
+                                onClick = {
+                                    showDialog = false
+                                    viewModel.translate()
+                                    onClick.invoke(it)
+                                }
+                            )
+                        }
+                    }
                     items(languages) {
-                        DropdownMenuItem(
+                        SelectableItem(
+                            text = it.name!!,
                             onClick = {
                                 showDialog = false
                                 viewModel.translate()
                                 onClick.invoke(it)
-                            },
-                            text = {
-                                Text(text = it.name!!)
                             }
                         )
                     }
