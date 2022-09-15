@@ -59,11 +59,8 @@ fun ScreenContent() {
         }
     }
 
-    if (navigationModel.showOptions) {
-        OptionsDialog()
-    }
-
-    if (navigationModel.showAbout) {
-        AboutPage()
+    when {
+        navigationModel.showOptions -> OptionsDialog()
+        navigationModel.showAbout -> AboutPage()
     }
 }
