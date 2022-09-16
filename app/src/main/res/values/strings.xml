@@ -21,4 +21,9 @@
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Author</string>
     <string name="license">License</string>
+
+    <!-- Theme -->
+    <string name="theme_auto">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
 </resources>

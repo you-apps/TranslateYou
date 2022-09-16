@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.models.NavigationModel
+import com.bnyro.translate.models.ThemeModel
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.ui.views.AboutPage
 import com.bnyro.translate.ui.views.MainContent
@@ -26,13 +27,16 @@ import com.bnyro.translate.ui.views.TopBar
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel = ViewModelProvider(this)[MainModel::class.java]
+        val mainModel = ViewModelProvider(this)[MainModel::class.java]
+        val themeModel = ViewModelProvider(this)[ThemeModel::class.java]
         setContent {
-            TranslateYouTheme {
+            TranslateYouTheme(
+                themeModel.themeMode
+            ) {
                 ScreenContent()
             }
         }
-        viewModel.fetchLanguages()
+        mainModel.fetchLanguages()
     }
 }
 
