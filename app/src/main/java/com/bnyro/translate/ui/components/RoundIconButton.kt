@@ -23,8 +23,8 @@ fun RoundIconButton(
 ) {
     IconButton(
         modifier = Modifier
-            .padding(5.dp, 0.dp)
-            .size(70.dp)
+            .padding(7.dp, 0.dp)
+            .size(60.dp)
             .background(
                 color = backgroundColor,
                 shape = CircleShape
