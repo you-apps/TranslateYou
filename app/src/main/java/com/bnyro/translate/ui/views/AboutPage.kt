@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
@@ -149,8 +150,19 @@ val aboutIcons = listOf(
         "https://bnyro.github.io"
     ),
     AboutIcon(
+        R.string.libre_translate,
+        R.drawable.ic_libretranslate,
+        "https://github.com/LibreTranslate/LibreTranslate"
+    ),
+    AboutIcon(
         R.string.license,
         R.drawable.ic_license,
         "https://gnu.org/licenses/gpl-3.ß.html"
     )
 )
+
+@Preview
+@Composable
+fun DefaultPreview() {
+    AboutPage()
+}
