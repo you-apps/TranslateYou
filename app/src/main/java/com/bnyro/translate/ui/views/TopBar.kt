@@ -1,5 +1,6 @@
 package com.bnyro.translate.ui.views
 
+import android.content.Intent
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -7,6 +8,7 @@ import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -79,6 +81,23 @@ fun TopBar(
                         ).write(
                             mainModel.translatedText
                         )
+                    }
+                )
+            }
+
+            if (mainModel.translatedText != "") {
+                StyledIconButton(
+                    imageVector = Icons.Default.Share,
+                    onClick = {
+                        val sendIntent: Intent = Intent().apply {
+                            action = Intent.ACTION_SEND
+                            putExtra(Intent.EXTRA_TEXT, mainModel.translatedText)
+                            type = "text/plain"
+                        }
+
+                        val shareIntent = Intent.createChooser(sendIntent, null)
+                        shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(shareIntent)
                     }
                 )
             }
