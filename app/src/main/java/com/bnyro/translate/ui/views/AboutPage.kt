@@ -98,11 +98,10 @@ fun AboutPage(
                             verticalArrangement = Arrangement.Center
                         ) {
                             Image(
-                                modifier = Modifier.size(150.dp),
-                                painter = painterResource(R.mipmap.ic_launcher_round),
+                                modifier = Modifier.size(300.dp),
+                                painter = painterResource(R.drawable.ic_launcher_foreground),
                                 contentDescription = stringResource(R.string.app_name)
                             )
-                            Spacer(modifier = Modifier.height(48.dp))
                             BadgedBox(
                                 badge = {
                                     Badge(
