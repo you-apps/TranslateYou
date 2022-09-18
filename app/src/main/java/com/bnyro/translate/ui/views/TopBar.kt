@@ -106,8 +106,7 @@ fun TopBar(
                 StyledIconButton(
                     imageVector = Icons.Default.Clear,
                     onClick = {
-                        mainModel.insertedText = ""
-                        mainModel.translatedText = ""
+                        mainModel.clearTranslation()
                     }
                 )
             }

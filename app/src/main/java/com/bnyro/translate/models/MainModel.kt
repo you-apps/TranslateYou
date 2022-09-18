@@ -74,6 +74,11 @@ class MainModel : ViewModel() {
         }
     }
 
+    fun clearTranslation() {
+        insertedText = ""
+        translatedText = ""
+    }
+
     fun fetchLanguages() {
         viewModelScope.launch {
             val languages = try {
