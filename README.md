@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200" height="200"src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png">
+  <img width="200" height="200"src="fastlane/metadata/android/en-US/images/icon.png">
   <h1>Translate You</h1>
   <p>Translate You is a Translator App built with <a href="https://m3.material.io/">Material Design 3 (You)</a> using the <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate API</a>.</p>
   <div align="center">
@@ -20,7 +20,16 @@
 - [x] Entirely Open Source
 
 ## Download
+
 [<img src="ghbadge.png" alt="Get it on GitHub" height="80">](https://github.com/bnyro/translateyou/releases)
+
+## Screenshots
+
+<div style="display: flex;">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/translate.png" width=30%>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/options.png" width=30%>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/about.png" width=30%>
+</div>
 
 ## Contribution
 
