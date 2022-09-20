@@ -1,0 +1,1 @@
+Translate You is a Translator App built with Material Design 3 (You) using the LibreTranslate API. It supports more than 30 languages provided by the LibreTranslate API while using the latest Material libraries and components.
