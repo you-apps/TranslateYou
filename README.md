@@ -18,6 +18,7 @@
 - [x] Material Design 3 (You)
 - [x] Dark and light theme
 - [x] Entirely Open Source
+- [X] Written in Jetpack Compose 
 
 ## Download
 
