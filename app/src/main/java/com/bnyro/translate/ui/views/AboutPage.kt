@@ -110,7 +110,7 @@ fun AboutPage(
                                         contentColor = MaterialTheme.colorScheme.tertiary
                                     ) {
                                         Text(
-                                            text = BuildConfig.VERSION_CODE.toString()
+                                            text = BuildConfig.VERSION_NAME
                                         )
                                     }
                                 }
