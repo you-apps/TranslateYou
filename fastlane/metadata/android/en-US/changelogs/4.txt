@@ -1,0 +1,4 @@
+* Monochrome/Material You App Icon (#8)
+* Remember the last selected language pair (#4)
+* Improved floating action button (#5)
+* Options dialog moved to a new activity
