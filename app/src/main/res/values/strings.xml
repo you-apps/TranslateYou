@@ -10,7 +10,6 @@
     <string name="enter_text">Enter text</string>
     <string name="paste">Paste</string>
     <string name="auto">Auto</string>
-    <string name="new_translation">New translation</string>
 
     <!-- Options -->
     <string name="instance">Instance</string>

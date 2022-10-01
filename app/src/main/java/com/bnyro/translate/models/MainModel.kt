@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
+import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.launch
 import java.util.logging.Handler
 
@@ -19,11 +20,11 @@ class MainModel : ViewModel() {
     )
 
     var sourceLanguage: Language by mutableStateOf(
-        Language("auto", "Auto")
+        getLanguageByPrefKey(Preferences.sourceLanguage) ?: Language("auto", "Auto")
     )
 
     var targetLanguage: Language by mutableStateOf(
-        Language("en", "English")
+        getLanguageByPrefKey(Preferences.targetLanguage) ?: Language("en", "English")
     )
 
     var insertedText: String by mutableStateOf(
@@ -33,6 +34,17 @@ class MainModel : ViewModel() {
     var translatedText: String by mutableStateOf(
         ""
     )
+
+    fun getLanguageByPrefKey(key: String): Language? {
+        return try {
+            ObjectMapper().readValue(
+                Preferences.get(key, ""),
+                Language::class.java
+            )
+        } catch (e: Exception) {
+            null
+        }
+    }
 
     fun enqueueTranslation() {
         val insertedTextTemp = insertedText

@@ -8,6 +8,8 @@ object Preferences {
     const val apiKey = "apiKey"
     const val defaultInstanceUrl = "https://libretranslate.de"
     const val themeModeKey = "themeMode"
+    const val sourceLanguage = "sourceLanguage"
+    const val targetLanguage = "targetLanguage"
 
     private lateinit var prefs: SharedPreferences
 

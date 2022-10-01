@@ -23,12 +23,18 @@ import com.bnyro.translate.ui.views.AboutPage
 import com.bnyro.translate.ui.views.MainContent
 import com.bnyro.translate.ui.views.OptionsDialog
 import com.bnyro.translate.ui.views.TopBar
+import com.bnyro.translate.util.Preferences
+import com.fasterxml.jackson.databind.ObjectMapper
 
 class MainActivity : ComponentActivity() {
+    lateinit var mainModel: MainModel
+    lateinit var themeModel: ThemeModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        mainModel = ViewModelProvider(this)[MainModel::class.java]
+        themeModel = ViewModelProvider(this)[ThemeModel::class.java]
+
         super.onCreate(savedInstanceState)
-        val mainModel = ViewModelProvider(this)[MainModel::class.java]
-        val themeModel = ViewModelProvider(this)[ThemeModel::class.java]
         setContent {
             TranslateYouTheme(
                 themeModel.themeMode
@@ -37,6 +43,19 @@ class MainActivity : ComponentActivity() {
             }
         }
         mainModel.fetchLanguages()
+    }
+
+    override fun onStop() {
+        val mapper = ObjectMapper()
+        Preferences.put(
+            Preferences.sourceLanguage,
+            mapper.writeValueAsString(mainModel.sourceLanguage)
+        )
+        Preferences.put(
+            Preferences.targetLanguage,
+            mapper.writeValueAsString(mainModel.targetLanguage)
+        )
+        super.onStop()
     }
 }
 
