@@ -28,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.activities.AboutActivity
 import com.bnyro.translate.ui.activities.SettingsActivity
 import com.bnyro.translate.ui.components.DropDownItem
 import com.bnyro.translate.ui.components.StyledIconButton
+import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.util.ClipboardHelper
 
 @OptIn(ExperimentalMaterial3Api::class)

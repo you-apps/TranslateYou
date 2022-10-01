@@ -17,8 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.obj.Language
+import com.bnyro.translate.ui.models.MainModel
 
 @Composable
 fun LanguageSelector(

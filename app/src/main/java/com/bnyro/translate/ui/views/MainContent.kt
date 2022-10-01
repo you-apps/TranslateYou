@@ -24,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.ui.components.LanguageSelector
+import com.bnyro.translate.ui.models.MainModel
 
 @Composable
 fun MainContent() {

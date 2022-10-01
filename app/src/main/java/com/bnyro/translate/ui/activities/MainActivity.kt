@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
-import com.bnyro.translate.models.MainModel
 import com.bnyro.translate.ui.base.BaseActivity
+import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.ui.views.MainContent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.util.Preferences

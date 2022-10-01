@@ -3,6 +3,10 @@ package com.bnyro.translate.ui.activities
 import android.app.Activity
 import android.os.Bundle
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
@@ -18,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -58,7 +63,11 @@ fun SettingsPage() {
             .statusBarsPadding(),
         topBar = {
             TopAppBar(
-                title = {},
+                title = {
+                    Text(
+                        stringResource(R.string.options)
+                    )
+                },
                 navigationIcon = {
                     StyledIconButton(
                         imageVector = Icons.Default.ArrowBack
@@ -95,7 +104,11 @@ fun SettingsPage() {
             }
 
             Column(
-                modifier = Modifier.padding(pV)
+                modifier = Modifier
+                    .padding(pV)
+                    .fillMaxSize()
+                    .padding(15.dp, 0.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 OutlinedTextField(
                     value = instanceUrl,
@@ -106,7 +119,13 @@ fun SettingsPage() {
                                 id = R.string.instance
                             )
                         )
-                    }
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(
+                    modifier = Modifier
+                        .height(10.dp)
                 )
 
                 OutlinedTextField(
@@ -120,7 +139,7 @@ fun SettingsPage() {
                         )
                     },
                     modifier = Modifier
-                        .padding(0.dp, 15.dp, 0.dp, 0.dp)
+                        .fillMaxWidth()
                 )
             }
         }

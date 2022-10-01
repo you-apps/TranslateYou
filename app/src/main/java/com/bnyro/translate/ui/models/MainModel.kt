@@ -1,4 +1,4 @@
-package com.bnyro.translate.models
+package com.bnyro.translate.ui.models
 
 import android.os.Looper
 import android.util.Log
