@@ -2,6 +2,7 @@ package com.bnyro.translate.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.bnyro.translate.constants.ThemeMode
 
 object Preferences {
     const val instanceUrlKey = "instanceUrl"
@@ -32,5 +33,12 @@ object Preferences {
             key,
             defValue
         ) ?: defValue
+    }
+
+    fun getThemeMode(): Int {
+        return get(
+            themeModeKey,
+            ThemeMode.AUTO.toString()
+        ).toInt()
     }
 }

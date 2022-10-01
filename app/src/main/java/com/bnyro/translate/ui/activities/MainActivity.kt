@@ -2,8 +2,6 @@ package com.bnyro.translate.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,28 +13,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import com.bnyro.translate.models.MainModel
-import com.bnyro.translate.models.ThemeModel
-import com.bnyro.translate.ui.theme.TranslateYouTheme
+import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.views.MainContent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.util.Preferences
 import com.fasterxml.jackson.databind.ObjectMapper
 
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity() {
     lateinit var mainModel: MainModel
-    lateinit var themeModel: ThemeModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainModel = ViewModelProvider(this)[MainModel::class.java]
-        themeModel = ViewModelProvider(this)[ThemeModel::class.java]
 
         super.onCreate(savedInstanceState)
-        setContent {
-            TranslateYouTheme(
-                themeModel.themeMode
-            ) {
-                ScreenContent()
-            }
+        Content {
+            ScreenContent()
         }
         mainModel.fetchLanguages()
     }
@@ -58,7 +49,7 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenContent() {
+private fun ScreenContent() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {

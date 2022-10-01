@@ -1,17 +1,19 @@
 package com.bnyro.translate.ui.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.bnyro.translate.R
 import com.bnyro.translate.constants.ThemeMode
 import com.bnyro.translate.obj.ListPreferenceOption
+import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.util.Preferences
 
 @Composable
 fun ThemeModeDialog(
-    onDismiss: () -> Unit,
-    onThemeModeChanged: (Int) -> Unit
+    onDismiss: () -> Unit
 ) {
+    val activity = LocalContext.current as BaseActivity
     ListPreference(
         preferenceKey = Preferences.themeModeKey,
         onDismissRequest = {
@@ -32,7 +34,7 @@ fun ThemeModeDialog(
             )
         ),
         onOptionSelected = {
-            onThemeModeChanged.invoke(it.value)
+            activity.themeMode = it.value
         }
     )
 }

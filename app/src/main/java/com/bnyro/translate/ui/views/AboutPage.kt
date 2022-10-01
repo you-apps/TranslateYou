@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,7 +40,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
-import com.bnyro.translate.models.ThemeModel
 import com.bnyro.translate.obj.AboutIcon
 import com.bnyro.translate.ui.components.RoundIconButton
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -145,17 +143,10 @@ fun AboutPage() {
         }
     )
 
-    val themeModel: ThemeModel = androidx.lifecycle.viewmodel.compose.viewModel()
-
     if (showThemeOptions) {
-        ThemeModeDialog(
-            onDismiss = {
-                showThemeOptions = false
-            },
-            onThemeModeChanged = {
-                themeModel.themeMode = it
-            }
-        )
+        ThemeModeDialog {
+            showThemeOptions = false
+        }
     }
 }
 

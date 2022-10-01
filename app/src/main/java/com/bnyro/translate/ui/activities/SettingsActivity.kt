@@ -2,15 +2,12 @@ package com.bnyro.translate.ui.activities
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -26,24 +23,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.models.ThemeModel
+import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.Preferences
 
-class SettingsActivity : ComponentActivity() {
+class SettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val themeModel = ViewModelProvider(this)[ThemeModel::class.java]
-
-        setContent {
+        Content {
             TranslateYouTheme(
-                themeModel.themeMode
+                themeMode
             ) {
                 SettingsPage()
             }
@@ -83,7 +75,7 @@ fun SettingsPage() {
                 }
             )
         },
-        content = {
+        content = { pV ->
             var instanceUrl by remember {
                 mutableStateOf(
                     Preferences.get(
@@ -103,7 +95,7 @@ fun SettingsPage() {
             }
 
             Column(
-                modifier = Modifier.padding(it)
+                modifier = Modifier.padding(pV)
             ) {
                 OutlinedTextField(
                     value = instanceUrl,
@@ -134,16 +126,9 @@ fun SettingsPage() {
         }
     )
 
-    val themeModel: ThemeModel = viewModel()
-
     if (showThemeOptions) {
-        ThemeModeDialog(
-            onDismiss = {
-                showThemeOptions = false
-            },
-            onThemeModeChanged = {
-                themeModel.themeMode = it
-            }
-        )
+        ThemeModeDialog {
+            showThemeOptions = false
+        }
     }
 }
