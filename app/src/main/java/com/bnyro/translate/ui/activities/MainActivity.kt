@@ -1,4 +1,4 @@
-package com.bnyro.translate
+package com.bnyro.translate.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,14 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.models.MainModel
-import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.models.ThemeModel
 import com.bnyro.translate.ui.theme.TranslateYouTheme
-import com.bnyro.translate.ui.views.AboutPage
 import com.bnyro.translate.ui.views.MainContent
-import com.bnyro.translate.ui.views.OptionsDialog
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.util.Preferences
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -63,8 +59,6 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent() {
-    val navigationModel: NavigationModel = viewModel()
-
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -81,7 +75,4 @@ fun ScreenContent() {
             MainContent()
         }
     }
-
-    if (navigationModel.showOptions) OptionsDialog()
-    if (navigationModel.showAbout) AboutPage()
 }

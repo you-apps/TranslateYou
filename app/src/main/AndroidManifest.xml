@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.bnyro.translate">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Internet permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,7 +19,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.TranslateYou"
             android:windowSoftInputMode="adjustResize">
@@ -29,6 +28,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.activities.AboutActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.activities.SettingsActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

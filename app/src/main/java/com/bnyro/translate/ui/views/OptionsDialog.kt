@@ -17,103 +17,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OptionsDialog(
-    viewModel: NavigationModel = viewModel()
-) {
-    var instanceUrl by remember {
-        mutableStateOf(
-            Preferences.get(
-                Preferences.instanceUrlKey,
-                Preferences.defaultInstanceUrl
-            )
-        )
-    }
+fun OptionsDialog() {
 
-    var apiKey by remember {
-        mutableStateOf(
-            Preferences.get(
-                Preferences.apiKey,
-                ""
-            )
-        )
-    }
-
-    AlertDialog(
-        onDismissRequest = {
-            viewModel.showOptions = false
-        },
-        title = {
-            Text(
-                text = stringResource(
-                    id = R.string.options
-                )
-            )
-        },
-        text = {
-            Column {
-                OutlinedTextField(
-                    value = instanceUrl,
-                    onValueChange = { instanceUrl = it },
-                    label = {
-                        Text(
-                            text = stringResource(
-                                id = R.string.instance
-                            )
-                        )
-                    }
-                )
-
-                OutlinedTextField(
-                    value = apiKey,
-                    onValueChange = { apiKey = it },
-                    label = {
-                        Text(
-                            text = stringResource(
-                                id = R.string.api_key
-                            )
-                        )
-                    },
-                    modifier = Modifier
-                        .padding(0.dp, 15.dp, 0.dp, 0.dp)
-                )
-            }
-        },
-        confirmButton = {
-            TextButton(
-                onClick = {
-                    Preferences.put(
-                        Preferences.instanceUrlKey,
-                        instanceUrl
-                    )
-                    RetrofitInstance.createApi()
-                    viewModel.showOptions = false
-                }
-            ) {
-                Text(
-                    text = stringResource(
-                        id = R.string.okay
-                    )
-                )
-            }
-        },
-        dismissButton = {
-            TextButton(
-                onClick = {
-                    viewModel.showOptions = false
-                }
-            ) {
-                Text(
-                    text = stringResource(
-                        id = R.string.cancel
-                    )
-                )
-            }
-        }
-    )
 }

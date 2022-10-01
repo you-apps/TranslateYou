@@ -1,5 +1,6 @@
 package com.bnyro.translate.ui.views
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.animation.animateContentSize
@@ -40,21 +41,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
-import com.bnyro.translate.constants.ThemeMode
-import com.bnyro.translate.models.NavigationModel
 import com.bnyro.translate.models.ThemeModel
 import com.bnyro.translate.obj.AboutIcon
-import com.bnyro.translate.obj.ListPreferenceOption
-import com.bnyro.translate.ui.components.ListPreference
 import com.bnyro.translate.ui.components.RoundIconButton
 import com.bnyro.translate.ui.components.StyledIconButton
-import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.ui.components.ThemeModeDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AboutPage(
-    viewModel: NavigationModel = androidx.lifecycle.viewmodel.compose.viewModel()
-) {
+fun AboutPage() {
     val context = LocalContext.current
 
     var showThemeOptions by remember {
@@ -71,7 +66,7 @@ fun AboutPage(
                     StyledIconButton(
                         imageVector = Icons.Default.ArrowBack
                     ) {
-                        viewModel.showAbout = false
+                        (context as Activity).finish()
                     }
                 },
                 actions = {
@@ -153,27 +148,12 @@ fun AboutPage(
     val themeModel: ThemeModel = androidx.lifecycle.viewmodel.compose.viewModel()
 
     if (showThemeOptions) {
-        ListPreference(
-            preferenceKey = Preferences.themeModeKey,
-            onDismissRequest = {
+        ThemeModeDialog(
+            onDismiss = {
                 showThemeOptions = false
             },
-            options = listOf(
-                ListPreferenceOption(
-                    name = stringResource(R.string.theme_auto),
-                    value = ThemeMode.AUTO
-                ),
-                ListPreferenceOption(
-                    name = stringResource(R.string.theme_light),
-                    value = ThemeMode.LIGHT
-                ),
-                ListPreferenceOption(
-                    name = stringResource(R.string.theme_dark),
-                    value = ThemeMode.DARK
-                )
-            ),
-            onOptionSelected = {
-                themeModel.themeMode = it.value
+            onThemeModeChanged = {
+                themeModel.themeMode = it
             }
         )
     }
