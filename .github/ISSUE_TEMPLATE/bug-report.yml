@@ -1,5 +1,5 @@
-name: 🐞 Issue Report
-description: Report a issue in LibreTube
+name: 🐞 Bug Report
+description: Report an issue in the app
 labels: [bug]
 body:
 
