@@ -31,6 +31,23 @@ android {
         }
     }
 
+    flavorDimensions "version"
+    productFlavors {
+        normal {
+            dimension "version"
+            manifestPlaceholders = [
+                appName: "Translate You"
+            ]
+        }
+        libre {
+            dimension "version"
+            applicationIdSuffix ".libre"
+            manifestPlaceholders = [
+                    appName: "Translate You Libre"
+            ]
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

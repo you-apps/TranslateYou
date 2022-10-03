@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.constants.ApiType
 import com.bnyro.translate.ui.base.BaseActivity
@@ -129,27 +130,30 @@ fun SettingsPage() {
                     .height(20.dp)
             )
 
-            BlockRadioButton(
-                onSelect = {
-                    selectedApiType = it
-                    instanceUrl = when (selectedApiType) {
-                        ApiType.LIBRE_TRANSLATE -> "https://libretranslate.de"
-                        else -> "https://lingva.ml"
-                    }
-                    Preferences.put(
-                        Preferences.apiTypeKey,
-                        selectedApiType
-                    )
-                    RetrofitInstance.createApi()
-                },
-                selected = selectedApiType,
-                items = listOf("LibreTranslate", "LingvaTranslate")
-            )
+            @Suppress("KotlinConstantConditions")
+            if (BuildConfig.FLAVOR != "libre") {
+                BlockRadioButton(
+                    onSelect = {
+                        selectedApiType = it
+                        instanceUrl = when (selectedApiType) {
+                            ApiType.LIBRE_TRANSLATE -> "https://libretranslate.de"
+                            else -> "https://lingva.ml"
+                        }
+                        Preferences.put(
+                            Preferences.apiTypeKey,
+                            selectedApiType
+                        )
+                        RetrofitInstance.createApi()
+                    },
+                    selected = selectedApiType,
+                    items = listOf("LibreTranslate", "LingvaTranslate")
+                )
 
-            Spacer(
-                modifier = Modifier
-                    .height(20.dp)
-            )
+                Spacer(
+                    modifier = Modifier
+                        .height(20.dp)
+                )
+            }
 
             OutlinedTextField(
                 value = instanceUrl,
