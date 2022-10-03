@@ -44,6 +44,12 @@ class MainActivity : BaseActivity() {
         )
         super.onStop()
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        mainModel.fetchLanguages()
+    }
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

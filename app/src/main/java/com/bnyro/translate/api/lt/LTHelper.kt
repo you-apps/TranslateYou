@@ -6,7 +6,17 @@ import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
 
 class LTHelper : ApiHelper() {
-    override suspend fun getLanguages(): List<Language> = RetrofitInstance.libreTranslate.getLanguages()
+    override suspend fun getLanguages(): List<Language> {
+        return RetrofitInstance.libreTranslate.getLanguages().toMutableList().apply {
+            add(
+                0,
+                Language(
+                    code = "auto",
+                    name = "Auto"
+                )
+            )
+        }
+    }
 
     override suspend fun translate(
         query: String,

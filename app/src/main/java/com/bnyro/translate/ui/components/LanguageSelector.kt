@@ -22,7 +22,7 @@ import com.bnyro.translate.ui.models.MainModel
 
 @Composable
 fun LanguageSelector(
-    languages: List<Language>,
+    availableLanguages: List<Language>,
     selectedLanguage: Language,
     autoLanguageEnabled: Boolean = false,
     onClick: (Language) -> Unit
@@ -43,9 +43,10 @@ fun LanguageSelector(
         )
     }
 
-    val autoText = stringResource(
-        id = R.string.auto
-    )
+    val languages = availableLanguages.toMutableList()
+
+    // remove auto language
+    if (!autoLanguageEnabled && languages.isNotEmpty()) languages.removeAt(0)
 
     if (showDialog) {
         AlertDialog(
@@ -54,23 +55,6 @@ fun LanguageSelector(
             },
             text = {
                 LazyColumn {
-                    if (autoLanguageEnabled) {
-                        item() {
-                            val it = Language(
-                                code = "auto",
-                                name = autoText
-                            )
-
-                            SelectableItem(
-                                text = it.name!!,
-                                onClick = {
-                                    showDialog = false
-                                    viewModel.enqueueTranslation()
-                                    onClick.invoke(it)
-                                }
-                            )
-                        }
-                    }
                     items(languages) {
                         SelectableItem(
                             text = it.name!!,

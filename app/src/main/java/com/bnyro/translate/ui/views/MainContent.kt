@@ -83,7 +83,7 @@ fun MainContent() {
 
             IconButton(
                 onClick = {
-                    if (viewModel.sourceLanguage.code == "auto") return@IconButton
+                    if (viewModel.sourceLanguage.code == viewModel.availableLanguages.first().code) return@IconButton
                     val temp = viewModel.sourceLanguage
                     viewModel.sourceLanguage = viewModel.targetLanguage
                     viewModel.targetLanguage = temp
