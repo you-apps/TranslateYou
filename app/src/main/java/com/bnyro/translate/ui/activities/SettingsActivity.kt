@@ -175,7 +175,13 @@ fun SettingsPage() {
             if (selectedApiType == ApiType.LIBRE_TRANSLATE) {
                 OutlinedTextField(
                     value = apiKey,
-                    onValueChange = { apiKey = it },
+                    onValueChange = {
+                        apiKey = it
+                        Preferences.put(
+                            Preferences.apiKey,
+                            it
+                        )
+                    },
                     label = {
                         Text(
                             text = stringResource(
