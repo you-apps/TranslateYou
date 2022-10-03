@@ -1,7 +1,7 @@
 package com.bnyro.translate.api.lt
 
-import com.bnyro.translate.obj.Language
 import com.bnyro.translate.api.lt.obj.LTTranslation
+import com.bnyro.translate.obj.Language
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
