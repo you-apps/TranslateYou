@@ -8,15 +8,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.api.ApiHelper
-import com.bnyro.translate.api.lt.LTHelper
+import com.bnyro.translate.api.lv.LVHelper
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
 import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.launch
-import java.util.logging.Handler
 
 class MainModel : ViewModel() {
-    val apiHelper: ApiHelper = LTHelper()
+    private val apiHelper: ApiHelper = LVHelper()
 
     var availableLanguages: List<Language> by mutableStateOf(
         emptyList()
@@ -38,7 +37,7 @@ class MainModel : ViewModel() {
         ""
     )
 
-    fun getLanguageByPrefKey(key: String): Language? {
+    private fun getLanguageByPrefKey(key: String): Language? {
         return try {
             ObjectMapper().readValue(
                 Preferences.get(key, ""),
@@ -68,7 +67,7 @@ class MainModel : ViewModel() {
         }
 
         viewModelScope.launch {
-            val response = try {
+            val translation = try {
                 apiHelper.translate(
                     insertedText,
                     sourceLanguage.code!!,
@@ -78,7 +77,7 @@ class MainModel : ViewModel() {
                 Log.e("error", e.message.toString())
                 return@launch
             }
-            if (insertedText != "") translatedText = response.translatedText ?: ""
+            if (insertedText != "") translatedText = translation
         }
     }
 
@@ -92,6 +91,7 @@ class MainModel : ViewModel() {
             val languages = try {
                 apiHelper.getLanguages()
             } catch (e: Exception) {
+                Log.e("error", e.toString())
                 return@launch
             }
             this@MainModel.availableLanguages = languages

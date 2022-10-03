@@ -1,11 +1,14 @@
 package com.bnyro.translate.util
 
 import com.bnyro.translate.api.lt.LibreTranslate
+import com.bnyro.translate.api.lv.LingvaTranslate
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
+import retrofit2.create
 
 object RetrofitInstance {
-    lateinit var api: LibreTranslate
+    lateinit var libreTranslate: LibreTranslate
+    lateinit var lingvaTranslate: LingvaTranslate
 
     fun createApi() {
         val url = Preferences.get(
@@ -13,12 +16,15 @@ object RetrofitInstance {
             Preferences.defaultInstanceUrl
         )
 
-        api = Retrofit.Builder()
-            .baseUrl(url)
+        val builder = Retrofit.Builder()
+            .baseUrl("https://lingva.ml")
             .addConverterFactory(
                 JacksonConverterFactory.create()
             )
             .build()
-            .create(LibreTranslate::class.java)
+
+        libreTranslate = builder.create(LibreTranslate::class.java)
+
+        lingvaTranslate = builder.create(LingvaTranslate::class.java)
     }
 }
