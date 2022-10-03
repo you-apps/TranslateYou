@@ -21,3 +21,4 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class com.bnyro.translate.obj.** { *; }
+-keep class com.bnyro.translate.api.**,** { *; }
