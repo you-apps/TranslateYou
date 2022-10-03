@@ -23,7 +23,7 @@ class MainModel : ViewModel() {
             ApiType.LIBRE_TRANSLATE
         )
     ) {
-        ApiType.LINGVA_TRANSLATE -> LTHelper()
+        ApiType.LIBRE_TRANSLATE -> LTHelper()
         else -> LVHelper()
     }
 
