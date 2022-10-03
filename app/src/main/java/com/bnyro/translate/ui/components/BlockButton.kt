@@ -22,7 +22,7 @@ fun BlockButton(
     modifier: Modifier = Modifier,
     text: String,
     selected: Boolean = false,
-    containerColor: Color = MaterialTheme.colorScheme.surface.copy(0.7f),
+    containerColor: Color = MaterialTheme.colorScheme.surfaceVariant.copy(0.5f),
     selectedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
     contentColor: Color = MaterialTheme.colorScheme.inverseSurface,
     selectedContentColor: Color = MaterialTheme.colorScheme.onSurface,

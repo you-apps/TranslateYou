@@ -18,7 +18,6 @@ fun BlockRadioButton(
 ) {
     Column {
         Row(
-            modifier = modifier.padding(horizontal = 24.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
