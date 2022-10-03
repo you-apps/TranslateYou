@@ -1,4 +1,4 @@
-package com.bnyro.translate.api
+package com.bnyro.translate.api.lt
 
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.obj.Translation

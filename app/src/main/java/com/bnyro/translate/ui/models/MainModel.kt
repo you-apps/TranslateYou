@@ -7,14 +7,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bnyro.translate.api.ApiHelper
+import com.bnyro.translate.api.lt.LTHelper
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.util.RetrofitInstance
 import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.launch
 import java.util.logging.Handler
 
 class MainModel : ViewModel() {
+    val apiHelper: ApiHelper = LTHelper()
+
     var availableLanguages: List<Language> by mutableStateOf(
         emptyList()
     )
@@ -64,19 +67,12 @@ class MainModel : ViewModel() {
             return
         }
 
-        var apiKey: String? = Preferences.get(
-            Preferences.apiKey,
-            ""
-        )
-        if (apiKey == "") apiKey = null
-
         viewModelScope.launch {
             val response = try {
-                RetrofitInstance.api.translate(
+                apiHelper.translate(
                     insertedText,
                     sourceLanguage.code!!,
-                    targetLanguage.code!!,
-                    apiKey
+                    targetLanguage.code!!
                 )
             } catch (e: Exception) {
                 Log.e("error", e.message.toString())
@@ -94,7 +90,7 @@ class MainModel : ViewModel() {
     fun fetchLanguages() {
         viewModelScope.launch {
             val languages = try {
-                RetrofitInstance.api.getLanguages()
+                apiHelper.getLanguages()
             } catch (e: Exception) {
                 return@launch
             }
