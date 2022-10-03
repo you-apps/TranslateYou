@@ -7,7 +7,10 @@ import com.bnyro.translate.constants.ThemeMode
 object Preferences {
     const val instanceUrlKey = "instanceUrl"
     const val apiKey = "apiKey"
-    const val defaultInstanceUrl = "https://libretranslate.de"
+
+    const val defaultLibreTranslateInstanceUrl = "https://libretranslate.de"
+    const val defaultLingvaTranslateInstanceUrl = "https://lingva.ml"
+
     const val themeModeKey = "themeMode"
     const val sourceLanguage = "sourceLanguage"
     const val targetLanguage = "targetLanguage"
@@ -21,18 +24,25 @@ object Preferences {
         )
     }
 
-    fun put(key: String, value: String) {
-        prefs.edit().putString(
-            key,
-            value
-        ).apply()
+    fun <T> put(key: String, value: T) {
+        when (value) {
+            is Boolean -> prefs.edit().putBoolean(key, value).apply()
+            is String -> prefs.edit().putString(key, value).apply()
+            is Int -> prefs.edit().putInt(key, value).apply()
+            is Float -> prefs.edit().putFloat(key, value).apply()
+            is Long -> prefs.edit().putLong(key, value).apply()
+        }
     }
 
-    fun get(key: String, defValue: String): String {
-        return prefs.getString(
-            key,
-            defValue
-        ) ?: defValue
+    @Suppress("UNCHECKED_CAST")
+    fun <T> get(key: String, defValue: T): T {
+        return when (defValue) {
+            is Boolean -> prefs.getBoolean(key, defValue) as T
+            is Int -> (prefs.getInt(key, defValue)) as T
+            is Long -> (prefs.getLong(key, defValue)) as T
+            is Float -> (prefs.getFloat(key, defValue)) as T
+            else -> (prefs.getString(key, defValue.toString()) ?: defValue) as T
+        }
     }
 
     fun getThemeMode(): Int {

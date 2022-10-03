@@ -93,7 +93,7 @@ fun SettingsPage() {
             mutableStateOf(
                 Preferences.get(
                     Preferences.instanceUrlKey,
-                    Preferences.defaultInstanceUrl
+                    Preferences.defaultLibreTranslateInstanceUrl
                 )
             )
         }

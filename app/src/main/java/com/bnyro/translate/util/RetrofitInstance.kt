@@ -13,7 +13,7 @@ object RetrofitInstance {
     fun createApi() {
         val url = Preferences.get(
             Preferences.instanceUrlKey,
-            Preferences.defaultInstanceUrl
+            Preferences.defaultLibreTranslateInstanceUrl
         )
 
         val builder = Retrofit.Builder()
