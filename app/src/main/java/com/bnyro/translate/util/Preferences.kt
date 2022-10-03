@@ -2,14 +2,13 @@ package com.bnyro.translate.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.bnyro.translate.constants.ApiType
 import com.bnyro.translate.constants.ThemeMode
 
 object Preferences {
     const val instanceUrlKey = "instanceUrl"
     const val apiKey = "apiKey"
-
-    const val defaultLibreTranslateInstanceUrl = "https://libretranslate.de"
-    const val defaultLingvaTranslateInstanceUrl = "https://lingva.ml"
+    const val apiTypeKey = "apiTypeKey"
 
     const val themeModeKey = "themeMode"
     const val sourceLanguage = "sourceLanguage"
@@ -50,5 +49,12 @@ object Preferences {
             themeModeKey,
             ThemeMode.AUTO.toString()
         ).toInt()
+    }
+
+    fun defaultInstanceUrl() = when (
+        get(apiTypeKey, ApiType.LINGVA_TRANSLATE)
+    ) {
+        ApiType.LINGVA_TRANSLATE -> "https://lingva.ml"
+        else -> "https://libretranslate.de"
     }
 }

@@ -13,11 +13,11 @@ object RetrofitInstance {
     fun createApi() {
         val url = Preferences.get(
             Preferences.instanceUrlKey,
-            Preferences.defaultLibreTranslateInstanceUrl
+            Preferences.defaultInstanceUrl()
         )
 
         val builder = Retrofit.Builder()
-            .baseUrl("https://lingva.ml")
+            .baseUrl(url)
             .addConverterFactory(
                 JacksonConverterFactory.create()
             )
