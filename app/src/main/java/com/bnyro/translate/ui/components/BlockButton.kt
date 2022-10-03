@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun BlockButton(
     modifier: Modifier = Modifier,
-    text: String = "",
+    text: String,
     selected: Boolean = false,
     containerColor: Color = MaterialTheme.colorScheme.surface.copy(0.7f),
     selectedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,

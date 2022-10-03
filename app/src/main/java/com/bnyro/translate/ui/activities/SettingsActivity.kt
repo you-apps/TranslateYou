@@ -30,13 +30,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
+import com.bnyro.translate.constants.ApiType
 import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.BlockRadioButton
-import com.bnyro.translate.ui.components.BlockRadioGroupButtonItem
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.util.RetrofitInstance
 
 class SettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,6 +90,15 @@ fun SettingsPage() {
             )
         }
     ) { pV ->
+        var selectedApiType by remember {
+            mutableStateOf(
+                Preferences.get(
+                    Preferences.apiTypeKey,
+                    ApiType.LIBRE_TRANSLATE
+                )
+            )
+        }
+
         var instanceUrl by remember {
             mutableStateOf(
                 Preferences.get(
@@ -114,94 +124,69 @@ fun SettingsPage() {
                 .padding(15.dp, 0.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            var selected by remember {
-                mutableStateOf(
-                    0
-                )
-            }
+            Spacer(
+                modifier = Modifier
+                    .height(20.dp)
+            )
 
             BlockRadioButton(
-                onSelected = {
-                    selected = it
-                },
-                selected = selected,
-                itemRadioGroups = listOf(
-                    BlockRadioGroupButtonItem(
-                        "LibreTranslate",
-                        {},
-                        {
-                            OutlinedTextField(
-                                value = instanceUrl,
-                                onValueChange = { instanceUrl = it },
-                                label = {
-                                    Text(
-                                        text = stringResource(
-                                            id = R.string.instance
-                                        )
-                                    )
-                                },
-                                modifier = Modifier.fillMaxWidth()
-                            )
-
-                            Spacer(
-                                modifier = Modifier
-                                    .height(10.dp)
-                            )
-
-                            OutlinedTextField(
-                                value = apiKey,
-                                onValueChange = { apiKey = it },
-                                label = {
-                                    Text(
-                                        text = stringResource(
-                                            id = R.string.api_key
-                                        )
-                                    )
-                                },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            )
-                        }
-                    ),
-                    BlockRadioGroupButtonItem(
-                        "LingvaTranslate",
-                        {},
-                        {
-                            OutlinedTextField(
-                                value = instanceUrl,
-                                onValueChange = { instanceUrl = it },
-                                label = {
-                                    Text(
-                                        text = stringResource(
-                                            id = R.string.instance
-                                        )
-                                    )
-                                },
-                                modifier = Modifier.fillMaxWidth()
-                            )
-
-                            Spacer(
-                                modifier = Modifier
-                                    .height(10.dp)
-                            )
-
-                            OutlinedTextField(
-                                value = apiKey,
-                                onValueChange = { apiKey = it },
-                                label = {
-                                    Text(
-                                        text = stringResource(
-                                            id = R.string.api_key
-                                        )
-                                    )
-                                },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            )
-                        }
+                onSelect = {
+                    selectedApiType = it
+                    instanceUrl = when (selectedApiType) {
+                        ApiType.LIBRE_TRANSLATE -> "https://libretranslate.de"
+                        else -> "https://lingva.ml"
+                    }
+                    Preferences.put(
+                        Preferences.apiTypeKey,
+                        selectedApiType
                     )
-                )
+                    RetrofitInstance.createApi()
+                },
+                selected = selectedApiType,
+                items = listOf("LibreTranslate", "LingvaTranslate")
             )
+
+            Spacer(
+                modifier = Modifier
+                    .height(20.dp)
+            )
+
+            OutlinedTextField(
+                value = instanceUrl,
+                onValueChange = {
+                    instanceUrl = it
+                    RetrofitInstance.createApi()
+                },
+                label = {
+                    Text(
+                        text = stringResource(
+                            id = R.string.instance
+                        )
+                    )
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(
+                modifier = Modifier
+                    .height(10.dp)
+            )
+
+            if (selectedApiType == ApiType.LIBRE_TRANSLATE) {
+                OutlinedTextField(
+                    value = apiKey,
+                    onValueChange = { apiKey = it },
+                    label = {
+                        Text(
+                            text = stringResource(
+                                id = R.string.api_key
+                            )
+                        )
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+            }
         }
     }
 
