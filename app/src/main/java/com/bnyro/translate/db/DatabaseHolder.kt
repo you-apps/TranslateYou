@@ -6,7 +6,7 @@ import com.bnyro.translate.db.AppDatabase
 
 class DatabaseHolder {
     fun initDb(applicationContext: Context) {
-        Room.databaseBuilder(
+        Db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
             DATABASE_NAME
@@ -16,6 +16,6 @@ class DatabaseHolder {
     companion object {
         private var DATABASE_NAME = "TYDatabase"
 
-        lateinit var Database: AppDatabase
+        lateinit var Db: AppDatabase
     }
 }

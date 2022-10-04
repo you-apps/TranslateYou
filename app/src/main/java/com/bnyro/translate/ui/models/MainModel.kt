@@ -7,10 +7,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.api.ApiHelper
 import com.bnyro.translate.api.lt.LTHelper
 import com.bnyro.translate.api.lv.LVHelper
 import com.bnyro.translate.constants.ApiType
+import com.bnyro.translate.db.obj.HistoryItem
+import com.bnyro.translate.ext.Query
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -80,14 +83,29 @@ class MainModel : ViewModel() {
             val translation = try {
                 apiHelper.translate(
                     insertedText,
-                    sourceLanguage.code!!,
-                    targetLanguage.code!!
+                    sourceLanguage.code,
+                    targetLanguage.code
                 )
             } catch (e: Exception) {
                 Log.e("error", e.message.toString())
                 return@launch
             }
-            if (insertedText != "") translatedText = translation
+            if (insertedText != "") {
+                translatedText = translation
+
+                Query {
+                    Db.historyDao().insertAll(
+                        HistoryItem(
+                            sourceLanguageCode = sourceLanguage.code,
+                            sourceLanguageName = sourceLanguage.name,
+                            targetLanguageCode = targetLanguage.code,
+                            targetLanguageName = targetLanguage.name,
+                            insertedText = insertedText,
+                            translatedText = translatedText
+                        )
+                    )
+                }
+            }
         }
     }
 
