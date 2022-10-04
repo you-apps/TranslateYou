@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
+import com.bnyro.translate.ext.startActivity
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.LanguageSelector
@@ -93,11 +94,8 @@ private fun ScreenContent() {
                         ),
                         icon = Icons.Default.Menu
                     ) {
-                        (context as Activity).startActivity(
-                            Intent(
-                                context,
-                                SettingsActivity::class.java
-                            )
+                        context.startActivity(
+                            SettingsActivity::class.java
                         )
                     },
                     MenuItemData(
@@ -106,7 +104,9 @@ private fun ScreenContent() {
                         ),
                         icon = Icons.Default.History
                     ) {
-                        // TODO() Show History
+                        context.startActivity(
+                            HistoryActivity::class.java
+                        )
                     },
                     MenuItemData(
                         text = stringResource(
@@ -114,11 +114,8 @@ private fun ScreenContent() {
                         ),
                         icon = Icons.Default.Info
                     ) {
-                        (context as Activity).startActivity(
-                            Intent(
-                                context,
-                                AboutActivity::class.java
-                            )
+                        context.startActivity(
+                            AboutActivity::class.java
                         )
                     }
                 )

@@ -27,4 +27,7 @@
     <string name="theme_auto">System</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
+
+    <!-- History -->
+    <string name="clear_history">Clear history</string>
 </resources>
