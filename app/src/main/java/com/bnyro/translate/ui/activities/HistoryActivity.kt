@@ -106,7 +106,12 @@ private fun HistoryContent(
                                 .clickable {
                                     // TODO() Start Main Activity with data
                                 }
-                                .padding(10.dp)
+                                .padding(
+                                    start = 15.dp,
+                                    end = 5.dp,
+                                    top = 8.dp,
+                                    bottom = 8.dp
+                                )
                         ) {
                             Column(
                                 modifier = Modifier
@@ -120,7 +125,7 @@ private fun HistoryContent(
 
                                 Spacer(
                                     modifier = Modifier
-                                        .height(2.dp)
+                                        .height(5.dp)
                                 )
 
                                 Text(
