@@ -22,3 +22,4 @@
 
 -keep class com.bnyro.translate.obj.** { *; }
 -keep class com.bnyro.translate.api.**,** { *; }
+-keep class com.bnyro.translate.db.obj.** { *; }

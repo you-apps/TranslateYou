@@ -12,6 +12,10 @@ class App : Application() {
             this
         )
 
+        DatabaseHolder().initDb(
+            this
+        )
+
         RetrofitInstance.createApi()
     }
 }
