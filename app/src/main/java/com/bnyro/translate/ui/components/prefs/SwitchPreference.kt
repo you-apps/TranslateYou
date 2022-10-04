@@ -38,7 +38,8 @@ fun SwitchPreference(
         modifier = Modifier
             .padding(5.dp, 5.dp)
             .clickable(
-                indicationSource, null
+                indicationSource,
+                null
             ) {
                 checked = !checked
                 Preferences.put(

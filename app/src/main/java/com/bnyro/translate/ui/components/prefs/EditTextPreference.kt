@@ -6,8 +6,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.bnyro.translate.util.Preferences
@@ -16,21 +14,13 @@ import com.bnyro.translate.util.Preferences
 @Composable
 fun EditTextPreference(
     preferenceKey: String,
-    defaultValue: String,
+    value: String,
     labelText: String,
     onValueChange: (String) -> Unit = {}
 ) {
-    var insertedText by remember {
-        mutableStateOf(
-            defaultValue
-        )
-    }
-
     OutlinedTextField(
-        value = insertedText,
+        value = value,
         onValueChange = {
-            insertedText = it
-
             Preferences.put(preferenceKey, it)
 
             onValueChange.invoke(it)

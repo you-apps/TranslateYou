@@ -101,11 +101,20 @@ fun SettingsPage() {
             )
         }
 
-        var defaultInstanceUrl by remember {
+        var instanceUrl by remember {
             mutableStateOf(
                 Preferences.get(
                     Preferences.instanceUrlKey,
                     Preferences.defaultInstanceUrl()
+                )
+            )
+        }
+
+        var apiKey by remember {
+            mutableStateOf(
+                Preferences.get(
+                    Preferences.apiKey,
+                    ""
                 )
             )
         }
@@ -127,7 +136,7 @@ fun SettingsPage() {
                 BlockRadioButton(
                     onSelect = {
                         selectedApiType = it
-                        defaultInstanceUrl = when (selectedApiType) {
+                        instanceUrl = when (selectedApiType) {
                             ApiType.LIBRE_TRANSLATE -> "https://libretranslate.de"
                             else -> "https://lingva.ml"
                         }
@@ -149,8 +158,9 @@ fun SettingsPage() {
 
             EditTextPreference(
                 preferenceKey = Preferences.instanceUrlKey,
-                defaultValue = defaultInstanceUrl,
+                value = instanceUrl,
                 onValueChange = {
+                    instanceUrl = it
                     RetrofitInstance.createApi()
                 },
                 labelText = stringResource(R.string.instance)
@@ -164,14 +174,13 @@ fun SettingsPage() {
             if (selectedApiType == ApiType.LIBRE_TRANSLATE) {
                 EditTextPreference(
                     preferenceKey = Preferences.apiKey,
-                    defaultValue = Preferences.get(
-                        Preferences.apiKey,
-                        ""
-                    ),
+                    value = apiKey,
                     labelText = stringResource(
                         id = R.string.api_key
                     )
-                )
+                ) {
+                    apiKey = it
+                }
             }
 
             SettingsCategory(
