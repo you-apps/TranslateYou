@@ -11,12 +11,14 @@
     <string name="paste">Paste</string>
     <string name="auto">Auto</string>
 
-    <!-- Options -->
+    <!-- Settings -->
+    <string name="api">Api</string>
     <string name="instance">Instance</string>
     <string name="api_key">Api Key</string>
     <string name="options">Settings</string>
     <string name="history">History</string>
     <string name="about">About</string>
+    <string name="history_enabled">Enable history</string>
 
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>

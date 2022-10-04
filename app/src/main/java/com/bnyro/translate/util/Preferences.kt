@@ -9,6 +9,7 @@ object Preferences {
     const val instanceUrlKey = "instanceUrl"
     const val apiKey = "apiKey"
     const val apiTypeKey = "apiTypeKey"
+    const val historyEnabledKey = "historyEnabledKey"
 
     const val themeModeKey = "themeMode"
     const val sourceLanguage = "sourceLanguage"

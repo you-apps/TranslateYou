@@ -97,19 +97,30 @@ class MainModel : ViewModel() {
             if (insertedText != "") {
                 translatedText = translation
 
-                Query {
-                    Db.historyDao().insertAll(
-                        HistoryItem(
-                            sourceLanguageCode = sourceLanguage.code,
-                            sourceLanguageName = sourceLanguage.name,
-                            targetLanguageCode = targetLanguage.code,
-                            targetLanguageName = targetLanguage.name,
-                            insertedText = insertedText,
-                            translatedText = translatedText
-                        )
-                    )
-                }
+                saveToHistory()
             }
+        }
+    }
+
+    fun saveToHistory() {
+        if (!Preferences.get(
+                Preferences.historyEnabledKey,
+                true
+            )
+        ) {
+            return
+        }
+        Query {
+            Db.historyDao().insertAll(
+                HistoryItem(
+                    sourceLanguageCode = sourceLanguage.code,
+                    sourceLanguageName = sourceLanguage.name,
+                    targetLanguageCode = targetLanguage.code,
+                    targetLanguageName = targetLanguage.name,
+                    insertedText = insertedText,
+                    translatedText = translatedText
+                )
+            )
         }
     }
 

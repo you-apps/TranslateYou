@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -14,7 +13,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -36,6 +34,8 @@ import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.BlockRadioButton
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
+import com.bnyro.translate.ui.components.prefs.EditTextPreference
+import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
@@ -100,20 +100,11 @@ fun SettingsPage() {
             )
         }
 
-        var instanceUrl by remember {
+        var defaultInstanceUrl by remember {
             mutableStateOf(
                 Preferences.get(
                     Preferences.instanceUrlKey,
                     Preferences.defaultInstanceUrl()
-                )
-            )
-        }
-
-        var apiKey by remember {
-            mutableStateOf(
-                Preferences.get(
-                    Preferences.apiKey,
-                    ""
                 )
             )
         }
@@ -135,7 +126,7 @@ fun SettingsPage() {
                 BlockRadioButton(
                     onSelect = {
                         selectedApiType = it
-                        instanceUrl = when (selectedApiType) {
+                        defaultInstanceUrl = when (selectedApiType) {
                             ApiType.LIBRE_TRANSLATE -> "https://libretranslate.de"
                             else -> "https://lingva.ml"
                         }
@@ -155,20 +146,13 @@ fun SettingsPage() {
                 )
             }
 
-            OutlinedTextField(
-                value = instanceUrl,
+            EditTextPreference(
+                preferenceKey = Preferences.instanceUrlKey,
+                defaultValue = defaultInstanceUrl,
                 onValueChange = {
-                    instanceUrl = it
                     RetrofitInstance.createApi()
                 },
-                label = {
-                    Text(
-                        text = stringResource(
-                            id = R.string.instance
-                        )
-                    )
-                },
-                modifier = Modifier.fillMaxWidth()
+                labelText = stringResource(R.string.instance)
             )
 
             Spacer(
@@ -177,26 +161,23 @@ fun SettingsPage() {
             )
 
             if (selectedApiType == ApiType.LIBRE_TRANSLATE) {
-                OutlinedTextField(
-                    value = apiKey,
-                    onValueChange = {
-                        apiKey = it
-                        Preferences.put(
-                            Preferences.apiKey,
-                            it
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = stringResource(
-                                id = R.string.api_key
-                            )
-                        )
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
+                EditTextPreference(
+                    preferenceKey = Preferences.apiKey,
+                    defaultValue = Preferences.get(
+                        Preferences.apiKey,
+                        ""
+                    ),
+                    labelText = stringResource(
+                        id = R.string.api_key
+                    )
                 )
             }
+
+            SwitchPreference(
+                preferenceKey = Preferences.historyEnabledKey,
+                defaultValue = true,
+                preferenceTitle = stringResource(R.string.history_enabled)
+            )
         }
     }
 
