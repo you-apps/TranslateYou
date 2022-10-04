@@ -50,6 +50,10 @@ class MainModel : ViewModel() {
         ""
     )
 
+    var showHistory: Boolean by mutableStateOf(
+        false
+    )
+
     private fun getLanguageByPrefKey(key: String): Language? {
         return try {
             ObjectMapper().readValue(
