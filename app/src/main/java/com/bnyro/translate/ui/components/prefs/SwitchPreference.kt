@@ -1,5 +1,7 @@
 package com.bnyro.translate.ui.components.prefs
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Switch
@@ -30,9 +32,20 @@ fun SwitchPreference(
         )
     }
 
+    val indicationSource = remember { MutableInteractionSource() }
+
     Row(
         modifier = Modifier
-            .padding(5.dp, 15.dp)
+            .padding(5.dp, 5.dp)
+            .clickable(
+                indicationSource, null
+            ) {
+                checked = !checked
+                Preferences.put(
+                    preferenceKey,
+                    checked
+                )
+            }
     ) {
         Text(
             preferenceTitle,

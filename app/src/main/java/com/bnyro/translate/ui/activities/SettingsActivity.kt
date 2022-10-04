@@ -35,6 +35,7 @@ import com.bnyro.translate.ui.components.BlockRadioButton
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
 import com.bnyro.translate.ui.components.prefs.EditTextPreference
+import com.bnyro.translate.ui.components.prefs.SettingsCategory
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.Preferences
@@ -172,6 +173,10 @@ fun SettingsPage() {
                     )
                 )
             }
+
+            SettingsCategory(
+                title = stringResource(R.string.history)
+            )
 
             SwitchPreference(
                 preferenceKey = Preferences.historyEnabledKey,
