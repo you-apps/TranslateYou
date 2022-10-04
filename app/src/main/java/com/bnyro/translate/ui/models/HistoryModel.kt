@@ -16,10 +16,23 @@ class HistoryModel : ViewModel() {
     )
 
     fun fetchHistory() {
-        viewModelScope.launch {
+
             Query {
                 history = Db.historyDao().getAll()
             }
+
+    }
+
+    fun clearHistory() {
+        Query {
+            Db.historyDao().deleteAll()
+            history = listOf()
+        }
+    }
+
+    fun deleteHistoryItem(historyItem: HistoryItem) {
+        Query {
+            Db.historyDao().delete(historyItem)
         }
     }
 }

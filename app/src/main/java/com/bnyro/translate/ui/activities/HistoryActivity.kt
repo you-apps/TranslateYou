@@ -2,7 +2,12 @@ package com.bnyro.translate.ui.activities
 
 import android.app.Activity
 import android.os.Bundle
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,11 +26,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.R
-import com.bnyro.translate.ext.Query
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -82,10 +87,7 @@ private fun HistoryContent(
                                 stringResource(id = R.string.clear_history),
                                 Icons.Default.Delete
                             ) {
-                                Query {
-                                    Db.historyDao().deleteAll()
-                                    viewModel.history = listOf()
-                                }
+                                viewModel.clearHistory()
                             }
                         )
                     )
@@ -98,9 +100,44 @@ private fun HistoryContent(
             ) {
                 LazyColumn {
                     items(viewModel.history) {
-                        Text(
-                            it.insertedText
-                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    // TODO() Start Main Activity with data
+                                }
+                                .padding(10.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier
+                                    .weight(1.0f)
+
+                            ) {
+                                Text(
+                                    it.insertedText,
+                                    fontSize = 18.sp
+                                )
+
+                                Spacer(
+                                    modifier = Modifier
+                                        .height(2.dp)
+                                )
+
+                                Text(
+                                    it.translatedText,
+                                    fontSize = 14.sp
+                                )
+                            }
+                            StyledIconButton(
+                                imageVector = Icons.Default.Delete
+                            ) {
+                                viewModel.history = viewModel.history.filter { item ->
+                                    it.id != item.id
+                                }
+
+                                viewModel.deleteHistoryItem(it)
+                            }
+                        }
                     }
                 }
             }
