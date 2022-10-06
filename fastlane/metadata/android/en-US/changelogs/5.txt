@@ -1,0 +1,3 @@
+* Support for Lingva Translate (only in the normal version, the libre version supports LibreTranslate only!)
+* Translations history (can be disabled)
+* Settings UI improvements
