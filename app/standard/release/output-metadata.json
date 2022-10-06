@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.bnyro.translate.nf",
+  "variantName": "standardRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 5,
+      "versionName": "1.4",
+      "outputFile": "app-standard-release.apk"
+    }
+  ],
+  "elementType": "File"
+}
