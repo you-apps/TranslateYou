@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun BlockRadioButton(
-    modifier: Modifier = Modifier,
     selected: Int = 0,
     onSelect: (Int) -> Unit,
     items: List<String>

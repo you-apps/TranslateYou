@@ -39,7 +39,7 @@ fun LanguageSelector(
             .padding(5.dp)
     ) {
         Text(
-            text = selectedLanguage.name!!
+            text = selectedLanguage.name
         )
     }
 
@@ -57,7 +57,7 @@ fun LanguageSelector(
                 LazyColumn {
                     items(languages) {
                         SelectableItem(
-                            text = it.name!!,
+                            text = it.name,
                             onClick = {
                                 showDialog = false
                                 viewModel.enqueueTranslation()

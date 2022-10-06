@@ -134,6 +134,7 @@ fun SettingsPage() {
             @Suppress("KotlinConstantConditions")
             if (BuildConfig.FLAVOR != "libre") {
                 BlockRadioButton(
+                    selected = selectedApiType,
                     onSelect = {
                         selectedApiType = it
                         instanceUrl = when (selectedApiType) {
@@ -146,7 +147,6 @@ fun SettingsPage() {
                         )
                         RetrofitInstance.createApi()
                     },
-                    selected = selectedApiType,
                     items = listOf("LibreTranslate", "LingvaTranslate")
                 )
 

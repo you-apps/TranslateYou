@@ -57,12 +57,6 @@ private fun HistoryContent(
 ) {
     val context = LocalContext.current
 
-    val expandOptions by remember {
-        mutableStateOf(
-            false
-        )
-    }
-
     Scaffold(
         modifier = Modifier
             .statusBarsPadding(),
