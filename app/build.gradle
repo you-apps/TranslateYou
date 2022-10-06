@@ -40,15 +40,15 @@ android {
 
     flavorDimensions "version"
     productFlavors {
-        normal {
+        standard {
             dimension "version"
+            applicationIdSuffix ".nf"
             manifestPlaceholders = [
                 appName: "Translate You"
             ]
         }
         libre {
             dimension "version"
-            applicationIdSuffix ".libre"
             manifestPlaceholders = [
                     appName: "Translate You Libre"
             ]
