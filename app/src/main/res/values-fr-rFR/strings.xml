@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Translate You</string>
+    <string name="libre_translate">LibreTranslate</string>
+
+    <!-- Dialog -->
+    <string name="okay">D\'accord</string>
+    <string name="cancel">Annuler</string>
+
+    <!-- Text -->
+    <string name="enter_text">Saisir du texte</string>
+    <string name="paste">Coller</string>
+    <string name="auto">Auto</string>
+
+    <!-- Settings -->
+    <string name="instance">Instance</string>
+    <string name="api_key">Clé de l\'API</string>
+    <string name="options">Paramètres</string>
+    <string name="history">Historique</string>
+    <string name="about">À propos</string>
+    <string name="history_enabled">Activer l\'historique</string>
+
+    <!-- About -->
+    <string name="github" translatable="false">GitHub</string>
+    <string name="author">Auteur</string>
+    <string name="license">Licence</string>
+
+    <!-- Theme -->
+    <string name="theme_auto">Identique au système</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Obscur</string>
+
+    <!-- History -->
+    <string name="clear_history">Nettoyer l\'historique</string>
+</resources>
