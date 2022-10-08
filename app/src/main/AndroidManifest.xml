@@ -21,11 +21,30 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true"
+            android:launchMode="singleInstance"
             android:theme="@style/Theme.TranslateYou"
             android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.TRANSLATE" />
+            </intent-filter>
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.PROCESS_TEXT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.SEND" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
 
@@ -36,7 +55,7 @@
         <activity
             android:name=".ui.activities.SettingsActivity"
             android:exported="true" />
-        
+
         <activity
             android:name=".ui.activities.HistoryActivity"
             android:exported="true" />

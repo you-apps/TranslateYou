@@ -1,6 +1,9 @@
 package com.bnyro.translate.ui.activities
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,10 +53,17 @@ class MainActivity : BaseActivity() {
         mainModel = ViewModelProvider(this)[MainModel::class.java]
 
         super.onCreate(savedInstanceState)
+
         Content {
             ScreenContent()
         }
         mainModel.fetchLanguages()
+
+        val intentDataText = getIntentText()
+        if (intentDataText != null) {
+            mainModel.insertedText = intentDataText
+            mainModel.translate()
+        }
     }
 
     override fun onStop() {
@@ -67,6 +77,21 @@ class MainActivity : BaseActivity() {
             mapper.writeValueAsString(mainModel.targetLanguage)
         )
         super.onStop()
+    }
+
+    private fun getIntentText(): String? {
+        intent.getCharSequenceExtra(Intent.EXTRA_TEXT).let {
+            if (it != null) return it.toString()
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT).let {
+                if (it != null) return it.toString()
+            }
+        }
+        intent.getCharSequenceExtra(Intent.ACTION_SEND).let {
+            if (it != null) return it.toString()
+        }
+        return null
     }
 
     override fun onStart() {

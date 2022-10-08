@@ -40,10 +40,6 @@ class MainModel : ViewModel() {
         ""
     )
 
-    var showHistory: Boolean by mutableStateOf(
-        false
-    )
-
     private fun getLanguageByPrefKey(key: String): Language? {
         return try {
             ObjectMapper().readValue(
@@ -67,7 +63,7 @@ class MainModel : ViewModel() {
         )
     }
 
-    private fun translate() {
+    fun translate() {
         if (insertedText == "" || targetLanguage == sourceLanguage) {
             translatedText = ""
             return
