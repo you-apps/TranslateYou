@@ -1,1 +1,1 @@
-Traducteur construit avec Material Design 3 (You) en utilisant l'API LibreTranslate
+Traducteur construit avec Material Design 3 (You) utilisant l'API LibreTranslate
