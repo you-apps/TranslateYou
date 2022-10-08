@@ -44,7 +44,6 @@ fun TranslationComponent(
                 viewModel.insertedText = it
                 viewModel.enqueueTranslation()
             },
-            maxLines = 8,
             placeholder = stringResource(R.string.enter_text),
             modifier = Modifier.focusRequester(focusRequester)
         )
