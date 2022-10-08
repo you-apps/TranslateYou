@@ -29,7 +29,8 @@
 
 <div style="display: flex;">
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/translate.png" width=30%>
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/options.png" width=30%>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/options-1.png" width=30%>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/options-2.png" width=30%>
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/about.png" width=30%>
 </div>
 
