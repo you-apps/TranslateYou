@@ -39,7 +39,7 @@ body:
   - type: input
     id: Translate You-version
     attributes:
-      label: LibreTube version
+      label: Translate You version
       description: |
         You can find your Translate You version in **About**.
       placeholder: |
