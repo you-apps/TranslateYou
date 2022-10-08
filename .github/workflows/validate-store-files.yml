@@ -5,6 +5,8 @@ name: Validate store files
 
 # Note: this is the second time I'm writing a GitHub action, and the first time I'm using a script.
 # Most probably there are better ways to do it, if you know one and want to suggest it that'd be wonderful!
+# 
+# Made by TrianguloY initially for URLCheck (https://github.com/TrianguloY/UrlChecker)
 
 on:
   push:
