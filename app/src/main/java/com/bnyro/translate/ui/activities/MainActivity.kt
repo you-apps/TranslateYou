@@ -3,6 +3,7 @@ package com.bnyro.translate.ui.activities
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,7 +47,7 @@ import com.bnyro.translate.util.Preferences
 import com.fasterxml.jackson.databind.ObjectMapper
 
 class MainActivity : BaseActivity() {
-    lateinit var mainModel: MainModel
+    private lateinit var mainModel: MainModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainModel = ViewModelProvider(this)[MainModel::class.java]
@@ -56,7 +57,6 @@ class MainActivity : BaseActivity() {
         Content {
             ScreenContent()
         }
-        mainModel.fetchLanguages()
 
         val intentDataText = getIntentText()
         if (intentDataText != null) {
@@ -96,7 +96,9 @@ class MainActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
 
-        mainModel.fetchLanguages()
+        mainModel.fetchLanguages {
+            Toast.makeText(this, R.string.server_error, Toast.LENGTH_LONG).show()
+        }
     }
 }
 
@@ -143,7 +145,7 @@ private fun ScreenContent() {
                 )
             )
         }
-    ) {
+    ) { it ->
         Column(
             modifier = Modifier
                 .padding(it)

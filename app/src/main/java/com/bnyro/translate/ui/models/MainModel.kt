@@ -88,7 +88,7 @@ class MainModel : ViewModel() {
         }
     }
 
-    fun saveToHistory() {
+    private fun saveToHistory() {
         if (!Preferences.get(
                 Preferences.historyEnabledKey,
                 true
@@ -115,12 +115,12 @@ class MainModel : ViewModel() {
         translatedText = ""
     }
 
-    fun fetchLanguages() {
+    fun fetchLanguages(onError: (Exception) -> Unit = {}) {
         viewModelScope.launch {
             val languages = try {
                 apiHelper.getLanguages()
             } catch (e: Exception) {
-                Log.e("error", e.toString())
+                onError.invoke(e)
                 return@launch
             }
             this@MainModel.availableLanguages = languages
