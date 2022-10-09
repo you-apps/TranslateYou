@@ -190,7 +190,7 @@ fun SettingsPage() {
                 defaultValue = 500f,
                 minValue = 100f,
                 maxValue = 1000f,
-                steps = 10
+                steps = 8
             )
 
             SettingsCategory(
