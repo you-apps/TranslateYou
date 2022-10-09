@@ -31,4 +31,8 @@
 
     <!-- History -->
     <string name="clear_history">Nettoyer l\'historique</string>
+
+    <!-- Exception -->
+    <string name="server_error">Erreur lors de la communication avec le serveur. Veuillez sélectionner une autre instance dans les paramètres!</string>
+
 </resources>
