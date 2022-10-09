@@ -79,16 +79,16 @@ class MainActivity : BaseActivity() {
     }
 
     private fun getIntentText(): String? {
-        intent.getCharSequenceExtra(Intent.EXTRA_TEXT).let {
-            if (it != null) return it.toString()
+        intent.getCharSequenceExtra(Intent.EXTRA_TEXT)?.let {
+            return it.toString()
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT).let {
-                if (it != null) return it.toString()
+            intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.let {
+                return it.toString()
             }
         }
-        intent.getCharSequenceExtra(Intent.ACTION_SEND).let {
-            if (it != null) return it.toString()
+        intent.getCharSequenceExtra(Intent.ACTION_SEND)?.let {
+            return it.toString()
         }
         return null
     }
