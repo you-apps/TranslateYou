@@ -1,7 +1,7 @@
 <div align="center">
   <img width="200" height="200"src="fastlane/metadata/android/en-US/images/icon.png">
   <h1>Translate You</h1>
-  <p>Translate You is a Translator App built with <a href="https://m3.material.io/">Material Design 3 (You)</a> using the <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate API</a>.</p>
+  <p>Translate You is a Translator App built with <a href="https://m3.material.io/">Material Design 3 (You)</a> supporting different translation engines.</p>
   <div align="center">
     <img alt="License" src="https://img.shields.io/github/license/Bnyro/TranslateYou?color=c3e7ff&style=flat-square">
     <img alt="Downloads" src="https://img.shields.io/github/downloads/Bnyro/TranslateYou/total.svg?color=c3e7ff&style=flat-square">
@@ -24,6 +24,15 @@
 
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="80">](https://apt.izzysoft.de/fdroid/index/apk/com.bnyro.translate)
 [<img src="ghbadge.png" alt="Get it on GitHub" height="80">](https://github.com/bnyro/translateyou/releases)
+
+## Different versions
+There are currently two different versions available:
+
+#### Translate You Libre
+Only supports the <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate API</a> and therefore is fully libre.
+
+#### Translate You Plus
+Additionally supports <a href="https://github.com/thedaviddelta/lingva-translate">LingvaTranslate</a> which uses Google Translate to fetch translations and thus owns the NonFreeNet anti-feature.
 
 ## Screenshots
 

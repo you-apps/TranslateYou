@@ -62,8 +62,8 @@ class MainModel : ViewModel() {
             },
             Preferences.get(
                 Preferences.fetchDelay,
-                500
-            )
+                500f
+            ).toLong()
         )
     }
 

@@ -19,6 +19,8 @@
     <string name="about">About</string>
     <string name="history_enabled">Enable history</string>
     <string name="fetch_delay">Translation delay</string>
+    <string name="fetch_delay_summary">The delay between inserting text and fetching the translation</string>
+    <string name="history_summary">Keep track of the last translated texts</string>
 
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>

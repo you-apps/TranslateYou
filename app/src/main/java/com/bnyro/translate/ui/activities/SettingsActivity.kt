@@ -184,15 +184,6 @@ fun SettingsPage() {
                 }
             }
 
-            SliderPreference(
-                preferenceKey = Preferences.fetchDelay,
-                preferenceTitle = stringResource(R.string.fetch_delay),
-                defaultValue = 500f,
-                minValue = 100f,
-                maxValue = 1000f,
-                steps = 8
-            )
-
             SettingsCategory(
                 title = stringResource(R.string.history)
             )
@@ -200,7 +191,18 @@ fun SettingsPage() {
             SwitchPreference(
                 preferenceKey = Preferences.historyEnabledKey,
                 defaultValue = true,
-                preferenceTitle = stringResource(R.string.history_enabled)
+                preferenceTitle = stringResource(R.string.history_enabled),
+                preferenceSummary = stringResource(R.string.history_summary)
+            )
+
+            SliderPreference(
+                preferenceKey = Preferences.fetchDelay,
+                preferenceTitle = stringResource(R.string.fetch_delay),
+                preferenceSummary = stringResource(R.string.fetch_delay_summary),
+                defaultValue = 500f,
+                minValue = 100f,
+                maxValue = 1000f,
+                stepSize = 100f
             )
         }
     }
