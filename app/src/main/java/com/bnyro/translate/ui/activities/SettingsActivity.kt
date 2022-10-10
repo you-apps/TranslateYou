@@ -36,6 +36,7 @@ import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
 import com.bnyro.translate.ui.components.prefs.EditTextPreference
 import com.bnyro.translate.ui.components.prefs.SettingsCategory
+import com.bnyro.translate.ui.components.prefs.SliderPreference
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.Preferences
@@ -182,6 +183,15 @@ fun SettingsPage() {
                     apiKey = it
                 }
             }
+
+            SliderPreference(
+                preferenceKey = Preferences.fetchDelay,
+                preferenceTitle = stringResource(R.string.fetch_delay),
+                defaultValue = 500f,
+                minValue = 100f,
+                maxValue = 1000f,
+                steps = 8
+            )
 
             SettingsCategory(
                 title = stringResource(R.string.history)

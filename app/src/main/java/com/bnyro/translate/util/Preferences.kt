@@ -13,6 +13,7 @@ object Preferences {
     const val apiKey = "apiKey"
     const val apiTypeKey = "apiTypeKey"
     const val historyEnabledKey = "historyEnabledKey"
+    const val fetchDelay = "fetchDelay"
 
     const val themeModeKey = "themeMode"
     const val sourceLanguage = "sourceLanguage"

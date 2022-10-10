@@ -18,6 +18,7 @@
     <string name="history">History</string>
     <string name="about">About</string>
     <string name="history_enabled">Enable history</string>
+    <string name="fetch_delay">Translation delay</string>
 
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
