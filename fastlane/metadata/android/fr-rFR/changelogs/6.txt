@@ -1,0 +1,3 @@
+* Traduisez le texte en le sélectionnant ou en le partageant avec Translate You
+* Correction de problèmes majeurs lors du changement de prestataire de traduction
+* Traduction en français par @Ilithy <3
