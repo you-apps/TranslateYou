@@ -30,7 +30,7 @@ jobs:
     - uses: actions/labeler@v4
       with:
     # Check if you have enabled tokens for your repository
-        repo-token: "${{ secrets.GH_TOKEN }}"
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
     # This removes the label if the change(s) are undone in the PR
         sync-labels: true
         
