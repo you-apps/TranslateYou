@@ -1,5 +1,6 @@
 package com.bnyro.translate.ui.models
 
+import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -53,13 +54,16 @@ class MainModel : ViewModel() {
 
     fun enqueueTranslation() {
         val insertedTextTemp = insertedText
-        android.os.Handler(
+        Handler(
             Looper.getMainLooper()
         ).postDelayed(
             {
                 if (insertedTextTemp == insertedText) translate()
             },
-            700
+            Preferences.get(
+                Preferences.fetchDelay,
+                500
+            )
         )
     }
 
