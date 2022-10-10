@@ -13,12 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.ui.components.SliderWithLabel
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.util.getStepCount
 
 @Composable
 fun SliderPreference(
     preferenceKey: String,
     preferenceTitle: String,
+    preferenceSummary: String,
     defaultValue: Float,
     minValue: Float,
     maxValue: Float,
@@ -41,8 +41,7 @@ fun SliderPreference(
     ) {
         PreferenceItem(
             title = preferenceTitle,
-            summary = preferenceTitle,
-            modifier = Modifier.weight(1.0f)
+            summary = preferenceSummary
         )
 
         Spacer(
@@ -66,4 +65,8 @@ fun SliderPreference(
             )
         )
     }
+}
+
+private fun getStepCount(minValue: Float, maxValue: Float, stepSize: Float): Int {
+    return ((maxValue - minValue) / stepSize).toInt() - 1
 }

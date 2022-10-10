@@ -17,7 +17,9 @@ fun PreferenceItem(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {}
 ) {
-    Row {
+    Row(
+        modifier = modifier
+    ) {
         Column {
             Text(title)
             Spacer(Modifier.height(2.dp))
