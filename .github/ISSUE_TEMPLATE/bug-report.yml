@@ -37,7 +37,7 @@ body:
       required: true
 
   - type: input
-    id: Translate You-version
+    id: Translate_You-version
     attributes:
       label: Translate You version
       description: |
