@@ -28,15 +28,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.constants.TranslationEngines
 import com.bnyro.translate.ui.base.BaseActivity
-import com.bnyro.translate.ui.components.BlockRadioButton
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
 import com.bnyro.translate.ui.components.prefs.SettingsCategory
 import com.bnyro.translate.ui.components.prefs.SliderPreference
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
+import com.bnyro.translate.ui.views.EnginePref
 import com.bnyro.translate.util.Preferences
 
 class SettingsActivity : BaseActivity() {
@@ -90,15 +89,6 @@ fun SettingsPage() {
             )
         }
     ) { pV ->
-        var selectedApiType by remember {
-            mutableStateOf(
-                Preferences.get(
-                    Preferences.apiTypeKey,
-                    TranslationEngines.engines[0].id
-                )
-            )
-        }
-
         Column(
             modifier = Modifier
                 .padding(pV)
@@ -111,18 +101,7 @@ fun SettingsPage() {
                     .height(20.dp)
             )
 
-            BlockRadioButton(
-                selected = selectedApiType,
-                onSelect = {
-                    selectedApiType = it
-                    Preferences.put(
-                        Preferences.apiTypeKey,
-                        selectedApiType
-                    )
-                    TranslationEngines.update()
-                },
-                engines = TranslationEngines.engines
-            )
+            EnginePref()
 
             SettingsCategory(
                 title = stringResource(R.string.history)
