@@ -3,25 +3,24 @@ package com.bnyro.translate.constants
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.api.deepl.DeepL
 import com.bnyro.translate.api.deepl.DeepLHelper
+import com.bnyro.translate.api.deepl.DeeplEngine
+import com.bnyro.translate.api.lt.LTEngine
 import com.bnyro.translate.api.lt.LTHelper
 import com.bnyro.translate.api.lt.LibreTranslate
+import com.bnyro.translate.api.lv.LVEngine
 import com.bnyro.translate.api.lv.LVHelper
 import com.bnyro.translate.api.lv.LingvaTranslate
 import com.bnyro.translate.util.TranslationEngine
 
 object TranslationEngines {
+    val libreTranslate = LTEngine()
+    var lingvaTranslate = LVEngine()
+    var deepl = DeeplEngine()
+
     var engines = createEngines()
 
     private fun createEngines(): List<TranslationEngine> {
         val engines = mutableListOf<TranslationEngine>()
-
-        val libreTranslate = TranslationEngine(
-            id = 0,
-            name = "LibreTranslate",
-            defaultUrl = "https://libretranslate.de",
-            urlModifiable = true,
-            apiKeyState = ApiKeyState.OPTIONAL
-        )
 
         libreTranslate.apiHelper = LTHelper(libreTranslate.createApi(LibreTranslate::class.java))
 
@@ -29,26 +28,10 @@ object TranslationEngines {
 
         if (BuildConfig.FLAVOR == "libre") return engines
 
-        val lingvaTranslate = TranslationEngine(
-            id = 1,
-            name = "LingvaTranslate",
-            defaultUrl = "https://lingva.ml",
-            urlModifiable = true,
-            apiKeyState = ApiKeyState.DISABLED
-        )
-
-        var deeplEngine = TranslationEngine(
-            id = 2,
-            name = "DeepL",
-            defaultUrl = "https://api-free.deepl.com",
-            urlModifiable = false,
-            apiKeyState = ApiKeyState.REQUIRED
-        )
-
         lingvaTranslate.apiHelper = LVHelper(lingvaTranslate.createApi(LingvaTranslate::class.java))
-        deeplEngine.apiHelper = DeepLHelper(deeplEngine.createApi(DeepL::class.java))
+        deepl.apiHelper = DeepLHelper(deepl.createApi(DeepL::class.java))
 
-        listOf(lingvaTranslate, deeplEngine).forEach {
+        listOf(lingvaTranslate, deepl).forEach {
             engines.add(it)
         }
 

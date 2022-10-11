@@ -2,7 +2,7 @@ package com.bnyro.translate.util
 
 import com.bnyro.translate.api.APIHelper
 
-class TranslationEngine(
+open class TranslationEngine(
     val id: Int,
     val name: String,
     val defaultUrl: String,

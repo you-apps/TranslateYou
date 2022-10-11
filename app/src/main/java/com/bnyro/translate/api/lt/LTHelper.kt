@@ -29,7 +29,7 @@ class LTHelper(
         source,
         target,
         Preferences.getApiKeyByEngine(
-            TranslationEngines.engines.filter { it.apiHelper is LTHelper }.first()
+            TranslationEngines.libreTranslate
         )
     ).translatedText
 }

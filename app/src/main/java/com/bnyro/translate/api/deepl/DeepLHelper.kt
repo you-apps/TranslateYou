@@ -9,7 +9,7 @@ class DeepLHelper(
     private val api: DeepL
 ) : APIHelper() {
     val apiKeyString = "DeepL-Auth-Key " + Preferences.getApiKeyByEngine(
-        TranslationEngines.engines.filter { it.apiHelper is DeepLHelper }.first()
+        TranslationEngines.deepl
     )
 
     override suspend fun getLanguages(): List<Language> = api.getLanguages(
