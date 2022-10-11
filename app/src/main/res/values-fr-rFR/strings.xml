@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Translate You</string>
-    <string name="libre_translate">LibreTranslate</string>
 
     <!-- Dialog -->
     <string name="okay">D\'accord</string>
