@@ -1,15 +1,12 @@
 package com.bnyro.translate.constants
 
 import com.bnyro.translate.BuildConfig
-import com.bnyro.translate.api.deepl.DeepL
 import com.bnyro.translate.api.deepl.DeepLHelper
 import com.bnyro.translate.api.deepl.DeeplEngine
 import com.bnyro.translate.api.lt.LTEngine
 import com.bnyro.translate.api.lt.LTHelper
-import com.bnyro.translate.api.lt.LibreTranslate
 import com.bnyro.translate.api.lv.LVEngine
 import com.bnyro.translate.api.lv.LVHelper
-import com.bnyro.translate.api.lv.LingvaTranslate
 import com.bnyro.translate.util.TranslationEngine
 
 object TranslationEngines {
