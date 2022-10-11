@@ -13,8 +13,8 @@ import com.bnyro.translate.api.APIHelper
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.ext.Query
 import com.bnyro.translate.obj.Language
-import com.bnyro.translate.obj.TranslationEngine
 import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.util.TranslationEngine
 import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.launch
 
