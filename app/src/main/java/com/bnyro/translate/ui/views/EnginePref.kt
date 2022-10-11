@@ -25,7 +25,7 @@ fun EnginePref() {
         mutableStateOf(
             Preferences.get(
                 Preferences.apiTypeKey,
-                TranslationEngines.engines[0].id
+                0
             )
         )
     }

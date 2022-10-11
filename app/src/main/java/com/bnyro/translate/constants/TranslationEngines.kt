@@ -22,14 +22,14 @@ object TranslationEngines {
     private fun createEngines(): List<TranslationEngine> {
         val engines = mutableListOf<TranslationEngine>()
 
-        libreTranslate.apiHelper = LTHelper(libreTranslate.createApi(LibreTranslate::class.java))
+        libreTranslate.apiHelper = LTHelper()
 
         engines.add(libreTranslate)
 
         if (BuildConfig.FLAVOR == "libre") return engines
 
-        lingvaTranslate.apiHelper = LVHelper(lingvaTranslate.createApi(LingvaTranslate::class.java))
-        deepl.apiHelper = DeepLHelper(deepl.createApi(DeepL::class.java))
+        lingvaTranslate.apiHelper = LVHelper()
+        deepl.apiHelper = DeepLHelper()
 
         listOf(lingvaTranslate, deepl).forEach {
             engines.add(it)
