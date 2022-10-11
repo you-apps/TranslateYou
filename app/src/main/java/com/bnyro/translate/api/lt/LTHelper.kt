@@ -1,11 +1,11 @@
 package com.bnyro.translate.api.lt
 
-import com.bnyro.translate.api.ApiHelper
+import com.bnyro.translate.api.APIHelper
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitInstance
 
-class LTHelper : ApiHelper() {
+class LTHelper : APIHelper() {
     override suspend fun getLanguages(): List<Language> {
         return RetrofitInstance.libreTranslate.getLanguages().toMutableList().apply {
             add(

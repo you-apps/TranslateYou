@@ -162,11 +162,6 @@ val aboutIcons = listOf(
         "https://bnyro.github.io"
     ),
     AboutIcon(
-        R.string.libre_translate,
-        R.drawable.ic_libretranslate,
-        "https://github.com/LibreTranslate/LibreTranslate"
-    ),
-    AboutIcon(
         R.string.license,
         R.drawable.ic_license,
         "https://gnu.org/licenses/gpl-3.ß.html"

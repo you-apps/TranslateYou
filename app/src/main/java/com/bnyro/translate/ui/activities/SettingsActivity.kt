@@ -27,14 +27,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
-import com.bnyro.translate.constants.ApiType
+import com.bnyro.translate.constants.libreTranslateEngine
+import com.bnyro.translate.constants.supportedEngines
 import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.BlockRadioButton
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
-import com.bnyro.translate.ui.components.prefs.EditTextPreference
 import com.bnyro.translate.ui.components.prefs.SettingsCategory
 import com.bnyro.translate.ui.components.prefs.SliderPreference
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
@@ -97,25 +96,7 @@ fun SettingsPage() {
             mutableStateOf(
                 Preferences.get(
                     Preferences.apiTypeKey,
-                    ApiType.LIBRE_TRANSLATE
-                )
-            )
-        }
-
-        var instanceUrl by remember {
-            mutableStateOf(
-                Preferences.get(
-                    Preferences.instanceUrlKey,
-                    Preferences.defaultInstanceUrl()
-                )
-            )
-        }
-
-        var apiKey by remember {
-            mutableStateOf(
-                Preferences.get(
-                    Preferences.apiKey,
-                    ""
+                    libreTranslateEngine.id
                 )
             )
         }
@@ -132,57 +113,18 @@ fun SettingsPage() {
                     .height(20.dp)
             )
 
-            @Suppress("KotlinConstantConditions")
-            if (BuildConfig.FLAVOR != "libre") {
-                BlockRadioButton(
-                    selected = selectedApiType,
-                    onSelect = {
-                        selectedApiType = it
-                        instanceUrl = when (selectedApiType) {
-                            ApiType.LIBRE_TRANSLATE -> "https://libretranslate.de"
-                            else -> "https://lingva.ml"
-                        }
-                        Preferences.put(
-                            Preferences.apiTypeKey,
-                            selectedApiType
-                        )
-                        RetrofitInstance.createApi()
-                    },
-                    items = listOf("LibreTranslate", "LingvaTranslate")
-                )
-
-                Spacer(
-                    modifier = Modifier
-                        .height(20.dp)
-                )
-            }
-
-            EditTextPreference(
-                preferenceKey = Preferences.instanceUrlKey,
-                value = instanceUrl,
-                onValueChange = {
-                    instanceUrl = it
+            BlockRadioButton(
+                selected = selectedApiType,
+                onSelect = {
+                    selectedApiType = it
+                    Preferences.put(
+                        Preferences.apiTypeKey,
+                        selectedApiType
+                    )
                     RetrofitInstance.createApi()
                 },
-                labelText = stringResource(R.string.instance)
+                engines = supportedEngines
             )
-
-            Spacer(
-                modifier = Modifier
-                    .height(10.dp)
-            )
-
-            if (selectedApiType == ApiType.LIBRE_TRANSLATE) {
-                EditTextPreference(
-                    preferenceKey = Preferences.apiKey,
-                    value = apiKey,
-                    labelText = stringResource(
-                        id = R.string.api_key
-                    )
-                ) {
-                    apiKey = it
-                }
-            }
 
             SettingsCategory(
                 title = stringResource(R.string.history)
