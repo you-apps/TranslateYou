@@ -18,14 +18,14 @@ Cookies are not stored at any point. api key and/or authentication credentials c
 
 
 ## Third party cloud service dependencies
-Data collected by others
+**Data collected by others**
 
 Use of Translate You may result in one or more of the following third party organisations may collecting data from you. Please check their privacy policy for more information:
 
 ### Application Store
-F-Droid, store where the app is published - https://f-droid.org/en/about/
-Google PlayStore, store where the app is published - https://policies.google.com/privacy
-Github, Website where the app is published - https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
+* IzzyOnDroid, store where the app is published - https://android.izzysoft.de/help?topic=adverts
+* Google PlayStore, store where the app is published - https://policies.google.com/privacy
+* Github, Website where the app is published - https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 ### Translation API
 **from whom we retrieve the translation data via their API**
