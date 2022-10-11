@@ -1,6 +1,8 @@
 package com.bnyro.translate.constants
 
 import com.bnyro.translate.BuildConfig
+import com.bnyro.translate.api.deepl.DeepL
+import com.bnyro.translate.api.deepl.DeepLHelper
 import com.bnyro.translate.api.lt.LTHelper
 import com.bnyro.translate.api.lt.LibreTranslate
 import com.bnyro.translate.api.lv.LVHelper
@@ -35,9 +37,20 @@ object TranslationEngines {
             apiKeyState = ApiKeyState.DISABLED
         )
 
-        lingvaTranslate.apiHelper = LVHelper(lingvaTranslate.createApi(LingvaTranslate::class.java))
+        var deeplEngine = TranslationEngine(
+            id = 2,
+            name = "DeepL",
+            defaultUrl = "https://api-free.deepl.com",
+            urlModifiable = false,
+            apiKeyState = ApiKeyState.REQUIRED
+        )
 
-        engines.add(lingvaTranslate)
+        lingvaTranslate.apiHelper = LVHelper(lingvaTranslate.createApi(LingvaTranslate::class.java))
+        deeplEngine.apiHelper = DeepLHelper(deeplEngine.createApi(DeepL::class.java))
+
+        listOf(lingvaTranslate, deeplEngine).forEach {
+            engines.add(it)
+        }
 
         return engines
     }
