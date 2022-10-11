@@ -207,6 +207,7 @@ private fun ScreenContent() {
 
                     IconButton(
                         onClick = {
+                            if (viewModel.availableLanguages.isEmpty()) return@IconButton
                             if (viewModel.sourceLanguage.code == viewModel.availableLanguages.first().code) return@IconButton
                             val temp = viewModel.sourceLanguage
                             viewModel.sourceLanguage = viewModel.targetLanguage
