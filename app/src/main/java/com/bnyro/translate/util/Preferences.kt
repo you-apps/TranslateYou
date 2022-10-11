@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.bnyro.translate.constants.ThemeMode
 import com.bnyro.translate.constants.TranslationEngines
-import com.bnyro.translate.obj.TranslationEngine
 
 object Preferences {
     const val instanceUrlKey = "instanceUrl"

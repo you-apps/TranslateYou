@@ -1,6 +1,7 @@
 package com.bnyro.translate.api.lt
 
 import com.bnyro.translate.api.APIHelper
+import com.bnyro.translate.constants.TranslationEngines
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
 
@@ -27,6 +28,8 @@ class LTHelper(
         query,
         source,
         target,
-        Preferences.get(Preferences.apiKey, "")
+        Preferences.getApiKeyByEngine(
+            TranslationEngines.engines.filter { it.apiHelper is LTHelper }.first()
+        )
     ).translatedText
 }
