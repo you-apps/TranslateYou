@@ -17,10 +17,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
 import com.bnyro.translate.constants.ApiKeyState
+import com.bnyro.translate.constants.TranslationEngines
 import com.bnyro.translate.obj.TranslationEngine
 import com.bnyro.translate.ui.components.prefs.EditTextPreference
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.util.RetrofitInstance
 
 @Composable
 fun BlockRadioButton(
@@ -30,19 +30,13 @@ fun BlockRadioButton(
 ) {
     var instanceUrl by remember {
         mutableStateOf(
-            Preferences.get(
-                Preferences.instanceUrlKey,
-                Preferences.defaultInstanceUrl()
-            )
+            Preferences.getUrlByEngine(engines[selected])
         )
     }
 
     var apiKey by remember {
         mutableStateOf(
-            Preferences.get(
-                Preferences.apiKey,
-                ""
-            )
+            Preferences.getApiKeyByEngine(engines[selected])
         )
     }
 
@@ -60,7 +54,8 @@ fun BlockRadioButton(
                     selected = selected == index
                 ) {
                     onSelect(index)
-                    instanceUrl = engines[index].defaultUrl
+                    instanceUrl = Preferences.getUrlByEngine(engines[selected])
+                    apiKey = Preferences.getApiKeyByEngine(engines[selected])
                 }
             }
         }
@@ -72,11 +67,11 @@ fun BlockRadioButton(
 
             if (this.urlModifiable) {
                 EditTextPreference(
-                    preferenceKey = Preferences.instanceUrlKey,
+                    preferenceKey = this.name + Preferences.instanceUrlKey,
                     value = instanceUrl,
                     onValueChange = {
                         instanceUrl = it
-                        RetrofitInstance.createApi()
+                        TranslationEngines.update()
                     },
                     labelText = stringResource(R.string.instance)
                 )
@@ -89,7 +84,7 @@ fun BlockRadioButton(
 
             if (this.apiKeyState != ApiKeyState.DISABLED) {
                 EditTextPreference(
-                    preferenceKey = Preferences.apiKey,
+                    preferenceKey = this.name + Preferences.apiKey,
                     value = apiKey,
                     labelText = stringResource(
                         id = R.string.api_key

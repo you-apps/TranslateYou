@@ -3,8 +3,7 @@ package com.bnyro.translate.util
 import android.content.Context
 import android.content.SharedPreferences
 import com.bnyro.translate.constants.ThemeMode
-import com.bnyro.translate.constants.libreTranslateEngine
-import com.bnyro.translate.constants.supportedEngines
+import com.bnyro.translate.constants.TranslationEngines
 import com.bnyro.translate.obj.TranslationEngine
 
 object Preferences {
@@ -55,14 +54,24 @@ object Preferences {
         ).toInt()
     }
 
-    fun defaultInstanceUrl() = supportedEngines[
-        get(apiTypeKey, libreTranslateEngine.id)
-    ].defaultUrl
-
-    fun getTranslationEngine(): TranslationEngine = supportedEngines[
+    fun getTranslationEngine(): TranslationEngine = TranslationEngines.engines[
         get(
             apiTypeKey,
-            libreTranslateEngine.id
+            0
         )
     ]
+
+    fun getUrlByEngine(
+        engine: TranslationEngine
+    ) = get(
+        engine.name + instanceUrlKey,
+        engine.defaultUrl
+    )
+
+    fun getApiKeyByEngine(
+        engine: TranslationEngine
+    ) = get(
+        engine.name + apiKey,
+        ""
+    )
 }

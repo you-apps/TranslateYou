@@ -28,8 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.constants.libreTranslateEngine
-import com.bnyro.translate.constants.supportedEngines
+import com.bnyro.translate.constants.TranslationEngines
 import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.BlockRadioButton
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -39,7 +38,6 @@ import com.bnyro.translate.ui.components.prefs.SliderPreference
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.util.RetrofitInstance
 
 class SettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,7 +94,7 @@ fun SettingsPage() {
             mutableStateOf(
                 Preferences.get(
                     Preferences.apiTypeKey,
-                    libreTranslateEngine.id
+                    TranslationEngines.engines[0].id
                 )
             )
         }
@@ -121,9 +119,9 @@ fun SettingsPage() {
                         Preferences.apiTypeKey,
                         selectedApiType
                     )
-                    RetrofitInstance.createApi()
+                    TranslationEngines.update()
                 },
-                engines = supportedEngines
+                engines = TranslationEngines.engines
             )
 
             SettingsCategory(
