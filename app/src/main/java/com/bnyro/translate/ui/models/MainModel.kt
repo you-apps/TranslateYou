@@ -128,6 +128,7 @@ class MainModel : ViewModel() {
             val languages = try {
                 apiHelper.getLanguages()
             } catch (e: Exception) {
+                Log.e("Fetching languages", e.toString())
                 onError.invoke(e)
                 return@launch
             }
