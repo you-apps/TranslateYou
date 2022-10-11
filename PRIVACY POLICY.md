@@ -24,7 +24,7 @@ Use of Translate You may result in one or more of the following third party orga
 
 ### Application Store
 * IzzyOnDroid, store where the app is published - https://android.izzysoft.de/help?topic=adverts
-* Google PlayStore, store where the app is published - https://policies.google.com/privacy
+<!-- * Google PlayStore, store where the app is published - https://policies.google.com/privacy -->
 * Github, Website where the app is published - https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 ### Translation API
@@ -37,4 +37,4 @@ _You can choose the Lingva Translate instance according to your preference._
 * Deepl, closed source - https://www.deepl.com/privacy/
 
 ## Android permissions requested by the application
-Note that Translate You application doesn't requires any android platform permissions.
+Note that 'Translate You' application doesn't requires any android platform permissions.
