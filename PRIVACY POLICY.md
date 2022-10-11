@@ -33,7 +33,7 @@ Use of Translate You may result in one or more of the following third party orga
 * LibreTranslate, open source - https://github.com/LibreTranslate/LibreTranslate
 _You can choose the LibreTranslate instance according to your preference._
 * Lingva Translate, open source - https://github.com/thedaviddelta/lingva-translate
-_You can choose the LibreTranslate instance according to your preference._
+_You can choose the Lingva Translate instance according to your preference._
 * Deepl, closed source - https://www.deepl.com/privacy/
 
 ## Android permissions requested by the application
