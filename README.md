@@ -55,6 +55,9 @@ If you are a developer and wish to contribute to the app, please to fork the pro
 <img src="https://hosted.weblate.org/widgets/you-apps/-/287x66-grey.png" alt="Translation status" />
 </a>
 
+## Privacy Policy
+
+**Translate You's privacy policy is available** [**here**](https://github.com/Bnyro/TranslateYou/blob/master/PRIVACY%20POLICY.md)
 
 ## License
 
