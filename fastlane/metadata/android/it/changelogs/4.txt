@@ -1,0 +1,4 @@
+* Icona dell'app monocolore/Material You (#8)
+* Ricorda l'ultima coppia di lingue selezionate (#4)
+* Migliorato il bottone di azione (#5)
+* Dialogo delle opzioni spostato in una nuova attività
