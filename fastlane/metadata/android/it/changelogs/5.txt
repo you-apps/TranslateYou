@@ -1,0 +1,3 @@
+* Supporto per Lingva Translate (disponibile solo nella versione base, la versione libre supporta solo LibreTranslate!)
+* Cronologia delle traduzioni (tale opzione può essere disabilitata)
+* Miglioramenti nell'interfaccia utente delle impostazioni
