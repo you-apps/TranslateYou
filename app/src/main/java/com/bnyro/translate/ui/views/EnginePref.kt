@@ -85,7 +85,11 @@ fun EnginePref() {
                         value = apiKey,
                         labelText = stringResource(
                             id = R.string.api_key
-                        )
+                        ) + when (apiKeyState) {
+                            ApiKeyState.REQUIRED -> " (${stringResource(R.string.required)})"
+                            ApiKeyState.OPTIONAL -> " (${stringResource(R.string.optional)})"
+                            else -> ""
+                        }
                     ) {
                         apiKey = it
                     }

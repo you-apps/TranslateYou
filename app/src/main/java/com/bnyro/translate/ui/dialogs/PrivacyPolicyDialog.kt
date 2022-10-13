@@ -1,4 +1,4 @@
-package com.bnyro.translate.ui.dialog
+package com.bnyro.translate.ui.dialogs
 
 import android.util.Log
 import androidx.compose.foundation.rememberScrollState
