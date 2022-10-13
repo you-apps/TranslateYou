@@ -1,4 +1,4 @@
-package com.bnyro.translate.constants
+package com.bnyro.translate.const
 
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.api.deepl.DeeplEngine
@@ -15,8 +15,6 @@ object TranslationEngines {
 
     private fun createEngines(): List<TranslationEngine> {
         val engines = mutableListOf<TranslationEngine>()
-
-        libreTranslate.create()
 
         engines.add(libreTranslate.create())
 

@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.bnyro.translate.constants.ThemeMode
+import com.bnyro.translate.const.ThemeMode
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,

@@ -40,10 +40,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
+import com.bnyro.translate.const.AboutLinks
 import com.bnyro.translate.obj.AboutIcon
 import com.bnyro.translate.ui.components.RoundIconButton
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
+import com.bnyro.translate.ui.dialog.PrivacyPolicyDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,6 +55,35 @@ fun AboutPage() {
     var showThemeOptions by remember {
         mutableStateOf(false)
     }
+
+    var showPrivacyPolicy by remember {
+        mutableStateOf(false)
+    }
+
+    val aboutIcons = listOf(
+        AboutIcon(
+            R.string.github,
+            R.drawable.ic_github,
+            AboutLinks.GITHUB
+        ),
+        AboutIcon(
+            R.string.author,
+            R.drawable.ic_author,
+            AboutLinks.AUTHOR
+        ),
+        AboutIcon(
+            R.string.privacy_policy,
+            R.drawable.ic_shield,
+            AboutLinks.PRIVACY_POLICY
+        ) {
+            showPrivacyPolicy = true
+        },
+        AboutIcon(
+            R.string.license,
+            R.drawable.ic_license,
+            AboutLinks.GNU
+        )
+    )
 
     Scaffold(
         modifier = Modifier
@@ -128,6 +159,10 @@ fun AboutPage() {
                                     contentDescription = it.contentDescription,
                                     iconResourceId = it.iconResourceId
                                 ) {
+                                    if (it.onClick != null) {
+                                        it.onClick.invoke()
+                                        return@RoundIconButton
+                                    }
                                     context.startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
@@ -148,25 +183,13 @@ fun AboutPage() {
             showThemeOptions = false
         }
     }
-}
 
-val aboutIcons = listOf(
-    AboutIcon(
-        R.string.github,
-        R.drawable.ic_github,
-        "https://github.com/Bnyro/TranslateYou"
-    ),
-    AboutIcon(
-        R.string.author,
-        R.drawable.ic_author,
-        "https://bnyro.github.io"
-    ),
-    AboutIcon(
-        R.string.license,
-        R.drawable.ic_license,
-        "https://gnu.org/licenses/gpl-3.ß.html"
-    )
-)
+    if (showPrivacyPolicy) {
+        PrivacyPolicyDialog {
+            showPrivacyPolicy = false
+        }
+    }
+}
 
 @Preview
 @Composable

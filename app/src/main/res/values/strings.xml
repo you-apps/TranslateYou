@@ -8,6 +8,7 @@
     <!-- Text -->
     <string name="enter_text">Enter text</string>
     <string name="paste">Paste</string>
+    <string name="copy">Copy</string>
     <string name="auto">Auto</string>
 
     <!-- Settings -->
@@ -25,6 +26,7 @@
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Author</string>
     <string name="license">License</string>
+    <string name="privacy_policy">Privacy Policy</string>
 
     <!-- Theme -->
     <string name="theme_auto">System</string>

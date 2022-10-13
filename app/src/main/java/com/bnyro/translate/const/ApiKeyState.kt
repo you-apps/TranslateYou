@@ -1,4 +1,4 @@
-package com.bnyro.translate.constants
+package com.bnyro.translate.const
 
 object ApiKeyState {
     const val DISABLED = 0
