@@ -59,18 +59,4 @@ object Preferences {
             0
         )
     ]
-
-    fun getUrlByEngine(
-        engine: TranslationEngine
-    ) = get(
-        engine.name + instanceUrlKey,
-        engine.defaultUrl
-    )
-
-    fun getApiKeyByEngine(
-        engine: TranslationEngine
-    ) = get(
-        engine.name + apiKey,
-        ""
-    )
 }

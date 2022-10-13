@@ -3,7 +3,6 @@ package com.bnyro.translate.api.lt
 import com.bnyro.translate.api.APIHelper
 import com.bnyro.translate.constants.TranslationEngines
 import com.bnyro.translate.obj.Language
-import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
 
 class LTHelper() : APIHelper() {
@@ -31,8 +30,6 @@ class LTHelper() : APIHelper() {
         query,
         source,
         target,
-        Preferences.getApiKeyByEngine(
-            TranslationEngines.libreTranslate
-        )
+        TranslationEngines.libreTranslate.getApiKey()
     ).translatedText
 }

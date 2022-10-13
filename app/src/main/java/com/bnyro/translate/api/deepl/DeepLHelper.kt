@@ -3,7 +3,6 @@ package com.bnyro.translate.api.deepl
 import com.bnyro.translate.api.APIHelper
 import com.bnyro.translate.constants.TranslationEngines
 import com.bnyro.translate.obj.Language
-import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
 
 class DeepLHelper() : APIHelper() {
@@ -12,9 +11,7 @@ class DeepLHelper() : APIHelper() {
         DeepL::class.java
     )
 
-    val apiKeyString = "DeepL-Auth-Key " + Preferences.getApiKeyByEngine(
-        TranslationEngines.deepl
-    )
+    val apiKeyString = "DeepL-Auth-Key " + TranslationEngines.deepl.getApiKey()
 
     override suspend fun getLanguages(): List<Language> = api.getLanguages(
         apiKeyString

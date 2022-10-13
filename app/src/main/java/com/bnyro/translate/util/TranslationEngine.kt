@@ -9,4 +9,16 @@ open class TranslationEngine(
     val apiKeyState: Int
 ) {
     lateinit var apiHelper: APIHelper
+
+    val urlPrefKey = this.name + Preferences.instanceUrlKey
+    val apiPrefKey = this.name + Preferences.apiKey
+    fun getUrl() = Preferences.get(
+        urlPrefKey,
+        this.defaultUrl
+    )
+
+    fun getApiKey() = Preferences.get(
+        apiPrefKey,
+        ""
+    )
 }

@@ -32,13 +32,13 @@ fun EnginePref() {
 
     var instanceUrl by remember {
         mutableStateOf(
-            Preferences.getUrlByEngine(engines[selected])
+            engines[selected].getUrl()
         )
     }
 
     var apiKey by remember {
         mutableStateOf(
-            Preferences.getApiKeyByEngine(engines[selected])
+            engines[selected].getApiKey()
         )
     }
 
@@ -51,8 +51,8 @@ fun EnginePref() {
                 Preferences.apiTypeKey,
                 selected
             )
-            instanceUrl = Preferences.getUrlByEngine(engines[selected])
-            apiKey = Preferences.getApiKeyByEngine(engines[selected])
+            instanceUrl = engines[selected].getUrl()
+            apiKey = engines[selected].getApiKey()
             TranslationEngines.update()
         },
         content = {
@@ -64,7 +64,7 @@ fun EnginePref() {
 
                 if (this.urlModifiable) {
                     EditTextPreference(
-                        preferenceKey = this.name + Preferences.instanceUrlKey,
+                        preferenceKey = this.urlPrefKey,
                         value = instanceUrl,
                         onValueChange = {
                             instanceUrl = it
@@ -81,7 +81,7 @@ fun EnginePref() {
 
                 if (this.apiKeyState != ApiKeyState.DISABLED) {
                     EditTextPreference(
-                        preferenceKey = this.name + Preferences.apiKey,
+                        preferenceKey = this.apiPrefKey,
                         value = apiKey,
                         labelText = stringResource(
                             id = R.string.api_key
