@@ -1,12 +1,9 @@
 package com.bnyro.translate.constants
 
 import com.bnyro.translate.BuildConfig
-import com.bnyro.translate.api.deepl.DeepLHelper
 import com.bnyro.translate.api.deepl.DeeplEngine
 import com.bnyro.translate.api.lt.LTEngine
-import com.bnyro.translate.api.lt.LTHelper
 import com.bnyro.translate.api.lv.LVEngine
-import com.bnyro.translate.api.lv.LVHelper
 import com.bnyro.translate.util.TranslationEngine
 
 object TranslationEngines {
@@ -19,23 +16,22 @@ object TranslationEngines {
     private fun createEngines(): List<TranslationEngine> {
         val engines = mutableListOf<TranslationEngine>()
 
-        libreTranslate.apiHelper = LTHelper()
+        libreTranslate.create()
 
-        engines.add(libreTranslate)
+        engines.add(libreTranslate.create())
 
         if (BuildConfig.FLAVOR == "libre") return engines
 
-        lingvaTranslate.apiHelper = LVHelper()
-        deepl.apiHelper = DeepLHelper()
-
         listOf(lingvaTranslate, deepl).forEach {
-            engines.add(it)
+            engines.add(it.create())
         }
 
         return engines
     }
 
     fun update() {
-        engines = createEngines()
+        engines.forEach {
+            it.create()
+        }
     }
 }

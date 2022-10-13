@@ -8,4 +8,8 @@ class LTEngine : TranslationEngine(
     defaultUrl = "https://libretranslate.de",
     urlModifiable = true,
     apiKeyState = ApiKeyState.OPTIONAL
-)
+) {
+    override fun create(): TranslationEngine = apply {
+        apiHelper = LTHelper()
+    }
+}

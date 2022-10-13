@@ -8,4 +8,8 @@ class LVEngine : TranslationEngine(
     defaultUrl = "https://lingva.ml",
     urlModifiable = true,
     apiKeyState = ApiKeyState.DISABLED
-)
+) {
+    override fun create(): TranslationEngine = apply {
+        apiHelper = LVHelper()
+    }
+}

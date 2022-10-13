@@ -8,4 +8,8 @@ class DeeplEngine : TranslationEngine(
     defaultUrl = "https://api-free.deepl.com",
     urlModifiable = false,
     apiKeyState = ApiKeyState.REQUIRED
-)
+) {
+    override fun create(): TranslationEngine = apply {
+        apiHelper = DeepLHelper()
+    }
+}
