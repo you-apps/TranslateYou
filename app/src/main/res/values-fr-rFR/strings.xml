@@ -12,6 +12,7 @@
     <string name="auto">Auto</string>
 
     <!-- Settings -->
+    <string name="api">Api</string>
     <string name="instance">Instance</string>
     <string name="api_key">Clé de l\'API</string>
     <string name="options">Paramètres</string>
