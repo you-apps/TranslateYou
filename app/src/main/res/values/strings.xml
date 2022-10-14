@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Translate You</string>
+    <string name="app_name" translatable="false">Translate You</string>
 
     <!-- Dialog -->
     <string name="okay">Okay</string>
