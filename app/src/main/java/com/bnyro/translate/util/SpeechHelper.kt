@@ -90,8 +90,7 @@ object SpeechHelper {
     }
 
     fun speak(context: Context, text: String, language: String) {
-        if (tts == null) return
-        val result: Int = tts!!.setLanguage(
+        val result: Int = tts.setLanguage(
             Locale(language)
         )
 
@@ -102,6 +101,6 @@ object SpeechHelper {
             Toast.makeText(context, R.string.language_not_supported, Toast.LENGTH_SHORT).show()
             return
         }
-        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
     }
 }

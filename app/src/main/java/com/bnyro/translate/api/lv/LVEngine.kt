@@ -4,7 +4,7 @@ import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.util.TranslationEngine
 
 class LVEngine : TranslationEngine(
-    name = "LingvaTranslate",
+    name = "Lingva",
     defaultUrl = "https://lingva.ml",
     urlModifiable = true,
     apiKeyState = ApiKeyState.DISABLED
