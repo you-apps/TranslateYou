@@ -24,13 +24,11 @@
     <string name="required">Obligatoire</string>
     <string name="optional">Optionnel</string>
 
-
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Auteur</string>
     <string name="license">Licence</string>
     <string name="privacy_policy">Politique de Confidentialité</string>
-
 
     <!-- Theme -->
     <string name="theme_auto">Identique au système</string>
