@@ -51,7 +51,7 @@ If you are a developer and wish to contribute to the app, please to fork the pro
 
 ## Translation
 
-<a href="https://hosted.weblate.org/projects/you-apps/#languages">
+<a href="https://hosted.weblate.org/projects/you-apps/translate-you/">
 <img src="https://hosted.weblate.org/widgets/you-apps/-/287x66-grey.png" alt="Translation status" />
 </a>
 
