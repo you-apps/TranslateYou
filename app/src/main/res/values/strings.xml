@@ -10,6 +10,7 @@
     <string name="paste">Paste</string>
     <string name="copy">Copy</string>
     <string name="auto">Auto</string>
+    <string name="language_not_supported">Language is not supported!</string>
 
     <!-- Settings -->
     <string name="instance">Instance</string>

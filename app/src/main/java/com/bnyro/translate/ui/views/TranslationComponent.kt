@@ -1,12 +1,15 @@
 package com.bnyro.translate.ui.views
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentPaste
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -23,15 +26,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
+import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.util.ClipboardHelper
+import com.bnyro.translate.util.SpeechHelper
 
 @Composable
 fun TranslationComponent(
     focusRequester: FocusRequester
 ) {
     val viewModel: MainModel = viewModel()
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -55,6 +61,23 @@ fun TranslationComponent(
                 .align(alignment = Alignment.CenterHorizontally)
                 .size(70.dp, 1.dp)
         )
+
+        if (viewModel.translatedText != "" && SpeechHelper.ttsAvailable) {
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                StyledIconButton(
+                    imageVector = Icons.Default.VolumeUp
+                ) {
+                    SpeechHelper.speak(
+                        context,
+                        viewModel.translatedText,
+                        viewModel.targetLanguage.code
+                    )
+                }
+            }
+        }
 
         val clipboardHelper = ClipboardHelper(
             LocalContext.current.applicationContext
