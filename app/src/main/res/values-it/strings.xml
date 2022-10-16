@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_text">Inserisci il testo</string>
+    <string name="theme_dark">Scuro</string>
+    <string name="clear_history">Cancella cronologia</string>
+    <string name="auto">Automatico</string>
+    <string name="instance">Istanza</string>
+    <string name="about">Informazioni</string>
+    <string name="history_enabled">Attiva cronologia</string>
+    <string name="fetch_delay">Ritardo di traduzione</string>
+    <string name="author">Autore</string>
+    <string name="license">Licenza</string>
+    <string name="theme_auto">Sistema</string>
+    <string name="server_error">Errore durante la comunicazione con il server. Scegli un\'altra istanza nelle impostazioni!</string>
+    <string name="app_name">Traduttore You</string>
+    <string name="history_summary">Tieni traccia degli ultimi testi tradotti</string>
+    <string name="okay">Ok</string>
+    <string name="cancel">Annulla</string>
+    <string name="theme_light">Chiaro</string>
+    <string name="paste">Incolla</string>
+    <string name="api_key">Chiave API</string>
+    <string name="history">Cronologia</string>
+    <string name="fetch_delay_summary">Il ritardo tra l\'inserimento del testo e la richiesta della traduzione</string>
+    <string name="options">Impostazioni</string>
+</resources>

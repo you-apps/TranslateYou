@@ -1,15 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Translate You</string>
 
     <!-- Dialog -->
     <string name="okay">אישור</string>
     <string name="cancel">ביטול</string>
-
     <!-- Text -->
     <string name="enter_text">נא למלא טקסט</string>
     <string name="paste">הדבקה</string>
     <string name="auto">אוטו׳</string>
-
     <!-- Settings -->
     <string name="instance">עותק</string>
     <string name="api_key">מפתח Api</string>
@@ -20,20 +19,16 @@
     <string name="fetch_delay">השהיית תרגום</string>
     <string name="fetch_delay_summary">ההשהיה בין מילוי הטקסט לבין משיכת התרגום</string>
     <string name="history_summary">מעקב אחר הטקסטים האחרונים שתורגמו</string>
-
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">יוצר</string>
     <string name="license">רישיון</string>
-
     <!-- Theme -->
     <string name="theme_auto">מערכת</string>
     <string name="theme_light">בהירה</string>
     <string name="theme_dark">כהה</string>
-
     <!-- History -->
     <string name="clear_history">פינוי ההיסטוריה</string>
-
     <!-- Exception -->
     <string name="server_error">שגיאה ביצירת קשר עם השרת. נא לבחור בעותק אחר בהגדרות!</string>
 </resources>

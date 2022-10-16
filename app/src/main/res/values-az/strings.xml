@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="clear_history">Tarixçəni təmizləyin</string>
+    <string name="history_summary">Son tərcümə edilmiş mətnləri izləyin</string>
+    <string name="api_key">Api Açarı</string>
+    <string name="auto">Avtomatik</string>
+    <string name="instance">Nümunə</string>
+    <string name="app_name">Translate You</string>
+    <string name="okay">Oldu</string>
+    <string name="cancel">Ləğv et</string>
+    <string name="enter_text">Mətn daxil edin</string>
+    <string name="paste">Yapışdır</string>
+    <string name="options">Tənzimləmələr</string>
+    <string name="history">Tarixçə</string>
+    <string name="about">Haqqında</string>
+    <string name="fetch_delay">Tərcümə gecikməsi</string>
+    <string name="history_enabled">Tarixçəni aktivləşdir</string>
+    <string name="author">Müəllif</string>
+    <string name="license">Lisenziya</string>
+    <string name="theme_auto">Sistem</string>
+    <string name="theme_light">İşıqlı</string>
+    <string name="theme_dark">Qaranlıq</string>
+    <string name="server_error">Server ilə əlaqə zamanı xəta. Zəhmət olmasa, tənzimləmələrdə başqa nümunə seçin!</string>
+    <string name="fetch_delay_summary">Mətnin daxil edilməsi ilə tərcümənin alınması arasındakı gecikmə</string>
+</resources>

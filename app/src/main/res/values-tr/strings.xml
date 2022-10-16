@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Translate You</string>
+    <string name="cancel">İptal</string>
+    <string name="okay">Tamam</string>
+    <string name="enter_text">Metin girin</string>
+    <string name="paste">Yapıştır</string>
+    <string name="auto">Otomatik</string>
+    <string name="instance">Örnek</string>
+    <string name="api_key">API Anahtarı</string>
+    <string name="options">Ayarlar</string>
+    <string name="fetch_delay_summary">Metin ekleme ve çeviriyi getirme arasındaki gecikme</string>
+    <string name="history_summary">Son çevrilen metinleri takip edin</string>
+    <string name="author">Yazar</string>
+    <string name="license">Lisans</string>
+    <string name="theme_auto">Sistem</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="clear_history">Geçmişi temizle</string>
+    <string name="server_error">Sunucuyla iletişimde hata. Lütfen ayarlarda başka bir örnek seçin!</string>
+    <string name="fetch_delay">Çeviri gecikmesi</string>
+    <string name="history">Geçmiş</string>
+    <string name="about">Hakkında</string>
+    <string name="history_enabled">Geçmişi etkinleştir</string>
+</resources>

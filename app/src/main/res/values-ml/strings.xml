@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="okay">ശരി</string>
+    <string name="cancel">റദ്ദാക്കുക</string>
+    <string name="enter_text">ടെക്സ്റ്റ് നൽകുക</string>
+    <string name="paste">പേസ്റ്റ്</string>
+    <string name="auto">ഓട്ടോ</string>
+    <string name="instance">ഇൻസ്റ്റൻസ്</string>
+    <string name="api_key">Api കീ</string>
+    <string name="options">സെറ്റിംഗ്സ്</string>
+    <string name="history">ഹിസ്റ്ററി</string>
+    <string name="about">എബൌട്ട്</string>
+    <string name="history_enabled">Enable ഹിസ്റ്ററി</string>
+    <string name="fetch_delay">Translation കാലതാമസം</string>
+    <string name="fetch_delay_summary">വാചകം ചേർക്കുന്നതിനും വിവർത്തനം ലഭ്യമാക്കുന്നതിനും ഇടയിലുള്ള കാലതാമസം</string>
+    <string name="history_summary">അവസാനം വിവർത്തനം ചെയ്ത ടെക്സ്റ്റ് ട്രാക്ക് സൂക്ഷിക്കുക</string>
+    <string name="author">രചയിതാവ്</string>
+    <string name="license">ലൈസൻസ്</string>
+    <string name="theme_auto">സിസ്റ്റം</string>
+    <string name="theme_light">ലൈറ്റ്</string>
+    <string name="theme_dark">ലൈറ്റ്</string>
+    <string name="clear_history">ഹിസ്റ്ററി മായ്ക്കുക</string>
+    <string name="server_error">സെർവറുമായി ആശയവിനിമയം നടത്തുന്നതിൽ പിശക്. സെറ്റിങ്സിൽ മറ്റൊരു ഇൻസ്റ്റൻസ് തിരഞ്ഞെടുക്കു!</string>
+    <string name="app_name">ട്രാൻസ്ലേറ്റ് യു</string>
+</resources>
