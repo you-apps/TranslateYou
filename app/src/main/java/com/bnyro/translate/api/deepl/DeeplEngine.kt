@@ -1,7 +1,6 @@
 package com.bnyro.translate.api.deepl
 
 import com.bnyro.translate.const.ApiKeyState
-import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
@@ -16,12 +15,12 @@ class DeeplEngine : TranslationEngine(
     private lateinit var api: DeepL
     override fun create(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(
-            TranslationEngines.deepl,
+            this,
             DeepL::class.java
         )
     }
 
-    val apiKeyString = "DeepL-Auth-Key " + TranslationEngines.deepl.getApiKey()
+    private val apiKeyString = "DeepL-Auth-Key " + getApiKey()
 
     override suspend fun getLanguages(): List<Language> = api.getLanguages(
         apiKeyString

@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.DatabaseHolder.Companion.Db
+import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.ext.Query
 import com.bnyro.translate.obj.Language
@@ -19,7 +20,9 @@ import kotlinx.coroutines.launch
 
 class MainModel : ViewModel() {
     private val engine: TranslationEngine
-        get() = Preferences.getTranslationEngine()
+        get() = TranslationEngines.engines[
+            Preferences.get(Preferences.apiTypeKey, 0)
+        ]
 
     var availableLanguages: List<Language> by mutableStateOf(
         emptyList()

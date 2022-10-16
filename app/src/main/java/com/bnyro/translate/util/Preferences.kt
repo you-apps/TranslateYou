@@ -52,11 +52,4 @@ object Preferences {
             ThemeMode.AUTO.toString()
         ).toInt()
     }
-
-    fun getTranslationEngine(): TranslationEngine = TranslationEngines.engines[
-        get(
-            apiTypeKey,
-            0
-        )
-    ]
 }
