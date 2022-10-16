@@ -37,10 +37,12 @@ Additionally supports <a href="https://github.com/thedaviddelta/lingva-translate
 ## Screenshots
 
 <div style="display: flex;">
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/translate.png" width=30%>
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/option-1.png" width=30%>
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/option-2.png" width=30%>
-  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/about.png" width=30%>
+  <img src="app/standard/fastlane/metadata/android/en-US/images/phoneScreenshots/translate.png" width=30%>
+  <img src="app/standard/fastlane/metadata/android/en-US/images/phoneScreenshots/option-1.png" width=30%>
+  <img src="app/standard/fastlane/metadata/android/en-US/images/phoneScreenshots/option-2.png" width=30%>
+  <img src="app/standard/fastlane/metadata/android/en-US/images/phoneScreenshots/option-3.png" width=30%>
+  <img src="app/standard/fastlane/metadata/android/en-US/images/phoneScreenshots/option-4.png" width=30%>
+  <img src="app/standard/fastlane/metadata/android/en-US/images/phoneScreenshots/about.png" width=30%>
 </div>
 
 ## Contribution
