@@ -1,6 +1,6 @@
 package com.bnyro.translate.util
 
-import com.bnyro.translate.api.APIHelper
+import com.bnyro.translate.obj.Language
 import java.net.URL
 
 abstract class TranslationEngine(
@@ -9,9 +9,12 @@ abstract class TranslationEngine(
     val urlModifiable: Boolean,
     val apiKeyState: Int
 ) {
-    lateinit var apiHelper: APIHelper
 
     abstract fun create(): TranslationEngine
+
+    abstract suspend fun getLanguages(): List<Language>
+
+    abstract suspend fun translate(query: String, source: String, target: String): String
 
     val urlPrefKey = this.name + Preferences.instanceUrlKey
     val apiPrefKey = this.name + Preferences.apiKey

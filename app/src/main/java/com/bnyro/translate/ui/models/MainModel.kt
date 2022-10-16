@@ -9,7 +9,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.DatabaseHolder.Companion.Db
-import com.bnyro.translate.api.APIHelper
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.ext.Query
 import com.bnyro.translate.obj.Language
@@ -19,11 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.launch
 
 class MainModel : ViewModel() {
-    private val translationEngine: TranslationEngine
+    private val engine: TranslationEngine
         get() = Preferences.getTranslationEngine()
-
-    private val apiHelper: APIHelper
-        get() = translationEngine.apiHelper
 
     var availableLanguages: List<Language> by mutableStateOf(
         emptyList()
@@ -79,7 +75,7 @@ class MainModel : ViewModel() {
 
         viewModelScope.launch {
             val translation = try {
-                apiHelper.translate(
+                engine.translate(
                     insertedText,
                     sourceLanguage.code,
                     targetLanguage.code
@@ -126,7 +122,7 @@ class MainModel : ViewModel() {
     fun fetchLanguages(onError: (Exception) -> Unit = {}) {
         viewModelScope.launch {
             val languages = try {
-                apiHelper.getLanguages()
+                engine.getLanguages()
             } catch (e: Exception) {
                 Log.e("Fetching languages", e.toString())
                 onError.invoke(e)
