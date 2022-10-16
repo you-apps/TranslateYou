@@ -1,6 +1,7 @@
 package com.bnyro.translate.util
 
 import com.bnyro.translate.api.APIHelper
+import java.net.URL
 
 abstract class TranslationEngine(
     val name: String,
@@ -14,10 +15,19 @@ abstract class TranslationEngine(
 
     val urlPrefKey = this.name + Preferences.instanceUrlKey
     val apiPrefKey = this.name + Preferences.apiKey
-    fun getUrl() = Preferences.get(
-        urlPrefKey,
-        this.defaultUrl
-    )
+    fun getUrl(): String {
+        val url = Preferences.get(
+            urlPrefKey,
+            this.defaultUrl
+        )
+
+        return try {
+            URL(url)
+            url
+        } catch (e: Exception) {
+            defaultUrl
+        }
+    }
 
     fun getApiKey() = Preferences.get(
         apiPrefKey,

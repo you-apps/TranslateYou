@@ -5,10 +5,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 
 object RetrofitHelper {
     fun <T> createApi(engine: TranslationEngine, type: Class<T>): T {
-        val baseUrl = Preferences.get(
-            engine.name + Preferences.instanceUrlKey,
-            engine.defaultUrl
-        )
+        val baseUrl = engine.getUrl()
 
         return Retrofit.Builder()
             .baseUrl(baseUrl)

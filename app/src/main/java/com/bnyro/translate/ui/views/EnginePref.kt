@@ -68,7 +68,6 @@ fun EnginePref() {
                         value = instanceUrl,
                         onValueChange = {
                             instanceUrl = it
-                            TranslationEngines.update()
                         },
                         labelText = stringResource(R.string.instance)
                     )
