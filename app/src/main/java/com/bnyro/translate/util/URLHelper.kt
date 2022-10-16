@@ -7,7 +7,7 @@ import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
 object URLHelper {
-    val charset = StandardCharsets.UTF_8.toString()
+    private val charset = StandardCharsets.UTF_8.toString()
 
     suspend fun encodeURL(text: String): String {
         return withContext(Dispatchers.IO) {
