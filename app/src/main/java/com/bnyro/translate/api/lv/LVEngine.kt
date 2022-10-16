@@ -4,6 +4,7 @@ import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
+import com.bnyro.translate.util.URLHelper
 
 class LVEngine : TranslationEngine(
     name = "Lingva",
@@ -25,10 +26,11 @@ class LVEngine : TranslationEngine(
     }
 
     override suspend fun translate(query: String, source: String, target: String): String {
-        return api.translate(
+        val translation = api.translate(
             source,
             target,
-            query
+            URLHelper.encodeURL(query)
         ).translation
+        return URLHelper.decodeURL(translation)
     }
 }
