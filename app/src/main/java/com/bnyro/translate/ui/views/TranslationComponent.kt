@@ -44,6 +44,15 @@ fun TranslationComponent(
     val viewModel: MainModel = viewModel()
     val context = LocalContext.current
 
+    val clipboardHelper = ClipboardHelper(
+        LocalContext.current.applicationContext
+    )
+    var hasClip by remember {
+        mutableStateOf(
+            clipboardHelper.hasClip()
+        )
+    }
+
     Column(
         modifier = Modifier
             .padding(15.dp)
@@ -53,6 +62,7 @@ fun TranslationComponent(
             text = viewModel.insertedText,
             onValueChange = {
                 viewModel.insertedText = it
+                if (it.equals("")) hasClip = clipboardHelper.hasClip()
                 viewModel.enqueueTranslation()
             },
             placeholder = stringResource(R.string.enter_text),
@@ -84,22 +94,13 @@ fun TranslationComponent(
             }
         }
 
-        val clipboardHelper = ClipboardHelper(
-            LocalContext.current.applicationContext
-        )
-        var copiedText by remember {
-            mutableStateOf(
-                clipboardHelper.get()
-            )
-        }
-
-        if (copiedText != null && viewModel.insertedText == "") {
+        if (hasClip && viewModel.insertedText == "") {
             Row {
                 ButtonWithIcon(
                     text = stringResource(R.string.paste),
                     icon = Icons.Default.ContentPaste
                 ) {
-                    viewModel.insertedText = copiedText ?: ""
+                    viewModel.insertedText = clipboardHelper.get() ?: ""
                     viewModel.enqueueTranslation()
                 }
 
@@ -113,7 +114,7 @@ fun TranslationComponent(
                     icon = Icons.Default.Clear
                 ) {
                     clipboardHelper.clear()
-                    copiedText = null
+                    hasClip = false
                     viewModel.clearTranslation()
                 }
             }

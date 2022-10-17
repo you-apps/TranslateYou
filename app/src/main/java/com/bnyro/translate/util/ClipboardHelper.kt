@@ -16,6 +16,8 @@ class ClipboardHelper(context: Context) {
         )
     }
 
+    fun hasClip() = clipboardManager.hasPrimaryClip()
+
     fun get(): String? {
         val clipboardItem = clipboardManager.primaryClip?.getItemAt(0) ?: return null
         return clipboardItem.text.toString()
