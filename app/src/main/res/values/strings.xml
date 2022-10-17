@@ -39,6 +39,7 @@
 
     <!-- History -->
     <string name="clear_history">Clear history</string>
+    <string name="open">Open</string>
 
     <!-- Exception -->
     <string name="server_error">Error in communicating with the server. Please choose another instance in the settings!</string>
