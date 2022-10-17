@@ -39,7 +39,7 @@
 ### Translate You Libre
 Only supports the <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate API</a> and therefore is fully libre.
 
-### Translate You Plus
+### Translate You
 [**NonFreeNet anti-feature**](https://f-droid.org/docs/Anti-Features/#NonFreeNet)
 
 Additionally supports:
