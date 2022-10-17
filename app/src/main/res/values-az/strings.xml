@@ -22,4 +22,9 @@
     <string name="theme_dark">Qaranlıq</string>
     <string name="server_error">Server ilə əlaqə zamanı xəta. Zəhmət olmasa, tənzimləmələrdə başqa nümunə seçin!</string>
     <string name="fetch_delay_summary">Mətnin daxil edilməsi ilə tərcümənin alınması arasındakı gecikmə</string>
+    <string name="copy">Kopyala</string>
+    <string name="language_not_supported">Dil dəstəklənmir!</string>
+    <string name="required">Tələb olunur</string>
+    <string name="optional">Əlavə</string>
+    <string name="privacy_policy">Məxfilik Siyasəti</string>
 </resources>

@@ -10,6 +10,7 @@
     <string name="paste">Paste</string>
     <string name="copy">Copy</string>
     <string name="auto">Auto</string>
+    <string name="forget">Forget</string>
     <string name="language_not_supported">Language is not supported!</string>
 
     <!-- Settings -->
@@ -38,6 +39,7 @@
 
     <!-- History -->
     <string name="clear_history">Clear history</string>
+    <string name="open">Open</string>
 
     <!-- Exception -->
     <string name="server_error">Error in communicating with the server. Please choose another instance in the settings!</string>

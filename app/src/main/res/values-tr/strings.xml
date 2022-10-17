@@ -22,4 +22,9 @@
     <string name="history">Geçmiş</string>
     <string name="about">Hakkında</string>
     <string name="history_enabled">Geçmişi etkinleştir</string>
+    <string name="copy">Kopyala</string>
+    <string name="required">Gerekli</string>
+    <string name="language_not_supported">Dil desteklenmiyor!</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="optional">İsteğe bağlı</string>
 </resources>

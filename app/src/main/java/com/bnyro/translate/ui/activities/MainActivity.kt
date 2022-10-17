@@ -58,11 +58,7 @@ class MainActivity : BaseActivity() {
             ScreenContent()
         }
 
-        val intentDataText = getIntentText()
-        if (intentDataText != null) {
-            mainModel.insertedText = intentDataText
-            mainModel.translate()
-        }
+        handleIntentData()
     }
 
     override fun onStop() {
@@ -97,7 +93,25 @@ class MainActivity : BaseActivity() {
         super.onStart()
 
         mainModel.fetchLanguages {
-            Toast.makeText(this, R.string.server_error, Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                R.string.server_error,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        this.intent = intent
+        handleIntentData()
+    }
+
+    private fun handleIntentData() {
+        val intentDataText = getIntentText()
+        if (intentDataText != null) {
+            mainModel.insertedText = intentDataText
+            mainModel.translate()
         }
     }
 }
