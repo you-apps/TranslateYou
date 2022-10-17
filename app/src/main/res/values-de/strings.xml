@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="instance">Instanz</string>
+    <string name="options">Einstellungen</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="paste">Einfügen</string>
+    <string name="copy">Kopieren</string>
+    <string name="history_summary">Behalten Sie den Überblick über die zuletzt übersetzten Texte</string>
+    <string name="required">Erforderlich</string>
+    <string name="optional">Optional</string>
+    <string name="author">Autor</string>
+    <string name="license">Lizenz</string>
+    <string name="privacy_policy">Datenschutzbestimmungen</string>
+    <string name="fetch_delay_summary">Die Zeitspanne zwischen dem Einfügen von Text und dem Abrufen der Übersetzung</string>
+    <string name="fetch_delay">Übersetzungszeitspanne</string>
+    <string name="auto">Automatisch</string>
+    <string name="language_not_supported">Sprache wird nicht unterstützt!</string>
+    <string name="api_key">API-Schlüssel</string>
+    <string name="history">Verlauf</string>
+    <string name="about">Über</string>
+    <string name="history_enabled">Verlauf aktivieren</string>
+    <string name="theme_dark">Dunkel</string>
+    <string name="okay">Okay</string>
+    <string name="enter_text">Text eingeben</string>
+    <string name="theme_light">Hell</string>
+    <string name="theme_auto">System</string>
+    <string name="clear_history">Verlauf löschen</string>
+    <string name="server_error">Fehler bei der Kommunikation mit dem Server. Bitte wählen Sie eine andere Instanz in den Einstellungen!</string>
+</resources>
