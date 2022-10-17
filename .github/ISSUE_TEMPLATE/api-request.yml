@@ -1,0 +1,70 @@
+name: API support request
+description: Submit a request for the integration of a new translation API in Translate You
+labels: [New API]
+body:
+
+  - type: textarea
+    id: general-informations-about-api
+    attributes:
+      label: General informations
+      description: Write here the information about the translation API you want to be supported by Translate You
+      placeholder: |
+          "..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: API-Info
+    attributes:
+      label: API basic informations
+      options:
+        - label: This translation engine requires a registered account.
+          required: false
+        - label: This translation engine requires an free api key.
+          required: false
+        - label: This translation engine requires an paid api key.
+          required: false
+
+  - type: input
+    id: API_KEY
+    attributes:
+      label: Translation engine api key
+      description: |
+        "If you have an API key please note here, useful for the developer to test the operation of the translation engine."
+      placeholder: |
+          "..."
+    validations:
+      required: false
+
+  - type: input
+    id: API_endpoint
+    attributes:
+      label: Translation engine service endpoints
+      description: |
+        "If you know the service endpoints, Please specify here."
+      placeholder: |
+          "..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details and links
+      description: |
+        Other details and useful links about Api and/or translate engine.
+      placeholder: |
+        Additional details, links and attachments.
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      description: Your issue will be closed if you haven't done these steps.
+      options:
+        - label: I have searched the existing requests and this is a new ticket, **NOT** a duplicate or related to another open or closed request.
+          required: true
+        - label: I have written a short but informative title.
+          required: true
+        - label: I will fill out all of the requested information in this form.
+          required: true
