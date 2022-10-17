@@ -14,7 +14,7 @@
     <string name="server_error">Errore durante la comunicazione con il server. Scegli un\'altra istanza nelle impostazioni!</string>
     <string name="app_name">Traduttore You</string>
     <string name="history_summary">Tieni traccia degli ultimi testi tradotti</string>
-    <string name="okay">Ok</string>
+    <string name="okay">OK</string>
     <string name="cancel">Annulla</string>
     <string name="theme_light">Chiaro</string>
     <string name="paste">Incolla</string>
@@ -22,4 +22,9 @@
     <string name="history">Cronologia</string>
     <string name="fetch_delay_summary">Il ritardo tra l\'inserimento del testo e la richiesta della traduzione</string>
     <string name="options">Impostazioni</string>
+    <string name="required">Obbligatorio</string>
+    <string name="optional">Opzionale</string>
+    <string name="copy">Copia</string>
+    <string name="language_not_supported">La lingua non è supportata!</string>
+    <string name="privacy_policy">Informativa sulla riservatezza</string>
 </resources>
