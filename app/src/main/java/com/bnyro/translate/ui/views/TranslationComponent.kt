@@ -62,7 +62,7 @@ fun TranslationComponent(
             text = viewModel.insertedText,
             onValueChange = {
                 viewModel.insertedText = it
-                if (it.equals("")) hasClip = clipboardHelper.hasClip()
+                if (it == "") hasClip = clipboardHelper.hasClip()
                 viewModel.enqueueTranslation()
             },
             placeholder = stringResource(R.string.enter_text),
