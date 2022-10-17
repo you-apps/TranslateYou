@@ -40,7 +40,7 @@
 Only supports the <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate API</a> and therefore is fully libre.
 
 ### Translate You
-[**NonFreeNet anti-feature**](https://f-droid.org/docs/Anti-Features/#NonFreeNet)
+[**NonFreeNet anti-feature**](https://f-droid.org/docs/Anti-Features/#NonFreeNet): **Due to supports translation engines that are not open source.**
 
 Additionally supports:
 * <a href="https://github.com/thedaviddelta/lingva-translate">LingvaTranslate</a> _which uses Google Translate® to fetch translations._
