@@ -18,7 +18,8 @@
 <!-- ---------- Description ---------- -->
 ## Features
 
-- [x] 30 supported languages
+- [x] more than 150 supported languages _(standard version)_
+- [x] 30 supported languages _(libre version)_
 - [x] Material Design 3 (You)
 - [x] Dark and light theme
 - [x] Entirely Open Source
