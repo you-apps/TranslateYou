@@ -3,19 +3,23 @@ package com.bnyro.translate.ui.views
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.VolumeUp
-import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -26,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
+import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
 import com.bnyro.translate.ui.models.MainModel
@@ -82,33 +87,34 @@ fun TranslationComponent(
         val clipboardHelper = ClipboardHelper(
             LocalContext.current.applicationContext
         )
-        val copiedText = clipboardHelper.get()
+        var copiedText by remember {
+            mutableStateOf(
+                clipboardHelper.get()
+            )
+        }
 
         if (copiedText != null && viewModel.insertedText == "") {
-            Button(
-                onClick = {
-                    viewModel.insertedText = copiedText
-                    viewModel.enqueueTranslation()
-                },
-                modifier = Modifier
-                    .padding(15.dp, 0.dp)
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
+            Row {
+                ButtonWithIcon(
+                    text = stringResource(R.string.paste),
+                    icon = Icons.Default.ContentPaste
                 ) {
-                    Icon(
-                        Icons.Default.ContentPaste,
-                        null,
-                        modifier = Modifier
-                            .size(18.dp)
-                    )
-                    Text(
-                        stringResource(
-                            id = R.string.paste
-                        ),
-                        modifier = Modifier
-                            .padding(6.dp, 0.dp, 0.dp, 0.dp)
-                    )
+                    viewModel.insertedText = copiedText ?: ""
+                    viewModel.enqueueTranslation()
+                }
+
+                Spacer(
+                    modifier = Modifier
+                        .width(0.dp)
+                )
+
+                ButtonWithIcon(
+                    text = stringResource(R.string.forget),
+                    icon = Icons.Default.Clear
+                ) {
+                    clipboardHelper.clear()
+                    copiedText = null
+                    viewModel.clearTranslation()
                 }
             }
         }
