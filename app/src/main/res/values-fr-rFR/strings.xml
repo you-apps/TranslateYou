@@ -1,16 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Translate You</string>
-
     <!-- Dialog -->
     <string name="okay">D\'accord</string>
     <string name="cancel">Annuler</string>
-
     <!-- Text -->
     <string name="enter_text">Saisir du texte</string>
     <string name="paste">Coller</string>
     <string name="copy">Copier</string>
     <string name="auto">Auto</string>
-
     <!-- Settings -->
     <string name="instance">Instance</string>
     <string name="api_key">Clé de l\'API</string>
@@ -18,27 +16,23 @@
     <string name="history">Historique</string>
     <string name="about">À propos</string>
     <string name="history_enabled">Activer l\'historique</string>
-    <string name="fetch_delay">Retard de traduction</string>
+    <string name="fetch_delay">Délai de traduction</string>
     <string name="fetch_delay_summary">Délai entre l\'insertion du texte et la récupération de la traduction</string>
     <string name="history_summary">Gardez une trace des derniers textes traduits</string>
     <string name="required">Obligatoire</string>
     <string name="optional">Optionnel</string>
-
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Auteur</string>
     <string name="license">Licence</string>
-    <string name="privacy_policy">Politique de Confidentialité</string>
-
+    <string name="privacy_policy">Politique de confidentialité</string>
     <!-- Theme -->
     <string name="theme_auto">Identique au système</string>
     <string name="theme_light">Clair</string>
     <string name="theme_dark">Obscur</string>
-
     <!-- History -->
     <string name="clear_history">Nettoyer l\'historique</string>
-
     <!-- Exception -->
-    <string name="server_error">Erreur lors de la communication avec le serveur. Veuillez sélectionner une autre instance dans les paramètres!</string>
-
+    <string name="server_error">Erreur lors de la communication avec le serveur. Veuillez sélectionner une autre instance dans les paramètres !</string>
+    <string name="language_not_supported">La langue n\'est pas prise en charge !</string>
 </resources>
