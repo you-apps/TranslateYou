@@ -1,2 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="history">Historia</string>
+    <string name="history_enabled">Ota historia käyttöön</string>
+    <string name="okay">Okei</string>
+    <string name="cancel">Peruuta</string>
+    <string name="enter_text">Kirjoita teksti</string>
+    <string name="paste">Liitä</string>
+    <string name="copy">Kopioi</string>
+    <string name="auto">Automaattinen</string>
+    <string name="language_not_supported">Kieli ei ole tuettu!</string>
+    <string name="instance">Instanssi</string>
+    <string name="api_key">API-avain</string>
+    <string name="options">Asetukset</string>
+    <string name="about">Tietoja</string>
+    <string name="fetch_delay">Käännösviive</string>
+    <string name="optional">Valinnainen</string>
+    <string name="history_summary">Seuraa viimeksi käännettyjä tekstejä</string>
+    <string name="required">Pakollinen</string>
+    <string name="author">Tekijä</string>
+    <string name="license">Lisenssi</string>
+    <string name="privacy_policy">Tietosuojakäytäntö</string>
+    <string name="theme_auto">Järjestelmä</string>
+    <string name="theme_dark">Tumma</string>
+    <string name="clear_history">Tyhjennä historia</string>
+    <string name="server_error">Virhe yhteydenpidossa palvelimen kanssa. Valitse toinen instanssi asetuksista!</string>
+    <string name="fetch_delay_summary">Viive tekstin lisäämisen ja käännöksen noutamisen välillä</string>
+</resources>
