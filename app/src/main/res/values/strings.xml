@@ -25,6 +25,8 @@
     <string name="history_summary">Keep track of the last translated texts</string>
     <string name="required">Required</string>
     <string name="optional">Optional</string>
+    <string name="compact_history">Compact history</string>
+    <string name="compact_history_summary">Only show the first 3 text lines per default in the history</string>
 
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>

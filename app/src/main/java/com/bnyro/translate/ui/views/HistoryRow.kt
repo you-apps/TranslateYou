@@ -29,6 +29,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.ui.activities.MainActivity
 import com.bnyro.translate.ui.components.StyledIconButton
+import com.bnyro.translate.util.Preferences
 
 @Composable
 fun HistoryRow(
@@ -37,17 +38,43 @@ fun HistoryRow(
 ) {
     val context = LocalContext.current
 
+    fun startNewActivity() {
+        (context as Activity).apply {
+            startActivity(
+                Intent(context, MainActivity::class.java).apply {
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        historyItem.insertedText as CharSequence
+                    )
+                    setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }
+            )
+            finishAffinity()
+        }
+    }
+
     var showDialog by remember {
         mutableStateOf(
             false
         )
     }
 
+    val compactHistory = Preferences.get(
+        Preferences.compactHistory,
+        true
+    )
+
+    val maxLines = if (compactHistory) 3 else Int.MAX_VALUE
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                showDialog = true
+                if (compactHistory) {
+                    showDialog = true
+                } else {
+                    startNewActivity()
+                }
             }
             .padding(
                 start = 15.dp,
@@ -64,7 +91,7 @@ fun HistoryRow(
             Text(
                 historyItem.insertedText,
                 fontSize = 18.sp,
-                maxLines = 3,
+                maxLines = maxLines,
                 overflow = TextOverflow.Ellipsis
             )
 
@@ -76,7 +103,7 @@ fun HistoryRow(
             Text(
                 historyItem.translatedText,
                 fontSize = 14.sp,
-                maxLines = 3,
+                maxLines = maxLines,
                 overflow = TextOverflow.Ellipsis
             )
         }
@@ -113,18 +140,7 @@ fun HistoryRow(
             confirmButton = {
                 TextButton(
                     onClick = {
-                        (context as Activity).apply {
-                            startActivity(
-                                Intent(context, MainActivity::class.java).apply {
-                                    putExtra(
-                                        Intent.EXTRA_TEXT,
-                                        historyItem.insertedText as CharSequence
-                                    )
-                                    setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                }
-                            )
-                            finishAffinity()
-                        }
+                        startNewActivity()
                     }
                 ) {
                     Text(stringResource(R.string.open))

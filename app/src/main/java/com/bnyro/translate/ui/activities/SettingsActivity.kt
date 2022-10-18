@@ -114,6 +114,13 @@ fun SettingsPage() {
                 preferenceSummary = stringResource(R.string.history_summary)
             )
 
+            SwitchPreference(
+                preferenceKey = Preferences.compactHistory,
+                defaultValue = true,
+                preferenceTitle = stringResource(R.string.compact_history),
+                preferenceSummary = stringResource(R.string.compact_history_summary)
+            )
+
             SliderPreference(
                 preferenceKey = Preferences.fetchDelay,
                 preferenceTitle = stringResource(R.string.fetch_delay),
