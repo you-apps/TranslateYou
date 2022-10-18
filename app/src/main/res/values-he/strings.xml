@@ -35,4 +35,8 @@
     <string name="optional">רשות</string>
     <string name="required">חובה</string>
     <string name="privacy_policy">מדיניות פרטיות</string>
+    <string name="forget">לשכוח</string>
+    <string name="compact_history_summary">להציג את 3 שירות הטקסט הראשונות כברירת מחדל בהיסטוריה</string>
+    <string name="open">פתיחה</string>
+    <string name="compact_history">צמצום היסטוריה</string>
 </resources>
