@@ -1,6 +1,6 @@
 package com.bnyro.translate.api.lv
 
-import com.bnyro.translate.api.lv.obj.LVTranslation
+import com.bnyro.translate.api.lv.obj.LVTranslationResponse
 import com.bnyro.translate.api.lv.obj.LvLanguage
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,5 +14,5 @@ interface LingvaTranslate {
         @Path("source") source: String,
         @Path("target") target: String,
         @Path("query") query: String
-    ): LVTranslation
+    ): LVTranslationResponse
 }
