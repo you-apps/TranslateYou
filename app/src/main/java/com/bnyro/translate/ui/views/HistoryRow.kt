@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -81,7 +82,8 @@ fun HistoryRow(
                 end = 5.dp,
                 top = 8.dp,
                 bottom = 8.dp
-            )
+            ),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
             modifier = Modifier
