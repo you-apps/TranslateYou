@@ -27,4 +27,8 @@
     <string name="language_not_supported">Dil desteklenmiyor!</string>
     <string name="privacy_policy">Gizlilik Politikası</string>
     <string name="optional">İsteğe bağlı</string>
+    <string name="compact_history_summary">Geçmişte öntanımlı olarak yalnızca ilk 3 metin satırını göster</string>
+    <string name="open">Aç</string>
+    <string name="forget">Unut</string>
+    <string name="compact_history">Geçmişi sıkılaştır</string>
 </resources>
