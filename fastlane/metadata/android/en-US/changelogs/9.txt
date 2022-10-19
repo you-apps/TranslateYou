@@ -1,0 +1,4 @@
+* Only show the first few lines per translation in the history (optional, #48)
+* `Forget` button to clean the clipboard (#49)
+* New translations via Weblate thanks to a lot of translators <3
+* Minor bug fixes
