@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Translate You</string>
-
     <!-- Dialog -->
     <string name="okay">אישור</string>
     <string name="cancel">ביטול</string>
@@ -31,4 +30,9 @@
     <string name="clear_history">פינוי ההיסטוריה</string>
     <!-- Exception -->
     <string name="server_error">שגיאה ביצירת קשר עם השרת. נא לבחור בעותק אחר בהגדרות!</string>
+    <string name="copy">העתקה</string>
+    <string name="language_not_supported">השפה אינה נתמכת!</string>
+    <string name="optional">רשות</string>
+    <string name="required">חובה</string>
+    <string name="privacy_policy">מדיניות פרטיות</string>
 </resources>
