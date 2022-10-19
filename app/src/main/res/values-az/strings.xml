@@ -27,4 +27,8 @@
     <string name="required">Tələb olunur</string>
     <string name="optional">Əlavə</string>
     <string name="privacy_policy">Məxfilik Siyasəti</string>
+    <string name="forget">Unut</string>
+    <string name="compact_history">Tarixçəni sıxlaşdır</string>
+    <string name="compact_history_summary">Tarixçədə standart olaraq yalnız ilk 3 mətn sətirini göstərin</string>
+    <string name="open">Aç</string>
 </resources>
