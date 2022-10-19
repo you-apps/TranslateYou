@@ -10,7 +10,8 @@ class MMEngine : TranslationEngine(
     name = "MyMemory",
     defaultUrl = "https://api.mymemory.translated.net",
     urlModifiable = false,
-    apiKeyState = ApiKeyState.OPTIONAL
+    apiKeyState = ApiKeyState.OPTIONAL,
+    autoLanguageCode = "Autodetect"
 ) {
     lateinit var api: MyMemory
     override fun create(): TranslationEngine = apply {
@@ -48,7 +49,7 @@ class MMEngine : TranslationEngine(
         val key = getApiKey()
         return api.translate(
             query,
-            "$source|$target",
+            "${sourceOrAuto(source)}|$target",
             if (key == "") null else key
 
         )

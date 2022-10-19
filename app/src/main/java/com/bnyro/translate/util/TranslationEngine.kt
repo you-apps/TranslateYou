@@ -7,7 +7,8 @@ abstract class TranslationEngine(
     val name: String,
     val defaultUrl: String,
     val urlModifiable: Boolean,
-    val apiKeyState: Int
+    val apiKeyState: Int,
+    val autoLanguageCode: String
 ) {
 
     abstract fun create(): TranslationEngine
@@ -36,4 +37,8 @@ abstract class TranslationEngine(
         apiPrefKey,
         ""
     )
+
+    fun sourceOrAuto(source: String): String {
+        return if (source == "") autoLanguageCode else source
+    }
 }

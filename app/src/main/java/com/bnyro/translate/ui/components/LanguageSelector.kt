@@ -46,7 +46,12 @@ fun LanguageSelector(
     val languages = availableLanguages.toMutableList()
 
     // remove auto language
-    if (!autoLanguageEnabled && languages.isNotEmpty()) languages.removeAt(0)
+    if (autoLanguageEnabled && languages.isNotEmpty()) {
+        languages.add(
+            0,
+            Language("", stringResource(R.string.auto))
+        )
+    }
 
     if (showDialog) {
         AlertDialog(

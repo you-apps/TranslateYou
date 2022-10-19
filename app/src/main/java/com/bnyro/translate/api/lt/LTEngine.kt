@@ -9,7 +9,8 @@ class LTEngine : TranslationEngine(
     name = "LibreTranslate",
     defaultUrl = "https://libretranslate.de",
     urlModifiable = true,
-    apiKeyState = ApiKeyState.OPTIONAL
+    apiKeyState = ApiKeyState.OPTIONAL,
+    autoLanguageCode = "auto"
 ) {
 
     private lateinit var api: LibreTranslate
@@ -21,15 +22,7 @@ class LTEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
-        return api.getLanguages().toMutableList().apply {
-            add(
-                0,
-                Language(
-                    code = "auto",
-                    name = "Auto"
-                )
-            )
-        }
+        return api.getLanguages().toMutableList()
     }
 
     override suspend fun translate(

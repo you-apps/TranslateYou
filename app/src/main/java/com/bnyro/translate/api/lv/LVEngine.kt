@@ -10,7 +10,8 @@ class LVEngine : TranslationEngine(
     name = "Lingva",
     defaultUrl = "https://lingva.ml",
     urlModifiable = true,
-    apiKeyState = ApiKeyState.DISABLED
+    apiKeyState = ApiKeyState.DISABLED,
+    autoLanguageCode = "auto"
 ) {
 
     private lateinit var api: LingvaTranslate
@@ -22,12 +23,14 @@ class LVEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
-        return api.getLanguages().languages
+        return api.getLanguages().languages.toMutableList().apply {
+            removeAt(0)
+        }
     }
 
     override suspend fun translate(query: String, source: String, target: String): String {
         val translation = api.translate(
-            source,
+            sourceOrAuto(source),
             target,
             URLHelper.encodeURL(query)
         ).translation

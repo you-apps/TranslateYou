@@ -9,7 +9,8 @@ class DeeplEngine : TranslationEngine(
     name = "DeepL",
     defaultUrl = "https://api-free.deepl.com",
     urlModifiable = false,
-    apiKeyState = ApiKeyState.REQUIRED
+    apiKeyState = ApiKeyState.REQUIRED,
+    autoLanguageCode = ""
 ) {
 
     private lateinit var api: DeepL
@@ -42,7 +43,7 @@ class DeeplEngine : TranslationEngine(
     override suspend fun translate(query: String, source: String, target: String): String =
         api.translate(
             apiKeyString,
-            source,
+            sourceOrAuto(source),
             target,
             query
         ).translations[0].text
