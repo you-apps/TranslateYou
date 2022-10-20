@@ -1,2 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="fetch_delay_summary">Opóźnienie między wprowadzeniem tekstu a pobraniem tłumaczenia</string>
+    <string name="history_summary">Zachowaj ostatnio przetłumaczone teksty</string>
+    <string name="required">Wymagane</string>
+    <string name="forget">Zapomnij</string>
+    <string name="theme_auto">Systemowy</string>
+    <string name="theme_light">Jasny</string>
+    <string name="theme_dark">Ciemny</string>
+    <string name="server_error">Błąd w komunikacji z serwerem. Proszę wybrać inną instancję w ustawieniach!</string>
+    <string name="compact_history">Kompaktowa historia</string>
+    <string name="okay">OK</string>
+    <string name="cancel">Anuluj</string>
+    <string name="enter_text">Wprowadź tekst</string>
+    <string name="paste">Wklej</string>
+    <string name="copy">Kopiuj</string>
+    <string name="auto">Automatycznie</string>
+    <string name="language_not_supported">Ten język nie jest obsługiwany!</string>
+    <string name="instance">Instancja</string>
+    <string name="api_key">Klucz API</string>
+    <string name="options">Ustawienia</string>
+    <string name="history">Historia</string>
+    <string name="about">O aplikacji</string>
+    <string name="history_enabled">Włącz historię</string>
+    <string name="fetch_delay">Opóźnienie w tłumaczeniu</string>
+    <string name="clear_history">Wyczyść historię</string>
+    <string name="optional">Opcjonalne</string>
+    <string name="author">Autor</string>
+    <string name="license">Licencja</string>
+    <string name="privacy_policy">Polityka prywatności</string>
+    <string name="open">Otwórz</string>
+    <string name="compact_history_summary">Domyślnie pokazuj w historii tylko pierwsze trzy linijki tekstu</string>
+</resources>

@@ -27,4 +27,8 @@
     <string name="copy">Copia</string>
     <string name="language_not_supported">La lingua non è supportata!</string>
     <string name="privacy_policy">Informativa sulla riservatezza</string>
+    <string name="compact_history">Compatta cronologia</string>
+    <string name="compact_history_summary">Mostra solo le prime 3 linee di testo come predefinito nella cronologia</string>
+    <string name="open">Apri</string>
+    <string name="forget">Dimentica</string>
 </resources>
