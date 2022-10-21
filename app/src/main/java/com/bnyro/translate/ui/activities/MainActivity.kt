@@ -92,6 +92,8 @@ class MainActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
 
+        mainModel.refresh()
+
         mainModel.fetchLanguages {
             Toast.makeText(
                 this,

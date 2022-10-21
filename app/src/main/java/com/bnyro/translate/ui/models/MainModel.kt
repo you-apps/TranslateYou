@@ -16,13 +16,17 @@ import com.bnyro.translate.obj.Language
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TranslationEngine
 import com.fasterxml.jackson.databind.ObjectMapper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainModel : ViewModel() {
-    private val engine: TranslationEngine
-        get() = TranslationEngines.engines[
-            Preferences.get(Preferences.apiTypeKey, 0)
-        ]
+    var engine: TranslationEngine = getCurrentEngine()
+
+    var simTranslationEnabled by mutableStateOf(
+        Preferences.get(Preferences.simultaneousTranslationKey, false)
+    )
+    var enabledSimEngines = getEnabledEngines()
 
     var availableLanguages: List<Language> by mutableStateOf(
         emptyList()
@@ -43,6 +47,11 @@ class MainModel : ViewModel() {
     var translatedText: String by mutableStateOf(
         ""
     )
+
+    var translatedTexts: MutableMap<String, String> = TranslationEngines.engines
+        .map { it.name to "" }
+        .toMap()
+        .toMutableMap()
 
     private fun getLanguageByPrefKey(key: String): Language? {
         return try {
@@ -76,7 +85,7 @@ class MainModel : ViewModel() {
             return
         }
 
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val translation = try {
                 engine.translate(
                     insertedText,
@@ -89,8 +98,29 @@ class MainModel : ViewModel() {
             }
             if (insertedText != "") {
                 translatedText = translation
-
+                translatedTexts[engine.name] = translation
                 saveToHistory()
+            }
+        }
+
+        if (simTranslationEnabled) simTranslation()
+    }
+
+    fun simTranslation() {
+        enabledSimEngines.forEach {
+            if (it != engine) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val translation = try {
+                        it.translate(
+                            insertedText,
+                            sourceLanguage.code,
+                            targetLanguage.code
+                        )
+                    } catch (e: Exception) {
+                        return@launch
+                    }
+                    translatedTexts[it.name] = translation
+                }
             }
         }
     }
@@ -133,5 +163,19 @@ class MainModel : ViewModel() {
             }
             this@MainModel.availableLanguages = languages
         }
+    }
+
+    private fun getCurrentEngine() = TranslationEngines.engines[
+        Preferences.get(Preferences.apiTypeKey, 0)
+    ]
+
+    private fun getEnabledEngines() = TranslationEngines.engines.filter {
+        it.isSimultaneousTranslationEnabled()
+    }
+
+    fun refresh() {
+        engine = getCurrentEngine()
+        enabledSimEngines = getEnabledEngines()
+        simTranslationEnabled = Preferences.get(Preferences.simultaneousTranslationKey, false)
     }
 }

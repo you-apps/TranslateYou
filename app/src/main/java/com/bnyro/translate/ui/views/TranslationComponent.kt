@@ -35,6 +35,8 @@ import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.util.ClipboardHelper
+import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.util.SimTranslationComponent
 import com.bnyro.translate.util.SpeechHelper
 
 @Composable
@@ -128,11 +130,15 @@ fun TranslationComponent(
                 .weight(1.0f)
         )
 
-        Divider(
-            color = Color.Gray,
-            modifier = Modifier
-                .align(alignment = Alignment.CenterHorizontally)
-                .size(70.dp, 2.dp)
-        )
+        if (viewModel.simTranslationEnabled) {
+            SimTranslationComponent()
+        } else {
+            Divider(
+                color = Color.Gray,
+                modifier = Modifier
+                    .align(alignment = Alignment.CenterHorizontally)
+                    .size(70.dp, 2.dp)
+            )
+        }
     }
 }
