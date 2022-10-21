@@ -17,7 +17,7 @@ fun SettingsCategory(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                top = 40.dp,
+                top = 20.dp,
                 bottom = 5.dp,
                 start = 5.dp,
                 end = 5.dp

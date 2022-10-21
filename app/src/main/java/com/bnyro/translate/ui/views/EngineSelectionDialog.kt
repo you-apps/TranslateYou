@@ -43,6 +43,13 @@ fun EngineSelectionDialog(
                 Text(stringResource(R.string.okay))
             }
         },
+        dismissButton = {
+            TextButton(
+                onClick = onDismissRequest
+            ) {
+                Text(stringResource(R.string.cancel))
+            }
+        },
         text = {
             MultiSelectList(
                 titles = TranslationEngines.engines.map { it.name },

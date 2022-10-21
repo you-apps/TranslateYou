@@ -134,19 +134,19 @@ fun SettingsPage() {
                 preferenceSummary = stringResource(R.string.compact_history_summary)
             )
 
+            SliderPreference(
+                preferenceKey = Preferences.fetchDelay,
+                preferenceTitle = stringResource(R.string.fetch_delay),
+                preferenceSummary = stringResource(R.string.fetch_delay_summary),
+                defaultValue = 500f,
+                minValue = 100f,
+                maxValue = 1000f,
+                stepSize = 100f
+            )
+
             if (BuildConfig.FLAVOR != "libre") {
                 SettingsCategory(
                     title = stringResource(R.string.simultaneous_translation)
-                )
-
-                SliderPreference(
-                    preferenceKey = Preferences.fetchDelay,
-                    preferenceTitle = stringResource(R.string.fetch_delay),
-                    preferenceSummary = stringResource(R.string.fetch_delay_summary),
-                    defaultValue = 500f,
-                    minValue = 100f,
-                    maxValue = 1000f,
-                    stepSize = 100f
                 )
 
                 SwitchPreference(
