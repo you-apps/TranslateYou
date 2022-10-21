@@ -20,7 +20,8 @@ fun SwitchPreference(
     preferenceKey: String,
     defaultValue: Boolean,
     preferenceTitle: String,
-    preferenceSummary: String
+    preferenceSummary: String,
+    onValueChange: (Boolean) -> Unit = {}
 ) {
     var checked by remember {
         mutableStateOf(
@@ -29,6 +30,15 @@ fun SwitchPreference(
                 defaultValue
             )
         )
+    }
+
+    fun onCheckedChange(newValue: Boolean) {
+        checked = newValue
+        Preferences.put(
+            preferenceKey,
+            checked
+        )
+        onValueChange.invoke(newValue)
     }
 
     val indicationSource = remember { MutableInteractionSource() }
@@ -41,11 +51,7 @@ fun SwitchPreference(
                 indicationSource,
                 null
             ) {
-                checked = !checked
-                Preferences.put(
-                    preferenceKey,
-                    checked
-                )
+                onCheckedChange(!checked)
             }
     ) {
         PreferenceItem(
@@ -57,11 +63,7 @@ fun SwitchPreference(
         Switch(
             checked = checked,
             onCheckedChange = {
-                checked = it
-                Preferences.put(
-                    preferenceKey,
-                    it
-                )
+                onCheckedChange(!checked)
             }
         )
     }

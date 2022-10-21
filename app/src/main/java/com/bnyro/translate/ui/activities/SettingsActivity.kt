@@ -1,6 +1,5 @@
 package com.bnyro.translate.ui.activities
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import androidx.compose.foundation.layout.Column
@@ -27,15 +26,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
+import com.bnyro.translate.ui.components.prefs.PreferenceItem
 import com.bnyro.translate.ui.components.prefs.SettingsCategory
 import com.bnyro.translate.ui.components.prefs.SliderPreference
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.ui.views.EnginePref
+import com.bnyro.translate.ui.views.EngineSelectionDialog
 import com.bnyro.translate.util.Preferences
 
 class SettingsActivity : BaseActivity() {
@@ -51,7 +53,7 @@ class SettingsActivity : BaseActivity() {
     }
 }
 
-@SuppressLint("UnrememberedMutableState")
+@Suppress("KotlinConstantConditions")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
@@ -59,6 +61,16 @@ fun SettingsPage() {
     val context = LocalContext.current
 
     var showThemeOptions by remember {
+        mutableStateOf(false)
+    }
+
+    var enableSimultaneousTranslation by remember {
+        mutableStateOf(
+            Preferences.get(Preferences.simultaneousTranslationKey, false)
+        )
+    }
+
+    var showEngineSelectDialog by remember {
         mutableStateOf(false)
     }
 
@@ -121,15 +133,41 @@ fun SettingsPage() {
                 preferenceSummary = stringResource(R.string.compact_history_summary)
             )
 
-            SliderPreference(
-                preferenceKey = Preferences.fetchDelay,
-                preferenceTitle = stringResource(R.string.fetch_delay),
-                preferenceSummary = stringResource(R.string.fetch_delay_summary),
-                defaultValue = 500f,
-                minValue = 100f,
-                maxValue = 1000f,
-                stepSize = 100f
-            )
+            if (BuildConfig.FLAVOR != "libre") {
+                SliderPreference(
+                    preferenceKey = Preferences.fetchDelay,
+                    preferenceTitle = stringResource(R.string.fetch_delay),
+                    preferenceSummary = stringResource(R.string.fetch_delay_summary),
+                    defaultValue = 500f,
+                    minValue = 100f,
+                    maxValue = 1000f,
+                    stepSize = 100f
+                )
+
+                SwitchPreference(
+                    preferenceKey = Preferences.simultaneousTranslationKey,
+                    defaultValue = false,
+                    preferenceTitle = stringResource(R.string.simultaneous_translation),
+                    preferenceSummary = stringResource(R.string.simultaneous_translation_summary)
+                ) {
+                    enableSimultaneousTranslation = it
+                }
+
+                if (enableSimultaneousTranslation) {
+                    PreferenceItem(
+                        title = stringResource(R.string.enabled_engines),
+                        summary = stringResource(R.string.enabled_engines_summary)
+                    ) {
+                        showEngineSelectDialog = true
+                    }
+                }
+            }
+        }
+    }
+
+    if (showEngineSelectDialog) {
+        EngineSelectionDialog {
+            showEngineSelectDialog = false
         }
     }
 

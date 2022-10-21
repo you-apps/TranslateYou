@@ -27,6 +27,10 @@
     <string name="optional">Optional</string>
     <string name="compact_history">Compact history</string>
     <string name="compact_history_summary">Only show the first 3 text lines per default in the history</string>
+    <string name="simultaneous_translation">Simultaneous translation</string>
+    <string name="simultaneous_translation_summary">Fetch results from multiple engines at the same time.</string>
+    <string name="enabled_engines">Enabled engines</string>
+    <string name="enabled_engines_summary">Engines to use for the simultaneous translation.</string>
 
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>

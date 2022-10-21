@@ -19,6 +19,8 @@ abstract class TranslationEngine(
 
     val urlPrefKey = this.name + Preferences.instanceUrlKey
     val apiPrefKey = this.name + Preferences.apiKey
+    val simPrefKey = this.name + Preferences.simultaneousTranslationKey
+
     fun getUrl(): String {
         val url = Preferences.get(
             urlPrefKey,
@@ -41,4 +43,9 @@ abstract class TranslationEngine(
     fun sourceOrAuto(source: String): String {
         return if (source == "") autoLanguageCode else source
     }
+
+    fun isSimultaneousTranslationEnabled() = Preferences.get(
+        simPrefKey,
+        false
+    )
 }
