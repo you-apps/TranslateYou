@@ -3,11 +3,17 @@ package com.bnyro.translate.ui.components
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun MultiSelectList(
@@ -17,19 +23,30 @@ fun MultiSelectList(
 ) {
     Column {
         titles.forEachIndexed { index, title ->
-            Row {
+            var selected by remember {
+                mutableStateOf(selectedItems[index])
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Checkbox(
-                    checked = selectedItems[index],
+                    checked = selected,
                     onCheckedChange = {
                         selectedItems[index] = it
+                        selected = it
                         onChange.invoke(selectedItems)
                     }
                 )
                 Spacer(
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .weight(1.0f)
                 )
                 Text(title)
+                Spacer(
+                    modifier = Modifier
+                        .width(10.dp)
+                )
             }
         }
     }

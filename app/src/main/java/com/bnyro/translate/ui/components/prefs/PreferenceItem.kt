@@ -1,5 +1,6 @@
 package com.bnyro.translate.ui.components.prefs
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +20,9 @@ fun PreferenceItem(
 ) {
     Row(
         modifier = modifier
+            .clickable {
+                onClick.invoke()
+            }
     ) {
         Column {
             Text(title)

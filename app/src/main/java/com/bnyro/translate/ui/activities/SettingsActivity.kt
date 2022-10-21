@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -134,6 +135,10 @@ fun SettingsPage() {
             )
 
             if (BuildConfig.FLAVOR != "libre") {
+                SettingsCategory(
+                    title = stringResource(R.string.simultaneous_translation)
+                )
+
                 SliderPreference(
                     preferenceKey = Preferences.fetchDelay,
                     preferenceTitle = stringResource(R.string.fetch_delay),
@@ -156,7 +161,8 @@ fun SettingsPage() {
                 if (enableSimultaneousTranslation) {
                     PreferenceItem(
                         title = stringResource(R.string.enabled_engines),
-                        summary = stringResource(R.string.enabled_engines_summary)
+                        summary = stringResource(R.string.enabled_engines_summary),
+                        modifier = Modifier.fillMaxWidth()
                     ) {
                         showEngineSelectDialog = true
                     }
