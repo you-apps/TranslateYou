@@ -62,26 +62,26 @@ fun TopBar(
                 }
             }
 
-            if (mainModel.translation != "") {
+            if (mainModel.translation.translatedText != "") {
                 StyledIconButton(
                     imageVector = Icons.Default.ContentCopy,
                     onClick = {
                         ClipboardHelper(
                             context
                         ).write(
-                            mainModel.translation
+                            mainModel.translation.translatedText
                         )
                     }
                 )
             }
 
-            if (mainModel.translation != "") {
+            if (mainModel.translation.translatedText != "") {
                 StyledIconButton(
                     imageVector = Icons.Default.Share,
                     onClick = {
                         val sendIntent: Intent = Intent().apply {
                             action = Intent.ACTION_SEND
-                            putExtra(Intent.EXTRA_TEXT, mainModel.translation)
+                            putExtra(Intent.EXTRA_TEXT, mainModel.translation.translatedText)
                             type = "text/plain"
                         }
 

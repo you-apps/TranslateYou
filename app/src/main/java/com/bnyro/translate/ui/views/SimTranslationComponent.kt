@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.models.MainModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,7 +35,7 @@ fun SimTranslationComponent() {
                 onClick = {
                     selected = it
                     viewModel.engine = it
-                    viewModel.translation = viewModel.translatedTexts[it.name].toString()
+                    viewModel.translation = viewModel.translatedTexts[it.name] ?: Translation("")
                 },
                 label = {
                     Text(it.name)
