@@ -12,6 +12,7 @@ object Preferences {
     const val fetchDelay = "fetchDelay"
     const val compactHistory = "compactHistory"
     const val simultaneousTranslationKey = "simultaneousTranslation"
+    const val showAdditionalInfo = "showAdditionalInfoKey"
 
     const val themeModeKey = "themeMode"
     const val sourceLanguage = "sourceLanguage"

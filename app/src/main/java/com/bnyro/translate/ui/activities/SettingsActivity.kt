@@ -144,6 +144,13 @@ fun SettingsPage() {
                 stepSize = 100f
             )
 
+            SwitchPreference(
+                preferenceKey = Preferences.showAdditionalInfo,
+                defaultValue = false,
+                preferenceTitle = stringResource(R.string.additional_info),
+                preferenceSummary = stringResource(R.string.additional_info_summary)
+            )
+
             if (BuildConfig.FLAVOR != "libre") {
                 SettingsCategory(
                     title = stringResource(R.string.simultaneous_translation)
@@ -157,6 +164,11 @@ fun SettingsPage() {
                 ) {
                     enableSimultaneousTranslation = it
                 }
+
+                Spacer(
+                    modifier = Modifier
+                        .height(10.dp)
+                )
 
                 if (enableSimultaneousTranslation) {
                     PreferenceItem(

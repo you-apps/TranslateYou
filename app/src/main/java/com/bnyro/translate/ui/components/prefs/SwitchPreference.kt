@@ -3,14 +3,17 @@ package com.bnyro.translate.ui.components.prefs
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.util.Preferences
@@ -52,13 +55,18 @@ fun SwitchPreference(
                 null
             ) {
                 onCheckedChange(!checked)
-            }
+            },
+        verticalAlignment = Alignment.CenterVertically
     ) {
         PreferenceItem(
             title = preferenceTitle,
             summary = preferenceSummary,
             modifier = Modifier
                 .weight(1.0f)
+        )
+        Spacer(
+            modifier = Modifier
+                .width(10.dp)
         )
         Switch(
             checked = checked,

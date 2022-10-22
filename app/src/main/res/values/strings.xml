@@ -31,6 +31,8 @@
     <string name="simultaneous_translation_summary">Fetch results from multiple engines at the same time.</string>
     <string name="enabled_engines">Enabled engines</string>
     <string name="enabled_engines_summary">Engines to use for the simultaneous translation.</string>
+    <string name="additional_info">Additional information</string>
+    <string name="additional_info_summary">Show additional translation information if available.</string>
 
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
