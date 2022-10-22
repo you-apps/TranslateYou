@@ -34,7 +34,7 @@ fun SimTranslationComponent() {
                 onClick = {
                     selected = it
                     viewModel.engine = it
-                    viewModel.translatedText = viewModel.translatedTexts[it.name].toString()
+                    viewModel.translation = viewModel.translatedTexts[it.name].toString()
                 },
                 label = {
                     Text(it.name)

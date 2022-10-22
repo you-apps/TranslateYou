@@ -1,7 +1,9 @@
 package com.bnyro.translate.api.lv
 
 import com.bnyro.translate.const.ApiKeyState
+import com.bnyro.translate.obj.Definition
 import com.bnyro.translate.obj.Language
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 import com.bnyro.translate.util.URLHelper
@@ -28,12 +30,26 @@ class LVEngine : TranslationEngine(
         }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): String {
-        val translation = api.translate(
+    override suspend fun translate(query: String, source: String, target: String): Translation {
+        val response = api.translate(
             sourceOrAuto(source),
             target,
             URLHelper.encodeURL(query)
-        ).translation
-        return URLHelper.decodeURL(translation)
+        )
+        return Translation(
+            translatedText = URLHelper.decodeURL(response.translation),
+            detectedLanguage = response.info?.detectedSource,
+            examples = response.info?.examples,
+            similar = response.info?.similar,
+            definitions = response.info?.definitions
+                ?.map {
+                    Definition(
+                        type = it.type,
+                        definition = it.list.first().definition,
+                        example = it.list.first().example,
+                        synonym = it.list.first().synonyms.first()
+                    )
+                }
+        )
     }
 }

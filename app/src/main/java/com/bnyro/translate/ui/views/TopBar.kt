@@ -14,8 +14,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
@@ -64,26 +62,26 @@ fun TopBar(
                 }
             }
 
-            if (mainModel.translatedText != "") {
+            if (mainModel.translation != "") {
                 StyledIconButton(
                     imageVector = Icons.Default.ContentCopy,
                     onClick = {
                         ClipboardHelper(
                             context
                         ).write(
-                            mainModel.translatedText
+                            mainModel.translation
                         )
                     }
                 )
             }
 
-            if (mainModel.translatedText != "") {
+            if (mainModel.translation != "") {
                 StyledIconButton(
                     imageVector = Icons.Default.Share,
                     onClick = {
                         val sendIntent: Intent = Intent().apply {
                             action = Intent.ACTION_SEND
-                            putExtra(Intent.EXTRA_TEXT, mainModel.translatedText)
+                            putExtra(Intent.EXTRA_TEXT, mainModel.translation)
                             type = "text/plain"
                         }
 

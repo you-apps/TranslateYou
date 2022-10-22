@@ -13,6 +13,7 @@ import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.ext.Query
 import com.bnyro.translate.obj.Language
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TranslationEngine
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -44,13 +45,13 @@ class MainModel : ViewModel() {
         ""
     )
 
-    var translatedText: String by mutableStateOf(
-        ""
+    var translation: Translation by mutableStateOf(
+        Translation("")
     )
 
-    var translatedTexts: MutableMap<String, String> =
+    var translatedTexts: MutableMap<String, Translation> =
         TranslationEngines.engines
-            .associate { it.name to "" }
+            .associate { it.name to Translation("") }
             .toMutableMap()
 
     private fun getLanguageByPrefKey(key: String): Language? {
@@ -81,12 +82,12 @@ class MainModel : ViewModel() {
 
     fun translate() {
         if (insertedText == "" || targetLanguage == sourceLanguage) {
-            translatedText = ""
+            translation = Translation("")
             return
         }
 
         translatedTexts = TranslationEngines.engines
-            .associate { it.name to "" }
+            .associate { it.name to Translation("") }
             .toMutableMap()
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -101,7 +102,7 @@ class MainModel : ViewModel() {
                 return@launch
             }
             if (insertedText != "") {
-                translatedText = translation
+                this@MainModel.translation = translation
                 translatedTexts[engine.name] = translation
                 saveToHistory()
             }
@@ -145,7 +146,7 @@ class MainModel : ViewModel() {
                     targetLanguageCode = targetLanguage.code,
                     targetLanguageName = targetLanguage.name,
                     insertedText = insertedText,
-                    translatedText = translatedText
+                    translatedText = translation.translatedText
                 )
             )
         }
@@ -153,7 +154,7 @@ class MainModel : ViewModel() {
 
     fun clearTranslation() {
         insertedText = ""
-        translatedText = ""
+        translation = Translation("")
     }
 
     fun fetchLanguages(onError: (Exception) -> Unit = {}) {

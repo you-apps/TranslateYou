@@ -2,6 +2,7 @@ package com.bnyro.translate.api.deepl
 
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.obj.Language
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 
@@ -40,11 +41,17 @@ class DeeplEngine : TranslationEngine(
         )
     }
 
-    override suspend fun translate(query: String, source: String, target: String): String =
-        api.translate(
+    override suspend fun translate(query: String, source: String, target: String): Translation {
+        val response = api.translate(
             apiKeyString,
             sourceOrAuto(source.uppercase()),
             target.uppercase(),
             query
-        ).translations[0].text
+        )
+
+        return Translation(
+            translatedText = response.translations.first().text,
+            detectedLanguage = response.translations.first().detected_source_language
+        )
+    }
 }

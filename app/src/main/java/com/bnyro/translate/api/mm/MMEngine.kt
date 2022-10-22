@@ -2,6 +2,7 @@ package com.bnyro.translate.api.mm
 
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.obj.Language
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -45,16 +46,17 @@ class MMEngine : TranslationEngine(
         return languages
     }
 
-    override suspend fun translate(query: String, source: String, target: String): String {
+    override suspend fun translate(query: String, source: String, target: String): Translation {
         val key = getApiKey()
-        return api.translate(
+        val response = api.translate(
             query,
             "${sourceOrAuto(source)}|$target",
             if (key == "") null else key
 
         )
-            .matches
-            .first()
-            .translation
+        return Translation(
+            translatedText = response.responseData?.translatedText ?: "",
+            detectedLanguage = response.responseData?.detectedLanguage
+        )
     }
 }

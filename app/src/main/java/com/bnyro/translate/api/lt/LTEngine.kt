@@ -2,6 +2,7 @@ package com.bnyro.translate.api.lt
 
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.obj.Language
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 
@@ -29,10 +30,16 @@ class LTEngine : TranslationEngine(
         query: String,
         source: String,
         target: String
-    ): String = api.translate(
-        query,
-        source,
-        target,
-        getApiKey()
-    ).translatedText
+    ): Translation {
+        val response = api.translate(
+            query,
+            source,
+            target,
+            getApiKey()
+        )
+        return Translation(
+            translatedText = response.translatedText,
+            detectedLanguage = response.detectedLanguage?.language
+        )
+    }
 }

@@ -78,7 +78,7 @@ fun TranslationComponent(
                 .size(70.dp, 1.dp)
         )
 
-        if (viewModel.translatedText != "" && SpeechHelper.ttsAvailable) {
+        if (viewModel.translation != "" && SpeechHelper.ttsAvailable) {
             Box(
                 modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.CenterEnd
@@ -88,7 +88,7 @@ fun TranslationComponent(
                 ) {
                     SpeechHelper.speak(
                         context,
-                        viewModel.translatedText,
+                        viewModel.translation,
                         viewModel.targetLanguage.code
                     )
                 }
@@ -122,7 +122,7 @@ fun TranslationComponent(
         }
 
         StyledTextField(
-            text = viewModel.translatedText,
+            text = viewModel.translation,
             onValueChange = {},
             readOnly = true,
             modifier = Modifier
