@@ -48,10 +48,10 @@ class MainModel : ViewModel() {
         ""
     )
 
-    var translatedTexts: MutableMap<String, String> = TranslationEngines.engines
-        .map { it.name to "" }
-        .toMap()
-        .toMutableMap()
+    var translatedTexts: MutableMap<String, String> =
+        TranslationEngines.engines
+            .associate { it.name to "" }
+            .toMutableMap()
 
     private fun getLanguageByPrefKey(key: String): Language? {
         return try {
@@ -85,6 +85,10 @@ class MainModel : ViewModel() {
             return
         }
 
+        translatedTexts = TranslationEngines.engines
+            .associate { it.name to "" }
+            .toMutableMap()
+
         CoroutineScope(Dispatchers.IO).launch {
             val translation = try {
                 engine.translate(
@@ -106,7 +110,7 @@ class MainModel : ViewModel() {
         if (simTranslationEnabled) simTranslation()
     }
 
-    fun simTranslation() {
+    private fun simTranslation() {
         enabledSimEngines.forEach {
             if (it != engine) {
                 CoroutineScope(Dispatchers.IO).launch {

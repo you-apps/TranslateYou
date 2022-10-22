@@ -27,7 +27,7 @@ class DeeplEngine : TranslationEngine(
         apiKeyString
     ).map {
         Language(
-            code = it.language,
+            code = it.language.lowercase(),
             name = it.name
         )
     }.toMutableList().apply {
@@ -43,8 +43,8 @@ class DeeplEngine : TranslationEngine(
     override suspend fun translate(query: String, source: String, target: String): String =
         api.translate(
             apiKeyString,
-            sourceOrAuto(source),
-            target,
+            sourceOrAuto(source.uppercase()),
+            target.uppercase(),
             query
         ).translations[0].text
 }

@@ -35,7 +35,6 @@ import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.util.ClipboardHelper
-import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SimTranslationComponent
 import com.bnyro.translate.util.SpeechHelper
 

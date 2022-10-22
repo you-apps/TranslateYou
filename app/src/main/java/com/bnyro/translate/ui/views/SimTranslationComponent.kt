@@ -1,6 +1,5 @@
 package com.bnyro.translate.util
 
-import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items

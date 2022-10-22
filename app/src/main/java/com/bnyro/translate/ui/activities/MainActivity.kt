@@ -197,7 +197,7 @@ private fun ScreenContent() {
                                 modifier = Modifier.align(
                                     alignment = Alignment.BottomEnd
                                 )
-                                    .padding(15.dp, 40.dp)
+                                    .padding(15.dp, 60.dp)
                             ) {
                                 Icon(
                                     Icons.Default.Add,
