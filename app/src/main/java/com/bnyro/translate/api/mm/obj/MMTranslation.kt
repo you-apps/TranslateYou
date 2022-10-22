@@ -12,5 +12,6 @@ data class MMTranslation(
     val source: String = "",
     val subject: String = "",
     val target: String = "",
-    val translation: String = ""
+    val translation: String = "",
+    val model: Any? = true
 )
