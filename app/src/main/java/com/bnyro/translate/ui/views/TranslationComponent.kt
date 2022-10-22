@@ -182,6 +182,11 @@ fun TranslationComponent(
             }
         }
 
+        Spacer(
+            modifier = Modifier
+                .height(10.dp)
+        )
+
         if (viewModel.simTranslationEnabled) {
             SimTranslationComponent()
         } else {
