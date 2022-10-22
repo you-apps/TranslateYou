@@ -91,6 +91,7 @@ class MainModel : ViewModel() {
             .toMutableMap()
 
         CoroutineScope(Dispatchers.IO).launch {
+            /*
             val translation = try {
                 engine.translate(
                     insertedText,
@@ -101,6 +102,12 @@ class MainModel : ViewModel() {
                 Log.e("error", e.message.toString())
                 return@launch
             }
+             */
+            val translation = engine.translate(
+                insertedText,
+                sourceLanguage.code,
+                targetLanguage.code
+            )
             if (insertedText != "") {
                 this@MainModel.translation = translation
                 translatedTexts[engine.name] = translation

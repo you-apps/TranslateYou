@@ -37,21 +37,35 @@ class LVEngine : TranslationEngine(
             target,
             URLHelper.encodeURL(query)
         )
-        Log.e("defs", response.info?.definitions.toString())
-        return Translation(
+        val x = Translation(
             translatedText = URLHelper.decodeURL(response.translation),
             detectedLanguage = response.info?.detectedSource,
             examples = response.info?.examples,
             similar = response.info?.similar,
             definitions = response.info?.definitions
                 ?.map {
-                    Definition(
+                    val def = Definition(
                         type = it.type,
-                        definition = it.list.first().definition,
-                        example = it.list.first().example,
-                        synonym = it.list.first().synonyms.first()
+                        definition = try {
+                            it.list.first().definition
+                        } catch (e: Exception) {
+                            null
+                        },
+                        example = try {
+                            it.list.first().example
+                        } catch (e: Exception) {
+                            null
+                        },
+                        synonym = try {
+                            it.list.first().synonyms.first()
+                        } catch (e: Exception) {
+                            null
+                        }
                     )
+                    Log.e("moin", def.toString())
+                    def
                 }
         )
+        return x
     }
 }
