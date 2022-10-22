@@ -1,0 +1,8 @@
+## What's Changed
+* Simultaneous Translation (#24)
+* Support for synonyms, definitions and examples (#28)
+* Various minor UI and UX improvements
+
+## Translations
+* Update French strings file by @Ilithy in https://github.com/Bnyro/TranslateYou/pull/56
+* Translations updated via Hosted Weblate by different translators <3
