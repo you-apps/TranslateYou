@@ -1,5 +1,6 @@
 package com.bnyro.translate.api.lv
 
+import android.util.Log
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.obj.Definition
 import com.bnyro.translate.obj.Language
@@ -36,6 +37,7 @@ class LVEngine : TranslationEngine(
             target,
             URLHelper.encodeURL(query)
         )
+        Log.e("defs", response.info?.definitions.toString())
         return Translation(
             translatedText = URLHelper.decodeURL(response.translation),
             detectedLanguage = response.info?.detectedSource,

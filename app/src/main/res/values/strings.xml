@@ -51,4 +51,10 @@
 
     <!-- Exception -->
     <string name="server_error">Error in communicating with the server. Please choose another instance in the settings!</string>
+
+    <!-- Additional Info -->
+    <string name="detected_language">Detected language</string>
+    <string name="definition">Definition</string>
+    <string name="example">Example</string>
+    <string name="similar">Similar</string>
 </resources>

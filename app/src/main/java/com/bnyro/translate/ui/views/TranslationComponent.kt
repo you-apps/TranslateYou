@@ -1,6 +1,6 @@
 package com.bnyro.translate.ui.views
 
-import androidx.compose.foundation.gestures.scrollable
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
@@ -33,11 +33,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
+import com.bnyro.translate.ui.components.AdditionalInfo
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.util.ClipboardHelper
+import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SimTranslationComponent
 import com.bnyro.translate.util.SpeechHelper
 
@@ -57,13 +59,10 @@ fun TranslationComponent(
         )
     }
 
-    val scrollState = rememberScrollState()
-
     Column(
         modifier = Modifier
             .padding(15.dp)
             .fillMaxSize()
-            .verticalScroll(scrollState)
     ) {
         StyledTextField(
             text = viewModel.insertedText,
@@ -134,6 +133,50 @@ fun TranslationComponent(
             modifier = Modifier
                 .weight(1.0f)
         )
+
+        if (Preferences.get(Preferences.showAdditionalInfo, false)) {
+            LazyColumn {
+                viewModel.translation.detectedLanguage?.let { language ->
+                    item(language) {
+                        AdditionalInfo(
+                            title = stringResource(R.string.detected_language),
+                            text = try {
+                                viewModel.availableLanguages.first {
+                                    it.code == language
+                                }.name
+                            } catch (e: Exception) {
+                                language
+                            }
+                        )
+                    }
+                }
+                viewModel.translation.definitions?.let {
+                    Log.e("definition", it.toString())
+                    items(it) {
+                        AdditionalInfo(
+                            title = stringResource(R.string.definition),
+                            text = "${it.type}, ${it.definition}\n${it.example}"
+                        )
+                    }
+                }
+                viewModel.translation.examples?.let {
+                    items(it) {
+                        AdditionalInfo(
+                            title = stringResource(R.string.example),
+                            text = it
+                        )
+                    }
+                }
+                viewModel.translation.similar?.let {
+                    items(it) {
+                        AdditionalInfo(
+                            title = stringResource(R.string.similar),
+                            text = it
+                        )
+                    }
+                }
+            }
+        }
 
         if (viewModel.simTranslationEnabled) {
             SimTranslationComponent()

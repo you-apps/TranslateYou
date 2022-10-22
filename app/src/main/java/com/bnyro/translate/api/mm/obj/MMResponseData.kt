@@ -6,5 +6,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 data class MMResponseData(
     val match: Int = 0,
     val translatedText: String = "",
-    val detectedLanguage: String = ""
+    val detectedLanguage: String? = null
 )
