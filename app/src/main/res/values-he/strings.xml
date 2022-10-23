@@ -39,4 +39,8 @@
     <string name="compact_history_summary">להציג את 3 שירות הטקסט הראשונות כברירת מחדל בהיסטוריה</string>
     <string name="open">פתיחה</string>
     <string name="compact_history">צמצום היסטוריה</string>
+    <string name="simultaneous_translation">תרגום סימולטני</string>
+    <string name="enabled_engines">מנועים מופעלים</string>
+    <string name="simultaneous_translation_summary">משיכת תוצאות ממגוון מנועים בו־זמנית.</string>
+    <string name="enabled_engines_summary">מנועים לשימוש התרגום הסימולטני.</string>
 </resources>
