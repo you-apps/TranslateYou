@@ -31,4 +31,8 @@
     <string name="compact_history">Tarixçəni sıxlaşdır</string>
     <string name="compact_history_summary">Tarixçədə standart olaraq yalnız ilk 3 mətn sətirini göstərin</string>
     <string name="open">Aç</string>
+    <string name="simultaneous_translation_summary">Eyni anda birdən çox mühərrikdən nəticələr əldə et.</string>
+    <string name="enabled_engines">Aktivləşdirilmiş mühərriklər</string>
+    <string name="simultaneous_translation">Eyni zamanda tərcümə</string>
+    <string name="enabled_engines_summary">Eyni zamanlı tərcümə üçün istifadə ediləcək mühərriklər.</string>
 </resources>
