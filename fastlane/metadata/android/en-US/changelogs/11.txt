@@ -1,0 +1,2 @@
+Fix app crashes with DeepL and MyMemory (#57)
+Fix the theme at the app startup
