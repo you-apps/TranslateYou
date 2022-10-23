@@ -34,7 +34,7 @@ class MainModel : ViewModel() {
     )
 
     var sourceLanguage: Language by mutableStateOf(
-        getLanguageByPrefKey(Preferences.sourceLanguage) ?: Language("auto", "Auto")
+        getLanguageByPrefKey(Preferences.sourceLanguage) ?: Language("", "Auto")
     )
 
     var targetLanguage: Language by mutableStateOf(

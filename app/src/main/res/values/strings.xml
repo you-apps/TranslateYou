@@ -50,7 +50,8 @@
     <string name="open">Open</string>
 
     <!-- Exception -->
-    <string name="server_error">Error in communicating with the server. Please choose another instance in the settings!</string>
+    <string name="server_error">Error in communicating with the server.</string>
+    <string name="missing_api_key">Please provide an API Key in the Settings!</string>
 
     <!-- Additional Info -->
     <string name="detected_language">Detected language</string>

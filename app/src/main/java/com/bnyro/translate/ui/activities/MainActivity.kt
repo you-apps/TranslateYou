@@ -1,5 +1,6 @@
 package com.bnyro.translate.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -24,7 +25,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -118,6 +122,7 @@ class MainActivity : BaseActivity() {
     }
 }
 
+@SuppressLint("UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ScreenContent() {
@@ -221,10 +226,14 @@ private fun ScreenContent() {
                         viewModel.sourceLanguage = it
                     }
 
+                    val switchBtnEnabled by mutableStateOf(
+                        viewModel.sourceLanguage.code != ""
+                    )
+
                     IconButton(
                         onClick = {
                             if (viewModel.availableLanguages.isEmpty()) return@IconButton
-                            if (viewModel.sourceLanguage.code == viewModel.availableLanguages.first().code) return@IconButton
+                            if (!switchBtnEnabled) return@IconButton
                             val temp = viewModel.sourceLanguage
                             viewModel.sourceLanguage = viewModel.targetLanguage
                             viewModel.targetLanguage = temp
@@ -235,11 +244,7 @@ private fun ScreenContent() {
                             null,
                             modifier = Modifier
                                 .size(18.dp),
-                            tint = if (viewModel.sourceLanguage.code == "auto") {
-                                Color.Gray
-                            } else {
-                                MaterialTheme.colorScheme.onSurface
-                            }
+                            tint = if (switchBtnEnabled) MaterialTheme.colorScheme.onSurface else Color.Gray
                         )
                     }
 
