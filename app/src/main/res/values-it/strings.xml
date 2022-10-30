@@ -31,4 +31,8 @@
     <string name="compact_history_summary">Mostra solo le prime 3 linee di testo come predefinito nella cronologia</string>
     <string name="open">Apri</string>
     <string name="forget">Dimentica</string>
+    <string name="simultaneous_translation">Traduzione simultanea</string>
+    <string name="enabled_engines_summary">Motori da usare per la traduzione simultanea.</string>
+    <string name="enabled_engines">Motori attivati</string>
+    <string name="simultaneous_translation_summary">Ottieni i risultati da più motori di traduzione nello stesso momento.</string>
 </resources>

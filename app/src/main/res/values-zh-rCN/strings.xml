@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="history_summary">追踪最近翻译的文本</string>
+    <string name="required">必需</string>
+    <string name="optional">可选</string>
+    <string name="compact_history">紧凑历史视图</string>
+    <string name="compact_history_summary">每条历史记录中默认仅显示前三行文本</string>
+    <string name="language_not_supported">该语言不受支持！</string>
+    <string name="options">设置</string>
+    <string name="enabled_engines">已启用引擎</string>
+    <string name="enabled_engines_summary">用于同步翻译的引擎。</string>
+    <string name="open">打开</string>
+    <string name="cancel">取消</string>
+    <string name="enter_text">输入文字</string>
+    <string name="copy">复制</string>
+    <string name="api_key">API 密钥</string>
+    <string name="fetch_delay_summary">插入文本与获取翻译之间的延迟</string>
+    <string name="okay">好的</string>
+    <string name="paste">粘贴</string>
+    <string name="auto">自动</string>
+    <string name="forget">忘掉</string>
+    <string name="history">历史</string>
+    <string name="theme_auto">跟随系统</string>
+    <string name="instance">实例</string>
+    <string name="history_enabled">启用历史记录</string>
+    <string name="fetch_delay">翻译延迟</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="simultaneous_translation_summary">同时从多个翻译引擎获取结果。</string>
+    <string name="author">作者</string>
+    <string name="simultaneous_translation">同步翻译</string>
+    <string name="license">许可</string>
+    <string name="theme_light">亮色</string>
+    <string name="theme_dark">暗色</string>
+    <string name="clear_history">清除历史</string>
+    <string name="server_error">与服务器通信时发生错误。请在设置中选择另一个实例！</string>
+    <string name="about">关于</string>
+</resources>

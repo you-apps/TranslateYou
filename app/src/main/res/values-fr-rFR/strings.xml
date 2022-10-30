@@ -45,4 +45,13 @@
     <string name="open">Ouvrir</string>
     <!-- Exception -->
     <string name="server_error">Erreur lors de la communication avec le serveur. Veuillez sélectionner une autre instance dans les paramètres !</string>
+    <string name="language_not_supported">La langue n\'est pas prise en charge !</string>
+    <string name="compact_history">Historique compact</string>
+    <string name="open">Ouvrir</string>
+    <string name="forget">Oublier</string>
+    <string name="compact_history_summary">N\'affiche par défaut que les 3 premières lignes de texte dans l\'historique</string>
+    <string name="simultaneous_translation">Traductions simultanées</string>
+    <string name="enabled_engines">Moteurs activés</string>
+    <string name="simultaneous_translation_summary">Récupérez les résultats de plusieurs moteurs de traductions en même temps.</string>
+    <string name="enabled_engines_summary">Moteurs à utiliser pour la traduction simultanée.</string>
 </resources>

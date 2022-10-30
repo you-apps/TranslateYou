@@ -31,4 +31,8 @@
     <string name="open">Aç</string>
     <string name="forget">Unut</string>
     <string name="compact_history">Geçmişi sıkılaştır</string>
+    <string name="simultaneous_translation">Eşzamanlı çeviri</string>
+    <string name="simultaneous_translation_summary">Aynı anda birden fazla motordan sonuçları getir.</string>
+    <string name="enabled_engines">Etkin motorlar</string>
+    <string name="enabled_engines_summary">Eşzamanlı çeviri için kullanılacak motorlar.</string>
 </resources>
