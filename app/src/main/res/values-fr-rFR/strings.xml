@@ -10,7 +10,6 @@
     <string name="copy">Copier</string>
     <string name="auto">Auto</string>
     <string name="forget">Oublier</string>
-    <string name="language_not_supported">Langue non pris en charge!</string>
     <!-- Settings -->
     <string name="instance">Instance</string>
     <string name="api_key">Clé de l\'API</string>
@@ -23,12 +22,6 @@
     <string name="history_summary">Gardez une trace des derniers textes traduits</string>
     <string name="required">Obligatoire</string>
     <string name="optional">Optionnel</string>
-    <string name="compact_history">historique compact</string>
-    <string name="compact_history_summary">N\'affiche par défaut que les 3 premières lignes de texte dans l\'historique</string>
-    <string name="simultaneous_translation">Traduction simultanée</string>
-    <string name="simultaneous_translation_summary">Récupérer les résultats de plusieurs moteurs de traduction simultanément.</string>
-    <string name="enabled_engines">Moteurs activés</string>
-    <string name="enabled_engines_summary">Moteurs à utiliser pour la traduction simultanée.</string>
     <string name="additional_info">Informations complémentaires</string>
     <string name="additional_info_summary">Afficher des données supplémentaires sur la traduction si elles sont disponibles.</string>
     <!-- About -->
@@ -45,10 +38,8 @@
     <string name="open">Ouvrir</string>
     <!-- Exception -->
     <string name="server_error">Erreur lors de la communication avec le serveur. Veuillez sélectionner une autre instance dans les paramètres !</string>
-    <string name="language_not_supported">La langue n\'est pas prise en charge !</string>
+    <string name="language_not_supported">La langue n\'est pas prise en charge!</string>
     <string name="compact_history">Historique compact</string>
-    <string name="open">Ouvrir</string>
-    <string name="forget">Oublier</string>
     <string name="compact_history_summary">N\'affiche par défaut que les 3 premières lignes de texte dans l\'historique</string>
     <string name="simultaneous_translation">Traductions simultanées</string>
     <string name="enabled_engines">Moteurs activés</string>
