@@ -15,7 +15,7 @@ class HistoryModel : ViewModel() {
 
     fun fetchHistory() {
         Query {
-            history = Db.historyDao().getAll()
+            history = Db.historyDao().getAll().reversed()
         }
     }
 
