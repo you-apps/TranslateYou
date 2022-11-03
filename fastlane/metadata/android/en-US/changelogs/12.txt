@@ -1,0 +1,4 @@
+* Support for the Reverso Context Engine
+* Fix of the automatic source language for some engines
+* Fix of the upside-down history
+* Minor improvements to the settings UI
