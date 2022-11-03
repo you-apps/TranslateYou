@@ -46,7 +46,7 @@ class ReversoEngine : TranslationEngine(
     override suspend fun translate(query: String, source: String, target: String): Translation {
         val response = api.translate(
             ReversoRequestBody(
-                from = source,
+                from = sourceOrAuto(source),
                 to = target,
                 input = query
             )
