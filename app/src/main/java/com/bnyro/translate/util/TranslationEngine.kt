@@ -9,7 +9,8 @@ abstract class TranslationEngine(
     val defaultUrl: String,
     val urlModifiable: Boolean,
     val apiKeyState: Int,
-    val autoLanguageCode: String
+    val autoLanguageCode: String,
+    var supportsSimTranslation: Boolean = true
 ) {
 
     abstract fun create(): TranslationEngine

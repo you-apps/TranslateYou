@@ -12,7 +12,8 @@ class ReversoEngine : TranslationEngine(
     defaultUrl = "https://api.reverso.net/",
     urlModifiable = false,
     apiKeyState = ApiKeyState.DISABLED,
-    autoLanguageCode = "auto"
+    autoLanguageCode = "auto",
+    supportsSimTranslation = false
 ) {
     lateinit var api: Reverso
 

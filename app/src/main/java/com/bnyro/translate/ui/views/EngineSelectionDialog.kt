@@ -52,7 +52,9 @@ fun EngineSelectionDialog(
         },
         text = {
             MultiSelectList(
-                titles = TranslationEngines.engines.map { it.name },
+                titles = TranslationEngines.engines.filter {
+                    it.supportsSimTranslation
+                }.map { it.name },
                 selectedItems = selectedItems,
                 onChange = {
                     selectedItems = it
