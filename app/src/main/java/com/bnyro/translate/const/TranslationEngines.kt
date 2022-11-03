@@ -5,13 +5,15 @@ import com.bnyro.translate.api.deepl.DeeplEngine
 import com.bnyro.translate.api.lt.LTEngine
 import com.bnyro.translate.api.lv.LVEngine
 import com.bnyro.translate.api.mm.MMEngine
+import com.bnyro.translate.api.reverso.ReversoEngine
 import com.bnyro.translate.util.TranslationEngine
 
 object TranslationEngines {
     val libreTranslate = LTEngine()
-    var lingvaTranslate = LVEngine()
-    var deepl = DeeplEngine()
-    var myMemory = MMEngine()
+    val lingvaTranslate = LVEngine()
+    val deepl = DeeplEngine()
+    val myMemory = MMEngine()
+    val reverso = ReversoEngine()
 
     var engines = createEngines()
 
@@ -22,7 +24,7 @@ object TranslationEngines {
 
         if (BuildConfig.FLAVOR == "libre") return engines
 
-        listOf(lingvaTranslate, deepl, myMemory).forEach {
+        listOf(lingvaTranslate, deepl, myMemory, reverso).forEach {
             engines.add(it.create())
         }
 
