@@ -59,7 +59,7 @@ fun EnginePref() {
             engines[selected].apply {
                 Spacer(
                     modifier = Modifier
-                        .height(20.dp)
+                        .height(5.dp)
                 )
 
                 if (this.urlModifiable) {
@@ -72,11 +72,6 @@ fun EnginePref() {
                         labelText = stringResource(R.string.instance)
                     )
                 }
-
-                Spacer(
-                    modifier = Modifier
-                        .height(10.dp)
-                )
 
                 if (this.apiKeyState != ApiKeyState.DISABLED) {
                     EditTextPreference(

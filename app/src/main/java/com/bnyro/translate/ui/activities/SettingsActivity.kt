@@ -110,7 +110,7 @@ fun SettingsPage() {
                 .padding(15.dp, 0.dp)
         ) {
             EnginePref()
-            
+
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

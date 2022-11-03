@@ -13,6 +13,7 @@ import com.bnyro.translate.util.Preferences
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditTextPreference(
+    modifier: Modifier = Modifier,
     preferenceKey: String,
     value: String,
     labelText: String,
@@ -30,7 +31,7 @@ fun EditTextPreference(
                 text = labelText
             )
         },
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
     )
 }
