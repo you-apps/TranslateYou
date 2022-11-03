@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DarkMode
@@ -106,77 +107,78 @@ fun SettingsPage() {
             modifier = Modifier
                 .padding(pV)
                 .fillMaxSize()
-                .padding(15.dp, 0.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(15.dp, 0.dp)
         ) {
-            Spacer(
-                modifier = Modifier
-                    .height(20.dp)
-            )
-
             EnginePref()
+            
+            LazyColumn(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                item {
+                    SettingsCategory(
+                        title = stringResource(R.string.history)
+                    )
 
-            SettingsCategory(
-                title = stringResource(R.string.history)
-            )
+                    SwitchPreference(
+                        preferenceKey = Preferences.historyEnabledKey,
+                        defaultValue = true,
+                        preferenceTitle = stringResource(R.string.history_enabled),
+                        preferenceSummary = stringResource(R.string.history_summary)
+                    )
 
-            SwitchPreference(
-                preferenceKey = Preferences.historyEnabledKey,
-                defaultValue = true,
-                preferenceTitle = stringResource(R.string.history_enabled),
-                preferenceSummary = stringResource(R.string.history_summary)
-            )
+                    SwitchPreference(
+                        preferenceKey = Preferences.compactHistory,
+                        defaultValue = true,
+                        preferenceTitle = stringResource(R.string.compact_history),
+                        preferenceSummary = stringResource(R.string.compact_history_summary)
+                    )
 
-            SwitchPreference(
-                preferenceKey = Preferences.compactHistory,
-                defaultValue = true,
-                preferenceTitle = stringResource(R.string.compact_history),
-                preferenceSummary = stringResource(R.string.compact_history_summary)
-            )
+                    SliderPreference(
+                        preferenceKey = Preferences.fetchDelay,
+                        preferenceTitle = stringResource(R.string.fetch_delay),
+                        preferenceSummary = stringResource(R.string.fetch_delay_summary),
+                        defaultValue = 500f,
+                        minValue = 100f,
+                        maxValue = 1000f,
+                        stepSize = 100f
+                    )
 
-            SliderPreference(
-                preferenceKey = Preferences.fetchDelay,
-                preferenceTitle = stringResource(R.string.fetch_delay),
-                preferenceSummary = stringResource(R.string.fetch_delay_summary),
-                defaultValue = 500f,
-                minValue = 100f,
-                maxValue = 1000f,
-                stepSize = 100f
-            )
-
-            SwitchPreference(
-                preferenceKey = Preferences.showAdditionalInfo,
-                defaultValue = false,
-                preferenceTitle = stringResource(R.string.additional_info),
-                preferenceSummary = stringResource(R.string.additional_info_summary)
-            )
-
-            if (BuildConfig.FLAVOR != "libre") {
-                SettingsCategory(
-                    title = stringResource(R.string.simultaneous_translation)
-                )
-
-                SwitchPreference(
-                    preferenceKey = Preferences.simultaneousTranslationKey,
-                    defaultValue = false,
-                    preferenceTitle = stringResource(R.string.simultaneous_translation),
-                    preferenceSummary = stringResource(R.string.simultaneous_translation_summary)
-                ) {
-                    enableSimultaneousTranslation = it
+                    SwitchPreference(
+                        preferenceKey = Preferences.showAdditionalInfo,
+                        defaultValue = false,
+                        preferenceTitle = stringResource(R.string.additional_info),
+                        preferenceSummary = stringResource(R.string.additional_info_summary)
+                    )
                 }
 
-                Spacer(
-                    modifier = Modifier
-                        .height(10.dp)
-                )
+                item {
+                    if (BuildConfig.FLAVOR == "libre") return@item
+                    SettingsCategory(
+                        title = stringResource(R.string.simultaneous_translation)
+                    )
 
-                if (enableSimultaneousTranslation) {
-                    PreferenceItem(
-                        title = stringResource(R.string.enabled_engines),
-                        summary = stringResource(R.string.enabled_engines_summary),
-                        modifier = Modifier.fillMaxWidth()
+                    SwitchPreference(
+                        preferenceKey = Preferences.simultaneousTranslationKey,
+                        defaultValue = false,
+                        preferenceTitle = stringResource(R.string.simultaneous_translation),
+                        preferenceSummary = stringResource(R.string.simultaneous_translation_summary)
                     ) {
-                        showEngineSelectDialog = true
+                        enableSimultaneousTranslation = it
+                    }
+
+                    Spacer(
+                        modifier = Modifier
+                            .height(10.dp)
+                    )
+
+                    if (enableSimultaneousTranslation) {
+                        PreferenceItem(
+                            title = stringResource(R.string.enabled_engines),
+                            summary = stringResource(R.string.enabled_engines_summary),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            showEngineSelectDialog = true
+                        }
                     }
                 }
             }
