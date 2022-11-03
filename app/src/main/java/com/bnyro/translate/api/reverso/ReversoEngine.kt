@@ -18,7 +18,7 @@ class ReversoEngine : TranslationEngine(
     lateinit var api: Reverso
 
     override fun create(): TranslationEngine = apply {
-        api = RetrofitHelper.createApi(this, Reverso::class.java)
+        api = RetrofitHelper.createApi(this)
     }
 
     override suspend fun getLanguages(): List<Language> {

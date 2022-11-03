@@ -19,10 +19,7 @@ class LVEngine : TranslationEngine(
 
     private lateinit var api: LingvaTranslate
     override fun create(): TranslationEngine = apply {
-        api = RetrofitHelper.createApi(
-            this,
-            LingvaTranslate::class.java
-        )
+        api = RetrofitHelper.createApi(this)
     }
 
     override suspend fun getLanguages(): List<Language> {

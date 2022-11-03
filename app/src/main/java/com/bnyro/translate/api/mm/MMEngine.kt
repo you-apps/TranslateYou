@@ -16,10 +16,7 @@ class MMEngine : TranslationEngine(
 ) {
     lateinit var api: MyMemory
     override fun create(): TranslationEngine = apply {
-        api = RetrofitHelper.createApi(
-            this,
-            MyMemory::class.java
-        )
+        api = RetrofitHelper.createApi(this)
     }
 
     override suspend fun getLanguages(): List<Language> {

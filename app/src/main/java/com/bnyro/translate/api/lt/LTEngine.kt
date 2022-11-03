@@ -16,10 +16,7 @@ class LTEngine : TranslationEngine(
 
     private lateinit var api: LibreTranslate
     override fun create(): TranslationEngine = apply {
-        api = RetrofitHelper.createApi(
-            this,
-            LibreTranslate::class.java
-        )
+        api = RetrofitHelper.createApi(this)
     }
 
     override suspend fun getLanguages(): List<Language> {

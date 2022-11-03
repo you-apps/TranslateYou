@@ -16,10 +16,7 @@ class DeeplEngine : TranslationEngine(
 
     private lateinit var api: DeepL
     override fun create(): TranslationEngine = apply {
-        api = RetrofitHelper.createApi(
-            this,
-            DeepL::class.java
-        )
+        api = RetrofitHelper.createApi(this)
     }
 
     private val apiKeyString = "DeepL-Auth-Key " + getApiKey()

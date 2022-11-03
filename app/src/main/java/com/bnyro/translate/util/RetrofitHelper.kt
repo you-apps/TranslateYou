@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
 object RetrofitHelper {
-    fun <T> createApi(engine: TranslationEngine, type: Class<T>): T {
+    inline fun <reified T> createApi(engine: TranslationEngine): T {
         val baseUrl = engine.getUrl()
 
         val logging = HttpLoggingInterceptor().apply {
@@ -19,11 +19,9 @@ object RetrofitHelper {
 
         return Retrofit.Builder()
             .baseUrl(baseUrl)
-            .addConverterFactory(
-                JacksonConverterFactory.create()
-            )
+            .addConverterFactory(JacksonConverterFactory.create())
             .client(httpClient.build())
             .build()
-            .create(type)
+            .create(T::class.java)
     }
 }

@@ -160,6 +160,7 @@ class MainModel : ViewModel() {
     fun fetchLanguages(onError: (Exception) -> Unit = {}) {
         viewModelScope.launch {
             val languages = try {
+                Log.e("engine", engine.name)
                 engine.getLanguages()
             } catch (e: Exception) {
                 Log.e("Fetching languages", e.toString())
