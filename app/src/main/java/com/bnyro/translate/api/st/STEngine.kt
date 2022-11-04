@@ -3,18 +3,20 @@ package com.bnyro.translate.api.st
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.obj.Language
 import com.bnyro.translate.obj.Translation
+import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 import java.net.URL
 
 class STEngine : TranslationEngine(
     name = "SimplyTranslate",
-    defaultUrl = "https://st.tokhmi.xyz/", // "https://simplytranslate.org/",
+    defaultUrl = "https://simplytranslate.org/",
     urlModifiable = true,
     apiKeyState = ApiKeyState.DISABLED,
     autoLanguageCode = "auto"
 ) {
     lateinit var api: SimplyTranslate
+    val selEnginePrefKey = this.name + "selectedEngine"
 
     override fun create(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
@@ -24,7 +26,11 @@ class STEngine : TranslationEngine(
         // val body = api.getLanguages().execute().body()
         var body: String? = null
         Thread {
-            body = URL(getUrl() + "/api/target_languages/").readText()
+            var path = "/api/target_languages/"
+            getSelectedEngine()?.let {
+                path += "?engine=$it"
+            }
+            body = URL(getUrl() + path).readText()
         }.apply {
             start()
             join()
@@ -42,6 +48,7 @@ class STEngine : TranslationEngine(
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
         val response = api.translate(
+            engine = getSelectedEngine(),
             source = sourceOrAuto(source),
             query = query,
             target = target
@@ -50,5 +57,14 @@ class STEngine : TranslationEngine(
             translatedText = response.translated_text,
             detectedLanguage = response.source_language
         )
+    }
+
+    private fun getSelectedEngine(): String? {
+        Preferences.get(selEnginePrefKey, "all").let {
+            return when (it) {
+                "all" -> null
+                else -> it
+            }
+        }
     }
 }

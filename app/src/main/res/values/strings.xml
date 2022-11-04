@@ -33,6 +33,8 @@
     <string name="enabled_engines_summary">Engines to use for the simultaneous translation.</string>
     <string name="additional_info">Additional information</string>
     <string name="additional_info_summary">Show additional translation information if available.</string>
+    <string name="selected_engine">Selected engine</string>
+    <string name="st_selected_engine">Engine that SimplyTranslate uses for translating</string>
 
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
