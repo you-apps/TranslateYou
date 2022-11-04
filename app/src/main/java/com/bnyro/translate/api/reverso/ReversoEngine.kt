@@ -55,7 +55,7 @@ class ReversoEngine : TranslationEngine(
 
         val examples = mutableListOf<String>()
         response.contextResults?.results?.forEach {
-            it.sourceExamples.forEach {
+            it.targetExamples.forEach {
                 examples.add(it)
             }
         }

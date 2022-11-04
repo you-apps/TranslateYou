@@ -145,7 +145,7 @@ fun SettingsPage() {
 
                     SwitchPreference(
                         preferenceKey = Preferences.showAdditionalInfo,
-                        defaultValue = false,
+                        defaultValue = true,
                         preferenceTitle = stringResource(R.string.additional_info),
                         preferenceSummary = stringResource(R.string.additional_info_summary)
                     )
