@@ -1,2 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="cancel">ବାତିଲ</string>
+    <string name="enter_text">ଲେଖା ପ୍ରବେଶ କରନ୍ତୁ</string>
+    <string name="copy">ନକଲ କରନ୍ତୁ</string>
+    <string name="auto">ସ୍ଵତଃ</string>
+    <string name="forget">ଭୁଲି ଯାଅ</string>
+    <string name="instance">ଉଦାହରଣ</string>
+    <string name="api_key">API କି</string>
+    <string name="options">ସେଟିଂ</string>
+    <string name="history">ଇତିହାସ</string>
+    <string name="about">ବିଷୟରେ</string>
+    <string name="history_enabled">ଇତିହାସ ସକ୍ଷମ କର</string>
+    <string name="theme_dark">ଅନ୍ଧାର</string>
+    <string name="clear_history">ଇତିହାସ ଖାଲି କରନ୍ତୁ</string>
+    <string name="open">ଖୋଲନ୍ତୁ</string>
+    <string name="server_error">ସର୍ଭର ସହିତ ଯୋଗାଯୋଗ କରିବାରେ ତ୍ରୁଟି |</string>
+    <string name="fetch_delay">ଅନୁବାଦ ବିଳମ୍ବ</string>
+    <string name="fetch_delay_summary">ପାଠ୍ୟ ସନ୍ନିବେଶ କରିବା ଏବଂ ଅନୁବାଦ ଆଣିବା ମଧ୍ୟରେ ବିଳମ୍ବ</string>
+    <string name="history_summary">ଶେଷ ଅନୁବାଦିତ ପାଠ୍ୟଗୁଡ଼ିକ ଉପରେ ନଜର ରଖ</string>
+    <string name="required">ଆବଶ୍ୟକୀୟ</string>
+    <string name="optional">ଇଚ୍ଛାଧୀନ</string>
+    <string name="compact_history">କମ୍ପାକ୍ଟ ଇତିହାସ</string>
+    <string name="compact_history_summary">ଇତିହାସରେ ଡିଫଲ୍ଟ ପ୍ରତି ପ୍ରଥମ 3 ଟେକ୍ସଟ୍ ଲାଇନ୍ ଦେଖାନ୍ତୁ</string>
+    <string name="simultaneous_translation">ଏକକାଳୀନ ଅନୁବାଦ</string>
+    <string name="simultaneous_translation_summary">ଏକ ସମୟରେ ଏକାଧିକ ଇଞ୍ଜିନରୁ ଫଳାଫଳ ଆଣ |</string>
+    <string name="enabled_engines">ସକ୍ଷମ ଇଞ୍ଜିନ୍</string>
+    <string name="enabled_engines_summary">ଏକକାଳୀନ ଅନୁବାଦ ପାଇଁ ବ୍ୟବହାର କରିବାକୁ ଇଞ୍ଜିନ୍ |</string>
+    <string name="author">ଲେଖକ</string>
+    <string name="license">ଲାଇସେନ୍ସ</string>
+    <string name="privacy_policy">ଗୋପନୀୟତା ନୀତି</string>
+    <string name="theme_auto">ସିଷ୍ଟମ୍</string>
+    <string name="theme_light">ଉଜ୍ଜଳ</string>
+    <string name="selected_engine">ମନୋନୀତ ଇଞ୍ଜିନ୍</string>
+    <string name="missing_api_key">ଦୟାକରି ସେଟିଂସମୂହରେ ଏକ API କି ପ୍ରଦାନ କରନ୍ତୁ !</string>
+    <string name="detected_language">ଚିହ୍ନିତ ଭାଷା</string>
+    <string name="definition">ସଂଜ୍ଞା</string>
+    <string name="example">ଉଦାହରଣ</string>
+    <string name="similar">ସେହିଭଳି</string>
+    <string name="okay">ଠିକ୍ ଅଛି</string>
+    <string name="paste">ଲେପନ କରନ୍ତୁ</string>
+    <string name="language_not_supported">ଭାଷା ସମର୍ଥିତ ନୁହେଁ!</string>
+    <string name="additional_info">ଅତିରିକ୍ତ ସୂଚନା</string>
+    <string name="additional_info_summary">ଉପଲବ୍ଧ ଥିଲେ ଅତିରିକ୍ତ ଅନୁବାଦ ସୂଚନା ଦେଖାନ୍ତୁ |</string>
+    <string name="st_selected_engine">ଇଞ୍ଜିନ ଯାହା ସିମ୍ପଲି ଟ୍ରାନ୍ସଲେଟ୍ ଅନୁବାଦ ପାଇଁ ବ୍ୟବହାର କରେ</string>
+</resources>
