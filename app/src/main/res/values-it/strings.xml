@@ -35,7 +35,7 @@
     <string name="enabled_engines_summary">Motori da usare per la traduzione simultanea.</string>
     <string name="enabled_engines">Motori attivati</string>
     <string name="simultaneous_translation_summary">Ottieni i risultati da più motori di traduzione nello stesso momento.</string>
-    <string name="selected_engine">Seleziona motore</string>
+    <string name="selected_engine">Motore selezionato</string>
     <string name="st_selected_engine">Motore che SimplyTranslate usa per tradurre</string>
     <string name="missing_api_key">Fornisci un chiave API nelle impostazioni per favore!</string>
     <string name="definition">Definizione</string>
