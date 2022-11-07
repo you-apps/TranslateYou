@@ -20,7 +20,7 @@
     <string name="theme_auto">Sistem</string>
     <string name="theme_light">İşıqlı</string>
     <string name="theme_dark">Qaranlıq</string>
-    <string name="server_error">Server ilə əlaqə zamanı xəta. Zəhmət olmasa, tənzimləmələrdə başqa nümunə seçin!</string>
+    <string name="server_error">Server ilə əlaqə zamanı xəta.</string>
     <string name="fetch_delay_summary">Mətnin daxil edilməsi ilə tərcümənin alınması arasındakı gecikmə</string>
     <string name="copy">Kopyala</string>
     <string name="language_not_supported">Dil dəstəklənmir!</string>
@@ -35,4 +35,13 @@
     <string name="enabled_engines">Aktivləşdirilmiş mühərriklər</string>
     <string name="simultaneous_translation">Eyni zamanda tərcümə</string>
     <string name="enabled_engines_summary">Eyni zamanlı tərcümə üçün istifadə ediləcək mühərriklər.</string>
+    <string name="additional_info">Əlavə məlumat</string>
+    <string name="additional_info_summary">Mövcuddursa əlavə tərcümə məlumatın göstər.</string>
+    <string name="selected_engine">Seçilmiş mühərrik</string>
+    <string name="st_selected_engine">SimplyTranslate-in tərcümə üçün istifadə etdiyi mühərrik</string>
+    <string name="missing_api_key">Zəhmət olmasa, Tənzimləmələrdə API Açarı təmin edin!</string>
+    <string name="detected_language">Aşkarlanmış dil</string>
+    <string name="definition">İzah</string>
+    <string name="example">Nümunə</string>
+    <string name="similar">Oxşar</string>
 </resources>
