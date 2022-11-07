@@ -14,7 +14,7 @@
     <string name="server_error">Errore durante la comunicazione con il server.</string>
     <string name="app_name">Traduttore You</string>
     <string name="history_summary">Tieni traccia degli ultimi testi tradotti</string>
-    <string name="okay">OK</string>
+    <string name="okay">Ok</string>
     <string name="cancel">Annulla</string>
     <string name="theme_light">Chiaro</string>
     <string name="paste">Incolla</string>
