@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bnyro.translate.ext.formatHTML
 
 @Composable
 fun AdditionalInfo(
@@ -47,7 +48,7 @@ fun AdditionalInfo(
                 modifier = Modifier.height(2.dp)
             )
             Text(
-                text = text,
+                text = text.formatHTML(),
                 fontSize = 16.sp,
                 lineHeight = 20.sp
             )
