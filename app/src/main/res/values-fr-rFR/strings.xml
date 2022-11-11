@@ -37,7 +37,7 @@
     <string name="clear_history">Nettoyer l\'historique</string>
     <string name="open">Ouvrir</string>
     <!-- Exception -->
-    <string name="server_error">Erreur lors de la communication avec le serveur. Veuillez sélectionner une autre instance dans les paramètres !</string>
+    <string name="server_error">Erreur lors de la communication avec le serveur.</string>
     <string name="language_not_supported">La langue n\'est pas prise en charge!</string>
     <string name="compact_history">Historique compact</string>
     <string name="compact_history_summary">N\'affiche par défaut que les 3 premières lignes de texte dans l\'historique</string>
@@ -45,4 +45,11 @@
     <string name="enabled_engines">Moteurs activés</string>
     <string name="simultaneous_translation_summary">Récupérez les résultats de plusieurs moteurs de traductions en même temps.</string>
     <string name="enabled_engines_summary">Moteurs à utiliser pour la traduction simultanée.</string>
+    <string name="selected_engine">Moteur sélectionné</string>
+    <string name="st_selected_engine">Moteur utilisé par SimplyTranslate pour la traduction</string>
+    <string name="detected_language">Langue détectée</string>
+    <string name="definition">Définition</string>
+    <string name="example">Exemple</string>
+    <string name="similar">Similaire</string>
+    <string name="missing_api_key">Veuillez fournir une clé d\'API dans les paramètres!</string>
 </resources>
