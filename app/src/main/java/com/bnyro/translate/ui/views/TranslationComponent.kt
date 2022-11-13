@@ -7,12 +7,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
@@ -34,7 +31,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
-import com.bnyro.translate.ui.components.AdditionalInfo
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
@@ -139,55 +135,11 @@ fun TranslationComponent(
                 Preferences.showAdditionalInfo,
                 true
             )
-        ) {
-            LazyColumn(
-                modifier = Modifier
-                    .heightIn(0.dp, 200.dp)
-            ) {
-                viewModel.translation.detectedLanguage?.let { language ->
-                    item(language) {
-                        AdditionalInfo(
-                            title = stringResource(R.string.detected_language),
-                            text = try {
-                                viewModel.availableLanguages.first {
-                                    it.code == language
-                                }.name
-                            } catch (e: Exception) {
-                                language
-                            }
-                        )
-                    }
-                }
-                viewModel.translation.definitions?.let {
-                    items(it) {
-                        AdditionalInfo(
-                            title = stringResource(R.string.definition),
-                            text = "${it.type}, ${it.definition}\n${it.example}"
-                        )
-                    }
-                }
-                viewModel.translation.similar?.let {
-                    items(it) {
-                        AdditionalInfo(
-                            title = stringResource(R.string.similar),
-                            text = it
-                        )
-                    }
-                }
-                viewModel.translation.examples?.let {
-                    items(it) {
-                        AdditionalInfo(
-                            title = stringResource(R.string.example),
-                            text = it
-                        )
-                    }
-                }
-            }
-        }
+        ) AdditionalInfoComponent(viewModel.translation)
 
         Spacer(
             modifier = Modifier
-                .height(10.dp)
+                .height(15.dp)
         )
 
         if (viewModel.simTranslationEnabled) {
