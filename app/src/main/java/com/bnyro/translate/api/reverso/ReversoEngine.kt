@@ -58,11 +58,15 @@ class ReversoEngine : TranslationEngine(
             it.targetExamples.forEach {
                 examples.add(it)
             }
+            it.sourceExamples.forEach {
+                examples.add(it)
+            }
         }
 
         return Translation(
             translatedText = response.translation.firstOrNull() ?: "",
             detectedLanguage = response.languageDetection?.detectedLanguage,
+            similar = response.contextResults?.results?.map { it.translation ?: "" },
             examples = examples
         )
     }

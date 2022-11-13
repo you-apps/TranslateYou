@@ -1,6 +1,5 @@
 package com.bnyro.translate.ui.views
 
-import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -160,7 +159,6 @@ fun TranslationComponent(
                     }
                 }
                 viewModel.translation.definitions?.let {
-                    Log.e("definition", it.toString())
                     items(it) {
                         AdditionalInfo(
                             title = stringResource(R.string.definition),
@@ -168,18 +166,18 @@ fun TranslationComponent(
                         )
                     }
                 }
-                viewModel.translation.examples?.let {
-                    items(it) {
-                        AdditionalInfo(
-                            title = stringResource(R.string.example),
-                            text = it
-                        )
-                    }
-                }
                 viewModel.translation.similar?.let {
                     items(it) {
                         AdditionalInfo(
                             title = stringResource(R.string.similar),
+                            text = it
+                        )
+                    }
+                }
+                viewModel.translation.examples?.let {
+                    items(it) {
+                        AdditionalInfo(
+                            title = stringResource(R.string.example),
                             text = it
                         )
                     }
