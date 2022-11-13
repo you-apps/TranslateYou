@@ -53,6 +53,10 @@ class ReversoEngine : TranslationEngine(
             )
         )
 
+        val similar = response.contextResults?.results
+            ?.filter { it.translation != null }
+            ?.map { it.translation!! }
+
         val examples = mutableListOf<String>()
         response.contextResults?.results?.forEach {
             it.targetExamples.forEach {
@@ -66,7 +70,7 @@ class ReversoEngine : TranslationEngine(
         return Translation(
             translatedText = response.translation.firstOrNull() ?: "",
             detectedLanguage = response.languageDetection?.detectedLanguage,
-            similar = response.contextResults?.results?.map { it.translation ?: "" },
+            similar = similar,
             examples = examples
         )
     }
