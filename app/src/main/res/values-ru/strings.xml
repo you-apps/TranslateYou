@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="okay">ОК</string>
-    <string name="about">О приложении</string>
+    <string name="about">О нас</string>
     <string name="instance">Сервер</string>
     <string name="fetch_delay">Задержка перевода</string>
     <string name="history_enabled">Сохранять историю</string>
@@ -21,9 +21,26 @@
     <string name="paste">Вставить</string>
     <string name="copy">Копировать</string>
     <string name="history">История</string>
-    <string name="server_error">Ошибка подключения к серверу. Пожалуйста, выберете другой сервер в настройках!</string>
+    <string name="server_error">Ошибка подключения к серверу.</string>
     <string name="api_key">API Ключ</string>
     <string name="options">Настройки</string>
     <string name="optional">Опционально</string>
     <string name="author">Автор</string>
+    <string name="additional_info">Дополнительная информация</string>
+    <string name="additional_info_summary">Показать дополнительную информацию о переводе, если она доступна.</string>
+    <string name="selected_engine">Выбранный движок</string>
+    <string name="st_selected_engine">Движок, который SimplyTranslate использует для перевода</string>
+    <string name="missing_api_key">Пожалуйста, укажите API-ключ в Настройках!</string>
+    <string name="detected_language">Обнаруженный язык</string>
+    <string name="simultaneous_translation">Синхронный перевод</string>
+    <string name="simultaneous_translation_summary">Получение результатов из нескольких систем одновременно.</string>
+    <string name="enabled_engines">Включенные движки</string>
+    <string name="enabled_engines_summary">Движки для синхронного перевода.</string>
+    <string name="similar">Похожие</string>
+    <string name="definition">Определение</string>
+    <string name="example">Пример</string>
+    <string name="forget">Забыть</string>
+    <string name="compact_history">Компактная история</string>
+    <string name="compact_history_summary">По умолчанию в истории отображаются только первые 3 текстовые строки</string>
+    <string name="open">Открыть</string>
 </resources>

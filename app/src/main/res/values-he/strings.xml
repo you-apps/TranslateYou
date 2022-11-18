@@ -29,7 +29,7 @@
     <!-- History -->
     <string name="clear_history">פינוי ההיסטוריה</string>
     <!-- Exception -->
-    <string name="server_error">שגיאה ביצירת קשר עם השרת. נא לבחור בעותק אחר בהגדרות!</string>
+    <string name="server_error">שגיאה ביצירת קשר עם השרת.</string>
     <string name="copy">העתקה</string>
     <string name="language_not_supported">השפה אינה נתמכת!</string>
     <string name="optional">רשות</string>
@@ -43,4 +43,13 @@
     <string name="enabled_engines">מנועים מופעלים</string>
     <string name="simultaneous_translation_summary">משיכת תוצאות ממגוון מנועים בו־זמנית.</string>
     <string name="enabled_engines_summary">מנועים לשימוש התרגום הסימולטני.</string>
+    <string name="additional_info">מידע נוסף</string>
+    <string name="additional_info_summary">להציג פרטי תרגום נוספים אם ניתן.</string>
+    <string name="selected_engine">המנוע הנבחר</string>
+    <string name="st_selected_engine">המנוע בו משתמש SimplyTranslate לתרגום</string>
+    <string name="missing_api_key">נא לספק מפתח API בהגדרות!</string>
+    <string name="detected_language">השפה שזוהתה</string>
+    <string name="definition">הגדרה</string>
+    <string name="example">דוגמה</string>
+    <string name="similar">דומות</string>
 </resources>
