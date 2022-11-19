@@ -1,2 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="cancel">Anulează</string>
+    <string name="enter_text">Introduceți text</string>
+    <string name="copy">Copiază</string>
+    <string name="auto">Auto</string>
+    <string name="forget">Uita</string>
+    <string name="language_not_supported">Limba nu este suportată!</string>
+    <string name="instance">Instanță</string>
+    <string name="api_key">Cheia Api</string>
+    <string name="options">Setări</string>
+    <string name="fetch_delay">Întârzierea traducerii</string>
+    <string name="history_summary">Urmăriți ultimele texte traduse</string>
+    <string name="required">Necesar</string>
+    <string name="optional">Opțional</string>
+    <string name="compact_history">Istorie compactă</string>
+    <string name="compact_history_summary">Afișați numai primele 3 linii de text implicite din istoric</string>
+    <string name="simultaneous_translation">Traducere simultană</string>
+    <string name="simultaneous_translation_summary">Preluați rezultatele de la mai multe motoare în același timp.</string>
+    <string name="enabled_engines">Motoare activate</string>
+    <string name="enabled_engines_summary">Motoare de utilizat pentru traducerea simultană.</string>
+    <string name="additional_info">Informații suplimentare</string>
+    <string name="selected_engine">Motor selectat</string>
+    <string name="st_selected_engine">Motor pe care SimplyTranslate îl folosește pentru traducere</string>
+    <string name="author">Autor</string>
+    <string name="license">Licență</string>
+    <string name="privacy_policy">Politica de Confidențialitate</string>
+    <string name="theme_auto">Sistem</string>
+    <string name="theme_light">Luminat</string>
+    <string name="theme_dark">Întunecat</string>
+    <string name="clear_history">Șterge istoricul</string>
+    <string name="open">Deschide</string>
+    <string name="server_error">Eroare în comunicarea cu serverul.</string>
+    <string name="missing_api_key">Vă rugăm să furnizați o cheie API în Setări!</string>
+    <string name="definition">Definiție</string>
+    <string name="example">Exemplu</string>
+    <string name="similar">Asemănător</string>
+    <string name="okay">Bine</string>
+    <string name="paste">Lipește</string>
+    <string name="history">Istorie</string>
+    <string name="history_enabled">Activați istoricul</string>
+    <string name="about">Despre</string>
+    <string name="fetch_delay_summary">Întârzierea dintre inserarea textului și preluarea traducerii</string>
+    <string name="additional_info_summary">Afișați informații suplimentare despre traducere, dacă sunt disponibile.</string>
+    <string name="detected_language">Limba detectată</string>
+</resources>
