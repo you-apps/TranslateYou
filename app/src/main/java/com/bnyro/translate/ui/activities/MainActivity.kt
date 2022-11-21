@@ -105,6 +105,8 @@ class MainActivity : BaseActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
+
+        mainModel.fetchBookmarkedLanguages()
     }
 
     override fun onNewIntent(intent: Intent?) {

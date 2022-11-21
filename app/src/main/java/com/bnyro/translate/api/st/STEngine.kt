@@ -1,7 +1,7 @@
 package com.bnyro.translate.api.st
 
 import com.bnyro.translate.const.ApiKeyState
-import com.bnyro.translate.obj.Language
+import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper

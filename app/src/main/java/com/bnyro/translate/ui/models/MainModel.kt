@@ -11,8 +11,9 @@ import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
-import com.bnyro.translate.ext.Query
-import com.bnyro.translate.obj.Language
+import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.ext.awaitQuery
+import com.bnyro.translate.ext.query
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TranslationEngine
@@ -53,6 +54,8 @@ class MainModel : ViewModel() {
         TranslationEngines.engines
             .associate { it.name to Translation("") }
             .toMutableMap()
+
+    var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
     private fun getLanguageByPrefKey(key: String): Language? {
         return try {
@@ -138,7 +141,7 @@ class MainModel : ViewModel() {
         ) {
             return
         }
-        Query {
+        query {
             Db.historyDao().insertAll(
                 HistoryItem(
                     sourceLanguageCode = sourceLanguage.code,
@@ -183,5 +186,11 @@ class MainModel : ViewModel() {
         engine = getCurrentEngine()
         enabledSimEngines = getEnabledEngines()
         simTranslationEnabled = Preferences.get(Preferences.simultaneousTranslationKey, false)
+    }
+
+    fun fetchBookmarkedLanguages() {
+        bookmarkedLanguages = awaitQuery {
+            Db.languageBookmarksDao().getAll()
+        }
     }
 }

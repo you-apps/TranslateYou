@@ -1,6 +1,6 @@
 package com.bnyro.translate.util
 
-import com.bnyro.translate.obj.Language
+import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
 import java.net.URL
 

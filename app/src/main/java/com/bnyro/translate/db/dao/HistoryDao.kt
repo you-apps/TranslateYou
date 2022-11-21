@@ -12,10 +12,10 @@ interface HistoryDao {
     fun getAll(): List<HistoryItem>
 
     @Insert
-    fun insertAll(vararg HistoryItems: HistoryItem)
+    fun insertAll(vararg historyItems: HistoryItem)
 
     @Delete
-    fun delete(HistoryItem: HistoryItem)
+    fun delete(historyItem: HistoryItem)
 
     @Query("DELETE FROM HistoryItem")
     fun deleteAll()

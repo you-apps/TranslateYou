@@ -20,8 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bnyro.translate.DatabaseHolder
 import com.bnyro.translate.R
-import com.bnyro.translate.obj.Language
+import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.ext.query
 import com.bnyro.translate.ui.models.MainModel
 
 @Composable
@@ -57,10 +59,6 @@ fun LanguageSelector(
         )
     }
 
-    var favoriteLanguages by remember {
-        mutableStateOf(listOf<Language>())
-    }
-
     if (showDialog) {
         AlertDialog(
             onDismissRequest = {
@@ -70,25 +68,28 @@ fun LanguageSelector(
                 LazyColumn(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    items(favoriteLanguages) {
+                    items(viewModel.bookmarkedLanguages) {
                         LanguageItem(
                             language = it,
-                            isPinned = favoriteLanguages.contains(it),
+                            isPinned = viewModel.bookmarkedLanguages.contains(it),
                             onClick = {
                                 showDialog = false
                                 viewModel.enqueueTranslation()
                                 onClick.invoke(it)
                             },
                             onPinnedChange = {
-                                favoriteLanguages = favoriteLanguages.filter { language ->
+                                viewModel.bookmarkedLanguages = viewModel.bookmarkedLanguages.filter { language ->
                                     it != language
+                                }
+                                query {
+                                    DatabaseHolder.Db.languageBookmarksDao().delete(it)
                                 }
                             }
                         )
                     }
 
                     item {
-                        if (favoriteLanguages.isNotEmpty()) {
+                        if (viewModel.bookmarkedLanguages.isNotEmpty()) {
                             Divider(
                                 color = MaterialTheme.colorScheme.onSurface,
                                 modifier = Modifier
@@ -101,17 +102,23 @@ fun LanguageSelector(
                     items(languages) {
                         LanguageItem(
                             language = it,
-                            isPinned = favoriteLanguages.contains(it),
+                            isPinned = viewModel.bookmarkedLanguages.contains(it),
                             onClick = {
                                 showDialog = false
                                 viewModel.enqueueTranslation()
                                 onClick.invoke(it)
                             },
                             onPinnedChange = {
-                                favoriteLanguages = if (favoriteLanguages.contains(it)) {
-                                    favoriteLanguages - it
+                                viewModel.bookmarkedLanguages = if (viewModel.bookmarkedLanguages.contains(it)) {
+                                    query {
+                                        DatabaseHolder.Db.languageBookmarksDao().delete(it)
+                                    }
+                                    viewModel.bookmarkedLanguages - it
                                 } else {
-                                    favoriteLanguages + it
+                                    query {
+                                        DatabaseHolder.Db.languageBookmarksDao().insertAll(it)
+                                    }
+                                    viewModel.bookmarkedLanguages + it
                                 }
                             }
                         )

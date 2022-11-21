@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.db.obj.HistoryItem
-import com.bnyro.translate.ext.Query
+import com.bnyro.translate.ext.query
 
 class HistoryModel : ViewModel() {
     var history by mutableStateOf(
@@ -14,20 +14,20 @@ class HistoryModel : ViewModel() {
     )
 
     fun fetchHistory() {
-        Query {
+        query {
             history = Db.historyDao().getAll().reversed()
         }
     }
 
     fun clearHistory() {
-        Query {
+        query {
             Db.historyDao().deleteAll()
             history = listOf()
         }
     }
 
     fun deleteHistoryItem(historyItem: HistoryItem) {
-        Query {
+        query {
             Db.historyDao().delete(historyItem)
         }
     }
