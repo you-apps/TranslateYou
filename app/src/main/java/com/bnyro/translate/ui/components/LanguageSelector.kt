@@ -1,10 +1,13 @@
 package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -12,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -53,20 +57,62 @@ fun LanguageSelector(
         )
     }
 
+    var favoriteLanguages by remember {
+        mutableStateOf(listOf<Language>())
+    }
+
     if (showDialog) {
         AlertDialog(
             onDismissRequest = {
                 showDialog = false
             },
             text = {
-                LazyColumn {
-                    items(languages) {
-                        SelectableItem(
-                            text = it.name,
+                LazyColumn(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    items(favoriteLanguages) {
+                        LanguageItem(
+                            language = it,
+                            isPinned = favoriteLanguages.contains(it),
                             onClick = {
                                 showDialog = false
                                 viewModel.enqueueTranslation()
                                 onClick.invoke(it)
+                            },
+                            onPinnedChange = {
+                                favoriteLanguages = favoriteLanguages.filter { language ->
+                                    it != language
+                                }
+                            }
+                        )
+                    }
+
+                    item {
+                        if (favoriteLanguages.isNotEmpty()) {
+                            Divider(
+                                color = MaterialTheme.colorScheme.onSurface,
+                                modifier = Modifier
+                                    .padding(20.dp)
+                                    .size(70.dp, 1.dp)
+                            )
+                        }
+                    }
+
+                    items(languages) {
+                        LanguageItem(
+                            language = it,
+                            isPinned = favoriteLanguages.contains(it),
+                            onClick = {
+                                showDialog = false
+                                viewModel.enqueueTranslation()
+                                onClick.invoke(it)
+                            },
+                            onPinnedChange = {
+                                favoriteLanguages = if (favoriteLanguages.contains(it)) {
+                                    favoriteLanguages - it
+                                } else {
+                                    favoriteLanguages + it
+                                }
                             }
                         )
                     }

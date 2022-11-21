@@ -135,7 +135,9 @@ fun TranslationComponent(
                 Preferences.showAdditionalInfo,
                 true
             )
-        ) AdditionalInfoComponent(viewModel.translation)
+        ) {
+            AdditionalInfoComponent(viewModel.translation)
+        }
 
         Spacer(
             modifier = Modifier
