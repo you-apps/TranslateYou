@@ -1,0 +1,2 @@
+Support for "bookmarking" languages (#75)
+Some minor bug fixes
