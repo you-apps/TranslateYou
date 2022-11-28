@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Translate You</string>
-
     <!-- Dialog -->
     <string name="okay">好的</string>
     <string name="cancel">取消</string>
-
     <!-- Text -->
     <string name="enter_text">输入文字</string>
     <string name="paste">粘贴</string>
@@ -13,7 +11,6 @@
     <string name="auto">自动</string>
     <string name="forget">忘掉</string>
     <string name="language_not_supported">该语言不受支持！</string>
-
     <!-- Settings -->
     <string name="instance">实例</string>
     <string name="api_key">API 密钥</string>
@@ -31,31 +28,26 @@
     <string name="simultaneous_translation">同步翻译</string>
     <string name="simultaneous_translation_summary">从多个翻译引擎同时获取结果。</string>
     <string name="enabled_engines">已启用引擎</string>
-    <string name="enabled_engines_summary">选择将用于同步翻译的引擎</string>
+    <string name="enabled_engines_summary">用于同步翻译的引擎。</string>
     <string name="additional_info">附加信息</string>
     <string name="additional_info_summary">可用时展示附加的翻译信息。</string>
     <string name="selected_engine">已选择引擎</string>
     <string name="st_selected_engine">选择 SimplyTranslate 用于翻译的引擎</string>
-
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">作者</string>
     <string name="license">许可</string>
     <string name="privacy_policy">隐私政策</string>
-
     <!-- Theme -->
     <string name="theme_auto">跟随系统</string>
     <string name="theme_light">亮色</string>
     <string name="theme_dark">暗色</string>
-
     <!-- History -->
     <string name="clear_history">清除历史</string>
     <string name="open">打开</string>
-
     <!-- Exception -->
     <string name="server_error">与服务器通信时发生错误。</string>
     <string name="missing_api_key">请在设置中提供 API 密钥！</string>
-
     <!-- Additional Info -->
     <string name="detected_language">检测到的语言</string>
     <string name="definition">定义</string>
