@@ -1,6 +1,7 @@
 package com.bnyro.translate.ui.components
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,22 +18,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bnyro.translate.ext.formatHTML
+import com.bnyro.translate.util.ClipboardHelper
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AdditionalInfo(
     title: String,
     text: String,
     onClick: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
-            .clickable {
-                onClick.invoke()
-            },
+            .combinedClickable(
+                onClick = onClick,
+                onLongClick = {
+                    ClipboardHelper(context).write(text)
+                }
+            ),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
