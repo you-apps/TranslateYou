@@ -1,7 +1,9 @@
 package com.bnyro.translate.api.st
 
+import android.accounts.NetworkErrorException
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.ext.awaitQuery
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
@@ -24,25 +26,25 @@ class STEngine : TranslationEngine(
 
     override suspend fun getLanguages(): List<Language> {
         // val body = api.getLanguages().execute().body()
-        var body: String? = null
-        Thread {
+        val languages = mutableListOf<Language>()
+        awaitQuery {
             var path = "/api/target_languages/"
             getSelectedEngine()?.let {
                 path += "?engine=$it"
             }
-            body = URL(getUrl() + path).readText()
-        }.apply {
-            start()
-            join()
-        }
-        val languages = mutableListOf<Language>()
-        body?.split("\n")?.let {
-            for (index in 0..(it.size.toDouble() / 2 - 1).toInt()) {
-                languages.add(
-                    Language(name = it[index * 2], code = it[index * 2 + 1])
-                )
+            runCatching {
+                val body = URL(getUrl() + path).readText()
+                body.split("\n").let {
+                    for (index in 0..(it.size.toDouble() / 2 - 1).toInt()) {
+                        languages.add(
+                            Language(name = it[index * 2], code = it[index * 2 + 1])
+                        )
+                    }
+                }
             }
         }
+
+        if (languages.isEmpty()) throw NetworkErrorException("Network Error")
         return languages
     }
 
