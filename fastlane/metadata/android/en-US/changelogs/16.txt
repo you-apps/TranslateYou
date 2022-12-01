@@ -1,0 +1,4 @@
+* Add support for searching supported languages (#91)
+* Make additional information copy-able (#95)
+* Fix the app icon on Android 7 and lower (#91)
+* Fix a crash when using SimplyTranslate (#99)
