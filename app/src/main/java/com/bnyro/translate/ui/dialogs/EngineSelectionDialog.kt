@@ -18,9 +18,13 @@ import com.bnyro.translate.util.Preferences
 fun EngineSelectionDialog(
     onDismissRequest: () -> Unit
 ) {
+    val simEngines = TranslationEngines.engines.filter {
+        it.supportsSimTranslation
+    }
+
     var selectedItems by remember {
         mutableStateOf(
-            TranslationEngines.engines.map {
+            simEngines.map {
                 it.isSimultaneousTranslationEnabled()
             }.toBooleanArray()
         )
@@ -31,7 +35,7 @@ fun EngineSelectionDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    TranslationEngines.engines.forEachIndexed { index, it ->
+                    simEngines.forEachIndexed { index, it ->
                         Preferences.put(
                             it.simPrefKey,
                             selectedItems[index]
@@ -52,7 +56,7 @@ fun EngineSelectionDialog(
         },
         text = {
             MultiSelectList(
-                titles = TranslationEngines.engines.filter {
+                titles = simEngines.filter {
                     it.supportsSimTranslation
                 }.map { it.name },
                 selectedItems = selectedItems,
