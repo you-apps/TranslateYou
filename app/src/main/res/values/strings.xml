@@ -60,4 +60,7 @@
     <string name="definition">Definition</string>
     <string name="example">Example</string>
     <string name="similar">Similar</string>
+
+    <!-- Languages -->
+    <string name="search">Search</string>
 </resources>

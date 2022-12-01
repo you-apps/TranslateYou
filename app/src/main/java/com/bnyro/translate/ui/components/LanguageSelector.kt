@@ -1,13 +1,21 @@
 package com.bnyro.translate.ui.components
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -26,6 +34,7 @@ import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.query
 import com.bnyro.translate.ui.models.MainModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LanguageSelector(
     availableLanguages: List<Language>,
@@ -60,68 +69,103 @@ fun LanguageSelector(
     }
 
     if (showDialog) {
+        var searchQuery by remember {
+            mutableStateOf("")
+        }
+
         AlertDialog(
             onDismissRequest = {
                 showDialog = false
             },
             text = {
-                LazyColumn(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    items(viewModel.bookmarkedLanguages) {
-                        LanguageItem(
-                            language = it,
-                            isPinned = viewModel.bookmarkedLanguages.contains(it),
-                            onClick = {
-                                showDialog = false
-                                viewModel.enqueueTranslation()
-                                onClick.invoke(it)
-                            },
-                            onPinnedChange = {
-                                viewModel.bookmarkedLanguages = viewModel.bookmarkedLanguages.filter { language ->
-                                    it != language
-                                }
-                                query {
-                                    DatabaseHolder.Db.languageBookmarksDao().delete(it)
-                                }
+                Column {
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    OutlinedTextField(
+                        value = searchQuery,
+                        onValueChange = {
+                            searchQuery = it
+                        },
+                        label = {
+                            Text(text = stringResource(R.string.search))
+                        },
+                        leadingIcon = {
+                            Icon(Icons.Default.Search, null)
+                        },
+                        singleLine = true
+                    )
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    LazyColumn(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        items(
+                            viewModel.bookmarkedLanguages.filter {
+                                validateFilter(it, searchQuery)
                             }
-                        )
-                    }
-
-                    item {
-                        if (viewModel.bookmarkedLanguages.isNotEmpty()) {
-                            Divider(
-                                color = MaterialTheme.colorScheme.onSurface,
-                                modifier = Modifier
-                                    .padding(20.dp)
-                                    .size(70.dp, 1.dp)
-                            )
-                        }
-                    }
-
-                    items(languages) {
-                        LanguageItem(
-                            language = it,
-                            isPinned = viewModel.bookmarkedLanguages.contains(it),
-                            onClick = {
-                                showDialog = false
-                                viewModel.enqueueTranslation()
-                                onClick.invoke(it)
-                            },
-                            onPinnedChange = {
-                                viewModel.bookmarkedLanguages = if (viewModel.bookmarkedLanguages.contains(it)) {
+                        ) {
+                            LanguageItem(
+                                language = it,
+                                isPinned = viewModel.bookmarkedLanguages.contains(it),
+                                onClick = {
+                                    showDialog = false
+                                    viewModel.enqueueTranslation()
+                                    onClick.invoke(it)
+                                },
+                                onPinnedChange = {
+                                    viewModel.bookmarkedLanguages =
+                                        viewModel.bookmarkedLanguages.filter { language ->
+                                            it != language
+                                        }
                                     query {
                                         DatabaseHolder.Db.languageBookmarksDao().delete(it)
                                     }
-                                    viewModel.bookmarkedLanguages - it
-                                } else {
-                                    query {
-                                        DatabaseHolder.Db.languageBookmarksDao().insertAll(it)
-                                    }
-                                    viewModel.bookmarkedLanguages + it
                                 }
+                            )
+                        }
+
+                        item {
+                            if (viewModel.bookmarkedLanguages.isNotEmpty()) {
+                                Divider(
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    modifier = Modifier
+                                        .padding(20.dp)
+                                        .size(70.dp, 1.dp)
+                                )
                             }
-                        )
+                        }
+
+                        items(
+                            languages.filter {
+                                validateFilter(it, searchQuery)
+                            }
+                        ) {
+                            LanguageItem(
+                                language = it,
+                                isPinned = viewModel.bookmarkedLanguages.contains(it),
+                                onClick = {
+                                    showDialog = false
+                                    viewModel.enqueueTranslation()
+                                    onClick.invoke(it)
+                                },
+                                onPinnedChange = {
+                                    viewModel.bookmarkedLanguages =
+                                        if (viewModel.bookmarkedLanguages.contains(it)) {
+                                            query {
+                                                DatabaseHolder.Db.languageBookmarksDao().delete(it)
+                                            }
+                                            viewModel.bookmarkedLanguages - it
+                                        } else {
+                                            query {
+                                                DatabaseHolder.Db.languageBookmarksDao()
+                                                    .insertAll(it)
+                                            }
+                                            viewModel.bookmarkedLanguages + it
+                                        }
+                                }
+                            )
+                        }
                     }
                 }
             },
@@ -140,4 +184,9 @@ fun LanguageSelector(
             }
         )
     }
+}
+
+private fun validateFilter(language: Language, query: String): Boolean {
+    if (query == "") return true
+    return language.name.contains(query) || language.code.contains(query)
 }
