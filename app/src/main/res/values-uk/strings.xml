@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="okay">Добре</string>
+    <string name="cancel">Скасувати</string>
+    <string name="enter_text">Введіть текст</string>
+    <string name="paste">Вставити</string>
+    <string name="copy">Копіювати</string>
+    <string name="auto">Автоматично</string>
+    <string name="forget">Забути</string>
+</resources>
