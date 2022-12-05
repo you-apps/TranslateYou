@@ -21,7 +21,7 @@
     <string name="fetch_delay">Çeviri gecikmesi</string>
     <string name="history">Geçmiş</string>
     <string name="about">Hakkında</string>
-    <string name="history_enabled">Geçmişi etkinleştir</string>
+    <string name="history_enabled">Geçmiş etkin</string>
     <string name="copy">Kopyala</string>
     <string name="required">Gerekli</string>
     <string name="language_not_supported">Dil desteklenmiyor!</string>
@@ -44,4 +44,5 @@
     <string name="st_selected_engine">SimplyTranslate\'in çeviri için kullandığı motor</string>
     <string name="detected_language">Algılanan dil</string>
     <string name="missing_api_key">Lütfen Ayarlar\'da bir API anahtarı belirtin!</string>
+    <string name="search">Ara</string>
 </resources>

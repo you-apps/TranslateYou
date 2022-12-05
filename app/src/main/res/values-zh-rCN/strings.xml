@@ -53,4 +53,5 @@
     <string name="definition">定义</string>
     <string name="example">例句</string>
     <string name="similar">近似词</string>
+    <string name="search">搜索</string>
 </resources>
