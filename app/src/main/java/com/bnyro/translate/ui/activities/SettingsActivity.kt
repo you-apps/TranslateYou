@@ -2,6 +2,8 @@ package com.bnyro.translate.ui.activities
 
 import android.app.Activity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,6 +35,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
+import com.bnyro.translate.ui.components.prefs.ListPreference
 import com.bnyro.translate.ui.components.prefs.PreferenceItem
 import com.bnyro.translate.ui.components.prefs.SettingsCategory
 import com.bnyro.translate.ui.components.prefs.SliderPreference
@@ -40,6 +43,7 @@ import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.ui.views.EnginePref
 import com.bnyro.translate.ui.views.EngineSelectionDialog
+import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
 
 class SettingsActivity : BaseActivity() {
@@ -114,6 +118,26 @@ fun SettingsPage() {
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                item {
+                    SettingsCategory(
+                        title = stringResource(R.string.general)
+                    )
+
+                    val appLanguages = LocaleHelper.getLanguages(context)
+
+                    ListPreference(
+                        title = stringResource(R.string.app_language),
+                        preferenceKey = Preferences.appLanguageKey,
+                        defaultValue = "",
+                        entries = appLanguages.map { it.name },
+                        values = appLanguages.map { it.code }
+                    ) {
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            (context as BaseActivity).recreate()
+                        }, 100)
+                    }
+                }
+
                 item {
                     SettingsCategory(
                         title = stringResource(R.string.history)

@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.bnyro.translate.ui.theme.TranslateYouTheme
+import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
 
 open class BaseActivity : ComponentActivity() {
@@ -27,5 +28,10 @@ open class BaseActivity : ComponentActivity() {
     override fun onResume() {
         themeMode = Preferences.getThemeMode()
         super.onResume()
+    }
+
+    override fun onStart() {
+        LocaleHelper.updateLanguage(this)
+        super.onStart()
     }
 }

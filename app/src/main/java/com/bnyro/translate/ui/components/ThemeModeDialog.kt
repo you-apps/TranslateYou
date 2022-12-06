@@ -14,7 +14,7 @@ fun ThemeModeDialog(
     onDismiss: () -> Unit
 ) {
     val activity = LocalContext.current as BaseActivity
-    ListPreference(
+    ListPreferenceDialog(
         preferenceKey = Preferences.themeModeKey,
         onDismissRequest = {
             onDismiss.invoke()

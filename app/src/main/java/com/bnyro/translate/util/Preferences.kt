@@ -13,6 +13,7 @@ object Preferences {
     const val compactHistory = "compactHistory"
     const val simultaneousTranslationKey = "simultaneousTranslation"
     const val showAdditionalInfo = "showAdditionalInfoKey"
+    const val appLanguageKey = "appLanguage"
 
     const val themeModeKey = "themeMode"
     const val sourceLanguage = "sourceLanguage"
