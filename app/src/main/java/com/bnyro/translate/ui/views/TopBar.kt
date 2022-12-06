@@ -4,16 +4,23 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Handler
+import android.os.Looper
 import android.speech.SpeechRecognizer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
@@ -33,6 +40,7 @@ fun TopBar(
     menuItems: List<MenuItemData>
 ) {
     val context = LocalContext.current
+    val handler = Handler(Looper.getMainLooper())
 
     TopAppBar(
         title = {
@@ -62,15 +70,23 @@ fun TopBar(
                 }
             }
 
+            var copyImageVector by remember {
+                mutableStateOf(Icons.Default.ContentCopy)
+            }
+
             if (mainModel.translation.translatedText != "") {
                 StyledIconButton(
-                    imageVector = Icons.Default.ContentCopy,
+                    imageVector = copyImageVector,
                     onClick = {
                         ClipboardHelper(
                             context
                         ).write(
                             mainModel.translation.translatedText
                         )
+                        copyImageVector = Icons.Default.DoneAll
+                        handler.postDelayed({
+                            copyImageVector = Icons.Default.ContentCopy
+                        }, 2000)
                     }
                 )
             }
