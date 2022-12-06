@@ -33,6 +33,7 @@
     <string name="additional_info_summary">Show additional translation information if available.</string>
     <string name="selected_engine">Selected engine</string>
     <string name="st_selected_engine">Engine that SimplyTranslate uses for translating</string>
+    <string name="translation">Translation</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Author</string>

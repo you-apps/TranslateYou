@@ -132,6 +132,12 @@ fun SettingsPage() {
                         preferenceTitle = stringResource(R.string.compact_history),
                         preferenceSummary = stringResource(R.string.compact_history_summary)
                     )
+                }
+
+                item {
+                    SettingsCategory(
+                        title = stringResource(R.string.translation)
+                    )
 
                     SliderPreference(
                         preferenceKey = Preferences.fetchDelay,
