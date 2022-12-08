@@ -53,4 +53,8 @@
     <string name="example">דוגמה</string>
     <string name="similar">דומות</string>
     <string name="search">חיפוש</string>
+    <string name="translation">תרגום</string>
+    <string name="general">כללי</string>
+    <string name="app_language">שפת היישומון</string>
+    <string name="system">מערכת</string>
 </resources>
