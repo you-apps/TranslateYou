@@ -6,7 +6,7 @@
     <string name="auto">Automatico</string>
     <string name="instance">Istanza</string>
     <string name="about">Informazioni</string>
-    <string name="history_enabled">Attiva cronologia</string>
+    <string name="history_enabled">Cronologia abilitata</string>
     <string name="fetch_delay">Ritardo di traduzione</string>
     <string name="author">Autore</string>
     <string name="license">Licenza</string>
