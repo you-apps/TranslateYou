@@ -55,4 +55,5 @@
     <string name="similar">近似词</string>
     <string name="search">搜索</string>
     <string name="general">常规</string>
+    <string name="translation">翻译</string>
 </resources>
