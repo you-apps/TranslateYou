@@ -44,4 +44,8 @@
     <string name="additional_info_summary">ଉପଲବ୍ଧ ଥିଲେ ଅତିରିକ୍ତ ଅନୁବାଦ ସୂଚନା ଦେଖାନ୍ତୁ ।</string>
     <string name="st_selected_engine">ଇଞ୍ଜିନ ଯାହା ସିମ୍ପଲି ଟ୍ରାନ୍ସଲେଟ୍ ଅନୁବାଦ ପାଇଁ ବ୍ୟବହାର କରେ</string>
     <string name="search">ସନ୍ଧାନ କର</string>
+    <string name="translation">ଅନୁବାଦ</string>
+    <string name="general">ସାଧାରଣ</string>
+    <string name="app_language">ଆପ୍ ଭାଷା</string>
+    <string name="system">ସିଷ୍ଟମ୍</string>
 </resources>
