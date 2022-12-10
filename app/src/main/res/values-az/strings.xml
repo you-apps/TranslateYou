@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="clear_history">Tarixçəni təmizləyin</string>
-    <string name="history_summary">Son tərcümə edilmiş mətnləri izləyin</string>
+    <string name="clear_history">Tarixçəni təmizlə</string>
+    <string name="history_summary">Son tərcümə edilmiş mətnləri izlə</string>
     <string name="api_key">Api Açarı</string>
     <string name="auto">Avtomatik</string>
     <string name="instance">Nümunə</string>
     <string name="app_name">Translate You</string>
     <string name="okay">Oldu</string>
     <string name="cancel">Ləğv et</string>
-    <string name="enter_text">Mətn daxil edin</string>
+    <string name="enter_text">Mətn daxil et</string>
     <string name="paste">Yapışdır</string>
     <string name="options">Tənzimləmələr</string>
     <string name="history">Tarixçə</string>
     <string name="about">Haqqında</string>
     <string name="fetch_delay">Tərcümə gecikməsi</string>
-    <string name="history_enabled">Tarixçəni aktivləşdir</string>
+    <string name="history_enabled">Tarixçə aktivləşdirildi</string>
     <string name="author">Müəllif</string>
     <string name="license">Lisenziya</string>
     <string name="theme_auto">Sistem</string>
@@ -29,7 +29,7 @@
     <string name="privacy_policy">Məxfilik Siyasəti</string>
     <string name="forget">Unut</string>
     <string name="compact_history">Tarixçəni sıxlaşdır</string>
-    <string name="compact_history_summary">Tarixçədə standart olaraq yalnız ilk 3 mətn sətirini göstərin</string>
+    <string name="compact_history_summary">Tarixçədə standart olaraq yalnız ilk 3 mətn sətirini göstərir</string>
     <string name="open">Aç</string>
     <string name="simultaneous_translation_summary">Eyni anda birdən çox mühərrikdən nəticələr əldə et.</string>
     <string name="enabled_engines">Aktivləşdirilmiş mühərriklər</string>
@@ -39,9 +39,14 @@
     <string name="additional_info_summary">Mövcuddursa əlavə tərcümə məlumatın göstər.</string>
     <string name="selected_engine">Seçilmiş mühərrik</string>
     <string name="st_selected_engine">SimplyTranslate-in tərcümə üçün istifadə etdiyi mühərrik</string>
-    <string name="missing_api_key">Zəhmət olmasa, Tənzimləmələrdə API Açarı təmin edin!</string>
+    <string name="missing_api_key">Zəhmət olmasa, Tənzimləmələrdə API Açarı təchiz et!</string>
     <string name="detected_language">Aşkarlanmış dil</string>
     <string name="definition">İzah</string>
     <string name="example">Nümunə</string>
     <string name="similar">Oxşar</string>
+    <string name="translation">Tərcümə</string>
+    <string name="general">Ümumi</string>
+    <string name="app_language">Tətbiq dili</string>
+    <string name="system">Sistem</string>
+    <string name="search">Axtarış</string>
 </resources>
