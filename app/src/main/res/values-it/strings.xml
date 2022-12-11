@@ -44,4 +44,8 @@
     <string name="additional_info_summary">Mostra informazioni aggiuntive sulla traduzione se disponibili.</string>
     <string name="detected_language">Lingua rilevata</string>
     <string name="example">Esempio</string>
+    <string name="translation">Traduzione</string>
+    <string name="general">Generale</string>
+    <string name="app_language">Lingua dell\'app</string>
+    <string name="system">Sistema</string>
 </resources>
