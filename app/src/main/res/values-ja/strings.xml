@@ -43,4 +43,9 @@
     <string name="clear_history">履歴を削除</string>
     <string name="missing_api_key">設定からAPIキーを入力してください！</string>
     <string name="definition">定義</string>
+    <string name="translation">翻訳</string>
+    <string name="general">一般</string>
+    <string name="app_language">アプリの表示言語</string>
+    <string name="system">システム</string>
+    <string name="search">検索</string>
 </resources>
