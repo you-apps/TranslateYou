@@ -4,14 +4,14 @@
     <string name="about">О нас</string>
     <string name="instance">Сервер</string>
     <string name="fetch_delay">Задержка перевода</string>
-    <string name="history_enabled">Сохранять историю</string>
+    <string name="history_enabled">История включена</string>
     <string name="required">Обязательно</string>
     <string name="history_summary">Запоминать раннее переведенные тексты</string>
     <string name="fetch_delay_summary">Задержка между вводом и отправкой текста на сервер</string>
     <string name="clear_history">Очистить историю</string>
     <string name="theme_auto">Системная</string>
     <string name="theme_light">Светлая</string>
-    <string name="theme_dark">Темная</string>
+    <string name="theme_dark">Тёмная</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="license">Лицензия</string>
     <string name="cancel">Отмена</string>
@@ -43,4 +43,9 @@
     <string name="compact_history">Компактная история</string>
     <string name="compact_history_summary">По умолчанию в истории отображаются только первые 3 текстовые строки</string>
     <string name="open">Открыть</string>
+    <string name="general">Общее</string>
+    <string name="translation">Перевод</string>
+    <string name="app_language">Язык приложения</string>
+    <string name="system">Система</string>
+    <string name="search">Поиск</string>
 </resources>
