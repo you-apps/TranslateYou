@@ -16,13 +16,13 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StyledTextField(
-    text: String,
-    onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    text: String,
     maxLines: Int = 10,
     placeholder: String? = null,
     readOnly: Boolean = false,
-    fontSize: TextUnit = 23.sp
+    fontSize: TextUnit = 23.sp,
+    onValueChange: (String) -> Unit
 ) {
     TextField(
         value = text,
@@ -55,6 +55,6 @@ fun StyledTextField(
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    StyledTextField("", { })
+private fun DefaultPreview() {
+    StyledTextField(text = "") {}
 }

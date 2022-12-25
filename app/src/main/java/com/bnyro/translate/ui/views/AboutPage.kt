@@ -193,6 +193,6 @@ fun AboutPage() {
 
 @Preview
 @Composable
-fun DefaultPreview() {
+private fun DefaultPreview() {
     AboutPage()
 }
