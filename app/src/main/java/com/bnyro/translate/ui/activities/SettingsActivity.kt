@@ -191,7 +191,9 @@ fun SettingsPage() {
                         preferenceKey = Preferences.simultaneousTranslationKey,
                         defaultValue = false,
                         preferenceTitle = stringResource(R.string.simultaneous_translation),
-                        preferenceSummary = stringResource(R.string.simultaneous_translation_summary)
+                        preferenceSummary = stringResource(
+                            R.string.simultaneous_translation_summary
+                        )
                     ) {
                         enableSimultaneousTranslation = it
                     }

@@ -57,6 +57,8 @@ class MainModel : ViewModel() {
 
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
+    var translating by mutableStateOf(false)
+
     private fun getLanguageByPrefKey(key: String): Language? {
         return try {
             ObjectMapper().readValue(
@@ -89,6 +91,8 @@ class MainModel : ViewModel() {
             return
         }
 
+        translating = true
+
         translatedTexts = TranslationEngines.engines
             .associate { it.name to Translation("") }
             .toMutableMap()
@@ -104,6 +108,9 @@ class MainModel : ViewModel() {
                 Log.e("error", e.message.toString())
                 return@launch
             }
+
+            translating = false
+
             if (insertedText != "") {
                 this@MainModel.translation = translation
                 translatedTexts[engine.name] = translation

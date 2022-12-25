@@ -1,17 +1,13 @@
 package com.bnyro.translate.ui.views
 
-import android.util.Log
 import android.view.ViewTreeObserver
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -20,20 +16,18 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Divider
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -102,13 +96,21 @@ fun TranslationComponent(
                 .focusRequester(focusRequester)
         )
 
-        Divider(
-            color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier
-                .padding(10.dp)
-                .align(alignment = Alignment.CenterHorizontally)
-                .size(70.dp, 1.dp)
-        )
+        val modifier = Modifier
+            .align(Alignment.CenterHorizontally)
+            .padding(10.dp)
+
+        if (viewModel.translating) {
+            LinearProgressIndicator(
+                modifier = modifier
+            )
+        } else {
+            Divider(
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = modifier
+                    .size(70.dp, 1.dp)
+            )
+        }
 
         if (viewModel.translation.translatedText != "" && SpeechHelper.ttsAvailable) {
             Box(
