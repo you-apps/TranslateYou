@@ -1,12 +1,12 @@
 package com.bnyro.translate.ui.dialogs
 
-import android.util.Log
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.bnyro.translate.R
 import com.bnyro.translate.const.AboutLinks
+import com.bnyro.translate.ext.query
 import com.bnyro.translate.util.ClipboardHelper
 import java.net.URL
 
@@ -29,14 +30,15 @@ fun PrivacyPolicyDialog(
         mutableStateOf("")
     }
 
-    Thread {
-        try {
-            privacyPolicyHtml = URL(AboutLinks.PRIVACY_POLICY).readText()
-        } catch (e: Exception) {
-            return@Thread
+    LaunchedEffect(Unit) {
+        query {
+            privacyPolicyHtml = try {
+                URL(AboutLinks.PRIVACY_POLICY).readText()
+            } catch (e: Exception) {
+                e.localizedMessage ?: ""
+            }
         }
-        Log.e("", privacyPolicyHtml)
-    }.start()
+    }
 
     AlertDialog(
         onDismissRequest = onDismissRequest,
@@ -48,7 +50,8 @@ fun PrivacyPolicyDialog(
             Text(
                 text = privacyPolicyHtml,
                 modifier = Modifier
-                    .verticalScroll(scrollState)
+                    .verticalScroll(scrollState),
+                minLines = 20
             )
         },
         confirmButton = {
