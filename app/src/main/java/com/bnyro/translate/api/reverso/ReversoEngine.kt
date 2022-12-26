@@ -3,6 +3,7 @@ package com.bnyro.translate.api.reverso
 import com.bnyro.translate.api.reverso.obj.ReversoRequestBody
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.ext.concatenate
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
@@ -53,25 +54,18 @@ class ReversoEngine : TranslationEngine(
             )
         )
 
-        val similar = response.contextResults?.results
-            ?.filter { it.translation != null }
-            ?.map { it.translation!! }
-
-        val examples = mutableListOf<String>()
-        response.contextResults?.results?.forEach {
-            it.targetExamples.forEach {
-                examples.add(it)
-            }
-            it.sourceExamples.forEach {
-                examples.add(it)
-            }
-        }
-
         return Translation(
             translatedText = response.translation.firstOrNull() ?: "",
             detectedLanguage = response.languageDetection?.detectedLanguage,
-            similar = similar,
-            examples = examples
+            similar = response.contextResults?.results
+                ?.filter { it.translation != null }
+                ?.map { it.translation!! },
+            examples = response.contextResults?.results?.let { result ->
+                concatenate(
+                    result.map { it.sourceExamples }.flatten(),
+                    result.map { it.targetExamples }.flatten()
+                )
+            }
         )
     }
 }
