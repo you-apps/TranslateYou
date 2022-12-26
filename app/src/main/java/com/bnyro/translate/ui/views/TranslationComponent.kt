@@ -155,9 +155,13 @@ fun TranslationComponent(
             }
         }
 
+        val charPref = Preferences.get(Preferences.charCounterLimitKey, "")
+
         StyledTextField(
             text = viewModel.translation.translatedText,
-            onValueChange = {},
+            textColor = if (
+                charPref != "" && viewModel.translation.translatedText.length >= charPref.toInt()
+            ) MaterialTheme.colorScheme.error else MaterialTheme.typography.bodyMedium.color,
             readOnly = true,
             modifier = Modifier
                 .weight(1.0f)

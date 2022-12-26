@@ -2,6 +2,7 @@ package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -22,7 +23,8 @@ fun StyledTextField(
     placeholder: String? = null,
     readOnly: Boolean = false,
     fontSize: TextUnit = 23.sp,
-    onValueChange: (String) -> Unit
+    textColor: Color = MaterialTheme.typography.bodyMedium.color,
+    onValueChange: (String) -> Unit = {}
 ) {
     TextField(
         value = text,
@@ -47,7 +49,8 @@ fun StyledTextField(
             }
         },
         textStyle = TextStyle(
-            fontSize = fontSize
+            fontSize = fontSize,
+            color = textColor
         ),
         maxLines = maxLines
     )

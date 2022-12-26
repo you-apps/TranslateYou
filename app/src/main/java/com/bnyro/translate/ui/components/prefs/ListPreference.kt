@@ -14,6 +14,7 @@ import com.bnyro.translate.util.Preferences
 @Composable
 fun ListPreference(
     title: String,
+    summary: String? = null,
     preferenceKey: String,
     defaultValue: String,
     entries: List<String>,
@@ -29,7 +30,7 @@ fun ListPreference(
     }
     PreferenceItem(
         title = title,
-        summary = entries.getOrElse(summaryIndex, { entries.first() }),
+        summary = summary ?: entries.getOrElse(summaryIndex) { entries.first() },
         modifier = Modifier.fillMaxWidth()
     ) {
         showDialog = true

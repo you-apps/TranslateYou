@@ -37,6 +37,9 @@
     <string name="general">General</string>
     <string name="app_language">App language</string>
     <string name="system">System</string>
+    <string name="character_warning_limit">Character warning limit</string>
+    <string name="character_warning_limit_summary">Warn when the translated text exceeds the maximum length.</string>
+    <string name="none">None</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Author</string>

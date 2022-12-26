@@ -14,6 +14,7 @@ object Preferences {
     const val simultaneousTranslationKey = "simultaneousTranslation"
     const val showAdditionalInfo = "showAdditionalInfoKey"
     const val appLanguageKey = "appLanguage"
+    const val charCounterLimitKey = "charCountLimit"
 
     const val themeModeKey = "themeMode"
     const val sourceLanguage = "sourceLanguage"

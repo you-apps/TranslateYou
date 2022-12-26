@@ -212,6 +212,18 @@ fun SettingsPage() {
                             showEngineSelectDialog = true
                         }
                     }
+
+                    val charCounterLimits = listOf(stringResource(R.string.none), "50", "100", "150", "200", "300", "400", "500", "1000")
+                    ListPreference(
+                        title = stringResource(R.string.character_warning_limit),
+                        summary = stringResource(R.string.character_warning_limit_summary),
+                        preferenceKey = Preferences.charCounterLimitKey,
+                        defaultValue = charCounterLimits.first(),
+                        entries = charCounterLimits,
+                        values = charCounterLimits.map {
+                            if (it.all { char -> char.isDigit() }) it else ""
+                        }
+                    )
                 }
             }
         }
