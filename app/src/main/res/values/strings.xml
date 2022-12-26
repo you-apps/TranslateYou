@@ -57,6 +57,7 @@
     <string name="definition">Definition</string>
     <string name="example">Example</string>
     <string name="similar">Similar</string>
+    <string name="transliteration">Transliteration</string>
     <!-- Languages -->
     <string name="search">Search</string>
 </resources>

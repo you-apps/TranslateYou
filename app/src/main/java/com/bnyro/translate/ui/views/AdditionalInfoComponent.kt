@@ -46,6 +46,14 @@ fun AdditionalInfoComponent(
                     )
                 }
             }
+            translation.transliterations?.let {
+                items(it) {
+                    AdditionalInfo(
+                        title = stringResource(R.string.transliteration),
+                        text = it
+                    )
+                }
+            }
             translation.definitions?.let {
                 items(it) {
                     AdditionalInfo(

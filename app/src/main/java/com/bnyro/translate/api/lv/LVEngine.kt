@@ -37,6 +37,7 @@ class LVEngine : TranslationEngine(
         return Translation(
             translatedText = URLHelper.decodeURL(response.translation),
             detectedLanguage = response.info?.detectedSource,
+            transliterations = listOf(response.info?.pronunciation?.query).filterNotNull(),
             examples = response.info?.examples,
             similar = response.info?.similar,
             definitions = response.info?.definitions
