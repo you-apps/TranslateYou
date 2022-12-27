@@ -26,8 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -47,9 +45,7 @@ import com.bnyro.translate.util.SimTranslationComponent
 import com.bnyro.translate.util.SpeechHelper
 
 @Composable
-fun TranslationComponent(
-    focusRequester: FocusRequester
-) {
+fun TranslationComponent() {
     val viewModel: MainModel = viewModel()
     val context = LocalContext.current
     val view = LocalView.current
@@ -91,9 +87,7 @@ fun TranslationComponent(
                 if (it == "") hasClip = clipboardHelper.hasClip()
                 viewModel.enqueueTranslation()
             },
-            placeholder = stringResource(R.string.enter_text),
-            modifier = Modifier
-                .focusRequester(focusRequester)
+            placeholder = stringResource(R.string.enter_text)
         )
 
         val modifier = Modifier
@@ -161,7 +155,11 @@ fun TranslationComponent(
             text = viewModel.translation.translatedText,
             textColor = if (
                 charPref != "" && viewModel.translation.translatedText.length >= charPref.toInt()
-            ) MaterialTheme.colorScheme.error else MaterialTheme.typography.bodyMedium.color,
+            ) {
+                MaterialTheme.colorScheme.error
+            } else {
+                MaterialTheme.typography.bodyMedium.color
+            },
             readOnly = true,
             modifier = Modifier
                 .weight(1.0f)
