@@ -1,6 +1,5 @@
 package com.bnyro.translate.api.lv
 
-import android.util.Log
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.expOrNull
@@ -8,7 +7,6 @@ import com.bnyro.translate.obj.Definition
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
-import com.bnyro.translate.util.URLHelper
 
 class LVEngine : TranslationEngine(
     name = "Lingva",
@@ -33,10 +31,10 @@ class LVEngine : TranslationEngine(
         val response = api.translate(
             sourceOrAuto(source),
             target,
-            URLHelper.encodeURL(query)
+            query.replace("/", "")
         )
         return Translation(
-            translatedText = URLHelper.decodeURL(response.translation),
+            translatedText = response.translation,
             detectedLanguage = response.info?.detectedSource,
             transliterations = listOf(response.info?.pronunciation?.query).filterNotNull(),
             examples = response.info?.examples,

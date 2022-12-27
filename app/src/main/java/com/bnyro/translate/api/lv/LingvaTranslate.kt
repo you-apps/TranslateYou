@@ -13,6 +13,6 @@ interface LingvaTranslate {
     suspend fun translate(
         @Path("source") source: String,
         @Path("target") target: String,
-        @Path("query", encoded = true) query: String
+        @Path("query") query: String
     ): LVTranslationResponse
 }
