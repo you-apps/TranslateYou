@@ -32,10 +32,10 @@ class LVEngine : TranslationEngine(
         val response = api.translate(
             sourceOrAuto(source),
             target,
-            URLHelper.encodeURL(query)
+            query.replace("/", "")
         )
         return Translation(
-            translatedText = URLHelper.decodeURL(response.translation),
+            translatedText = response.translation,
             detectedLanguage = response.info?.detectedSource,
             transliterations = listOf(response.info?.pronunciation?.query).filterNotNull(),
             examples = response.info?.examples,
