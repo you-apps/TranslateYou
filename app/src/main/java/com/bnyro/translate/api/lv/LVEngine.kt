@@ -1,5 +1,6 @@
 package com.bnyro.translate.api.lv
 
+import android.util.Log
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.expOrNull
@@ -32,10 +33,10 @@ class LVEngine : TranslationEngine(
         val response = api.translate(
             sourceOrAuto(source),
             target,
-            query.replace("/", "")
+            URLHelper.encodeURL(query)
         )
         return Translation(
-            translatedText = response.translation,
+            translatedText = URLHelper.decodeURL(response.translation),
             detectedLanguage = response.info?.detectedSource,
             transliterations = listOf(response.info?.pronunciation?.query).filterNotNull(),
             examples = response.info?.examples,
