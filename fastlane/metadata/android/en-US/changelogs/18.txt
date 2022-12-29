@@ -1,0 +1,8 @@
+* Translating from images via text recognition (#85)
+* Preference for a character limit warning (#113)
+* Support for transliterations (#118)
+* Show an indeterminate progress bar while translating (#101)
+
+* Fix translation covered by description if keyboard is open (#117)
+* Fix Lingva Translate with non-latin words (#59)
+* Fix the height of the privacy policy dialog (#110)
