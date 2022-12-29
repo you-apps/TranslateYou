@@ -7,10 +7,14 @@ import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
 import android.speech.SpeechRecognizer
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.DoneAll
+import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,6 +36,7 @@ import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.SpeechHelper
+import com.bnyro.translate.util.TessHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,6 +46,18 @@ fun TopBar(
 ) {
     val context = LocalContext.current
     val handler = Handler(Looper.getMainLooper())
+    val fileChooser = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) {
+        if (!TessHelper.areLanguagesAvailable(context)) {
+            Toast.makeText(context, R.string.init_tess_first, Toast.LENGTH_SHORT).show()
+            return@rememberLauncherForActivityResult
+        }
+        Thread {
+            TessHelper.getText(context, it)?.let {
+                mainModel.insertedText = it
+                mainModel.translate()
+            }
+        }.start()
+    }
 
     TopAppBar(
         title = {
@@ -67,6 +84,14 @@ fun TopBar(
                         mainModel.insertedText = it
                         mainModel.enqueueTranslation()
                     }
+                }
+            }
+
+            if (mainModel.insertedText == "") {
+                StyledIconButton(
+                    imageVector = Icons.Default.Image
+                ) {
+                    fileChooser.launch(arrayOf("image/*"))
                 }
             }
 

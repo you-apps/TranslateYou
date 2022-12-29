@@ -43,6 +43,7 @@ import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.ui.views.EnginePref
 import com.bnyro.translate.ui.views.EngineSelectionDialog
+import com.bnyro.translate.ui.views.TessSettings
 import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
 
@@ -77,6 +78,10 @@ fun SettingsPage() {
     }
 
     var showEngineSelectDialog by remember {
+        mutableStateOf(false)
+    }
+
+    var showTessSettings by remember {
         mutableStateOf(false)
     }
 
@@ -135,6 +140,16 @@ fun SettingsPage() {
                         Handler(Looper.getMainLooper()).postDelayed({
                             (context as BaseActivity).recreate()
                         }, 100)
+                    }
+                }
+
+                item {
+                    PreferenceItem(
+                        modifier = Modifier.padding(top = 10.dp),
+                        title = stringResource(R.string.image_translation),
+                        summary = stringResource(R.string.image_translation_summary)
+                    ) {
+                        showTessSettings = true
                     }
                 }
 
@@ -238,6 +253,12 @@ fun SettingsPage() {
     if (showThemeOptions) {
         ThemeModeDialog {
             showThemeOptions = false
+        }
+    }
+
+    if (showTessSettings) {
+        TessSettings {
+            showTessSettings = false
         }
     }
 }

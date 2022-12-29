@@ -104,4 +104,7 @@ dependencies {
     // Room database
     implementation 'androidx.room:room-runtime:2.4.3'
     kapt "androidx.room:room-compiler:2.4.3"
+
+    // Tesseract
+    implementation 'cz.adaptech.tesseract4android:tesseract4android-openmp:4.3.0'
 }

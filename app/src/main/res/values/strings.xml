@@ -55,6 +55,7 @@
     <!-- Exception -->
     <string name="server_error">Error in communicating with the server.</string>
     <string name="missing_api_key">Please provide an API Key in the Settings!</string>
+    <string name="unknown_error">Unknown error</string>
     <!-- Additional Info -->
     <string name="detected_language">Detected language</string>
     <string name="definition">Definition</string>
@@ -63,4 +64,8 @@
     <string name="transliteration">Transliteration</string>
     <!-- Languages -->
     <string name="search">Search</string>
+    <!-- Tesseract -->
+    <string name="image_translation">Translation from Image</string>
+    <string name="image_translation_summary">Download and apply languages for text recognition from images.</string>
+    <string name="init_tess_first">Please download language data in the settings first.</string>
 </resources>
