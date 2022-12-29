@@ -68,4 +68,5 @@
     <string name="image_translation">Translation from Image</string>
     <string name="image_translation_summary">Download and apply languages for text recognition from images.</string>
     <string name="init_tess_first">Please download language data in the settings first.</string>
+    <string name="select_language">Please select a language for the text recognition of images in the settings.</string>
 </resources>

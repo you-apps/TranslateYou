@@ -1,5 +1,10 @@
 package com.bnyro.translate.ui.views
 
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +26,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,6 +56,23 @@ fun TessSettings(
 
     var selectedLanguage by remember {
         mutableStateOf(Preferences.get(Preferences.tessLanguageKey, ""))
+    }
+
+    val onDownloadComplete = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            // Refresh the downloaded languages every time a download finishes
+            downloadedLanguages = TessHelper.getAvailableLanguages(context)
+        }
+    }
+
+    DisposableEffect(Unit) {
+        context.registerReceiver(
+            onDownloadComplete,
+            IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+        )
+        onDispose {
+            context.unregisterReceiver(onDownloadComplete)
+        }
     }
 
     AlertDialog(

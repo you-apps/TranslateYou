@@ -4,6 +4,8 @@ import android.app.DownloadManager
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.widget.Toast
+import com.bnyro.translate.R
 import com.googlecode.tesseract.android.TessBaseAPI
 import java.io.File
 
@@ -151,6 +153,7 @@ object TessHelper {
         val rootDir = getRootDir(context)
 
         if (!tess.init(rootDir.absolutePath, language)) {
+            Toast.makeText(context, R.string.select_language, Toast.LENGTH_SHORT).show()
             tess.recycle()
             return null
         }
