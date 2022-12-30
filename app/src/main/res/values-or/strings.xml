@@ -48,4 +48,13 @@
     <string name="general">ସାଧାରଣ</string>
     <string name="app_language">ଆପ୍ ଭାଷା</string>
     <string name="system">ସିଷ୍ଟମ୍</string>
+    <string name="character_warning_limit">ଅକ୍ଷର ଚେତାବନୀ ସୀମା</string>
+    <string name="character_warning_limit_summary">ଯେତେବେଳେ ଅନୁବାଦିତ ପାଠ୍ୟ ସର୍ବାଧିକ ଲମ୍ବ ଅତିକ୍ରମ କରେ ସେତେବେଳେ ସତର୍କ କର ।</string>
+    <string name="none">କିଛି ନୁହେଁ</string>
+    <string name="unknown_error">ଅଜ୍ଞାତ ତ୍ରୁଟି</string>
+    <string name="transliteration">ଟ୍ରାନ୍ସଲିଟ୍ରେସନ୍</string>
+    <string name="image_translation">ପ୍ରତିଛବିରୁ ଅନୁବାଦ</string>
+    <string name="image_translation_summary">ପ୍ରତିଛବିଗୁଡ଼ିକରୁ ପାଠ୍ୟ ସ୍ୱୀକୃତି ପାଇଁ ଭାଷାଗୁଡ଼ିକୁ ଡାଉନଲୋଡ୍ ଏବଂ ପ୍ରୟୋଗ କର ।</string>
+    <string name="init_tess_first">ଦୟାକରି ପ୍ରଥମେ ସେଟିଙ୍ଗରେ ଭାଷା ତଥ୍ୟ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ।</string>
+    <string name="select_language">ସେଟିଂସମୂହରେ ପ୍ରତିଛବିଗୁଡ଼ିକର ପାଠ୍ୟ ସ୍ୱୀକୃତି ପାଇଁ ଦୟାକରି ଏକ ଭାଷା ଚୟନ କରନ୍ତୁ ।</string>
 </resources>
