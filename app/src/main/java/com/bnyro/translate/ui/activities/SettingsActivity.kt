@@ -228,7 +228,7 @@ fun SettingsPage() {
                         }
                     }
 
-                    val charCounterLimits = listOf(stringResource(R.string.none), "50", "100", "150", "200", "300", "400", "500", "1000")
+                    val charCounterLimits = listOf(stringResource(R.string.none), "50", "100", "150", "200", "300", "400", "500", "1000", "2000", "3000", "5000")
                     ListPreference(
                         title = stringResource(R.string.character_warning_limit),
                         summary = stringResource(R.string.character_warning_limit_summary),

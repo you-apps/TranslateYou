@@ -25,12 +25,13 @@ fun ListPreference(
         mutableStateOf(false)
     }
 
-    var summaryIndex by remember {
+    var selectedIndex by remember {
         mutableStateOf(values.indexOf(Preferences.get(preferenceKey, defaultValue)))
     }
+
     PreferenceItem(
         title = title,
-        summary = summary ?: entries.getOrElse(summaryIndex) { entries.first() },
+        summary = summary ?: entries.getOrElse(selectedIndex) { entries.first() },
         modifier = Modifier.fillMaxWidth()
     ) {
         showDialog = true
@@ -47,9 +48,10 @@ fun ListPreference(
             },
             onOptionSelected = {
                 Preferences.put(preferenceKey, values[it.value])
-                summaryIndex = it.value
+                selectedIndex = it.value
                 onOptionSelected.invoke(it)
-            }
+            },
+            currentValue = selectedIndex
         )
     }
 }

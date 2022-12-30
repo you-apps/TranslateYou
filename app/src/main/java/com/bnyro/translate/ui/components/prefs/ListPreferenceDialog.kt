@@ -16,6 +16,7 @@ fun ListPreferenceDialog(
     preferenceKey: String,
     onDismissRequest: () -> Unit,
     options: List<ListPreferenceOption>,
+    currentValue: Int? = null,
     onOptionSelected: (ListPreferenceOption) -> Unit = {}
 ) {
     AlertDialog(
@@ -24,7 +25,7 @@ fun ListPreferenceDialog(
             LazyColumn {
                 items(options) {
                     SelectableItem(
-                        text = it.name,
+                        text = if (it.value == currentValue) "${it.name}   ✓" else it.name,
                         onClick = {
                             Preferences.put(
                                 preferenceKey,
