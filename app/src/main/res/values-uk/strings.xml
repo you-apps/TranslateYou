@@ -48,4 +48,13 @@
     <string name="translation">Переклад</string>
     <string name="app_language">Мова застосунку</string>
     <string name="system">Системна</string>
+    <string name="none">Жодного</string>
+    <string name="character_warning_limit">Ліміт символів попередження</string>
+    <string name="character_warning_limit_summary">Попереджати, коли перекладений текст перевищує максимальну довжину.</string>
+    <string name="unknown_error">Невідома помилка</string>
+    <string name="transliteration">Транслітерація</string>
+    <string name="image_translation">Переклад із зображення</string>
+    <string name="image_translation_summary">Звантажити і застосувати мови для розпізнавання тексту з зображень.</string>
+    <string name="init_tess_first">Спочатку завантажте дані мови в налаштуваннях.</string>
+    <string name="select_language">Будь ласка, виберіть мову для розпізнавання тексту зображень у налаштуваннях.</string>
 </resources>
