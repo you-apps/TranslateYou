@@ -20,7 +20,9 @@ class LTEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
-        return api.getLanguages().toMutableList()
+        return api.getLanguages().map {
+            Language(it.code!!, it.name!!)
+        }
     }
 
     override suspend fun translate(
@@ -30,7 +32,7 @@ class LTEngine : TranslationEngine(
     ): Translation {
         val response = api.translate(
             query,
-            source,
+            sourceOrAuto(source),
             target,
             getApiKey()
         )
