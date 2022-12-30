@@ -12,7 +12,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
@@ -184,7 +183,7 @@ fun TessSettings(
                                 }
                                 if (!downloading) {
                                     StyledIconButton(imageVector = Icons.Default.Download) {
-                                         TessHelper.downloadLanguageData(context, it)
+                                        TessHelper.downloadLanguageData(context, it)
                                         downloading = true
                                         Handler(Looper.getMainLooper()).postDelayed({
                                             downloading = false
