@@ -22,10 +22,11 @@
 - [x] 30 supported languages _(libre version)_
 - [x] Material Design 3 (You)
 - [x] Dark and light theme
-- [x] Entirely Open Source
-- [X] Written in Jetpack Compose 
 - [X] Support native Android sharing system
 - [X] Multilingual interface
+- [X] Translation from images
+- [x] Entirely Open Source
+- [X] Written in Jetpack Compose 
 
 <!-- ---------- Download ---------- -->
 ## Download
