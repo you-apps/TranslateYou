@@ -52,4 +52,5 @@
     <string name="example">Exemple</string>
     <string name="similar">Similaire</string>
     <string name="missing_api_key">Veuillez fournir une clé d\'API dans les paramètres!</string>
+    <string name="general">Général</string>
 </resources>
