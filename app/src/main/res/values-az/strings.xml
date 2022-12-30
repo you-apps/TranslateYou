@@ -49,4 +49,13 @@
     <string name="app_language">Tətbiq dili</string>
     <string name="system">Sistem</string>
     <string name="search">Axtarış</string>
+    <string name="character_warning_limit">Simvol xəbərdarlıq həddi</string>
+    <string name="character_warning_limit_summary">Tərcümə edilmiş mətn maksimal uzunluğu üstələdikdə xəbərdar et.</string>
+    <string name="none">Heç nə</string>
+    <string name="unknown_error">Naməlum xəta</string>
+    <string name="transliteration">Simvol tərcüməsi</string>
+    <string name="image_translation">Şəkildən tərcümə</string>
+    <string name="image_translation_summary">Şəkillərdən mətn tanımaq üçün dilləri endir və tətbiq et.</string>
+    <string name="init_tess_first">Lütfən, əvvəlcə tənzimləmələrdə dil məlumatını endirin.</string>
+    <string name="select_language">Lütfən,tənzimləmələrdə şəkillərin mətn tanıması üçün dil seç.</string>
 </resources>
