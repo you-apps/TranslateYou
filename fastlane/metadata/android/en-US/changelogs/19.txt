@@ -1,0 +1,5 @@
+* Restore compatibility with LibreTranslate (broken due to API changes)
+* Show an indeterminate progress when downloading data packs for image translation
+* Add 2000, 3000 and 5000 as character warning limits
+* Highlight the current selection in list preferences
+* Fix crash when translating from image (#124)
