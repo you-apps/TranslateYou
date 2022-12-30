@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -184,6 +186,9 @@ fun TessSettings(
                                     StyledIconButton(imageVector = Icons.Default.Download) {
                                          TessHelper.downloadLanguageData(context, it)
                                         downloading = true
+                                        Handler(Looper.getMainLooper()).postDelayed({
+                                            downloading = false
+                                        }, 2000)
                                     }
                                 } else {
                                     CircularProgressIndicator(
