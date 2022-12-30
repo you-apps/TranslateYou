@@ -10,8 +10,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,6 +24,7 @@ import androidx.compose.material.icons.filled.Download
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -174,8 +177,19 @@ fun TessSettings(
                                     modifier = Modifier
                                         .padding(15.dp)
                                 )
-                                StyledIconButton(imageVector = Icons.Default.Download) {
-                                    TessHelper.downloadLanguageData(context, it)
+                                var downloading by remember {
+                                    mutableStateOf(false)
+                                }
+                                if (!downloading) {
+                                    StyledIconButton(imageVector = Icons.Default.Download) {
+                                         TessHelper.downloadLanguageData(context, it)
+                                        downloading = true
+                                    }
+                                } else {
+                                    CircularProgressIndicator(
+                                        modifier = Modifier.padding(10.dp).requiredSize(27.dp),
+                                        strokeWidth = 3.dp
+                                    )
                                 }
                             }
                         }

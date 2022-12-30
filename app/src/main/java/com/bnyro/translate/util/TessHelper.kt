@@ -4,6 +4,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.util.Log
 import com.bnyro.translate.R
 import com.bnyro.translate.ext.toastFromMainThread
 import com.googlecode.tesseract.android.TessBaseAPI
