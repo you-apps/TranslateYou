@@ -57,4 +57,13 @@
     <string name="general">כללי</string>
     <string name="app_language">שפת היישומון</string>
     <string name="system">מערכת</string>
+    <string name="character_warning_limit">סף אזהרת תווים</string>
+    <string name="character_warning_limit_summary">להזהיר כאשר הטקסט המתורגם חורג מהאורך המרבי המותר.</string>
+    <string name="none">ללא</string>
+    <string name="unknown_error">שגיאה לא ידועה</string>
+    <string name="transliteration">תעתיק</string>
+    <string name="image_translation">תרגום מתמונה</string>
+    <string name="image_translation_summary">הורדת והחלת שפות לזיהוי טקסט מתמונות.</string>
+    <string name="init_tess_first">נא להוריד את נתוני השפה דרך ההגדרות תחילה.</string>
+    <string name="select_language">נא לבחור שפה לזיהוי טקסט בתמונות דרך ההגדרות.</string>
 </resources>
