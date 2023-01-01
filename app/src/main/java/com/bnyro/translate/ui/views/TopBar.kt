@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
 import android.speech.SpeechRecognizer
-import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material.icons.Icons
@@ -36,7 +35,6 @@ import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.SpeechHelper
-import com.bnyro.translate.util.TessHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,16 +45,7 @@ fun TopBar(
     val context = LocalContext.current
     val handler = Handler(Looper.getMainLooper())
     val fileChooser = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) {
-        if (!TessHelper.areLanguagesAvailable(context)) {
-            Toast.makeText(context, R.string.init_tess_first, Toast.LENGTH_SHORT).show()
-            return@rememberLauncherForActivityResult
-        }
-        Thread {
-            TessHelper.getText(context, it)?.let {
-                mainModel.insertedText = it
-                mainModel.translate()
-            }
-        }.start()
+        mainModel.processImage(context, it)
     }
 
     TopAppBar(

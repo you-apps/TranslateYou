@@ -1,14 +1,18 @@
 package com.bnyro.translate.ui.models
 
+import android.content.Context
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bnyro.translate.DatabaseHolder.Companion.Db
+import com.bnyro.translate.R
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.db.obj.Language
@@ -16,6 +20,7 @@ import com.bnyro.translate.ext.awaitQuery
 import com.bnyro.translate.ext.query
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.util.TessHelper
 import com.bnyro.translate.util.TranslationEngine
 import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.CoroutineScope
@@ -199,5 +204,18 @@ class MainModel : ViewModel() {
         bookmarkedLanguages = awaitQuery {
             Db.languageBookmarksDao().getAll()
         }
+    }
+
+    fun processImage(context: Context, uri: Uri?) {
+        if (!TessHelper.areLanguagesAvailable(context)) {
+            Toast.makeText(context, R.string.init_tess_first, Toast.LENGTH_SHORT).show()
+            return
+        }
+        Thread {
+            TessHelper.getText(context, uri)?.let {
+                insertedText = it
+                translate()
+            }
+        }.start()
     }
 }

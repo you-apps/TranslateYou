@@ -2,8 +2,10 @@ package com.bnyro.translate.ui.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
+import com.bnyro.translate.ext.parcelable
 import com.bnyro.translate.ext.startActivity
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.base.BaseActivity
@@ -113,10 +116,14 @@ class MainActivity : BaseActivity() {
     }
 
     private fun handleIntentData() {
-        val intentDataText = getIntentText()
-        if (intentDataText != null) {
-            mainModel.insertedText = intentDataText
+        getIntentText()?.let {
+            mainModel.insertedText = it
             mainModel.translate()
+        }
+        if (intent.type?.startsWith("image/") != true) return
+
+        (intent.parcelable<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
+            mainModel.processImage(this, it)
         }
     }
 }
