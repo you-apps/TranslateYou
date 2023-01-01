@@ -49,4 +49,13 @@
     <string name="app_language">Uygulama dili</string>
     <string name="translation">Çeviri</string>
     <string name="system">Sistem</string>
+    <string name="character_warning_limit">Karakter uyarı sınırı</string>
+    <string name="character_warning_limit_summary">Çevrilen metin azami uzunluğu aştığında uyar.</string>
+    <string name="none">Hiçbiri</string>
+    <string name="unknown_error">Bilinmeyen hata</string>
+    <string name="transliteration">Karakter çevirisi</string>
+    <string name="image_translation">Resimden çeviri</string>
+    <string name="image_translation_summary">Resimlerden metin tanıma için dilleri indirin ve uygulayın.</string>
+    <string name="init_tess_first">Lütfen önce ayarlardan dil verilerini indirin.</string>
+    <string name="select_language">Resimlerden metin tanıma için lütfen ayarlardan bir dil seçin.</string>
 </resources>
