@@ -26,8 +26,8 @@
     <string name="license">Licență</string>
     <string name="privacy_policy">Politica de Confidențialitate</string>
     <string name="theme_auto">Sistem</string>
-    <string name="theme_light">Luminat</string>
-    <string name="theme_dark">Întunecat</string>
+    <string name="theme_light">Luminoasă</string>
+    <string name="theme_dark">Întunecată</string>
     <string name="clear_history">Șterge istoricul</string>
     <string name="open">Deschide</string>
     <string name="server_error">Eroare în comunicarea cu serverul.</string>
@@ -44,4 +44,17 @@
     <string name="additional_info_summary">Afișați informații suplimentare despre traducere, dacă sunt disponibile.</string>
     <string name="detected_language">Limba detectată</string>
     <string name="search">Căutare</string>
+    <string name="general">General</string>
+    <string name="translation">Traducere</string>
+    <string name="app_language">Limba aplicației</string>
+    <string name="system">Sistem</string>
+    <string name="character_warning_limit">Limită de avertizare de caractere</string>
+    <string name="character_warning_limit_summary">Avertizează atunci când textul tradus depășește lungimea maximă.</string>
+    <string name="none">Niciunul</string>
+    <string name="unknown_error">Eroare necunoscută</string>
+    <string name="transliteration">Transliterare</string>
+    <string name="image_translation">Traducere din imagine</string>
+    <string name="image_translation_summary">Descărcați și aplicați limbi pentru recunoașterea textului din imagini.</string>
+    <string name="init_tess_first">Descărcați mai întâi datele lingvistice în setări.</string>
+    <string name="select_language">Selectați o limbă pentru recunoașterea textului imaginilor din setări.</string>
 </resources>
