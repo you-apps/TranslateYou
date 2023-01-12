@@ -21,7 +21,7 @@
     <string name="options">Ustawienia</string>
     <string name="history">Historia</string>
     <string name="about">O aplikacji</string>
-    <string name="history_enabled">Włącz historię</string>
+    <string name="history_enabled">Historia</string>
     <string name="fetch_delay">Opóźnienie w tłumaczeniu</string>
     <string name="clear_history">Wyczyść historię</string>
     <string name="optional">Opcjonalne</string>
@@ -30,4 +30,17 @@
     <string name="privacy_policy">Polityka prywatności</string>
     <string name="open">Otwórz</string>
     <string name="compact_history_summary">Domyślnie pokazuj w historii tylko pierwsze trzy linijki tekstu</string>
+    <string name="additional_info">Informacje dodatkowe</string>
+    <string name="additional_info_summary">Pokazuj dodatkowe informacje o tłumaczeniu, jeśli są dostępne.</string>
+    <string name="selected_engine">Wybrany translator</string>
+    <string name="simultaneous_translation">Tłumaczenie równoczesne</string>
+    <string name="enabled_engines">Włączone translatory</string>
+    <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoczesnym.</string>
+    <string name="translation">Tłumaczenie</string>
+    <string name="general">Ogólne</string>
+    <string name="app_language">Język aplikacji</string>
+    <string name="system">System</string>
+    <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów na raz.</string>
+    <string name="st_selected_engine">Translator używany przez SimplyTranslate do tłumaczenia</string>
+    <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
 </resources>
