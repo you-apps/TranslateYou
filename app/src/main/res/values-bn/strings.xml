@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto">অটো</string>
+    <string name="cancel">বাতিল</string>
+    <string name="paste">পেস্ট</string>
+    <string name="copy">অনুলিপি</string>
+    <string name="forget">ভুলে যান</string>
+    <string name="okay">আচ্ছা</string>
+    <string name="enter_text">টেক্সট লিখুন</string>
+</resources>
