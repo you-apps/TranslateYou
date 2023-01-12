@@ -7,4 +7,12 @@
     <string name="forget">ভুলে যান</string>
     <string name="okay">আচ্ছা</string>
     <string name="enter_text">টেক্সট লিখুন</string>
+    <string name="instance">ইন্সটেন্স</string>
+    <string name="api_key">এপিআই কী</string>
+    <string name="options">সেটিংস</string>
+    <string name="history">ইতিহাস</string>
+    <string name="about">সম্পর্কে</string>
+    <string name="history_enabled">ইতিহাস চালু</string>
+    <string name="fetch_delay">অনুবাদ বিলম্ব</string>
+    <string name="language_not_supported">ভাষা সমর্থিত নয়!</string>
 </resources>
