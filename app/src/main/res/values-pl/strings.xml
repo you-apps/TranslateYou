@@ -7,7 +7,7 @@
     <string name="theme_auto">Systemowy</string>
     <string name="theme_light">Jasny</string>
     <string name="theme_dark">Ciemny</string>
-    <string name="server_error">Błąd w komunikacji z serwerem. Proszę wybrać inną instancję w ustawieniach!</string>
+    <string name="server_error">Błąd w komunikacji z serwerem.</string>
     <string name="compact_history">Kompaktowa historia</string>
     <string name="okay">OK</string>
     <string name="cancel">Anuluj</string>
@@ -30,7 +30,7 @@
     <string name="privacy_policy">Polityka prywatności</string>
     <string name="open">Otwórz</string>
     <string name="compact_history_summary">Domyślnie pokazuj w historii tylko pierwsze trzy linijki tekstu</string>
-    <string name="additional_info">Informacje dodatkowe</string>
+    <string name="additional_info">Dodatkowe informacje</string>
     <string name="additional_info_summary">Pokazuj dodatkowe informacje o tłumaczeniu, jeśli są dostępne.</string>
     <string name="selected_engine">Wybrany translator</string>
     <string name="simultaneous_translation">Tłumaczenie równoczesne</string>
@@ -44,4 +44,17 @@
     <string name="st_selected_engine">Translator używany przez SimplyTranslate do tłumaczenia</string>
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
     <string name="search">Szukaj</string>
+    <string name="missing_api_key">Podaj klucz API w ustawieniach!</string>
+    <string name="character_warning_limit_summary">Ostrzegaj, gdy przetłumaczony tekst przekroczy maksymalną długość.</string>
+    <string name="none">Żaden</string>
+    <string name="unknown_error">Nieznany błąd</string>
+    <string name="detected_language">Wykryty język</string>
+    <string name="definition">Definicja</string>
+    <string name="example">Przykład</string>
+    <string name="similar">Podobny</string>
+    <string name="transliteration">Transliteracja</string>
+    <string name="image_translation">Tłumaczenie ze zdjęcia</string>
+    <string name="image_translation_summary">Pobierz i zastosuj języki wykorzystywane do rozpoznawania tekstu ze zdjęć.</string>
+    <string name="select_language">Proszę wybrać w ustawieniach język wykorzystywany do rozpoznawania zdjęć.</string>
+    <string name="init_tess_first">Proszę najpierw pobrać dane językowe w ustawieniach.</string>
 </resources>
