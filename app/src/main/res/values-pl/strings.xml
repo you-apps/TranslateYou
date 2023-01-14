@@ -43,4 +43,5 @@
     <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów na raz.</string>
     <string name="st_selected_engine">Translator używany przez SimplyTranslate do tłumaczenia</string>
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
+    <string name="search">Szukaj</string>
 </resources>
