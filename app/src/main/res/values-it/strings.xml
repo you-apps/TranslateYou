@@ -49,4 +49,13 @@
     <string name="app_language">Lingua dell\'app</string>
     <string name="system">Sistema</string>
     <string name="search">Cerca</string>
+    <string name="none">Niente</string>
+    <string name="character_warning_limit">Avvertimento limite dei caratteri</string>
+    <string name="character_warning_limit_summary">Avvisa quando il testo tradotto supera la lunghezza massima.</string>
+    <string name="unknown_error">Errore sconosciuto</string>
+    <string name="transliteration">Traslitterazione</string>
+    <string name="image_translation_summary">Scarica e applica le lingue per il riconoscimento del testo dalle immagini.</string>
+    <string name="select_language">Per favore seleziona una lingua per il riconoscimento del testo delle immagini nelle impostazioni.</string>
+    <string name="image_translation">Traslitterazione da immagine</string>
+    <string name="init_tess_first">Per favore scarica prima i dati della lingua nelle impostazioni.</string>
 </resources>
