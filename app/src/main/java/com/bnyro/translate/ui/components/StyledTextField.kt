@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.sp
 fun StyledTextField(
     modifier: Modifier = Modifier,
     text: String,
-    maxLines: Int = 10,
     placeholder: String? = null,
     readOnly: Boolean = false,
     fontSize: TextUnit = 23.sp,
@@ -51,8 +50,7 @@ fun StyledTextField(
         textStyle = TextStyle(
             fontSize = fontSize,
             color = textColor
-        ),
-        maxLines = maxLines
+        )
     )
 }
 

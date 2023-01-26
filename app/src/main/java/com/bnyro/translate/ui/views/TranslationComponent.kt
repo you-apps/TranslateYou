@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
@@ -49,6 +51,7 @@ fun TranslationComponent() {
     val viewModel: MainModel = viewModel()
     val context = LocalContext.current
     val view = LocalView.current
+    val scrollState = rememberScrollState()
 
     val clipboardHelper = ClipboardHelper(
         LocalContext.current.applicationContext
@@ -80,90 +83,93 @@ fun TranslationComponent() {
             .padding(15.dp)
             .fillMaxSize()
     ) {
-        StyledTextField(
-            text = viewModel.insertedText,
-            onValueChange = {
+        Column(
+            modifier = Modifier
+                .verticalScroll(scrollState)
+                .weight(1.0f)
+        ) {
+            StyledTextField(
+                text = viewModel.insertedText,
+                placeholder = stringResource(R.string.enter_text)
+            ) {
                 viewModel.insertedText = it
                 if (it == "") hasClip = clipboardHelper.hasClip()
                 viewModel.enqueueTranslation()
-            },
-            placeholder = stringResource(R.string.enter_text)
-        )
-
-        val modifier = Modifier
-            .align(Alignment.CenterHorizontally)
-            .padding(10.dp)
-
-        if (viewModel.translating) {
-            LinearProgressIndicator(
-                modifier = modifier
-            )
-        } else {
-            Divider(
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = modifier
-                    .size(70.dp, 1.dp)
-            )
-        }
-
-        if (viewModel.translation.translatedText != "" && SpeechHelper.ttsAvailable) {
-            Box(
-                modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.CenterEnd
-            ) {
-                StyledIconButton(
-                    imageVector = Icons.Default.VolumeUp
-                ) {
-                    SpeechHelper.speak(
-                        context,
-                        viewModel.translation.translatedText,
-                        viewModel.targetLanguage.code
-                    )
-                }
             }
-        }
 
-        if (hasClip && viewModel.insertedText == "") {
-            Row {
-                ButtonWithIcon(
-                    text = stringResource(R.string.paste),
-                    icon = Icons.Default.ContentPaste
-                ) {
-                    viewModel.insertedText = clipboardHelper.get() ?: ""
-                    viewModel.enqueueTranslation()
-                }
+            val modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(10.dp)
 
-                Spacer(
-                    modifier = Modifier
-                        .width(0.dp)
+            if (viewModel.translating) {
+                LinearProgressIndicator(
+                    modifier = modifier
                 )
+            } else {
+                Divider(
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = modifier
+                        .size(70.dp, 1.dp)
+                )
+            }
 
-                ButtonWithIcon(
-                    text = stringResource(R.string.forget),
-                    icon = Icons.Default.Clear
+            if (viewModel.translation.translatedText != "" && SpeechHelper.ttsAvailable) {
+                Box(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentAlignment = Alignment.CenterEnd
                 ) {
-                    clipboardHelper.clear()
-                    hasClip = false
-                    viewModel.clearTranslation()
+                    StyledIconButton(
+                        imageVector = Icons.Default.VolumeUp
+                    ) {
+                        SpeechHelper.speak(
+                            context,
+                            viewModel.translation.translatedText,
+                            viewModel.targetLanguage.code
+                        )
+                    }
                 }
             }
+
+            if (hasClip && viewModel.insertedText == "") {
+                Row {
+                    ButtonWithIcon(
+                        text = stringResource(R.string.paste),
+                        icon = Icons.Default.ContentPaste
+                    ) {
+                        viewModel.insertedText = clipboardHelper.get() ?: ""
+                        viewModel.enqueueTranslation()
+                    }
+
+                    Spacer(
+                        modifier = Modifier
+                            .width(0.dp)
+                    )
+
+                    ButtonWithIcon(
+                        text = stringResource(R.string.forget),
+                        icon = Icons.Default.Clear
+                    ) {
+                        clipboardHelper.clear()
+                        hasClip = false
+                        viewModel.clearTranslation()
+                    }
+                }
+            }
+
+            val charPref = Preferences.get(Preferences.charCounterLimitKey, "")
+
+            StyledTextField(
+                text = viewModel.translation.translatedText,
+                readOnly = true,
+                textColor = if (
+                    charPref != "" && viewModel.translation.translatedText.length >= charPref.toInt()
+                ) {
+                    MaterialTheme.colorScheme.error
+                } else {
+                    MaterialTheme.typography.bodyMedium.color
+                }
+            )
         }
-
-        val charPref = Preferences.get(Preferences.charCounterLimitKey, "")
-
-        StyledTextField(
-            text = viewModel.translation.translatedText,
-            textColor = if (
-                charPref != "" && viewModel.translation.translatedText.length >= charPref.toInt()
-            ) {
-                MaterialTheme.colorScheme.error
-            } else {
-                MaterialTheme.typography.bodyMedium.color
-            },
-            readOnly = true,
-            modifier = Modifier
-                .weight(1.0f)
-        )
 
         if (Preferences.get(
                 Preferences.showAdditionalInfo,
