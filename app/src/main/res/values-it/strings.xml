@@ -5,7 +5,7 @@
     <string name="clear_history">Cancella cronologia</string>
     <string name="auto">Automatico</string>
     <string name="instance">Istanza</string>
-    <string name="about">Di più</string>
+    <string name="about">Informazioni</string>
     <string name="history_enabled">Cronologia abilitata</string>
     <string name="fetch_delay">Ritardo di traduzione</string>
     <string name="author">Autore</string>
@@ -48,7 +48,7 @@
     <string name="general">Generale</string>
     <string name="app_language">Lingua dell\'app</string>
     <string name="system">Sistema</string>
-    <string name="search">Cerca</string>
+    <string name="search">Ricerca</string>
     <string name="none">Niente</string>
     <string name="character_warning_limit">Avvertimento limite dei caratteri</string>
     <string name="character_warning_limit_summary">Avvisa quando il testo tradotto supera la lunghezza massima.</string>
