@@ -27,4 +27,5 @@
     <string name="clear_history">Verlauf löschen</string>
     <string name="server_error">Fehler bei der Kommunikation mit dem Server. Bitte wählen Sie eine andere Instanz in den Einstellungen!</string>
     <string name="translation">Übersetzung</string>
+    <string name="search">Suche</string>
 </resources>
