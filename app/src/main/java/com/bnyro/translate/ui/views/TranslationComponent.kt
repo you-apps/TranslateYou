@@ -14,10 +14,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Divider
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -25,6 +28,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,6 +49,7 @@ import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SimTranslationComponent
 import com.bnyro.translate.util.SpeechHelper
+import kotlinx.coroutines.launch
 
 @Composable
 fun TranslationComponent() {
@@ -52,6 +57,7 @@ fun TranslationComponent() {
     val context = LocalContext.current
     val view = LocalView.current
     val scrollState = rememberScrollState()
+    val coroutineScope = rememberCoroutineScope()
 
     val clipboardHelper = ClipboardHelper(
         LocalContext.current.applicationContext
@@ -83,92 +89,111 @@ fun TranslationComponent() {
             .padding(15.dp)
             .fillMaxSize()
     ) {
-        Column(
-            modifier = Modifier
-                .verticalScroll(scrollState)
-                .weight(1.0f)
+        Box(
+            modifier = Modifier.weight(1.0f)
         ) {
-            StyledTextField(
-                text = viewModel.insertedText,
-                placeholder = stringResource(R.string.enter_text)
+            Column(
+                modifier = Modifier
+                    .verticalScroll(scrollState)
+                    .fillMaxSize()
             ) {
-                viewModel.insertedText = it
-                if (it == "") hasClip = clipboardHelper.hasClip()
-                viewModel.enqueueTranslation()
-            }
-
-            val modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(10.dp)
-
-            if (viewModel.translating) {
-                LinearProgressIndicator(
-                    modifier = modifier
-                )
-            } else {
-                Divider(
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = modifier
-                        .size(70.dp, 1.dp)
-                )
-            }
-
-            if (viewModel.translation.translatedText != "" && SpeechHelper.ttsAvailable) {
-                Box(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentAlignment = Alignment.CenterEnd
+                StyledTextField(
+                    text = viewModel.insertedText,
+                    placeholder = stringResource(R.string.enter_text)
                 ) {
-                    StyledIconButton(
-                        imageVector = Icons.Default.VolumeUp
-                    ) {
-                        SpeechHelper.speak(
-                            context,
-                            viewModel.translation.translatedText,
-                            viewModel.targetLanguage.code
-                        )
-                    }
+                    viewModel.insertedText = it
+                    if (it == "") hasClip = clipboardHelper.hasClip()
+                    viewModel.enqueueTranslation()
                 }
-            }
 
-            if (hasClip && viewModel.insertedText == "") {
-                Row {
-                    ButtonWithIcon(
-                        text = stringResource(R.string.paste),
-                        icon = Icons.Default.ContentPaste
-                    ) {
-                        viewModel.insertedText = clipboardHelper.get() ?: ""
-                        viewModel.enqueueTranslation()
-                    }
+                val modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(10.dp)
 
-                    Spacer(
-                        modifier = Modifier
-                            .width(0.dp)
+                if (viewModel.translating) {
+                    LinearProgressIndicator(
+                        modifier = modifier
                     )
+                } else {
+                    Divider(
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = modifier
+                            .size(70.dp, 1.dp)
+                    )
+                }
 
-                    ButtonWithIcon(
-                        text = stringResource(R.string.forget),
-                        icon = Icons.Default.Clear
+                if (viewModel.translation.translatedText != "" && SpeechHelper.ttsAvailable) {
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.CenterEnd
                     ) {
-                        clipboardHelper.clear()
-                        hasClip = false
-                        viewModel.clearTranslation()
+                        StyledIconButton(
+                            imageVector = Icons.Default.VolumeUp
+                        ) {
+                            SpeechHelper.speak(
+                                context,
+                                viewModel.translation.translatedText,
+                                viewModel.targetLanguage.code
+                            )
+                        }
                     }
                 }
+
+                if (hasClip && viewModel.insertedText == "") {
+                    Row {
+                        ButtonWithIcon(
+                            text = stringResource(R.string.paste),
+                            icon = Icons.Default.ContentPaste
+                        ) {
+                            viewModel.insertedText = clipboardHelper.get() ?: ""
+                            viewModel.enqueueTranslation()
+                        }
+
+                        Spacer(
+                            modifier = Modifier
+                                .width(0.dp)
+                        )
+
+                        ButtonWithIcon(
+                            text = stringResource(R.string.forget),
+                            icon = Icons.Default.Clear
+                        ) {
+                            clipboardHelper.clear()
+                            hasClip = false
+                            viewModel.clearTranslation()
+                        }
+                    }
+                }
+
+                val charPref = Preferences.get(Preferences.charCounterLimitKey, "")
+
+                StyledTextField(
+                    text = viewModel.translation.translatedText,
+                    readOnly = true,
+                    textColor = if (
+                        charPref != "" && viewModel.translation.translatedText.length >= charPref.toInt()
+                    ) {
+                        MaterialTheme.colorScheme.error
+                    } else {
+                        MaterialTheme.typography.bodyMedium.color
+                    }
+                )
             }
 
-            val charPref = Preferences.get(Preferences.charCounterLimitKey, "")
-
-            StyledTextField(
-                text = viewModel.translation.translatedText,
-                readOnly = true,
-                textColor = if (
-                    charPref != "" && viewModel.translation.translatedText.length >= charPref.toInt()
+            if (scrollState.value > 100) {
+                FloatingActionButton(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp),
+                    onClick = {
+                        coroutineScope.launch {
+                            scrollState.animateScrollTo(0)
+                        }
+                    }
                 ) {
-                    MaterialTheme.colorScheme.error
-                } else {
-                    MaterialTheme.typography.bodyMedium.color
+                    Icon(Icons.Default.ArrowUpward, null)
                 }
-            )
+            }
         }
 
         if (Preferences.get(
