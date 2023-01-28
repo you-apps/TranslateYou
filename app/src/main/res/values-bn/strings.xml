@@ -15,4 +15,8 @@
     <string name="history_enabled">ইতিহাস চালু</string>
     <string name="fetch_delay">অনুবাদ বিলম্ব</string>
     <string name="language_not_supported">ভাষা সমর্থিত নয়!</string>
+    <string name="license">লাইসেন্স</string>
+    <string name="search">খুঁজুন</string>
+    <string name="author">লেখক</string>
+    <string name="translation">অনুবাদ</string>
 </resources>
