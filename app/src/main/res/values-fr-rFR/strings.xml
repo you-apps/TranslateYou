@@ -54,4 +54,16 @@
     <string name="missing_api_key">Veuillez fournir une clé d\'API dans les paramètres!</string>
     <string name="general">Général</string>
     <string name="search">Rechercher</string>
+    <string name="translation">Traduction</string>
+    <string name="app_language">Langue de l\'application</string>
+    <string name="system">Système</string>
+    <string name="character_warning_limit">Limite d\'avertissement de caractères</string>
+    <string name="character_warning_limit_summary">Avertir lorsque le texte traduit dépasse la longueur maximale.</string>
+    <string name="none">Aucun</string>
+    <string name="unknown_error">Erreur inconnue</string>
+    <string name="transliteration">Translittération</string>
+    <string name="image_translation">Traduction de l\'image</string>
+    <string name="image_translation_summary">Téléchargez et appliquez des langues pour la reconnaissance de texte à partir d\'images.</string>
+    <string name="init_tess_first">Veuillez d\'abord télécharger les données linguistiques dans les paramètres.</string>
+    <string name="select_language">Veuillez sélectionner une langue pour la reconnaissance du texte des images dans les paramètres.</string>
 </resources>
