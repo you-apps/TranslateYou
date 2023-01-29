@@ -58,4 +58,7 @@
     <string name="image_translation_summary">Şəkillərdən mətn tanımaq üçün dilləri endir və tətbiq et.</string>
     <string name="init_tess_first">Lütfən, əvvəlcə tənzimləmələrdə dil məlumatını endirin.</string>
     <string name="select_language">Lütfən,tənzimləmələrdə şəkillərin mətn tanıması üçün dil seç.</string>
+    <string name="translate">Tərcümə et</string>
+    <string name="translate_automatically_summary">Müəyyən gecikmə sonrası avtomatik tərcümə tələb et.</string>
+    <string name="translate_automatically">Avtomatik tərcümə et</string>
 </resources>
