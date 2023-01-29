@@ -44,10 +44,10 @@
     <string name="st_selected_engine">SimplyTranslate\'in çeviri için kullandığı motor</string>
     <string name="detected_language">Algılanan dil</string>
     <string name="missing_api_key">Lütfen Ayarlar\'da bir API anahtarı belirtin!</string>
-    <string name="search">Ara</string>
+    <string name="search">Arama</string>
     <string name="general">Genel</string>
     <string name="app_language">Uygulama dili</string>
-    <string name="translation">Çeviri</string>
+    <string name="translation">Tercüme</string>
     <string name="system">Sistem</string>
     <string name="character_warning_limit">Karakter uyarı sınırı</string>
     <string name="character_warning_limit_summary">Çevrilen metin azami uzunluğu aştığında uyar.</string>
