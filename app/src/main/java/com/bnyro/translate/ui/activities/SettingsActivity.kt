@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -191,7 +192,7 @@ fun SettingsPage() {
                         translateAutomatically = it
                     }
 
-                    if (translateAutomatically) {
+                    AnimatedVisibility(visible = translateAutomatically) {
                         SliderPreference(
                             preferenceKey = Preferences.fetchDelay,
                             preferenceTitle = stringResource(R.string.fetch_delay),
