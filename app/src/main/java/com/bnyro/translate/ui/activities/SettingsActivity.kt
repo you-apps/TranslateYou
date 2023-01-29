@@ -178,15 +178,30 @@ fun SettingsPage() {
                         title = stringResource(R.string.translation)
                     )
 
-                    SliderPreference(
-                        preferenceKey = Preferences.fetchDelay,
-                        preferenceTitle = stringResource(R.string.fetch_delay),
-                        preferenceSummary = stringResource(R.string.fetch_delay_summary),
-                        defaultValue = 500f,
-                        minValue = 100f,
-                        maxValue = 1000f,
-                        stepSize = 100f
-                    )
+                    var translateAutomatically by remember {
+                        mutableStateOf(Preferences.get(Preferences.translateAutomatically, true))
+                    }
+
+                    SwitchPreference(
+                        preferenceKey = Preferences.translateAutomatically,
+                        defaultValue = true,
+                        preferenceTitle = stringResource(R.string.translate_automatically),
+                        preferenceSummary = stringResource(R.string.translate_automatically_summary)
+                    ) {
+                        translateAutomatically = it
+                    }
+
+                    if (translateAutomatically) {
+                        SliderPreference(
+                            preferenceKey = Preferences.fetchDelay,
+                            preferenceTitle = stringResource(R.string.fetch_delay),
+                            preferenceSummary = stringResource(R.string.fetch_delay_summary),
+                            defaultValue = 500f,
+                            minValue = 100f,
+                            maxValue = 1000f,
+                            stepSize = 100f
+                        )
+                    }
 
                     SwitchPreference(
                         preferenceKey = Preferences.showAdditionalInfo,

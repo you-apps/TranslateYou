@@ -76,6 +76,8 @@ class MainModel : ViewModel() {
     }
 
     fun enqueueTranslation() {
+        if (!Preferences.get(Preferences.translateAutomatically, true)) return
+
         val insertedTextTemp = insertedText
         Handler(
             Looper.getMainLooper()

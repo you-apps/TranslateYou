@@ -9,6 +9,7 @@ object Preferences {
     const val apiKey = "apiKey"
     const val apiTypeKey = "apiTypeKey"
     const val historyEnabledKey = "historyEnabledKey"
+    const val translateAutomatically = "translateAutomatically"
     const val fetchDelay = "fetchDelay"
     const val compactHistory = "compactHistory"
     const val simultaneousTranslationKey = "simultaneousTranslation"

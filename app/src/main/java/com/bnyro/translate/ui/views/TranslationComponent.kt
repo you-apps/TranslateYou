@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
+import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Divider
 import androidx.compose.material3.FloatingActionButton
@@ -139,7 +140,7 @@ fun TranslationComponent() {
                     }
                 }
 
-                if (hasClip && viewModel.insertedText == "") {
+                if (hasClip && viewModel.insertedText.isBlank()) {
                     Row {
                         ButtonWithIcon(
                             text = stringResource(R.string.paste),
@@ -162,6 +163,16 @@ fun TranslationComponent() {
                             hasClip = false
                             viewModel.clearTranslation()
                         }
+                    }
+                } else if (
+                    viewModel.insertedText.isNotBlank() &&
+                    !Preferences.get(Preferences.translateAutomatically, true)
+                ) {
+                    ButtonWithIcon(
+                        text = stringResource(R.string.translate),
+                        icon = Icons.Default.Translate
+                    ) {
+                        viewModel.translate()
                     }
                 }
 

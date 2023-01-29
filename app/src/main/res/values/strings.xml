@@ -10,6 +10,7 @@
     <string name="copy">Copy</string>
     <string name="auto">Auto</string>
     <string name="forget">Forget</string>
+    <string name="translate">Translate</string>
     <string name="language_not_supported">Language is not supported!</string>
     <!-- Settings -->
     <string name="instance">Instance</string>
@@ -40,6 +41,8 @@
     <string name="character_warning_limit">Character warning limit</string>
     <string name="character_warning_limit_summary">Warn when the translated text exceeds the maximum length.</string>
     <string name="none">None</string>
+    <string name="translate_automatically">Translate automatically</string>
+    <string name="translate_automatically_summary">Request a translation automatically after a certain delay.</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Author</string>
