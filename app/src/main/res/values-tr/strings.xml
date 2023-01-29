@@ -58,4 +58,7 @@
     <string name="image_translation_summary">Resimlerden metin tanıma için dilleri indirin ve uygulayın.</string>
     <string name="init_tess_first">Lütfen önce ayarlardan dil verilerini indirin.</string>
     <string name="select_language">Resimlerden metin tanıma için lütfen ayarlardan bir dil seçin.</string>
+    <string name="translate">Çevir</string>
+    <string name="translate_automatically">Otomatik olarak çevir</string>
+    <string name="translate_automatically_summary">Belirli bir gecikmeden sonra otomatik olarak çeviri iste.</string>
 </resources>
