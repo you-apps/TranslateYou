@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="cancel">ବାତିଲ</string>
+    <string name="cancel">ବାତିଲ୍ କରନ୍ତୁ</string>
     <string name="enter_text">ଲେଖା ପ୍ରବେଶ କରନ୍ତୁ</string>
     <string name="copy">ନକଲ କରନ୍ତୁ</string>
     <string name="auto">ସ୍ଵତଃ</string>
@@ -37,7 +37,7 @@
     <string name="definition">ସଂଜ୍ଞା</string>
     <string name="example">ଉଦାହରଣ</string>
     <string name="similar">ସେହିଭଳି</string>
-    <string name="okay">ଠିକ୍ ଅଛି</string>
+    <string name="okay">ଠିକ ଅଛି</string>
     <string name="paste">ଲେପନ କରନ୍ତୁ</string>
     <string name="language_not_supported">ଭାଷା ସମର୍ଥିତ ନୁହେଁ!</string>
     <string name="additional_info">ଅତିରିକ୍ତ ସୂଚନା</string>
@@ -57,4 +57,7 @@
     <string name="image_translation_summary">ପ୍ରତିଛବିଗୁଡ଼ିକରୁ ପାଠ୍ୟ ସ୍ୱୀକୃତି ପାଇଁ ଭାଷାଗୁଡ଼ିକୁ ଡାଉନଲୋଡ୍ ଏବଂ ପ୍ରୟୋଗ କର ।</string>
     <string name="init_tess_first">ଦୟାକରି ପ୍ରଥମେ ସେଟିଙ୍ଗରେ ଭାଷା ତଥ୍ୟ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ।</string>
     <string name="select_language">ସେଟିଂସମୂହରେ ପ୍ରତିଛବିଗୁଡ଼ିକର ପାଠ୍ୟ ସ୍ୱୀକୃତି ପାଇଁ ଦୟାକରି ଏକ ଭାଷା ଚୟନ କରନ୍ତୁ ।</string>
+    <string name="translate">ଅନୁବାଦ କରନ୍ତୁ</string>
+    <string name="translate_automatically">ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଅନୁବାଦ କରନ୍ତୁ</string>
+    <string name="translate_automatically_summary">ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ବିଳମ୍ବ ପରେ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଏକ ଅନୁବାଦ ପାଇଁ ଅନୁରୋଧ ।</string>
 </resources>
