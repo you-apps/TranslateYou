@@ -66,4 +66,7 @@
     <string name="image_translation_summary">הורדת והחלת שפות לזיהוי טקסט מתמונות.</string>
     <string name="init_tess_first">נא להוריד את נתוני השפה דרך ההגדרות תחילה.</string>
     <string name="select_language">נא לבחור שפה לזיהוי טקסט בתמונות דרך ההגדרות.</string>
+    <string name="translate">תרגום</string>
+    <string name="translate_automatically">תרגום אוטומטי</string>
+    <string name="translate_automatically_summary">לבקש תרגום אוטומטית לאחר השהייה מסוימת.</string>
 </resources>
