@@ -67,4 +67,7 @@
     <string name="image_translation_summary">下载并应用语言以进行图像文本识别。</string>
     <string name="init_tess_first">请先在设置中下载语言数据。</string>
     <string name="select_language">请在设置中选择用于图像文本识别的语言。</string>
+    <string name="translate">翻译</string>
+    <string name="translate_automatically">自动翻译</string>
+    <string name="translate_automatically_summary">在特定延迟后自动请求翻译。</string>
 </resources>
