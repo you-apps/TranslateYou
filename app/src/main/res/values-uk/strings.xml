@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="okay">Окей</string>
+    <string name="okay">Добре</string>
     <string name="cancel">Скасувати</string>
     <string name="enter_text">Введіть текст</string>
     <string name="paste">Вставити</string>
