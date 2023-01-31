@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="okay">ОК</string>
-    <string name="about">О нас</string>
+    <string name="okay">Окей</string>
+    <string name="about">Про</string>
     <string name="instance">Сервер</string>
     <string name="fetch_delay">Задержка перевода</string>
     <string name="history_enabled">История включена</string>
@@ -14,7 +14,7 @@
     <string name="theme_dark">Тёмная</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="license">Лицензия</string>
-    <string name="cancel">Отмена</string>
+    <string name="cancel">Отменить</string>
     <string name="enter_text">Введите текст</string>
     <string name="auto">Авто</string>
     <string name="language_not_supported">Язык не поддерживается!</string>
@@ -48,4 +48,16 @@
     <string name="app_language">Язык приложения</string>
     <string name="system">Система</string>
     <string name="search">Поиск</string>
+    <string name="translate">Перевести</string>
+    <string name="character_warning_limit">Преодолён лимит символов</string>
+    <string name="translate_automatically">Переводить автоматически</string>
+    <string name="translate_automatically_summary">Запрашивать перевод автоматически после определённой задержки.</string>
+    <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="transliteration">Трнслитерация</string>
+    <string name="image_translation">Перевод с изображения</string>
+    <string name="image_translation_summary">Скачайте и примените языки для распознавания текста с изображений.</string>
+    <string name="init_tess_first">Пожалуйста, скачайте информацию о языке в настройках.</string>
+    <string name="select_language">Пожалуйста, выберите язык для распознавания текста с изображений в настройках.</string>
+    <string name="character_warning_limit_summary">Предупреждать, если переведённый текст превышает максимальную длину.</string>
+    <string name="none">Ни одного</string>
 </resources>

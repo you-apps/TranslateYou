@@ -57,4 +57,7 @@
     <string name="select_language">V nastavení vyberte jazyk pro rozpoznávání textu obrázků.</string>
     <string name="enabled_engines_summary">Služby používané k simultánnímu překladu.</string>
     <string name="additional_info_summary">Zobrazte další informace o překladu, pokud jsou k dispozici.</string>
+    <string name="translate">Přeložit</string>
+    <string name="translate_automatically_summary">Automaticky vyžádat překlad po určité prodlevě.</string>
+    <string name="translate_automatically">Automatický překlad</string>
 </resources>

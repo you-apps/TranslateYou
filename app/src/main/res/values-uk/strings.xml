@@ -57,4 +57,7 @@
     <string name="image_translation_summary">Звантажити і застосувати мови для розпізнавання тексту з зображень.</string>
     <string name="init_tess_first">Спочатку завантажте дані мови в налаштуваннях.</string>
     <string name="select_language">Будь ласка, виберіть мову для розпізнавання тексту зображень у налаштуваннях.</string>
+    <string name="translate_automatically">Перекладати автоматично</string>
+    <string name="translate_automatically_summary">Запитувати переклад автоматично після певної затримки.</string>
+    <string name="translate">Перекласти</string>
 </resources>
