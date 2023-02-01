@@ -66,4 +66,7 @@
     <string name="image_translation_summary">Téléchargez et appliquez des langues pour la reconnaissance de texte à partir d\'images.</string>
     <string name="init_tess_first">Veuillez d\'abord télécharger les données linguistiques dans les paramètres.</string>
     <string name="select_language">Veuillez sélectionner une langue pour la reconnaissance du texte des images dans les paramètres.</string>
+    <string name="translate">Traduire</string>
+    <string name="translate_automatically">Traduire automatiquement</string>
+    <string name="translate_automatically_summary">Demander une traduction après un certain délai.</string>
 </resources>
