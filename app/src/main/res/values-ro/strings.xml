@@ -57,4 +57,7 @@
     <string name="image_translation_summary">Descărcați și aplicați limbi pentru recunoașterea textului din imagini.</string>
     <string name="init_tess_first">Descărcați mai întâi datele lingvistice în setări.</string>
     <string name="select_language">Selectați o limbă pentru recunoașterea textului imaginilor din setări.</string>
+    <string name="translate_automatically_summary">Solicitați o traducere automat după o anumită întârziere.</string>
+    <string name="translate">Traduceți</string>
+    <string name="translate_automatically">Traduceți automat</string>
 </resources>
