@@ -36,7 +36,7 @@ fun SliderPreference(
     Column(
         modifier = Modifier
             .padding(
-                top = 20.dp
+                top = 5.dp
             )
     ) {
         PreferenceItem(
