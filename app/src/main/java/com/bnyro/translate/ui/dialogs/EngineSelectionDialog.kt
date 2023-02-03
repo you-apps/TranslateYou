@@ -1,4 +1,4 @@
-package com.bnyro.translate.ui.views
+package com.bnyro.translate.ui.dialogs
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text

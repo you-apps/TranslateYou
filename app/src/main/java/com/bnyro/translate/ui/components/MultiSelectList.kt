@@ -30,6 +30,15 @@ fun MultiSelectList(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Spacer(
+                    modifier = Modifier
+                        .width(10.dp)
+                )
+                Text(title)
+                Spacer(
+                    modifier = Modifier
+                        .weight(1.0f)
+                )
                 Checkbox(
                     checked = selected,
                     onCheckedChange = {
@@ -37,15 +46,6 @@ fun MultiSelectList(
                         selected = it
                         onChange.invoke(selectedItems)
                     }
-                )
-                Spacer(
-                    modifier = Modifier
-                        .weight(1.0f)
-                )
-                Text(title)
-                Spacer(
-                    modifier = Modifier
-                        .width(10.dp)
                 )
             }
         }

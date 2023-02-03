@@ -41,9 +41,9 @@ import com.bnyro.translate.ui.components.prefs.PreferenceItem
 import com.bnyro.translate.ui.components.prefs.SettingsCategory
 import com.bnyro.translate.ui.components.prefs.SliderPreference
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
+import com.bnyro.translate.ui.dialogs.EngineSelectionDialog
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.ui.views.EnginePref
-import com.bnyro.translate.ui.views.EngineSelectionDialog
 import com.bnyro.translate.ui.views.TessSettings
 import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
@@ -229,12 +229,11 @@ fun SettingsPage() {
                         enableSimultaneousTranslation = it
                     }
 
-                    Spacer(
-                        modifier = Modifier
-                            .height(10.dp)
-                    )
-
                     AnimatedVisibility(visible = enableSimultaneousTranslation) {
+                        Spacer(
+                            modifier = Modifier
+                                .height(10.dp)
+                        )
                         PreferenceItem(
                             title = stringResource(R.string.enabled_engines),
                             summary = stringResource(R.string.enabled_engines_summary),
@@ -242,11 +241,11 @@ fun SettingsPage() {
                         ) {
                             showEngineSelectDialog = true
                         }
-                        Spacer(
-                            modifier = Modifier
-                                .height(10.dp)
-                        )
                     }
+                    Spacer(
+                        modifier = Modifier
+                            .height(10.dp)
+                    )
 
                     val charCounterLimits = listOf(stringResource(R.string.none), "50", "100", "150", "200", "300", "400", "500", "1000", "2000", "3000", "5000")
                     ListPreference(
