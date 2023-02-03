@@ -234,7 +234,7 @@ fun SettingsPage() {
                             .height(10.dp)
                     )
 
-                    if (enableSimultaneousTranslation) {
+                    AnimatedVisibility(visible = enableSimultaneousTranslation) {
                         PreferenceItem(
                             title = stringResource(R.string.enabled_engines),
                             summary = stringResource(R.string.enabled_engines_summary),
@@ -242,6 +242,10 @@ fun SettingsPage() {
                         ) {
                             showEngineSelectDialog = true
                         }
+                        Spacer(
+                            modifier = Modifier
+                                .height(10.dp)
+                        )
                     }
 
                     val charCounterLimits = listOf(stringResource(R.string.none), "50", "100", "150", "200", "300", "400", "500", "1000", "2000", "3000", "5000")
