@@ -15,9 +15,9 @@
     <string name="compact_history">Компактна історія</string>
     <string name="compact_history_summary">Показуйте лише перші 3 текстові рядки за замовчуванням в історії</string>
     <string name="simultaneous_translation">Одночасний переклад</string>
-    <string name="simultaneous_translation_summary">Отримуйте результати від декількох двигунів одночасно.</string>
-    <string name="enabled_engines">Увімкнути двигуни</string>
-    <string name="enabled_engines_summary">Двигуни використовуються для одночасного перекладу.</string>
+    <string name="simultaneous_translation_summary">Отримуйте результати від декількох рушіїв одночасно.</string>
+    <string name="enabled_engines">Увімкнути рушії</string>
+    <string name="enabled_engines_summary">Рушії використовуються для одночасного перекладу.</string>
     <string name="search">Пошук</string>
     <string name="language_not_supported">Мова не підтримується!</string>
     <string name="api_key">Api ключ</string>
@@ -28,8 +28,8 @@
     <string name="additional_info">Додаткова інформація</string>
     <string name="theme_light">Світла</string>
     <string name="additional_info_summary">Покажіть додаткову інформацію про переклад, якщо вона є.</string>
-    <string name="selected_engine">Вибраний двигун</string>
-    <string name="st_selected_engine">Двигун, який SimplyTranslate використовує для перекладу</string>
+    <string name="selected_engine">Вибраний рушій</string>
+    <string name="st_selected_engine">Рушій, який SimplyTranslate використовує для перекладу</string>
     <string name="author">Автор</string>
     <string name="license">Ліцензія</string>
     <string name="detected_language">Визначена мова</string>
