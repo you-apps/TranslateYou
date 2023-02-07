@@ -31,8 +31,8 @@
     <string name="character_warning_limit">Teikngrensevarsel</string>
     <string name="character_warning_limit_summary">Varsle når den omsette teksta er lengre enn ei viss grense.</string>
     <string name="none">Ingen</string>
-    <string name="author">Forfattar</string>
-    <string name="license">Løyve</string>
+    <string name="author">Skapar</string>
+    <string name="license">Løyvet</string>
     <string name="privacy_policy">Personvernsfråsegn</string>
     <string name="enter_text">Rit her</string>
     <string name="copy">Kopier</string>
