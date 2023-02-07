@@ -58,4 +58,7 @@
     <string name="select_language">Per favore seleziona una lingua per il riconoscimento del testo delle immagini nelle impostazioni.</string>
     <string name="image_translation">Traslitterazione da immagine</string>
     <string name="init_tess_first">Per favore scarica prima i dati della lingua nelle impostazioni.</string>
+    <string name="translate_automatically_summary">Richiedi una traduzione automaticamente dopo un certo ritardo.</string>
+    <string name="translate_automatically">Traduci automaticamente</string>
+    <string name="translate">Traduci</string>
 </resources>
