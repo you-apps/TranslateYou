@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Translate You</string>
     <!-- Dialog -->
-    <string name="okay">Okay</string>
+    <string name="okay">D\'accord</string>
     <string name="cancel">Annuler</string>
     <!-- Text -->
     <string name="enter_text">Saisir du texte</string>
