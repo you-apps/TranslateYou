@@ -42,7 +42,7 @@
     <string name="example">Exemplo</string>
     <string name="similar">Semelhante</string>
     <string name="transliteration">Transliteração</string>
-    <string name="search">Buscar</string>
+    <string name="search">Pesquisa</string>
     <string name="select_language">Por favor selecione um idioma para reconhecimento de texto a partir de imagens nas configurações.</string>
     <string name="image_translation">Tradução a partir de Imagem</string>
     <string name="instance">Instância</string>
@@ -57,4 +57,7 @@
     <string name="api_key">Chave de API</string>
     <string name="general">Geral</string>
     <string name="app_language">Idioma do aplicativo</string>
+    <string name="translate">Traduzir</string>
+    <string name="translate_automatically_summary">Solicita uma tradução automaticamente após um certo período.</string>
+    <string name="translate_automatically">Traduzir automaticamente</string>
 </resources>
