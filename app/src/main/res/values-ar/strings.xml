@@ -31,7 +31,7 @@
     <string name="required">مطلوب</string>
     <string name="author">المؤلِّف</string>
     <string name="paste">الصق</string>
-    <string name="history_enabled">مُكِّن التاريخ</string>
+    <string name="history_enabled">مكِّن التاريخ</string>
     <string name="character_warning_limit_summary">حذِّر عندما يتجاوز طول النصِّ المترجم الحدَّ.</string>
     <string name="none">لا شيء</string>
     <string name="compact_history">اختصر التاريخ</string>

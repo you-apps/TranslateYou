@@ -14,7 +14,7 @@
     <string name="server_error">Errore durante la comunicazione con il server.</string>
     <string name="app_name">Traduttore You</string>
     <string name="history_summary">Tieni traccia degli ultimi testi tradotti</string>
-    <string name="okay">Ok</string>
+    <string name="okay">D\'accordo</string>
     <string name="cancel">Annulla</string>
     <string name="theme_light">Chiaro</string>
     <string name="paste">Incolla</string>
@@ -58,4 +58,7 @@
     <string name="select_language">Per favore seleziona una lingua per il riconoscimento del testo delle immagini nelle impostazioni.</string>
     <string name="image_translation">Traslitterazione da immagine</string>
     <string name="init_tess_first">Per favore scarica prima i dati della lingua nelle impostazioni.</string>
+    <string name="translate_automatically_summary">Richiedi una traduzione automaticamente dopo un certo ritardo.</string>
+    <string name="translate_automatically">Traduci automaticamente</string>
+    <string name="translate">Traduci</string>
 </resources>
