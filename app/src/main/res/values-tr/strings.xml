@@ -11,7 +11,7 @@
     <string name="options">Ayarlar</string>
     <string name="fetch_delay_summary">Metin ekleme ve çeviriyi getirme arasındaki gecikme</string>
     <string name="history_summary">Son çevrilen metinleri takip edin</string>
-    <string name="author">Yazar</string>
+    <string name="author">Geliştirici</string>
     <string name="license">Lisans</string>
     <string name="theme_auto">Sistem</string>
     <string name="theme_light">Açık</string>
