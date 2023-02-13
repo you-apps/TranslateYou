@@ -27,6 +27,8 @@ object LocaleHelper {
             context.createConfigurationContext(configuration)
             Locale.setDefault(locale)
             config.setLocale(locale)
+
+            @Suppress("DEPRECATION")
             updateConfiguration(config, displayMetrics)
         }
     }

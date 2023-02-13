@@ -181,9 +181,6 @@ private fun ScreenContent() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             val viewModel: MainModel = viewModel()
-            val focusRequester = remember {
-                FocusRequester()
-            }
 
             Column(
                 modifier = Modifier
