@@ -1,7 +1,9 @@
 package com.bnyro.translate.api.st.obj
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class STTranslationResponse(
     @JsonProperty("definitions")
     val definitions: STDefinition? = null,
