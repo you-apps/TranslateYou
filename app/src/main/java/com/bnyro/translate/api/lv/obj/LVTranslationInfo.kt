@@ -1,8 +1,8 @@
 package com.bnyro.translate.api.lv.obj
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class LVTranslationInfo(
     val definitions: List<LVDefinition> = listOf(),
     val examples: List<String> = listOf(),

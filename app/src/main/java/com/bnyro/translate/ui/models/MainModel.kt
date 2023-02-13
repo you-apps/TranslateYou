@@ -19,13 +19,14 @@ import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.awaitQuery
 import com.bnyro.translate.ext.query
 import com.bnyro.translate.obj.Translation
+import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
 import com.bnyro.translate.util.TranslationEngine
-import com.fasterxml.jackson.databind.ObjectMapper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
 
 class MainModel : ViewModel() {
     var engine: TranslationEngine = getCurrentEngine()
@@ -66,10 +67,7 @@ class MainModel : ViewModel() {
 
     private fun getLanguageByPrefKey(key: String): Language? {
         return try {
-            ObjectMapper().readValue(
-                Preferences.get(key, ""),
-                Language::class.java
-            )
+            JsonHelper.json.decodeFromString<Language>(Preferences.get(key, ""))
         } catch (e: Exception) {
             null
         }

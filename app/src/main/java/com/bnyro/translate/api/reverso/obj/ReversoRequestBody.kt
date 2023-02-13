@@ -1,5 +1,8 @@
 package com.bnyro.translate.api.reverso.obj
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ReversoRequestBody(
     val format: String = "text",
     val from: String,

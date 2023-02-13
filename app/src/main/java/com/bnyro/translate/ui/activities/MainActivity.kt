@@ -26,7 +26,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,8 +44,9 @@ import com.bnyro.translate.ui.components.LanguageSelector
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
+import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
-import com.fasterxml.jackson.databind.ObjectMapper
+import kotlinx.serialization.encodeToString
 
 class MainActivity : BaseActivity() {
     private lateinit var mainModel: MainModel
@@ -64,14 +64,13 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onStop() {
-        val mapper = ObjectMapper()
         Preferences.put(
             Preferences.sourceLanguage,
-            mapper.writeValueAsString(mainModel.sourceLanguage)
+            JsonHelper.json.encodeToString(mainModel.sourceLanguage)
         )
         Preferences.put(
             Preferences.targetLanguage,
-            mapper.writeValueAsString(mainModel.targetLanguage)
+            JsonHelper.json.encodeToString(mainModel.targetLanguage)
         )
         super.onStop()
     }

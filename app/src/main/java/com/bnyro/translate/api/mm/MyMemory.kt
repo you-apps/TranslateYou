@@ -1,12 +1,13 @@
 package com.bnyro.translate.api.mm
 
 import com.bnyro.translate.api.mm.obj.MMTranslationResponse
+import kotlinx.serialization.Contextual
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MyMemory {
     @GET("languages")
-    suspend fun getLanguages(): Any
+    suspend fun getLanguages(): @Contextual Any
 
     @GET("get")
     suspend fun translate(

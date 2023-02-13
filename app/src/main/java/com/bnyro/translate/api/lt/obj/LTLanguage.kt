@@ -1,8 +1,8 @@
 package com.bnyro.translate.api.lt.obj
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class LTLanguage(
     val code: String? = null,
     val name: String? = null,

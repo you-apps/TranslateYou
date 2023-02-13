@@ -1,7 +1,8 @@
 package com.bnyro.translate.api.reverso.obj
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ReversoLanguageDetection(
     val changedDirectionContextMatches: Int? = null,
     val detectedLanguage: String? = null,

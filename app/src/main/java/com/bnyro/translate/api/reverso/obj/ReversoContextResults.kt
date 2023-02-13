@@ -1,8 +1,8 @@
 package com.bnyro.translate.api.reverso.obj
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class ReversoContextResults(
     val colloquialisms: Boolean? = null,
     val results: List<ReversoResult>? = null,

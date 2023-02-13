@@ -1,8 +1,8 @@
 package com.bnyro.translate.api.st.obj
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class STAbbreviation(
     val definition: String? = null
 )

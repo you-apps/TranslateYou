@@ -1,8 +1,8 @@
 package com.bnyro.translate.api.lv.obj
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class ExtraTranslation(
     val list: List<ExtraTranslationItem> = listOf(),
     val type: String = ""

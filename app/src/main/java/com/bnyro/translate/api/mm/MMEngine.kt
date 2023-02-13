@@ -1,11 +1,14 @@
 package com.bnyro.translate.api.mm
 
+import android.util.Log
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
+import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
-import com.fasterxml.jackson.databind.ObjectMapper
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.jsonObject
 
 class MMEngine : TranslationEngine(
     name = "MyMemory",
@@ -20,27 +23,26 @@ class MMEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
-        val mapper = ObjectMapper()
-        val languages = mutableListOf<Language>()
-
         val json = try {
             api.getLanguages()
         } catch (e: Exception) {
+            Log.e("fetching", e.toString())
             return listOf()
         }
-        mapper.readTree(
-            mapper.writeValueAsString(json)
-        ).fields().forEach {
-            val code = it.value.get("c").textValue()
-            languages.add(
-                Language(
-                    name = it.key,
-                    code = code
-                )
+        val el = JsonHelper.json.parseToJsonElement(
+            JsonHelper.json.encodeToString(json)
+        )
+
+        Log.e("json", JsonHelper.json.encodeToString(json))
+
+        return el.jsonObject.entries.map {
+            val code = it.value.jsonObject["c"].toString()
+            Log.e("code", code)
+            Language(
+                name = it.key,
+                code = code
             )
         }
-
-        return languages
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {

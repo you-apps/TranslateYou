@@ -1,10 +1,8 @@
 package com.bnyro.translate.api.st.obj
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class STDefinition(
-    val abbreviation: List<STAbbreviation> = listOf(),
-    val noun: List<Any> = listOf(),
-    val verb: List<Any> = listOf()
+    val abbreviation: List<STAbbreviation> = listOf()
 )
