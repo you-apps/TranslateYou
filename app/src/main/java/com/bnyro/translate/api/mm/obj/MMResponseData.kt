@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MMResponseData(
-    val match: Int = 0,
+    val match: Float = 0f,
     val translatedText: String = "",
     val detectedLanguage: String? = null
 )
