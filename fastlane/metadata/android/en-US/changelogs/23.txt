@@ -1,0 +1,4 @@
+* Fixed SimplyTranslate (#163) and MyMemory Translate
+* Improved settings categories UI (#160)
+* Left to right align the simultaneous translation preference (#160)
+* Switch to Kotlinx Serialization to avoid being affected by API changes
