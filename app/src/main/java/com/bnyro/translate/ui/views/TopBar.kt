@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.speech.SpeechRecognizer
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -44,7 +45,7 @@ fun TopBar(
 ) {
     val context = LocalContext.current
     val handler = Handler(Looper.getMainLooper())
-    val fileChooser = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) {
+    val fileChooser = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) {
         mainModel.processImage(context, it)
     }
 
@@ -80,7 +81,10 @@ fun TopBar(
                 StyledIconButton(
                     imageVector = Icons.Default.Image
                 ) {
-                    fileChooser.launch(arrayOf("image/*"))
+                    val request = PickVisualMediaRequest(
+                        ActivityResultContracts.PickVisualMedia.ImageOnly
+                    )
+                    fileChooser.launch(request)
                 }
             }
 
