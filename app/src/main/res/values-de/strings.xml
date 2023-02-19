@@ -20,7 +20,7 @@
     <string name="about">Über</string>
     <string name="history_enabled">Verlauf aktivieren</string>
     <string name="theme_dark">Dunkel</string>
-    <string name="okay">Okay</string>
+    <string name="okay">Ja</string>
     <string name="enter_text">Text eingeben</string>
     <string name="theme_light">Hell</string>
     <string name="theme_auto">System</string>
@@ -28,4 +28,6 @@
     <string name="server_error">Fehler bei der Kommunikation mit dem Server. Bitte wählen Sie eine andere Instanz in den Einstellungen!</string>
     <string name="translation">Übersetzung</string>
     <string name="search">Suche</string>
+    <string name="system">System</string>
+    <string name="none">Keine</string>
 </resources>
