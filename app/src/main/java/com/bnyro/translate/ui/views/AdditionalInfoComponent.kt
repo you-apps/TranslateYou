@@ -46,32 +46,34 @@ fun AdditionalInfoComponent(
                     )
                 }
             }
-            translation.transliterations?.let {
-                items(it) {
+            translation.transliterations?.let { transliteration ->
+                items(transliteration) {
                     AdditionalInfo(
                         title = stringResource(R.string.transliteration),
                         text = it
                     )
                 }
             }
-            translation.definitions?.let {
-                items(it) {
+            translation.definitions?.let { definition ->
+                items(definition) {
                     AdditionalInfo(
                         title = stringResource(R.string.definition),
-                        text = "${it.type}, ${it.definition}\n${it.example}"
+                        text = listOfNotNull(it.type, it.definition, it.example, it.synonym).joinToString(
+                            ", "
+                        )
                     )
                 }
             }
-            translation.similar?.let {
-                items(it) {
+            translation.similar?.let { synonym ->
+                items(synonym) {
                     AdditionalInfo(
                         title = stringResource(R.string.similar),
                         text = it
                     )
                 }
             }
-            translation.examples?.let {
-                items(it) {
+            translation.examples?.let { example ->
+                items(example) {
                     AdditionalInfo(
                         title = stringResource(R.string.example),
                         text = it

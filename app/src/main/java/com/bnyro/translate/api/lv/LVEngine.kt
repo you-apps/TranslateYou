@@ -36,7 +36,7 @@ class LVEngine : TranslationEngine(
         return Translation(
             translatedText = response.translation,
             detectedLanguage = response.info?.detectedSource,
-            transliterations = listOf(response.info?.pronunciation?.query).filterNotNull(),
+            transliterations = listOfNotNull(response.info?.pronunciation?.query),
             examples = response.info?.examples,
             similar = response.info?.similar,
             definitions = response.info?.definitions
