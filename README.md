@@ -73,7 +73,7 @@ If you are a developer and wish to contribute to the app, please **fork** the pr
   <div align="center">
 
 <a href="https://hosted.weblate.org/projects/you-apps/translate-you/">
-<img src="https://hosted.weblate.org/widgets/you-apps/-/287x66-grey.png" alt="Translation status" />
+<img src="https://hosted.weblate.org/widgets/you-apps/-/translate-you/287x66-grey.png" alt="Translation status" />
 </a>
 </div>
 
