@@ -51,7 +51,7 @@
     <string name="search">Axtarış</string>
     <string name="character_warning_limit">Simvol xəbərdarlıq həddi</string>
     <string name="character_warning_limit_summary">Tərcümə edilmiş mətn maksimal uzunluğu üstələdikdə xəbərdar et.</string>
-    <string name="none">Heç nə</string>
+    <string name="none">Heç biri</string>
     <string name="unknown_error">Naməlum xəta</string>
     <string name="transliteration">Simvol tərcüməsi</string>
     <string name="image_translation">Şəkildən tərcümə</string>
