@@ -18,9 +18,9 @@
     <string name="api_key">API-Schlüssel</string>
     <string name="history">Verlauf</string>
     <string name="about">Über</string>
-    <string name="history_enabled">Verlauf aktivieren</string>
+    <string name="history_enabled">Verlauf aktiviert</string>
     <string name="theme_dark">Dunkel</string>
-    <string name="okay">Ja</string>
+    <string name="okay">OK</string>
     <string name="enter_text">Text eingeben</string>
     <string name="theme_light">Hell</string>
     <string name="theme_auto">System</string>
@@ -30,4 +30,19 @@
     <string name="search">Suche</string>
     <string name="system">System</string>
     <string name="none">Keine</string>
+    <string name="additional_info">Zusätzliche Informationen</string>
+    <string name="simultaneous_translation">Simultane Übersetzung</string>
+    <string name="enabled_engines">Aktivieren Engine</string>
+    <string name="simultaneous_translation_summary">Rufen Sie Ergebnisse von mehreren Engines gleichzeitig ab.</string>
+    <string name="enabled_engines_summary">Engine welche für die simultane Übersetzung benutzt werden sollen.</string>
+    <string name="additional_info_summary">Wenn möglich zusätzliche übersetzungs Informationen anzeigen.</string>
+    <string name="forget">Vergessen</string>
+    <string name="translate">Übersetzten</string>
+    <string name="app_language">App Sprache</string>
+    <string name="translate_automatically">Automatisch Übersetzen</string>
+    <string name="translate_automatically_summary">Nach bestimmter Zeit automatisch übersetzen.</string>
+    <string name="open">Öffnen</string>
+    <string name="compact_history">Kompakter Verlauf</string>
+    <string name="compact_history_summary">Als standard, nur die ersten 3 Zeilen im Verlauf anzeigen</string>
+    <string name="selected_engine">Engine Auswählen</string>
 </resources>
