@@ -57,4 +57,7 @@
     <string name="auto">Automático</string>
     <string name="translate_automatically">Traduzir automaticamente</string>
     <string name="image_translation_summary">Descarrega e aplica idiomas para reconhecimento de texto a partir de imagens.</string>
+    <string name="copy">Copiar</string>
+    <string name="system">Sistema</string>
+    <string name="none">Nenhum</string>
 </resources>
