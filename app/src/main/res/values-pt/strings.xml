@@ -37,7 +37,7 @@
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
     <string name="clear_history">Limpar histórico</string>
-    <string name="open">Abrir</string>
+    <string name="open">Aberto</string>
     <string name="server_error">Erro na comunicação com o servidor.</string>
     <string name="missing_api_key">Por favor forneça uma Chave API nas Configurações!</string>
     <string name="unknown_error">Erro desconhecido</string>
@@ -50,7 +50,7 @@
     <string name="image_translation">Tradução a partir de Imagem</string>
     <string name="init_tess_first">Por favor descarregue primeiro os dados de idioma nas configurações.</string>
     <string name="select_language">Por favor selecione um idioma para reconhecimento de texto a partir de imagens nas configurações.</string>
-    <string name="okay">OK</string>
+    <string name="okay">Está bem</string>
     <string name="cancel">Cancelar</string>
     <string name="enter_text">Introduza o texto</string>
     <string name="paste">Colar</string>
