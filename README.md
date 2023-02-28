@@ -62,7 +62,7 @@ Additionally supports:
 </div>
 
 <!-- ---------- Contribution ---------- -->
-## Feedback and contribution
+## Feedback and contributions
 ***All contributions are very welcome!***
 
 * Feel free to join the [Matrix room](https://matrix.to/#/#you-apps:matrix.org) for discussions about the app.
