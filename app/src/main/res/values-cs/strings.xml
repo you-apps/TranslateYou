@@ -15,7 +15,7 @@
     <string name="history_enabled">Historie povolena</string>
     <string name="fetch_delay">Zpoždění překladu</string>
     <string name="fetch_delay_summary">Prodleva mezi vložením textu a načtením překladu</string>
-    <string name="okay">OK</string>
+    <string name="okay">Okay</string>
     <string name="history_summary">Ukládat naposledy přeložené texty</string>
     <string name="required">Vyžadováno</string>
     <string name="optional">Volitelné</string>
@@ -33,7 +33,7 @@
     <string name="system">Systémový</string>
     <string name="character_warning_limit">Limit upozornění na počet znaků</string>
     <string name="character_warning_limit_summary">Varovat, když přeložený text přesáhne maximální délku.</string>
-    <string name="none">Žádné</string>
+    <string name="none">Žádný</string>
     <string name="author">Autor</string>
     <string name="license">Licence</string>
     <string name="privacy_policy">Ochrana údajů</string>

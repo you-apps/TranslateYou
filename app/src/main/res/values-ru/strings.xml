@@ -46,7 +46,7 @@
     <string name="general">Общее</string>
     <string name="translation">Перевод</string>
     <string name="app_language">Язык приложения</string>
-    <string name="system">Система</string>
+    <string name="system">Системная</string>
     <string name="search">Поиск</string>
     <string name="translate">Перевести</string>
     <string name="character_warning_limit">Преодолён лимит символов</string>
@@ -59,5 +59,5 @@
     <string name="init_tess_first">Пожалуйста, скачайте информацию о языке в настройках.</string>
     <string name="select_language">Пожалуйста, выберите язык для распознавания текста с изображений в настройках.</string>
     <string name="character_warning_limit_summary">Предупреждать, если переведённый текст превышает максимальную длину.</string>
-    <string name="none">Ни одного</string>
+    <string name="none">Выкл</string>
 </resources>
