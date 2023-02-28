@@ -62,20 +62,17 @@ Additionally supports:
 </div>
 
 <!-- ---------- Contribution ---------- -->
-## Contribution
+## Feedback and contribution
+***All contributions are very welcome!***
 
-**All contributions are welcome!** \
-Feel free to **suggest** [**new features**](https://github.com/Bnyro/TranslateYou/issues/new?assignees=&labels=enhancement&template=feature-request.yml) or [**new APIs**](https://github.com/Bnyro/TranslateYou/issues/new?assignees=&labels=enhancement&template=feature-request.yml) that could be supported. \
-Inform us of a bug by opening a [**bug report**](https://github.com/Bnyro/TranslateYou/issues/new?assignees=&labels=enhancement&template=bug-report.yml). \
-If you are a developer and wish to contribute to the app, please **fork** the project and submit a [**pull request**](https://help.github.com/articles/about-pull-requests/).
+* Feel free to join the [Matrix room](https://matrix.to/#/#you-apps:matrix.org) for discussions about the app.
+* Bug reports and feature requests can be submitted [here](https://github.com/Bnyro/TranslateYou/issues) (please make sure to fill out all the requested information properly!).
+* If you are a developer and wish to contribute to the app, please **fork** the project and submit a [**pull request**](https://help.github.com/articles/about-pull-requests/).
 
 ## Translation
-  <div align="center">
-
 <a href="https://hosted.weblate.org/projects/you-apps/translate-you/">
 <img src="https://hosted.weblate.org/widgets/you-apps/-/translate-you/287x66-grey.png" alt="Translation status" />
 </a>
-</div>
 
 **Translations are greatly appreciated.** \
 If **Translate You** is not in your language, feel free to participate by:
