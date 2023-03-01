@@ -2,7 +2,7 @@
 <resources>
     <string name="cancel">Anulează</string>
     <string name="enter_text">Introduceți text</string>
-    <string name="copy">Copiază</string>
+    <string name="copy">Copiați</string>
     <string name="auto">Auto</string>
     <string name="forget">Uita</string>
     <string name="language_not_supported">Limba nu este suportată!</string>
