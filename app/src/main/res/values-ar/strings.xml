@@ -3,7 +3,7 @@
     <string name="language_not_supported">اللغة غير مدعومة!</string>
     <string name="api_key">مفتاح واجهة برمجة التطبيقات</string>
     <string name="history">التاريخ</string>
-    <string name="cancel">ألغِ</string>
+    <string name="cancel">إلغاء</string>
     <string name="enter_text">أدخل نصًّا</string>
     <string name="copy">انسخ</string>
     <string name="fetch_delay">تأخير الترجمة</string>
@@ -21,7 +21,7 @@
     <string name="selected_engine">المحرِّك المحدَّد</string>
     <string name="general">عام</string>
     <string name="translate_automatically">ترجم تلقائيًّا</string>
-    <string name="open">افتح</string>
+    <string name="open">فتح</string>
     <string name="definition">تعريف</string>
     <string name="example">مثال</string>
     <string name="similar">شبيه</string>
