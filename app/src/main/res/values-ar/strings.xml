@@ -13,7 +13,7 @@
     <string name="forget">انسَ</string>
     <string name="simultaneous_translation">الترجمة المتزامنة</string>
     <string name="options">الإعدادات</string>
-    <string name="about">عن</string>
+    <string name="about">حول التطبيق</string>
     <string name="instance">المثيل</string>
     <string name="optional">اختياريّ</string>
     <string name="enabled_engines">المصادر الممكَّنة</string>
@@ -33,7 +33,7 @@
     <string name="paste">الصق</string>
     <string name="history_enabled">مكِّن التاريخ</string>
     <string name="character_warning_limit_summary">حذِّر عندما يتجاوز طول النصِّ المترجم الحدَّ.</string>
-    <string name="none">لا شيء</string>
+    <string name="none">لاشيء</string>
     <string name="compact_history">اختصر التاريخ</string>
     <string name="compact_history_summary">أظهر أوَّل ثلاثة أسطر من التاريخ حسب الإعداد الابتدائيِّ</string>
     <string name="simultaneous_translation_summary">اجلب الترجمات من عدَّة محرِّكات آنيًّا.</string>
@@ -44,7 +44,7 @@
     <string name="server_error">خطأ في التواصل مع الخادم.</string>
     <string name="detected_language">اللغة المكتشفة</string>
     <string name="transliteration">الترجمة اللفظيَّة</string>
-    <string name="search">ابحث</string>
+    <string name="search">البحث</string>
     <string name="additional_info_summary">أظهر معلومات إضافيَّةً إن توفَّرت.</string>
     <string name="st_selected_engine">المحرِّك الذي يستخدمه SimplyTranslate للترجمة</string>
     <string name="translation">الترجمة</string>
