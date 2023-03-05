@@ -8,7 +8,7 @@ import com.bnyro.translate.util.TranslationEngine
 
 class LTEngine : TranslationEngine(
     name = "LibreTranslate",
-    defaultUrl = "https://libretranslate.de",
+    defaultUrl = "https://translate.argosopentech.com",
     urlModifiable = true,
     apiKeyState = ApiKeyState.OPTIONAL,
     autoLanguageCode = "auto"
