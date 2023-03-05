@@ -57,17 +57,6 @@
 
         </activity>
 
-        <activity
-            android:name=".ui.activities.AboutActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".ui.activities.SettingsActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".ui.activities.HistoryActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
