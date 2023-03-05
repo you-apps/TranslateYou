@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="okay">Ввод</string>
-    <string name="about">О приложении</string>
+    <string name="about">Информация</string>
     <string name="instance">Сервер</string>
     <string name="fetch_delay">Задержка перевода</string>
     <string name="history_enabled">История включена</string>

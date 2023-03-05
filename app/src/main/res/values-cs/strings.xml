@@ -5,7 +5,7 @@
     <string name="paste">Vložit</string>
     <string name="copy">Kopírovat</string>
     <string name="forget">Zapomenout</string>
-    <string name="auto">Rozpoznat</string>
+    <string name="auto">Automaticky</string>
     <string name="language_not_supported">Jazyk není podporován!</string>
     <string name="instance">Instance</string>
     <string name="api_key">Klíč API</string>
