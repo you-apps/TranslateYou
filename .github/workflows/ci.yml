@@ -1,30 +1,35 @@
-name: Build
-on: [pull_request, push]
+name: CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths-ignore:
+      - "README*.md"
+      - "fastlane/**"
+      - "assets/**"
+      - ".github/**/*.md"
+  push:
+    paths-ignore:
+      - "README*.md"
+      - "fastlane/**"
+      - "assets/**"
+      - ".github/**/*.md"
 
 jobs:
   debug-builds:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Upgrading the Wrapper version
-        run: | 
-             ./gradlew wrapper --gradle-version 7.5.1 --distribution-type all
-             ./gradlew wrapper --gradle-version 7.5.1 --distribution-type all
-      - name: Verify the checksum of the Wrapper JAR
-        run: |
-             cd gradle/wrapper
-             curl --location --output gradle-wrapper.jar.sha256 \
-                  https://services.gradle.org/distributions/gradle-7.5.1-wrapper.jar.sha256
-             echo "  gradle-wrapper.jar" >> gradle-wrapper.jar.sha256
-             sha256sum --check gradle-wrapper.jar.sha256
-      - name: set up JDK 17
+      - uses: gradle/wrapper-validation-action@v1
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: 1
+          java-version: 17
           distribution: "temurin"
-          cache: 'gradle'
-      - name: Build debug APK and run jvm tests
-        run: ./gradlew assembleDebug
+          cache: "gradle"
+      - name: Compile
+        run: |
+          ./gradlew assembleDebug
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
