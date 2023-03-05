@@ -1,6 +1,5 @@
 package com.bnyro.translate.ui.views
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.animation.animateContentSize
@@ -38,6 +37,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.const.AboutLinks
@@ -49,7 +50,9 @@ import com.bnyro.translate.ui.dialogs.PrivacyPolicyDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AboutPage() {
+fun AboutPage(
+    navController: NavController
+) {
     val context = LocalContext.current
 
     var showThemeOptions by remember {
@@ -95,7 +98,7 @@ fun AboutPage() {
                     StyledIconButton(
                         imageVector = Icons.Default.ArrowBack
                     ) {
-                        (context as Activity).finish()
+                        navController.popBackStack()
                     }
                 },
                 actions = {
@@ -194,5 +197,5 @@ fun AboutPage() {
 @Preview
 @Composable
 private fun DefaultPreview() {
-    AboutPage()
+    AboutPage(rememberNavController())
 }

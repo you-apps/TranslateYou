@@ -30,6 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.base.BaseActivity
@@ -50,7 +51,9 @@ import com.bnyro.translate.util.Preferences
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun SettingsScreen() {
+fun SettingsScreen(
+    navController: NavController
+) {
     val context = LocalContext.current
 
     var showThemeOptions by remember {
@@ -85,7 +88,7 @@ fun SettingsScreen() {
                     StyledIconButton(
                         imageVector = Icons.Default.ArrowBack
                     ) {
-                        (context as Activity).finish()
+                        navController.popBackStack()
                     }
                 },
                 actions = {

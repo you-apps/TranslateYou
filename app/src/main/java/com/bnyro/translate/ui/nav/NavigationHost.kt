@@ -20,13 +20,13 @@ fun NavigationHost(
             TranslationPage(navController, translationModel)
         }
         composable("history") {
-            HistoryScreen()
+            HistoryScreen(navController)
         }
         composable("settings") {
-            SettingsScreen()
+            SettingsScreen(navController)
         }
         composable("about") {
-            AboutPage()
+            AboutPage(navController)
         }
     }
 }

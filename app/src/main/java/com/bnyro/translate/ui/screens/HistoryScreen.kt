@@ -1,6 +1,5 @@
 package com.bnyro.translate.ui.screens
 
-import android.app.Activity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -16,9 +15,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -29,9 +28,9 @@ import com.bnyro.translate.ui.views.HistoryRow
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HistoryScreen(
-    viewModel: HistoryModel = viewModel()
+    navController: NavController
 ) {
-    val context = LocalContext.current
+    val viewModel: HistoryModel = viewModel()
 
     LaunchedEffect(Unit) {
         viewModel.fetchHistory()
@@ -51,7 +50,7 @@ fun HistoryScreen(
                     StyledIconButton(
                         imageVector = Icons.Default.ArrowBack
                     ) {
-                        (context as Activity).finish()
+                        navController.popBackStack()
                     }
                 },
                 actions = {
