@@ -3,12 +3,10 @@ package com.bnyro.translate.api.st
 import android.accounts.NetworkErrorException
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
-import com.bnyro.translate.ext.awaitQuery
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
-import java.net.URL
 
 class STEngine : TranslationEngine(
     name = "SimplyTranslate",
@@ -25,22 +23,15 @@ class STEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
+        val body = api.getLanguages(getSelectedEngine())
+
         // val body = api.getLanguages().execute().body()
         val languages = mutableListOf<Language>()
-        awaitQuery {
-            var path = "/api/target_languages/"
-            getSelectedEngine()?.let {
-                path += "?engine=$it"
-            }
-            runCatching {
-                val body = URL(getUrl() + path).readText()
-                body.split("\n").let {
-                    for (index in 0..(it.size.toDouble() / 2 - 1).toInt()) {
-                        languages.add(
-                            Language(name = it[index * 2], code = it[index * 2 + 1])
-                        )
-                    }
-                }
+        body.split("\n").let {
+            for (index in 0..(it.size.toDouble() / 2 - 1).toInt()) {
+                languages.add(
+                    Language(name = it[index * 2], code = it[index * 2 + 1])
+                )
             }
         }
 

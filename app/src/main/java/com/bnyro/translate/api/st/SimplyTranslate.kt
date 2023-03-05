@@ -12,4 +12,9 @@ interface SimplyTranslate {
         @Query("to") target: String,
         @Query("text") query: String
     ): STTranslationResponse
+
+    @GET("api/target_languages/")
+    suspend fun getLanguages(
+        @Query("engine") engine: String?
+    ): String
 }

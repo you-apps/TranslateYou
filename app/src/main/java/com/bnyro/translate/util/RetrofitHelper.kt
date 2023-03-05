@@ -7,6 +7,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitHelper {
     @OptIn(ExperimentalSerializationApi::class)
@@ -26,6 +27,7 @@ object RetrofitHelper {
 
         return Retrofit.Builder()
             .baseUrl(baseUrl)
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(JsonHelper.json.asConverterFactory(contentType))
             .client(httpClient.build())
             .build()
