@@ -26,7 +26,7 @@
     <string name="additional_info_summary">Afficher des données supplémentaires sur la traduction si elles sont disponibles.</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
-    <string name="author">Auteur·e</string>
+    <string name="author">Auteur</string>
     <string name="license">Licence</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <!-- Theme -->
