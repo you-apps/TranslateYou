@@ -1,0 +1,7 @@
+* Indicator when the history is empty
+* Move to Jetpack Compose navigation for cleaner transitions
+* Use the argostech LibreTranslate instance by default
+* Fix null in Lingva definitions (#168)
+* Fix frozen UI when fetching simply translate languages
+* Use the argostech LibreTranslate instance by default
+* Fix unresponsive UI when fetching SimplyTranslate languages
