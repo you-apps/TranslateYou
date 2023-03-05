@@ -43,6 +43,7 @@
     <string name="none">None</string>
     <string name="translate_automatically">Translate automatically</string>
     <string name="translate_automatically_summary">Request a translation automatically after a certain delay.</string>
+    <string name="nothing_here">Nothing here.</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Author</string>

@@ -1,21 +1,32 @@
 package com.bnyro.translate.ui.screens
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bnyro.translate.R
@@ -68,20 +79,41 @@ fun HistoryScreen(
             )
         },
         content = { pV ->
-            Column(
-                modifier = Modifier.padding(pV)
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(pV)
             ) {
-                LazyColumn {
-                    items(viewModel.history) {
-                        HistoryRow(
-                            it
-                        ) {
-                            viewModel.history = viewModel.history.filter { item ->
-                                it.id != item.id
-                            }
+                if (viewModel.history.isNotEmpty()) {
+                    LazyColumn {
+                        items(viewModel.history) {
+                            HistoryRow(
+                                it
+                            ) {
+                                viewModel.history = viewModel.history.filter { item ->
+                                    it.id != item.id
+                                }
 
-                            viewModel.deleteHistoryItem(it)
+                                viewModel.deleteHistoryItem(it)
+                            }
                         }
+                    }
+                } else {
+                    Column(
+                        modifier = Modifier.align(Alignment.Center),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Icon(
+                            modifier = Modifier.size(100.dp),
+                            imageVector = Icons.Default.History,
+                            contentDescription = null
+                        )
+                        Spacer(modifier = Modifier.height(15.dp))
+                        Text(
+                            text = stringResource(R.string.nothing_here),
+                            style = MaterialTheme.typography.titleLarge
+                        )
                     }
                 }
             }
