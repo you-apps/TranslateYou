@@ -1,6 +1,5 @@
 package com.bnyro.translate.ui.screens
 
-import android.app.Activity
 import android.os.Handler
 import android.os.Looper
 import androidx.compose.animation.AnimatedVisibility
