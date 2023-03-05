@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.HistoryItem
-import com.bnyro.translate.ui.activities.MainActivity
+import com.bnyro.translate.ui.MainActivity
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.util.Preferences
 

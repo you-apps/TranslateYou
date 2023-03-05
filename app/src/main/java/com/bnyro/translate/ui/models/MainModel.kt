@@ -172,7 +172,7 @@ class MainModel : ViewModel() {
         translation = Translation("")
     }
 
-    fun fetchLanguages(onError: (Exception) -> Unit = {}) {
+    private fun fetchLanguages(onError: (Exception) -> Unit = {}) {
         viewModelScope.launch {
             val languages = try {
                 Log.e("engine", engine.name)
@@ -194,13 +194,19 @@ class MainModel : ViewModel() {
         it.isSimultaneousTranslationEnabled()
     }
 
-    fun refresh() {
+    fun refresh(context: Context) {
         engine = getCurrentEngine()
         enabledSimEngines = getEnabledEngines()
         simTranslationEnabled = Preferences.get(Preferences.simultaneousTranslationKey, false)
+
+        fetchLanguages {
+            Toast.makeText(context, R.string.server_error, Toast.LENGTH_LONG).show()
+        }
+
+        fetchBookmarkedLanguages()
     }
 
-    fun fetchBookmarkedLanguages() {
+    private fun fetchBookmarkedLanguages() {
         bookmarkedLanguages = awaitQuery {
             Db.languageBookmarksDao().getAll()
         }

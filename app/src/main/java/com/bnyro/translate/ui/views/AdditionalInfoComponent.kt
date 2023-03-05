@@ -19,10 +19,9 @@ import com.bnyro.translate.ui.models.MainModel
 
 @Composable
 fun AdditionalInfoComponent(
-    translation: Translation
+    translation: Translation,
+    viewModel: MainModel
 ) {
-    val viewModel: MainModel = viewModel()
-
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)

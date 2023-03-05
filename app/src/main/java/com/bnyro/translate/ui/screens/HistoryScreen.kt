@@ -1,7 +1,6 @@
-package com.bnyro.translate.ui.activities
+package com.bnyro.translate.ui.screens
 
 import android.app.Activity
-import android.os.Bundle
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -15,38 +14,28 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
-import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.HistoryModel
 import com.bnyro.translate.ui.views.HistoryRow
 
-class HistoryActivity : BaseActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val viewModel = ViewModelProvider(this)[HistoryModel::class.java]
-        viewModel.fetchHistory()
-
-        Content {
-            HistoryContent()
-        }
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HistoryContent(
+fun HistoryScreen(
     viewModel: HistoryModel = viewModel()
 ) {
     val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        viewModel.fetchHistory()
+    }
 
     Scaffold(
         modifier = Modifier

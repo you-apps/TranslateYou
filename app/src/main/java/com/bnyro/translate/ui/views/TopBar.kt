@@ -28,7 +28,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -40,7 +39,7 @@ import com.bnyro.translate.util.SpeechHelper
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    mainModel: MainModel = viewModel(),
+    mainModel: MainModel,
     menuItems: List<MenuItemData>
 ) {
     val context = LocalContext.current

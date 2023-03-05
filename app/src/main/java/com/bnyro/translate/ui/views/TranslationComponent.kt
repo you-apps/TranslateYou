@@ -53,8 +53,9 @@ import com.bnyro.translate.util.SpeechHelper
 import kotlinx.coroutines.launch
 
 @Composable
-fun TranslationComponent() {
-    val viewModel: MainModel = viewModel()
+fun TranslationComponent(
+    viewModel: MainModel
+) {
     val context = LocalContext.current
     val view = LocalView.current
     val scrollState = rememberScrollState()
@@ -212,7 +213,7 @@ fun TranslationComponent() {
                 true
             ) && !isKeyboardOpen
         ) {
-            AdditionalInfoComponent(viewModel.translation)
+            AdditionalInfoComponent(viewModel.translation, viewModel)
         }
 
         Spacer(
@@ -221,7 +222,7 @@ fun TranslationComponent() {
         )
 
         if (viewModel.simTranslationEnabled) {
-            SimTranslationComponent()
+            SimTranslationComponent(viewModel)
         } else {
             Divider(
                 color = Color.Gray,

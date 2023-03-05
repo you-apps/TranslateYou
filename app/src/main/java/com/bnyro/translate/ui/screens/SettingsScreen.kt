@@ -1,7 +1,6 @@
-package com.bnyro.translate.ui.activities
+package com.bnyro.translate.ui.screens
 
 import android.app.Activity
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.compose.animation.AnimatedVisibility
@@ -42,30 +41,16 @@ import com.bnyro.translate.ui.components.prefs.SettingsCategory
 import com.bnyro.translate.ui.components.prefs.SliderPreference
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.ui.dialogs.EngineSelectionDialog
-import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.ui.views.EnginePref
 import com.bnyro.translate.ui.views.TessSettings
 import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
 
-class SettingsActivity : BaseActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Content {
-            TranslateYouTheme(
-                themeMode
-            ) {
-                SettingsPage()
-            }
-        }
-    }
-}
-
 @Suppress("KotlinConstantConditions")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun SettingsPage() {
+fun SettingsScreen() {
     val context = LocalContext.current
 
     var showThemeOptions by remember {

@@ -40,10 +40,9 @@ fun LanguageSelector(
     availableLanguages: List<Language>,
     selectedLanguage: Language,
     autoLanguageEnabled: Boolean = false,
+    viewModel: MainModel,
     onClick: (Language) -> Unit
 ) {
-    val viewModel: MainModel = viewModel()
-
     var showDialog by remember {
         mutableStateOf(false)
     }

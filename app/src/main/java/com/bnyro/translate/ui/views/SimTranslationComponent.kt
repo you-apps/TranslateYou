@@ -19,9 +19,9 @@ import com.bnyro.translate.ui.models.MainModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SimTranslationComponent() {
-    val viewModel: MainModel = viewModel()
-
+fun SimTranslationComponent(
+    viewModel: MainModel
+) {
     var selected by remember {
         mutableStateOf(
             viewModel.engine
