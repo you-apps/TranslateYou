@@ -6,14 +6,14 @@ import androidx.compose.ui.res.stringResource
 import com.bnyro.translate.R
 import com.bnyro.translate.const.ThemeMode
 import com.bnyro.translate.obj.ListPreferenceOption
-import com.bnyro.translate.ui.base.BaseActivity
+import com.bnyro.translate.ui.MainActivity
 import com.bnyro.translate.util.Preferences
 
 @Composable
 fun ThemeModeDialog(
     onDismiss: () -> Unit
 ) {
-    val activity = LocalContext.current as BaseActivity
+    val activity = LocalContext.current as MainActivity
     ListPreferenceDialog(
         preferenceKey = Preferences.themeModeKey,
         onDismissRequest = {

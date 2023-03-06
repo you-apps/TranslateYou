@@ -5,27 +5,40 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.bnyro.translate.ext.parcelable
-import com.bnyro.translate.ui.base.BaseActivity
 import com.bnyro.translate.ui.models.MainModel
 import com.bnyro.translate.ui.nav.NavigationHost
+import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.JsonHelper
+import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
 import kotlinx.serialization.encodeToString
 
-class MainActivity : BaseActivity() {
+class MainActivity : ComponentActivity() {
     private lateinit var mainModel: MainModel
+    var themeMode by mutableStateOf(
+        Preferences.getThemeMode()
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleHelper.updateLanguage(this)
+
         mainModel = ViewModelProvider(this)[MainModel::class.java]
 
         super.onCreate(savedInstanceState)
 
-        Content {
-            val navController = rememberNavController()
-            NavigationHost(navController, mainModel)
+        setContent {
+            TranslateYouTheme(themeMode) {
+                val navController = rememberNavController()
+                NavigationHost(navController, mainModel)
+            }
         }
 
         handleIntentData()

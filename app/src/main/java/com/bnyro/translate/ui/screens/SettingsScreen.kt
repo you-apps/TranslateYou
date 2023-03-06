@@ -27,12 +27,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
-import com.bnyro.translate.ui.base.BaseActivity
+import com.bnyro.translate.ui.MainActivity
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
 import com.bnyro.translate.ui.components.prefs.ListPreference
@@ -49,7 +48,6 @@ import com.bnyro.translate.util.Preferences
 @Suppress("KotlinConstantConditions")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
 fun SettingsScreen(
     navController: NavController
 ) {
@@ -126,7 +124,7 @@ fun SettingsScreen(
                         values = appLanguages.map { it.code }
                     ) {
                         Handler(Looper.getMainLooper()).postDelayed({
-                            (context as BaseActivity).recreate()
+                            (context as MainActivity).recreate()
                         }, 100)
                     }
                 }
