@@ -61,4 +61,5 @@
     <string name="translate">Çevir</string>
     <string name="translate_automatically">Otomatik olarak çevir</string>
     <string name="translate_automatically_summary">Belirli bir gecikmeden sonra otomatik olarak çeviri iste.</string>
+    <string name="nothing_here">Burada bir şey yok.</string>
 </resources>

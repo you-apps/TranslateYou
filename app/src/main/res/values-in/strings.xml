@@ -60,4 +60,5 @@
     <string name="transliteration">Transliterasi</string>
     <string name="detected_language">Bahasa terdeteksi</string>
     <string name="definition">Definisi</string>
+    <string name="nothing_here">Tidak ada di sini.</string>
 </resources>
