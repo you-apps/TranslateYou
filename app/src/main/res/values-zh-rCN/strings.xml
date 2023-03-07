@@ -70,4 +70,5 @@
     <string name="translate">翻译</string>
     <string name="translate_automatically">自动翻译</string>
     <string name="translate_automatically_summary">在特定延迟后自动请求翻译。</string>
+    <string name="nothing_here">这里空无一物.</string>
 </resources>
