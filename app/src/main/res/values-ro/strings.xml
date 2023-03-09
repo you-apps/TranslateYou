@@ -60,4 +60,5 @@
     <string name="translate_automatically_summary">Solicitați o traducere automat după o anumită întârziere.</string>
     <string name="translate">Traduceți</string>
     <string name="translate_automatically">Traduceți automat</string>
+    <string name="nothing_here">Nimic aici.</string>
 </resources>
