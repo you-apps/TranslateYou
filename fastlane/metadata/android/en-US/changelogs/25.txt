@@ -1,0 +1,2 @@
+* Fix opening translations from the history
+* Minor code cleanups
