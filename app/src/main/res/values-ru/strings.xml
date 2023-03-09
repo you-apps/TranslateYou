@@ -60,4 +60,5 @@
     <string name="select_language">Пожалуйста, выберите язык для распознавания текста с изображений в настройках.</string>
     <string name="character_warning_limit_summary">Предупреждать, если переведённый текст превышает максимальную длину.</string>
     <string name="none">Выкл</string>
+    <string name="nothing_here">Здесь ничего нет.</string>
 </resources>
