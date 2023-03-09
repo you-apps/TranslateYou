@@ -1,5 +1,6 @@
 package com.bnyro.translate.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -56,19 +57,12 @@ class MainActivity : ComponentActivity() {
         super.onStop()
     }
 
+    @SuppressLint("InlinedApi")
     private fun getIntentText(): String? {
-        intent.getCharSequenceExtra(Intent.EXTRA_TEXT)?.let {
-            return it.toString()
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.let {
-                return it.toString()
-            }
-        }
-        intent.getCharSequenceExtra(Intent.ACTION_SEND)?.let {
-            return it.toString()
-        }
-        return null
+        return intent.getCharSequenceExtra(Intent.EXTRA_TEXT)?.toString()
+            ?: intent.takeIf { Build.VERSION.SDK_INT > Build.VERSION_CODES.M }
+                ?.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.toString()
+            ?: intent.getCharSequenceExtra(Intent.ACTION_SEND)?.toString()
     }
 
     override fun onNewIntent(intent: Intent?) {
