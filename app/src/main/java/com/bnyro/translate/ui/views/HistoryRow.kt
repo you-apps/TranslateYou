@@ -1,7 +1,5 @@
 package com.bnyro.translate.ui.views
 
-import android.app.Activity
-import android.content.Intent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,43 +19,33 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.HistoryItem
-import com.bnyro.translate.ui.MainActivity
 import com.bnyro.translate.ui.components.StyledIconButton
+import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
 
 @Composable
 fun HistoryRow(
+    navController: NavController,
+    translationModel: TranslationModel,
     historyItem: HistoryItem,
     onDelete: () -> Unit
 ) {
-    val context = LocalContext.current
-
-    fun startNewActivity() {
-        (context as Activity).apply {
-            startActivity(
-                Intent(context, MainActivity::class.java).apply {
-                    putExtra(
-                        Intent.EXTRA_TEXT,
-                        historyItem.insertedText as CharSequence
-                    )
-                    setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                }
-            )
-            finishAffinity()
-        }
+    var showDialog by remember {
+        mutableStateOf(false)
     }
 
-    var showDialog by remember {
-        mutableStateOf(
-            false
-        )
+    fun loadTranslation() {
+        showDialog = false
+        translationModel.insertedText = historyItem.insertedText
+        translationModel.translateNow()
+        navController.navigate("translate")
     }
 
     val compactHistory = Preferences.get(
@@ -74,7 +62,7 @@ fun HistoryRow(
                 if (compactHistory) {
                     showDialog = true
                 } else {
-                    startNewActivity()
+                    loadTranslation()
                 }
             }
             .padding(
@@ -142,7 +130,7 @@ fun HistoryRow(
             confirmButton = {
                 TextButton(
                     onClick = {
-                        startNewActivity()
+                        loadTranslation()
                     }
                 ) {
                     Text(stringResource(R.string.open))

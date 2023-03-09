@@ -27,12 +27,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.LanguageSelector
-import com.bnyro.translate.ui.models.MainModel
+import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 
@@ -40,7 +39,7 @@ import com.bnyro.translate.ui.views.TranslationComponent
 @Composable
 fun TranslationPage(
     navHostController: NavController,
-    viewModel: MainModel
+    viewModel: TranslationModel
 ) {
     val context = LocalContext.current
 

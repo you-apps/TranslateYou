@@ -34,12 +34,14 @@ import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.HistoryModel
+import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.views.HistoryRow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HistoryScreen(
-    navController: NavController
+    navController: NavController,
+    translationModel: TranslationModel
 ) {
     val viewModel: HistoryModel = viewModel()
 
@@ -87,9 +89,7 @@ fun HistoryScreen(
                 if (viewModel.history.isNotEmpty()) {
                     LazyColumn {
                         items(viewModel.history) {
-                            HistoryRow(
-                                it
-                            ) {
+                            HistoryRow(navController, translationModel, it) {
                                 viewModel.history = viewModel.history.filter { item ->
                                     it.id != item.id
                                 }

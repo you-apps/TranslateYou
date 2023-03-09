@@ -32,14 +32,14 @@ import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.TopBarMenu
-import com.bnyro.translate.ui.models.MainModel
+import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.SpeechHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    mainModel: MainModel,
+    mainModel: TranslationModel,
     menuItems: List<MenuItemData>
 ) {
     val context = LocalContext.current

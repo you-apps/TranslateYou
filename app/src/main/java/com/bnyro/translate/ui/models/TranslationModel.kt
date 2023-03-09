@@ -28,7 +28,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 
-class MainModel : ViewModel() {
+class TranslationModel : ViewModel() {
     var engine: TranslationEngine = getCurrentEngine()
 
     var simTranslationEnabled by mutableStateOf(
@@ -81,7 +81,7 @@ class MainModel : ViewModel() {
             Looper.getMainLooper()
         ).postDelayed(
             {
-                if (insertedTextTemp == insertedText) translate()
+                if (insertedTextTemp == insertedText) translateNow()
             },
             Preferences.get(
                 Preferences.fetchDelay,
@@ -90,7 +90,7 @@ class MainModel : ViewModel() {
         )
     }
 
-    fun translate() {
+    fun translateNow() {
         if (insertedText == "" || targetLanguage == sourceLanguage) {
             translation = Translation("")
             return
@@ -117,7 +117,7 @@ class MainModel : ViewModel() {
             translating = false
 
             if (insertedText != "") {
-                this@MainModel.translation = translation
+                this@TranslationModel.translation = translation
                 translatedTexts[engine.name] = translation
                 saveToHistory()
             }
@@ -182,7 +182,7 @@ class MainModel : ViewModel() {
                 onError.invoke(e)
                 return@launch
             }
-            this@MainModel.availableLanguages = languages
+            this@TranslationModel.availableLanguages = languages
         }
     }
 
@@ -220,7 +220,7 @@ class MainModel : ViewModel() {
         Thread {
             TessHelper.getText(context, uri)?.let {
                 insertedText = it
-                translate()
+                translateNow()
             }
         }.start()
     }

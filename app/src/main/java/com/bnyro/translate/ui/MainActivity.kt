@@ -13,7 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.bnyro.translate.ext.parcelable
-import com.bnyro.translate.ui.models.MainModel
+import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.NavigationHost
 import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.JsonHelper
@@ -22,7 +22,7 @@ import com.bnyro.translate.util.Preferences
 import kotlinx.serialization.encodeToString
 
 class MainActivity : ComponentActivity() {
-    private lateinit var mainModel: MainModel
+    private lateinit var mainModel: TranslationModel
     var themeMode by mutableStateOf(
         Preferences.getThemeMode()
     )
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         LocaleHelper.updateLanguage(this)
 
-        mainModel = ViewModelProvider(this)[MainModel::class.java]
+        mainModel = ViewModelProvider(this)[TranslationModel::class.java]
 
         super.onCreate(savedInstanceState)
 
@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
     private fun handleIntentData() {
         getIntentText()?.let {
             mainModel.insertedText = it
-            mainModel.translate()
+            mainModel.translateNow()
         }
         if (intent.type?.startsWith("image/") != true) return
 

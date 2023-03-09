@@ -40,12 +40,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
-import com.bnyro.translate.ui.models.MainModel
+import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SimTranslationComponent
@@ -54,7 +53,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun TranslationComponent(
-    viewModel: MainModel
+    viewModel: TranslationModel
 ) {
     val context = LocalContext.current
     val view = LocalView.current
@@ -173,7 +172,7 @@ fun TranslationComponent(
                         text = stringResource(R.string.translate),
                         icon = Icons.Default.Translate
                     ) {
-                        viewModel.translate()
+                        viewModel.translateNow()
                     }
                 }
 

@@ -11,16 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.components.AdditionalInfo
-import com.bnyro.translate.ui.models.MainModel
+import com.bnyro.translate.ui.models.TranslationModel
 
 @Composable
 fun AdditionalInfoComponent(
     translation: Translation,
-    viewModel: MainModel
+    viewModel: TranslationModel
 ) {
     Card(
         colors = CardDefaults.cardColors(

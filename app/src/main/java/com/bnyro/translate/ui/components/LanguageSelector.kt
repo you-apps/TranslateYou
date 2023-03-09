@@ -27,12 +27,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.DatabaseHolder
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.query
-import com.bnyro.translate.ui.models.MainModel
+import com.bnyro.translate.ui.models.TranslationModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -40,7 +39,7 @@ fun LanguageSelector(
     availableLanguages: List<Language>,
     selectedLanguage: Language,
     autoLanguageEnabled: Boolean = false,
-    viewModel: MainModel,
+    viewModel: TranslationModel,
     onClick: (Language) -> Unit
 ) {
     var showDialog by remember {
