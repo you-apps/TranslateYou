@@ -243,6 +243,11 @@ fun SettingsScreen(
                             if (it.all { char -> char.isDigit() }) it else ""
                         }
                     )
+
+                    Spacer(
+                        modifier = Modifier
+                            .height(15.dp)
+                    )
                 }
             }
         }
