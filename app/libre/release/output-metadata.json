@@ -11,8 +11,8 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 23,
-      "versionName": "3.5",
+      "versionCode": 25,
+      "versionName": "3.7",
       "outputFile": "app-libre-release.apk"
     }
   ],
