@@ -1,0 +1,3 @@
+* Decrease gradle version in order to be published to F-Droid (see #1)
+* Fix the position of the dropdown menu on the top right
+* Minor settings UI improvements
