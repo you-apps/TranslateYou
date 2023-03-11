@@ -1,1 +1,1 @@
- Translator built with Material Design 3 (You) using the LibreTranslate API
+ Translator built with Material Design 3 (You) supporting multiple engines

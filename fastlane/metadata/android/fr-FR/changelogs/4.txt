@@ -1,4 +1,0 @@
-* Icône de l'application monochrome/Material you (#8)
-* Mémoriseation de la dernière paire de langues sélectionnée (#4)
-* Bouton d'action flottant amélioré (#5)
-* La boîte de dialogue des options a été déplacée vers une nouvelle activité

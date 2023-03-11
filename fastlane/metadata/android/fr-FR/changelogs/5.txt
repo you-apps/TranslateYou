@@ -1,3 +1,0 @@
-* Prise en charge de Lingva Translate (uniquement dans la version normale, la version libre prend uniquement en charge LibreTranslate)
-* Historique des traductions (peut être désactivé)
-* Améliorations de l'interface utilisateur des paramètres
