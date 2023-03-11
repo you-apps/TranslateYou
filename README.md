@@ -34,20 +34,15 @@
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="80">](https://apt.izzysoft.de/fdroid/index/apk/com.bnyro.translate)
 [<img src="ghbadge.png" alt="Get it on GitHub" height="80">](https://github.com/bnyro/translateyou/releases)
 
-<!-- ---------- App Versions ---------- -->
-## Versions
-**There are currently two different versions of TY available:**
+<!-- ---------- Supported translation engines ---------- -->
+## Supported translation engines
 
-### Translate You Libre
-Only supports the <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate API</a> and therefore is fully libre.
-
-### Translate You
-[**NonFreeNet anti-feature**](https://f-droid.org/docs/Anti-Features/#NonFreeNet): **Due to supporting translation engines that are not open source.**
-
-Additionally supports:
+* <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate</a>
 * <a href="https://github.com/thedaviddelta/lingva-translate">LingvaTranslate</a> _which uses Google Translate® to fetch translations._
 * <a href="https://www.deepl.com/translator">Deepl translator®</a>.
 * <a href="https://mymemory.translated.net/">MyMemory translator®</a>.
+* <a href="https://simple-web.org/projects/simplytranslate.html">SimplyTranslate</a>
+* <a href="https://www.reverso.net">Reverso®</a>
 
 <!-- ---------- Screenshots [Plus version] ---------- -->
 ## Screenshots
