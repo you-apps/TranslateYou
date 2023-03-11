@@ -41,18 +41,8 @@ android {
 
     flavorDimensions "version"
     productFlavors {
-        standard {
-            dimension "version"
-            applicationIdSuffix ".nf"
-            manifestPlaceholders = [
-                appName: "Translate You"
-            ]
-        }
         libre {
             dimension "version"
-            manifestPlaceholders = [
-                    appName: "Translate You Libre"
-            ]
         }
     }
 

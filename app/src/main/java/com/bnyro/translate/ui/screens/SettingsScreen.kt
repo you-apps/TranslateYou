@@ -29,7 +29,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.MainActivity
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -198,7 +197,6 @@ fun SettingsScreen(
                 }
 
                 item {
-                    if (BuildConfig.FLAVOR == "libre") return@item
                     SettingsCategory(
                         title = stringResource(R.string.simultaneous_translation)
                     )
