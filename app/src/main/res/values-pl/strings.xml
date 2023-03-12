@@ -57,4 +57,8 @@
     <string name="image_translation_summary">Pobierz i zastosuj języki wykorzystywane do rozpoznawania tekstu ze zdjęć.</string>
     <string name="select_language">Proszę wybrać w ustawieniach język wykorzystywany do rozpoznawania zdjęć.</string>
     <string name="init_tess_first">Proszę najpierw pobrać dane językowe w ustawieniach.</string>
+    <string name="nothing_here">Tu nic nie ma.</string>
+    <string name="translate">Tłumacz</string>
+    <string name="translate_automatically">Tłumacz automatycznie</string>
+    <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie.</string>
 </resources>
