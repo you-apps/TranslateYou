@@ -8,7 +8,7 @@
     <string name="forget">Olvidar</string>
     <string name="instance">Instancia</string>
     <string name="api_key">Clave de la API</string>
-    <string name="options">Configuración</string>
+    <string name="options">Configuraciones</string>
     <string name="about">Acerca de</string>
     <string name="fetch_delay">Retraso en la traducción</string>
     <string name="fetch_delay_summary">Retraso entre la inserción del texto y la obtención de la traducción</string>
@@ -19,7 +19,7 @@
     <string name="character_warning_limit">Aviso del límite de caracteres</string>
     <string name="none">Ninguno</string>
     <string name="translate_automatically_summary">Solicitar una traducción automáticamente tras un cierto plazo.</string>
-    <string name="nothing_here">Nada aquí.</string>
+    <string name="nothing_here">Nada por aquí.</string>
     <string name="author">Autor</string>
     <string name="license">Licencia</string>
     <string name="theme_light">Claro</string>
