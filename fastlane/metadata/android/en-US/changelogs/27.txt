@@ -1,0 +1,3 @@
+* Option to use the DeepL Pro API
+* Fix the link of the GPL-3 license (#190)
+* Updated translations, under the hood performance changes
