@@ -61,7 +61,7 @@ fun EnginePref() {
             )
             instanceUrl = engines[selected].getUrl()
             apiKey = engines[selected].getApiKey()
-            TranslationEngines.update()
+            TranslationEngines.updateAll()
         }
     ) {
         engines[selected].apply {

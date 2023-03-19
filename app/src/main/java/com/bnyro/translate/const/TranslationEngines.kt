@@ -6,31 +6,18 @@ import com.bnyro.translate.api.lv.LVEngine
 import com.bnyro.translate.api.mm.MMEngine
 import com.bnyro.translate.api.reverso.ReversoEngine
 import com.bnyro.translate.api.st.STEngine
-import com.bnyro.translate.util.TranslationEngine
 
 object TranslationEngines {
-    val libreTranslate = LTEngine()
-    val lingvaTranslate = LVEngine()
-    val deepl = DeeplEngine()
-    val myMemory = MMEngine()
-    val reverso = ReversoEngine()
-    val simply = STEngine()
-
-    var engines = createEngines()
-
-    private fun createEngines(): List<TranslationEngine> {
-        val engines = mutableListOf<TranslationEngine>()
-
-        listOf(libreTranslate, lingvaTranslate, deepl, myMemory, reverso, simply).forEach {
-            engines.add(it.create())
-        }
-
-        return engines
+    val engines = listOf(
+        LTEngine(),
+        LVEngine(),
+        DeeplEngine(),
+        MMEngine(),
+        ReversoEngine(),
+        STEngine()
+    ).map {
+        it.create()
     }
 
-    fun update() {
-        engines.forEach {
-            it.create()
-        }
-    }
+    fun updateAll() = engines.forEach { it.create() }
 }
