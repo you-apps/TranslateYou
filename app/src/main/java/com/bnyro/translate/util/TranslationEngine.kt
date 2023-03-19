@@ -2,7 +2,7 @@ package com.bnyro.translate.util
 
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
-import java.net.URL
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
 abstract class TranslationEngine(
     val name: String,
@@ -13,7 +13,7 @@ abstract class TranslationEngine(
     var supportsSimTranslation: Boolean = true
 ) {
 
-    abstract fun create(): TranslationEngine
+    abstract fun createOrRecreate(): TranslationEngine
 
     abstract suspend fun getLanguages(): List<Language>
 
@@ -23,18 +23,11 @@ abstract class TranslationEngine(
     val apiPrefKey = this.name + Preferences.apiKey
     val simPrefKey = this.name + Preferences.simultaneousTranslationKey
 
-    fun getUrl(): String {
-        val url = Preferences.get(
+    open fun getUrl(): String {
+        return Preferences.get(
             urlPrefKey,
             this.defaultUrl
-        )
-
-        return try {
-            URL(url)
-            url
-        } catch (e: Exception) {
-            defaultUrl
-        }
+        ).toHttpUrlOrNull()?.toString() ?: defaultUrl
     }
 
     fun getApiKey() = Preferences.get(

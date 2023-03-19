@@ -16,8 +16,8 @@ object TranslationEngines {
         ReversoEngine(),
         STEngine()
     ).map {
-        it.create()
+        it.createOrRecreate()
     }
 
-    fun updateAll() = engines.forEach { it.create() }
+    fun updateAll() = engines.forEach { it.createOrRecreate() }
 }

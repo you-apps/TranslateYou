@@ -17,7 +17,7 @@ class LVEngine : TranslationEngine(
 ) {
 
     private lateinit var api: LingvaTranslate
-    override fun create(): TranslationEngine = apply {
+    override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
     }
 

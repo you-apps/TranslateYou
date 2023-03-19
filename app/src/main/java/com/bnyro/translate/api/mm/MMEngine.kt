@@ -14,7 +14,7 @@ class MMEngine : TranslationEngine(
     autoLanguageCode = "Autodetect"
 ) {
     lateinit var api: MyMemory
-    override fun create(): TranslationEngine = apply {
+    override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
     }
 

@@ -18,7 +18,7 @@ class STEngine : TranslationEngine(
     lateinit var api: SimplyTranslate
     val selEnginePrefKey = this.name + "selectedEngine"
 
-    override fun create(): TranslationEngine = apply {
+    override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
     }
 

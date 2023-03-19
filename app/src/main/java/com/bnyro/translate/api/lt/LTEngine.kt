@@ -15,7 +15,7 @@ class LTEngine : TranslationEngine(
 ) {
 
     private lateinit var api: LibreTranslate
-    override fun create(): TranslationEngine = apply {
+    override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
     }
 

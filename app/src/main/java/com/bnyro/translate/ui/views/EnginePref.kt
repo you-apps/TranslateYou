@@ -14,16 +14,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
+import com.bnyro.translate.api.deepl.DeeplEngine
 import com.bnyro.translate.api.st.STEngine
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.const.TranslationEngines
+import com.bnyro.translate.ext.capitalize
 import com.bnyro.translate.ui.components.BlockRadioButton
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.components.SelectableItem
 import com.bnyro.translate.ui.components.prefs.EditTextPreference
 import com.bnyro.translate.ui.components.prefs.PreferenceItem
+import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.util.Preferences
-import java.util.*
 
 @Composable
 fun EnginePref() {
@@ -64,89 +66,93 @@ fun EnginePref() {
             TranslationEngines.updateAll()
         }
     ) {
-        engines[selected].apply {
-            Spacer(
-                modifier = Modifier
-                    .height(5.dp)
-            )
+        engines[selected].let { engine ->
+            Spacer(modifier = Modifier.height(5.dp))
 
-            if (this.urlModifiable) {
+            if (engine.urlModifiable) {
                 EditTextPreference(
-                    preferenceKey = this.urlPrefKey,
+                    preferenceKey = engine.urlPrefKey,
                     value = instanceUrl,
-                    onValueChange = {
-                        instanceUrl = it
-                    },
                     labelText = stringResource(R.string.instance)
-                )
+                ) {
+                    instanceUrl = it
+                    engine.createOrRecreate()
+                }
             }
 
-            if (this.apiKeyState != ApiKeyState.DISABLED) {
+            if (engine.apiKeyState != ApiKeyState.DISABLED) {
                 EditTextPreference(
-                    preferenceKey = this.apiPrefKey,
+                    preferenceKey = engine.apiPrefKey,
                     value = apiKey,
                     labelText = stringResource(
                         id = R.string.api_key
-                    ) + when (apiKeyState) {
+                    ) + when (engine.apiKeyState) {
                         ApiKeyState.REQUIRED -> " (${stringResource(R.string.required)})"
                         ApiKeyState.OPTIONAL -> " (${stringResource(R.string.optional)})"
                         else -> ""
                     }
                 ) {
                     apiKey = it
+                    engine.createOrRecreate()
                 }
             }
 
-            (this as? STEngine)?.let {
-                val avEngines = listOf("all", "google", "libre", "reverso", "iciba")
+            when (engine) {
+                is STEngine -> {
+                    val avEngines = listOf("all", "google", "libre", "reverso", "iciba")
 
-                var showEngineSelDialog by remember {
-                    mutableStateOf(false)
-                }
+                    var showEngineSelDialog by remember {
+                        mutableStateOf(false)
+                    }
 
-                Spacer(
-                    modifier = Modifier
-                        .height(10.dp)
-                )
+                    Spacer(
+                        modifier = Modifier
+                            .height(10.dp)
+                    )
 
-                PreferenceItem(
-                    title = stringResource(R.string.selected_engine),
-                    summary = stringResource(R.string.st_selected_engine)
-                ) {
-                    showEngineSelDialog = true
-                }
+                    PreferenceItem(
+                        title = stringResource(R.string.selected_engine),
+                        summary = stringResource(R.string.st_selected_engine)
+                    ) {
+                        showEngineSelDialog = true
+                    }
 
-                if (showEngineSelDialog) {
-                    AlertDialog(
-                        onDismissRequest = { showEngineSelDialog = false },
-                        confirmButton = {
-                            DialogButton(
-                                stringResource(R.string.cancel)
-                            ) {
-                                showEngineSelDialog = false
-                            }
-                        },
-                        text = {
-                            LazyColumn {
-                                items(avEngines) {
-                                    SelectableItem(
-                                        text = it.replaceFirstChar {
-                                            if (it.isLowerCase()) {
-                                                it.titlecase(
-                                                    Locale.getDefault()
-                                                )
-                                            } else {
-                                                it.toString()
-                                            }
+                    if (showEngineSelDialog) {
+                        AlertDialog(
+                            onDismissRequest = { showEngineSelDialog = false },
+                            confirmButton = {
+                                DialogButton(
+                                    stringResource(R.string.cancel)
+                                ) {
+                                    showEngineSelDialog = false
+                                }
+                            },
+                            text = {
+                                LazyColumn {
+                                    items(avEngines) { usedEngine ->
+                                        SelectableItem(
+                                            text = usedEngine.capitalize()
+                                        ) {
+                                            Preferences.put(engine.selEnginePrefKey, usedEngine)
+                                            engine.createOrRecreate()
+                                            showEngineSelDialog = false
                                         }
-                                    ) {
-                                        Preferences.put(selEnginePrefKey, it)
-                                        showEngineSelDialog = false
                                     }
                                 }
                             }
-                        }
-                    )
+                        )
+                    }
+                }
+                is DeeplEngine -> {
+                    Spacer(modifier = Modifier.height(5.dp))
+                    SwitchPreference(
+                        preferenceKey = engine.useFreeApiKey,
+                        defaultValue = true,
+                        preferenceTitle = stringResource(R.string.use_free_api),
+                        preferenceSummary = stringResource(R.string.use_free_api_summary)
+                    ) {
+                        engine.createOrRecreate()
+                    }
                 }
             }
         }

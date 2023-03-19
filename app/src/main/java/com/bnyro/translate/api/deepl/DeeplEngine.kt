@@ -3,6 +3,7 @@ package com.bnyro.translate.api.deepl
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
+import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 
@@ -13,9 +14,10 @@ class DeeplEngine : TranslationEngine(
     apiKeyState = ApiKeyState.REQUIRED,
     autoLanguageCode = ""
 ) {
-
+    val useFreeApiKey = this.name + "selectedApiVersion"
+    private val nonFreeUrl = "https://api.deepl.com"
     private lateinit var api: DeepL
-    override fun create(): TranslationEngine = apply {
+    override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
     }
 
@@ -51,4 +53,6 @@ class DeeplEngine : TranslationEngine(
             detectedLanguage = response.translations.first().detected_source_language
         )
     }
+
+    override fun getUrl() = if (Preferences.get(useFreeApiKey, true)) defaultUrl else nonFreeUrl
 }

@@ -44,6 +44,8 @@
     <string name="translate_automatically">Translate automatically</string>
     <string name="translate_automatically_summary">Request a translation automatically after a certain delay.</string>
     <string name="nothing_here">Nothing here.</string>
+    <string name="use_free_api">Use free API</string>
+    <string name="use_free_api_summary">Use the free instead of the paid Pro API.</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Author</string>
