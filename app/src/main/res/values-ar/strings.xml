@@ -12,7 +12,7 @@
     <string name="auto">تلقائيّ</string>
     <string name="forget">انسَ</string>
     <string name="simultaneous_translation">الترجمة المتزامنة</string>
-    <string name="options">الإعدادات</string>
+    <string name="options">الاعدادات</string>
     <string name="about">عن التطبيق</string>
     <string name="instance">المثيل</string>
     <string name="optional">اختياريّ</string>
@@ -61,4 +61,6 @@
     <string name="select_language">اختر لغةً للتعرُّف على النصوص من الصور في الإعدادات.</string>
     <string name="init_tess_first">نزِّل بيانات اللغة في الإعدادات أوَّلًا.</string>
     <string name="nothing_here">لا شيء هنا.</string>
+    <string name="use_free_api">استخدم API المجاني</string>
+    <string name="use_free_api_summary">استخدم الإصدار المجاني بدلاً من Pro API المدفوع.</string>
 </resources>
