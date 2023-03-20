@@ -32,7 +32,6 @@ fun TopBarMenu(
         )
 
         DropdownMenu(
-            modifier = Modifier.width(width = 150.dp),
             expanded = expanded,
             onDismissRequest = {
                 expanded = false
