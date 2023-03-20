@@ -61,4 +61,6 @@
     <string name="translate_automatically_summary">Automaticky vyžádat překlad po určité prodlevě.</string>
     <string name="translate_automatically">Automatický překlad</string>
     <string name="nothing_here">Nic zde není.</string>
+    <string name="use_free_api_summary">Použít bezplatnou API namísto placené.</string>
+    <string name="use_free_api">Použít bezplatnou API</string>
 </resources>
