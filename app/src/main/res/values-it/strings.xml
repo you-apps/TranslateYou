@@ -62,4 +62,6 @@
     <string name="translate_automatically">Traduci automaticamente</string>
     <string name="translate">Traduci</string>
     <string name="nothing_here">Non c\'è niente qui.</string>
+    <string name="use_free_api_summary">Usa le API libere al posto delle API pro a pagamento.</string>
+    <string name="use_free_api">Usa API libere</string>
 </resources>

@@ -61,4 +61,6 @@
     <string name="translate_automatically_summary">Запитувати переклад автоматично після певної затримки.</string>
     <string name="translate">Перекласти</string>
     <string name="nothing_here">Тут нічого немає.</string>
+    <string name="use_free_api">Використовувати безплатний API</string>
+    <string name="use_free_api_summary">Використовувати безплатний Pro API замість платного.</string>
 </resources>

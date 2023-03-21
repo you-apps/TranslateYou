@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="okay">Ввод</string>
+    <string name="okay">Хорошо</string>
     <string name="about">Информация</string>
     <string name="instance">Сервер</string>
     <string name="fetch_delay">Задержка перевода</string>
@@ -59,6 +59,6 @@
     <string name="init_tess_first">Пожалуйста, скачайте информацию о языке в настройках.</string>
     <string name="select_language">Пожалуйста, выберите язык для распознавания текста с изображений в настройках.</string>
     <string name="character_warning_limit_summary">Предупреждать, если переведённый текст превышает максимальную длину.</string>
-    <string name="none">Выкл</string>
-    <string name="nothing_here">Здесь ничего нет.</string>
+    <string name="none">Ничего</string>
+    <string name="nothing_here">Пусто.</string>
 </resources>

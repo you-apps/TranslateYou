@@ -62,4 +62,6 @@
     <string name="translate_automatically">Otomatik olarak çevir</string>
     <string name="translate_automatically_summary">Belirli bir gecikmeden sonra otomatik olarak çeviri iste.</string>
     <string name="nothing_here">Burada bir şey yok.</string>
+    <string name="use_free_api_summary">Ücretli Pro API yerine ücretsiz olanı kullanın.</string>
+    <string name="use_free_api">Ücretsiz API\'yi kullan</string>
 </resources>

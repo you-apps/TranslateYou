@@ -61,4 +61,6 @@
     <string name="select_language">اختر لغةً للتعرُّف على النصوص من الصور في الإعدادات.</string>
     <string name="init_tess_first">نزِّل بيانات اللغة في الإعدادات أوَّلًا.</string>
     <string name="nothing_here">لا شيء هنا.</string>
+    <string name="use_free_api">استخدم API المجاني</string>
+    <string name="use_free_api_summary">استخدم الإصدار المجاني بدلاً من Pro API المدفوع.</string>
 </resources>
