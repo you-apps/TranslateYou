@@ -7,7 +7,7 @@
     <!-- Text -->
     <string name="enter_text">נא למלא טקסט</string>
     <string name="paste">הדבקה</string>
-    <string name="auto">אוטו׳</string>
+    <string name="auto">אוטומטי</string>
     <!-- Settings -->
     <string name="instance">עותק</string>
     <string name="api_key">מפתח Api</string>
@@ -70,4 +70,6 @@
     <string name="translate_automatically">תרגום אוטומטי</string>
     <string name="translate_automatically_summary">לבקש תרגום אוטומטית לאחר השהייה מסוימת.</string>
     <string name="nothing_here">אין כאן כלום.</string>
+    <string name="use_free_api_summary">להשתמש בחינמי במקום ב־API המקצועי בתשלום.</string>
+    <string name="use_free_api">להשתמש ב־API החינמי</string>
 </resources>
