@@ -61,4 +61,6 @@
     <string name="system">Sistema</string>
     <string name="none">Nenhum</string>
     <string name="nothing_here">Aqui não há nada.</string>
+    <string name="use_free_api">Usar API grátis</string>
+    <string name="use_free_api_summary">Utilizar a API gratuita em vez da API Pro paga.</string>
 </resources>
