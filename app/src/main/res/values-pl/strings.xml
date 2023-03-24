@@ -20,7 +20,7 @@
     <string name="api_key">Klucz API</string>
     <string name="options">Ustawienia</string>
     <string name="history">Historia</string>
-    <string name="about">O aplikacji</string>
+    <string name="about">O programie</string>
     <string name="history_enabled">Historia</string>
     <string name="fetch_delay">Opóźnienie w tłumaczeniu</string>
     <string name="clear_history">Wyczyść historię</string>
@@ -39,14 +39,14 @@
     <string name="translation">Tłumaczenie</string>
     <string name="general">Ogólne</string>
     <string name="app_language">Język aplikacji</string>
-    <string name="system">System</string>
+    <string name="system">Systemowy</string>
     <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów na raz.</string>
     <string name="st_selected_engine">Translator używany przez SimplyTranslate do tłumaczenia</string>
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
-    <string name="search">Szukaj</string>
+    <string name="search">Wyszukaj</string>
     <string name="missing_api_key">Podaj klucz API w ustawieniach!</string>
     <string name="character_warning_limit_summary">Ostrzegaj, gdy przetłumaczony tekst przekroczy maksymalną długość.</string>
-    <string name="none">Żaden</string>
+    <string name="none">Brak</string>
     <string name="unknown_error">Nieznany błąd</string>
     <string name="detected_language">Wykryty język</string>
     <string name="definition">Definicja</string>
@@ -57,8 +57,10 @@
     <string name="image_translation_summary">Pobierz i zastosuj języki wykorzystywane do rozpoznawania tekstu ze zdjęć.</string>
     <string name="select_language">Proszę wybrać w ustawieniach język wykorzystywany do rozpoznawania zdjęć.</string>
     <string name="init_tess_first">Proszę najpierw pobrać dane językowe w ustawieniach.</string>
-    <string name="nothing_here">Tu nic nie ma.</string>
+    <string name="nothing_here">Nic tutaj nie ma.</string>
     <string name="translate">Tłumacz</string>
     <string name="translate_automatically">Tłumacz automatycznie</string>
     <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie.</string>
+    <string name="use_free_api">Użyj darmowego API</string>
+    <string name="use_free_api_summary">Użyj darmowego zamiast płatnego API Pro.</string>
 </resources>

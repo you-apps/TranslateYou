@@ -61,4 +61,6 @@
     <string name="detected_language">Bahasa terdeteksi</string>
     <string name="definition">Definisi</string>
     <string name="nothing_here">Tidak ada di sini.</string>
+    <string name="use_free_api">Gunakan API gratis</string>
+    <string name="use_free_api_summary">Gunakan API gratis daripada API Pro yang berbayar.</string>
 </resources>

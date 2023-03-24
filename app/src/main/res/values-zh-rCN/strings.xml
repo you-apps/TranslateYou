@@ -71,4 +71,6 @@
     <string name="translate_automatically">自动翻译</string>
     <string name="translate_automatically_summary">在特定延迟后自动请求翻译。</string>
     <string name="nothing_here">这里空无一物。</string>
+    <string name="use_free_api">使用免费版 API</string>
+    <string name="use_free_api_summary">使用免费版 API 而非收费的 Pro API。</string>
 </resources>
