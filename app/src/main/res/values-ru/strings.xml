@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="okay">Хорошо</string>
-    <string name="about">Информация</string>
+    <string name="okay">ОК</string>
+    <string name="about">О приложении</string>
     <string name="instance">Сервер</string>
     <string name="fetch_delay">Задержка перевода</string>
     <string name="history_enabled">История включена</string>
@@ -46,19 +46,21 @@
     <string name="general">Общее</string>
     <string name="translation">Перевод</string>
     <string name="app_language">Язык приложения</string>
-    <string name="system">Система</string>
+    <string name="system">Системная</string>
     <string name="search">Поиск</string>
     <string name="translate">Перевести</string>
-    <string name="character_warning_limit">Преодолён лимит символов</string>
+    <string name="character_warning_limit">Предупреждение о лимите символов</string>
     <string name="translate_automatically">Переводить автоматически</string>
     <string name="translate_automatically_summary">Запрашивать перевод автоматически после определённой задержки.</string>
     <string name="unknown_error">Неизвестная ошибка</string>
-    <string name="transliteration">Трнслитерация</string>
-    <string name="image_translation">Перевод с изображения</string>
-    <string name="image_translation_summary">Скачайте и примените языки для распознавания текста с изображений.</string>
-    <string name="init_tess_first">Пожалуйста, скачайте информацию о языке в настройках.</string>
-    <string name="select_language">Пожалуйста, выберите язык для распознавания текста с изображений в настройках.</string>
-    <string name="character_warning_limit_summary">Предупреждать, если переведённый текст превышает максимальную длину.</string>
+    <string name="transliteration">Транслитерация</string>
+    <string name="image_translation">Перевести Изображение</string>
+    <string name="image_translation_summary">Загрузить и применить языки для распознавания текста из изображений.</string>
+    <string name="init_tess_first">Пожалуйста, загрузите данные языка в настройках.</string>
+    <string name="select_language">Пожалуйста, выберите язык для распознавания текста изображения в настройках.</string>
+    <string name="character_warning_limit_summary">Предупреждать когда переводимый текст превышает максимальную длину</string>
     <string name="none">Ничего</string>
-    <string name="nothing_here">Пусто.</string>
+    <string name="nothing_here">Здесь ничего нет.</string>
+    <string name="use_free_api">Использовать бесплатный API</string>
+    <string name="use_free_api_summary">Используйте бесплатное вместо платного Pro API.</string>
 </resources>
