@@ -5,7 +5,7 @@
     <string name="required">Wymagane</string>
     <string name="forget">Zapomnij</string>
     <string name="theme_auto">Systemowy</string>
-    <string name="theme_light">Jasny</string>
+    <string name="theme_light">Lekki</string>
     <string name="theme_dark">Ciemny</string>
     <string name="server_error">Błąd w komunikacji z serwerem.</string>
     <string name="compact_history">Kompaktowa historia</string>
@@ -37,7 +37,7 @@
     <string name="enabled_engines">Włączone translatory</string>
     <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoczesnym.</string>
     <string name="translation">Tłumaczenie</string>
-    <string name="general">Ogólne</string>
+    <string name="general">Główne</string>
     <string name="app_language">Język aplikacji</string>
     <string name="system">Systemowy</string>
     <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów na raz.</string>
