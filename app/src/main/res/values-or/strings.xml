@@ -9,7 +9,7 @@
     <string name="api_key">API କି</string>
     <string name="options">ସେଟିଂ</string>
     <string name="history">ଇତିହାସ</string>
-    <string name="about">ବିଷୟରେ</string>
+    <string name="about">ପ୍ରୋଗ୍ରାମ୍ ବିଷୟରେ</string>
     <string name="history_enabled">ଇତିହାସ ସକ୍ଷମ</string>
     <string name="theme_dark">ଅନ୍ଧାର</string>
     <string name="clear_history">ଇତିହାସ ଖାଲି କରନ୍ତୁ</string>
@@ -61,4 +61,6 @@
     <string name="translate_automatically">ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଅନୁବାଦ କରନ୍ତୁ</string>
     <string name="translate_automatically_summary">ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ବିଳମ୍ବ ପରେ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଏକ ଅନୁବାଦ ପାଇଁ ଅନୁରୋଧ ।</string>
     <string name="nothing_here">ଏଠାରେ କିଛି ନାହିଁ ।</string>
+    <string name="use_free_api">ମାଗଣା API ବ୍ୟବହାର କରନ୍ତୁ</string>
+    <string name="use_free_api_summary">ଦେୟଯୁକ୍ତ ପ୍ରୋ API ପରିବର୍ତ୍ତେ ମାଗଣା ବ୍ୟବହାର କରନ୍ତୁ ।</string>
 </resources>
