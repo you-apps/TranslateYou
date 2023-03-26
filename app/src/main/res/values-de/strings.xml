@@ -31,7 +31,7 @@
     <string name="system">System</string>
     <string name="none">Keine</string>
     <string name="additional_info">Zusätzliche Informationen</string>
-    <string name="simultaneous_translation">Simultane Übersetzung</string>
+    <string name="simultaneous_translation">Mehrfach Übersetzung</string>
     <string name="enabled_engines">Aktivieren Engine</string>
     <string name="simultaneous_translation_summary">Rufen Sie Ergebnisse von mehreren Engines gleichzeitig ab.</string>
     <string name="enabled_engines_summary">Engine welche für die simultane Übersetzung benutzt werden sollen.</string>
