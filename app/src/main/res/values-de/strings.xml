@@ -33,8 +33,8 @@
     <string name="additional_info">Zusätzliche Informationen</string>
     <string name="simultaneous_translation">gleichzeitige Mehrfachübersetzung</string>
     <string name="enabled_engines">Aktivieren Engine</string>
-    <string name="simultaneous_translation_summary">Rufen Sie Ergebnisse von mehreren Engines gleichzeitig ab.</string>
-    <string name="enabled_engines_summary">Engine welche für die simultane Übersetzung benutzt werden sollen.</string>
+    <string name="simultaneous_translation_summary">Ergebnisse von mehreren Engines gleichzeitig ab rufen.</string>
+    <string name="enabled_engines_summary">Engines die für die simultane Übersetzung benutzt werden sollen.</string>
     <string name="additional_info_summary">Wenn möglich zusätzliche übersetzungs Informationen anzeigen.</string>
     <string name="forget">Vergessen</string>
     <string name="translate">Übersetzten</string>
