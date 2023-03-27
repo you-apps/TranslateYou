@@ -14,7 +14,7 @@
     <string name="theme_dark">Тёмная</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="license">Лицензия</string>
-    <string name="cancel">Отменить</string>
+    <string name="cancel">Отмена</string>
     <string name="enter_text">Введите текст</string>
     <string name="auto">Авто</string>
     <string name="language_not_supported">Язык не поддерживается!</string>
