@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
+import com.bnyro.translate.ext.hexToColor
 import com.bnyro.translate.ext.parcelable
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.NavigationHost
@@ -27,6 +28,7 @@ class MainActivity : ComponentActivity() {
     var themeMode by mutableStateOf(
         Preferences.getThemeMode()
     )
+    var accentColor by mutableStateOf(Preferences.getAccentColor())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         LocaleHelper.updateLanguage(this)
@@ -36,7 +38,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            TranslateYouTheme(themeMode) {
+            TranslateYouTheme(themeMode, accentColor?.hexToColor()) {
                 val navController = rememberNavController()
                 NavigationHost(navController, mainModel)
             }

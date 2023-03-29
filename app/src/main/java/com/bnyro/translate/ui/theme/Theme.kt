@@ -10,39 +10,21 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
 import com.bnyro.translate.const.ThemeMode
+import com.bnyro.translate.ext.hexToColor
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
-)
+const val defaultAccentColor = "d0bcff"
 
 @Composable
 fun TranslateYouTheme(
     themeMode: Int = ThemeMode.AUTO,
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    accentColor: Color? = null,
     content: @Composable () -> Unit
 ) {
     val darkTheme = when (themeMode) {
@@ -52,12 +34,20 @@ fun TranslateYouTheme(
     }
 
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        accentColor == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        else -> {
+            val accent = accentColor ?: defaultAccentColor.hexToColor()
+            val blendColor = if (darkTheme) android.graphics.Color.WHITE else android.graphics.Color.BLACK
+            val onPrimary = Color(ColorUtils.blendARGB(accent.toArgb(), blendColor, 0.3f))
+            if (darkTheme) darkColorScheme(accent, onPrimary, secondary = onPrimary) else lightColorScheme(
+                accent,
+                onPrimary,
+                secondary = onPrimary
+            )
+        }
     }
 
     val view = LocalView.current

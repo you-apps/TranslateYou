@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -33,6 +34,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.ui.MainActivity
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
+import com.bnyro.translate.ui.components.prefs.AccentColorPrefDialog
 import com.bnyro.translate.ui.components.prefs.ListPreference
 import com.bnyro.translate.ui.components.prefs.PreferenceItem
 import com.bnyro.translate.ui.components.prefs.SettingsCategory
@@ -53,6 +55,10 @@ fun SettingsScreen(
     val context = LocalContext.current
 
     var showThemeOptions by remember {
+        mutableStateOf(false)
+    }
+
+    var showAccentColorDialog by remember {
         mutableStateOf(false)
     }
 
@@ -88,6 +94,11 @@ fun SettingsScreen(
                     }
                 },
                 actions = {
+                    StyledIconButton(
+                        imageVector = Icons.Default.Palette
+                    ) {
+                        showAccentColorDialog = true
+                    }
                     StyledIconButton(
                         imageVector = Icons.Default.DarkMode
                     ) {
@@ -266,6 +277,12 @@ fun SettingsScreen(
     if (showTessSettings) {
         TessSettings {
             showTessSettings = false
+        }
+    }
+
+    if (showAccentColorDialog) {
+        AccentColorPrefDialog {
+            showAccentColorDialog = false
         }
     }
 }

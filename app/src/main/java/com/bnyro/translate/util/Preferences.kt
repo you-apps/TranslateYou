@@ -19,10 +19,11 @@ object Preferences {
     const val tessLanguageKey = "tessLanguage"
 
     const val themeModeKey = "themeMode"
+    const val accentColorKey = "accentColor"
     const val sourceLanguage = "sourceLanguage"
     const val targetLanguage = "targetLanguage"
 
-    private lateinit var prefs: SharedPreferences
+    lateinit var prefs: SharedPreferences
 
     fun initialize(context: Context) {
         prefs = context.getSharedPreferences(
@@ -52,10 +53,7 @@ object Preferences {
         }
     }
 
-    fun getThemeMode(): Int {
-        return get(
-            themeModeKey,
-            ThemeMode.AUTO.toString()
-        ).toInt()
-    }
+    fun getThemeMode() = get(themeModeKey, ThemeMode.AUTO.toString()).toInt()
+
+    fun getAccentColor() = prefs.getString(accentColorKey, null)
 }
