@@ -1,0 +1,4 @@
+* Option to set a custom accent color
+* Don't hardcode the dropdown menu width (#194)
+* Lock orientation to portrait (see #194)
+* Fix using `Auto` as language in LibreTranslate (#202)
