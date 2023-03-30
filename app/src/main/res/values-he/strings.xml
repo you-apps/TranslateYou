@@ -72,4 +72,6 @@
     <string name="nothing_here">אין כאן כלום.</string>
     <string name="use_free_api_summary">להשתמש בחינמי במקום ב־API המקצועי בתשלום.</string>
     <string name="use_free_api">להשתמש ב־API החינמי</string>
+    <string name="accent_color">צבע משני</string>
+    <string name="dynamic_colors">צבעים דינמיים</string>
 </resources>
