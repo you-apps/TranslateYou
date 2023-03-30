@@ -64,4 +64,6 @@
     <string name="nothing_here">Burada bir şey yok.</string>
     <string name="use_free_api_summary">Ücretli Pro API yerine ücretsiz olanı kullanın.</string>
     <string name="use_free_api">Ücretsiz API\'yi kullan</string>
+    <string name="accent_color">Vurgu rengi</string>
+    <string name="dynamic_colors">Değişken renkler</string>
 </resources>

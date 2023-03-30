@@ -63,4 +63,6 @@
     <string name="nothing_here">Aqui não há nada.</string>
     <string name="use_free_api">Usar API grátis</string>
     <string name="use_free_api_summary">Utilizar a API gratuita em vez da API Pro paga.</string>
+    <string name="dynamic_colors">Cores dinâmicas</string>
+    <string name="accent_color">Cor</string>
 </resources>

@@ -63,4 +63,6 @@
     <string name="nothing_here">لا شيء هنا.</string>
     <string name="use_free_api">استخدم واجهة البرمجة المجانية</string>
     <string name="use_free_api_summary">استخدم واجهة البرمجة المجانية بدلًا من المدفوعة.</string>
+    <string name="accent_color">اللون الثانويُّ</string>
+    <string name="dynamic_colors">ألوان ديناميكية</string>
 </resources>
