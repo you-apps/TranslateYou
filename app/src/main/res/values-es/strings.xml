@@ -63,4 +63,6 @@
     <string name="unknown_error">Error desconocido</string>
     <string name="use_free_api">Utilizar la API gratuita</string>
     <string name="use_free_api_summary">Utiliza la API gratuita en lugar de la Pro de pago.</string>
+    <string name="accent_color">Acentuar el color</string>
+    <string name="dynamic_colors">Colores dinámicos</string>
 </resources>
