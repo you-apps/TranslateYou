@@ -32,9 +32,9 @@
     <string name="none">Keine</string>
     <string name="additional_info">Zusätzliche Informationen</string>
     <string name="simultaneous_translation">gleichzeitige Mehrfachübersetzung</string>
-    <string name="enabled_engines">Aktivieren Engine</string>
-    <string name="simultaneous_translation_summary">Ergebnisse von mehreren Engines gleichzeitig ab rufen.</string>
-    <string name="enabled_engines_summary">Engines die für die simultane Übersetzung benutzt werden sollen.</string>
+    <string name="enabled_engines">Aktivierte Engines</string>
+    <string name="simultaneous_translation_summary">Resultate von mehreren Engines gleichzeitig abrufen.</string>
+    <string name="enabled_engines_summary">Engines für die gleichzeitige Übersetzung.</string>
     <string name="additional_info_summary">Wenn möglich zusätzliche übersetzungs Informationen anzeigen.</string>
     <string name="forget">Vergessen</string>
     <string name="translate">Übersetzten</string>
@@ -43,7 +43,7 @@
     <string name="translate_automatically_summary">Nach bestimmter Zeit automatisch übersetzen.</string>
     <string name="open">Öffnen</string>
     <string name="compact_history">Kompakter Verlauf</string>
-    <string name="compact_history_summary">Zeige als Standard nur die ersten drei Zeilen Text im Verlauf</string>
+    <string name="compact_history_summary">Zeige nur die ersten drei Zeilen Text im Verlauf</string>
     <string name="selected_engine">Ausgewählte Engine</string>
     <string name="missing_api_key">Bitte geben Sie einen API-Schlüssel in den Einstellungen an!</string>
     <string name="use_free_api">Kostenlose API verwenden</string>
@@ -63,4 +63,6 @@
     <string name="image_translation">Übersetzung aus Bild</string>
     <string name="st_selected_engine">Engine, die SimplyTranslate zum Übersetzen verwendet</string>
     <string name="general">Allgemein</string>
+    <string name="dynamic_colors">Dynamische Farben</string>
+    <string name="accent_color">Akzentfarbe</string>
 </resources>
