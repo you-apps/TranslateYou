@@ -40,5 +40,4 @@ _You can choose the Lingva Translate instance according to your preference._
 ## Android permissions requested by the application
 Note that 'Translate You' application requires android platform permissions:
 `android.permission.INTERNET` - In order to perform requests to online translation engines.
-`android.permission.ACCESS_NETWORK_STATE` - In order to view information about network connections _(such as which networks exist and are connected)_.
 `android.permission.RECORD_AUDIO` - In order to perform a vocal translation, **only at the user's request**.
