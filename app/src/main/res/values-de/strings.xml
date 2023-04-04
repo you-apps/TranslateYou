@@ -31,11 +31,11 @@
     <string name="system">System</string>
     <string name="none">Keine</string>
     <string name="additional_info">Zusätzliche Informationen</string>
-    <string name="simultaneous_translation">gleichzeitige Mehrfachübersetzung</string>
+    <string name="simultaneous_translation">Gleichzeitige Mehrfachübersetzung</string>
     <string name="enabled_engines">Aktivierte Engines</string>
     <string name="simultaneous_translation_summary">Resultate von mehreren Engines gleichzeitig abrufen.</string>
     <string name="enabled_engines_summary">Engines für die gleichzeitige Übersetzung.</string>
-    <string name="additional_info_summary">Wenn möglich zusätzliche übersetzungs Informationen anzeigen.</string>
+    <string name="additional_info_summary">Zusätzliche Übersetzungsinformationen anzeigen, falls verfügbar.</string>
     <string name="forget">Vergessen</string>
     <string name="translate">Übersetzten</string>
     <string name="app_language">App Sprache</string>
