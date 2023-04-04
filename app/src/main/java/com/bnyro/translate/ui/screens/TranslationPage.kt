@@ -2,6 +2,7 @@ package com.bnyro.translate.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -102,16 +103,22 @@ fun TranslationPage(
 
                 Row(
                     modifier = Modifier
-                        .padding(10.dp),
+                        .padding(10.dp)
+                        .padding(top = 5.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    LanguageSelector(
-                        viewModel.availableLanguages,
-                        viewModel.sourceLanguage,
-                        autoLanguageEnabled = true,
-                        viewModel = viewModel
+                    Box(
+                        modifier = Modifier.weight(1f),
+                        contentAlignment = Alignment.Center
                     ) {
-                        viewModel.sourceLanguage = it
+                        LanguageSelector(
+                            viewModel.availableLanguages,
+                            viewModel.sourceLanguage,
+                            autoLanguageEnabled = true,
+                            viewModel = viewModel
+                        ) {
+                            viewModel.sourceLanguage = it
+                        }
                     }
 
                     val switchBtnEnabled by mutableStateOf(
@@ -136,12 +143,17 @@ fun TranslationPage(
                         )
                     }
 
-                    LanguageSelector(
-                        viewModel.availableLanguages,
-                        viewModel.targetLanguage,
-                        viewModel = viewModel
+                    Box(
+                        modifier = Modifier.weight(1f),
+                        contentAlignment = Alignment.Center
                     ) {
-                        viewModel.targetLanguage = it
+                        LanguageSelector(
+                            viewModel.availableLanguages,
+                            viewModel.targetLanguage,
+                            viewModel = viewModel
+                        ) {
+                            viewModel.targetLanguage = it
+                        }
                     }
                 }
             }

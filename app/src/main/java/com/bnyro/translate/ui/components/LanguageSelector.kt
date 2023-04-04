@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ElevatedButton
@@ -40,11 +41,13 @@ fun LanguageSelector(
     }
 
     ElevatedButton(
-        onClick = { showDialog = !showDialog },
         modifier = Modifier
-            .padding(5.dp)
+            .padding(5.dp),
+        onClick = { showDialog = !showDialog },
+        shape = RoundedCornerShape(15.dp)
     ) {
         Text(
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 7.dp),
             text = selectedLanguage.name
         )
     }
