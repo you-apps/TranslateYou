@@ -4,36 +4,29 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Divider
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ElevatedButton
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bnyro.translate.DatabaseHolder
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.query
+import com.bnyro.translate.ui.dialogs.FullscreenDialog
 import com.bnyro.translate.ui.models.TranslationModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LanguageSelector(
     availableLanguages: List<Language>,
@@ -58,58 +51,85 @@ fun LanguageSelector(
 
     val languages = availableLanguages.toMutableList()
 
-    // remove auto language
-    if (autoLanguageEnabled && languages.isNotEmpty()) {
-        languages.add(
-            0,
-            Language("", stringResource(R.string.auto))
-        )
-    }
-
     if (showDialog) {
         var searchQuery by remember {
             mutableStateOf("")
         }
 
-        AlertDialog(
+        FullscreenDialog(
             onDismissRequest = {
                 showDialog = false
             },
-            text = {
-                Column {
+            topBar = {
+                SearchAppBar(
+                    title = "",
+                    value = searchQuery,
+                    onValueChange = { searchQuery = it },
+                    navigationIcon = {
+                        StyledIconButton(
+                            imageVector = Icons.Default.ArrowBack,
+                            onClick = { showDialog = false }
+                        )
+                    },
+                    actions = {}
+                )
+            },
+            content = {
+                Column(
+                    modifier = Modifier.padding(horizontal = 10.dp)
+                ) {
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    OutlinedTextField(
-                        value = searchQuery,
-                        onValueChange = {
-                            searchQuery = it
-                        },
-                        label = {
-                            Text(text = stringResource(R.string.search))
-                        },
-                        leadingIcon = {
-                            Icon(Icons.Default.Search, null)
-                        },
-                        singleLine = true
+                    Text(
+                        modifier = Modifier.padding(start = 10.dp, top = 20.dp, bottom = 30.dp),
+                        text = stringResource(
+                            if (autoLanguageEnabled) R.string.translate_from else R.string.translate_to
+                        ),
+                        style = MaterialTheme.typography.headlineMedium
                     )
 
-                    Spacer(modifier = Modifier.height(20.dp))
-
-                    LazyColumn(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        items(
-                            viewModel.bookmarkedLanguages.filter {
-                                validateFilter(it, searchQuery)
+                    LazyColumn {
+                        if (autoLanguageEnabled) {
+                            item {
+                                val autoLanguage = Language("", stringResource(R.string.auto))
+                                LanguageItem(
+                                    language = autoLanguage,
+                                    isPinned = null,
+                                    selectedLanguage = selectedLanguage,
+                                    onClick = {
+                                        onClick.invoke(autoLanguage)
+                                        viewModel.enqueueTranslation()
+                                    },
+                                    onPinnedChange = {}
+                                )
                             }
-                        ) {
+                        }
+
+                        val bookmarks = viewModel.bookmarkedLanguages.filter {
+                            validateFilter(it, searchQuery)
+                        }
+                        if (bookmarks.isNotEmpty()) {
+                            item {
+                                Text(
+                                    modifier = Modifier.padding(
+                                        top = 20.dp,
+                                        bottom = 10.dp,
+                                        start = 15.dp
+                                    ),
+                                    text = stringResource(R.string.favorites).uppercase(),
+                                    color = MaterialTheme.colorScheme.primary,
+                                    fontSize = 12.sp
+                                )
+                            }
+                        }
+                        items(bookmarks) {
                             LanguageItem(
                                 language = it,
                                 isPinned = viewModel.bookmarkedLanguages.contains(it),
+                                selectedLanguage = selectedLanguage,
                                 onClick = {
-                                    showDialog = false
-                                    viewModel.enqueueTranslation()
                                     onClick.invoke(it)
+                                    viewModel.enqueueTranslation()
                                 },
                                 onPinnedChange = {
                                     viewModel.bookmarkedLanguages =
@@ -124,14 +144,16 @@ fun LanguageSelector(
                         }
 
                         item {
-                            if (viewModel.bookmarkedLanguages.isNotEmpty()) {
-                                Divider(
-                                    color = MaterialTheme.colorScheme.onSurface,
-                                    modifier = Modifier
-                                        .padding(20.dp)
-                                        .size(70.dp, 1.dp)
-                                )
-                            }
+                            Text(
+                                modifier = Modifier.padding(
+                                    top = 20.dp,
+                                    bottom = 10.dp,
+                                    start = 15.dp
+                                ),
+                                text = stringResource(R.string.all_languages).uppercase(),
+                                color = MaterialTheme.colorScheme.primary,
+                                fontSize = 12.sp
+                            )
                         }
 
                         items(
@@ -142,10 +164,10 @@ fun LanguageSelector(
                             LanguageItem(
                                 language = it,
                                 isPinned = viewModel.bookmarkedLanguages.contains(it),
+                                selectedLanguage = selectedLanguage,
                                 onClick = {
-                                    showDialog = false
-                                    viewModel.enqueueTranslation()
                                     onClick.invoke(it)
+                                    viewModel.enqueueTranslation()
                                 },
                                 onPinnedChange = {
                                     viewModel.bookmarkedLanguages =
@@ -165,19 +187,6 @@ fun LanguageSelector(
                             )
                         }
                     }
-                }
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showDialog = false
-                    }
-                ) {
-                    Text(
-                        stringResource(
-                            id = R.string.cancel
-                        )
-                    )
                 }
             }
         )

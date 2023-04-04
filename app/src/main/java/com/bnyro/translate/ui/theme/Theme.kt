@@ -42,11 +42,15 @@ fun TranslateYouTheme(
             val accent = accentColor ?: defaultAccentColor.hexToColor()
             val blendColor = if (darkTheme) android.graphics.Color.WHITE else android.graphics.Color.BLACK
             val onPrimary = Color(ColorUtils.blendARGB(accent.toArgb(), blendColor, 0.3f))
-            if (darkTheme) darkColorScheme(accent, onPrimary, secondary = onPrimary) else lightColorScheme(
-                accent,
-                onPrimary,
-                secondary = onPrimary
-            )
+            if (darkTheme) {
+                darkColorScheme(accent, onPrimary, secondary = onPrimary)
+            } else {
+                lightColorScheme(
+                    accent,
+                    onPrimary,
+                    secondary = onPrimary
+                )
+            }
         }
     }
 

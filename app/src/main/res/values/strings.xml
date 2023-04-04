@@ -12,6 +12,8 @@
     <string name="forget">Forget</string>
     <string name="translate">Translate</string>
     <string name="language_not_supported">Language is not supported!</string>
+    <string name="translate_to">Translate to</string>
+    <string name="translate_from">Translate from</string>
     <!-- Settings -->
     <string name="instance">Instance</string>
     <string name="api_key">Api Key</string>
@@ -72,6 +74,8 @@
     <string name="transliteration">Transliteration</string>
     <!-- Languages -->
     <string name="search">Search</string>
+    <string name="favorites">Favorites</string>
+    <string name="all_languages">All languages</string>
     <!-- Tesseract -->
     <string name="image_translation">Translation from Image</string>
     <string name="image_translation_summary">Download and apply languages for text recognition from images.</string>
