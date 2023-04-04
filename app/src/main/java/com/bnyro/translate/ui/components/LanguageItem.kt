@@ -8,12 +8,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.BookmarkBorder
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -45,21 +47,29 @@ fun LanguageItem(
             containerColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent
         )
     ) {
-        Row {
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Text(
                 text = language.name,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(15.dp)
+                    .padding(vertical = 10.dp, horizontal = 15.dp)
             )
             if (isPinned != null) {
                 StyledIconButton(
+                    modifier = Modifier.padding(end = 5.dp),
                     imageVector = if (isPinned) Icons.Default.Bookmark else Icons.Default.BookmarkBorder
                 ) {
                     onPinnedChange.invoke()
                 }
             } else {
-                StyledIconButton(imageVector = Icons.Default.Star)
+                Icon(
+                    modifier = Modifier
+                        .padding(end = 20.dp),
+                    imageVector = Icons.Outlined.AutoAwesome,
+                    contentDescription = null
+                )
             }
         }
     }
