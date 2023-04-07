@@ -45,13 +45,13 @@
     <string name="compact_history">Kompakter Verlauf</string>
     <string name="compact_history_summary">Zeige nur die ersten drei Zeilen Text im Verlauf</string>
     <string name="selected_engine">Ausgewählte Engine</string>
-    <string name="missing_api_key">Bitte geben Sie einen API-Schlüssel in den Einstellungen an!</string>
+    <string name="missing_api_key">Bitte in den Einstellungen einen API-Schlüssel angeben.</string>
     <string name="use_free_api">Kostenlose API verwenden</string>
     <string name="use_free_api_summary">Verwenden Sie die kostenlose statt der kostenpflichtigen Pro-API.</string>
     <string name="similar">Ähnlich</string>
     <string name="init_tess_first">Bitte laden Sie zuerst Sprachdaten in den Einstellungen herunter.</string>
     <string name="select_language">Bitte wählen Sie in den Einstellungen eine Sprache für die Texterkennung in Bildern aus.</string>
-    <string name="nothing_here">Hier gibt es nichts.</string>
+    <string name="nothing_here">Hier ist nichts.</string>
     <string name="character_warning_limit_summary">Warnen, wenn der übersetzte Text die maximale Länge überschreitet.</string>
     <string name="image_translation_summary">Herunterladen und Hinzufügen von Sprachen zur Texterkennung aus Bildern.</string>
     <string name="character_warning_limit">Warngrenze für Zeichen</string>
@@ -65,4 +65,8 @@
     <string name="general">Allgemein</string>
     <string name="dynamic_colors">Dynamische Farben</string>
     <string name="accent_color">Akzentfarbe</string>
+    <string name="translate_from">Übersetzen von</string>
+    <string name="favorites">Favoriten</string>
+    <string name="all_languages">Alle Sprachen</string>
+    <string name="translate_to">Übersetzen in</string>
 </resources>
