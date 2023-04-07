@@ -4,7 +4,7 @@
     <string name="translate">Traduzir</string>
     <string name="language_not_supported">O idioma não é suportado!</string>
     <string name="instance">Instância</string>
-    <string name="api_key">Chave de API</string>
+    <string name="api_key">Chave API</string>
     <string name="options">Configurações</string>
     <string name="history">Histórico</string>
     <string name="about">Sobre</string>
@@ -39,7 +39,7 @@
     <string name="clear_history">Limpar histórico</string>
     <string name="open">Aberto</string>
     <string name="server_error">Erro na comunicação com o servidor.</string>
-    <string name="missing_api_key">Por favor forneça uma Chave API nas Configurações!</string>
+    <string name="missing_api_key">Favor fornecer uma chave API nas definições.</string>
     <string name="unknown_error">Erro desconhecido</string>
     <string name="detected_language">Linguagem detectada</string>
     <string name="definition">Definição</string>
@@ -65,4 +65,8 @@
     <string name="use_free_api_summary">Utilizar a API gratuita em vez da API Pro paga.</string>
     <string name="dynamic_colors">Cores dinâmicas</string>
     <string name="accent_color">Cor</string>
+    <string name="translate_to">Traduzir para</string>
+    <string name="translate_from">Traduzir de</string>
+    <string name="favorites">Favoritos</string>
+    <string name="all_languages">Todos os idiomas</string>
 </resources>
