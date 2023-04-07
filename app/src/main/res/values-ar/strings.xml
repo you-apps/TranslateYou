@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="language_not_supported">اللغة غير مدعومة!</string>
-    <string name="api_key">مفتاح واجهة برمجة التطبيقات</string>
+    <string name="api_key">مفتاح API</string>
     <string name="history">التاريخ</string>
     <string name="cancel">ألغِ</string>
     <string name="enter_text">أدخل نصًّا</string>
@@ -44,7 +44,7 @@
     <string name="server_error">خطأ في التواصل مع الخادم.</string>
     <string name="detected_language">اللغة المكتشفة</string>
     <string name="transliteration">الترجمة اللفظيَّة</string>
-    <string name="search">ابحث</string>
+    <string name="search">البحث</string>
     <string name="additional_info_summary">أظهر معلومات إضافيَّةً إن توفَّرت.</string>
     <string name="st_selected_engine">المحرِّك الذي يستخدمه SimplyTranslate للترجمة</string>
     <string name="translation">الترجمة</string>
@@ -53,7 +53,7 @@
     <string name="character_warning_limit">تحذير حدِّ الأحرف</string>
     <string name="theme_auto">النظام</string>
     <string name="theme_light">فاتح</string>
-    <string name="missing_api_key">وفِّر مفتاح واجهة برمجة التطبيقات في الإعدادات!</string>
+    <string name="missing_api_key">يرجى تقديم مفتاح API في الإعدادات.</string>
     <string name="unknown_error">خطأ غير معروف</string>
     <string name="translate_automatically_summary">اطلب ترجمةً تلقائيًّا بعد مهلة محدَّدة.</string>
     <string name="privacy_policy">سياسة الخصوصيَّة</string>
@@ -65,4 +65,8 @@
     <string name="use_free_api_summary">استخدم واجهة البرمجة المجانية بدلًا من المدفوعة.</string>
     <string name="accent_color">اللون الثانويُّ</string>
     <string name="dynamic_colors">ألوان ديناميكية</string>
+    <string name="translate_to">ترجمة إلى</string>
+    <string name="translate_from">ترجمة من</string>
+    <string name="favorites">المفضَّلة</string>
+    <string name="all_languages">جميع اللغات</string>
 </resources>
