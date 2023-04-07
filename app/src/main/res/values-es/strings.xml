@@ -7,7 +7,7 @@
     <string name="paste">Pegar</string>
     <string name="forget">Olvidar</string>
     <string name="instance">Instancia</string>
-    <string name="api_key">Clave de la API</string>
+    <string name="api_key">Clave API</string>
     <string name="options">Ajustes</string>
     <string name="about">Acerca de</string>
     <string name="fetch_delay">Retraso en la traducción</string>
@@ -27,7 +27,7 @@
     <string name="clear_history">Borrar el historial</string>
     <string name="open">Abrir</string>
     <string name="server_error">Error de comunicación con el servidor.</string>
-    <string name="missing_api_key">¡Proporcione una clave API en la configuración!</string>
+    <string name="missing_api_key">Por favor, proporcione una clave API en la configuración.</string>
     <string name="detected_language">Detectar el idioma</string>
     <string name="definition">Definición</string>
     <string name="example">Ejemplo</string>
@@ -65,4 +65,8 @@
     <string name="use_free_api_summary">Utiliza la API gratuita en lugar de la Pro de pago.</string>
     <string name="accent_color">Acentuar el color</string>
     <string name="dynamic_colors">Colores dinámicos</string>
+    <string name="translate_to">Traducir a</string>
+    <string name="translate_from">Traducir de</string>
+    <string name="favorites">Favoritos</string>
+    <string name="all_languages">Todos los idiomas</string>
 </resources>
