@@ -35,7 +35,7 @@
     <string name="clear_history">Limpar histórico</string>
     <string name="open">Abrir</string>
     <string name="server_error">Erro na comunicação com o servidor.</string>
-    <string name="missing_api_key">Por favor forneça uma Chave API nas Configurações!</string>
+    <string name="missing_api_key">Por favor forneça uma Chave API nas Configurações.</string>
     <string name="unknown_error">Erro desconhecido</string>
     <string name="detected_language">Linguagem detectada</string>
     <string name="definition">Definição</string>
@@ -60,4 +60,13 @@
     <string name="translate">Traduzir</string>
     <string name="translate_automatically_summary">Solicita uma tradução automaticamente após um certo período.</string>
     <string name="translate_automatically">Traduzir automaticamente</string>
+    <string name="translate_to">Traduzir para</string>
+    <string name="translate_from">Traduzir de</string>
+    <string name="all_languages">Todas as linguagens</string>
+    <string name="favorites">Favoritos</string>
+    <string name="use_free_api_summary">Usar a api gratuita em vez da paga.</string>
+    <string name="use_free_api">Usar api gratuita</string>
+    <string name="nothing_here">Nada aqui.</string>
+    <string name="dynamic_colors">Cores dinâmicas</string>
+    <string name="accent_color">Cor de destaque</string>
 </resources>

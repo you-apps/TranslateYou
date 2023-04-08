@@ -37,7 +37,7 @@
     <string name="simultaneous_translation_summary">Ottieni i risultati da più motori di traduzione nello stesso momento.</string>
     <string name="selected_engine">Motore selezionato</string>
     <string name="st_selected_engine">Motore che SimplyTranslate usa per tradurre</string>
-    <string name="missing_api_key">Fornisci un chiave API nelle impostazioni per favore!</string>
+    <string name="missing_api_key">Per favore fornisci un chiave API nelle impostazioni.</string>
     <string name="definition">Definizione</string>
     <string name="similar">Simile</string>
     <string name="additional_info">Informazioni aggiuntive</string>
@@ -48,7 +48,7 @@
     <string name="general">Generale</string>
     <string name="app_language">Lingua dell\'app</string>
     <string name="system">Sistema</string>
-    <string name="search">Ricerca</string>
+    <string name="search">Cerca</string>
     <string name="none">Nessuno</string>
     <string name="character_warning_limit">Avvertimento limite dei caratteri</string>
     <string name="character_warning_limit_summary">Avvisa quando il testo tradotto supera la lunghezza massima.</string>
@@ -66,4 +66,8 @@
     <string name="use_free_api">Usa API libere</string>
     <string name="accent_color">Colore secondario</string>
     <string name="dynamic_colors">Colori dinamici</string>
+    <string name="translate_from">Traduci da</string>
+    <string name="all_languages">Tutte le lingue</string>
+    <string name="translate_to">Traduci in</string>
+    <string name="favorites">Preferiti</string>
 </resources>

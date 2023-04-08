@@ -10,7 +10,7 @@
     <string name="auto">אוטומטי</string>
     <!-- Settings -->
     <string name="instance">עותק</string>
-    <string name="api_key">מפתח Api</string>
+    <string name="api_key">מפתח API</string>
     <string name="options">הגדרות</string>
     <string name="history">היסטוריה</string>
     <string name="about">על אודות</string>
@@ -47,7 +47,7 @@
     <string name="additional_info_summary">להציג פרטי תרגום נוספים אם ניתן.</string>
     <string name="selected_engine">המנוע הנבחר</string>
     <string name="st_selected_engine">המנוע בו משתמש SimplyTranslate לתרגום</string>
-    <string name="missing_api_key">נא לספק מפתח API בהגדרות!</string>
+    <string name="missing_api_key">נא לספק מפתח API בהגדרות.</string>
     <string name="detected_language">השפה שזוהתה</string>
     <string name="definition">הגדרה</string>
     <string name="example">דוגמה</string>
@@ -74,4 +74,8 @@
     <string name="use_free_api">להשתמש ב־API החינמי</string>
     <string name="accent_color">צבע משני</string>
     <string name="dynamic_colors">צבעים דינמיים</string>
+    <string name="translate_from">תרגום מ־</string>
+    <string name="favorites">מועדפים</string>
+    <string name="all_languages">כל השפות</string>
+    <string name="translate_to">תרגום ל־</string>
 </resources>

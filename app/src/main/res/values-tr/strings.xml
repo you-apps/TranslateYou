@@ -7,7 +7,7 @@
     <string name="paste">Yapıştır</string>
     <string name="auto">Otomatik</string>
     <string name="instance">Örnek</string>
-    <string name="api_key">API Anahtarı</string>
+    <string name="api_key">API anahtarı</string>
     <string name="options">Ayarlar</string>
     <string name="fetch_delay_summary">Metin ekleme ve çeviriyi getirme arasındaki gecikme</string>
     <string name="history_summary">Son çevrilen metinleri takip edin</string>
@@ -43,7 +43,7 @@
     <string name="similar">Benzer</string>
     <string name="st_selected_engine">SimplyTranslate\'in çeviri için kullandığı motor</string>
     <string name="detected_language">Algılanan dil</string>
-    <string name="missing_api_key">Lütfen Ayarlar\'da bir API anahtarı belirtin!</string>
+    <string name="missing_api_key">Lütfen ayarlarda bir API anahtarı belirtin.</string>
     <string name="search">Arama</string>
     <string name="general">Genel</string>
     <string name="app_language">Uygulama dili</string>
@@ -66,4 +66,8 @@
     <string name="use_free_api">Ücretsiz API\'yi kullan</string>
     <string name="accent_color">Vurgu rengi</string>
     <string name="dynamic_colors">Değişken renkler</string>
+    <string name="translate_to">Şuna çevir</string>
+    <string name="translate_from">Şundan çevir</string>
+    <string name="favorites">Sık kullanılanlar</string>
+    <string name="all_languages">Tüm diller</string>
 </resources>
