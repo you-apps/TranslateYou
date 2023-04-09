@@ -46,7 +46,7 @@
     <string name="example">Exemplo</string>
     <string name="similar">Semelhante</string>
     <string name="transliteration">Transliteração</string>
-    <string name="search">Pesquisa</string>
+    <string name="search">Pesquisar</string>
     <string name="image_translation">Tradução a partir de Imagem</string>
     <string name="init_tess_first">Por favor descarregue primeiro os dados de idioma nas configurações.</string>
     <string name="select_language">Por favor selecione um idioma para reconhecimento de texto a partir de imagens nas configurações.</string>
