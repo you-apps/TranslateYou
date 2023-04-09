@@ -15,14 +15,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.History
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -31,19 +33,23 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
+import com.bnyro.translate.ui.components.SearchAppBar
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.HistoryModel
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.views.HistoryRow
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HistoryScreen(
     navController: NavController,
     translationModel: TranslationModel
 ) {
     val viewModel: HistoryModel = viewModel()
+
+    var searchQuery by remember {
+        mutableStateOf("")
+    }
 
     LaunchedEffect(Unit) {
         viewModel.fetchHistory()
@@ -53,12 +59,10 @@ fun HistoryScreen(
         modifier = Modifier
             .statusBarsPadding(),
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        stringResource(R.string.history)
-                    )
-                },
+            SearchAppBar(
+                title = stringResource(R.string.history),
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
                 navigationIcon = {
                     StyledIconButton(
                         imageVector = Icons.Default.ArrowBack
@@ -86,14 +90,19 @@ fun HistoryScreen(
                     .fillMaxSize()
                     .padding(pV)
             ) {
-                if (viewModel.history.isNotEmpty()) {
+                val query = searchQuery.lowercase()
+                val filteredHistory = viewModel.history.filter {
+                    it.insertedText.lowercase().contains(query) ||
+                        it.translatedText.lowercase().contains(query)
+                }
+
+                if (filteredHistory.isNotEmpty()) {
                     LazyColumn {
-                        items(viewModel.history) {
+                        items(filteredHistory) {
                             HistoryRow(navController, translationModel, it) {
                                 viewModel.history = viewModel.history.filter { item ->
                                     it.id != item.id
                                 }
-
                                 viewModel.deleteHistoryItem(it)
                             }
                         }

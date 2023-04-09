@@ -101,10 +101,14 @@ fun SearchAppBar(
                         }
                     }
                     else -> {
-                        StyledIconButton(imageVector = Icons.Default.Search) {
-                            isSearchViewVisible = true
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            StyledIconButton(imageVector = Icons.Default.Search) {
+                                isSearchViewVisible = true
+                            }
+                            actions.invoke(this)
                         }
-                        actions.invoke(this)
                     }
                 }
             }
