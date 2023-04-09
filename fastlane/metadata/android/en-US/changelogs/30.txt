@@ -1,0 +1,6 @@
+* Redesigned language selection menu (see #210)
+* New translate button design (see #210)
+* History page redesign
+* Search feature in history (see #215)
+* Fix instance preference button colors
+* Remove unused ACCESS_NETWORK_STATE permission
