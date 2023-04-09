@@ -25,7 +25,7 @@ fun BlockButton(
     containerColor: Color = MaterialTheme.colorScheme.surfaceVariant.copy(0.5f),
     selectedContainerColor: Color = MaterialTheme.colorScheme.primary,
     contentColor: Color = MaterialTheme.colorScheme.inverseSurface,
-    selectedContentColor: Color = MaterialTheme.colorScheme.onSurface,
+    selectedContentColor: Color = MaterialTheme.colorScheme.onPrimary,
     onClick: () -> Unit = {}
 ) {
     Column(
