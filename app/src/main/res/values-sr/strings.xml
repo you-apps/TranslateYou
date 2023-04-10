@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Translate You</string>
+    <!-- Dialog -->
+    <string name="okay">У реду</string>
+    <string name="cancel">Одустани</string>
+    <!-- Text -->
+    <string name="enter_text">Унеси текст</string>
+    <string name="paste">Налепи</string>
+    <string name="copy">Копирај</string>
+    <string name="auto">Аутоматски</string>
+    <string name="forget">Заборави</string>
+    <string name="translate">Преведи</string>
+    <string name="language_not_supported">Језик није подржан!</string>
+    <string name="translate_to">Преведи на</string>
+    <string name="translate_from">Преведи са</string>
+    <!-- Settings -->
+    <string name="instance">Инстанца</string>
+    <string name="api_key">API кључ</string>
+    <string name="options">Подешавања</string>
+    <string name="history">Историја</string>
+    <string name="about">О</string>
+    <string name="history_enabled">Историја омогућена</string>
+    <string name="fetch_delay">Одлагање превода</string>
+    <string name="fetch_delay_summary">Одлагање између уноса текста и превођења</string>
+    <string name="history_summary">Чувај преведени текст</string>
+    <string name="required">Обавезно</string>
+    <string name="optional">Опционално</string>
+    <string name="compact_history">Смањи историју</string>
+    <string name="compact_history_summary">Прикажи само прве 3 линије текста у историји</string>
+    <string name="simultaneous_translation">Истовремени превод</string>
+    <string name="simultaneous_translation_summary">Учитај превод са више различитих извора у исто време.</string>
+    <string name="enabled_engines">Омогућени извори</string>
+    <string name="enabled_engines_summary">Извори који се користе за истовремени превод.</string>
+    <string name="additional_info">Додатне информације</string>
+    <string name="additional_info_summary">Уколико је могуће прикажи додатне информације о преводу.</string>
+    <string name="selected_engine">Изабрани извор</string>
+    <string name="st_selected_engine">Извор који SimplyTranslate користи за превођење</string>
+    <string name="translation">Превођење</string>
+    <string name="general">Опште</string>
+    <string name="app_language">Језик апликације</string>
+    <string name="system">Системски</string>
+    <string name="character_warning_limit">Упозорење о лимиту броја карактера</string>
+    <string name="character_warning_limit_summary">Упозори када преведени текст превазилази лимит броја карактера.</string>
+    <string name="none">Ниједан</string>
+    <string name="translate_automatically">Преведи аутоматски</string>
+    <string name="translate_automatically_summary">Аутоматски захтевај превод након одређеног времена.</string>
+    <string name="nothing_here">Нема ничега овде.</string>
+    <string name="use_free_api">Користи бесплатан API</string>
+    <string name="use_free_api_summary">Користи бесплатан уместо плаћеног Pro API.</string>
+    <!-- About -->
+    <string name="github" translatable="false">GitHub</string>
+    <string name="author">Аутор</string>
+    <string name="license">Лиценца</string>
+    <string name="privacy_policy">Политика приватности</string>
+    <!-- Theme -->
+    <string name="theme_auto">Системска</string>
+    <string name="theme_light">Светла</string>
+    <string name="theme_dark">Тамна</string>
+    <string name="accent_color">Главна боја</string>
+    <string name="dynamic_colors">Динамичке боје</string>
+    <!-- History -->
+    <string name="clear_history">Очисти историју</string>
+    <string name="open">Отвори</string>
+    <!-- Exception -->
+    <string name="server_error">Грешка приликом комуницирања са сервером.</string>
+    <string name="missing_api_key">Молим вас унесите API кључ у подешавањима.</string>
+    <string name="unknown_error">Непозната грешка</string>
+    <!-- Additional Info -->
+    <string name="detected_language">Детектовани језик</string>
+    <string name="definition">Дефиниција</string>
+    <string name="example">Пример</string>
+    <string name="similar">Слично</string>
+    <string name="transliteration">Транслитерација</string>
+    <!-- Languages -->
+    <string name="search">Претрага</string>
+    <string name="favorites">Фаворити</string>
+    <string name="all_languages">Сви језици</string>
+    <!-- Tesseract -->
+    <string name="image_translation">Превод са слике</string>
+    <string name="image_translation_summary">Преузми и примени језике за препознавање текста са слика.</string>
+    <string name="init_tess_first">Молим вас, прво преузмите податке о језику у подешавањима.</string>
+    <string name="select_language">Молим вас изаберите језик за препознавање текста са слика у подешавањима.</string>
+</resources>
