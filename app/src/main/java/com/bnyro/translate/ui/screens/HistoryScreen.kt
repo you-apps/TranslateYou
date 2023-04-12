@@ -15,10 +15,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.History
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -27,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -40,12 +44,16 @@ import com.bnyro.translate.ui.models.HistoryModel
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.views.HistoryRow
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HistoryScreen(
     navController: NavController,
     translationModel: TranslationModel
 ) {
     val viewModel: HistoryModel = viewModel()
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
+        rememberTopAppBarState()
+    )
 
     var searchQuery by remember {
         mutableStateOf("")
@@ -57,7 +65,8 @@ fun HistoryScreen(
 
     Scaffold(
         modifier = Modifier
-            .statusBarsPadding(),
+            .statusBarsPadding()
+            .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SearchAppBar(
                 title = stringResource(R.string.history),
@@ -81,7 +90,8 @@ fun HistoryScreen(
                             }
                         )
                     )
-                }
+                },
+                scrollBehavior = scrollBehavior
             )
         },
         content = { pV ->
@@ -97,7 +107,9 @@ fun HistoryScreen(
                 }
 
                 if (filteredHistory.isNotEmpty()) {
-                    LazyColumn {
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize()
+                    ) {
                         items(filteredHistory) {
                             HistoryRow(navController, translationModel, it) {
                                 viewModel.history = viewModel.history.filter { item ->

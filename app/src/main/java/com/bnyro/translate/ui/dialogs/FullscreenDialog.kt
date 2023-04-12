@@ -10,6 +10,7 @@ import androidx.compose.ui.window.DialogProperties
 
 @Composable
 fun FullscreenDialog(
+    modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
     topBar: @Composable () -> Unit,
     content: @Composable () -> Unit
@@ -19,6 +20,7 @@ fun FullscreenDialog(
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
         Scaffold(
+            modifier = modifier,
             topBar = topBar
         ) { pV ->
             Box(Modifier.padding(pV)) {

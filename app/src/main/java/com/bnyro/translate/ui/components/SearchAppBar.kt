@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardActions
@@ -14,9 +15,10 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -39,6 +41,7 @@ fun SearchAppBar(
     title: String,
     value: String,
     onValueChange: (String) -> Unit,
+    scrollBehavior: TopAppBarScrollBehavior,
     navigationIcon: @Composable () -> Unit,
     actions: @Composable RowScope.() -> Unit
 ) {
@@ -46,10 +49,11 @@ fun SearchAppBar(
         mutableStateOf(false)
     }
 
-    TopAppBar(
+    LargeTopAppBar(
         navigationIcon = {
             if (!isSearchViewVisible) navigationIcon()
         },
+        scrollBehavior = scrollBehavior,
         title = {
             Text(title)
         },
@@ -79,7 +83,8 @@ fun SearchAppBar(
                             OutlinedTextField(
                                 modifier = Modifier
                                     .focusRequester(focusRequester)
-                                    .weight(1f),
+                                    .weight(1f)
+                                    .offset(y = (-4).dp),
                                 value = value,
                                 onValueChange = onValueChange,
                                 label = {
