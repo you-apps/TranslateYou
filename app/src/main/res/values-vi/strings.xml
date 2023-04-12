@@ -30,7 +30,7 @@
     <string name="app_language">Ngôn ngữ ứng dụng</string>
     <string name="character_warning_limit">Giới hạn ký tự cảnh báo</string>
     <string name="character_warning_limit_summary">Cảnh báo khi văn bản dịch vượt quá độ dài tối đa.</string>
-    <string name="none">Không có</string>
+    <string name="none">Không</string>
     <string name="translate_automatically">Dịch tự động</string>
     <string name="translate_automatically_summary">Yêu cầu bản dịch tự động sau một khoảng thời gian nhất định.</string>
     <string name="author">Tác giả</string>
@@ -43,14 +43,14 @@
     <string name="clear_history">Dọn sạch lịch sử</string>
     <string name="open">Mở</string>
     <string name="server_error">Lỗi giao tiếp với máy chủ.</string>
-    <string name="missing_api_key">Vui lòng cung cấp Khóa API trong Cài đặt!</string>
+    <string name="missing_api_key">Vui lòng cung cấp khóa API trong cài đặt.</string>
     <string name="unknown_error">Lỗi không xác định</string>
     <string name="detected_language">Ngôn ngữ được phát hiện</string>
     <string name="definition">Sự định nghĩa</string>
     <string name="example">Ví dụ</string>
     <string name="similar">Tương tự</string>
     <string name="transliteration">Phiên âm</string>
-    <string name="search">Tìm kiếm</string>
+    <string name="search">Tìm</string>
     <string name="image_translation">Bản dịch từ hình ảnh</string>
     <string name="image_translation_summary">Tải xuống và áp dụng các ngôn ngữ để nhận dạng văn bản từ hình ảnh.</string>
     <string name="init_tess_first">Vui lòng tải xuống dữ liệu ngôn ngữ trong cài đặt trước.</string>
@@ -60,4 +60,8 @@
     <string name="simultaneous_translation_summary">Tìm nạp kết quả từ nhiều công cụ cùng một lúc.</string>
     <string name="additional_info_summary">Hiển thị thông tin dịch bổ sung nếu có.</string>
     <string name="system">Hệ thống</string>
+    <string name="translate_to">Dịch từ</string>
+    <string name="translate_from">Dịch thành</string>
+    <string name="use_free_api">Sử dụng API miễn phí</string>
+    <string name="use_free_api_summary">Sử dụng API miễn phí thay vì API trả phí.</string>
 </resources>
