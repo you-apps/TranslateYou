@@ -12,7 +12,7 @@
     <string name="forget">Oublier</string>
     <!-- Settings -->
     <string name="instance">Instance</string>
-    <string name="api_key">Clé de l\'API</string>
+    <string name="api_key">Clé API</string>
     <string name="options">Paramètres</string>
     <string name="history">Historique</string>
     <string name="about">À propos</string>
@@ -51,9 +51,9 @@
     <string name="definition">Définition</string>
     <string name="example">Exemple</string>
     <string name="similar">Similaire</string>
-    <string name="missing_api_key">Veuillez fournir une clé d\'API dans les paramètres !</string>
+    <string name="missing_api_key">Veuillez fournir une clé API dans les paramètres.</string>
     <string name="general">Général</string>
-    <string name="search">Recherche</string>
+    <string name="search">Rechercher</string>
     <string name="translation">Traduction</string>
     <string name="app_language">Langue de l\'application</string>
     <string name="system">Système</string>
@@ -70,4 +70,12 @@
     <string name="translate_automatically">Traduire automatiquement</string>
     <string name="translate_automatically_summary">Demander une traduction après un certain délai.</string>
     <string name="nothing_here">Rien ici.</string>
+    <string name="translate_to">Traduire en</string>
+    <string name="translate_from">Traduire de</string>
+    <string name="accent_color">Couleur d\'accent</string>
+    <string name="dynamic_colors">Couleurs dynamiques</string>
+    <string name="favorites">Favoris</string>
+    <string name="all_languages">Toutes les langues</string>
+    <string name="use_free_api_summary">Utilisez l\'API gratuite au lieu de l\'API Pro payante.</string>
+    <string name="use_free_api">Utiliser une API gratuite</string>
 </resources>
