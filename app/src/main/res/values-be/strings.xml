@@ -10,11 +10,11 @@
     <string name="forget">Забыць</string>
     <string name="translate_to">Перакласці на</string>
     <string name="translate_from">Перакласці з</string>
-    <string name="instance">Асобнік</string>
+    <string name="instance">Сервер</string>
     <string name="api_key">Ключ API</string>
     <string name="options">Налады</string>
     <string name="about">Аб праграме</string>
-    <string name="history_enabled">Гісторыя ўключана</string>
+    <string name="history_enabled">Уключыць гісторыю</string>
     <string name="fetch_delay">Затрымка перакладу</string>
     <string name="history_summary">Сачыце за апошнімі перакладзенымі тэкстамі</string>
     <string name="required">Неабходны</string>
@@ -27,7 +27,7 @@
     <string name="additional_info">Дадатковая інфармацыя</string>
     <string name="selected_engine">Абраны рухавік</string>
     <string name="translation">Пераклад</string>
-    <string name="general">Агульныя</string>
+    <string name="general">Асноўныя</string>
     <string name="app_language">Мова праграмы</string>
     <string name="system">Сістэма</string>
     <string name="none">Няма</string>
