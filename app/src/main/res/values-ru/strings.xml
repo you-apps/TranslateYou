@@ -46,7 +46,7 @@
     <string name="general">Основные</string>
     <string name="translation">Перевод</string>
     <string name="app_language">Язык приложения</string>
-    <string name="system">Системный</string>
+    <string name="system">Как в системе</string>
     <string name="search">Поиск</string>
     <string name="translate">Перевести</string>
     <string name="character_warning_limit">Предупреждение о лимите символов</string>
