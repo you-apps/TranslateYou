@@ -7,7 +7,7 @@
     <string name="forget">Uita</string>
     <string name="language_not_supported">Limba nu este suportată!</string>
     <string name="instance">Instanță</string>
-    <string name="api_key">Cheia Api</string>
+    <string name="api_key">Cheia API</string>
     <string name="options">Setări</string>
     <string name="fetch_delay">Întârzierea traducerii</string>
     <string name="history_summary">Urmăriți ultimele texte traduse</string>
@@ -31,7 +31,7 @@
     <string name="clear_history">Șterge istoricul</string>
     <string name="open">Deschide</string>
     <string name="server_error">Eroare în comunicarea cu serverul.</string>
-    <string name="missing_api_key">Vă rugăm să furnizați o cheie API în Setări!</string>
+    <string name="missing_api_key">Vă rugăm să furnizați o cheie API în setări.</string>
     <string name="definition">Definiție</string>
     <string name="example">Exemplu</string>
     <string name="similar">Asemănător</string>
@@ -65,4 +65,8 @@
     <string name="use_free_api_summary">Folosește API-ul gratuită în loc de API-ul Pro cu plată.</string>
     <string name="dynamic_colors">Culori dinamice</string>
     <string name="accent_color">Culoare accent</string>
+    <string name="translate_to">Traducere în</string>
+    <string name="translate_from">Traduceți din</string>
+    <string name="favorites">Preferințe</string>
+    <string name="all_languages">Toate limbile</string>
 </resources>
