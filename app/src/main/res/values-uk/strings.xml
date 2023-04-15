@@ -47,8 +47,8 @@
     <string name="general">Загальне</string>
     <string name="translation">Переклад</string>
     <string name="app_language">Мова застосунку</string>
-    <string name="system">Система</string>
-    <string name="none">Жодного</string>
+    <string name="system">Як у системі</string>
+    <string name="none">Вимк.</string>
     <string name="character_warning_limit">Ліміт символів попередження</string>
     <string name="character_warning_limit_summary">Попереджати, коли перекладений текст перевищує максимальну довжину.</string>
     <string name="unknown_error">Невідома помилка</string>
@@ -60,7 +60,7 @@
     <string name="translate_automatically">Перекладати автоматично</string>
     <string name="translate_automatically_summary">Запитувати переклад автоматично після певної затримки.</string>
     <string name="translate">Перекласти</string>
-    <string name="nothing_here">Тут нічого немає.</string>
+    <string name="nothing_here">Порожньо.</string>
     <string name="use_free_api">Використовувати безплатний API</string>
     <string name="use_free_api_summary">Використовувати безплатний Pro API замість платного.</string>
     <string name="accent_color">Акцентний колір</string>
