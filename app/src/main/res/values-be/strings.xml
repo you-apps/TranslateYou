@@ -29,11 +29,11 @@
     <string name="translation">Пераклад</string>
     <string name="general">Асноўныя</string>
     <string name="app_language">Мова праграмы</string>
-    <string name="system">Сістэма</string>
-    <string name="none">Няма</string>
+    <string name="system">Як у сістэме</string>
+    <string name="none">Адкл.</string>
     <string name="translate_automatically">Аўтаматычны пераклад</string>
     <string name="translate_automatically_summary">Аўтаматычны запыт на пераклад праз пэўную затрымку.</string>
-    <string name="nothing_here">Нічога тут.</string>
+    <string name="nothing_here">Пуста.</string>
     <string name="use_free_api_summary">Выкарыстоўвайце бясплатны Pro API замест платнага.</string>
     <string name="use_free_api">Выкарыстоўвайце бясплатны API</string>
     <string name="author">Аўтар</string>
