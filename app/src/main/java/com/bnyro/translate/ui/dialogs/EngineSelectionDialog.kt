@@ -31,6 +31,9 @@ fun EngineSelectionDialog(
     }
 
     AlertDialog(
+        title = {
+            Text(stringResource(R.string.enabled_engines))
+        },
         onDismissRequest = onDismissRequest,
         confirmButton = {
             TextButton(
