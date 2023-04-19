@@ -66,7 +66,7 @@
     <string name="select_language">Калі ласка, абярыце мову для распазнання тэксту малюнкаў у наладах.</string>
     <string name="missing_api_key">Увядзіце ключ API у наладах.</string>
     <string name="search">Пошук</string>
-    <string name="open">Адкрыты</string>
+    <string name="open">Адкрыць</string>
     <string name="favorites">Выбранае</string>
     <string name="image_translation_summary">Спампуйце і прымяніце мовы для распазнання тэксту з малюнкаў.</string>
 </resources>
