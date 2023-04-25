@@ -31,7 +31,7 @@
     <string name="character_warning_limit">Teikngrensevarsel</string>
     <string name="character_warning_limit_summary">Varsle når den omsette teksta er lengre enn ei viss grense.</string>
     <string name="none">Ingen</string>
-    <string name="author">Skapar</string>
+    <string name="author">Forfattar</string>
     <string name="license">Løyvet</string>
     <string name="privacy_policy">Personvernsfråsegn</string>
     <string name="enter_text">Rit her</string>
@@ -57,4 +57,13 @@
     <string name="image_translation_summary">Hent og bruk mål til attkjenning av tekst ifrå bilete.</string>
     <string name="init_tess_first">Hent måldata i innstillingane fyrst.</string>
     <string name="instance">Førekomst</string>
+    <string name="translate_to">Omset til</string>
+    <string name="translate_from">Omset ifrå</string>
+    <string name="favorites">Likte</string>
+    <string name="all_languages">Alle mål</string>
+    <string name="use_free_api">Nytt fri API</string>
+    <string name="nothing_here">Ingenting her.</string>
+    <string name="translate_automatically">Omset sjølvverkande</string>
+    <string name="translate_automatically_summary">Spør om ei omsetjing etter ei viss forsinking.</string>
+    <string name="translate">Omset</string>
 </resources>

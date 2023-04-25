@@ -13,7 +13,7 @@
     <string name="api_key">מפתח API</string>
     <string name="options">הגדרות</string>
     <string name="history">היסטוריה</string>
-    <string name="about">על אודות</string>
+    <string name="about">על היישומון</string>
     <string name="history_enabled">ההיסטוריה מופעלת</string>
     <string name="fetch_delay">השהיית תרגום</string>
     <string name="fetch_delay_summary">ההשהיה בין מילוי הטקסט לבין משיכת התרגום</string>
