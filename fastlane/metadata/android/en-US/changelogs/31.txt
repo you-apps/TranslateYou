@@ -1,0 +1,3 @@
+* Use collapsable top app bars (settings, language selector, history)
+* Fix language selector appearance for long language names (#227)
+* Swap languages when selecting the same language two times (#231)
