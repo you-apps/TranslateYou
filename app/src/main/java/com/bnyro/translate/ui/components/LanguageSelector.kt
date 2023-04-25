@@ -1,5 +1,7 @@
 package com.bnyro.translate.ui.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -35,7 +38,7 @@ import com.bnyro.translate.ext.query
 import com.bnyro.translate.ui.dialogs.FullscreenDialog
 import com.bnyro.translate.ui.models.TranslationModel
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun LanguageSelector(
     availableLanguages: List<Language>,
@@ -50,23 +53,17 @@ fun LanguageSelector(
 
     ElevatedButton(
         modifier = Modifier
-            .padding(5.dp)
-            .fillMaxWidth(0.9f),
-        onClick = { showDialog = !showDialog },
-        shape = RoundedCornerShape(20.dp)
+            .padding(5.dp),
+        shape = RoundedCornerShape(15.dp),
+        onClick = { showDialog = !showDialog }
     ) {
         Text(
             modifier = Modifier
-                .align(Alignment.CenterVertically),
+                .basicMarquee()
+                .padding(vertical = 7.dp, horizontal = 10.dp),
             text = selectedLanguage.name,
             textAlign = TextAlign.Center,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis
-        )
-        // empty text to guarantee a consistent two lines height
-        Text(
-            modifier = Modifier.width(0.dp),
-            text = "\n\n"
+            maxLines = 1
         )
     }
 
