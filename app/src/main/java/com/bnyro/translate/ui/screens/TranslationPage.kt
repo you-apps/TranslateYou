@@ -117,6 +117,7 @@ fun TranslationPage(
                             autoLanguageEnabled = true,
                             viewModel = viewModel
                         ) {
+                            if (it == viewModel.targetLanguage) viewModel.targetLanguage = viewModel.sourceLanguage
                             viewModel.sourceLanguage = it
                         }
                     }
@@ -152,6 +153,7 @@ fun TranslationPage(
                             viewModel.targetLanguage,
                             viewModel = viewModel
                         ) {
+                            if (it == viewModel.sourceLanguage) viewModel.sourceLanguage = viewModel.targetLanguage
                             viewModel.targetLanguage = it
                         }
                     }
