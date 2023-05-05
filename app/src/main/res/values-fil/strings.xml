@@ -10,7 +10,7 @@
     <string name="translate">Isalin</string>
     <string name="language_not_supported">Hindi suportado ang wika!</string>
     <string name="instance">Instansya</string>
-    <string name="api_key">Api Key</string>
+    <string name="api_key">API key</string>
     <string name="options">Mga Setting</string>
     <string name="history">Kasaysayan</string>
     <string name="about">Tungkol</string>
@@ -42,7 +42,7 @@
     <string name="clear_history">Burahin ang kasaysayan</string>
     <string name="open">Buksan</string>
     <string name="server_error">Nagkaproblema sa komunikasyon sa server.</string>
-    <string name="missing_api_key">Mangyaring maglagay ng API Key sa Mga Setting!</string>
+    <string name="missing_api_key">Mangyaring maglagay ng API key sa mga setting.</string>
     <string name="unknown_error">\'Di-matukoy na problema</string>
     <string name="detected_language">Na-detect na wika</string>
     <string name="definition">Kahulugan</string>
@@ -61,4 +61,12 @@
     <string name="additional_info_summary">Magpakita ng karagdagang impormasyon tungkol sa pagsasalin kung pwede.</string>
     <string name="general">Pangkalahatan</string>
     <string name="privacy_policy">Patakaran sa Pagkapribado</string>
+    <string name="translate_to">Isalin sa</string>
+    <string name="translate_from">Isalin mula sa</string>
+    <string name="accent_color">Kulay ng accent</string>
+    <string name="dynamic_colors">Dinamika na mga kulay</string>
+    <string name="favorites">Mga Paborito</string>
+    <string name="all_languages">Lahat ng mga wika</string>
+    <string name="use_free_api">Gamitin ang libreng API</string>
+    <string name="use_free_api_summary">Gamitin ang libre sa halip na ang bayad na Pro API.</string>
 </resources>
