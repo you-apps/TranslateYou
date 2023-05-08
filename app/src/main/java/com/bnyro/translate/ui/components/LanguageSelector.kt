@@ -105,6 +105,7 @@ fun LanguageSelector(
                                 onClick = {
                                     onClick.invoke(autoLanguage)
                                     viewModel.enqueueTranslation()
+                                    showDialog = false
                                 },
                                 onPinnedChange = {}
                             )
@@ -136,6 +137,7 @@ fun LanguageSelector(
                             onClick = {
                                 onClick.invoke(it)
                                 viewModel.enqueueTranslation()
+                                showDialog = false
                             },
                             onPinnedChange = {
                                 viewModel.bookmarkedLanguages =
@@ -174,6 +176,7 @@ fun LanguageSelector(
                             onClick = {
                                 onClick.invoke(it)
                                 viewModel.enqueueTranslation()
+                                showDialog = false
                             },
                             onPinnedChange = {
                                 viewModel.bookmarkedLanguages =
@@ -199,7 +202,7 @@ fun LanguageSelector(
 }
 
 private fun validateFilter(language: Language, query: String): Boolean {
-    if (query == "") return true
+    if (query.isEmpty()) return true
     val lowerQuery = query.lowercase()
     return language.name.lowercase().contains(lowerQuery) ||
         language.code.lowercase().contains(lowerQuery)
