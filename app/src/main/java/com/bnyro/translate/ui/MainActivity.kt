@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
+import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.hexToColor
 import com.bnyro.translate.ext.parcelable
 import com.bnyro.translate.ui.models.TranslationModel
@@ -76,6 +77,14 @@ class MainActivity : ComponentActivity() {
     private fun handleIntentData() {
         getIntentText()?.let {
             mainModel.insertedText = it
+            mainModel.translateNow()
+        }
+        if (intent.data?.host == "translate.google.com") {
+            val source = intent.data?.getQueryParameter("sl").orEmpty()
+            val target = intent.data?.getQueryParameter("tl").orEmpty()
+            mainModel.sourceLanguage = Language(source, source)
+            mainModel.targetLanguage = Language(target, target)
+            mainModel.insertedText = intent.data?.getQueryParameter("text").orEmpty()
             mainModel.translateNow()
         }
         if (intent.type?.startsWith("image/") != true) return

@@ -183,7 +183,13 @@ class TranslationModel : ViewModel() {
                 return@launch
             }
             this@TranslationModel.availableLanguages = languages
+            sourceLanguage = replaceLanguageName(sourceLanguage)
+            targetLanguage = replaceLanguageName(targetLanguage)
         }
+    }
+
+    private fun replaceLanguageName(language: Language): Language {
+        return availableLanguages.firstOrNull { it.code == language.code } ?: language
     }
 
     private fun getCurrentEngine() = TranslationEngines.engines[

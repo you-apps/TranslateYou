@@ -56,6 +56,17 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
 
+            <!-- Support for opening Google Translate links -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"/>
+                <data android:scheme="http"/>
+                <data android:host="translate.google.com"/>
+                <data android:path="/"/>
+            </intent-filter>
+
         </activity>
 
     </application>
