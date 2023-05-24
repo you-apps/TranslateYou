@@ -1,0 +1,3 @@
+* Close language selector when changing selection (#244)
+* Support for google translate links (#240)
+* Fix issues with the loading indicator, string conditions cleanup
