@@ -103,7 +103,7 @@ fun TranslationComponent(
                     placeholder = stringResource(R.string.enter_text)
                 ) {
                     viewModel.insertedText = it
-                    if (it == "") hasClip = clipboardHelper.hasClip()
+                    if (it.isEmpty()) hasClip = clipboardHelper.hasClip()
                     viewModel.enqueueTranslation()
                 }
 
@@ -123,7 +123,7 @@ fun TranslationComponent(
                     )
                 }
 
-                if (viewModel.translation.translatedText != "" && SpeechHelper.ttsAvailable) {
+                if (viewModel.translation.translatedText.isNotEmpty() && SpeechHelper.ttsAvailable) {
                     Box(
                         modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.CenterEnd
@@ -182,7 +182,7 @@ fun TranslationComponent(
                     text = viewModel.translation.translatedText,
                     readOnly = true,
                     textColor = if (
-                        charPref != "" && viewModel.translation.translatedText.length >= charPref.toInt()
+                        charPref.isNotEmpty() && viewModel.translation.translatedText.length >= charPref.toInt()
                     ) {
                         MaterialTheme.colorScheme.error
                     } else {

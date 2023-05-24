@@ -55,7 +55,7 @@ fun TopBar(
             )
         },
         actions = {
-            if (mainModel.insertedText == "" && SpeechRecognizer.isRecognitionAvailable(context)) {
+            if (mainModel.insertedText.isEmpty() && SpeechRecognizer.isRecognitionAvailable(context)) {
                 StyledIconButton(
                     imageVector = Icons.Default.Mic
                 ) {
@@ -76,7 +76,7 @@ fun TopBar(
                 }
             }
 
-            if (mainModel.insertedText == "") {
+            if (mainModel.insertedText.isEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.Default.Image
                 ) {
@@ -91,7 +91,7 @@ fun TopBar(
                 mutableStateOf(Icons.Default.ContentCopy)
             }
 
-            if (mainModel.translation.translatedText != "") {
+            if (mainModel.translation.translatedText.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = copyImageVector,
                     onClick = {
@@ -108,7 +108,7 @@ fun TopBar(
                 )
             }
 
-            if (mainModel.translation.translatedText != "") {
+            if (mainModel.translation.translatedText.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.Default.Share,
                     onClick = {
@@ -125,7 +125,7 @@ fun TopBar(
                 )
             }
 
-            if (mainModel.insertedText != "") {
+            if (mainModel.insertedText.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.Default.Clear,
                     onClick = {

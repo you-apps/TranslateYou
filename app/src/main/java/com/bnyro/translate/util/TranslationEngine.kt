@@ -36,7 +36,7 @@ abstract class TranslationEngine(
     )
 
     fun sourceOrAuto(source: String): String {
-        return if (source == "") autoLanguageCode else source
+        return source.ifEmpty { autoLanguageCode }
     }
 
     fun isSimultaneousTranslationEnabled() = Preferences.get(

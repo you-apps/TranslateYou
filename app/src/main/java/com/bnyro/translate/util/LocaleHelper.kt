@@ -10,7 +10,7 @@ object LocaleHelper {
     fun updateLanguage(context: Context) {
         val langPref = Preferences.get(Preferences.appLanguageKey, "")
         val locale = when {
-            langPref == "" -> Locale.getDefault()
+            langPref.isEmpty() -> Locale.getDefault()
             langPref.contains("-") -> Locale(
                 langPref.substringBefore("-"),
                 langPref.substringAfter("r")

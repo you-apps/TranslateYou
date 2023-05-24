@@ -91,7 +91,7 @@ class TranslationModel : ViewModel() {
     }
 
     fun translateNow() {
-        if (insertedText == "" || targetLanguage == sourceLanguage) {
+        if (insertedText.isEmpty() || targetLanguage == sourceLanguage) {
             translation = Translation("")
             return
         }
@@ -111,12 +111,12 @@ class TranslationModel : ViewModel() {
                 )
             } catch (e: Exception) {
                 Log.e("error", e.message.toString())
+                translating = false
                 return@launch
             }
-
             translating = false
 
-            if (insertedText != "") {
+            if (insertedText.isNotEmpty()) {
                 this@TranslationModel.translation = translation
                 translatedTexts[engine.name] = translation
                 saveToHistory()
@@ -170,6 +170,7 @@ class TranslationModel : ViewModel() {
     fun clearTranslation() {
         insertedText = ""
         translation = Translation("")
+        translating = false
     }
 
     private fun fetchLanguages(onError: (Exception) -> Unit = {}) {

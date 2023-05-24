@@ -151,7 +151,7 @@ class MMEngine : TranslationEngine(
         val response = api.translate(
             query,
             "${sourceOrAuto(source)}|$target",
-            if (key == "") null else key
+            key.ifEmpty { null }
 
         )
         return Translation(

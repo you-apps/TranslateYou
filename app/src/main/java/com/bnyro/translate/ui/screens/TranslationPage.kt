@@ -123,7 +123,7 @@ fun TranslationPage(
                     }
 
                     val switchBtnEnabled by mutableStateOf(
-                        viewModel.sourceLanguage.code != ""
+                        viewModel.sourceLanguage.code.isNotEmpty()
                     )
 
                     IconButton(
