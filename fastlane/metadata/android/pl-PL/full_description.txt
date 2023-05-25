@@ -1,0 +1,4 @@
+<i>Translate You</i> to aplikacja do tłumaczenia stworzona przy użyciu <a href="https://m3.material.io/">Material Design 3 (You)</a>.
+
+Obsługuje wiele różnych silników tłumaczeń, takich jak LibreTranslate, Lingva, Deepl i inne.
+W sumie istnieje ponad 200 obsługiwanych języków poprzez 6 różnych silników tłumaczeń.
