@@ -1,66 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="fetch_delay_summary">Opóźnienie między wprowadzeniem tekstu a pobraniem tłumaczenia</string>
-    <string name="history_summary">Zachowaj ostatnio przetłumaczone teksty</string>
-    <string name="required">Wymagane</string>
-    <string name="forget">Zapomnij</string>
-    <string name="theme_auto">Systemowy</string>
-    <string name="theme_light">Lekki</string>
-    <string name="theme_dark">Ciemny</string>
-    <string name="server_error">Błąd w komunikacji z serwerem.</string>
-    <string name="compact_history">Kompaktowa historia</string>
-    <string name="okay">OK</string>
+    <string name="app_name" translatable="false">Translate You</string>
+    <!-- Dialog -->
+    <string name="okay">Ok</string>
     <string name="cancel">Anuluj</string>
+    <!-- Text -->
     <string name="enter_text">Wprowadź tekst</string>
     <string name="paste">Wklej</string>
     <string name="copy">Kopiuj</string>
     <string name="auto">Automatycznie</string>
+    <string name="forget">Zapomnij</string>
+    <string name="translate">Tłumacz</string>
     <string name="language_not_supported">Ten język nie jest obsługiwany!</string>
+    <string name="translate_to">Przetłumacz na</string>
+    <string name="translate_from">Przetłumacz z</string>
+    <!-- Settings -->
     <string name="instance">Instancja</string>
     <string name="api_key">Klucz API</string>
     <string name="options">Ustawienia</string>
     <string name="history">Historia</string>
-    <string name="about">O programie</string>
-    <string name="history_enabled">Historia</string>
-    <string name="fetch_delay">Opóźnienie w tłumaczeniu</string>
-    <string name="clear_history">Wyczyść historię</string>
+    <string name="about">Informacje</string>
+    <string name="history_enabled">Historia włączona</string>
+    <string name="fetch_delay">Opóźnienie tłumaczenia</string>
+    <string name="fetch_delay_summary">Opóźnienie między wprowadzeniem tekstu a pobraniem tłumaczenia</string>
+    <string name="history_summary">Zachowaj ostatnio przetłumaczone teksty</string>
+    <string name="required">Wymagane</string>
     <string name="optional">Opcjonalne</string>
-    <string name="author">Autor</string>
-    <string name="license">Licencja</string>
-    <string name="privacy_policy">Polityka prywatności</string>
-    <string name="open">Otwórz</string>
+    <string name="compact_history">Kompaktowa historia</string>
     <string name="compact_history_summary">Domyślnie pokazuj w historii tylko pierwsze trzy linijki tekstu</string>
+    <string name="simultaneous_translation">Tłumaczenie równoczesne</string>
+    <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów na raz.</string>
+    <string name="enabled_engines">Włączone translatory</string>
+    <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoczesnym.</string>
     <string name="additional_info">Dodatkowe informacje</string>
     <string name="additional_info_summary">Pokazuj dodatkowe informacje o tłumaczeniu, jeśli są dostępne.</string>
     <string name="selected_engine">Wybrany translator</string>
-    <string name="simultaneous_translation">Tłumaczenie równoczesne</string>
-    <string name="enabled_engines">Włączone translatory</string>
-    <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoczesnym.</string>
+    <string name="st_selected_engine">Translator używany przez SimplyTranslate do tłumaczenia</string>
     <string name="translation">Tłumaczenie</string>
     <string name="general">Główne</string>
     <string name="app_language">Język aplikacji</string>
     <string name="system">Systemowy</string>
-    <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów na raz.</string>
-    <string name="st_selected_engine">Translator używany przez SimplyTranslate do tłumaczenia</string>
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
-    <string name="search">Wyszukaj</string>
-    <string name="missing_api_key">Podaj klucz API w ustawieniach!</string>
     <string name="character_warning_limit_summary">Ostrzegaj, gdy przetłumaczony tekst przekroczy maksymalną długość.</string>
     <string name="none">Brak</string>
+    <string name="translate_automatically">Przetłumacz automatycznie</string>
+    <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie.</string>
+    <string name="nothing_here">Nic tu nie ma.</string>
+    <string name="use_free_api">Skorzystaj z darmowego API</string>
+    <string name="use_free_api_summary">Użyj darmowego zamiast płatnego API Pro.</string>
+    <!-- About -->
+    <string name="github" translatable="false">GitHub</string>
+    <string name="author">Autor</string>
+    <string name="license">Licencja</string>
+    <string name="privacy_policy">Polityka prywatności</string>
+    <!-- Theme -->
+    <string name="theme_auto">Systemowy</string>
+    <string name="">Jasny</string>
+    <string name="theme_dark">Ciemny</string>
+    <string name="accent_color">Kolor akcentu</string>
+    <string name="dynamic_colors">Dynamiczne kolory</string>
+    <!-- History -->
+    <string name="clear_history">Wyczyść historię</string>
+    <string name="open">Otwórz</string>
+    <!-- Exception -->
+    <string name="server_error">Błąd w komunikacji z serwerem.</string>
+    <string name="missing_api_key">Podaj klucz API w ustawieniach.</string>
     <string name="unknown_error">Nieznany błąd</string>
+    <!-- Additional Info -->
     <string name="detected_language">Wykryty język</string>
     <string name="definition">Definicja</string>
     <string name="example">Przykład</string>
     <string name="similar">Podobny</string>
     <string name="transliteration">Transliteracja</string>
-    <string name="image_translation">Tłumaczenie ze zdjęcia</string>
+    <!-- Languages -->
+    <string name="search">Szukaj</string>
+    <string name="favorites">Ulubione</string>
+    <string name="all_languages">Wszystkie języki</string>
+    <!-- Tesseract -->
+    <string name="image_translation">Tłumaczenie z obrazu</string>
     <string name="image_translation_summary">Pobierz i zastosuj języki wykorzystywane do rozpoznawania tekstu ze zdjęć.</string>
-    <string name="select_language">Proszę wybrać w ustawieniach język wykorzystywany do rozpoznawania zdjęć.</string>
     <string name="init_tess_first">Proszę najpierw pobrać dane językowe w ustawieniach.</string>
-    <string name="nothing_here">Nic tutaj nie ma.</string>
-    <string name="translate">Tłumacz</string>
-    <string name="translate_automatically">Tłumacz automatycznie</string>
-    <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie.</string>
-    <string name="use_free_api">Użyj darmowego API</string>
-    <string name="use_free_api_summary">Użyj darmowego zamiast płatnego API Pro.</string>
+    <string name="select_language">Proszę wybrać w ustawieniach język wykorzystywany do rozpoznawania zdjęć.</string>
 </resources>
