@@ -1,1 +1,1 @@
-Tłumacz zbudowany w oparciu o Material Design 3 (You) obsługujący wiele silników tłumaczeń
+Tłumacz zbudowany w oparciu o Material Design 3, obsługujący wiele silników.
