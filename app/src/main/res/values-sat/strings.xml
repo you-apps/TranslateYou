@@ -6,7 +6,7 @@
     <string name="auto">ᱟᱡ ᱛᱮ</string>
     <string name="forget">ᱦᱤᱲᱤᱧ</string>
     <string name="language_not_supported">ᱯᱟᱹᱨᱥᱤ ᱥᱚᱦᱚᱫ ᱵᱟᱹᱱᱩᱜᱼᱟ!</string>
-    <string name="instance">ᱤᱱᱥᱴᱟᱱᱥ</string>
+    <string name="instance">ᱫᱟᱹᱭᱠᱟᱹ</string>
     <string name="history_enabled">ᱱᱟᱜᱟᱢ ᱮᱢᱮᱱᱟ</string>
     <string name="fetch_delay">ᱛᱚᱨᱡᱚᱢᱟ ᱵᱤᱞᱚᱢᱵ</string>
     <string name="fetch_delay_summary">ᱚᱞ ᱥᱮᱞᱮᱫ ᱟᱨ ᱛᱚᱨᱡᱚᱢᱟ ᱦᱟᱛᱟᱣ ᱛᱟᱞᱟᱨᱮ ᱵᱤᱞᱚᱢ</string>
@@ -42,7 +42,7 @@
     <string name="additional_info">ᱟᱨᱦᱚ ᱵᱤᱵᱨᱚᱬ</string>
     <string name="additional_info_summary">ᱡᱩᱫᱤ ᱢᱮᱱᱟᱜ ᱠᱷᱟᱱ ᱰᱷᱮᱨ ᱛᱚᱨᱡᱚᱢᱟ ᱵᱤᱵᱨᱚᱬ ᱫᱮᱠᱷᱟᱣ ᱢᱮ ᱾</string>
     <string name="selected_engine">ᱵᱟᱪᱷᱟᱣ ᱠᱟᱱ ᱤᱧᱡᱤᱱ</string>
-    <string name="st_selected_engine">ᱤᱧᱡᱤᱱ ᱡᱟᱦᱟᱸ ᱫᱚ SimplyTranslate ᱛᱚᱨᱡᱚᱢᱟ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨ ᱮᱫᱟᱭ ᱾</string>
+    <string name="st_selected_engine">ᱤᱧᱡᱤᱱ ᱡᱟᱦᱟᱸ ᱫᱚ SimplyTranslate ᱛᱚᱨᱡᱚᱢᱟ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨ ᱮᱫᱟᱭ</string>
     <string name="translation">ᱛᱚᱨᱡᱚᱢᱟ</string>
     <string name="general">ᱥᱟᱫᱷᱟᱨᱚᱱ</string>
     <string name="app_language">ᱮᱯ ᱯᱟᱹᱨᱥᱤ</string>
@@ -52,7 +52,7 @@
     <string name="translate_automatically">ᱟᱡ ᱛᱮ ᱛᱚᱨᱡᱚᱢᱟᱭ ᱢᱮ</string>
     <string name="nothing_here">ᱱᱚᱰᱮ ᱫᱚ ᱛᱮᱫ ᱦᱚᱸ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾</string>
     <string name="use_free_api">ᱯᱚᱞᱟ API ᱵᱮᱵᱷᱟᱨ ᱢᱮ</string>
-    <string name="use_free_api_summary">"ᱯᱩᱭᱥᱟᱹ ᱮᱢ ᱯᱨᱳ API ᱵᱟᱝ ᱵᱮᱵᱷᱟᱨ ᱠᱟᱛᱮ ᱵᱤᱱ ᱯᱩᱭᱥᱟᱹ  ᱦᱟᱜ ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱾"</string>
+    <string name="use_free_api_summary">ᱯᱩᱭᱥᱟᱹ ᱮᱢ ᱯᱨᱳ API ᱵᱟᱝ ᱵᱮᱵᱷᱟᱨ ᱠᱟᱛᱮ ᱵᱤᱱ ᱯᱩᱭᱥᱟᱹ ᱦᱟᱜ ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱾</string>
     <string name="author">ᱚᱱᱚᱞᱤᱭᱟᱹ</string>
     <string name="translate_automatically_summary">ᱛᱤᱱᱟᱰᱜ ᱜᱟᱱ ᱚᱠᱛᱚ ᱛᱤᱝᱜᱩ ᱛᱷᱤᱨ ᱠᱟᱛᱮ ᱟᱡ ᱛᱮ ᱱᱟᱶᱟ ᱛᱚᱨᱡᱚᱢᱟ ᱱᱮᱦᱚᱨ ᱢᱮ ᱾</string>
     <string name="license">ᱞᱟᱭᱥᱮᱱᱥ</string>
