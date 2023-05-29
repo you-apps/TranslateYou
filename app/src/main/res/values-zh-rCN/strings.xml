@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Translate You</string>
     <!-- Dialog -->
@@ -9,7 +9,7 @@
     <string name="paste">粘贴</string>
     <string name="copy">复制</string>
     <string name="auto">自动</string>
-    <string name="forget">忘掉</string>
+    <string name="forget">隐藏</string>
     <string name="language_not_supported">该语言不受支持！</string>
     <!-- Settings -->
     <string name="instance">实例</string>
@@ -23,13 +23,13 @@
     <string name="history_summary">追踪最近翻译的文本</string>
     <string name="required">必需</string>
     <string name="optional">可选</string>
-    <string name="compact_history">紧凑历史视图</string>
+    <string name="compact_history">紧凑的历史视图</string>
     <string name="compact_history_summary">每条历史记录中默认仅显示前三行文本</string>
     <string name="simultaneous_translation">同步翻译</string>
     <string name="simultaneous_translation_summary">从多个翻译引擎同时获取结果。</string>
     <string name="enabled_engines">已启用引擎</string>
     <string name="enabled_engines_summary">选择将用于同步翻译的引擎。</string>
-    <string name="additional_info">附加信息</string>
+    <string name="additional_info">显示附加信息</string>
     <string name="additional_info_summary">可用时展示附加的翻译信息。</string>
     <string name="selected_engine">已选择引擎</string>
     <string name="st_selected_engine">选择 SimplyTranslate 用于翻译的引擎</string>
@@ -58,7 +58,7 @@
     <string name="translation">翻译</string>
     <string name="app_language">应用语言</string>
     <string name="system">跟随系统</string>
-    <string name="character_warning_limit">字符长度警告界限</string>
+    <string name="character_warning_limit">字符最大长度警告</string>
     <string name="character_warning_limit_summary">当翻译的文本超出最大长度时发出警告。</string>
     <string name="none">无</string>
     <string name="unknown_error">未知错误</string>
@@ -70,13 +70,13 @@
     <string name="translate">翻译</string>
     <string name="translate_automatically">自动翻译</string>
     <string name="translate_automatically_summary">在特定延迟后自动请求翻译。</string>
-    <string name="nothing_here">这里空无一物。</string>
+    <string name="nothing_here">这里空空如也。</string>
     <string name="use_free_api">使用免费版 API</string>
-    <string name="use_free_api_summary">使用免费版 API 而非收费的 Pro API。</string>
+    <string name="use_free_api_summary">使用免费版的 API 而非收费版的 Pro API。</string>
     <string name="dynamic_colors">动态取色</string>
     <string name="accent_color">强调色</string>
     <string name="translate_to">翻译为</string>
     <string name="translate_from">翻译自</string>
     <string name="all_languages">所有语言</string>
     <string name="favorites">收藏夹</string>
-</resources>
+</>
