@@ -9,7 +9,7 @@ abstract class TranslationEngine(
     val defaultUrl: String,
     val urlModifiable: Boolean,
     val apiKeyState: Int,
-    val autoLanguageCode: String,
+    val autoLanguageCode: String?,
     var supportsSimTranslation: Boolean = true
 ) {
 
@@ -36,7 +36,7 @@ abstract class TranslationEngine(
     )
 
     fun sourceOrAuto(source: String): String {
-        return source.ifEmpty { autoLanguageCode }
+        return source.ifEmpty { autoLanguageCode }.orEmpty()
     }
 
     fun isSimultaneousTranslationEnabled() = Preferences.get(

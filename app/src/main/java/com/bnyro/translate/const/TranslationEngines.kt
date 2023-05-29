@@ -6,6 +6,7 @@ import com.bnyro.translate.api.lv.LVEngine
 import com.bnyro.translate.api.mm.MMEngine
 import com.bnyro.translate.api.reverso.ReversoEngine
 import com.bnyro.translate.api.st.STEngine
+import com.bnyro.translate.api.wm.WmEngine
 
 object TranslationEngines {
     val engines = listOf(
@@ -14,7 +15,8 @@ object TranslationEngines {
         DeeplEngine(),
         MMEngine(),
         ReversoEngine(),
-        STEngine()
+        STEngine(),
+        WmEngine()
     ).map {
         it.createOrRecreate()
     }

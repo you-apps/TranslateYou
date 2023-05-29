@@ -114,7 +114,7 @@ fun TranslationPage(
                         LanguageSelector(
                             viewModel.availableLanguages,
                             viewModel.sourceLanguage,
-                            autoLanguageEnabled = true,
+                            autoLanguageEnabled = viewModel.engine.autoLanguageCode != null,
                             viewModel = viewModel
                         ) {
                             if (it == viewModel.targetLanguage) viewModel.targetLanguage = viewModel.sourceLanguage

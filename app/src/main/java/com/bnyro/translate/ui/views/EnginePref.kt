@@ -1,5 +1,6 @@
 package com.bnyro.translate.ui.views
 
+import android.util.Log
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,6 +31,8 @@ import com.bnyro.translate.util.Preferences
 @Composable
 fun EnginePref() {
     val engines = TranslationEngines.engines
+
+    Log.e("engines", engines.map { it.name }.toString())
 
     var selected by remember {
         mutableStateOf(
