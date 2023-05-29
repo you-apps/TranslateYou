@@ -55,7 +55,6 @@
     <string name="privacy_policy">Polityka prywatności</string>
     <!-- Theme -->
     <string name="theme_auto">Systemowy</string>
-    <string name="">Jasny</string>
     <string name="theme_dark">Ciemny</string>
     <string name="accent_color">Kolor akcentu</string>
     <string name="dynamic_colors">Dynamiczne kolory</string>
