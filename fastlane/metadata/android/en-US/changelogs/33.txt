@@ -1,0 +1,6 @@
+This release adds two new translation engines:
+* Wikimedia MinT engine (#259)
+* Glosbe engine (#259)
+
+Other changes:
+* Add Santali, Odia and Sanskrit language to Mymemory (#253)
