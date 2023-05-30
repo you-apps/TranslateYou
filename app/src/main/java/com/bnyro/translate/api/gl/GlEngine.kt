@@ -30,13 +30,13 @@ with open("out.txt", "w") as f:
 
 class GlEngine : TranslationEngine(
     apiKeyState = ApiKeyState.DISABLED,
-    name = "Globe",
+    name = "Glosbe",
     autoLanguageCode = null,
     defaultUrl = "https://translator-api.glosbe.com/",
     urlModifiable = false,
     supportsSimTranslation = true
 ) {
-    lateinit var api: Globe
+    lateinit var api: Glosbe
 
     override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)

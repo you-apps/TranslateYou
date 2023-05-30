@@ -5,7 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface Globe {
+interface Glosbe {
     @POST("translateByLangDetect")
     suspend fun translate(
         @Query("sourceLang") source: String,
