@@ -117,8 +117,11 @@ fun TranslationPage(
                             autoLanguageEnabled = viewModel.engine.autoLanguageCode != null,
                             viewModel = viewModel
                         ) {
-                            if (it == viewModel.targetLanguage) viewModel.targetLanguage = viewModel.sourceLanguage
+                            if (it == viewModel.targetLanguage) {
+                                viewModel.targetLanguage = viewModel.sourceLanguage
+                            }
                             viewModel.sourceLanguage = it
+                            viewModel.translateNow()
                         }
                     }
 
@@ -133,6 +136,7 @@ fun TranslationPage(
                             val temp = viewModel.sourceLanguage
                             viewModel.sourceLanguage = viewModel.targetLanguage
                             viewModel.targetLanguage = temp
+                            viewModel.translateNow()
                         }
                     ) {
                         Icon(
@@ -153,8 +157,11 @@ fun TranslationPage(
                             viewModel.targetLanguage,
                             viewModel = viewModel
                         ) {
-                            if (it == viewModel.sourceLanguage) viewModel.sourceLanguage = viewModel.targetLanguage
+                            if (it == viewModel.sourceLanguage) {
+                                viewModel.sourceLanguage = viewModel.targetLanguage
+                            }
                             viewModel.targetLanguage = it
+                            viewModel.translateNow()
                         }
                     }
                 }

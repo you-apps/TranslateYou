@@ -104,7 +104,6 @@ fun LanguageSelector(
                                 selectedLanguage = selectedLanguage,
                                 onClick = {
                                     onClick.invoke(autoLanguage)
-                                    viewModel.enqueueTranslation()
                                     showDialog = false
                                 },
                                 onPinnedChange = {}
@@ -136,7 +135,6 @@ fun LanguageSelector(
                             selectedLanguage = selectedLanguage,
                             onClick = {
                                 onClick.invoke(it)
-                                viewModel.enqueueTranslation()
                                 showDialog = false
                             },
                             onPinnedChange = {
@@ -175,7 +173,6 @@ fun LanguageSelector(
                             selectedLanguage = selectedLanguage,
                             onClick = {
                                 onClick.invoke(it)
-                                viewModel.enqueueTranslation()
                                 showDialog = false
                             },
                             onPinnedChange = {
