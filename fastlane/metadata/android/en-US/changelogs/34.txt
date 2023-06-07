@@ -1,0 +1,4 @@
+* Automatically translate when switching languages (#266)
+* Add supported languages for Glosbe Translate (#263)
+* Added missing in-app-languages to app language preference (#264)
+* Migrate to AGP 8.0 and Java 17 and switch CI to JDK 17
