@@ -20,4 +20,6 @@
     <string name="author">লেখক</string>
     <string name="translation">অনুবাদ</string>
     <string name="open">খুলুন</string>
+    <string name="theme_dark">ডার্ক</string>
+    <string name="theme_light">লাইট</string>
 </resources>
