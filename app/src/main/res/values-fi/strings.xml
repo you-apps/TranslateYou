@@ -47,7 +47,7 @@
     <string name="similar">Samankaltainen</string>
     <string name="forget">Unohda</string>
     <string name="character_warning_limit_summary">Varoita, jos käännetty teksti ylittää maksimipituuden.</string>
-    <string name="missing_api_key">Syötä API-avain asetuksissa!</string>
+    <string name="missing_api_key">Syötä API-avain asetuksissa.</string>
     <string name="unknown_error">Tuntematon virhe</string>
     <string name="example">Esimerkki</string>
     <string name="translate">Käännä</string>
@@ -56,4 +56,17 @@
     <string name="character_warning_limit">Merkkimäärän varoitus</string>
     <string name="translate_automatically">Käännä automaattisesti</string>
     <string name="translate_automatically_summary">Hae käännöstä automaattisesti määritellyn viiveen jälkeen.</string>
+    <string name="translate_from">Lähdekieli</string>
+    <string name="translate_to">Kohdekieli</string>
+    <string name="favorites">Suosikit</string>
+    <string name="all_languages">Kaikki kielet</string>
+    <string name="use_free_api_summary">Käytä ilmaista API:a maksullisen Pro API:n sijaan.</string>
+    <string name="use_free_api">Käytä ilmaista API:a</string>
+    <string name="dynamic_colors">Dynaamiset värit</string>
+    <string name="accent_color">Tehosteväri</string>
+    <string name="transliteration">Translitterointi</string>
+    <string name="image_translation">Käännä kuvasta</string>
+    <string name="image_translation_summary">Lataa ja ota käyttöön kieliä tekstin tunnistusta varten.</string>
+    <string name="init_tess_first">Lataa kielitiedot ensin asetuksissa.</string>
+    <string name="select_language">Valitse tekstin tunnistukseen käytettävä kieli asetuksissa.</string>
 </resources>
