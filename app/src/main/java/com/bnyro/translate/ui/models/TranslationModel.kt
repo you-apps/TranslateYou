@@ -153,17 +153,26 @@ class TranslationModel : ViewModel() {
         ) {
             return
         }
+
+        val historyItem = HistoryItem(
+            sourceLanguageCode = sourceLanguage.code,
+            sourceLanguageName = sourceLanguage.name,
+            targetLanguageCode = targetLanguage.code,
+            targetLanguageName = targetLanguage.name,
+            insertedText = insertedText,
+            translatedText = translation.translatedText
+        )
+
         query {
-            Db.historyDao().insertAll(
-                HistoryItem(
-                    sourceLanguageCode = sourceLanguage.code,
-                    sourceLanguageName = sourceLanguage.name,
-                    targetLanguageCode = targetLanguage.code,
-                    targetLanguageName = targetLanguage.name,
-                    insertedText = insertedText,
-                    translatedText = translation.translatedText
-                )
-            )
+            // don't create new entry if a similar one exists
+            if (Preferences.get(Preferences.skipSimilarHistoryKey, true) && Db.historyDao()
+                    .existsSimilar(
+                        historyItem.insertedText,
+                        historyItem.sourceLanguageCode,
+                        historyItem.targetLanguageCode
+                    )
+            ) return@query
+            Db.historyDao().insertAll(historyItem)
         }
     }
 
@@ -194,7 +203,7 @@ class TranslationModel : ViewModel() {
     }
 
     private fun getCurrentEngine() = TranslationEngines.engines[
-        Preferences.get(Preferences.apiTypeKey, 0)
+            Preferences.get(Preferences.apiTypeKey, 0)
     ]
 
     private fun getEnabledEngines() = TranslationEngines.engines.filter {

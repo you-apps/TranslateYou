@@ -11,6 +11,13 @@ interface HistoryDao {
     @Query("SELECT * FROM HistoryItem")
     fun getAll(): List<HistoryItem>
 
+    @Query("SELECT EXISTS(SELECT * FROM HistoryItem WHERE insertedText = :insertedText AND sourceLanguageCode = :sourceLanguage AND targetLanguageCode = :targetLanguage)")
+    fun existsSimilar(
+        insertedText: String,
+        sourceLanguage: String,
+        targetLanguage: String
+    ): Boolean
+
     @Insert
     fun insertAll(vararg historyItems: HistoryItem)
 

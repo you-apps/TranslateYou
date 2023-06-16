@@ -176,6 +176,13 @@ fun SettingsScreen(
                         preferenceTitle = stringResource(R.string.compact_history),
                         preferenceSummary = stringResource(R.string.compact_history_summary)
                     )
+
+                    SwitchPreference(
+                        preferenceKey = Preferences.skipSimilarHistoryKey,
+                        defaultValue = true,
+                        preferenceTitle = stringResource(R.string.skip_similar_entries),
+                        preferenceSummary = stringResource(R.string.skip_similar_entries_desc)
+                    )
                 }
 
                 item {
