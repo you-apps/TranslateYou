@@ -61,7 +61,7 @@ fun HistoryRow(
             when (it) {
                 DismissValue.DismissedToEnd -> {
                     onDelete.invoke()
-                    true
+                    false
                 }
                 else -> false
             }

@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
@@ -107,14 +109,12 @@ fun HistoryScreen(
                 }
 
                 if (filteredHistory.isNotEmpty()) {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize()
+                    val scrollState = rememberScrollState()
+                    Column(
+                        modifier = Modifier.fillMaxSize().verticalScroll(scrollState)
                     ) {
-                        items(filteredHistory) {
+                        filteredHistory.forEach {
                             HistoryRow(navController, translationModel, it) {
-                                viewModel.history = viewModel.history.filter { item ->
-                                    it.id != item.id
-                                }
                                 viewModel.deleteHistoryItem(it)
                             }
                         }
