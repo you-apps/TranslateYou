@@ -69,4 +69,6 @@
     <string name="translate_from">ترجم من</string>
     <string name="favorites">المفضَّلات</string>
     <string name="all_languages">جميع اللغات</string>
+    <string name="skip_similar_entries">تخطي الإدخالات المماثلة</string>
+    <string name="skip_similar_entries_desc">قم بتخزين الإدخالات الفريدة فقط في السجل ، بناءً على الإدراج واللغات.</string>
 </resources>
