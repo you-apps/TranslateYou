@@ -19,8 +19,8 @@
     <string name="api_key">Klucz API</string>
     <string name="options">Ustawienia</string>
     <string name="history">Historia</string>
-    <string name="about">Informacje</string>
-    <string name="history_enabled">Historia włączona</string>
+    <string name="about">O aplikacji</string>
+    <string name="history_enabled">Włącz historię</string>
     <string name="fetch_delay">Opóźnienie tłumaczenia</string>
     <string name="fetch_delay_summary">Opóźnienie między wprowadzeniem tekstu a pobraniem tłumaczenia</string>
     <string name="history_summary">Zachowaj ostatnio przetłumaczone teksty</string>
@@ -28,24 +28,24 @@
     <string name="optional">Opcjonalne</string>
     <string name="compact_history">Kompaktowa historia</string>
     <string name="compact_history_summary">Domyślnie pokazuj w historii tylko pierwsze trzy linijki tekstu</string>
-    <string name="simultaneous_translation">Tłumaczenie równoczesne</string>
-    <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów na raz.</string>
+    <string name="simultaneous_translation">Tłumaczenie równoległe</string>
+    <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów jednocześnie.</string>
     <string name="enabled_engines">Włączone translatory</string>
-    <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoczesnym.</string>
+    <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoległym.</string>
     <string name="additional_info">Dodatkowe informacje</string>
-    <string name="additional_info_summary">Pokazuj dodatkowe informacje o tłumaczeniu, jeśli są dostępne.</string>
-    <string name="selected_engine">Wybrany translator</string>
-    <string name="st_selected_engine">Translator używany przez SimplyTranslate do tłumaczenia</string>
+    <string name="additional_info_summary">Pokaż dodatkowe informacje o tłumaczeniu, jeśli są dostępne.</string>
+    <string name="selected_engine">Wybrane translatory</string>
+    <string name="st_selected_engine">Translator, którego SimplyTranslate używa do tłumaczenia</string>
     <string name="translation">Tłumaczenie</string>
     <string name="general">Główne</string>
     <string name="app_language">Język aplikacji</string>
-    <string name="system">Systemowy</string>
+    <string name="system">Zgodny z systemem</string>
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
-    <string name="character_warning_limit_summary">Ostrzegaj, gdy przetłumaczony tekst przekroczy maksymalną długość.</string>
+    <string name="character_warning_limit_summary">Ostrzegaj, jeśli przetłumaczony tekst przekroczy maksymalną długość.</string>
     <string name="none">Brak</string>
     <string name="translate_automatically">Przetłumacz automatycznie</string>
     <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie.</string>
-    <string name="nothing_here">Nic tu nie ma.</string>
+    <string name="nothing_here">Nic tutaj nie ma.</string>
     <string name="use_free_api">Skorzystaj z darmowego API</string>
     <string name="use_free_api_summary">Użyj darmowego zamiast płatnego API Pro.</string>
     <!-- About -->
@@ -69,7 +69,7 @@
     <string name="detected_language">Wykryty język</string>
     <string name="definition">Definicja</string>
     <string name="example">Przykład</string>
-    <string name="similar">Podobny</string>
+    <string name="similar">Podobne</string>
     <string name="transliteration">Transliteracja</string>
     <!-- Languages -->
     <string name="search">Szukaj</string>
@@ -77,7 +77,8 @@
     <string name="all_languages">Wszystkie języki</string>
     <!-- Tesseract -->
     <string name="image_translation">Tłumaczenie z obrazu</string>
-    <string name="image_translation_summary">Pobierz i zastosuj języki wykorzystywane do rozpoznawania tekstu ze zdjęć.</string>
+    <string name="image_translation_summary">Pobierz i zastosuj języki do rozpoznawania tekstu z obrazów.</string>
     <string name="init_tess_first">Proszę najpierw pobrać dane językowe w ustawieniach.</string>
-    <string name="select_language">Proszę wybrać w ustawieniach język wykorzystywany do rozpoznawania zdjęć.</string>
+    <string name="select_language">Proszę wybrać język używany do wykrywania tekstu w ustawieniach.</string>
+    <string name="theme_light">Jasny</string>
 </resources>

@@ -21,7 +21,7 @@
     <string name="search">Пошук</string>
     <string name="language_not_supported">Мова не підтримується!</string>
     <string name="api_key">API ключ</string>
-    <string name="options">Параметри</string>
+    <string name="options">Налаштування</string>
     <string name="required">Обов’язково</string>
     <string name="fetch_delay_summary">Затримка між вставленням тексту та отриманням перекладу</string>
     <string name="history_summary">Відстежуйте останні перекладені тексти</string>
