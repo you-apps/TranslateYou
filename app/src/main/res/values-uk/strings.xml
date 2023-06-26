@@ -69,4 +69,6 @@
     <string name="translate_from">Перекласти з</string>
     <string name="favorites">Вибране</string>
     <string name="all_languages">Всі мови</string>
+    <string name="skip_similar_entries">Пропустити схожі записи</string>
+    <string name="skip_similar_entries_desc">Зберігати в історії лише унікальні записи, засновані на вставці та мовах.</string>
 </resources>
