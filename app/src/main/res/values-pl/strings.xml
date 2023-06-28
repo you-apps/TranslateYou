@@ -39,7 +39,7 @@
     <string name="translation">Tłumaczenie</string>
     <string name="general">Główne</string>
     <string name="app_language">Język aplikacji</string>
-    <string name="system">Zgodny z systemem</string>
+    <string name="system">Systemowy</string>
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
     <string name="character_warning_limit_summary">Ostrzegaj, jeśli przetłumaczony tekst przekroczy maksymalną długość.</string>
     <string name="none">Brak</string>

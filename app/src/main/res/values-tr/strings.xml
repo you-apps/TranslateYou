@@ -70,4 +70,6 @@
     <string name="translate_from">Şundan çevir</string>
     <string name="favorites">Sık kullanılanlar</string>
     <string name="all_languages">Tüm diller</string>
+    <string name="skip_similar_entries">Benzer girdileri atla</string>
+    <string name="skip_similar_entries_desc">Ekleme ve dillere dayalı olarak yalnızca benzersiz girdileri geçmişe kaydet.</string>
 </resources>

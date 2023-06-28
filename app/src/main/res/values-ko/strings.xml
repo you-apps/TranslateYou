@@ -21,7 +21,7 @@
     <string name="cancel">취소</string>
     <string name="enter_text">텍스트 입력</string>
     <string name="translate">번역</string>
-    <string name="about">정보</string>
+    <string name="about">앱 정보</string>
     <string name="translate_from">다음에서 번역</string>
     <string name="instance">인스턴스</string>
     <string name="api_key">API 키</string>
@@ -61,4 +61,14 @@
     <string name="unknown_error">알 수 없는 오류</string>
     <string name="detected_language">감지된 언어</string>
     <string name="similar">비슷한</string>
+    <string name="favorites">즐겨찾기</string>
+    <string name="image_translation">이미지에서 번역</string>
+    <string name="skip_similar_entries_desc">삽입 및 언어를 기반으로 기록에 고유한 항목만 저장합니다.</string>
+    <string name="all_languages">모든 언어</string>
+    <string name="image_translation_summary">이미지에서 텍스트 인식을 위한 언어를 다운로드하고 적용합니다.</string>
+    <string name="skip_similar_entries">유사한 항목 건너뛰기</string>
+    <string name="transliteration">음역</string>
+    <string name="select_language">설정에서 이미지의 텍스트 인식을 위한 언어를 선택하세요.</string>
+    <string name="init_tess_first">먼저 설정에서 언어 데이터를 다운로드하세요.</string>
+    <string name="search">검색</string>
 </resources>

@@ -78,4 +78,6 @@
     <string name="favorites">מועדפים</string>
     <string name="all_languages">כל השפות</string>
     <string name="translate_to">תרגום ל־</string>
+    <string name="skip_similar_entries">דילוג על רשומות דומות</string>
+    <string name="skip_similar_entries_desc">לאחסן רק רשומות ייחודיות בהיסטוריה לפי הוספה ושפות.</string>
 </resources>

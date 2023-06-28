@@ -69,4 +69,6 @@
     <string name="favorites">Favorit</string>
     <string name="all_languages">Semua bahasa</string>
     <string name="translate_from">Terjemahkan dari</string>
+    <string name="skip_similar_entries_desc">Hanya simpan entri yang unik dalam riwayat, berdasarkan pemasukan dan bahasa.</string>
+    <string name="skip_similar_entries">Lewati entri yang sama</string>
 </resources>
