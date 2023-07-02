@@ -32,6 +32,7 @@ fun ThemeModeDialog(
 ) {
     val activity = LocalContext.current as MainActivity
     ListPreferenceDialog(
+        title= stringResource(R.string.select_theme),
         preferenceKey = Preferences.themeModeKey,
         onDismissRequest = {
             onDismiss.invoke()

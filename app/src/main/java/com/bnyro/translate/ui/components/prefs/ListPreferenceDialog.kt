@@ -34,10 +34,15 @@ fun ListPreferenceDialog(
     onDismissRequest: () -> Unit,
     options: List<ListPreferenceOption>,
     currentValue: Int? = null,
+    title: String? = null,
     onOptionSelected: (ListPreferenceOption) -> Unit = {}
 ) {
     AlertDialog(
         onDismissRequest = onDismissRequest,
+        title = {
+            if (title != null)
+                Text(title)
+        },
         text = {
             LazyColumn {
                 items(options) {
