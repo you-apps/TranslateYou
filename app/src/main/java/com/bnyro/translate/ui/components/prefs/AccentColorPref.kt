@@ -18,8 +18,11 @@
 package com.bnyro.translate.ui.components.prefs
 
 import android.os.Build
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,6 +42,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.input.pointer.PointerInputChange
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -105,53 +113,71 @@ fun AccentColorPrefDialog(
                         )
                     }
                 }
-                Row(
-                    modifier = Modifier.height(250.dp)
-                ) {
-                    AnimatedVisibility(
-                        visible = color != null
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            listOf("R", "G", "B").forEachIndexed { index, c ->
-                                val startIndex = index * 2
-                                color?.let {
-                                    ColorSlider(
-                                        label = c,
-                                        value = it.substring(startIndex, startIndex + 2).toInt(16),
-                                        onChange = { colorInt ->
-                                            var newHex = colorInt.toHexString()
-                                            if (newHex.length == 1) newHex = "0$newHex"
-                                            color = StringBuilder(it).apply {
-                                                setCharAt(startIndex, newHex[0])
-                                                setCharAt(startIndex + 1, newHex[1])
-                                            }.toString()
-                                        }
-                                    )
-                                }
-                            }
-                            Spacer(modifier = Modifier.height(20.dp))
-                            color?.let {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Box(
-                                        Modifier.size(50.dp).background(
-                                            MaterialTheme.colorScheme.primary,
-                                            CircleShape
-                                        )
-                                    )
-                                    Text(text = "   =>   ", fontSize = 27.sp)
-                                    Box(
-                                        modifier = Modifier.size(50.dp).background(
-                                            it.hexToColor(),
-                                            CircleShape
-                                        )
-                                    )
+
+                val isColorPickerEnabled = color != null
+                val imageAlpha: Float by animateFloatAsState(
+                    targetValue = if (isColorPickerEnabled) 1f else .5f,
+                    animationSpec = tween(
+                        durationMillis = 250,
+                        easing = LinearEasing,
+                    )
+                )
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.height(250.dp).alpha(imageAlpha).let {
+                        if (isColorPickerEnabled) {
+                            it
+                        } else {
+                            // disable input
+                            it.pointerInput(Unit){
+                                awaitPointerEventScope {
+                                    while (true) {
+                                        awaitPointerEvent(pass = PointerEventPass.Initial)
+                                            .changes
+                                            .forEach(PointerInputChange::consume)
+                                    }
                                 }
                             }
                         }
+                    }
+                ) {
+                    listOf("R", "G", "B").forEachIndexed { index, c ->
+                        val startIndex = index * 2
+                        ColorSlider(
+                            label = c,
+                            value = color?.substring(startIndex, startIndex + 2)?.toInt(16) ?: 0,
+                            onChange = { colorInt ->
+                                var newHex = colorInt.toHexString()
+                                if (newHex.length == 1) newHex = "0$newHex"
+                                color = StringBuilder(color).apply {
+                                    setCharAt(startIndex, newHex[0])
+                                    setCharAt(startIndex + 1, newHex[1])
+                                }.toString()
+                            }
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
+                            Modifier
+                                .size(50.dp)
+                                .background(
+                                    MaterialTheme.colorScheme.primary,
+                                    CircleShape
+                                )
+                        )
+                        Text(text = "   =>   ", fontSize = 27.sp)
+                        Box(
+                            modifier = Modifier
+                                .size(50.dp)
+                                .background(
+                                    color?.hexToColor() ?: Color.Black,
+                                    CircleShape
+                                )
+                        )
                     }
                 }
             }
