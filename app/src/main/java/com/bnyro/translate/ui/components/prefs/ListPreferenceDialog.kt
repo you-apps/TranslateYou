@@ -55,7 +55,8 @@ fun ListPreferenceDialog(
                             )
                             onOptionSelected.invoke(it)
                             onDismissRequest.invoke()
-                        }
+                        },
+                        isSelected = it.isSelected
                     )
                 }
             }
