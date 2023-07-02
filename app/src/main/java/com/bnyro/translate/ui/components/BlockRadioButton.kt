@@ -18,6 +18,8 @@
 package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -35,13 +37,15 @@ fun BlockRadioButton(
 ) {
     Column {
         LazyVerticalGrid(
-            columns = GridCells.Fixed(3)
+            columns = GridCells.Fixed(3),
+            modifier = Modifier.heightIn(max = 200.dp)
         ) {
             items(items) {
                 val index = items.indexOf(it)
                 BlockButton(
                     modifier = Modifier
                         .weight(1f)
+                        .fillMaxWidth()
                         .padding(4.dp, 4.dp),
                     text = it,
                     selected = selected == index
