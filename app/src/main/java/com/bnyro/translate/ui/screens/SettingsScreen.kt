@@ -20,7 +20,7 @@ package com.bnyro.translate.ui.screens
 import android.os.Handler
 import android.os.Looper
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -67,7 +67,7 @@ import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
 
 @Suppress("KotlinConstantConditions")
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun SettingsScreen(
     navController: NavController
@@ -134,163 +134,175 @@ fun SettingsScreen(
             )
         }
     ) { pV ->
-        Column(
+        LazyColumn(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .padding(pV)
                 .fillMaxSize()
                 .padding(15.dp, 0.dp)
         ) {
-            EnginePref()
+            item {
+                EnginePref()
+            }
 
-            LazyColumn(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                item {
-                    SettingsCategory(
-                        title = stringResource(R.string.general)
-                    )
+            item {
+                SettingsCategory(
+                    title = stringResource(R.string.general)
+                )
 
-                    val appLanguages = LocaleHelper.getLanguages(context)
+                val appLanguages = LocaleHelper.getLanguages(context)
 
-                    ListPreference(
-                        title = stringResource(R.string.app_language),
-                        preferenceKey = Preferences.appLanguageKey,
-                        defaultValue = "",
-                        entries = appLanguages.map { it.name },
-                        values = appLanguages.map { it.code }
-                    ) {
-                        Handler(Looper.getMainLooper()).postDelayed({
-                            (context as MainActivity).recreate()
-                        }, 100)
-                    }
+                ListPreference(
+                    title = stringResource(R.string.app_language),
+                    preferenceKey = Preferences.appLanguageKey,
+                    defaultValue = "",
+                    entries = appLanguages.map { it.name },
+                    values = appLanguages.map { it.code }
+                ) {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        (context as MainActivity).recreate()
+                    }, 100)
+                }
+            }
+
+            item {
+                PreferenceItem(
+                    modifier = Modifier.padding(top = 10.dp),
+                    title = stringResource(R.string.image_translation),
+                    summary = stringResource(R.string.image_translation_summary)
+                ) {
+                    showTessSettings = true
+                }
+            }
+
+            item {
+                SettingsCategory(
+                    title = stringResource(R.string.history)
+                )
+
+                SwitchPreference(
+                    preferenceKey = Preferences.historyEnabledKey,
+                    defaultValue = true,
+                    preferenceTitle = stringResource(R.string.history_enabled),
+                    preferenceSummary = stringResource(R.string.history_summary)
+                )
+
+                SwitchPreference(
+                    preferenceKey = Preferences.compactHistory,
+                    defaultValue = true,
+                    preferenceTitle = stringResource(R.string.compact_history),
+                    preferenceSummary = stringResource(R.string.compact_history_summary)
+                )
+
+                SwitchPreference(
+                    preferenceKey = Preferences.skipSimilarHistoryKey,
+                    defaultValue = true,
+                    preferenceTitle = stringResource(R.string.skip_similar_entries),
+                    preferenceSummary = stringResource(R.string.skip_similar_entries_desc)
+                )
+            }
+
+            item {
+                SettingsCategory(
+                    title = stringResource(R.string.translation)
+                )
+
+                var translateAutomatically by remember {
+                    mutableStateOf(Preferences.get(Preferences.translateAutomatically, true))
                 }
 
-                item {
-                    PreferenceItem(
-                        modifier = Modifier.padding(top = 10.dp),
-                        title = stringResource(R.string.image_translation),
-                        summary = stringResource(R.string.image_translation_summary)
-                    ) {
-                        showTessSettings = true
-                    }
+                SwitchPreference(
+                    preferenceKey = Preferences.translateAutomatically,
+                    defaultValue = true,
+                    preferenceTitle = stringResource(R.string.translate_automatically),
+                    preferenceSummary = stringResource(R.string.translate_automatically_summary)
+                ) {
+                    translateAutomatically = it
                 }
 
-                item {
-                    SettingsCategory(
-                        title = stringResource(R.string.history)
-                    )
-
-                    SwitchPreference(
-                        preferenceKey = Preferences.historyEnabledKey,
-                        defaultValue = true,
-                        preferenceTitle = stringResource(R.string.history_enabled),
-                        preferenceSummary = stringResource(R.string.history_summary)
-                    )
-
-                    SwitchPreference(
-                        preferenceKey = Preferences.compactHistory,
-                        defaultValue = true,
-                        preferenceTitle = stringResource(R.string.compact_history),
-                        preferenceSummary = stringResource(R.string.compact_history_summary)
-                    )
-
-                    SwitchPreference(
-                        preferenceKey = Preferences.skipSimilarHistoryKey,
-                        defaultValue = true,
-                        preferenceTitle = stringResource(R.string.skip_similar_entries),
-                        preferenceSummary = stringResource(R.string.skip_similar_entries_desc)
-                    )
-                }
-
-                item {
-                    SettingsCategory(
-                        title = stringResource(R.string.translation)
-                    )
-
-                    var translateAutomatically by remember {
-                        mutableStateOf(Preferences.get(Preferences.translateAutomatically, true))
-                    }
-
-                    SwitchPreference(
-                        preferenceKey = Preferences.translateAutomatically,
-                        defaultValue = true,
-                        preferenceTitle = stringResource(R.string.translate_automatically),
-                        preferenceSummary = stringResource(R.string.translate_automatically_summary)
-                    ) {
-                        translateAutomatically = it
-                    }
-
-                    AnimatedVisibility(visible = translateAutomatically) {
-                        SliderPreference(
-                            preferenceKey = Preferences.fetchDelay,
-                            preferenceTitle = stringResource(R.string.fetch_delay),
-                            preferenceSummary = stringResource(R.string.fetch_delay_summary),
-                            defaultValue = 500f,
-                            minValue = 100f,
-                            maxValue = 1000f,
-                            stepSize = 100f
-                        )
-                    }
-
-                    SwitchPreference(
-                        preferenceKey = Preferences.showAdditionalInfo,
-                        defaultValue = true,
-                        preferenceTitle = stringResource(R.string.additional_info),
-                        preferenceSummary = stringResource(R.string.additional_info_summary)
+                AnimatedVisibility(visible = translateAutomatically) {
+                    SliderPreference(
+                        preferenceKey = Preferences.fetchDelay,
+                        preferenceTitle = stringResource(R.string.fetch_delay),
+                        preferenceSummary = stringResource(R.string.fetch_delay_summary),
+                        defaultValue = 500f,
+                        minValue = 100f,
+                        maxValue = 1000f,
+                        stepSize = 100f
                     )
                 }
 
-                item {
-                    SettingsCategory(
-                        title = stringResource(R.string.simultaneous_translation)
+                SwitchPreference(
+                    preferenceKey = Preferences.showAdditionalInfo,
+                    defaultValue = true,
+                    preferenceTitle = stringResource(R.string.additional_info),
+                    preferenceSummary = stringResource(R.string.additional_info_summary)
+                )
+            }
+
+            item {
+                SettingsCategory(
+                    title = stringResource(R.string.simultaneous_translation)
+                )
+
+                SwitchPreference(
+                    preferenceKey = Preferences.simultaneousTranslationKey,
+                    defaultValue = false,
+                    preferenceTitle = stringResource(R.string.simultaneous_translation),
+                    preferenceSummary = stringResource(
+                        R.string.simultaneous_translation_summary
                     )
+                ) {
+                    enableSimultaneousTranslation = it
+                }
 
-                    SwitchPreference(
-                        preferenceKey = Preferences.simultaneousTranslationKey,
-                        defaultValue = false,
-                        preferenceTitle = stringResource(R.string.simultaneous_translation),
-                        preferenceSummary = stringResource(
-                            R.string.simultaneous_translation_summary
-                        )
-                    ) {
-                        enableSimultaneousTranslation = it
-                    }
-
-                    AnimatedVisibility(visible = enableSimultaneousTranslation) {
-                        Spacer(
-                            modifier = Modifier
-                                .height(10.dp)
-                        )
-                        PreferenceItem(
-                            title = stringResource(R.string.enabled_engines),
-                            summary = stringResource(R.string.enabled_engines_summary),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            showEngineSelectDialog = true
-                        }
-                    }
+                AnimatedVisibility(visible = enableSimultaneousTranslation) {
                     Spacer(
                         modifier = Modifier
                             .height(10.dp)
                     )
-
-                    val charCounterLimits = listOf(stringResource(R.string.none), "50", "100", "150", "200", "300", "400", "500", "1000", "2000", "3000", "5000")
-                    ListPreference(
-                        title = stringResource(R.string.character_warning_limit),
-                        summary = stringResource(R.string.character_warning_limit_summary),
-                        preferenceKey = Preferences.charCounterLimitKey,
-                        defaultValue = charCounterLimits.first(),
-                        entries = charCounterLimits,
-                        values = charCounterLimits.map {
-                            if (it.all { char -> char.isDigit() }) it else ""
-                        }
-                    )
-
-                    Spacer(
-                        modifier = Modifier
-                            .height(15.dp)
-                    )
+                    PreferenceItem(
+                        title = stringResource(R.string.enabled_engines),
+                        summary = stringResource(R.string.enabled_engines_summary),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        showEngineSelectDialog = true
+                    }
                 }
+                Spacer(
+                    modifier = Modifier
+                        .height(10.dp)
+                )
+
+                val charCounterLimits = listOf(
+                    stringResource(R.string.none),
+                    "50",
+                    "100",
+                    "150",
+                    "200",
+                    "300",
+                    "400",
+                    "500",
+                    "1000",
+                    "2000",
+                    "3000",
+                    "5000"
+                )
+                ListPreference(
+                    title = stringResource(R.string.character_warning_limit),
+                    summary = stringResource(R.string.character_warning_limit_summary),
+                    preferenceKey = Preferences.charCounterLimitKey,
+                    defaultValue = charCounterLimits.first(),
+                    entries = charCounterLimits,
+                    values = charCounterLimits.map {
+                        if (it.all { char -> char.isDigit() }) it else ""
+                    }
+                )
+
+                Spacer(
+                    modifier = Modifier
+                        .height(15.dp)
+                )
             }
         }
     }
