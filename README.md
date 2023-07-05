@@ -1,6 +1,6 @@
 <!-- ---------- Header ---------- -->
 <div align="center">
-  <img width="200" height="200"src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png">
+  <img width="200" height="200"src="fastlane/metadata/android/en-US/images/icon.png">
   <h1>Translate You</h1>
 <p>Powerful Translator App built with <a href="https://m3.material.io/">Material Design 3 (You)</a> supporting different translation engines.</p>
 
@@ -79,6 +79,9 @@ If **Translate You** is not in your language, feel free to participate by:
 ## Privacy Policy
 
 **Translate You's privacy policy is available** [**here**](https://github.com/Bnyro/TranslateYou/blob/master/PRIVACY%20POLICY.md)
+
+## Credits
+* Icon design by [M00NJ](https://github.com/M00NJ)
 
 ## License
 
