@@ -71,4 +71,5 @@
     <string name="all_languages">Todos los idiomas</string>
     <string name="skip_similar_entries">Omitir las entradas similares</string>
     <string name="skip_similar_entries_desc">Almacenar sólo entradas únicas en el historial, en función de la inserción y los idiomas.</string>
+    <string name="select_theme">Selecciona un tema</string>
 </resources>
