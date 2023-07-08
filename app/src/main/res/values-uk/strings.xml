@@ -71,4 +71,5 @@
     <string name="all_languages">Всі мови</string>
     <string name="skip_similar_entries">Пропустити схожі записи</string>
     <string name="skip_similar_entries_desc">Зберігати в історії лише унікальні записи, засновані на вставці та мовах.</string>
+    <string name="select_theme">Виберіть тему</string>
 </resources>
