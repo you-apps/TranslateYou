@@ -80,4 +80,5 @@
     <string name="translate_to">תרגום ל־</string>
     <string name="skip_similar_entries">דילוג על רשומות דומות</string>
     <string name="skip_similar_entries_desc">לאחסן רק רשומות ייחודיות בהיסטוריה לפי הוספה ושפות.</string>
+    <string name="select_theme">בחירת ערכת עיצוב</string>
 </resources>

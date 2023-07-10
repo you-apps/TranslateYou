@@ -69,4 +69,6 @@
     <string name="translate_from">Traduzir de</string>
     <string name="favorites">Favoritos</string>
     <string name="all_languages">Todos os idiomas</string>
+    <string name="skip_similar_entries_desc">Armazenar apenas entradas únicas no histórico, com base na inserção e nas línguas.</string>
+    <string name="skip_similar_entries">Saltar entradas similares</string>
 </resources>

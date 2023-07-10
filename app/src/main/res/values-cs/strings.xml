@@ -71,4 +71,5 @@
     <string name="all_languages">Všechny jazyky</string>
     <string name="skip_similar_entries">Přeskočit podobné položky</string>
     <string name="skip_similar_entries_desc">Do historie ukládat pouze unikátní položky, založené na vložení a jazycích.</string>
+    <string name="select_theme">Zvolit motiv</string>
 </resources>
