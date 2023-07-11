@@ -69,4 +69,7 @@
     <string name="nothing_here">Nada aqui.</string>
     <string name="dynamic_colors">Cores dinâmicas</string>
     <string name="accent_color">Cor de destaque</string>
+    <string name="skip_similar_entries">Ignorar entradas similares</string>
+    <string name="skip_similar_entries_desc">Armazene apenas entradas únicas no histórico, baseado na inserção e nos idiomas.</string>
+    <string name="select_theme">Selecione o tema</string>
 </resources>
