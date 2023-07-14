@@ -81,4 +81,5 @@
     <string name="favorites">收藏夹</string>
     <string name="skip_similar_entries">跳过相似条目</string>
     <string name="skip_similar_entries_desc">根据插入内容和语种，仅在历史记录中存储独特的条目。</string>
+    <string name="select_theme">选择主题</string>
 </resources>
