@@ -1,0 +1,8 @@
+* Fix appearance of history items after deletion (#273)
+* Option to skip similar entries in the history (#272)
+* Inline EnginePref into LazyColumn in Settings by @Doomsdayrs in #279
+* Add title to ThemeModeDialog by @Doomsdayrs in #279
+* Add highlight to selected theme by @Doomsdayrs in #279
+* Fade in/out Accent Color picker instead of hiding by @Doomsdayrs in #279
+* Switch to new, uniform icon
+* Add credits section and higher res icon to readme by @M00NJ in #282
