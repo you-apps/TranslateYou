@@ -71,4 +71,5 @@
     <string name="history_enabled">इतिहास सक्षम किया गया</string>
     <string name="skip_similar_entries">समान प्रविष्टियाँ छोड़ें</string>
     <string name="skip_similar_entries_desc">प्रविष्टि और भाषाओं के आधार पर, इतिहास में केवल अद्वितीय प्रविष्टियाँ संग्रहीत करें।</string>
+    <string name="select_theme">थीम चुनें</string>
 </resources>
