@@ -28,7 +28,7 @@
     <string name="optional">Optional</string>
     <string name="compact_history">Compact history</string>
     <string name="skip_similar_entries">Skip similar entries</string>
-    <string name="skip_similar_entries_desc">Only store unique entries in the history, based on insertion and languages.</string>
+    <string name="skip_similar_entries_desc">Store only unique entries in the history, based on insertion and languages.</string>
     <string name="compact_history_summary">Only show the first 3 text lines per default in the history</string>
     <string name="simultaneous_translation">Simultaneous translation</string>
     <string name="simultaneous_translation_summary">Fetch results from multiple engines at the same time.</string>
