@@ -69,4 +69,7 @@
     <string name="favorites">Favoriten</string>
     <string name="all_languages">Alle Sprachen</string>
     <string name="translate_to">Übersetzen in</string>
+    <string name="skip_similar_entries">Ähnliche Einträge überspringen</string>
+    <string name="skip_similar_entries_desc">Speichere nur einzigartige Einträge basierend auf \?\?\? und Sprache im Verlauf.</string>
+    <string name="select_theme">Theme auswählen</string>
 </resources>
