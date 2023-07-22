@@ -66,14 +66,7 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onStop() {
-        Preferences.put(
-            Preferences.sourceLanguage,
-            JsonHelper.json.encodeToString(mainModel.sourceLanguage)
-        )
-        Preferences.put(
-            Preferences.targetLanguage,
-            JsonHelper.json.encodeToString(mainModel.targetLanguage)
-        )
+        mainModel.saveSelectedLanguages()
         super.onStop()
     }
 
@@ -96,6 +89,7 @@ class MainActivity : ComponentActivity() {
             mainModel.insertedText = it
             mainModel.translateNow()
         }
+        // open links from Google Translate
         if (intent.data?.host == "translate.google.com") {
             val source = intent.data?.getQueryParameter("sl").orEmpty()
             val target = intent.data?.getQueryParameter("tl").orEmpty()

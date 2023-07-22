@@ -44,6 +44,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 
 class TranslationModel : ViewModel() {
     var engine: TranslationEngine = getCurrentEngine()
@@ -53,28 +54,21 @@ class TranslationModel : ViewModel() {
     )
     var enabledSimEngines = getEnabledEngines()
 
-    var availableLanguages: List<Language> by mutableStateOf(
-        emptyList()
-    )
+    var availableLanguages: List<Language> by mutableStateOf(emptyList())
 
-    var sourceLanguage: Language by mutableStateOf(
+    var sourceLanguage by mutableStateOf(
         getLanguageByPrefKey(Preferences.sourceLanguage) ?: Language("", "Auto")
     )
 
-    var targetLanguage: Language by mutableStateOf(
+    var targetLanguage by mutableStateOf(
         getLanguageByPrefKey(Preferences.targetLanguage) ?: Language("en", "English")
     )
 
-    var insertedText: String by mutableStateOf(
-        ""
-    )
+    var insertedText by mutableStateOf("")
 
-    var translation: Translation by mutableStateOf(
-        Translation("")
-    )
+    var translation by mutableStateOf(Translation(""))
 
-    var translatedTexts: MutableMap<String, Translation> =
-        TranslationEngines.engines
+    var translatedTexts = TranslationEngines.engines
             .associate { it.name to Translation("") }
             .toMutableMap()
 
@@ -83,11 +77,9 @@ class TranslationModel : ViewModel() {
     var translating by mutableStateOf(false)
 
     private fun getLanguageByPrefKey(key: String): Language? {
-        return try {
+        return runCatching {
             JsonHelper.json.decodeFromString<Language>(Preferences.get(key, ""))
-        } catch (e: Exception) {
-            null
-        }
+        }.getOrNull()
     }
 
     fun enqueueTranslation() {
@@ -112,6 +104,7 @@ class TranslationModel : ViewModel() {
             translation = Translation("")
             return
         }
+        saveSelectedLanguages()
 
         translating = true
 
@@ -163,11 +156,7 @@ class TranslationModel : ViewModel() {
     }
 
     private fun saveToHistory() {
-        if (!Preferences.get(
-                Preferences.historyEnabledKey,
-                true
-            )
-        ) {
+        if (!Preferences.get(Preferences.historyEnabledKey, true)) {
             return
         }
 
@@ -256,5 +245,16 @@ class TranslationModel : ViewModel() {
                 translateNow()
             }
         }.start()
+    }
+
+    fun saveSelectedLanguages() {
+        Preferences.put(
+            Preferences.sourceLanguage,
+            JsonHelper.json.encodeToString(sourceLanguage)
+        )
+        Preferences.put(
+            Preferences.targetLanguage,
+            JsonHelper.json.encodeToString(targetLanguage)
+        )
     }
 }
