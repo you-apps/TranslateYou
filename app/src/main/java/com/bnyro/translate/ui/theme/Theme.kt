@@ -21,6 +21,7 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.contentColorFor
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -55,17 +56,27 @@ fun TranslateYouTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         else -> {
-            val accent = accentColor ?: defaultAccentColor.hexToColor()
-            val blendColor = if (darkTheme) android.graphics.Color.WHITE else android.graphics.Color.BLACK
-            val onPrimary = Color(ColorUtils.blendARGB(accent.toArgb(), blendColor, 0.3f))
+            val primary = accentColor ?: defaultAccentColor.hexToColor()
+            val onPrimary = MaterialTheme.colorScheme.contentColorFor(primary)
+            val blendColor =
+                if (darkTheme) android.graphics.Color.WHITE else android.graphics.Color.BLACK
+            val secondary = Color(ColorUtils.blendARGB(primary.toArgb(), blendColor, 0.3f))
+            val onSecondary = MaterialTheme.colorScheme.contentColorFor(secondary)
             if (darkTheme) {
-                darkColorScheme(accent, onPrimary, secondary = onPrimary)
+                darkColorScheme(
+                    primary,
+                    onPrimary,
+                    secondary = secondary,
+                    onSecondary = onSecondary
+                )
             } else {
                 lightColorScheme(
-                    accent,
+                    primary,
                     onPrimary,
-                    secondary = onPrimary
+                    secondary = secondary,
+                    onSecondary = onSecondary
                 )
             }
         }
