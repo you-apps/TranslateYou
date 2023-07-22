@@ -37,7 +37,7 @@ import androidx.core.view.WindowCompat
 import com.bnyro.translate.const.ThemeMode
 import com.bnyro.translate.ext.hexToColor
 
-const val defaultAccentColor = "d0bcff"
+const val defaultAccentColor = "00ffff"
 
 @Composable
 fun TranslateYouTheme(
