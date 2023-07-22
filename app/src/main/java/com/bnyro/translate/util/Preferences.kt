@@ -36,7 +36,7 @@ object Preferences {
     const val charCounterLimitKey = "charCountLimit"
     const val tessLanguageKey = "tessLanguage"
 
-    const val themeModeKey = "themeMode"
+    const val themeModeKey = "themeModeKey"
     const val accentColorKey = "accentColor"
     const val sourceLanguage = "sourceLanguage"
     const val targetLanguage = "targetLanguage"
@@ -71,7 +71,7 @@ object Preferences {
         }
     }
 
-    fun getThemeMode() = get(themeModeKey, ThemeMode.AUTO.toString()).toInt()
+    fun getThemeMode() = ThemeMode.values()[get(themeModeKey, ThemeMode.AUTO.value.toString()).toInt()]
 
     fun getAccentColor() = prefs.getString(accentColorKey, null)
 }

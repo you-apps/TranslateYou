@@ -40,22 +40,22 @@ fun ThemeModeDialog(
         options = listOf(
             ListPreferenceOption(
                 name = stringResource(R.string.theme_auto),
-                value = ThemeMode.AUTO,
+                value = ThemeMode.AUTO.value,
                 isSelected = activity.themeMode == ThemeMode.AUTO
             ),
             ListPreferenceOption(
                 name = stringResource(R.string.theme_light),
-                value = ThemeMode.LIGHT,
+                value = ThemeMode.LIGHT.value,
                 isSelected = activity.themeMode == ThemeMode.LIGHT
             ),
             ListPreferenceOption(
                 name = stringResource(R.string.theme_dark),
-                value = ThemeMode.DARK,
+                value = ThemeMode.DARK.value,
                 isSelected = activity.themeMode == ThemeMode.DARK
             )
         ),
         onOptionSelected = {
-            activity.themeMode = it.value
+            activity.themeMode = ThemeMode.values()[it.value]
         }
     )
 }

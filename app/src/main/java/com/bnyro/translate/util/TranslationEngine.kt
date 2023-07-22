@@ -17,6 +17,7 @@
 
 package com.bnyro.translate.util
 
+import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -25,7 +26,7 @@ abstract class TranslationEngine(
     val name: String,
     val defaultUrl: String,
     val urlModifiable: Boolean,
-    val apiKeyState: Int,
+    val apiKeyState: ApiKeyState,
     val autoLanguageCode: String?,
     var supportsSimTranslation: Boolean = true
 ) {

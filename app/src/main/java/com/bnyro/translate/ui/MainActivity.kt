@@ -43,9 +43,7 @@ import kotlinx.serialization.encodeToString
 
 class MainActivity : ComponentActivity() {
     private lateinit var mainModel: TranslationModel
-    var themeMode by mutableStateOf(
-        Preferences.getThemeMode()
-    )
+    var themeMode by mutableStateOf(Preferences.getThemeMode())
     var accentColor by mutableStateOf(Preferences.getAccentColor())
 
     override fun onCreate(savedInstanceState: Bundle?) {

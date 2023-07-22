@@ -41,7 +41,7 @@ const val defaultAccentColor = "d0bcff"
 
 @Composable
 fun TranslateYouTheme(
-    themeMode: Int = ThemeMode.AUTO,
+    themeMode: ThemeMode = ThemeMode.AUTO,
     accentColor: Color? = null,
     content: @Composable () -> Unit
 ) {
