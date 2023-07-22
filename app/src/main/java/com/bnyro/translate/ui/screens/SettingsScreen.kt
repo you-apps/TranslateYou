@@ -135,7 +135,7 @@ fun SettingsScreen(
         }
     ) { pV ->
         LazyColumn(
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.Start,
             modifier = Modifier
                 .padding(pV)
                 .fillMaxSize()
