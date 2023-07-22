@@ -37,7 +37,7 @@ import androidx.core.view.WindowCompat
 import com.bnyro.translate.const.ThemeMode
 import com.bnyro.translate.ext.hexToColor
 
-const val defaultAccentColor = "00ffff"
+const val defaultAccentColor = "0088aa"
 
 @Composable
 fun TranslateYouTheme(
@@ -48,10 +48,10 @@ fun TranslateYouTheme(
     val darkTheme = when (themeMode) {
         ThemeMode.AUTO -> isSystemInDarkTheme()
         ThemeMode.LIGHT -> false
-        else -> true
+        ThemeMode.DARK, ThemeMode.BLACK -> true
     }
 
-    val colorScheme = when {
+    var colorScheme = when {
         accentColor == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
@@ -81,6 +81,8 @@ fun TranslateYouTheme(
             }
         }
     }
+    if (themeMode == ThemeMode.BLACK) colorScheme =
+        colorScheme.copy(background = Color.Black, surface = Color.Black)
 
     val view = LocalView.current
     if (!view.isInEditMode) {

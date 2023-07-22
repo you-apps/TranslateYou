@@ -52,6 +52,11 @@ fun ThemeModeDialog(
                 name = stringResource(R.string.theme_dark),
                 value = ThemeMode.DARK.value,
                 isSelected = activity.themeMode == ThemeMode.DARK
+            ),
+            ListPreferenceOption(
+                name = stringResource(R.string.theme_black),
+                value = ThemeMode.BLACK.value,
+                isSelected = activity.themeMode == ThemeMode.BLACK
             )
         ),
         onOptionSelected = {

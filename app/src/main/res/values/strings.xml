@@ -59,6 +59,7 @@
     <string name="theme_auto">System</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
+    <string name="theme_black">Black</string>
     <string name="accent_color">Accent color</string>
     <string name="dynamic_colors">Dynamic colors</string>
     <!-- History -->
