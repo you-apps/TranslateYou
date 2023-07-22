@@ -12,7 +12,7 @@
     <string name="auto">تلقائيّ</string>
     <string name="forget">انسَ</string>
     <string name="simultaneous_translation">الترجمة المتزامنة</string>
-    <string name="options">الإعدادات</string>
+    <string name="options">الاعدادات</string>
     <string name="about">حول التطبيق</string>
     <string name="instance">المثيل</string>
     <string name="optional">اختياريّ</string>
@@ -72,4 +72,5 @@
     <string name="skip_similar_entries">تخطي الإدخالات المماثلة</string>
     <string name="skip_similar_entries_desc">قم بتخزين الإدخالات الفريدة فقط في السجل ، بناء على الإدراج واللغات.</string>
     <string name="select_theme">اختر السمة</string>
+    <string name="theme_black">اسود</string>
 </resources>
