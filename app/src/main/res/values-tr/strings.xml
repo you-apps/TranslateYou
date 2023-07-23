@@ -73,4 +73,5 @@
     <string name="skip_similar_entries">Benzer girdileri atla</string>
     <string name="skip_similar_entries_desc">Ekleme ve dillere dayalı olarak yalnızca benzersiz girdileri geçmişe kaydet.</string>
     <string name="select_theme">Tema Seç</string>
+    <string name="theme_black">Siyah</string>
 </resources>
