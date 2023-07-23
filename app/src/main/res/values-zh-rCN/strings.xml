@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name" translatable="false">Translate You</string>
     <!-- Dialog -->
-    <string name="okay">好的</string>
+    <string name="okay">确定</string>
     <string name="cancel">取消</string>
     <!-- Text -->
     <string name="enter_text">输入文字</string>
