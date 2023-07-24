@@ -17,6 +17,7 @@
 
 package com.bnyro.translate.ui.models
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -26,24 +27,25 @@ import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.ext.query
 
+@SuppressLint("MutableCollectionMutableState")
 class HistoryModel : ViewModel() {
-    var history = mutableStateListOf<HistoryItem>()
+    var history by mutableStateOf(listOf<HistoryItem>())
 
     fun fetchHistory() {
         query {
-            history.addAll(Db.historyDao().getAll().reversed())
+            history = history.plus(Db.historyDao().getAll().reversed())
         }
     }
 
     fun clearHistory() {
         query {
             Db.historyDao().deleteAll()
-            history.clear()
+            history = emptyList()
         }
     }
 
     fun deleteHistoryItem(historyItem: HistoryItem) {
-        history.removeAll { it.id == historyItem.id }
+        history = history.filter { it.id != historyItem.id }
         query {
             Db.historyDao().delete(historyItem)
         }
