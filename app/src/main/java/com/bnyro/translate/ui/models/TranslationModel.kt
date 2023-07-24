@@ -18,6 +18,7 @@
 package com.bnyro.translate.ui.models
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
@@ -39,15 +40,15 @@ import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
-import com.bnyro.translate.util.TranslationEngine
+import java.io.File
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 
 class TranslationModel : ViewModel() {
-    var engine: TranslationEngine = getCurrentEngine()
+    var engine by mutableStateOf(getCurrentEngine())
 
     var simTranslationEnabled by mutableStateOf(
         Preferences.get(Preferences.simultaneousTranslationKey, false)
@@ -75,6 +76,9 @@ class TranslationModel : ViewModel() {
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
     var translating by mutableStateOf(false)
+
+    private var mediaPlayer: MediaPlayer? = null
+    private var audioFile: File? = null
 
     private fun getLanguageByPrefKey(key: String): Language? {
         return runCatching {
@@ -256,5 +260,36 @@ class TranslationModel : ViewModel() {
             Preferences.targetLanguage,
             JsonHelper.json.encodeToString(targetLanguage)
         )
+    }
+
+    fun playAudio() {
+        releaseMediaPlayer()
+        viewModelScope.launch(Dispatchers.IO) {
+            audioFile = runCatching {
+                engine.getAudioFile(targetLanguage.code, translation.translatedText)
+            }.getOrElse { return@launch }
+
+            withContext(Dispatchers.Main) {
+                mediaPlayer = MediaPlayer().apply {
+                    setOnCompletionListener {
+                        releaseMediaPlayer()
+                    }
+                }
+                audioFile?.let { file ->
+                    mediaPlayer?.apply {
+                        setDataSource(file.absolutePath)
+                        prepare()
+                        start()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun releaseMediaPlayer() {
+        audioFile?.delete()
+        audioFile = null
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 }

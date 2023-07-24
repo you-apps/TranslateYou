@@ -24,13 +24,17 @@ import com.bnyro.translate.obj.Definition
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
+import java.io.File
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class LVEngine : TranslationEngine(
     name = "Lingva",
-    defaultUrl = "https://lingva.ml",
+    defaultUrl = "https://lingva.lunar.icu",
     urlModifiable = true,
     apiKeyState = ApiKeyState.DISABLED,
-    autoLanguageCode = "auto"
+    autoLanguageCode = "auto",
+    supportsAudio = true
 ) {
 
     private lateinit var api: LingvaTranslate
@@ -66,5 +70,15 @@ class LVEngine : TranslationEngine(
                     )
                 }
         )
+    }
+
+    override suspend fun getAudioFile(lang: String, query: String): File? {
+        val byteArray = api.getAudio(lang, query).toByteArray()
+        if (byteArray.isEmpty()) return null
+        return withContext(Dispatchers.IO) {
+            File.createTempFile("audio", ".mp3").apply {
+                writeBytes(byteArray)
+            }
+        }
     }
 }

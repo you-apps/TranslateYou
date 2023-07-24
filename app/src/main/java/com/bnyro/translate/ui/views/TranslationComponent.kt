@@ -140,19 +140,27 @@ fun TranslationComponent(
                     )
                 }
 
-                if (viewModel.translation.translatedText.isNotEmpty() && SpeechHelper.ttsAvailable) {
-                    Box(
-                        modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.CenterEnd
-                    ) {
+                Box(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentAlignment = Alignment.CenterEnd
+                ) {
+                if (viewModel.translation.translatedText.isNotEmpty()) {
+                    if (viewModel.engine.supportsAudio) {
                         StyledIconButton(
                             imageVector = Icons.Default.VolumeUp
                         ) {
-                            SpeechHelper.speak(
-                                context,
-                                viewModel.translation.translatedText,
-                                viewModel.targetLanguage.code
-                            )
+                            viewModel.playAudio()
+                        }
+                    } else if (SpeechHelper.ttsAvailable) {
+                            StyledIconButton(
+                                imageVector = Icons.Default.VolumeUp
+                            ) {
+                                SpeechHelper.speak(
+                                    context,
+                                    viewModel.translation.translatedText,
+                                    viewModel.targetLanguage.code
+                                )
+                            }
                         }
                     }
                 }

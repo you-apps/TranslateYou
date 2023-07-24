@@ -20,6 +20,7 @@ package com.bnyro.translate.util
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
+import java.io.File
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
 abstract class TranslationEngine(
@@ -28,7 +29,8 @@ abstract class TranslationEngine(
     val urlModifiable: Boolean,
     val apiKeyState: ApiKeyState,
     val autoLanguageCode: String?,
-    var supportsSimTranslation: Boolean = true
+    val supportsSimTranslation: Boolean = true,
+    val supportsAudio: Boolean = false
 ) {
 
     abstract fun createOrRecreate(): TranslationEngine
@@ -47,6 +49,8 @@ abstract class TranslationEngine(
             this.defaultUrl
         ).toHttpUrlOrNull()?.toString() ?: defaultUrl
     }
+
+    open suspend fun getAudioFile(lang: String, query: String): File? = null
 
     fun getApiKey() = Preferences.get(
         apiPrefKey,

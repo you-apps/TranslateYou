@@ -17,6 +17,7 @@
 
 package com.bnyro.translate.api.lv
 
+import com.bnyro.translate.api.lv.obj.LVAudioResponse
 import com.bnyro.translate.api.lv.obj.LVTranslationResponse
 import com.bnyro.translate.api.lv.obj.LvLanguage
 import retrofit2.http.GET
@@ -32,4 +33,10 @@ interface LingvaTranslate {
         @Path("target") target: String,
         @Path("query") query: String
     ): LVTranslationResponse
+
+    @GET("/api/v1/audio/{lang}/{query}")
+    suspend fun getAudio(
+        @Path("lang") lang: String,
+        @Path("query") query: String
+    ): LVAudioResponse
 }
