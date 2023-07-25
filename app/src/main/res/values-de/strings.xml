@@ -5,7 +5,7 @@
     <string name="cancel">Abbrechen</string>
     <string name="paste">Einfügen</string>
     <string name="copy">Kopieren</string>
-    <string name="history_summary">Behalten Sie den Überblick über die zuletzt übersetzten Texte</string>
+    <string name="history_summary">Behalte den Überblick über die zuletzt übersetzten Texte</string>
     <string name="required">Erforderlich</string>
     <string name="optional">Optional</string>
     <string name="author">Autor</string>
@@ -70,6 +70,7 @@
     <string name="all_languages">Alle Sprachen</string>
     <string name="translate_to">Übersetzen in</string>
     <string name="skip_similar_entries">Ähnliche Einträge überspringen</string>
-    <string name="skip_similar_entries_desc">Speicher nur eindeutige Einträge im Verlauf basierend auf Ergänzungen und Sprachen.</string>
+    <string name="skip_similar_entries_desc">Speicher nur eindeutige Einträge im Verlauf, basierend auf Ergänzungen und Sprachen.</string>
     <string name="select_theme">Theme auswählen</string>
+    <string name="theme_black">Schwarz</string>
 </resources>

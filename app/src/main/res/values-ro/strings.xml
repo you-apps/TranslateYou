@@ -72,4 +72,5 @@
     <string name="skip_similar_entries">Omiteți intrări similare</string>
     <string name="skip_similar_entries_desc">Stocați numai intrări unice în istoric, bazate pe inserare și limbi.</string>
     <string name="select_theme">Selectați tema</string>
+    <string name="theme_black">Negru</string>
 </resources>

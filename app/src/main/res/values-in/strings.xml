@@ -72,4 +72,5 @@
     <string name="skip_similar_entries_desc">Hanya simpan entri yang unik dalam riwayat, berdasarkan pemasukan dan bahasa.</string>
     <string name="skip_similar_entries">Lewati entri yang sama</string>
     <string name="select_theme">Pilih Tema</string>
+    <string name="theme_black">Hitam</string>
 </resources>
