@@ -80,6 +80,7 @@
     <string name="all_languages">所有语言</string>
     <string name="favorites">收藏夹</string>
     <string name="skip_similar_entries">跳过相似条目</string>
-    <string name="skip_similar_entries_desc">根据插入内容和语种，仅在历史记录中存储独特的条目。</string>
+    <string name="skip_similar_entries_desc">根据插入内容和语种，仅将独特的条目存储在历史记录中。</string>
     <string name="select_theme">选择主题</string>
+    <string name="theme_black">黑色</string>
 </resources>
