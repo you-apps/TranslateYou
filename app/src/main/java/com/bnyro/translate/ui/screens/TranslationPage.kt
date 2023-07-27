@@ -50,6 +50,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.LanguageSelector
 import com.bnyro.translate.ui.models.TranslationModel
+import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 
@@ -77,7 +78,7 @@ fun TranslationPage(
                         ),
                         icon = Icons.Default.Menu
                     ) {
-                        navHostController.navigate("settings")
+                        navHostController.navigate(Destination.Settings.route)
                     },
                     MenuItemData(
                         text = stringResource(
@@ -85,7 +86,7 @@ fun TranslationPage(
                         ),
                         icon = Icons.Default.History
                     ) {
-                        navHostController.navigate("history")
+                        navHostController.navigate(Destination.History.route)
                     },
                     MenuItemData(
                         text = stringResource(
@@ -93,7 +94,7 @@ fun TranslationPage(
                         ),
                         icon = Icons.Default.Info
                     ) {
-                        navHostController.navigate("about")
+                        navHostController.navigate(Destination.About.route)
                     }
                 )
             )

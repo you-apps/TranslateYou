@@ -32,17 +32,17 @@ fun NavigationHost(
     navController: NavHostController,
     translationModel: TranslationModel
 ) {
-    NavHost(navController = navController, "translate") {
-        composable("translate") {
+    NavHost(navController = navController, Destination.Translate.route) {
+        composable(Destination.Translate.route) {
             TranslationPage(navController, translationModel)
         }
-        composable("history") {
+        composable(Destination.History.route) {
             HistoryScreen(navController, translationModel)
         }
-        composable("settings") {
+        composable(Destination.Settings.route) {
             SettingsScreen(navController)
         }
-        composable("about") {
+        composable(Destination.About.route) {
             AboutPage(navController)
         }
     }

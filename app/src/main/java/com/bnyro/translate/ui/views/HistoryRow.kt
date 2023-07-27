@@ -45,6 +45,7 @@ import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.ui.models.TranslationModel
+import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.util.Preferences
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -63,7 +64,7 @@ fun HistoryRow(
         showDialog = false
         translationModel.insertedText = historyItem.insertedText
         translationModel.translateNow()
-        navController.navigate("translate")
+        navController.navigate(Destination.Translate.route)
     }
 
     val compactHistory = Preferences.get(
