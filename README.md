@@ -18,13 +18,14 @@
 <!-- ---------- Description ---------- -->
 ## Features
 
-- [x] more than 150 supported languages _(standard version)_
-- [x] 30 supported languages _(libre version)_
+- [x] more than 150 supported languages
+- [x] 9 different translation engines
 - [x] Material Design 3 (You)
 - [x] Dark and light theme
-- [X] Support native Android sharing system
-- [X] Multilingual interface
-- [X] Translation from images
+- [x] Support for Android sharing system
+- [x] Multilingual interface
+- [x] Translation from images
+- [x] Translation history
 - [x] Entirely Open Source
 - [X] Written in Jetpack Compose 
 
