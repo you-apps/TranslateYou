@@ -70,6 +70,7 @@
     <string name="all_languages">Все языки</string>
     <string name="translate_to">Язык перевода</string>
     <string name="skip_similar_entries">Пропустить похожие записи</string>
-    <string name="skip_similar_entries_desc">Храните только уникальные записи в истории, основанные на вставке и языках.</string>
+    <string name="skip_similar_entries_desc">Храните в истории только уникальные записи, основанные на вставке и языках.</string>
     <string name="select_theme">Выберите тему</string>
+    <string name="theme_black">Чёрная</string>
 </resources>
