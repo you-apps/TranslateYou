@@ -69,4 +69,8 @@
     <string name="open">Адкрыць</string>
     <string name="favorites">Выбранае</string>
     <string name="image_translation_summary">Спампуйце і прымяніце мовы для распазнання тэксту з малюнкаў.</string>
+    <string name="skip_similar_entries">Прапусціць падобныя запісы</string>
+    <string name="skip_similar_entries_desc">Захоўваць толькі ўнікальныя запісы ў гісторыі на аснове ўстаўкі і моў.</string>
+    <string name="select_theme">Абярыце тэму</string>
+    <string name="theme_black">Чорная</string>
 </resources>
