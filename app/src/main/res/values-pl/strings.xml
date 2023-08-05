@@ -81,4 +81,8 @@
     <string name="init_tess_first">Proszę najpierw pobrać dane językowe w ustawieniach.</string>
     <string name="select_language">Proszę wybrać język używany do wykrywania tekstu w ustawieniach.</string>
     <string name="theme_light">Jasny</string>
+    <string name="skip_similar_entries">Pomiń podobne wpisy</string>
+    <string name="skip_similar_entries_desc">Przechowuj tylko unikalne wpisy w historii na podstawie wstawienia i języka.</string>
+    <string name="theme_black">Czarny</string>
+    <string name="select_theme">Wybierz motyw</string>
 </resources>
