@@ -72,4 +72,5 @@
     <string name="skip_similar_entries">Ignorar entradas similares</string>
     <string name="skip_similar_entries_desc">Armazene apenas entradas únicas no histórico, baseado na inserção e nos idiomas.</string>
     <string name="select_theme">Selecione o tema</string>
+    <string name="theme_black">Preto</string>
 </resources>
