@@ -69,4 +69,6 @@
     <string name="image_translation_summary">Lataa ja ota käyttöön kieliä tekstin tunnistusta varten.</string>
     <string name="init_tess_first">Lataa kielitiedot ensin asetuksissa.</string>
     <string name="select_language">Valitse tekstin tunnistukseen käytettävä kieli asetuksissa.</string>
+    <string name="theme_black">Tumma</string>
+    <string name="select_theme">Valitse teema</string>
 </resources>
