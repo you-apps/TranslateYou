@@ -1,0 +1,4 @@
+* new engine: Apertium
+* feat: option for amoled/black theme
+* feat: support for audio using Lingva
+* various bug fixes and code improvements
