@@ -45,6 +45,9 @@
 * <a href="https://mymemory.translated.net/">MyMemory translator®</a>.
 * <a href="https://simple-web.org/projects/simplytranslate.html">SimplyTranslate</a>
 * <a href="https://www.reverso.net">Reverso®</a>
+* <a href="https://translate.wmcloud.org">MinT</a>
+* <a href="https://glosbe.com/">Glosbe</a>
+* <a href="https://apertium.org/">Apertium</a>
 
 <!-- ---------- Screenshots [Plus version] ---------- -->
 ## Screenshots
