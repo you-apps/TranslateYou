@@ -12,7 +12,7 @@
     <string name="instance">Instanssi</string>
     <string name="api_key">API-avain</string>
     <string name="options">Asetukset</string>
-    <string name="about">Tietoa</string>
+    <string name="about">Tietoja</string>
     <string name="fetch_delay">Käännösviive</string>
     <string name="optional">Valinnainen</string>
     <string name="history_summary">Seuraa viimeksi käännettyjä tekstejä</string>
