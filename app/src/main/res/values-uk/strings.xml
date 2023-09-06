@@ -47,7 +47,7 @@
     <string name="general">Загальне</string>
     <string name="translation">Переклад</string>
     <string name="app_language">Мова застосунку</string>
-    <string name="system">Як у системі</string>
+    <string name="system">Система</string>
     <string name="none">Вимк.</string>
     <string name="character_warning_limit">Ліміт символів попередження</string>
     <string name="character_warning_limit_summary">Попереджати, коли перекладений текст перевищує максимальну довжину.</string>
