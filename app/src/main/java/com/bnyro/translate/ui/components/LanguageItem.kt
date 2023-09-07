@@ -47,8 +47,7 @@ fun LanguageItem(
     onPinnedChange: () -> Unit,
     onClick: () -> Unit
 ) {
-    val isSelected = language.name.lowercase() == selectedLanguage.name.lowercase() ||
-        language.code.lowercase() == selectedLanguage.code.lowercase()
+    val isSelected = language == selectedLanguage
 
     Card(
         shape = RoundedCornerShape(30.dp),

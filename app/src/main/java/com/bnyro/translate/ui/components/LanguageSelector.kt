@@ -22,6 +22,7 @@ import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -32,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -60,6 +62,14 @@ fun LanguageSelector(
 ) {
     var showDialog by remember {
         mutableStateOf(false)
+    }
+    val lazyListState = rememberLazyListState()
+
+    LaunchedEffect(Unit, availableLanguages) {
+        // automatically scroll to the selected language
+        availableLanguages.indexOfFirst { it == selectedLanguage }.let {
+            if (it != -1) lazyListState.animateScrollToItem(it)
+        }
     }
 
     ElevatedButton(
@@ -111,7 +121,9 @@ fun LanguageSelector(
                 )
             },
             content = {
-                LazyColumn {
+                LazyColumn(
+                    state = lazyListState
+                ) {
                     if (autoLanguageEnabled) {
                         item {
                             val autoLanguage = Language("", stringResource(R.string.auto))
