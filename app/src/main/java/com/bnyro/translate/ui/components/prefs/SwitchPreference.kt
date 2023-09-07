@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -93,7 +94,9 @@ fun SwitchPreference(
             onCheckedChange = {
                 onCheckedChange(!checked)
             },
-            colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colorScheme.secondary)
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = MaterialTheme.colorScheme.surfaceColorAtElevation(10.dp)
+            )
         )
     }
 }
