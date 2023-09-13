@@ -204,7 +204,7 @@ fun TranslationComponent(
                 val charPref = Preferences.get(Preferences.charCounterLimitKey, "")
 
                 StyledTextField(
-                    text = viewModel.translation.translatedText,
+                    text = viewModel.translation.translatedText + "\n\n\n",
                     readOnly = true,
                     textColor = if (
                         charPref.isNotEmpty() && viewModel.translation.translatedText.length >= charPref.toInt()
