@@ -2,7 +2,7 @@
 <resources>
     <string name="okay">OK</string>
     <string name="forget">忘れる</string>
-    <string name="required">必要</string>
+    <string name="required">必須</string>
     <string name="compact_history_summary">デフォルトでは最初の3行のみ履歴を表示</string>
     <string name="paste">貼り付け</string>
     <string name="instance">インスタンス</string>
@@ -12,7 +12,7 @@
     <string name="similar">類似</string>
     <string name="cancel">キャンセル</string>
     <string name="copy">コピー</string>
-    <string name="api_key">APIキー</string>
+    <string name="api_key">API キー</string>
     <string name="auto">自動</string>
     <string name="language_not_supported">この言語には対応していません！</string>
     <string name="options">設定</string>
@@ -21,7 +21,7 @@
     <string name="about">アプリについて</string>
     <string name="history_enabled">履歴を有効化</string>
     <string name="fetch_delay">翻訳までの待ち時間</string>
-    <string name="fetch_delay_summary">テキストを入力してから翻訳を始めるまでの遅らせる時間</string>
+    <string name="fetch_delay_summary">テキストを入力してから翻訳を始めるまでの時間</string>
     <string name="compact_history">コンパクトな履歴</string>
     <string name="optional">任意</string>
     <string name="simultaneous_translation_summary">複数の翻訳エンジンから同時に結果を取得します。</string>
@@ -41,12 +41,22 @@
     <string name="theme_auto">システム</string>
     <string name="theme_light">ライト</string>
     <string name="clear_history">履歴を削除</string>
-    <string name="missing_api_key">設定からAPIキーを入力してください！</string>
+    <string name="missing_api_key">設定から API キーを入力してください。</string>
     <string name="definition">定義</string>
     <string name="translation">翻訳</string>
     <string name="general">一般</string>
-    <string name="app_language">アプリの表示言語</string>
+    <string name="app_language">アプリの言語</string>
     <string name="system">システム</string>
     <string name="search">検索</string>
     <string name="translate">翻訳</string>
+    <string name="theme_black">ブラック</string>
+    <string name="accent_color">アクセントカラー</string>
+    <string name="translate_to">訳文の言語</string>
+    <string name="nothing_here">何もありません。</string>
+    <string name="all_languages">すべての言語</string>
+    <string name="dynamic_colors">ダイナミックカラー</string>
+    <string name="unknown_error">不明なエラー</string>
+    <string name="select_theme">テーマを選択</string>
+    <string name="favorites">お気に入り</string>
+    <string name="translate_from">原文の言語</string>
 </resources>
