@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.you-apps.translate.const
+package com.bnyro.translate.const
 
 object AboutLinks {
     const val PRIVACY_POLICY = "https://raw.githubusercontent.com/you-apps/TranslateYou/master/PRIVACY%20POLICY.md"
