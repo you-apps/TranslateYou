@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Bnyro
+ * Copyright (c) 2023 you-apps
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,11 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.const
+package com.you-apps.translate.const
 
 object AboutLinks {
-    const val PRIVACY_POLICY = "https://raw.githubusercontent.com/Bnyro/TranslateYou/master/PRIVACY%20POLICY.md"
-    const val AUTHOR = "https://bnyro.github.io"
-    const val GITHUB = "https://github.com/Bnyro/TranslateYou"
+    const val PRIVACY_POLICY = "https://raw.githubusercontent.com/you-apps/TranslateYou/master/PRIVACY%20POLICY.md"
+    const val AUTHOR = "https://you-apps.github.io"
+    const val GITHUB = "https://github.com/you-apps/TranslateYou"
     const val GNU = "https://www.gnu.org/licenses/gpl-3.0.en.html"
 }

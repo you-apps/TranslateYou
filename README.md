@@ -6,11 +6,11 @@
 
 <!-- ---------- Badges ---------- -->
   <div align="center">
-    <img alt="License" src="https://img.shields.io/github/license/Bnyro/TranslateYou?color=c3e7ff&style=flat-square">
-    <img alt="Downloads" src="https://img.shields.io/github/downloads/Bnyro/TranslateYou/total.svg?color=c3e7ff&style=flat-square">
-    <img alt="Last commit" src="https://img.shields.io/github/last-commit/Bnyro/TranslateYou?color=c3e7ff&style=flat-square">
-    <img alt="Repo size" src="https://img.shields.io/github/repo-size/Bnyro/TranslateYou?color=c3e7ff&style=flat-square">
-    <img alt="Stars" src="https://img.shields.io/github/stars/Bnyro/TranslateYou?color=c3e7ff&style=flat-square">
+    <img alt="License" src="https://img.shields.io/github/license/you-apps/TranslateYou?color=c3e7ff&style=flat-square">
+    <img alt="Downloads" src="https://img.shields.io/github/downloads/you-apps/TranslateYou/total.svg?color=c3e7ff&style=flat-square">
+    <img alt="Last commit" src="https://img.shields.io/github/last-commit/you-apps/TranslateYou?color=c3e7ff&style=flat-square">
+    <img alt="Repo size" src="https://img.shields.io/github/repo-size/you-apps/TranslateYou?color=c3e7ff&style=flat-square">
+    <img alt="Stars" src="https://img.shields.io/github/stars/you-apps/TranslateYou?color=c3e7ff&style=flat-square">
     <br>
 </div>
 </div>
@@ -34,7 +34,7 @@
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.bnyro.translate/)
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="80">](https://apt.izzysoft.de/fdroid/index/apk/com.bnyro.translate)
-[<img src="ghbadge.png" alt="Get it on GitHub" height="80">](https://github.com/bnyro/translateyou/releases)
+[<img src="ghbadge.png" alt="Get it on GitHub" height="80">](https://github.com/you-apps/translateyou/releases)
 
 <!-- ---------- Supported translation engines ---------- -->
 ## Supported translation engines
@@ -66,7 +66,7 @@
 ***All contributions are very welcome!***
 
 * Feel free to join the [Matrix room](https://matrix.to/#/#you-apps:matrix.org) for discussions about the app.
-* Bug reports and feature requests can be submitted [here](https://github.com/Bnyro/TranslateYou/issues) (please make sure to fill out all the requested information properly!).
+* Bug reports and feature requests can be submitted [here](https://github.com/you-apps/TranslateYou/issues) (please make sure to fill out all the requested information properly!).
 * If you are a developer and wish to contribute to the app, please **fork** the project and submit a [**pull request**](https://help.github.com/articles/about-pull-requests/).
 
 ## Translation
@@ -77,12 +77,12 @@
 **Translations are greatly appreciated.** \
 If **Translate You** is not in your language, feel free to participate by:
 * Translating the application interface, via [**pull request**](https://help.github.com/articles/about-pull-requests/) or more simply by [**Weblate**](https://hosted.weblate.org/projects/you-apps/translate-you/).
-* **Check** and **update** the [**pre-existing translations on Github**](https://github.com/Bnyro/TranslateYou/tree/master/app/src/main/res) or more simply via [**Weblate**](https://hosted.weblate.org/projects/you-apps/translate-you/).
+* **Check** and **update** the [**pre-existing translations on Github**](https://github.com/you-apps/TranslateYou/tree/master/app/src/main/res) or more simply via [**Weblate**](https://hosted.weblate.org/projects/you-apps/translate-you/).
 
 <!-- ---------- Privacy Policy and License ---------- -->
 ## Privacy Policy
 
-**Translate You's privacy policy is available** [**here**](https://github.com/Bnyro/TranslateYou/blob/master/PRIVACY%20POLICY.md)
+**Translate You's privacy policy is available** [**here**](https://github.com/you-apps/TranslateYou/blob/master/PRIVACY%20POLICY.md)
 
 ## Credits
 * Icon design by [M00NJ](https://github.com/M00NJ)
