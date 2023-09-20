@@ -1,0 +1,1 @@
+Important: The signing keys for this release have changed, hence you must reinstall the app and can't update it directly.
