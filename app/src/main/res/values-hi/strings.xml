@@ -24,9 +24,9 @@
     <string name="copy">प्रतिलिपि</string>
     <string name="auto">ऑटो</string>
     <string name="forget">भूल जाओ</string>
-    <string name="translate">अनुवाद</string>
+    <string name="translate">अनुवाद करें</string>
     <string name="language_not_supported">भाषा समर्थित नहीं है!</string>
-    <string name="translate_to">अनुवाद करने के लिए</string>
+    <string name="translate_to">में अनुवाद करें</string>
     <string name="translate_from">से अनुवाद करें</string>
     <string name="instance">उदाहरण</string>
     <string name="api_key">API चाबी</string>
