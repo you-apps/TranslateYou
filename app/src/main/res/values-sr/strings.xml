@@ -21,9 +21,9 @@
     <string name="history">Историја</string>
     <string name="about">О апликацији</string>
     <string name="history_enabled">Историја омогућена</string>
-    <string name="fetch_delay">Одлагање превода</string>
-    <string name="fetch_delay_summary">Одлагање између уноса текста и превођења</string>
-    <string name="history_summary">Чувај преведени текст</string>
+    <string name="fetch_delay">Кашњење превода</string>
+    <string name="fetch_delay_summary">Кашњење између уноса текста и превођења</string>
+    <string name="history_summary">Чување преведеног текста</string>
     <string name="required">Обавезно</string>
     <string name="optional">Опционално</string>
     <string name="compact_history">Смањи историју</string>
@@ -44,7 +44,7 @@
     <string name="character_warning_limit_summary">Упозорава када преведени текст превазилази ограничење броја знакова.</string>
     <string name="none">Ниједно</string>
     <string name="translate_automatically">Преведи аутоматски</string>
-    <string name="translate_automatically_summary">Аутоматски захтева превод након одређеног одлагања.</string>
+    <string name="translate_automatically_summary">Аутоматски захтева превод након одређеног кашњења.</string>
     <string name="nothing_here">Овде је празно.</string>
     <string name="use_free_api">Користи бесплатан API</string>
     <string name="use_free_api_summary">Коришћење бесплатног уместо плаћеног Pro API-ја.</string>
