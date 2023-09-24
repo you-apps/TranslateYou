@@ -2,7 +2,7 @@
 <div align="center">
   <img width="200" height="200"src="fastlane/metadata/android/en-US/images/icon.png">
   <h1>Translate You</h1>
-<p>Powerful Translator App built with <a href="https://m3.material.io/">Material Design 3 (You)</a> supporting different translation engines.</p>
+<p>Privacy focused translator app built with MD3.</p>
 
 <!-- ---------- Badges ---------- -->
   <div align="center">
