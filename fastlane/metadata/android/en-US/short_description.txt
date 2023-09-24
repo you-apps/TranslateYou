@@ -1,1 +1,1 @@
- Translator built with Material Design 3 (You) supporting multiple engines
+Privacy focused translator app built with MD3
