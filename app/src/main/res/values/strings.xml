@@ -65,6 +65,7 @@
     <!-- History -->
     <string name="clear_history">Clear history</string>
     <string name="open">Open</string>
+    <string name="irreversible">This can\'t be undone. Are you sure that you want to proceed?</string>
     <!-- Exception -->
     <string name="server_error">Error in communicating with the server.</string>
     <string name="missing_api_key">Please provide an API key in the settings.</string>

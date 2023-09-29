@@ -30,10 +30,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.icons.filled.History
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -53,10 +55,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bnyro.translate.R
-import com.bnyro.translate.obj.MenuItemData
+import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.components.SearchAppBar
 import com.bnyro.translate.ui.components.StyledIconButton
-import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.HistoryModel
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.views.HistoryRow
@@ -71,6 +72,10 @@ fun HistoryScreen(
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
         rememberTopAppBarState()
     )
+
+    var showDeleteHistoryDialog by remember {
+        mutableStateOf(false)
+    }
 
     var searchQuery by remember {
         mutableStateOf("")
@@ -97,16 +102,16 @@ fun HistoryScreen(
                     }
                 },
                 actions = {
-                    TopBarMenu(
-                        menuItems = listOf(
-                            MenuItemData(
-                                stringResource(id = R.string.clear_history),
-                                Icons.Default.Delete
-                            ) {
-                                viewModel.clearHistory()
-                            }
+                    IconButton(
+                        onClick = {
+                            showDeleteHistoryDialog = true
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.DeleteForever,
+                            contentDescription = stringResource(id = R.string.clear_history)
                         )
-                    )
+                    }
                 },
                 scrollBehavior = scrollBehavior
             )
@@ -154,4 +159,27 @@ fun HistoryScreen(
             }
         }
     )
+
+    if (showDeleteHistoryDialog) {
+        AlertDialog(
+            onDismissRequest = { showDeleteHistoryDialog = false },
+            title = {
+                Text(stringResource(R.string.clear_history))
+            },
+            text = {
+                Text(stringResource(R.string.irreversible))
+            },
+            dismissButton = {
+                DialogButton(text = stringResource(R.string.cancel)) {
+                    showDeleteHistoryDialog = false
+                }
+            },
+            confirmButton = {
+                DialogButton(text = stringResource(R.string.okay)) {
+                    viewModel.clearHistory()
+                    showDeleteHistoryDialog = false
+                }
+            }
+        )
+    }
 }
