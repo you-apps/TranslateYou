@@ -15,17 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.api.st.obj
+package com.bnyro.translate.api.mh.obj
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class STTranslationResponse(
-    @SerialName("definitions")
-    val definitions: STDefinition? = null,
-    @SerialName("source_language")
-    val sourceLanguage: String? = null,
-    @SerialName("translated-text")
-    val translatedText: String = ""
+data class MhLanguage(
+    @SerialName("Id") val id: String,
+    @SerialName("Name") val name: String
 )

@@ -27,7 +27,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitHelper {
-    @OptIn(ExperimentalSerializationApi::class)
     inline fun <reified T> createApi(engine: TranslationEngine): T {
         val baseUrl = engine.getUrl()
 

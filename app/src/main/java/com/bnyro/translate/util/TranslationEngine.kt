@@ -30,7 +30,8 @@ abstract class TranslationEngine(
     val apiKeyState: ApiKeyState,
     val autoLanguageCode: String?,
     val supportsSimTranslation: Boolean = true,
-    val supportsAudio: Boolean = false
+    val supportsAudio: Boolean = false,
+    val supportedEngines: List<String> = emptyList(),
 ) {
 
     abstract fun createOrRecreate(): TranslationEngine
@@ -42,6 +43,7 @@ abstract class TranslationEngine(
     val urlPrefKey = this.name + Preferences.instanceUrlKey
     val apiPrefKey = this.name + Preferences.apiKey
     val simPrefKey = this.name + Preferences.simultaneousTranslationKey
+    val selEnginePrefKey = this.name + Preferences.selectedEngine
 
     open fun getUrl(): String {
         return Preferences.get(
@@ -65,4 +67,6 @@ abstract class TranslationEngine(
         simPrefKey,
         false
     )
+
+    fun getSelectedEngine() = Preferences.get(selEnginePrefKey, supportedEngines.first())
 }

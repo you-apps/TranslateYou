@@ -15,45 +15,41 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.api.st
+package com.bnyro.translate.api.mh
 
-import android.accounts.NetworkErrorException
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
-import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 
-class STEngine : TranslationEngine(
-    name = "SimplyTranslate",
-    defaultUrl = "https://simplytranslate.org/",
+class MhEngine : TranslationEngine(
+    name = "Mozhi",
+    defaultUrl = "https://mozhi.aryak.me/",
     urlModifiable = true,
     apiKeyState = ApiKeyState.DISABLED,
     autoLanguageCode = "auto",
-    supportedEngines = listOf("google", "libre", "reverso", "iciba")
+    supportedEngines = listOf(
+        "google",
+        "libre",
+        "reverso",
+        "deepl",
+        "duckduckgo",
+        "mymemory",
+        "watson",
+        "yandex"
+    )
 ) {
-    lateinit var api: SimplyTranslate
+    lateinit var api: Mozhi
+
 
     override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
     }
 
     override suspend fun getLanguages(): List<Language> {
-        val body = api.getLanguages(getSelectedEngine())
-
-        // val body = api.getLanguages().execute().body()
-        val languages = mutableListOf<Language>()
-        body.split("\n").let {
-            for (index in 0..(it.size.toDouble() / 2 - 1).toInt()) {
-                languages.add(
-                    Language(name = it[index * 2], code = it[index * 2 + 1])
-                )
-            }
-        }
-
-        if (languages.isEmpty()) throw NetworkErrorException("Network Error")
-        return languages
+        return api.getLanguages(getSelectedEngine())
+            .map { Language(it.id, it.name) }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
