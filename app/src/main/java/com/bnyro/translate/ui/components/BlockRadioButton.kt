@@ -38,7 +38,7 @@ fun BlockRadioButton(
     Column {
         LazyVerticalGrid(
             columns = GridCells.Fixed(3),
-            modifier = Modifier.heightIn(max = 200.dp)
+            modifier = Modifier.heightIn(max = 300.dp)
         ) {
             items(items) {
                 val index = items.indexOf(it)

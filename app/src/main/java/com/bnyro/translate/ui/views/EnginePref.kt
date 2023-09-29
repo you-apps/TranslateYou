@@ -25,6 +25,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AlertDialog
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -33,7 +34,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
 import com.bnyro.translate.api.deepl.DeeplEngine
-import com.bnyro.translate.api.st.STEngine
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.capitalize
@@ -49,15 +49,8 @@ import com.bnyro.translate.util.Preferences
 fun EnginePref() {
     val engines = TranslationEngines.engines
 
-    Log.e("engines", engines.map { it.name }.toString())
-
     var selected by remember {
-        mutableStateOf(
-            Preferences.get(
-                Preferences.apiTypeKey,
-                0
-            )
-        )
+        mutableIntStateOf(Preferences.get(Preferences.apiTypeKey, 0))
     }
 
     var instanceUrl by remember {
@@ -117,10 +110,8 @@ fun EnginePref() {
                 }
             }
 
-            when (engine) {
-                is STEngine -> {
-                    val avEngines = listOf("all", "google", "libre", "reverso", "iciba")
-
+            when {
+                 engine.supportedEngines.isNotEmpty() -> {
                     var showEngineSelDialog by remember {
                         mutableStateOf(false)
                     }
@@ -149,11 +140,11 @@ fun EnginePref() {
                             },
                             text = {
                                 LazyColumn {
-                                    items(avEngines) { usedEngine ->
+                                    items(engine.supportedEngines) { availableEngine ->
                                         SelectableItem(
-                                            text = usedEngine.capitalize()
+                                            text = availableEngine.capitalize()
                                         ) {
-                                            Preferences.put(engine.selEnginePrefKey, usedEngine)
+                                            Preferences.put(engine.selEnginePrefKey, availableEngine)
                                             engine.createOrRecreate()
                                             showEngineSelDialog = false
                                         }
@@ -163,7 +154,7 @@ fun EnginePref() {
                         )
                     }
                 }
-                is DeeplEngine -> {
+                engine is DeeplEngine -> {
                     Spacer(modifier = Modifier.height(5.dp))
                     SwitchPreference(
                         preferenceKey = engine.useFreeApiKey,

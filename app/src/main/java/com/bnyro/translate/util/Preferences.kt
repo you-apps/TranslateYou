@@ -35,6 +35,7 @@ object Preferences {
     const val appLanguageKey = "appLanguage"
     const val charCounterLimitKey = "charCountLimit"
     const val tessLanguageKey = "tessLanguage"
+    const val selectedEngine = "selectedEngine"
 
     const val themeModeKey = "themeModeKey"
     const val accentColorKey = "accentColor"
