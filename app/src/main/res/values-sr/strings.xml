@@ -85,4 +85,5 @@
     <string name="skip_similar_entries_desc">Чување само јединствених уноса у историји, на основу уметања и језика.</string>
     <string name="select_theme">Изаберите тему</string>
     <string name="theme_black">Црна</string>
+    <string name="irreversible">Ово се не може поништити. Желите ли заиста да наставите\?</string>
 </resources>
