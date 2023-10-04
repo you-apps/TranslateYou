@@ -78,4 +78,9 @@
     <string name="all_languages">Toutes les langues</string>
     <string name="use_free_api_summary">Utilisez l\'API gratuite au lieu de l\'API Pro payante.</string>
     <string name="use_free_api">Utiliser une API gratuite</string>
+    <string name="theme_black">Noir</string>
+    <string name="skip_similar_entries">Passer les entrées similaires</string>
+    <string name="skip_similar_entries_desc">Ne conserver que des entrées uniques dans l\'historique, en fonction de l\'insertion et des langues.</string>
+    <string name="select_theme">Sélectionner le thème</string>
+    <string name="irreversible">Cela ne peut pas être annulé. Êtes-vous sûr de vouloir continuer \?</string>
 </resources>
