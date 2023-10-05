@@ -73,4 +73,5 @@
     <string name="skip_similar_entries">ସମାନ ପ୍ରବିଷ୍ଟଗୁଡ଼ିକୁ ଏଡ଼ାଇଦିଅ</string>
     <string name="select_theme">ଥିମ୍ ଚୟନ କରନ୍ତୁ</string>
     <string name="theme_black">କଳା</string>
+    <string name="irreversible">ଏହାକୁ ଏଡ଼ାଇ ଦିଆଯାଇପାରିବ ନାହିଁ । ଆପଣ ଅଗ୍ରସର ହେବାକୁ ଚାହୁଁଛନ୍ତି ବୋଲି ନିଶ୍ଚିତ କି\?</string>
 </resources>
