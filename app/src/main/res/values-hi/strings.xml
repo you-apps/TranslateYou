@@ -73,4 +73,5 @@
     <string name="skip_similar_entries_desc">सम्मिलन और भाषाओं के आधार पर, इतिहास में केवल अनूठे इंदराज़ संग्रहीत करें।</string>
     <string name="select_theme">थीम चुनें</string>
     <string name="theme_black">काला</string>
+    <string name="irreversible">इसे अन-डू नहीं किया जा सकता। क्या आप वाकई आगे बढ़ना चाहते हैं\?</string>
 </resources>
