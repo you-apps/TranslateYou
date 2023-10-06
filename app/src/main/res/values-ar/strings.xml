@@ -73,4 +73,5 @@
     <string name="skip_similar_entries_desc">قم بتخزين الإدخالات الفريدة فقط في السجل ، بناء على الإدراج واللغات.</string>
     <string name="select_theme">اختر السمة</string>
     <string name="theme_black">اسود</string>
+    <string name="irreversible">لا يمكن التراجع عن هذا. هل أنت متأكد أنك تريد المتابعة؟</string>
 </resources>
