@@ -73,4 +73,5 @@
     <string name="skip_similar_entries_desc">Do historie ukládat pouze unikátní položky, založené na vložení a jazycích.</string>
     <string name="select_theme">Zvolit motiv</string>
     <string name="theme_black">Černá</string>
+    <string name="irreversible">Tato akce je nevratná. Opravdu chcete pokračovat\?</string>
 </resources>

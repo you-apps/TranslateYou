@@ -18,7 +18,7 @@
     <string name="clear_history">Изчисти историята</string>
     <string name="nothing_here">Празно.</string>
     <string name="skip_similar_entries_desc">Съхранявай само уникални записи в историята въз основа на въвеждането и езиците.</string>
-    <string name="copy">Копирай</string>
+    <string name="copy">Копиране</string>
     <string name="none">Нито един</string>
     <string name="image_translation_summary">Изтегли и приложи езиците за разпознаване на текст от изображения.</string>
     <string name="character_warning_limit_summary">Предупреди, когато преведеният текст надвишава максималната дължина.</string>
@@ -73,4 +73,5 @@
     <string name="translate_automatically_summary">Автоматичен превод след известно забавяне.</string>
     <string name="definition">Дефиниция</string>
     <string name="translate_from">Преведи от</string>
+    <string name="irreversible">Сигурни ли сте\? Действието е необратимо.</string>
 </resources>

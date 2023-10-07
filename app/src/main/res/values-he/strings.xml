@@ -82,4 +82,5 @@
     <string name="skip_similar_entries_desc">לאחסן רק רשומות ייחודיות בהיסטוריה לפי הוספה ושפות.</string>
     <string name="select_theme">בחירת ערכת עיצוב</string>
     <string name="theme_black">שחור</string>
+    <string name="irreversible">אי אפשר להשתקם מזה. להמשיך\?</string>
 </resources>

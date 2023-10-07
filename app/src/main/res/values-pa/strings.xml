@@ -73,4 +73,5 @@
     <string name="required">ਲੋੜੀਂਦਾ ਹੈ</string>
     <string name="optional">ਵਿਕਲਪਿਕ</string>
     <string name="compact_history">ਸੰਖੇਪ ਅਤੀਤ</string>
+    <string name="irreversible">ਇਸ ਨੂੰ ਅਣਕੀਤਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਤੌਰ \'ਤੇ ਅੱਗੇ ਵਧਣਾ ਚਾਹੁੰਦੇ ਹੋ\?</string>
 </resources>
