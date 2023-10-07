@@ -72,4 +72,5 @@
     <string name="theme_black">Tumma</string>
     <string name="select_theme">Valitse teema</string>
     <string name="skip_similar_entries">Ohita samankaltaiset tulokset</string>
+    <string name="irreversible">Tätä ei voi perua. Haluatko varmasti jatkaa\?</string>
 </resources>
