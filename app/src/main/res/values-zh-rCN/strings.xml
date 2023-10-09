@@ -83,4 +83,5 @@
     <string name="skip_similar_entries_desc">根据插入内容和语种，仅将独特的条目存储在历史记录中。</string>
     <string name="select_theme">选择主题</string>
     <string name="theme_black">黑色</string>
+    <string name="irreversible">此操作无法撤销。你确定要继续吗？</string>
 </resources>
