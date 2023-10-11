@@ -26,7 +26,7 @@
     <string name="history_summary">Чување преведеног текста</string>
     <string name="required">Обавезно</string>
     <string name="optional">Опционално</string>
-    <string name="compact_history">Смањи историју</string>
+    <string name="compact_history">Компактна историја</string>
     <string name="compact_history_summary">Приказивање само прве 3 линије текста у историји</string>
     <string name="simultaneous_translation">Истовремени превод</string>
     <string name="simultaneous_translation_summary">Прикупљање резултата са више извора истовремено.</string>
@@ -39,7 +39,7 @@
     <string name="translation">Превод</string>
     <string name="general">Опште</string>
     <string name="app_language">Језик апликације</string>
-    <string name="system">Систем</string>
+    <string name="system">Системски</string>
     <string name="character_warning_limit">Упозорење о ограничењу броја знакова</string>
     <string name="character_warning_limit_summary">Упозорава када преведени текст превазилази ограничење броја знакова.</string>
     <string name="none">Ниједно</string>
