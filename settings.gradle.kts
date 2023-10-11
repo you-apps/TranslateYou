@@ -11,8 +11,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         // used for OCR
-        maven { url 'https://jitpack.io' }
+        maven { setUrl("https://jitpack.io") }
     }
 }
 rootProject.name = "Translate You"
-include ':app'
+include(":app")
