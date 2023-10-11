@@ -69,4 +69,9 @@
     <string name="nothing_here">Ingenting her.</string>
     <string name="translation">Oversettelse</string>
     <string name="all_languages">Alle språk</string>
+    <string name="theme_black">Svart</string>
+    <string name="skip_similar_entries">Hopp over lignende oppføringer</string>
+    <string name="skip_similar_entries_desc">Kun lagre unike oppføringer i historikken, basert på innskriving og språk.</string>
+    <string name="select_theme">Velg drakt</string>
+    <string name="irreversible">Fortsett i viten om at dette ikke kan endres senere\?</string>
 </resources>
