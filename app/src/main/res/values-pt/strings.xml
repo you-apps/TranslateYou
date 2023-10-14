@@ -7,7 +7,7 @@
     <string name="api_key">Chave API</string>
     <string name="options">Configurações</string>
     <string name="history">Histórico</string>
-    <string name="about">Sobre</string>
+    <string name="about">Acerca</string>
     <string name="history_enabled">Histórico ativado</string>
     <string name="fetch_delay">Atraso de tradução</string>
     <string name="fetch_delay_summary">O atraso entre a inserção do texto e a busca pela tradução</string>
