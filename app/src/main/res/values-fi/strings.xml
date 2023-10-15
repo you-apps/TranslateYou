@@ -3,7 +3,7 @@
     <string name="history">Historia</string>
     <string name="history_enabled">Historia käytössä</string>
     <string name="okay">OK</string>
-    <string name="cancel">Peruuta</string>
+    <string name="cancel">Peru</string>
     <string name="enter_text">Kirjoita teksti</string>
     <string name="paste">Liitä</string>
     <string name="copy">Kopioi</string>
@@ -39,7 +39,7 @@
     <string name="enabled_engines">Käyttöön otetut palvelut</string>
     <string name="simultaneous_translation">Simultaani kääntäminen</string>
     <string name="enabled_engines_summary">Palvelut, joista käännöksiä haetaan samanaikaisesti.</string>
-    <string name="general">Yleinen</string>
+    <string name="general">Yleiset</string>
     <string name="app_language">Sovelluksen kieli</string>
     <string name="theme_light">Vaalea</string>
     <string name="definition">Määritelmä</string>

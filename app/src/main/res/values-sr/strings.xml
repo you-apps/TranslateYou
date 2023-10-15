@@ -26,7 +26,7 @@
     <string name="history_summary">Чување преведеног текста</string>
     <string name="required">Обавезно</string>
     <string name="optional">Опционално</string>
-    <string name="compact_history">Смањи историју</string>
+    <string name="compact_history">Компактна историја</string>
     <string name="compact_history_summary">Приказивање само прве 3 линије текста у историји</string>
     <string name="simultaneous_translation">Истовремени превод</string>
     <string name="simultaneous_translation_summary">Прикупљање резултата са више извора истовремено.</string>
@@ -39,7 +39,7 @@
     <string name="translation">Превод</string>
     <string name="general">Опште</string>
     <string name="app_language">Језик апликације</string>
-    <string name="system">Систем</string>
+    <string name="system">Системски</string>
     <string name="character_warning_limit">Упозорење о ограничењу броја знакова</string>
     <string name="character_warning_limit_summary">Упозорава када преведени текст превазилази ограничење броја знакова.</string>
     <string name="none">Ниједно</string>
@@ -54,10 +54,10 @@
     <string name="license">Лиценца</string>
     <string name="privacy_policy">Политика приватности</string>
     <!-- Theme -->
-    <string name="theme_auto">Систем</string>
+    <string name="theme_auto">Системски</string>
     <string name="theme_light">Светла</string>
     <string name="theme_dark">Тамна</string>
-    <string name="accent_color">Главна боја</string>
+    <string name="accent_color">Боја за акценат</string>
     <string name="dynamic_colors">Динамичке боје</string>
     <!-- History -->
     <string name="clear_history">Очисти историју</string>
@@ -67,7 +67,7 @@
     <string name="missing_api_key">Унесите API кључ у подешавањима.</string>
     <string name="unknown_error">Непозната грешка</string>
     <!-- Additional Info -->
-    <string name="detected_language">Препознати језик</string>
+    <string name="detected_language">Откривени језик</string>
     <string name="definition">Дефиниција</string>
     <string name="example">Пример</string>
     <string name="similar">Слично</string>
@@ -83,7 +83,7 @@
     <string name="select_language">Изаберите језик за препознавање текста са слика у подешавањима.</string>
     <string name="skip_similar_entries">Прескочи сличне уносе</string>
     <string name="skip_similar_entries_desc">Чување само јединствених уноса у историји, на основу уметања и језика.</string>
-    <string name="select_theme">Изаберите тему</string>
+    <string name="select_theme">Избор теме</string>
     <string name="theme_black">Црна</string>
     <string name="irreversible">Ово се не може поништити. Желите ли заиста да наставите\?</string>
 </resources>
