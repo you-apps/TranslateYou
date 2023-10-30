@@ -25,10 +25,7 @@ import android.content.IntentFilter
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -37,19 +34,14 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Download
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -62,13 +54,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.ext.formatBytes
 import com.bnyro.translate.obj.TessLanguage
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -126,9 +115,7 @@ fun TessSettings(
             LargeTopAppBar(
                 title = { Text(stringResource(R.string.image_translation)) },
                 navigationIcon = {
-                    IconButton(onClick = onDismissRequest) {
-                        Icon(Icons.Default.ArrowBack, null)
-                    }
+                    StyledIconButton(imageVector = Icons.Default.ArrowBack, onClick = onDismissRequest)
                 }
             )
         },
@@ -149,43 +136,21 @@ fun TessSettings(
                         .fillMaxWidth()
                 ) {
                     items(downloadedLanguages) {
-                        Card(
-                            shape = RoundedCornerShape(30.dp),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(
-                                    RoundedCornerShape(30.dp)
-                                )
-                                .clickable {
-                                    Preferences.put(Preferences.tessLanguageKey, it)
-                                    selectedLanguage = it
-                                },
-                            colors = CardDefaults.cardColors(
-                                containerColor = Color.Transparent
-                            )
-
+                        TessSettingsRow(
+                            packName = "$it${TessHelper.DATA_FILE_SUFFIX}",
+                            size = null,
+                            selectedLanguage = selectedLanguage,
+                            onSelect = { selectedLanguage = it }
                         ) {
-                            Row(
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Text(
-                                    text = if (selectedLanguage == it) "$it${TessHelper.DATA_FILE_SUFFIX}  ✓" else "$it${TessHelper.DATA_FILE_SUFFIX}",
-                                    modifier = Modifier
-                                        .padding(15.dp)
-                                        .weight(1f)
-                                )
-                                StyledIconButton(imageVector = Icons.Default.Delete) {
-                                    if (TessHelper.deleteLanguage(context, it)) {
-                                        downloadedLanguages = TessHelper.getDownloadedLanguages(
-                                            context
-                                        )
-                                    } else {
-                                        Toast.makeText(
-                                            context,
-                                            R.string.unknown_error,
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
+                            StyledIconButton(imageVector = Icons.Default.Delete) {
+                                if (TessHelper.deleteLanguage(context, it)) {
+                                    downloadedLanguages = TessHelper.getDownloadedLanguages(context)
+                                } else {
+                                    Toast.makeText(
+                                        context,
+                                        R.string.unknown_error,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                             }
                         }
@@ -211,47 +176,29 @@ fun TessSettings(
                     }
 
                     items(notYetDownloadedLanguages) {
-                        Card(
-                            shape = RoundedCornerShape(30.dp),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(
-                                    RoundedCornerShape(30.dp)
-                                )
-                                .clickable { },
-                            colors = CardDefaults.cardColors(
-                                containerColor = Color.Transparent
-                            )
-
+                        TessSettingsRow(
+                            packName = it.path,
+                            size = it.size,
+                            selectedLanguage = selectedLanguage
                         ) {
-                            Row(
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Text(
-                                    text = "${it.path} (${it.size.formatBytes()})",
+                            var downloading by remember {
+                                mutableStateOf(false)
+                            }
+                            if (!downloading) {
+                                StyledIconButton(imageVector = Icons.Default.Download) {
+                                    TessHelper.downloadLanguageData(context, it.path)
+                                    downloading = true
+                                    Handler(Looper.getMainLooper()).postDelayed({
+                                        downloading = false
+                                    }, 2000)
+                                }
+                            } else {
+                                CircularProgressIndicator(
                                     modifier = Modifier
-                                        .padding(15.dp)
+                                        .padding(10.dp)
+                                        .requiredSize(27.dp),
+                                    strokeWidth = 3.dp
                                 )
-                                var downloading by remember {
-                                    mutableStateOf(false)
-                                }
-                                if (!downloading) {
-                                    StyledIconButton(imageVector = Icons.Default.Download) {
-                                        TessHelper.downloadLanguageData(context, it.path)
-                                        downloading = true
-                                        Handler(Looper.getMainLooper()).postDelayed({
-                                            downloading = false
-                                        }, 2000)
-                                    }
-                                } else {
-                                    CircularProgressIndicator(
-                                        modifier = Modifier
-                                            .padding(10.dp)
-                                            .requiredSize(27.dp),
-                                        strokeWidth = 3.dp
-                                    )
-                                }
                             }
                         }
                     }

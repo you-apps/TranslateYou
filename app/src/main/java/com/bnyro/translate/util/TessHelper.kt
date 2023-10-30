@@ -35,6 +35,7 @@ object TessHelper {
     private const val baseUrl = "https://raw.githubusercontent.com/tesseract-ocr/tessdata/main"
     const val tessRepoUrl = "https://github.com/tesseract-ocr/tessdata"
     const val DATA_FILE_SUFFIX = ".traineddata"
+    private const val TESS_DIR = "tessdata"
 
     private val externalApi by lazy {
         RetrofitHelper.createInstance<ExternalApi>(githubApiUrl)
@@ -95,7 +96,7 @@ object TessHelper {
     }
 
     fun deleteLanguage(context: Context, language: String): Boolean {
-        val file = File(getTessDir(context), "$language.traineddata")
+        val file = File(getTessDir(context), "$language$DATA_FILE_SUFFIX")
         return if (file.exists()) file.delete() else false
     }
 
@@ -105,7 +106,7 @@ object TessHelper {
 
     private fun getRootDir(context: Context) = context.getExternalFilesDir(null)!!
 
-    private fun getTessDir(context: Context) = File(getRootDir(context), "tessdata").also {
+    private fun getTessDir(context: Context) = File(getRootDir(context), TESS_DIR).also {
         if (!it.exists()) it.mkdirs()
     }
 }
