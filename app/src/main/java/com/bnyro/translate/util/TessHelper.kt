@@ -27,6 +27,7 @@ import com.googlecode.tesseract.android.TessBaseAPI
 import java.io.File
 
 object TessHelper {
+    // extracted from https://api.github.com/repos/tesseract-ocr/tessdata/git/trees/main
     val availableLanguages = listOf(
         "tgk",
         "hrv",
@@ -160,6 +161,7 @@ object TessHelper {
     ).sorted()
 
     private const val baseUrl = "https://raw.githubusercontent.com/tesseract-ocr/tessdata/main"
+    const val tessRepoUrl = "https://github.com/tesseract-ocr/tessdata"
 
     fun getText(context: Context, uri: Uri?): String? {
         val tess = TessBaseAPI()

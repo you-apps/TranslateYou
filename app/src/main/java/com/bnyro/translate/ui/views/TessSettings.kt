@@ -36,6 +36,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Download
@@ -110,6 +111,10 @@ fun TessSettings(
             Column(
                 modifier = Modifier.fillMaxWidth()
             ) {
+                SelectionContainer {
+                    Text(text = stringResource(R.string.tess_summary, TessHelper.tessRepoUrl))
+                }
+
                 // downloaded languages
                 LazyColumn(
                     modifier = Modifier.fillMaxWidth()
@@ -208,7 +213,9 @@ fun TessSettings(
                                     }
                                 } else {
                                     CircularProgressIndicator(
-                                        modifier = Modifier.padding(10.dp).requiredSize(27.dp),
+                                        modifier = Modifier
+                                            .padding(10.dp)
+                                            .requiredSize(27.dp),
                                         strokeWidth = 3.dp
                                     )
                                 }
