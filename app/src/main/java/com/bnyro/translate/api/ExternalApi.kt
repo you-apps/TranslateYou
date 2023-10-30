@@ -15,23 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.ui.components
+package com.bnyro.translate.api
 
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import com.bnyro.translate.obj.TessLanguageResponse
+import com.bnyro.translate.util.TessHelper
+import retrofit2.http.GET
 
-@Composable
-fun DialogButton(
-    modifier: Modifier = Modifier,
-    text: String,
-    onClick: () -> Unit
-) {
-    TextButton(
-        modifier = modifier,
-        onClick = onClick
-    ) {
-        Text(text)
-    }
+interface ExternalApi {
+    @GET(TessHelper.tessTreePath)
+    suspend fun getAvailableTessLanguages(): TessLanguageResponse
 }

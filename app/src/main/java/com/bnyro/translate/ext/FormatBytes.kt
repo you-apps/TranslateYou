@@ -15,23 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.ui.components
+package com.bnyro.translate.ext
 
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-
-@Composable
-fun DialogButton(
-    modifier: Modifier = Modifier,
-    text: String,
-    onClick: () -> Unit
-) {
-    TextButton(
-        modifier = modifier,
-        onClick = onClick
-    ) {
-        Text(text)
-    }
+fun Long.formatBytes(): String {
+    if (this < 1024) return "$this B"
+    val z = (63 - java.lang.Long.numberOfLeadingZeros(this)) / 10
+    return String.format("%.1f %sB", this.toDouble() / (1L shl z * 10), " KMGTPE"[z])
 }

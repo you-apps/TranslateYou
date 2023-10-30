@@ -15,23 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.ui.components
+package com.bnyro.translate.obj
 
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import kotlinx.serialization.Serializable
 
-@Composable
-fun DialogButton(
-    modifier: Modifier = Modifier,
-    text: String,
-    onClick: () -> Unit
-) {
-    TextButton(
-        modifier = modifier,
-        onClick = onClick
-    ) {
-        Text(text)
-    }
-}
+@Serializable
+data class TessLanguage(
+    val mode: String,
+    val path: String,
+    val sha: String,
+    val size: Long = 0,
+    val type: String = "",
+    val url: String = ""
+)

@@ -19,7 +19,6 @@ package com.bnyro.translate.util
 
 import com.bnyro.translate.BuildConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,9 +26,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitHelper {
-    inline fun <reified T> createApi(engine: TranslationEngine): T {
-        val baseUrl = engine.getUrl()
+    val contentType = "application/json".toMediaTypeOrNull()!!
 
+    inline fun <reified T> createInstance(baseUrl: String): T {
         val httpClient = OkHttpClient.Builder()
 
         if (BuildConfig.DEBUG) {
@@ -39,8 +38,6 @@ object RetrofitHelper {
             httpClient.addInterceptor(logging) // <-- this is the important line!
         }
 
-        val contentType = "application/json".toMediaTypeOrNull()!!
-
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(ScalarsConverterFactory.create())
@@ -49,4 +46,6 @@ object RetrofitHelper {
             .build()
             .create(T::class.java)
     }
+
+    inline fun <reified T> createApi(engine: TranslationEngine) = createInstance<T>(engine.getUrl())
 }

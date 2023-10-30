@@ -133,7 +133,7 @@ fun EnginePref() {
                             onDismissRequest = { showEngineSelDialog = false },
                             confirmButton = {
                                 DialogButton(
-                                    stringResource(R.string.cancel)
+                                    text = stringResource(R.string.cancel)
                                 ) {
                                     showEngineSelDialog = false
                                 }
