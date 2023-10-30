@@ -29,7 +29,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
@@ -51,9 +53,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -62,16 +64,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
+import com.bnyro.translate.ext.formatBytes
+import com.bnyro.translate.obj.TessLanguage
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.dialogs.FullscreenDialog
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -80,8 +85,12 @@ fun TessSettings(
 ) {
     val context = LocalContext.current
 
+    var availableLanguages by remember {
+        mutableStateOf(emptyList<TessLanguage>())
+    }
+
     var downloadedLanguages by remember {
-        mutableStateOf(TessHelper.getAvailableLanguages(context))
+        mutableStateOf(TessHelper.getDownloadedLanguages(context))
     }
 
     var selectedLanguage by remember {
@@ -91,7 +100,7 @@ fun TessSettings(
     val onDownloadComplete = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             // Refresh the downloaded languages every time a download finishes
-            downloadedLanguages = TessHelper.getAvailableLanguages(context)
+            downloadedLanguages = TessHelper.getDownloadedLanguages(context)
         }
     }
 
@@ -102,6 +111,12 @@ fun TessSettings(
         )
         onDispose {
             context.unregisterReceiver(onDownloadComplete)
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        availableLanguages = withContext(Dispatchers.IO) {
+            TessHelper.getAvailableLanguages()
         }
     }
 
@@ -126,6 +141,7 @@ fun TessSettings(
                 ) {
                     Text(text = stringResource(R.string.tess_summary, TessHelper.tessRepoUrl))
                 }
+                Spacer(modifier = Modifier.height(12.dp))
 
                 // downloaded languages
                 LazyColumn(
@@ -153,14 +169,14 @@ fun TessSettings(
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Text(
-                                    text = if (selectedLanguage == it) "$it   ✓" else it,
+                                    text = if (selectedLanguage == it) "$it${TessHelper.DATA_FILE_SUFFIX}  ✓" else "$it${TessHelper.DATA_FILE_SUFFIX}",
                                     modifier = Modifier
                                         .padding(15.dp)
                                         .weight(1f)
                                 )
                                 StyledIconButton(imageVector = Icons.Default.Delete) {
                                     if (TessHelper.deleteLanguage(context, it)) {
-                                        downloadedLanguages = TessHelper.getAvailableLanguages(
+                                        downloadedLanguages = TessHelper.getDownloadedLanguages(
                                             context
                                         )
                                     } else {
@@ -184,13 +200,17 @@ fun TessSettings(
                 )
                 // not yet downloaded languages
                 LazyColumn(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
                 ) {
-                    items(
-                        TessHelper.availableLanguages.filter {
-                            !downloadedLanguages.contains(it)
+                    val notYetDownloadedLanguages = availableLanguages.filter { tessLang ->
+                        downloadedLanguages.none {
+                            tessLang.path.replace(TessHelper.DATA_FILE_SUFFIX, "") == it
                         }
-                    ) {
+                    }
+
+                    items(notYetDownloadedLanguages) {
                         Card(
                             shape = RoundedCornerShape(30.dp),
                             modifier = Modifier
@@ -209,7 +229,7 @@ fun TessSettings(
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Text(
-                                    text = it,
+                                    text = "${it.path} (${it.size.formatBytes()})",
                                     modifier = Modifier
                                         .padding(15.dp)
                                 )
@@ -218,7 +238,7 @@ fun TessSettings(
                                 }
                                 if (!downloading) {
                                     StyledIconButton(imageVector = Icons.Default.Download) {
-                                        TessHelper.downloadLanguageData(context, it)
+                                        TessHelper.downloadLanguageData(context, it.path)
                                         downloading = true
                                         Handler(Looper.getMainLooper()).postDelayed({
                                             downloading = false

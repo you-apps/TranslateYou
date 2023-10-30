@@ -239,7 +239,7 @@ class TranslationModel : ViewModel() {
     }
 
     fun processImage(context: Context, uri: Uri?) {
-        if (!TessHelper.areLanguagesAvailable(context)) {
+        if (!TessHelper.areLanguagesDownloaded(context)) {
             Toast.makeText(context, R.string.init_tess_first, Toast.LENGTH_SHORT).show()
             return
         }
