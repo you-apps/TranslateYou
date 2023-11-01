@@ -3,7 +3,7 @@
     <string name="language_not_supported">اللغة غير مدعومة!</string>
     <string name="api_key">مفتاح واجهة البرمجة</string>
     <string name="history">التاريخ</string>
-    <string name="cancel">ألغِ</string>
+    <string name="cancel">إلغاء</string>
     <string name="enter_text">أدخل نصًّا</string>
     <string name="copy">انسخ</string>
     <string name="fetch_delay">تأخير الترجمة</string>
