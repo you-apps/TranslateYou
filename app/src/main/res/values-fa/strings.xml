@@ -8,13 +8,17 @@
     <string name="instance">نمونه</string>
     <string name="paste">چسباندن</string>
     <string name="language_not_supported">زبان پشتیبانی نمی‌شود!</string>
-    <string name="about">درباره</string>
+    <string name="about">درباره ما</string>
     <string name="options">پیکره‌بندی</string>
-    <string name="cancel">بیخیال</string>
+    <string name="cancel">انصراف</string>
     <string name="history">پیشینه</string>
     <string name="forget">فراموشی</string>
     <string name="okay">باشه</string>
     <string name="search">جستجو</string>
     <string name="auto">خودکار</string>
     <string name="translate_from">ترجمه از</string>
+    <string name="translation">ترجمه</string>
+    <string name="open">بازکردن</string>
+    <string name="author">نویسنده</string>
+    <string name="system">سامانه</string>
 </resources>
