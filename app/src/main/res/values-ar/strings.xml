@@ -3,7 +3,7 @@
     <string name="language_not_supported">اللغة غير مدعومة!</string>
     <string name="api_key">مفتاح واجهة البرمجة</string>
     <string name="history">التاريخ</string>
-    <string name="cancel">ألغِ</string>
+    <string name="cancel">إلغاء</string>
     <string name="enter_text">أدخل نصًّا</string>
     <string name="copy">انسخ</string>
     <string name="fetch_delay">تأخير الترجمة</string>
@@ -74,4 +74,5 @@
     <string name="select_theme">اختر السمة</string>
     <string name="theme_black">اسود</string>
     <string name="irreversible">لا يمكن التراجع عن هذا. هل أنت متأكد أنك تريد المتابعة؟</string>
+    <string name="tess_summary">Tesseract هو محرك للتعرف البصري على الأحرف. إنه برنامج مجاني تم إصداره بموجب ترخيص Apache. تم إصداره كمصدر مفتوح في عام 2005 وتمت رعاية التطوير بواسطة Google منذ عام 2006. ويعتبر Tesseract أحد أكثر محركات التعرف الضوئي على الحروف مفتوحة المصدر دقةً. لمزيد من المعلومات، راجع %1$s.</string>
 </resources>

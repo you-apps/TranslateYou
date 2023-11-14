@@ -85,4 +85,5 @@
     <string name="skip_similar_entries_desc">Przechowuj tylko unikalne wpisy w historii na podstawie wstawienia i języka.</string>
     <string name="theme_black">Czarny</string>
     <string name="select_theme">Wybierz motyw</string>
+    <string name="irreversible">Tego nie można cofnąć. Czy na pewno chcesz kontynuować\?</string>
 </resources>
