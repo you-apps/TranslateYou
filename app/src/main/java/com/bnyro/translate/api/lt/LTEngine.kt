@@ -25,7 +25,7 @@ import com.bnyro.translate.util.TranslationEngine
 
 class LTEngine : TranslationEngine(
     name = "LibreTranslate",
-    defaultUrl = "https://translate.argosopentech.com",
+    defaultUrl = "https://translate.terraprint.co/",
     urlModifiable = true,
     apiKeyState = ApiKeyState.OPTIONAL,
     autoLanguageCode = "auto"
