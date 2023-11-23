@@ -59,7 +59,7 @@
     <string name="init_tess_first">Пожалуйста, сперва скачайте языковые пакеты в настройках.</string>
     <string name="select_language">Пожалуйста, выберите язык для распознания текста с изображений в настройках.</string>
     <string name="character_warning_limit_summary">Предупреждать, когда переводимый текст превышает максимальную длину.</string>
-    <string name="none">Отключить</string>
+    <string name="none">Откл.</string>
     <string name="nothing_here">Пусто.</string>
     <string name="use_free_api">Использовать бесплатный API</string>
     <string name="use_free_api_summary">Бесплатный API вместо платного Pro.</string>
