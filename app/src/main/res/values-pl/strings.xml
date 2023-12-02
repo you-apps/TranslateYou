@@ -86,4 +86,5 @@
     <string name="theme_black">Czarny</string>
     <string name="select_theme">Wybierz motyw</string>
     <string name="irreversible">Tego nie można cofnąć. Czy na pewno chcesz kontynuować\?</string>
+    <string name="tess_summary">Tesseract to silnik optycznego rozpoznawania znaków. Jest to wolne oprogramowanie, wydane na licencji Apache. Został wydany jako open source w 2005 roku, a jego rozwój był sponsorowany przez Google od 2006 roku. Tesseract jest uważany za jeden z najdokładniejszych dostępnych silników OCR o otwartym kodzie źródłowym. Więcej informacji można znaleźć na stronie %1$s.</string>
 </resources>
