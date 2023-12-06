@@ -19,6 +19,8 @@ package com.bnyro.translate.api.mh
 
 import com.bnyro.translate.api.mh.obj.MhLanguage
 import com.bnyro.translate.api.st.obj.STTranslationResponse
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -35,4 +37,11 @@ interface Mozhi {
     suspend fun getLanguages(
         @Query("engine") engine: String?
     ): List<MhLanguage>
+
+    @GET("api/tts")
+    suspend fun getAudioFile(
+        @Query("engine") engine: String? = "google",
+        @Query("lang") lang: String,
+        @Query("text") text: String
+    ): Response<ResponseBody>
 }

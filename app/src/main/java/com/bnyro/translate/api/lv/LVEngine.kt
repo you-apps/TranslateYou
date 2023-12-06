@@ -75,10 +75,9 @@ class LVEngine : TranslationEngine(
     override suspend fun getAudioFile(lang: String, query: String): File? {
         val byteArray = api.getAudio(lang, query).toByteArray()
         if (byteArray.isEmpty()) return null
-        return withContext(Dispatchers.IO) {
-            File.createTempFile("audio", ".mp3").apply {
-                writeBytes(byteArray)
-            }
+
+        return File.createTempFile("audio", ".mp3").apply {
+            writeBytes(byteArray)
         }
     }
 }

@@ -22,6 +22,7 @@ import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
+import java.io.File
 
 class MhEngine : TranslationEngine(
     name = "Mozhi",
@@ -38,7 +39,8 @@ class MhEngine : TranslationEngine(
         "mymemory",
         "watson",
         "yandex"
-    )
+    ),
+    supportsAudio = true
 ) {
     lateinit var api: Mozhi
 
@@ -63,5 +65,13 @@ class MhEngine : TranslationEngine(
             translatedText = response.translatedText,
             detectedLanguage = response.sourceLanguage
         )
+    }
+
+    override suspend fun getAudioFile(lang: String, query: String): File? {
+        val audioBytes = api.getAudioFile(lang = lang, text = query).body()?.bytes() ?: return null
+
+        return File.createTempFile("audio", ".mp3").apply {
+            writeBytes(audioBytes)
+        }
     }
 }
