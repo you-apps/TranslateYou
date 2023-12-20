@@ -58,4 +58,6 @@
     <string name="app_language">Lingua del application</string>
     <string name="definition">Definition</string>
     <string name="translate_from">Traducer ab</string>
+    <string name="init_tess_first">Prime, discarga le datos de lingua in le parametros.</string>
+    <string name="detected_language">Lingua detegite</string>
 </resources>
