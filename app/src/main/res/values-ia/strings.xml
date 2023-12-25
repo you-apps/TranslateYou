@@ -60,4 +60,19 @@
     <string name="translate_from">Traducer ab</string>
     <string name="init_tess_first">Prime, discarga le datos de lingua in le parametros.</string>
     <string name="detected_language">Lingua detegite</string>
+    <string name="compact_history_summary">Solmente monstrar le prime 3 lineas de texto predefinite in le chronologia</string>
+    <string name="simultaneous_translation_summary">Obtener resultatos ab plure motores al mesme tempore.</string>
+    <string name="compact_history">Chronologia compacte</string>
+    <string name="history_summary">Mantener le sequimento del ultime textos traducite</string>
+    <string name="skip_similar_entries_desc">Immagazinar solmente entratas unic in le chronologia, basate in le insertion e linguas.</string>
+    <string name="image_translation_summary">Discargar e applicar linguas pro recognition de texto ab imagines.</string>
+    <string name="character_warning_limit_summary">Adverter cuando le texto traducite excede le longor maxime.</string>
+    <string name="select_language">Selige un lingua pro le recognition de texto del imagines in le parametros.</string>
+    <string name="fetch_delay_summary">Le retardo inter le insertion de texto e le obtenimento del traductiones</string>
+    <string name="irreversible">Isto non es pote disfacer. Desira tu vermente proceder?</string>
+    <string name="character_warning_limit">Advertimento de limite de characteres</string>
+    <string name="tess_summary">Tesseract es un motor de recognition optic de characteres. Illo es software libere, publicate sub le licentia Apache. Il esseva publicate como codice aperte in 2005 e le disveloppamento esseva sponsorisate per Google desde 2006. Tesseract es considerate motores OCR de codice aperte plus accurate disponibile. Pro plus de information, vide %1$s.</string>
+    <string name="missing_api_key">Forni un clave API in le parametros.</string>
+    <string name="transliteration">Transliteration</string>
+    <string name="translate_automatically_summary">Requesta un traduction automaticamente depost un certe retardo.</string>
 </resources>
