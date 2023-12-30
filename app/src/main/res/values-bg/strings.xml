@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="theme_light">Светла</string>
-    <string name="enter_text">Въведи текст</string>
+    <string name="enter_text">Въведете текст</string>
     <string name="theme_black">Черна</string>
     <string name="compact_history_summary">Показвайте само първите 3 реда текст по подразбиране в историята</string>
     <string name="simultaneous_translation_summary">Извличане на резултати от няколко преводача едновременно.</string>
@@ -33,7 +33,7 @@
     <string name="detected_language">Разпознат език</string>
     <string name="instance">Сървър</string>
     <string name="theme_auto">Системна</string>
-    <string name="paste">Постави</string>
+    <string name="paste">Поставяне</string>
     <string name="language_not_supported">Езикът не се поддържа!</string>
     <string name="dynamic_colors">Динамични цветове</string>
     <string name="unknown_error">Неизвестна грешка</string>
@@ -49,14 +49,14 @@
     <string name="enabled_engines">Активирани преводачи</string>
     <string name="translation">Превод</string>
     <string name="favorites">Любими</string>
-    <string name="cancel">Откажи</string>
+    <string name="cancel">Отказ</string>
     <string name="fetch_delay">Забавяне на превода</string>
     <string name="open">Отвори</string>
     <string name="additional_info_summary">Показване на допълнителна информация за превод, ако е налична.</string>
     <string name="history">История</string>
     <string name="general">Основни</string>
     <string name="forget">Забрави</string>
-    <string name="okay">Окей</string>
+    <string name="okay">Да</string>
     <string name="search">Търсене</string>
     <string name="auto">Автоматично</string>
     <string name="optional">Незадължително</string>
