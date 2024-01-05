@@ -142,7 +142,7 @@ fun EnginePref() {
                                 LazyColumn {
                                     items(engine.supportedEngines) { availableEngine ->
                                         SelectableItem(
-                                            text = availableEngine.capitalize()
+                                            text = availableEngine.replace("_", " ").capitalize()
                                         ) {
                                             Preferences.put(engine.selEnginePrefKey, availableEngine)
                                             engine.createOrRecreate()
