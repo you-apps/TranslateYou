@@ -16,7 +16,7 @@
     <string name="about">حول التطبيق</string>
     <string name="instance">المثيل</string>
     <string name="optional">اختياريّ</string>
-    <string name="enabled_engines">المصادر الممكَّنة</string>
+    <string name="enabled_engines">المحرِّكات المُفعّلة</string>
     <string name="additional_info">معلومات إضافيَّة</string>
     <string name="selected_engine">المحرِّك المحدَّد</string>
     <string name="general">عام</string>
@@ -31,7 +31,7 @@
     <string name="required">مطلوب</string>
     <string name="author">المؤلِّف</string>
     <string name="paste">الصق</string>
-    <string name="history_enabled">مكِّن التاريخ</string>
+    <string name="history_enabled">التاريخ مُفعّل</string>
     <string name="character_warning_limit_summary">حذِّر عندما يتجاوز طول النصِّ المترجم الحدَّ.</string>
     <string name="none">لاشيء</string>
     <string name="compact_history">اختصر التاريخ</string>
@@ -70,9 +70,9 @@
     <string name="favorites">المفضَّلات</string>
     <string name="all_languages">جميع اللغات</string>
     <string name="skip_similar_entries">تخطي الإدخالات المماثلة</string>
-    <string name="skip_similar_entries_desc">قم بتخزين الإدخالات الفريدة فقط في السجل ، بناء على الإدراج واللغات.</string>
+    <string name="skip_similar_entries_desc">خزّن الإدخالات الفريدة فقط في التاريخ، بناءً على الإدراج واللغات.</string>
     <string name="select_theme">اختر السمة</string>
     <string name="theme_black">اسود</string>
-    <string name="irreversible">لا يمكن التراجع عن هذا. هل أنت متأكد أنك تريد المتابعة؟</string>
-    <string name="tess_summary">Tesseract هو محرك للتعرف البصري على الأحرف. إنه برنامج مجاني تم إصداره بموجب ترخيص Apache. تم إصداره كمصدر مفتوح في عام 2005 وتمت رعاية التطوير بواسطة Google منذ عام 2006. ويعتبر Tesseract أحد أكثر محركات التعرف الضوئي على الحروف مفتوحة المصدر دقةً. لمزيد من المعلومات، راجع %1$s.</string>
+    <string name="irreversible">لا يمكن التراجع عن هذا. هل أنت متأكّدٌ أنّكَ تُريدُ المتابعة؟</string>
+    <string name="tess_summary">Tesseract هو محرّك للتعرف البصري على الأحرّف. إنه برنامج مجاني أُصْدِرَ بموجب ترخيص Apache. أُصْدِرَ كمصدر مفتوح في عام 2005 وتمت رعاية التطوير بواسطة Google منذ عام 2006. ويُعتبر Tesseract أحد أكثر محرّكات التعرّف الضوئي على الحروف مفتوحة المصدر دقةً. لمزيد من المعلومات، راجع %1$s.</string>
 </resources>
