@@ -34,7 +34,7 @@ Use of Translate You may result in one or more of the following third party orga
 _You can choose the LibreTranslate instance according to your preference._
 * Lingva Translate, open source - https://github.com/thedaviddelta/lingva-translate
 _You can choose the Lingva Translate instance according to your preference._
-* Deepl, closed source - https://www.deepl.com/privacy/
+* DeepL, closed source - https://www.deepl.com/privacy/
 * MyMemory, closed source - https://mymemory.translated.net/doc/en/tos.php
 * Reverso, closed source - https://www.reverso.net/privacy.aspx
 * SimplyTranslate, open source - https://github.com/Simple-Web-Project/SimplyTranslate-Web
