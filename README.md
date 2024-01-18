@@ -41,7 +41,7 @@
 
 * <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate</a>
 * <a href="https://github.com/thedaviddelta/lingva-translate">LingvaTranslate</a> _which uses Google Translate® to fetch translations._
-* <a href="https://www.deepl.com/translator">Deepl translator®</a>.
+* <a href="https://www.deepl.com/translator">DeepL translator®</a>.
 * <a href="https://mymemory.translated.net/">MyMemory translator®</a>.
 * <a href="https://simple-web.org/projects/simplytranslate.html">SimplyTranslate</a>
 * <a href="https://www.reverso.net">Reverso®</a>
