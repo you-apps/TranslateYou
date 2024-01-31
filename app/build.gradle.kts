@@ -12,8 +12,8 @@ android {
         applicationId = "com.bnyro.translate"
         minSdk = 21
         targetSdk = 33
-        versionCode = 39
-        versionName = "8.0"
+        versionCode = 40
+        versionName = "9.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
