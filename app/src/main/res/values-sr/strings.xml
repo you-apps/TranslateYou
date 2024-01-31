@@ -27,7 +27,7 @@
     <string name="required">Обавезно</string>
     <string name="optional">Опционално</string>
     <string name="compact_history">Компактна историја</string>
-    <string name="compact_history_summary">Приказивање само прве 3 линије текста у историји</string>
+    <string name="compact_history_summary">Приказивање само прва 3 реда текста у историји</string>
     <string name="simultaneous_translation">Истовремени превод</string>
     <string name="simultaneous_translation_summary">Прикупљање резултата са више извора истовремено.</string>
     <string name="enabled_engines">Омогућени извори</string>

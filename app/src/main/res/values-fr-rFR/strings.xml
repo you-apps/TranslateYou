@@ -26,7 +26,7 @@
     <string name="additional_info_summary">Afficher des données supplémentaires sur la traduction si elles sont disponibles.</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
-    <string name="author">Auteur</string>
+    <string name="author">Auteur·e</string>
     <string name="license">Licence</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <!-- Theme -->
@@ -72,7 +72,7 @@
     <string name="nothing_here">Rien ici.</string>
     <string name="translate_to">Traduire en</string>
     <string name="translate_from">Traduire de</string>
-    <string name="accent_color">Couleur d\'accent</string>
+    <string name="accent_color">Couleur d\'accentuation</string>
     <string name="dynamic_colors">Couleurs dynamiques</string>
     <string name="favorites">Favoris</string>
     <string name="all_languages">Toutes les langues</string>
@@ -83,4 +83,5 @@
     <string name="skip_similar_entries_desc">Ne conserver que des entrées uniques dans l\'historique, en fonction de l\'insertion et des langues.</string>
     <string name="select_theme">Sélectionner le thème</string>
     <string name="irreversible">Cela ne peut pas être annulé. Êtes-vous sûr de vouloir continuer \?</string>
+    <string name="tess_summary">Tesseract est un moteur de reconnaissance optique de caractères. Il s\'agit d\'un logiciel libre, publié sous la licence Apache. Il a été publié en tant que source ouverte en 2005 et son développement est parrainé par Google depuis 2006. Tesseract est considéré comme l\'un des moteurs de reconnaissance optique de caractères open-source les plus précis qui soient. Pour plus d\'informations, voir %1$s.</string>
 </resources>

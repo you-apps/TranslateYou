@@ -5,4 +5,16 @@
     <string name="nothing_here">Tiada di sini.</string>
     <string name="none">Tiada</string>
     <string name="license">Lesen</string>
+    <string name="enter_text">Masukkan teks</string>
+    <string name="api_key">Kunci API</string>
+    <string name="translate_to">Terjemah kepada</string>
+    <string name="translate">Terjemah</string>
+    <string name="paste">Tampal</string>
+    <string name="language_not_supported">Bahasa tidak disokong!</string>
+    <string name="options">Tetapan</string>
+    <string name="history_enabled">Sejarah dibolehkan</string>
+    <string name="cancel">Batal</string>
+    <string name="history">Sejarah</string>
+    <string name="forget">Lupakan</string>
+    <string name="translate_from">Terjemah dari</string>
 </resources>

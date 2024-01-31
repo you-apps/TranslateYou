@@ -50,7 +50,7 @@
     <string name="definition">Definice</string>
     <string name="example">Příklad</string>
     <string name="similar">Podobné</string>
-    <string name="transliteration">Transliterace</string>
+    <string name="transliteration">Výslovnost</string>
     <string name="image_translation">Překlad z obrázku</string>
     <string name="image_translation_summary">Stáhněte si a použijte jazyky pro rozpoznávání textu z obrázků.</string>
     <string name="init_tess_first">Nejprve si v nastavení stáhněte jazyková data.</string>
@@ -74,5 +74,5 @@
     <string name="select_theme">Zvolit motiv</string>
     <string name="theme_black">Černá</string>
     <string name="irreversible">Tato akce je nevratná. Opravdu chcete pokračovat\?</string>
-    <string name="tess_summary">Tesseract je engine pro optické rozpoznávání znaků. Jedná se o svobodný software vydaný pod licencí Apache. Jako open source byl uvolněn v roce 2005 a jeho vývoj od roku 2006 sponzoruje společnost Google. Tesseract je považován za jeden z nejpřesnějších dostupných open-source motorů OCR. Další informace naleznete na zde: %1$s.</string>
+    <string name="tess_summary">Tesseract je engine pro optické rozpoznávání znaků. Jedná se o svobodný software vydaný pod licencí Apache. Jako open-source byl uvolněn v roce 2005 a jeho vývoj od roku 2006 sponzoruje společnost Google. Tesseract je považován za jeden z nejpřesnějších dostupných open-source OCR enginů. Další informace naleznete na zde: %1$s.</string>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="theme_light">Ljust</string>
+    <string name="theme_dark">Mörkt</string>
+    <string name="translate_to">Översätt till</string>
+    <string name="translate">Översätt</string>
+    <string name="nothing_here">Ingenting här.</string>
+    <string name="copy">Kopiera</string>
+    <string name="paste">Klistra in</string>
+    <string name="options">Inställningar</string>
+    <string name="cancel">Avbryt</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paste">Senṭeḍ</string>
+    <string name="copy">Nɣel</string>
+    <string name="auto">Awurman</string>
+    <string name="forget">Ttsu</string>
+    <string name="translate">Suqel</string>
+    <string name="translate_to">Suqel ɣer</string>
+    <string name="translate_from">Suqel seg</string>
+    <string name="enter_text">Aru-d aḍris</string>
+    <string name="about">Γef</string>
+    <string name="required">Yettwaḥettem</string>
+    <string name="selected_engine">Amsedday yettwafernen</string>
+    <string name="translation">Tasuqilt</string>
+    <string name="general">Amatu</string>
+    <string name="app_language">Tutlayt n wesnas</string>
+    <string name="none">Ula yiwen</string>
+    <string name="nothing_here">Ulac kra da.</string>
+    <string name="privacy_policy">Tasertit tabaḍnit</string>
+    <string name="theme_auto">Anagraw</string>
+    <string name="theme_light">Aceɛlal</string>
+    <string name="open">Ldi</string>
+    <string name="unknown_error">Tuccḍa tarussint</string>
+    <string name="detected_language">Tettwaf tutlayt</string>
+    <string name="example">Amedya</string>
+    <string name="search">Nadi</string>
+    <string name="cancel">Sesfex</string>
+    <string name="api_key">Tasarutt API</string>
+    <string name="options">Iɣewwaṛen</string>
+    <string name="system">Anagraw</string>
+    <string name="license">Turagt</string>
+    <string name="theme_dark">Aberkan</string>
+    <string name="transliteration">Tasuqilt taḥerfit</string>
+    <string name="all_languages">Akk tutlayin</string>
+    <string name="select_theme">Fren asentel</string>
+    <string name="history_summary">Cfu ɣef yiḍrisen ineggura yettwasuqlen</string>
+</resources>

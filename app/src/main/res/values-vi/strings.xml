@@ -9,7 +9,7 @@
     <string name="translate">Dịch</string>
     <string name="language_not_supported">Ngôn ngữ không được hỗ trợ!</string>
     <string name="instance">Ví dụ</string>
-    <string name="api_key">Khóa Api</string>
+    <string name="api_key">Khóa API</string>
     <string name="options">Cài đặt</string>
     <string name="about">Thông tin</string>
     <string name="history_enabled">Đã bật lịch sử</string>
@@ -32,7 +32,7 @@
     <string name="character_warning_limit_summary">Cảnh báo khi văn bản dịch vượt quá độ dài tối đa.</string>
     <string name="none">Không</string>
     <string name="translate_automatically">Dịch tự động</string>
-    <string name="translate_automatically_summary">Yêu cầu bản dịch tự động sau một khoảng thời gian nhất định.</string>
+    <string name="translate_automatically_summary">Yêu cầu bản dịch tự động sau một thời gian trì hoãn nhất định.</string>
     <string name="author">Tác giả</string>
     <string name="license">Giấy phép</string>
     <string name="privacy_policy">Chính sách bảo mật</string>
@@ -60,8 +60,19 @@
     <string name="simultaneous_translation_summary">Tìm nạp kết quả từ nhiều công cụ cùng một lúc.</string>
     <string name="additional_info_summary">Hiển thị thông tin dịch bổ sung nếu có.</string>
     <string name="system">Hệ thống</string>
-    <string name="translate_to">Dịch từ</string>
-    <string name="translate_from">Dịch thành</string>
+    <string name="translate_to">Dịch sang</string>
+    <string name="translate_from">Dịch từ</string>
     <string name="use_free_api">Sử dụng API miễn phí</string>
     <string name="use_free_api_summary">Sử dụng API miễn phí thay vì API trả phí.</string>
+    <string name="theme_black">Đen</string>
+    <string name="accent_color">Màu nhấn</string>
+    <string name="skip_similar_entries">Bỏ qua các mục tương tự</string>
+    <string name="nothing_here">Không có gì ở đây.</string>
+    <string name="skip_similar_entries_desc">Chỉ lưu trữ các mục duy nhất trong lịch sử, dựa trên phần chèn và ngôn ngữ.</string>
+    <string name="all_languages">Tất cả các ngôn ngữ</string>
+    <string name="dynamic_colors">Màu sắc năng động</string>
+    <string name="select_theme">Chọn chủ đề</string>
+    <string name="favorites">Yêu thích</string>
+    <string name="irreversible">Không thể hoàn tác việc này. Bạn có chắc chắn muốn tiếp tục không?</string>
+    <string name="tess_summary">Tesseract là một công cụ nhận dạng ký tự quang học. Đây là phần mềm miễn phí, được phát hành theo Giấy phép Apache. Nó được phát hành dưới dạng mã nguồn mở vào năm 2005 và sự phát triển đã được Google tài trợ từ năm 2006. Tesseract được coi là một trong những công cụ OCR mã nguồn mở chính xác nhất hiện có. Để biết thêm thông tin, hãy xem %1$s.</string>
 </resources>
