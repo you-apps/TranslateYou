@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.components.LanguageSelector
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.Destination
@@ -155,6 +156,7 @@ fun TranslationPage(
                             viewModel.sourceLanguage = viewModel.targetLanguage
                             viewModel.targetLanguage = temp
                             viewModel.insertedText = viewModel.translation.translatedText
+                            viewModel.translation = Translation("")
                             viewModel.translateNow()
                         }
                     ) {
