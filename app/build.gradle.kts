@@ -81,7 +81,7 @@ dependencies {
     // Compose
     implementation("androidx.compose.ui:ui:$compose_version")
     implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.compose.material3:material3:1.2.0-alpha02")
     implementation("androidx.compose.material:material-icons-extended:$compose_version")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
