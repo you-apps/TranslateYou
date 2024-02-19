@@ -104,5 +104,5 @@ dependencies {
     implementation("cz.adaptech.tesseract4android:tesseract4android-openmp:4.3.0")
 
     // Dynamic color scheme
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
 }
