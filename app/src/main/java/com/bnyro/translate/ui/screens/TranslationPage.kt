@@ -155,8 +155,12 @@ fun TranslationPage(
                             val temp = viewModel.sourceLanguage
                             viewModel.sourceLanguage = viewModel.targetLanguage
                             viewModel.targetLanguage = temp
-                            viewModel.insertedText = viewModel.translation.translatedText
-                            viewModel.translation = Translation("")
+
+                            if (viewModel.translation.translatedText.isNotEmpty()) {
+                                viewModel.insertedText = viewModel.translation.translatedText
+                                viewModel.translation = Translation("")
+                            }
+
                             viewModel.translateNow()
                         }
                     ) {
