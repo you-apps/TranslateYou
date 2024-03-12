@@ -262,12 +262,12 @@ class TranslationModel : ViewModel() {
         )
     }
 
-    fun playAudio() {
+    fun playAudio(languageCode: String, text: String) {
         releaseMediaPlayer()
 
         viewModelScope.launch(Dispatchers.IO) {
             audioFile = runCatching {
-                engine.getAudioFile(targetLanguage.code, translation.translatedText)
+                engine.getAudioFile(languageCode, text)
             }.getOrElse { return@launch }
 
             withContext(Dispatchers.Main) {

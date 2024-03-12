@@ -35,7 +35,6 @@ import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.Translate
-import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Divider
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -59,20 +58,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.components.ButtonWithIcon
-import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.StyledTextField
+import com.bnyro.translate.ui.components.TTSButton
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SimTranslationComponent
-import com.bnyro.translate.util.SpeechHelper
 import kotlinx.coroutines.launch
 
 @Composable
 fun TranslationComponent(
     viewModel: TranslationModel
 ) {
-    val context = LocalContext.current
     val view = LocalView.current
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
@@ -115,6 +112,17 @@ fun TranslationComponent(
                     .verticalScroll(scrollState)
                     .fillMaxSize()
             ) {
+                Box(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentAlignment = Alignment.CenterEnd
+                ) {
+                    TTSButton(
+                        viewModel,
+                        viewModel.sourceLanguage.code,
+                        viewModel.insertedText
+                    )
+                }
+
                 StyledTextField(
                     text = viewModel.insertedText,
                     placeholder = stringResource(R.string.enter_text)
@@ -144,25 +152,11 @@ fun TranslationComponent(
                     modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.CenterEnd
                 ) {
-                if (viewModel.translation.translatedText.isNotEmpty()) {
-                    if (viewModel.engine.supportsAudio) {
-                        StyledIconButton(
-                            imageVector = Icons.Default.VolumeUp
-                        ) {
-                            viewModel.playAudio()
-                        }
-                    } else if (SpeechHelper.ttsAvailable) {
-                            StyledIconButton(
-                                imageVector = Icons.Default.VolumeUp
-                            ) {
-                                SpeechHelper.speak(
-                                    context,
-                                    viewModel.translation.translatedText,
-                                    viewModel.targetLanguage.code
-                                )
-                            }
-                        }
-                    }
+                    TTSButton(
+                        viewModel,
+                        viewModel.targetLanguage.code,
+                        viewModel.translation.translatedText
+                    )
                 }
 
                 if (hasClip && viewModel.insertedText.isBlank()) {
