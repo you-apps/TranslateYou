@@ -221,7 +221,12 @@ class TranslationModel : ViewModel() {
     }
 
     fun refresh(context: Context) {
-        engine = getCurrentEngine()
+        val newSelectedEngine = getCurrentEngine()
+        if (newSelectedEngine != engine) {
+            engine = newSelectedEngine
+            enqueueTranslation()
+        }
+
         enabledSimEngines = getEnabledEngines()
         simTranslationEnabled = Preferences.get(Preferences.simultaneousTranslationKey, false)
 

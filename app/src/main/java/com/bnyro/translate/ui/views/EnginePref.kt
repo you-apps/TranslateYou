@@ -70,10 +70,8 @@ fun EnginePref() {
         selected = selected,
         onSelect = {
             selected = it
-            Preferences.put(
-                Preferences.apiTypeKey,
-                selected
-            )
+            Preferences.put(Preferences.apiTypeKey, selected)
+            
             instanceUrl = engines[selected].getUrl()
             apiKey = engines[selected].getApiKey()
             TranslationEngines.updateAll()

@@ -69,4 +69,12 @@ abstract class TranslationEngine(
     )
 
     fun getSelectedEngine() = Preferences.get(selEnginePrefKey, supportedEngines.first())
+
+    override fun equals(other: Any?): Boolean {
+        if (other is TranslationEngine) {
+            return this.name == other.name && this.getUrl() == other.getUrl() && this.getApiKey() == other.getApiKey()
+        }
+
+        return false
+    }
 }
