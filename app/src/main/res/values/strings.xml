@@ -79,6 +79,7 @@
     <!-- Languages -->
     <string name="search">Search</string>
     <string name="favorites">Favorites</string>
+    <string name="clear_favorites">Clear favorites</string>
     <string name="all_languages">All languages</string>
     <!-- Tesseract -->
     <string name="image_translation">Translation from Image</string>

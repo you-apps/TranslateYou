@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
@@ -88,6 +89,14 @@ fun TranslationPage(
                         icon = Icons.Default.History
                     ) {
                         navHostController.navigate(Destination.History.route)
+                    },
+                    MenuItemData(
+                        text = stringResource(
+                            id = R.string.favorites
+                        ),
+                        icon = Icons.Default.Favorite
+                    ) {
+                        navHostController.navigate(Destination.Favorites.route)
                     },
                     MenuItemData(
                         text = stringResource(
