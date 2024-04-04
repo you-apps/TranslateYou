@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -58,8 +57,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.components.ButtonWithIcon
-import com.bnyro.translate.ui.components.StyledTextField
-import com.bnyro.translate.ui.components.TTSButton
+import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
@@ -112,20 +110,11 @@ fun TranslationComponent(
                     .verticalScroll(scrollState)
                     .fillMaxSize()
             ) {
-                Box(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentAlignment = Alignment.CenterEnd
-                ) {
-                    TTSButton(
-                        viewModel,
-                        viewModel.sourceLanguage.code,
-                        viewModel.insertedText
-                    )
-                }
-
-                StyledTextField(
+                TranslationField(
+                    translationModel = viewModel,
+                    writeEnabled = true,
                     text = viewModel.insertedText,
-                    placeholder = stringResource(R.string.enter_text)
+                    viewModel.sourceLanguage.code
                 ) {
                     viewModel.insertedText = it
                     if (it.isEmpty()) hasClip = clipboardHelper.hasClip()
@@ -145,17 +134,6 @@ fun TranslationComponent(
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = modifier
                             .size(70.dp, 1.dp)
-                    )
-                }
-
-                Box(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentAlignment = Alignment.CenterEnd
-                ) {
-                    TTSButton(
-                        viewModel,
-                        viewModel.targetLanguage.code,
-                        viewModel.translation.translatedText
                     )
                 }
 
@@ -195,18 +173,11 @@ fun TranslationComponent(
                     }
                 }
 
-                val charPref = Preferences.get(Preferences.charCounterLimitKey, "")
-
-                StyledTextField(
-                    text = viewModel.translation.translatedText + "\n\n\n",
-                    readOnly = true,
-                    textColor = if (
-                        charPref.isNotEmpty() && viewModel.translation.translatedText.length >= charPref.toInt()
-                    ) {
-                        MaterialTheme.colorScheme.error
-                    } else {
-                        MaterialTheme.typography.bodyMedium.color
-                    }
+                TranslationField(
+                    translationModel = viewModel,
+                    writeEnabled = false,
+                    text = viewModel.translation.translatedText,
+                    languageCode = viewModel.targetLanguage.code
                 )
             }
 

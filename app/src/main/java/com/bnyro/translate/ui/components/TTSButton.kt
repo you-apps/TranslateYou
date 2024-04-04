@@ -17,7 +17,6 @@
 
 package com.bnyro.translate.ui.components
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.runtime.Composable
@@ -33,19 +32,17 @@ fun TTSButton(
 ) {
     val context = LocalContext.current
 
-    AnimatedVisibility(visible = text.isNotEmpty(), label = "tts") {
-        if (viewModel.engine.supportsAudio) {
-            StyledIconButton(
-                imageVector = Icons.Default.VolumeUp
-            ) {
-                viewModel.playAudio(languageCode, text)
-            }
-        } else if (SpeechHelper.ttsAvailable) {
-            StyledIconButton(
-                imageVector = Icons.Default.VolumeUp
-            ) {
-                SpeechHelper.speak(context, text, languageCode)
-            }
+    if (viewModel.engine.supportsAudio) {
+        StyledIconButton(
+            imageVector = Icons.Default.VolumeUp
+        ) {
+            viewModel.playAudio(languageCode, text)
+        }
+    } else if (SpeechHelper.ttsAvailable) {
+        StyledIconButton(
+            imageVector = Icons.Default.VolumeUp
+        ) {
+            SpeechHelper.speak(context, text, languageCode)
         }
     }
 }
