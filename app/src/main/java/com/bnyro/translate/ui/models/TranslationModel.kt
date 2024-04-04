@@ -33,6 +33,7 @@ import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.R
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
+import com.bnyro.translate.db.obj.HistoryItemType
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.awaitQuery
 import com.bnyro.translate.ext.query
@@ -164,13 +165,20 @@ class TranslationModel : ViewModel() {
             return
         }
 
+        save(HistoryItemType.HISTORY)
+    }
+
+    fun saveToFavorites() = save(HistoryItemType.FAVORITE)
+
+    private fun save(itemType: HistoryItemType) {
         val historyItem = HistoryItem(
             sourceLanguageCode = sourceLanguage.code,
             sourceLanguageName = sourceLanguage.name,
             targetLanguageCode = targetLanguage.code,
             targetLanguageName = targetLanguage.name,
             insertedText = insertedText,
-            translatedText = translation.translatedText
+            translatedText = translation.translatedText,
+            itemType = itemType
         )
 
         query {
@@ -179,9 +187,11 @@ class TranslationModel : ViewModel() {
                     .existsSimilar(
                         historyItem.insertedText,
                         historyItem.sourceLanguageCode,
-                        historyItem.targetLanguageCode
+                        historyItem.targetLanguageCode,
+                        itemType = itemType
                     )
             ) return@query
+
             Db.historyDao().insertAll(historyItem)
         }
     }

@@ -22,17 +22,19 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.bnyro.translate.db.obj.HistoryItem
+import com.bnyro.translate.db.obj.HistoryItemType
 
 @Dao
 interface HistoryDao {
-    @Query("SELECT * FROM HistoryItem")
-    fun getAll(): List<HistoryItem>
+    @Query("SELECT * FROM HistoryItem WHERE itemType = :type")
+    fun getAll(type: HistoryItemType): List<HistoryItem>
 
-    @Query("SELECT EXISTS(SELECT * FROM HistoryItem WHERE insertedText = :insertedText AND sourceLanguageCode = :sourceLanguage AND targetLanguageCode = :targetLanguage)")
+    @Query("SELECT EXISTS(SELECT * FROM HistoryItem WHERE insertedText = :insertedText AND sourceLanguageCode = :sourceLanguage AND targetLanguageCode = :targetLanguage AND itemType = :itemType)")
     fun existsSimilar(
         insertedText: String,
         sourceLanguage: String,
-        targetLanguage: String
+        targetLanguage: String,
+        itemType: HistoryItemType
     ): Boolean
 
     @Insert
@@ -41,6 +43,6 @@ interface HistoryDao {
     @Delete
     fun delete(historyItem: HistoryItem)
 
-    @Query("DELETE FROM HistoryItem")
-    fun deleteAll()
+    @Query("DELETE FROM HistoryItem WHERE itemType = :type")
+    fun deleteAll(type: HistoryItemType)
 }

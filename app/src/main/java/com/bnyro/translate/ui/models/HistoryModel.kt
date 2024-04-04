@@ -18,34 +18,36 @@
 package com.bnyro.translate.ui.models
 
 import android.annotation.SuppressLint
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.db.obj.HistoryItem
+import com.bnyro.translate.db.obj.HistoryItemType
 import com.bnyro.translate.ext.query
 
 @SuppressLint("MutableCollectionMutableState")
 class HistoryModel : ViewModel() {
-    var history by mutableStateOf(listOf<HistoryItem>())
+    val items = mutableStateListOf<HistoryItem>()
 
-    fun fetchHistory() {
+    fun fetchItems(itemType: HistoryItemType) {
+        items.clear()
+
         query {
-            history = history.plus(Db.historyDao().getAll().reversed())
+            items.addAll(Db.historyDao().getAll(itemType).reversed())
         }
     }
 
-    fun clearHistory() {
+    fun clearItems(itemType: HistoryItemType) {
+        items.clear()
+
         query {
-            Db.historyDao().deleteAll()
-            history = emptyList()
+            Db.historyDao().deleteAll(itemType)
         }
     }
 
-    fun deleteHistoryItem(historyItem: HistoryItem) {
-        history = history.filter { it.id != historyItem.id }
+    fun deleteItem(historyItem: HistoryItem) {
+        items.removeAll { it.id != historyItem.id }
+        
         query {
             Db.historyDao().delete(historyItem)
         }

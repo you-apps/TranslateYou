@@ -31,6 +31,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.DoneAll
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Share
@@ -38,6 +40,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -123,13 +126,11 @@ fun TopBar(
                         }, 2000)
                     }
                 )
-            }
 
-            if (mainModel.translation.translatedText.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.Default.Share,
                     onClick = {
-                        val sendIntent: Intent = Intent().apply {
+                        val sendIntent = Intent().apply {
                             action = Intent.ACTION_SEND
                             putExtra(Intent.EXTRA_TEXT, mainModel.translation.translatedText)
                             type = "text/plain"
@@ -138,6 +139,22 @@ fun TopBar(
                         val shareIntent = Intent.createChooser(sendIntent, null)
                         shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         context.startActivity(shareIntent)
+                    }
+                )
+
+                var favoriteIcon by remember {
+                    mutableStateOf(Icons.Default.FavoriteBorder)
+                }
+
+                LaunchedEffect(mainModel.translation) {
+                    favoriteIcon = Icons.Default.FavoriteBorder
+                }
+
+                StyledIconButton(
+                    imageVector = favoriteIcon,
+                    onClick = {
+                        favoriteIcon = Icons.Default.Favorite
+                        mainModel.saveToFavorites()
                     }
                 )
             }

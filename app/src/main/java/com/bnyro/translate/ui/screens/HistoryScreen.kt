@@ -17,6 +17,7 @@
 
 package com.bnyro.translate.ui.screens
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -55,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bnyro.translate.R
+import com.bnyro.translate.db.obj.HistoryItemType
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.components.SearchAppBar
 import com.bnyro.translate.ui.components.StyledIconButton
@@ -66,7 +68,10 @@ import com.bnyro.translate.ui.views.HistoryRow
 @Composable
 fun HistoryScreen(
     navController: NavController,
-    translationModel: TranslationModel
+    translationModel: TranslationModel,
+    itemType: HistoryItemType,
+    @StringRes titleId: Int,
+    @StringRes clearItemsHintId: Int
 ) {
     val viewModel: HistoryModel = viewModel()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
@@ -82,7 +87,7 @@ fun HistoryScreen(
     }
 
     LaunchedEffect(Unit) {
-        viewModel.fetchHistory()
+        viewModel.fetchItems(itemType)
     }
 
     Scaffold(
@@ -91,7 +96,7 @@ fun HistoryScreen(
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SearchAppBar(
-                title = stringResource(R.string.history),
+                title = stringResource(id = titleId),
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
                 navigationIcon = {
@@ -109,7 +114,7 @@ fun HistoryScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.DeleteForever,
-                            contentDescription = stringResource(id = R.string.clear_history)
+                            contentDescription = stringResource(id = clearItemsHintId)
                         )
                     }
                 },
@@ -123,18 +128,18 @@ fun HistoryScreen(
                     .padding(pV)
             ) {
                 val query = searchQuery.lowercase()
-                val filteredHistory = viewModel.history.filter {
+                val filteredItems = viewModel.items.filter {
                     it.insertedText.lowercase().contains(query) ||
                         it.translatedText.lowercase().contains(query)
                 }
 
-                if (filteredHistory.isNotEmpty()) {
+                if (filteredItems.isNotEmpty()) {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        items(filteredHistory) {
+                        items(filteredItems) {
                             HistoryRow(navController, translationModel, it) {
-                                viewModel.deleteHistoryItem(it)
+                                viewModel.deleteItem(it)
                             }
                         }
                     }
@@ -164,7 +169,7 @@ fun HistoryScreen(
         AlertDialog(
             onDismissRequest = { showDeleteHistoryDialog = false },
             title = {
-                Text(stringResource(R.string.clear_history))
+                Text(stringResource(clearItemsHintId))
             },
             text = {
                 Text(stringResource(R.string.irreversible))
@@ -176,7 +181,7 @@ fun HistoryScreen(
             },
             confirmButton = {
                 DialogButton(text = stringResource(R.string.okay)) {
-                    viewModel.clearHistory()
+                    viewModel.clearItems(itemType)
                     showDeleteHistoryDialog = false
                 }
             }
