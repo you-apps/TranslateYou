@@ -23,14 +23,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.DismissDirection
-import androidx.compose.material3.DismissValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
-import androidx.compose.material3.SwipeToDismiss
+import androidx.compose.material3.SwipeToDismissBox
+import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.rememberDismissState
+import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -74,10 +73,10 @@ fun HistoryRow(
 
     val maxLines = if (compactHistory) 3 else Int.MAX_VALUE
 
-    val state = rememberDismissState(
+    val state = rememberSwipeToDismissBoxState(
         confirmValueChange = {
             when (it) {
-                DismissValue.DismissedToEnd -> {
+                SwipeToDismissBoxValue.StartToEnd -> {
                     onDelete.invoke()
                     false
                 }
@@ -86,10 +85,10 @@ fun HistoryRow(
         }
     )
 
-    SwipeToDismiss(
+    SwipeToDismissBox(
         state = state,
-        background = {},
-        dismissContent = {
+        backgroundContent = {},
+        content = {
             ListItem(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -121,7 +120,7 @@ fun HistoryRow(
                 }
             )
         },
-        directions = setOf(DismissDirection.StartToEnd)
+        enableDismissFromStartToEnd = true
     )
 
     if (showDialog) {
