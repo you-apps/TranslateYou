@@ -4,6 +4,8 @@
 
     <!-- Internet permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Voice recognition as input -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -70,4 +72,9 @@
 
     </application>
 
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
 </manifest>

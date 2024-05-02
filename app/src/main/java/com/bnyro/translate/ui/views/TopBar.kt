@@ -21,6 +21,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.speech.SpeechRecognizer
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -49,6 +50,8 @@ import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.SpeechHelper
+import com.bnyro.translate.util.SpeechResultContract
+import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,6 +62,12 @@ fun TopBar(
     val context = LocalContext.current
     val fileChooser = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) {
         mainModel.processImage(context, it)
+    }
+    val speechRecognizer = rememberLauncherForActivityResult(SpeechResultContract()) {
+        if (it != null) {
+            mainModel.insertedText = it
+            mainModel.enqueueTranslation()
+        }
     }
 
     TopAppBar(
@@ -82,9 +91,10 @@ fun TopBar(
                         return@StyledIconButton
                     }
 
-                    SpeechHelper.recognizeSpeech(context as Activity) {
-                        mainModel.insertedText = it
-                        mainModel.enqueueTranslation()
+                    try {
+                        speechRecognizer.launch(Locale.getDefault())
+                    } catch (e: Exception) {
+                        Log.e(this::javaClass.name, e.stackTraceToString())
                     }
                 }
             }
