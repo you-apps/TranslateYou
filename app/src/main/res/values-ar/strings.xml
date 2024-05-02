@@ -75,4 +75,5 @@
     <string name="theme_black">اسود</string>
     <string name="irreversible">لا يمكن التراجع عن هذا. هل أنت متأكّدٌ أنّكَ تُريدُ المتابعة؟</string>
     <string name="tess_summary">Tesseract هو محرّك للتعرف البصري على الأحرّف. إنه برنامج مجاني أُصْدِرَ بموجب ترخيص Apache. أُصْدِرَ كمصدر مفتوح في عام 2005 وتمت رعاية التطوير بواسطة Google منذ عام 2006. ويُعتبر Tesseract أحد أكثر محرّكات التعرّف الضوئي على الحروف مفتوحة المصدر دقةً. لمزيد من المعلومات، راجع %1$s.</string>
+    <string name="clear_favorites">تنظيف المفضلة</string>
 </resources>
