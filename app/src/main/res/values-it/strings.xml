@@ -72,4 +72,9 @@
     <string name="favorites">Preferiti</string>
     <string name="select_theme">Seleziona tema</string>
     <string name="theme_black">Nero</string>
+    <string name="skip_similar_entries">Salta le voci simili</string>
+    <string name="skip_similar_entries_desc">Memorizza solo voci uniche nella cronologia, in base all\'inserimento e alle lingue.</string>
+    <string name="tess_summary">Tesseract è un motore di riconoscimento ottico dei caratteri. È un software libero, rilasciato sotto la licenza Apache. È stato rilasciato come open source nel 2005 e lo sviluppo è stato sponsorizzato da Google dal 2006. Tesseract è considerato uno dei motori OCR open-source più accurati disponibili. Per ulteriori informazioni, vedi %1$s.</string>
+    <string name="irreversible">Questa operazione non può essere annullata. Sei sicuro di voler procedere?</string>
+    <string name="clear_favorites">Cancella i preferiti</string>
 </resources>
