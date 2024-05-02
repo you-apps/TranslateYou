@@ -73,4 +73,6 @@
     <string name="select_theme">Valitse teema</string>
     <string name="skip_similar_entries">Ohita samankaltaiset tulokset</string>
     <string name="irreversible">Tätä ei voi perua. Haluatko varmasti jatkaa\?</string>
+    <string name="skip_similar_entries_desc">Säilytä ainoastaan uniikkeja merkintöjä historiassa, lisäyksien ja kielien perusteella.</string>
+    <string name="tess_summary">Tesseract on optinen tekstintunnistusmoottori. Se on vuonna 2005, avoimella lähdekoodilla ja Apache-lisenssillä julkaistu vapaa ohjelma. Kehitystä on sponsoroinut Google vuodesta 2006 lähtien. Tesseractia pidetään yhtenä tarkimmista saatavilla olevista avoimen lähdekoodin OCR-moottoreista. Lisätietoa on osoitteessa %1$s</string>
 </resources>
