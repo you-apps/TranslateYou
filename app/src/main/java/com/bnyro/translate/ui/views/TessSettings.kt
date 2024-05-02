@@ -45,6 +45,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -54,6 +55,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -109,11 +111,14 @@ fun TessSettings(
         }
     }
 
+    val topAppBarBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+
     FullscreenDialog(
         onDismissRequest = onDismissRequest,
         topBar = {
             LargeTopAppBar(
                 title = { Text(stringResource(R.string.image_translation)) },
+                scrollBehavior = topAppBarBehavior,
                 navigationIcon = {
                     StyledIconButton(imageVector = Icons.Default.ArrowBack, onClick = onDismissRequest)
                 }
@@ -121,7 +126,9 @@ fun TessSettings(
         },
         content = {
             Column(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .nestedScroll(topAppBarBehavior.nestedScrollConnection)
             ) {
                 SelectionContainer(
                     modifier = Modifier.padding(horizontal = 12.dp)
