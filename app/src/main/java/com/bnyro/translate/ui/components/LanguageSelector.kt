@@ -19,6 +19,8 @@ package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -39,6 +41,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -58,6 +61,7 @@ fun LanguageSelector(
     selectedLanguage: Language,
     autoLanguageEnabled: Boolean = false,
     viewModel: TranslationModel,
+    useElevatedButton: Boolean = true,
     onClick: (Language) -> Unit
 ) {
     var showDialog by remember {
@@ -72,15 +76,37 @@ fun LanguageSelector(
         }
     }
 
-    ElevatedButton(
-        modifier = Modifier
-            .padding(5.dp),
-        shape = RoundedCornerShape(15.dp),
-        onClick = { showDialog = !showDialog }
-    ) {
+    if (useElevatedButton) {
+        ElevatedButton(
+            modifier = Modifier
+                .padding(5.dp),
+            shape = RoundedCornerShape(15.dp),
+            onClick = { showDialog = true }
+        ) {
+            Text(
+                modifier = Modifier
+                    .basicMarquee()
+                    .padding(vertical = 7.dp, horizontal = 10.dp),
+                text = selectedLanguage.name,
+                textAlign = TextAlign.Center,
+                maxLines = 1
+            )
+        }
+    } else {
+        val interactionSource = remember {
+            MutableInteractionSource()
+        }
+
         Text(
             modifier = Modifier
                 .basicMarquee()
+                .clip(RoundedCornerShape(10.dp))
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null
+                ) {
+                    showDialog = true
+                }
                 .padding(vertical = 7.dp, horizontal = 10.dp),
             text = selectedLanguage.name,
             textAlign = TextAlign.Center,

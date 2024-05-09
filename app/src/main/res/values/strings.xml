@@ -10,6 +10,7 @@
     <string name="copy">Copy</string>
     <string name="auto">Auto</string>
     <string name="forget">Forget</string>
+    <string name="clear">Clear</string>
     <string name="translate">Translate</string>
     <string name="language_not_supported">Language is not supported!</string>
     <string name="translate_to">Translate to</string>

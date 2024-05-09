@@ -34,6 +34,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+        </activity>
+
+        <activity
+            android:name=".ui.ShareActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.DayNight.Dialog"
+            android:windowSoftInputMode="adjustResize"
+            android:excludeFromRecents="true">
+
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="android.intent.action.TRANSLATE" />

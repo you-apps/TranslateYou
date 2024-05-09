@@ -18,11 +18,12 @@
 package com.bnyro.translate.ui.screens
 
 import android.annotation.SuppressLint
+import android.view.ViewTreeObserver
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -30,31 +31,36 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
-import com.bnyro.translate.obj.Translation
-import com.bnyro.translate.ui.components.LanguageSelector
+import com.bnyro.translate.ui.components.TranslationFooter
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.Destination
+import com.bnyro.translate.ui.views.AdditionalInfoComponent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
+import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.util.SimTranslationComponent
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
@@ -63,6 +69,23 @@ fun TranslationPage(
     viewModel: TranslationModel
 ) {
     val context = LocalContext.current
+    val view = LocalView.current
+
+    var isKeyboardOpen by remember {
+        mutableStateOf(false)
+    }
+    // detect whether the keyboard is open or closed
+    DisposableEffect(view) {
+        val listener = ViewTreeObserver.OnGlobalLayoutListener {
+            isKeyboardOpen = ViewCompat.getRootWindowInsets(view)
+                ?.isVisible(WindowInsetsCompat.Type.ime()) ?: true
+        }
+
+        view.viewTreeObserver.addOnGlobalLayoutListener(listener)
+        onDispose {
+            view.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+        }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.refresh(context)
@@ -109,7 +132,7 @@ fun TranslationPage(
                 )
             )
         }
-    ) { it ->
+    ) {
         Column(
             modifier = Modifier
                 .padding(it)
@@ -126,79 +149,34 @@ fun TranslationPage(
                     modifier = Modifier
                         .weight(1.0f)
                 ) {
-                    TranslationComponent(viewModel)
-                }
+                    Column {
+                        TranslationComponent(viewModel)
 
-                Row(
-                    modifier = Modifier
-                        .padding(10.dp)
-                        .padding(top = 5.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier.weight(1f),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        LanguageSelector(
-                            viewModel.availableLanguages,
-                            viewModel.sourceLanguage,
-                            autoLanguageEnabled = viewModel.engine.autoLanguageCode != null,
-                            viewModel = viewModel
+                        if (Preferences.get(Preferences.showAdditionalInfo, true)
+                            && !isKeyboardOpen
                         ) {
-                            if (it == viewModel.targetLanguage) {
-                                viewModel.targetLanguage = viewModel.sourceLanguage
-                            }
-                            viewModel.sourceLanguage = it
-                            viewModel.translateNow()
+                            AdditionalInfoComponent(viewModel.translation, viewModel)
                         }
-                    }
 
-                    val switchBtnEnabled by mutableStateOf(
-                        viewModel.sourceLanguage.code.isNotEmpty()
-                    )
-
-                    IconButton(
-                        onClick = {
-                            if (viewModel.availableLanguages.isEmpty()) return@IconButton
-                            if (!switchBtnEnabled) return@IconButton
-                            val temp = viewModel.sourceLanguage
-                            viewModel.sourceLanguage = viewModel.targetLanguage
-                            viewModel.targetLanguage = temp
-
-                            if (viewModel.translation.translatedText.isNotEmpty()) {
-                                viewModel.insertedText = viewModel.translation.translatedText
-                                viewModel.translation = Translation("")
-                            }
-
-                            viewModel.translateNow()
-                        }
-                    ) {
-                        Icon(
-                            painterResource(R.drawable.ic_switch),
-                            null,
+                        Spacer(
                             modifier = Modifier
-                                .size(18.dp),
-                            tint = if (switchBtnEnabled) MaterialTheme.colorScheme.onSurface else Color.Gray
+                                .height(15.dp)
                         )
-                    }
 
-                    Box(
-                        modifier = Modifier.weight(1f),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        LanguageSelector(
-                            viewModel.availableLanguages,
-                            viewModel.targetLanguage,
-                            viewModel = viewModel
-                        ) {
-                            if (it == viewModel.sourceLanguage) {
-                                viewModel.sourceLanguage = viewModel.targetLanguage
-                            }
-                            viewModel.targetLanguage = it
-                            viewModel.translateNow()
+                        if (viewModel.simTranslationEnabled) {
+                            SimTranslationComponent(viewModel)
+                        } else {
+                            Divider(
+                                color = Color.Gray,
+                                modifier = Modifier
+                                    .align(alignment = Alignment.CenterHorizontally)
+                                    .size(70.dp, 2.dp)
+                            )
                         }
                     }
                 }
+
+                TranslationFooter(viewModel = viewModel)
             }
         }
     }

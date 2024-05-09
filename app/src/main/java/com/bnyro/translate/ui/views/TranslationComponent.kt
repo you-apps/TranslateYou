@@ -17,13 +17,11 @@
 
 package com.bnyro.translate.ui.views
 
-import android.view.ViewTreeObserver
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -40,7 +38,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,27 +45,22 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.util.SimTranslationComponent
 import kotlinx.coroutines.launch
 
 @Composable
 fun TranslationComponent(
-    viewModel: TranslationModel
+    viewModel: TranslationModel,
+    showLanguageSelector: Boolean = false
 ) {
-    val view = LocalView.current
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
 
@@ -79,22 +71,6 @@ fun TranslationComponent(
         mutableStateOf(
             clipboardHelper.hasClip()
         )
-    }
-
-    var isKeyboardOpen by remember {
-        mutableStateOf(false)
-    }
-    // detect whether the keyboard is open or closed
-    DisposableEffect(view) {
-        val listener = ViewTreeObserver.OnGlobalLayoutListener {
-            isKeyboardOpen = ViewCompat.getRootWindowInsets(view)
-                ?.isVisible(WindowInsetsCompat.Type.ime()) ?: true
-        }
-
-        view.viewTreeObserver.addOnGlobalLayoutListener(listener)
-        onDispose {
-            view.viewTreeObserver.removeOnGlobalLayoutListener(listener)
-        }
     }
 
     Column(
@@ -112,9 +88,16 @@ fun TranslationComponent(
             ) {
                 TranslationField(
                     translationModel = viewModel,
-                    writeEnabled = true,
+                    isSourceField = true,
                     text = viewModel.insertedText,
-                    viewModel.sourceLanguage.code
+                    viewModel.sourceLanguage,
+                    showLanguageSelector = showLanguageSelector,
+                    setLanguage = {
+                        if (it == viewModel.targetLanguage) {
+                            viewModel.targetLanguage = viewModel.sourceLanguage
+                        }
+                        viewModel.sourceLanguage = it
+                    }
                 ) {
                     viewModel.insertedText = it
                     if (it.isEmpty()) hasClip = clipboardHelper.hasClip()
@@ -175,9 +158,16 @@ fun TranslationComponent(
 
                 TranslationField(
                     translationModel = viewModel,
-                    writeEnabled = false,
+                    isSourceField = false,
                     text = viewModel.translation.translatedText,
-                    languageCode = viewModel.targetLanguage.code
+                    language = viewModel.targetLanguage,
+                    showLanguageSelector = showLanguageSelector,
+                    setLanguage = {
+                        if (it == viewModel.sourceLanguage) {
+                            viewModel.sourceLanguage = viewModel.targetLanguage
+                        }
+                        viewModel.targetLanguage = it
+                    }
                 )
             }
 
@@ -195,30 +185,6 @@ fun TranslationComponent(
                     Icon(Icons.Default.ArrowUpward, null)
                 }
             }
-        }
-
-        if (Preferences.get(
-                Preferences.showAdditionalInfo,
-                true
-            ) && !isKeyboardOpen
-        ) {
-            AdditionalInfoComponent(viewModel.translation, viewModel)
-        }
-
-        Spacer(
-            modifier = Modifier
-                .height(15.dp)
-        )
-
-        if (viewModel.simTranslationEnabled) {
-            SimTranslationComponent(viewModel)
-        } else {
-            Divider(
-                color = Color.Gray,
-                modifier = Modifier
-                    .align(alignment = Alignment.CenterHorizontally)
-                    .size(70.dp, 2.dp)
-            )
         }
     }
 }

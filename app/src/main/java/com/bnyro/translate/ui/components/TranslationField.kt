@@ -23,8 +23,8 @@ import android.os.Looper
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.bnyro.translate.R
+import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
@@ -48,9 +49,11 @@ import com.bnyro.translate.util.Preferences
 @Composable
 fun TranslationField(
     translationModel: TranslationModel,
-    writeEnabled: Boolean,
+    isSourceField: Boolean,
     text: String,
-    languageCode: String,
+    language: Language,
+    setLanguage: (Language) -> Unit = {},
+    showLanguageSelector: Boolean = false,
     onTextChange: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -71,8 +74,22 @@ fun TranslationField(
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.End
         ) {
+            if (showLanguageSelector) {
+                LanguageSelector(
+                    translationModel.availableLanguages,
+                    language,
+                    autoLanguageEnabled = translationModel.engine.autoLanguageCode != null && isSourceField,
+                    viewModel = translationModel,
+                    useElevatedButton = false
+                ) {
+                    setLanguage(it)
+                    translationModel.translateNow()
+                }
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+
             var copyImageVector by remember {
                 mutableStateOf(Icons.Default.ContentCopy)
             }
@@ -104,14 +121,14 @@ fun TranslationField(
                 }
             )
 
-            TTSButton(translationModel, text, languageCode)
+            TTSButton(translationModel, text, language.code)
         }
     }
 
     StyledTextField(
-        text = text + (if (!writeEnabled) "\n\n\n" else ""),
-        placeholder = if (writeEnabled) stringResource(R.string.enter_text) else null,
-        readOnly = !writeEnabled,
+        text = text + (if (!isSourceField) "\n\n\n" else ""),
+        placeholder = if (isSourceField) stringResource(R.string.enter_text) else null,
+        readOnly = !isSourceField,
         textColor = if (
             charPref.isNotEmpty() && translationModel.translation.translatedText.length >= charPref.toInt()
         ) {
