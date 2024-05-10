@@ -21,7 +21,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DeeplTranslation(
-    @SerialName("detected_source_language") val detectedSourceLanguage: String = "",
-    val text: String = ""
+data class DeeplWebTranslationRequestParamsLang(
+    @SerialName("target_lang") val targetLang: String,
+    @SerialName("source_lang_user_selected") val sourceLangUserSelected: String,
+    val preference: DeeplWebTranslationRequestParamsLangPreference
 )
