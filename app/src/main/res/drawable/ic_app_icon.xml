@@ -1,0 +1,54 @@
+<!--
+  ~ Copyright (c) 2024 You Apps
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+  <path
+      android:pathData="M197.97,119.47V146.77H119.47V177.49H147.74C149.54,182.55 151.84,188.79 154,193.8C158.5,204.27 161.4,210.85 167.79,221.33C173.64,230.92 177.66,236.12 184.34,244.35C186.29,246.75 188.58,249.38 190.84,251.89C189.51,252.93 188.23,253.92 187.07,254.79C181.2,259.18 178.25,261 171.52,264.89C164.39,269 160.2,271.13 152.75,274.27C144.4,277.8 139.92,279.59 131.6,282.42C129.39,283.16 126.44,284.09 123.96,284.86C122.73,285.24 121.65,285.57 120.88,285.8L119.98,286.08L119.68,286.17L137.14,312.92C138.63,312.45 140.14,311.96 141.47,311.51C150.72,308.36 155.93,306.27 164.69,302.58C173.45,298.88 178.77,296.17 186.88,291.49C194.24,287.24 198.3,284.75 205.46,279.39C207.92,277.56 210.72,275.36 213.33,273.27C215.95,275.36 218.75,277.56 221.2,279.39C228.37,284.75 232.43,287.24 239.78,291.49C244.52,294.22 248.31,296.29 252.39,298.27L263.02,269.24C260.61,267.99 258.14,266.61 255.15,264.89C248.42,261 245.47,259.18 239.6,254.79C238.44,253.92 237.15,252.93 235.82,251.89C238.08,249.38 240.38,246.75 242.32,244.35C249.01,236.12 253.03,230.92 258.88,221.33C265.26,210.85 268.17,204.27 272.67,193.8C274.83,188.79 277.13,182.55 278.92,177.49H307.2V146.77H228.69V119.47H197.97ZM182.22,181.66C181.67,180.39 181.09,178.98 180.51,177.49H246.16C245.57,178.98 245,180.39 244.45,181.66C240.12,191.73 237.89,196.73 232.64,205.34C227.81,213.28 224.73,217.28 218.48,224.99C217.01,226.79 215.21,228.86 213.33,230.96C211.46,228.86 209.66,226.79 208.19,224.99C201.93,217.28 198.86,213.28 194.02,205.34C188.78,196.73 186.55,191.73 182.22,181.66Z"
+      android:fillType="evenOdd">
+    <aapt:attr name="android:fillColor">
+      <gradient
+          android:startX="119.47"
+          android:startY="119.47"
+          android:endX="392.53"
+          android:endY="392.53"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF7287FD"/>
+        <item android:offset="1" android:color="#FF8839EF"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M305.15,243.54H337.87L392.48,392.53H359.76L347,357.72H296.02L283.26,392.53H250.54L305.15,243.54ZM321.51,288.17L335.74,327H307.28L321.51,288.17Z"
+      android:fillType="evenOdd">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="119.47"
+          android:startY="119.47"
+          android:endX="392.53"
+          android:endY="392.53"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF7287FD"/>
+        <item android:offset="1" android:color="#FF8839EF"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
