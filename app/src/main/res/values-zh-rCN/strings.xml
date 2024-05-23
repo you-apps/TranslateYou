@@ -86,4 +86,5 @@
     <string name="irreversible">此操作无法撤销。你确定要继续吗？</string>
     <string name="tess_summary">Tesseract 是一个光学字符识别引擎。 它是根据 Apache 许可证分发的自由软件。其于 2005 年开源发布，自 2006 年以来一直由 Google 赞助开发。Tesseract 被认为是可用的最准确的开源 OCR 引擎之一。 更多信息，请参阅 %1$s.</string>
     <string name="clear_favorites">清除收藏</string>
+    <string name="clear">清除</string>
 </resources>
