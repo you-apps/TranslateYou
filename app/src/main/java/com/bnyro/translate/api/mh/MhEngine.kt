@@ -23,6 +23,8 @@ import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 import java.io.File
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MhEngine : TranslationEngine(
     name = "Mozhi",
@@ -63,14 +65,16 @@ class MhEngine : TranslationEngine(
         )
         return Translation(
             translatedText = response.translatedText,
-            detectedLanguage = response.sourceLanguage
+            detectedLanguage = response.detectedLanguage
         )
     }
 
     override suspend fun getAudioFile(lang: String, query: String): File? {
         val audioBytes = api.getAudioFile(lang = lang, text = query).body()?.bytes() ?: return null
 
-        return File.createTempFile("audio", ".mp3").apply {
+        return withContext(Dispatchers.IO) {
+            File.createTempFile("audio", ".mp3")
+        }.apply {
             writeBytes(audioBytes)
         }
     }

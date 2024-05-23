@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 You Apps
+ * Copyright (c) 2024 You Apps
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,19 +15,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.api.st.obj
+package com.bnyro.translate.api.mh.obj
 
+import com.bnyro.translate.api.st.obj.STDefinition
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class STTranslationResponse (
+data class MhTranslationResponse (
     @SerialName("definitions")
     val definitions: STDefinition? = null,
     @SerialName("pronunciation")
     val pronunciation: String? = null,
-    @SerialName("source_language")
-    val sourceLanguage: String? = null,
-    @SerialName("translated_text")
+    @SerialName("detected")
+    val detectedLanguage: String? = null,
+    @SerialName("translated-text")
     val translatedText: String = ""
 )

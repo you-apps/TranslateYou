@@ -17,13 +17,15 @@
 
 package com.bnyro.translate.api.st
 
-import android.accounts.NetworkErrorException
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
-import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
+import java.io.File
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.jsonPrimitive
 
 class STEngine : TranslationEngine(
     name = "SimplyTranslate",
@@ -31,7 +33,8 @@ class STEngine : TranslationEngine(
     urlModifiable = true,
     apiKeyState = ApiKeyState.DISABLED,
     autoLanguageCode = "auto",
-    supportedEngines = listOf("google", "libre", "reverso", "iciba")
+    supportedEngines = listOf("google", "libre", "reverso", "iciba"),
+    supportsAudio = true
 ) {
     lateinit var api: SimplyTranslate
 
@@ -40,20 +43,9 @@ class STEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
-        val body = api.getLanguages(getSelectedEngine())
-
-        // val body = api.getLanguages().execute().body()
-        val languages = mutableListOf<Language>()
-        body.split("\n").let {
-            for (index in 0..(it.size.toDouble() / 2 - 1).toInt()) {
-                languages.add(
-                    Language(name = it[index * 2], code = it[index * 2 + 1])
-                )
-            }
-        }
-
-        if (languages.isEmpty()) throw NetworkErrorException("Network Error")
-        return languages
+        return api.getLanguages(getSelectedEngine()).map {
+            Language(it.key, it.value.jsonPrimitive.content)
+        }.sortedBy { it.code }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
@@ -65,7 +57,22 @@ class STEngine : TranslationEngine(
         )
         return Translation(
             translatedText = response.translatedText,
-            detectedLanguage = response.sourceLanguage
+            detectedLanguage = response.sourceLanguage,
+            transliterations = listOfNotNull(response.pronunciation?.takeIf { it.isNotBlank() })
         )
+    }
+
+    override suspend fun getAudioFile(lang: String, query: String): File? {
+        val audioBytes = api.getAudioFile(
+            lang = lang,
+            text = query,
+            engine = getSelectedEngine()
+        ).body()?.bytes() ?: return null
+
+        return withContext(Dispatchers.IO) {
+            File.createTempFile("audio", ".mp3")
+        }.apply {
+            writeBytes(audioBytes)
+        }
     }
 }

@@ -280,23 +280,24 @@ class TranslationModel : ViewModel() {
     fun playAudio(languageCode: String, text: String) {
         releaseMediaPlayer()
 
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             audioFile = runCatching {
-                engine.getAudioFile(languageCode, text)
-            }.getOrElse { return@launch }
-
-            withContext(Dispatchers.Main) {
-                mediaPlayer = MediaPlayer().apply {
-                    setOnCompletionListener {
-                        releaseMediaPlayer()
-                    }
+                withContext(Dispatchers.IO) {
+                    engine.getAudioFile(languageCode, text)
                 }
-                audioFile?.let { file ->
-                    mediaPlayer?.apply {
-                        setDataSource(file.absolutePath)
-                        prepare()
-                        start()
-                    }
+            }.getOrNull()
+            val audioFile = audioFile ?: return@launch
+
+            mediaPlayer = MediaPlayer().apply {
+                setOnCompletionListener {
+                    releaseMediaPlayer()
+                }
+
+                setDataSource(audioFile.absolutePath)
+
+                runCatching {
+                    prepare()
+                    start()
                 }
             }
         }

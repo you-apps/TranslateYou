@@ -18,7 +18,7 @@
 package com.bnyro.translate.api.mh
 
 import com.bnyro.translate.api.mh.obj.MhLanguage
-import com.bnyro.translate.api.st.obj.STTranslationResponse
+import com.bnyro.translate.api.mh.obj.MhTranslationResponse
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET
@@ -31,7 +31,7 @@ interface Mozhi {
         @Query("from") source: String,
         @Query("to") target: String,
         @Query("text") query: String
-    ): STTranslationResponse
+    ): MhTranslationResponse
 
     @GET("api/target_languages/")
     suspend fun getLanguages(
