@@ -76,4 +76,5 @@
     <string name="irreversible">Tato akce je nevratná. Opravdu chcete pokračovat\?</string>
     <string name="tess_summary">Tesseract je engine pro optické rozpoznávání znaků. Jedná se o svobodný software vydaný pod licencí Apache. Jako open-source byl uvolněn v roce 2005 a jeho vývoj od roku 2006 sponzoruje společnost Google. Tesseract je považován za jeden z nejpřesnějších dostupných open-source OCR enginů. Další informace naleznete na zde: %1$s.</string>
     <string name="clear_favorites">Vymazat oblíbené</string>
+    <string name="clear">Vymazat</string>
 </resources>
