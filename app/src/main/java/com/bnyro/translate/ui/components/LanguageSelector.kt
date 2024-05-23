@@ -69,11 +69,19 @@ fun LanguageSelector(
     }
     val lazyListState = rememberLazyListState()
 
+    var searchQuery by remember {
+        mutableStateOf("")
+    }
+
+    val bookmarks = viewModel.bookmarkedLanguages.filter {
+        validateFilter(it, searchQuery)
+    }
+
     LaunchedEffect(Unit, availableLanguages) {
-        // automatically scroll to the selected language
-        availableLanguages.indexOfFirst { it == selectedLanguage }.let {
-            if (it != -1) lazyListState.animateScrollToItem(it)
-        }
+        // automatically scroll to the currently selected language
+        var index = bookmarks.indexOfFirst { it == selectedLanguage }
+        if (index == -1) index = bookmarks.size + availableLanguages.indexOfFirst { it == selectedLanguage }
+        if (index != -1) lazyListState.animateScrollToItem(index + 1)
     }
 
     if (useElevatedButton) {
@@ -117,9 +125,6 @@ fun LanguageSelector(
     val languages = availableLanguages.toMutableList()
 
     if (showDialog) {
-        var searchQuery by remember {
-            mutableStateOf("")
-        }
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
             rememberTopAppBarState()
         )
@@ -166,9 +171,6 @@ fun LanguageSelector(
                         }
                     }
 
-                    val bookmarks = viewModel.bookmarkedLanguages.filter {
-                        validateFilter(it, searchQuery)
-                    }
                     if (bookmarks.isNotEmpty()) {
                         item {
                             Text(
@@ -255,6 +257,7 @@ fun LanguageSelector(
 
 private fun validateFilter(language: Language, query: String): Boolean {
     if (query.isEmpty()) return true
+
     val lowerQuery = query.lowercase()
     return language.name.lowercase().contains(lowerQuery) ||
         language.code.lowercase().contains(lowerQuery)
