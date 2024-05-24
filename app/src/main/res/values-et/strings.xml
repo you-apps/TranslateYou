@@ -76,4 +76,5 @@
     <string name="character_warning_limit">Pika lähteteksti hoiatus</string>
     <string name="missing_api_key">Palun sisesta seadistustes API võti.</string>
     <string name="clear_favorites">Eemalda lemmikud</string>
+    <string name="clear">Tühjenda</string>
 </resources>
