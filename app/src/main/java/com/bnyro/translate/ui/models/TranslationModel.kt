@@ -35,8 +35,6 @@ import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.db.obj.HistoryItemType
 import com.bnyro.translate.db.obj.Language
-import com.bnyro.translate.ext.awaitQuery
-import com.bnyro.translate.ext.query
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
@@ -181,7 +179,7 @@ class TranslationModel : ViewModel() {
             itemType = itemType
         )
 
-        query {
+        viewModelScope.launch(Dispatchers.IO) {
             // don't create new entry if a similar one exists
             if (Preferences.get(Preferences.skipSimilarHistoryKey, true) && Db.historyDao()
                     .existsSimilar(
@@ -190,7 +188,7 @@ class TranslationModel : ViewModel() {
                         historyItem.targetLanguageCode,
                         itemType = itemType
                     )
-            ) return@query
+            ) return@launch
 
             Db.historyDao().insertAll(historyItem)
         }
@@ -247,10 +245,8 @@ class TranslationModel : ViewModel() {
         fetchBookmarkedLanguages()
     }
 
-    private fun fetchBookmarkedLanguages() {
-        bookmarkedLanguages = awaitQuery {
-            Db.languageBookmarksDao().getAll()
-        }
+    private fun fetchBookmarkedLanguages() = viewModelScope.launch(Dispatchers.IO) {
+        bookmarkedLanguages = Db.languageBookmarksDao().getAll()
     }
 
     fun processImage(context: Context, uri: Uri?) {

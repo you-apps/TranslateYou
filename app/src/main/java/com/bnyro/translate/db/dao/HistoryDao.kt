@@ -27,10 +27,10 @@ import com.bnyro.translate.db.obj.HistoryItemType
 @Dao
 interface HistoryDao {
     @Query("SELECT * FROM HistoryItem WHERE itemType = :type")
-    fun getAll(type: HistoryItemType): List<HistoryItem>
+    suspend fun getAll(type: HistoryItemType): List<HistoryItem>
 
     @Query("SELECT EXISTS(SELECT * FROM HistoryItem WHERE insertedText = :insertedText AND sourceLanguageCode = :sourceLanguage AND targetLanguageCode = :targetLanguage AND itemType = :itemType)")
-    fun existsSimilar(
+    suspend fun existsSimilar(
         insertedText: String,
         sourceLanguage: String,
         targetLanguage: String,
@@ -38,11 +38,11 @@ interface HistoryDao {
     ): Boolean
 
     @Insert
-    fun insertAll(vararg historyItems: HistoryItem)
+    suspend fun insertAll(vararg historyItems: HistoryItem)
 
     @Delete
-    fun delete(historyItem: HistoryItem)
+    suspend fun delete(historyItem: HistoryItem)
 
     @Query("DELETE FROM HistoryItem WHERE itemType = :type")
-    fun deleteAll(type: HistoryItemType)
+    suspend fun deleteAll(type: HistoryItemType)
 }

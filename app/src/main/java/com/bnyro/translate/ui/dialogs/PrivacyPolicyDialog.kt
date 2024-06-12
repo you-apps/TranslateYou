@@ -33,9 +33,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.bnyro.translate.R
 import com.bnyro.translate.const.AboutLinks
-import com.bnyro.translate.ext.query
 import com.bnyro.translate.util.ClipboardHelper
 import java.net.URL
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @Composable
 fun PrivacyPolicyDialog(
@@ -48,7 +49,7 @@ fun PrivacyPolicyDialog(
     }
 
     LaunchedEffect(Unit) {
-        query {
+        withContext(Dispatchers.IO) {
             privacyPolicyHtml = try {
                 URL(AboutLinks.PRIVACY_POLICY).readText()
             } catch (e: Exception) {

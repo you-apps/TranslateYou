@@ -26,14 +26,14 @@ import com.bnyro.translate.db.obj.Language
 @Dao
 interface LanguageBookmarksDao {
     @Query("SELECT * FROM Language")
-    fun getAll(): List<Language>
+    suspend fun getAll(): List<Language>
 
     @Insert
-    fun insertAll(vararg languages: Language)
+    suspend fun insertAll(vararg languages: Language)
 
     @Delete
-    fun delete(language: Language)
+    suspend fun delete(language: Language)
 
     @Query("DELETE FROM Language")
-    fun deleteAll()
+    suspend fun deleteAll()
 }
