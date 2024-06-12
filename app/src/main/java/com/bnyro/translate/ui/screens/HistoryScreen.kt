@@ -137,7 +137,7 @@ fun HistoryScreen(
                     LazyColumn(
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        items(filteredItems) {
+                        items(filteredItems, key = { item -> item.id }) {
                             HistoryRow(navController, translationModel, it) {
                                 viewModel.deleteItem(it)
                             }
