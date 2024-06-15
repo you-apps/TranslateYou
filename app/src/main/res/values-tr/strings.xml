@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Translate You</string>
     <string name="cancel">İptal</string>
     <string name="okay">Tamam</string>
     <string name="enter_text">Metin girin</string>
