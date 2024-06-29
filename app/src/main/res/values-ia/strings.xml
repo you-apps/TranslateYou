@@ -75,4 +75,5 @@
     <string name="missing_api_key">Forni un clave API in le parametros.</string>
     <string name="transliteration">Transliteration</string>
     <string name="translate_automatically_summary">Requesta un traduction automaticamente depost un certe retardo.</string>
+    <string name="clear_favorites">Rader le favoritos</string>
 </resources>

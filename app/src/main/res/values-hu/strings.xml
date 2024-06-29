@@ -1,2 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="enter_text">Szöveg megadása</string>
+    <string name="paste">Beillesztés</string>
+    <string name="copy">Másolás</string>
+    <string name="auto">Automatikus</string>
+    <string name="forget">Elfelejtés</string>
+    <string name="translate">Fordítás</string>
+    <string name="translate_to">Fordítsd erre</string>
+    <string name="translate_from">Fordítás erről</string>
+    <string name="instance">Példa</string>
+    <string name="api_key">API kulcs</string>
+    <string name="options">Beállítások</string>
+    <string name="history">Előzmény</string>
+    <string name="fetch_delay_summary">A szöveg beillesztése és a fordítás lekérése közötti késleltetés</string>
+    <string name="history_summary">A legutóbb lefordított szövegek nyomon követése</string>
+    <string name="required">Szükséges</string>
+    <string name="optional">Opcionális</string>
+    <string name="compact_history">Kompakt előzmények</string>
+    <string name="skip_similar_entries">Hasonló bejegyzések kihagyása</string>
+    <string name="skip_similar_entries_desc">Csak egyedi bejegyzéseket tárol az előzményekben, a beszúrás és a nyelvek alapján.</string>
+    <string name="compact_history_summary">Csak az első 3 szöveges sor megjelenítése alapértelmezés szerint az előzményekben</string>
+    <string name="simultaneous_translation">Szinkrontolmácsolás</string>
+    <string name="enabled_engines">Engedélyezett motorok</string>
+    <string name="enabled_engines_summary">A szinkrontolmácsoláshoz használandó motorok.</string>
+    <string name="selected_engine">Kiválasztott motor</string>
+    <string name="okay">Oké</string>
+    <string name="about">Névjegy</string>
+    <string name="history_enabled">Előzmények engedélyezve</string>
+    <string name="fetch_delay">Fordítási késleltetés</string>
+    <string name="additional_info">További információk</string>
+    <string name="cancel">Mégsem</string>
+    <string name="additional_info_summary">További fordítási információk megjelenítése, ha rendelkezésre állnak.</string>
+    <string name="simultaneous_translation_summary">Egyszerre több motorból is lekérheti az eredményeket.</string>
+    <string name="language_not_supported">A nyelv nem támogatott!</string>
+</resources>

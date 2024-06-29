@@ -75,4 +75,6 @@
     <string name="favorites">Yêu thích</string>
     <string name="irreversible">Không thể hoàn tác việc này. Bạn có chắc chắn muốn tiếp tục không?</string>
     <string name="tess_summary">Tesseract là một công cụ nhận dạng ký tự quang học. Đây là phần mềm miễn phí, được phát hành theo Giấy phép Apache. Nó được phát hành dưới dạng mã nguồn mở vào năm 2005 và sự phát triển đã được Google tài trợ từ năm 2006. Tesseract được coi là một trong những công cụ OCR mã nguồn mở chính xác nhất hiện có. Để biết thêm thông tin, hãy xem %1$s.</string>
+    <string name="clear_favorites">Xóa mục yêu thích</string>
+    <string name="clear">Dọn</string>
 </resources>
