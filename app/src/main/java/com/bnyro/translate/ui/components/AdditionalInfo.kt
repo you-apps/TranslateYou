@@ -35,11 +35,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bnyro.translate.ext.formatHTML
-import com.bnyro.translate.util.ClipboardHelper
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -49,6 +50,7 @@ fun AdditionalInfo(
     onClick: () -> Unit = {}
 ) {
     val context = LocalContext.current
+    val clipboard = LocalClipboardManager.current
 
     Row(
         modifier = Modifier
@@ -56,7 +58,7 @@ fun AdditionalInfo(
             .combinedClickable(
                 onClick = onClick,
                 onLongClick = {
-                    ClipboardHelper(context).write(text)
+                    clipboard.setText(AnnotatedString(text = text))
                 }
             ),
         verticalAlignment = Alignment.CenterVertically

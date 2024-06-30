@@ -38,12 +38,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ui.models.TranslationModel
-import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
 
 @Composable
@@ -57,6 +58,8 @@ fun TranslationField(
     onTextChange: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
+    val clipboard = LocalClipboardManager.current
+
     val handler = remember {
         Handler(Looper.getMainLooper())
     }
@@ -96,9 +99,7 @@ fun TranslationField(
             StyledIconButton(
                 imageVector = copyImageVector,
                 onClick = {
-                    ClipboardHelper(
-                        context
-                    ).write(text)
+                    clipboard.setText(AnnotatedString(text = text))
                     copyImageVector = Icons.Default.DoneAll
                     handler.postDelayed({
                         copyImageVector = Icons.Default.ContentCopy

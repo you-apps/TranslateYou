@@ -17,6 +17,9 @@
 
 package com.bnyro.translate.ui.views
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.os.Build
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -38,6 +41,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,14 +49,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
-import com.bnyro.translate.util.ClipboardHelper
 import com.bnyro.translate.util.Preferences
 import kotlinx.coroutines.launch
 
@@ -61,16 +66,16 @@ fun TranslationComponent(
     viewModel: TranslationModel,
     showLanguageSelector: Boolean = false
 ) {
+    val context = LocalContext.current
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
-
-    val clipboardHelper = ClipboardHelper(
-        LocalContext.current.applicationContext
-    )
+    val clipboard = LocalClipboardManager.current
     var hasClip by remember {
-        mutableStateOf(
-            clipboardHelper.hasClip()
-        )
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(Unit, clipboard) {
+        hasClip = clipboard.hasText() && !clipboard.getText()?.toString().isNullOrBlank()
     }
 
     Column(
@@ -100,7 +105,7 @@ fun TranslationComponent(
                     }
                 ) {
                     viewModel.insertedText = it
-                    if (it.isEmpty()) hasClip = clipboardHelper.hasClip()
+                    hasClip = clipboard.hasText()
                     viewModel.enqueueTranslation()
                 }
 
@@ -126,7 +131,7 @@ fun TranslationComponent(
                             text = stringResource(R.string.paste),
                             icon = Icons.Default.ContentPaste
                         ) {
-                            viewModel.insertedText = clipboardHelper.get() ?: ""
+                            viewModel.insertedText = clipboard.getText()?.toString().orEmpty()
                             viewModel.enqueueTranslation()
                         }
 
@@ -139,8 +144,16 @@ fun TranslationComponent(
                             text = stringResource(R.string.forget),
                             icon = Icons.Default.Clear
                         ) {
-                            clipboardHelper.clear()
                             hasClip = false
+
+                            val manager = ContextCompat.getSystemService(context, ClipboardManager::class.java) ?: return@ButtonWithIcon
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                manager.clearPrimaryClip()
+                            } else {
+                                manager.setPrimaryClip(ClipData(null))
+                            }
+
                             viewModel.clearTranslation()
                         }
                     }

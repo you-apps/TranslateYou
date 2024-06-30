@@ -29,11 +29,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import com.bnyro.translate.R
 import com.bnyro.translate.const.AboutLinks
-import com.bnyro.translate.util.ClipboardHelper
 import java.net.URL
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -43,6 +44,7 @@ fun PrivacyPolicyDialog(
     onDismissRequest: () -> Unit
 ) {
     val context = LocalContext.current
+    val clipboard = LocalClipboardManager.current
 
     var privacyPolicyHtml by remember {
         mutableStateOf("")
@@ -84,7 +86,7 @@ fun PrivacyPolicyDialog(
         dismissButton = {
             TextButton(
                 onClick = {
-                    ClipboardHelper(context).write(privacyPolicyHtml)
+                    clipboard.setText(AnnotatedString(text = privacyPolicyHtml))
                     onDismissRequest.invoke()
                 }
             ) {
