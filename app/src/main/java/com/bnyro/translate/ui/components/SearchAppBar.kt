@@ -75,7 +75,7 @@ fun SearchAppBar(
             Text(title)
         },
         actions = {
-            Crossfade(isSearchViewVisible) {
+            Crossfade(isSearchViewVisible, label = "search-bar-crossfade") {
                 when (it) {
                     true -> {
                         Row(

@@ -40,9 +40,8 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LargeTopAppBar
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -59,15 +58,17 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.TessLanguage
 import com.bnyro.translate.ui.components.DialogButton
+import com.bnyro.translate.ui.components.SearchAppBar
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.dialogs.FullscreenDialog
+import com.bnyro.translate.ui.models.TessModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -75,53 +76,77 @@ fun TessSettings(
     onDismissRequest: () -> Unit
 ) {
     val context = LocalContext.current
+    val tessModel: TessModel = viewModel()
+    val topAppBarBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
-    var availableLanguages by remember {
-        mutableStateOf(emptyList<TessLanguage>())
-    }
-
-    var downloadedLanguages by remember {
-        mutableStateOf(TessHelper.getDownloadedLanguages(context))
+    var query by remember {
+        mutableStateOf("")
     }
 
     var selectedLanguage by remember {
         mutableStateOf(Preferences.get(Preferences.tessLanguageKey, ""))
     }
 
+    LaunchedEffect(Unit) {
+        tessModel.init(context)
+    }
+
+    var filteredDownloadedLanguages by remember {
+        mutableStateOf(emptyList<String>())
+    }
+    var filteredAvailableLanguages by remember {
+        mutableStateOf(emptyList<TessLanguage>())
+    }
+
+    LaunchedEffect(query, tessModel.availableLanguages, tessModel.downloadedLanguages) {
+        val lowerQuery = query.lowercase()
+
+        filteredAvailableLanguages = tessModel.availableLanguages.filter { tessLang ->
+            tessLang.path.replace(TessHelper.DATA_FILE_SUFFIX, "").contains(lowerQuery) &&
+                    tessModel.downloadedLanguages.none {
+                        tessLang.path.replace(TessHelper.DATA_FILE_SUFFIX, "") == it
+                    }
+        }
+
+        filteredDownloadedLanguages = tessModel.downloadedLanguages.filter { lang ->
+            lowerQuery.contains(lang)
+        }
+    }
+
     val onDownloadComplete = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             // Refresh the downloaded languages every time a download finishes
-            downloadedLanguages = TessHelper.getDownloadedLanguages(context)
+            tessModel.refreshDownloadedLanguages(context)
         }
     }
 
     DisposableEffect(Unit) {
-        context.registerReceiver(
+        ContextCompat.registerReceiver(
+            context,
             onDownloadComplete,
-            IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+            IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
+            ContextCompat.RECEIVER_EXPORTED
         )
         onDispose {
             context.unregisterReceiver(onDownloadComplete)
         }
     }
 
-    LaunchedEffect(Unit) {
-        availableLanguages = withContext(Dispatchers.IO) {
-            TessHelper.getAvailableLanguages()
-        }
-    }
-
-    val topAppBarBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-
     FullscreenDialog(
         onDismissRequest = onDismissRequest,
         topBar = {
-            LargeTopAppBar(
-                title = { Text(stringResource(R.string.image_translation)) },
+            SearchAppBar(
+                title = stringResource(R.string.image_translation),
+                value = query,
+                onValueChange = { query = it },
                 scrollBehavior = topAppBarBehavior,
                 navigationIcon = {
-                    StyledIconButton(imageVector = Icons.Default.ArrowBack, onClick = onDismissRequest)
-                }
+                    StyledIconButton(
+                        imageVector = Icons.Default.ArrowBack,
+                        onClick = onDismissRequest
+                    )
+                },
+                actions = {}
             )
         },
         content = {
@@ -130,19 +155,22 @@ fun TessSettings(
                     .fillMaxWidth()
                     .nestedScroll(topAppBarBehavior.nestedScrollConnection)
             ) {
-                SelectionContainer(
-                    modifier = Modifier.padding(horizontal = 12.dp)
-                ) {
-                    Text(text = stringResource(R.string.tess_summary, TessHelper.tessRepoUrl))
-                }
-                Spacer(modifier = Modifier.height(12.dp))
-
-                // downloaded languages
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    items(downloadedLanguages) {
+                    item {
+                        SelectionContainer(
+                            modifier = Modifier.padding(horizontal = 12.dp)
+                        ) {
+                            Text(text = stringResource(R.string.tess_summary, TessHelper.tessRepoUrl))
+                        }
+                        Spacer(modifier = Modifier.height(12.dp))
+                    }
+
+                    items(filteredDownloadedLanguages) {
                         TessSettingsRow(
                             packName = "$it${TessHelper.DATA_FILE_SUFFIX}",
                             size = null,
@@ -151,7 +179,7 @@ fun TessSettings(
                         ) {
                             StyledIconButton(imageVector = Icons.Default.Delete) {
                                 if (TessHelper.deleteLanguage(context, it)) {
-                                    downloadedLanguages = TessHelper.getDownloadedLanguages(context)
+                                    tessModel.refreshDownloadedLanguages(context)
                                 } else {
                                     Toast.makeText(
                                         context,
@@ -162,27 +190,18 @@ fun TessSettings(
                             }
                         }
                     }
-                }
-                Divider(
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .padding(10.dp)
-                        .size(70.dp, 1.dp)
-                )
-                // not yet downloaded languages
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
-                    val notYetDownloadedLanguages = availableLanguages.filter { tessLang ->
-                        downloadedLanguages.none {
-                            tessLang.path.replace(TessHelper.DATA_FILE_SUFFIX, "") == it
-                        }
+
+                    item {
+                        HorizontalDivider(
+                            color = MaterialTheme.colorScheme.onSurface,
+                            modifier = Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .padding(10.dp)
+                                .size(70.dp, 1.dp)
+                        )
                     }
 
-                    items(notYetDownloadedLanguages) {
+                    items(filteredAvailableLanguages) {
                         TessSettingsRow(
                             packName = it.path,
                             size = it.size,
