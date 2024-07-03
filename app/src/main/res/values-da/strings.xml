@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel">Annullér</string>
+    <string name="paste">Indsæt</string>
+    <string name="copy">Kopiér</string>
+    <string name="translate_to">Oversæt til</string>
+    <string name="about">Om</string>
+    <string name="history_enabled">Historik aktiveret</string>
+    <string name="history_summary">Hold styr på de sidste oversættede tekster</string>
+    <string name="required">Påkrævet</string>
+    <string name="optional">Valgfrit</string>
+    <string name="compact_history">Kompakt historik</string>
+    <string name="okay">Okay</string>
+    <string name="enter_text">Indtast tekst</string>
+    <string name="auto">Auto</string>
+    <string name="forget">Glem</string>
+    <string name="options">Indstillinger</string>
+    <string name="history">Historik</string>
+    <string name="translate">Oversæt</string>
+    <string name="language_not_supported">Sprog understøttes ikke!</string>
+    <string name="translate_from">Oversæt fra</string>
+    <string name="instance">Instans</string>
+    <string name="api_key">API-nøgle</string>
+    <string name="fetch_delay">Oversættelsesforsinkelse</string>
+    <string name="fetch_delay_summary">Forsinkelsen mellem indsætning af tekst og hentning af oversættelsen</string>
+</resources>

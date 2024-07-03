@@ -37,7 +37,7 @@
     <string name="open">Avaa</string>
     <string name="simultaneous_translation_summary">Nouda käännöksiä useammasta palvelusta samanaikaisesti.</string>
     <string name="enabled_engines">Käyttöön otetut palvelut</string>
-    <string name="simultaneous_translation">Simultaani kääntäminen</string>
+    <string name="simultaneous_translation">Samanaikainen kääntäminen</string>
     <string name="enabled_engines_summary">Palvelut, joista käännöksiä haetaan samanaikaisesti.</string>
     <string name="general">Yleiset</string>
     <string name="app_language">Sovelluksen kieli</string>
@@ -46,7 +46,7 @@
     <string name="detected_language">Tunnistettu kieli</string>
     <string name="similar">Samankaltainen</string>
     <string name="forget">Unohda</string>
-    <string name="character_warning_limit_summary">Varoita, jos käännetty teksti ylittää maksimipituuden.</string>
+    <string name="character_warning_limit_summary">Varoita, jos käännetty teksti ylittää enimmäispituuden.</string>
     <string name="missing_api_key">Syötä API-avain asetuksissa.</string>
     <string name="unknown_error">Tuntematon virhe</string>
     <string name="example">Esimerkki</string>
@@ -73,4 +73,7 @@
     <string name="select_theme">Valitse teema</string>
     <string name="skip_similar_entries">Ohita samankaltaiset tulokset</string>
     <string name="irreversible">Tätä ei voi perua. Haluatko varmasti jatkaa\?</string>
+    <string name="skip_similar_entries_desc">Säilytä ainoastaan uniikkeja merkintöjä historiassa, lisäyksien ja kielien perusteella.</string>
+    <string name="tess_summary">Tesseract on optinen tekstintunnistusmoottori. Se on vuonna 2005, avoimella lähdekoodilla ja Apache-lisenssillä julkaistu vapaa ohjelma. Kehitystä on sponsoroinut Google vuodesta 2006 lähtien. Tesseractia pidetään yhtenä tarkimmista saatavilla olevista avoimen lähdekoodin OCR-moottoreista. Lisätietoa on osoitteessa %1$s</string>
+    <string name="clear_favorites">Tyhjennä suosikit</string>
 </resources>

@@ -76,4 +76,6 @@
     <string name="theme_black">Siyah</string>
     <string name="irreversible">Bu geri alınamaz. Devam etmek istediğinize emin misiniz\?</string>
     <string name="tess_summary">Tesseract bir optik karakter tanıma motorudur. Apache Lisansı altında yayımlanan özgür bir yazılımdır. Açık kaynaklı olarak 2005 yılında yayınlandı ve geliştirme 2006 yılından beri Google tarafından desteklenmektedir. Tesseract, en doğru açık kaynaklı OCR motorlarından biri olarak kabul edilmektedir. Daha fazla bilgi için %1$s sayfasına bakın.</string>
+    <string name="clear_favorites">Sık kullanılanları temizle</string>
+    <string name="clear">Temizle</string>
 </resources>

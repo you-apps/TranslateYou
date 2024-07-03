@@ -60,7 +60,7 @@
     <string name="transliteration">Transliterasi</string>
     <string name="detected_language">Bahasa terdeteksi</string>
     <string name="definition">Definisi</string>
-    <string name="nothing_here">Tidak ada di sini.</string>
+    <string name="nothing_here">Tidak ada apa pun di sini.</string>
     <string name="use_free_api">Gunakan API gratis</string>
     <string name="use_free_api_summary">Gunakan API gratis daripada API Pro yang berbayar.</string>
     <string name="translate_to">Terjemahkan ke</string>
@@ -74,4 +74,6 @@
     <string name="select_theme">Pilih Tema</string>
     <string name="theme_black">Hitam</string>
     <string name="irreversible">Ini tidak dapat diurungkan. Apakah Anda yakin ingin melanjutkan\?</string>
+    <string name="tess_summary">Tesseract adalah mesin pengenal karakter optik (OCR). Tesseract adalah perangkat lunak gratis, yang dirilis dengan Lisensi Apache. Tesseract dirilis sebagai mesin OCR sumber terbuka pada tahun 2005 dan pengembangannya disponsori oleh Google sejak tahun 2006. Tesseract dianggap sebagai salah satu mesin OCR sumber terbuka yang paling akurat yang tersedia. Untuk informasi lebih lanjut, lihat %1$s.</string>
+    <string name="clear_favorites">Hapus favorit</string>
 </resources>

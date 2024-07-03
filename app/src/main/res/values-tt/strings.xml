@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel">Баш тарту</string>
+    <string name="enter_text">Текстны кертегез</string>
+    <string name="about">Хакында</string>
+    <string name="general">Гомуми</string>
+    <string name="translate_automatically">Автоматик рәвештә тәрҗемә итү</string>
+    <string name="nothing_here">Монда бернәрсә дә юк.</string>
+    <string name="theme_light">Ачык</string>
+    <string name="theme_black">Кара</string>
+    <string name="search">Эзләү</string>
+    <string name="select_theme">Теманы сайлау</string>
+    <string name="okay">Ярар</string>
+    <string name="auto">Автоматик</string>
+    <string name="history">Тарих</string>
+    <string name="translation">Тәрҗемә</string>
+    <string name="app_language">Кушымта теле</string>
+    <string name="none">Бернинди дә</string>
+    <string name="license">Лицензия</string>
+    <string name="privacy_policy">Хосусыйлык Cәясәте</string>
+    <string name="theme_dark">Караңгы</string>
+    <string name="open">Ачу</string>
+    <string name="unknown_error">Билгесез хата</string>
+    <string name="example">Мисал</string>
+    <string name="paste">Ябыштыру</string>
+    <string name="translate">Тәрҗемә итү</string>
+    <string name="copy">Күчереп алу</string>
+</resources>

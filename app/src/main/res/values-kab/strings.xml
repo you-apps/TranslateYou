@@ -34,4 +34,25 @@
     <string name="all_languages">Akk tutlayin</string>
     <string name="select_theme">Fren asentel</string>
     <string name="history_summary">Cfu ɣef yiḍrisen ineggura yettwasuqlen</string>
+    <string name="okay">Ih</string>
+    <string name="instance">Aqeddac</string>
+    <string name="history">Amazray</string>
+    <string name="history_enabled">Amazray yermed</string>
+    <string name="fetch_delay">Aεeṭṭel n tsuqilt</string>
+    <string name="enabled_engines_summary">Imseddayen i useqdec n tsuqilt tamirant.</string>
+    <string name="translate_automatically">Suqel s wudem awurman</string>
+    <string name="author">Ameskar</string>
+    <string name="theme_black">Ubrik</string>
+    <string name="similar">Kifkif-iten</string>
+    <string name="favorites">Imenyafen</string>
+    <string name="image_translation">Tasuqilt seg tugna</string>
+    <string name="simultaneous_translation_summary">Af-d igmaḍ seg waṭas n yimseddayen ɣef tikkelt.</string>
+    <string name="init_tess_first">Ttxil-k, sider-d isefka n tutlayt deg yiɣewwaren, deg tazwara.</string>
+    <string name="enabled_engines">Imsaddayen yettwaremden</string>
+    <string name="compact_history_summary">Yeskanay-d 3 n tseddarin timezwura kan n uḍris deg wudem amezwer deg umezruy</string>
+    <string name="additional_info">Talɣut tamernant</string>
+    <string name="st_selected_engine">Amsadday-nni ay yesseqdac SimplyTranslate i tsuqilt</string>
+    <string name="additional_info_summary">Sken-d ugar n telɣut n tsuqilt ma tella.</string>
+    <string name="image_translation_summary">Sider-d rnu qdec tutlayin i uɛqal n uḍris seg tugniwin.</string>
+    <string name="select_language">Ma ulac aɣilif, fren tutlayt i uɛqal n uḍris n tugniwin deg yiɣewwaren.</string>
 </resources>
