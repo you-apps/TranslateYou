@@ -40,13 +40,6 @@ android {
         }
     }
 
-    flavorDimensions.add("version")
-    productFlavors {
-        create("libre") {
-            dimension = "version"
-        }
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
