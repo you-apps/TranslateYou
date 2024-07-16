@@ -1,4 +1,4 @@
 <i>Translate You</i> is a Translator App built with <a href="https://m3.material.io/">Material Design 3 (You)</a>.
 
-It supports multiple different translation engiens such as LibreTranslate, Lingva, DeepL and more.
+It supports multiple different translation engines such as LibreTranslate, Lingva, DeepL and more.
 In total, there are more than 200 supported languages across 6 different translation engines.
