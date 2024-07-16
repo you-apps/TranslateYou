@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Translate You</string>
     <!-- Dialog -->
     <string name="okay">אישור</string>
     <string name="cancel">ביטול</string>
