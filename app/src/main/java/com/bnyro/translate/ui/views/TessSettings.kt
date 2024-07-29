@@ -99,17 +99,15 @@ fun TessSettings(
     }
 
     LaunchedEffect(query, tessModel.availableLanguages, tessModel.downloadedLanguages) {
-        val lowerQuery = query.lowercase()
-
         filteredAvailableLanguages = tessModel.availableLanguages.filter { tessLang ->
-            tessLang.path.replace(TessHelper.DATA_FILE_SUFFIX, "").contains(lowerQuery) &&
+            tessLang.path.replace(TessHelper.DATA_FILE_SUFFIX, "").contains(query, ignoreCase = true) &&
                     tessModel.downloadedLanguages.none {
                         tessLang.path.replace(TessHelper.DATA_FILE_SUFFIX, "") == it
                     }
         }
 
         filteredDownloadedLanguages = tessModel.downloadedLanguages.filter { lang ->
-            lowerQuery.contains(lang)
+            lang.contains(query, ignoreCase = true)
         }
     }
 
@@ -117,6 +115,10 @@ fun TessSettings(
         override fun onReceive(context: Context, intent: Intent) {
             // Refresh the downloaded languages every time a download finishes
             tessModel.refreshDownloadedLanguages(context)
+            if (tessModel.downloadedLanguages.size == 1) {
+                selectedLanguage = tessModel.downloadedLanguages.first()
+                Preferences.put(Preferences.tessLanguageKey, selectedLanguage)
+            }
         }
     }
 

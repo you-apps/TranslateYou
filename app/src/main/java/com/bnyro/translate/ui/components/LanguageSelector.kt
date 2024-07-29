@@ -261,7 +261,6 @@ fun LanguageSelector(
 private fun validateFilter(language: Language, query: String): Boolean {
     if (query.isEmpty()) return true
 
-    val lowerQuery = query.lowercase()
-    return language.name.lowercase().contains(lowerQuery) ||
-        language.code.lowercase().contains(lowerQuery)
+    return language.name.lowercase().contains(query, ignoreCase = true) ||
+        language.code.lowercase().contains(query, ignoreCase = true)
 }

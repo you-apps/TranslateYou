@@ -20,7 +20,6 @@ package com.bnyro.translate.ui.models
 import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,12 +27,10 @@ import com.bnyro.translate.obj.TessLanguage
 import com.bnyro.translate.util.TessHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class TessModel: ViewModel() {
     var availableLanguages by mutableStateOf(emptyList<TessLanguage>())
     var downloadedLanguages by mutableStateOf(emptyList<String>())
-    var notYetDownloadedLanguages by mutableStateOf(emptyList<TessLanguage>())
 
     fun init(context: Context) {
         downloadedLanguages = TessHelper.getDownloadedLanguages(context)
