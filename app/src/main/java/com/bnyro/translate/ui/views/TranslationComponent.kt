@@ -35,8 +35,8 @@ import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.Translate
-import androidx.compose.material3.Divider
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -118,7 +118,7 @@ fun TranslationComponent(
                         modifier = modifier
                     )
                 } else {
-                    Divider(
+                    HorizontalDivider(
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = modifier
                             .size(70.dp, 1.dp)

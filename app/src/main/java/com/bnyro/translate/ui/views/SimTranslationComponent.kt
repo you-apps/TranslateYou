@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.models.TranslationModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SimTranslationComponent(
     viewModel: TranslationModel

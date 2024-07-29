@@ -31,8 +31,8 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -166,7 +166,7 @@ fun TranslationPage(
                         if (viewModel.simTranslationEnabled) {
                             SimTranslationComponent(viewModel)
                         } else {
-                            Divider(
+                            HorizontalDivider(
                                 color = Color.Gray,
                                 modifier = Modifier
                                     .align(alignment = Alignment.CenterHorizontally)
