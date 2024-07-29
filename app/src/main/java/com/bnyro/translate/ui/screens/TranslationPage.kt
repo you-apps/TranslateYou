@@ -18,6 +18,7 @@
 package com.bnyro.translate.ui.screens
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.ViewTreeObserver
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -60,7 +61,7 @@ import com.bnyro.translate.ui.views.AdditionalInfoComponent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.util.SimTranslationComponent
+import com.bnyro.translate.ui.views.SimTranslationComponent
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
@@ -149,8 +150,10 @@ fun TranslationPage(
                     modifier = Modifier
                         .weight(1.0f)
                 ) {
-                    Column {
-                        TranslationComponent(viewModel)
+                    Column(
+                        modifier = Modifier.padding(16.dp)
+                    ) {
+                        TranslationComponent(Modifier.weight(1f), viewModel)
 
                         if (Preferences.get(Preferences.showAdditionalInfo, true)
                             && !isKeyboardOpen
@@ -164,6 +167,7 @@ fun TranslationPage(
                         )
 
                         if (viewModel.simTranslationEnabled) {
+                            Log.e("sim tra", "sim")
                             SimTranslationComponent(viewModel)
                         } else {
                             HorizontalDivider(

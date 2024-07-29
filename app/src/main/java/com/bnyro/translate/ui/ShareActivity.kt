@@ -23,6 +23,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
@@ -79,6 +80,7 @@ class ShareActivity : BaseActivity() {
                 },
                 text = {
                     TranslationComponent(
+                        modifier = Modifier.fillMaxSize(),
                         viewModel = translationModel,
                         showLanguageSelector = true
                     )

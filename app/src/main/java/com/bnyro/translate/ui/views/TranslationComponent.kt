@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -63,6 +64,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun TranslationComponent(
+    modifier: Modifier,
     viewModel: TranslationModel,
     showLanguageSelector: Boolean = false
 ) {
@@ -78,125 +80,122 @@ fun TranslationComponent(
         hasClip = clipboard.hasText() && !clipboard.getText()?.toString().isNullOrBlank()
     }
 
-    Column(
-        modifier = Modifier
-            .padding(15.dp)
-            .fillMaxSize()
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
     ) {
-        Box(
-            modifier = Modifier.weight(1.0f)
+        Column(
+            modifier = Modifier
+                .verticalScroll(scrollState)
+                .fillMaxSize()
         ) {
-            Column(
-                modifier = Modifier
-                    .verticalScroll(scrollState)
-                    .fillMaxSize()
+            TranslationField(
+                translationModel = viewModel,
+                isSourceField = true,
+                text = viewModel.insertedText,
+                viewModel.sourceLanguage,
+                showLanguageSelector = showLanguageSelector,
+                setLanguage = {
+                    if (it == viewModel.targetLanguage) {
+                        viewModel.targetLanguage = viewModel.sourceLanguage
+                    }
+                    viewModel.sourceLanguage = it
+                }
             ) {
-                TranslationField(
-                    translationModel = viewModel,
-                    isSourceField = true,
-                    text = viewModel.insertedText,
-                    viewModel.sourceLanguage,
-                    showLanguageSelector = showLanguageSelector,
-                    setLanguage = {
-                        if (it == viewModel.targetLanguage) {
-                            viewModel.targetLanguage = viewModel.sourceLanguage
-                        }
-                        viewModel.sourceLanguage = it
-                    }
-                ) {
-                    viewModel.insertedText = it
-                    hasClip = clipboard.hasText()
-                    viewModel.enqueueTranslation()
-                }
+                viewModel.insertedText = it
+                hasClip = clipboard.hasText()
+                viewModel.enqueueTranslation()
+            }
 
-                val modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(10.dp)
-
-                if (viewModel.translating) {
-                    LinearProgressIndicator(
-                        modifier = modifier
-                    )
-                } else {
-                    HorizontalDivider(
-                        color = MaterialTheme.colorScheme.onSurface,
-                        modifier = modifier
-                            .size(70.dp, 1.dp)
-                    )
-                }
-
-                if (hasClip && viewModel.insertedText.isBlank()) {
-                    Row {
-                        ButtonWithIcon(
-                            text = stringResource(R.string.paste),
-                            icon = Icons.Default.ContentPaste
-                        ) {
-                            viewModel.insertedText = clipboard.getText()?.toString().orEmpty()
-                            viewModel.enqueueTranslation()
-                        }
-
-                        Spacer(
-                            modifier = Modifier
-                                .width(0.dp)
-                        )
-
-                        ButtonWithIcon(
-                            text = stringResource(R.string.forget),
-                            icon = Icons.Default.Clear
-                        ) {
-                            hasClip = false
-
-                            val manager = ContextCompat.getSystemService(context, ClipboardManager::class.java) ?: return@ButtonWithIcon
-
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                                manager.clearPrimaryClip()
-                            } else {
-                                manager.setPrimaryClip(ClipData(null))
-                            }
-
-                            viewModel.clearTranslation()
-                        }
-                    }
-                } else if (
-                    viewModel.insertedText.isNotBlank() &&
-                    !Preferences.get(Preferences.translateAutomatically, true)
-                ) {
-                    ButtonWithIcon(
-                        text = stringResource(R.string.translate),
-                        icon = Icons.Default.Translate
-                    ) {
-                        viewModel.translateNow()
-                    }
-                }
-
-                TranslationField(
-                    translationModel = viewModel,
-                    isSourceField = false,
-                    text = viewModel.translation.translatedText,
-                    language = viewModel.targetLanguage,
-                    showLanguageSelector = showLanguageSelector,
-                    setLanguage = {
-                        if (it == viewModel.sourceLanguage) {
-                            viewModel.sourceLanguage = viewModel.targetLanguage
-                        }
-                        viewModel.targetLanguage = it
-                    }
+            if (viewModel.translating) {
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(10.dp)
+                )
+            } else {
+                HorizontalDivider(
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(10.dp)
+                        .size(70.dp, 1.dp)
                 )
             }
 
-            if (scrollState.value > 100) {
-                FloatingActionButton(
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(16.dp),
-                    onClick = {
-                        coroutineScope.launch {
-                            scrollState.animateScrollTo(0)
-                        }
+            if (hasClip && viewModel.insertedText.isBlank()) {
+                Row {
+                    ButtonWithIcon(
+                        text = stringResource(R.string.paste),
+                        icon = Icons.Default.ContentPaste
+                    ) {
+                        viewModel.insertedText = clipboard.getText()?.toString().orEmpty()
+                        viewModel.enqueueTranslation()
                     }
-                ) {
-                    Icon(Icons.Default.ArrowUpward, null)
+
+                    Spacer(
+                        modifier = Modifier
+                            .width(0.dp)
+                    )
+
+                    ButtonWithIcon(
+                        text = stringResource(R.string.forget),
+                        icon = Icons.Default.Clear
+                    ) {
+                        hasClip = false
+
+                        val manager =
+                            ContextCompat.getSystemService(context, ClipboardManager::class.java)
+                                ?: return@ButtonWithIcon
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                            manager.clearPrimaryClip()
+                        } else {
+                            manager.setPrimaryClip(ClipData(null))
+                        }
+
+                        viewModel.clearTranslation()
+                    }
                 }
+            } else if (
+                viewModel.insertedText.isNotBlank() &&
+                !Preferences.get(Preferences.translateAutomatically, true)
+            ) {
+                ButtonWithIcon(
+                    text = stringResource(R.string.translate),
+                    icon = Icons.Default.Translate
+                ) {
+                    viewModel.translateNow()
+                }
+            }
+
+            TranslationField(
+                translationModel = viewModel,
+                isSourceField = false,
+                text = viewModel.translation.translatedText,
+                language = viewModel.targetLanguage,
+                showLanguageSelector = showLanguageSelector,
+                setLanguage = {
+                    if (it == viewModel.sourceLanguage) {
+                        viewModel.sourceLanguage = viewModel.targetLanguage
+                    }
+                    viewModel.targetLanguage = it
+                }
+            )
+        }
+
+        if (scrollState.value > 100) {
+            FloatingActionButton(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp),
+                onClick = {
+                    coroutineScope.launch {
+                        scrollState.animateScrollTo(0)
+                    }
+                }
+            ) {
+                Icon(Icons.Default.ArrowUpward, null)
             }
         }
     }
