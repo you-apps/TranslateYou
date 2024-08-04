@@ -84,4 +84,6 @@
     <string name="select_theme">Sélectionner le thème</string>
     <string name="irreversible">Cela ne peut pas être annulé. Êtes-vous sûr de vouloir continuer \?</string>
     <string name="tess_summary">Tesseract est un moteur de reconnaissance optique de caractères. Il s\'agit d\'un logiciel libre, publié sous la licence Apache. Il a été publié en tant que source ouverte en 2005 et son développement est parrainé par Google depuis 2006. Tesseract est considéré comme l\'un des moteurs de reconnaissance optique de caractères open-source les plus précis qui soient. Pour plus d\'informations, voir %1$s.</string>
+    <string name="clear_favorites">Supprimer les favoris</string>
+    <string name="clear">Effacer</string>
 </resources>
