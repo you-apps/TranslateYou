@@ -23,4 +23,5 @@
     <string name="api_key">API-nøgle</string>
     <string name="fetch_delay">Oversættelsesforsinkelse</string>
     <string name="fetch_delay_summary">Forsinkelsen mellem indsætning af tekst og hentning af oversættelsen</string>
+    <string name="clear">Ryd</string>
 </resources>
