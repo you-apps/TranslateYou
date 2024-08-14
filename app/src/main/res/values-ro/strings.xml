@@ -60,7 +60,7 @@
     <string name="translate_automatically_summary">Solicitați o traducere automat după o anumită întârziere.</string>
     <string name="translate">Traduceți</string>
     <string name="translate_automatically">Traduceți automat</string>
-    <string name="nothing_here">Nimic aici</string>
+    <string name="nothing_here">Nimic aici.</string>
     <string name="use_free_api">Utilizează un API gratuită</string>
     <string name="use_free_api_summary">Folosește API-ul gratuită în loc de API-ul Pro cu plată.</string>
     <string name="dynamic_colors">Culori dinamice</string>
