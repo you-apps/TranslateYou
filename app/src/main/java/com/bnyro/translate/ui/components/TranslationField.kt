@@ -30,6 +30,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -46,6 +47,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.util.SpeechHelper
 
 @Composable
 fun TranslationField(
@@ -122,7 +124,19 @@ fun TranslationField(
                 }
             )
 
-            TTSButton(translationModel, text, language.code)
+            if (translationModel.engine.supportsAudio) {
+                StyledIconButton(
+                    imageVector = Icons.Default.VolumeUp
+                ) {
+                    translationModel.playAudio(language.code, text)
+                }
+            } else if (SpeechHelper.ttsAvailable) {
+                StyledIconButton(
+                    imageVector = Icons.Default.VolumeUp
+                ) {
+                    SpeechHelper.speak(context, text, language.code)
+                }
+            }
         }
     }
 
