@@ -60,7 +60,7 @@
     <string name="translate_automatically_summary">Solicitați o traducere automat după o anumită întârziere.</string>
     <string name="translate">Traduceți</string>
     <string name="translate_automatically">Traduceți automat</string>
-    <string name="nothing_here">Nimic aici</string>
+    <string name="nothing_here">Nimic aici.</string>
     <string name="use_free_api">Utilizează un API gratuită</string>
     <string name="use_free_api_summary">Folosește API-ul gratuită în loc de API-ul Pro cu plată.</string>
     <string name="dynamic_colors">Culori dinamice</string>
@@ -76,4 +76,5 @@
     <string name="tess_summary">Tesseract este un motor de recunoaștere optică a caracterelor. Este un software liber, lansat sub licența Apache. A fost lansat ca sursă deschisă în 2005, iar dezvoltarea a fost sponsorizată de Google din 2006. Tesseract este considerat unul dintre cele mai precise motoare OCR cu sursă deschisă disponibile. Pentru mai multe informații, vedeți %1$s.</string>
     <string name="irreversible">Acest lucru nu poate fi anulat. Sigur vreți să continuați?</string>
     <string name="clear_favorites">Ștergeți favoritele</string>
+    <string name="clear">Curăță</string>
 </resources>

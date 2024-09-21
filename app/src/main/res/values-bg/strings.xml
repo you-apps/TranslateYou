@@ -48,7 +48,7 @@
     <string name="simultaneous_translation">Едновременен превод</string>
     <string name="enabled_engines">Активирани преводачи</string>
     <string name="translation">Превод</string>
-    <string name="favorites">Любими</string>
+    <string name="favorites">Избрани</string>
     <string name="cancel">Отказ</string>
     <string name="fetch_delay">Забавяне на превода</string>
     <string name="open">Отвори</string>
@@ -75,4 +75,6 @@
     <string name="translate_from">Преведи от</string>
     <string name="irreversible">Сигурни ли сте\? Действието е необратимо.</string>
     <string name="tess_summary">Tesseract е софтуер за оптично разпознаване на знаци. Това е безплатен софтуер, издаден под лиценза на Apache. Пуснат е като отворен код през 2005 г. и разработката е спонсорирана от Google от 2006 г. Tesseract се счита за една от най-точните налични OCR софтуери с отворен код. За повече информация вижте %1$s.</string>
+    <string name="clear">Изчисти</string>
+    <string name="clear_favorites">Изчистване на избраните</string>
 </resources>
