@@ -19,6 +19,7 @@ package com.bnyro.translate.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -31,6 +32,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import com.bnyro.translate.R
@@ -54,38 +56,31 @@ class ShareActivity : BaseActivity() {
                 translationModel.refresh(this@ShareActivity)
             }
 
-            AlertDialog(
-                modifier = Modifier
-                    .heightIn(max = screenHeight * 2 / 3)
-                    .padding(horizontal = 10.dp),
-                properties = DialogProperties(
-                    dismissOnClickOutside = false,
-                    usePlatformDefaultWidth = false
-                ),
-                onDismissRequest = { finish() },
-                confirmButton = {
-                    DialogButton(
-                        text = stringResource(R.string.okay)
-                    ) {
-                        finish()
-                    }
-                },
-                dismissButton = {
-                    DialogButton(text = stringResource(R.string.clear)) {
-                        translationModel.clearTranslation()
-                    }
-                },
-                title = {
-                    AppHeader()
-                },
-                text = {
-                    TranslationComponent(
-                        modifier = Modifier.fillMaxSize(),
-                        viewModel = translationModel,
-                        showLanguageSelector = true
-                    )
+            AlertDialog(modifier = Modifier
+                .heightIn(
+                    max = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) screenHeight * 2 / 3 else Dp.Unspecified
+                )
+                .padding(horizontal = 10.dp), properties = DialogProperties(
+                dismissOnClickOutside = false, usePlatformDefaultWidth = false
+            ), onDismissRequest = { finish() }, confirmButton = {
+                DialogButton(
+                    text = stringResource(R.string.okay)
+                ) {
+                    finish()
                 }
-            )
+            }, dismissButton = {
+                DialogButton(text = stringResource(R.string.clear)) {
+                    translationModel.clearTranslation()
+                }
+            }, title = {
+                AppHeader()
+            }, text = {
+                TranslationComponent(
+                    modifier = Modifier.fillMaxSize(),
+                    viewModel = translationModel,
+                    showLanguageSelector = true
+                )
+            })
         }
 
         setFinishOnTouchOutside(false)

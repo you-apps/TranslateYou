@@ -24,7 +24,6 @@
             android:name=".ui.MainActivity"
             android:configChanges="orientation"
             android:exported="true"
-            android:screenOrientation="userPortrait"
             android:theme="@style/Theme.TranslateYou"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity">

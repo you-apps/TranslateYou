@@ -18,10 +18,11 @@
 package com.bnyro.translate.ui.screens
 
 import android.annotation.SuppressLint
-import android.util.Log
+import android.content.res.Configuration
 import android.view.ViewTreeObserver
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -45,6 +46,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
@@ -54,7 +56,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
-import com.bnyro.translate.ui.components.TranslationFooter
+import com.bnyro.translate.ui.components.LanguageSelectionComponent
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.ui.views.AdditionalInfoComponent
@@ -70,23 +72,6 @@ fun TranslationPage(
     viewModel: TranslationModel
 ) {
     val context = LocalContext.current
-    val view = LocalView.current
-
-    var isKeyboardOpen by remember {
-        mutableStateOf(false)
-    }
-    // detect whether the keyboard is open or closed
-    DisposableEffect(view) {
-        val listener = ViewTreeObserver.OnGlobalLayoutListener {
-            isKeyboardOpen = ViewCompat.getRootWindowInsets(view)
-                ?.isVisible(WindowInsetsCompat.Type.ime()) ?: true
-        }
-
-        view.viewTreeObserver.addOnGlobalLayoutListener(listener)
-        onDispose {
-            view.viewTreeObserver.removeOnGlobalLayoutListener(listener)
-        }
-    }
 
     LaunchedEffect(Unit) {
         viewModel.refresh(context)
@@ -133,54 +118,81 @@ fun TranslationPage(
                 )
             )
         }
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(it)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+    ) { pV ->
+        val orientation = LocalConfiguration.current.orientation
+
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             Column(
                 modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .fillMaxSize()
+                    .padding(pV)
             ) {
-                ElevatedCard(
+                MainTranslationArea(modifier = Modifier.weight(1f), viewModel = viewModel)
+
+                LanguageSelectionComponent(viewModel = viewModel)
+            }
+        } else {
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(pV)
+            ) {
+                LanguageSelectionComponent(viewModel = viewModel)
+
+                MainTranslationArea(modifier = Modifier.weight(1f), viewModel = viewModel)
+            }
+        }
+    }
+}
+
+@Composable
+fun MainTranslationArea(modifier: Modifier, viewModel: TranslationModel) {
+    val view = LocalView.current
+
+    var isKeyboardOpen by remember {
+        mutableStateOf(false)
+    }
+    // detect whether the keyboard is open or closed
+    DisposableEffect(view) {
+        val listener = ViewTreeObserver.OnGlobalLayoutListener {
+            isKeyboardOpen = ViewCompat.getRootWindowInsets(view)
+                ?.isVisible(WindowInsetsCompat.Type.ime()) ?: true
+        }
+
+        view.viewTreeObserver.addOnGlobalLayoutListener(listener)
+        onDispose {
+            view.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+        }
+    }
+
+    ElevatedCard(
+        modifier = modifier
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            TranslationComponent(Modifier.weight(1f), viewModel)
+
+            if (Preferences.get(Preferences.showAdditionalInfo, true)
+                && !isKeyboardOpen
+            ) {
+                AdditionalInfoComponent(viewModel.translation, viewModel)
+            }
+
+            Spacer(
+                modifier = Modifier
+                    .height(15.dp)
+            )
+
+            if (viewModel.simTranslationEnabled) {
+                SimTranslationComponent(viewModel)
+            } else {
+                HorizontalDivider(
+                    color = Color.Gray,
                     modifier = Modifier
-                        .weight(1.0f)
-                ) {
-                    Column(
-                        modifier = Modifier.padding(16.dp)
-                    ) {
-                        TranslationComponent(Modifier.weight(1f), viewModel)
-
-                        if (Preferences.get(Preferences.showAdditionalInfo, true)
-                            && !isKeyboardOpen
-                        ) {
-                            AdditionalInfoComponent(viewModel.translation, viewModel)
-                        }
-
-                        Spacer(
-                            modifier = Modifier
-                                .height(15.dp)
-                        )
-
-                        if (viewModel.simTranslationEnabled) {
-                            Log.e("sim tra", "sim")
-                            SimTranslationComponent(viewModel)
-                        } else {
-                            HorizontalDivider(
-                                color = Color.Gray,
-                                modifier = Modifier
-                                    .align(alignment = Alignment.CenterHorizontally)
-                                    .size(70.dp, 2.dp)
-                            )
-                        }
-                    }
-                }
-
-                TranslationFooter(viewModel = viewModel)
+                        .align(alignment = Alignment.CenterHorizontally)
+                        .size(70.dp, 2.dp)
+                )
             }
         }
     }

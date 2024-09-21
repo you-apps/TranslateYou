@@ -52,7 +52,7 @@ fun AppHeader() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            modifier = Modifier.size(70.dp),
+            modifier = Modifier.size(50.dp),
             painter = painterResource(R.drawable.ic_app_icon),
             contentDescription = stringResource(R.string.app_name),
         )
