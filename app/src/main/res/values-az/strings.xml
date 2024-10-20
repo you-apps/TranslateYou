@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="clear_history">Tarixçəni təmizlə</string>
-    <string name="history_summary">Son tərcümə edilmiş mətnləri izlə</string>
+    <string name="history_summary">Son tərcümə edilən mətnləri izlə</string>
     <string name="api_key">API açar</string>
     <string name="auto">Avtomatik</string>
-    <string name="instance">Nümunə</string>
+    <string name="instance">İnstansiya</string>
     <string name="app_name">Translate You</string>
     <string name="okay">Oldu</string>
     <string name="cancel">Ləğv et</string>
@@ -21,17 +21,17 @@
     <string name="theme_light">İşıqlı</string>
     <string name="theme_dark">Qaranlıq</string>
     <string name="server_error">Server ilə əlaqə zamanı xəta.</string>
-    <string name="fetch_delay_summary">Mətnin daxil edilməsi ilə tərcümənin alınması arasındakı gecikmə</string>
-    <string name="copy">Kopyala</string>
+    <string name="fetch_delay_summary">Mətnin yerləşdirilməsi ilə tərcümənin alınması arası gecikmə</string>
+    <string name="copy">Köçür</string>
     <string name="language_not_supported">Dil dəstəklənmir!</string>
     <string name="required">Tələb olunur</string>
     <string name="optional">Əlavə</string>
     <string name="privacy_policy">Məxfilik Siyasəti</string>
     <string name="forget">Unut</string>
-    <string name="compact_history">Tarixçəni sıxlaşdır</string>
+    <string name="compact_history">Tarixçəni yığcamlaşdır</string>
     <string name="compact_history_summary">Tarixçədə standart olaraq yalnız ilk 3 mətn sətirini göstərir</string>
     <string name="open">Aç</string>
-    <string name="simultaneous_translation_summary">Eyni anda birdən çox mühərrikdən nəticələr əldə et.</string>
+    <string name="simultaneous_translation_summary">Eyni anda çoxlu mühərrikdən nəticələr əldə et.</string>
     <string name="enabled_engines">Aktivləşdirilmiş mühərriklər</string>
     <string name="simultaneous_translation">Eyni zamanda tərcümə</string>
     <string name="enabled_engines_summary">Eyni zamanlı tərcümə üçün istifadə ediləcək mühərriklər.</string>
@@ -62,7 +62,7 @@
     <string name="translate_automatically_summary">Müəyyən gecikmə sonrası avtomatik tərcümə tələb et.</string>
     <string name="translate_automatically">Avtomatik tərcümə et</string>
     <string name="nothing_here">Burada heç nə yoxdur.</string>
-    <string name="use_free_api_summary">Ödənişli Pro API əvəzində pulsuzu istifadə et.</string>
+    <string name="use_free_api_summary">Ödənişli Pro API əvəzinə pulsuzu istifadə et.</string>
     <string name="use_free_api">Pulsuz API istifadə et</string>
     <string name="translate_to">Buna Tərcümə et</string>
     <string name="translate_from">Bundan Tərcümə et</string>
@@ -70,4 +70,12 @@
     <string name="all_languages">Bütün dillər</string>
     <string name="accent_color">Çalar rəngi</string>
     <string name="dynamic_colors">Dinamik rənglər</string>
+    <string name="select_theme">Tema Seçin</string>
+    <string name="skip_similar_entries">Oxşar qeydləri ötür</string>
+    <string name="skip_similar_entries_desc">Yerləşdirmə və dillərə görə tarixçədə yalnız unikal qeydləri saxla.</string>
+    <string name="theme_black">Qara</string>
+    <string name="tess_summary">Tesseract optik simvol tanıma mühərrikidir. Bu Apache Lisenziyası altında buraxılan pulsuz proqramdır. O, 2005-ci ildə açıq mənbə kimi buraxılıb və 2006-cı ildən Google tərəfindən işlənib hazırlanıb. Tesseract mövcud ən dəqiq açıq mənbəli OCR mühərriklərindən biri hesab olunur. Ətraflı məlumat üçün %1$s- buna bax.</string>
+    <string name="clear">Təmizlə</string>
+    <string name="clear_favorites">Sevimliləri təmizlə</string>
+    <string name="irreversible">Bu geri alına bilməz. Davam etmək istədiyinizə əminsiniz?</string>
 </resources>
