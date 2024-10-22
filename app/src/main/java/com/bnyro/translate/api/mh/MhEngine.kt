@@ -17,10 +17,8 @@
 
 package com.bnyro.translate.api.mh
 
-import android.util.Log
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
-import com.bnyro.translate.ext.concatenate
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
