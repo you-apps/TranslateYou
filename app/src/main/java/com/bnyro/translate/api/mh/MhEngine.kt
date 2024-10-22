@@ -17,8 +17,10 @@
 
 package com.bnyro.translate.api.mh
 
+import android.util.Log
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.ext.concatenate
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
@@ -59,9 +61,17 @@ class MhEngine : TranslationEngine(
     override suspend fun translate(query: String, source: String, target: String): Translation {
         val response = api.translate(
             engine = getSelectedEngine(),
-            source = sourceOrAuto(source),
+            source = (if(sourceOrAuto(source).length==3){
+                sourceOrAuto(source).dropLast(1)
+            } else {
+                sourceOrAuto(source)
+            }).toString(),
             query = query,
-            target = target
+            target = (if(target.length==3){
+                target.dropLast(1)
+            } else {
+                target
+            }).toString()
         )
         return Translation(
             translatedText = response.translatedText,
