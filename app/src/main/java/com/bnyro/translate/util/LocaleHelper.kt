@@ -76,6 +76,7 @@ object LocaleHelper {
         Language("ro", "Romanian"),
         Language("ru", "Russian"),
         Language("sat", "Santali"),
+        Language("sc", "Sardinian"),
         Language("sr", "Serbian"),
         Language("tr", "Turkish"),
         Language("uk", "Ukrainian"),
