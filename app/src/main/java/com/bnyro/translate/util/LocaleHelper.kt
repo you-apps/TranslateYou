@@ -55,7 +55,7 @@ object LocaleHelper {
         Language("ar", "Arabic"),
         Language("az", "Azerbaijani"),
         Language("be", "Belarusian"),
-        Language("bg", "Bulgarian")
+        Language("bg", "Bulgarian"),
         Language("bn", "Bengali"),
         Language("ca", "Catalan"),
         Language("cs", "Czech"),
