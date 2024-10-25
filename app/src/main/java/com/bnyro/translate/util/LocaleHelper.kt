@@ -99,7 +99,7 @@ object LocaleHelper {
         Language("tt", "Tatar"),
         Language("uk", "Ukrainian"),
         Language("vi", "Vietnamese"),
-        Language("zh-rCN", "Chinese (Simplified)")
+        Language("zh-rCN", "Chinese (Simplified)"),
         Language("zh-rTW", "Chinese (Traditional)")
     ).sortedBy { it.name }.toMutableList()
         .apply {
