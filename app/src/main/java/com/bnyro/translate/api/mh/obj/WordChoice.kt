@@ -21,16 +21,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MhTranslationResponse(
-    @SerialName("pronunciation")
-    val pronunciation: String? = null,
-    @SerialName("detected")
-    val detectedLanguage: String? = null,
-    @SerialName("translated-text")
-    val translatedText: String = "",
-    @SerialName("source_synonyms") val sourceSynonyms: List<String>?,
-    @SerialName("source_transliteration") val sourceTransliteration: String,
-    @SerialName("target_synonyms") val targetSynonyms: List<String>?,
-    @SerialName("target_transliteration") val targetTransliteration: String,
-    @SerialName("word_choices") val wordChoices: List<WordChoice>? = null
+data class WordChoice(
+    val definition: String,
+    val example: String,
+    val word: String,
+    @SerialName("examples_source") val examplesSource: List<String>? = null,
+    @SerialName("examples_target") val examplesTarget: List<String>? = null,
 )

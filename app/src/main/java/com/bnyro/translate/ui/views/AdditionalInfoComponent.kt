@@ -74,7 +74,7 @@ fun AdditionalInfoComponent(
                     AdditionalInfo(
                         title = stringResource(R.string.definition),
                         text = listOfNotNull(it.type, it.definition, it.example, it.synonym).joinToString(
-                            ", "
+                            " • "
                         )
                     )
                 }

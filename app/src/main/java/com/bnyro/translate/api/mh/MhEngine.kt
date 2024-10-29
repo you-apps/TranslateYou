@@ -19,6 +19,7 @@ package com.bnyro.translate.api.mh
 
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.obj.Definition
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
@@ -45,7 +46,8 @@ class MhEngine : TranslationEngine(
     supportsAudio = true
 ) {
     lateinit var api: Mozhi
-
+    private val transliterationFailedRegex = Regex("Direction \'\\w{2}\' is not supported")
+    private val bracketRegex = Regex("[<>]")
 
     override fun createOrRecreate(): TranslationEngine = apply {
         api = RetrofitHelper.createApi(this)
@@ -65,7 +67,23 @@ class MhEngine : TranslationEngine(
         )
         return Translation(
             translatedText = response.translatedText,
-            detectedLanguage = response.detectedLanguage
+            transliterations = listOf(
+                response.sourceTransliteration,
+                response.targetTransliteration
+            ).filter {
+                it.isNotBlank() && !it.matches(transliterationFailedRegex)
+            },
+            detectedLanguage = response.detectedLanguage.takeIf { !it.isNullOrBlank() },
+            definitions = response.wordChoices.orEmpty().map { definition ->
+                Definition(
+                    definition = definition.definition.takeIf { it.isNotBlank() },
+                    example = definition.example.takeIf { it.isNotBlank() }
+                )
+            },
+            similar = response.targetSynonyms,
+            examples = response.wordChoices.orEmpty()
+                .flatMap { it.examplesSource.orEmpty() + it.examplesTarget.orEmpty() }
+                .map { it.replace(bracketRegex, "") }
         )
     }
 
