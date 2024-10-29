@@ -35,6 +35,7 @@ import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.db.obj.HistoryItemType
 import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
@@ -85,7 +86,7 @@ class TranslationModel : ViewModel() {
         }.getOrNull()
     }
 
-    fun enqueueTranslation() {
+    fun enqueueTranslation(context: Context) {
         if (!Preferences.get(Preferences.translateAutomatically, true)) return
 
         val insertedTextTemp = insertedText
@@ -93,7 +94,7 @@ class TranslationModel : ViewModel() {
             Looper.getMainLooper()
         ).postDelayed(
             {
-                if (insertedTextTemp == insertedText) translateNow()
+                if (insertedTextTemp == insertedText) translateNow(context)
             },
             Preferences.get(
                 Preferences.fetchDelay,
@@ -102,7 +103,7 @@ class TranslationModel : ViewModel() {
         )
     }
 
-    fun translateNow() {
+    fun translateNow(context: Context) {
         if (insertedText.isEmpty() || targetLanguage == sourceLanguage) {
             translation = Translation("")
             return
@@ -124,6 +125,7 @@ class TranslationModel : ViewModel() {
                 )
             } catch (e: Exception) {
                 Log.e("error", e.message.toString())
+                context.toastFromMainThread(e.message.orEmpty())
                 translating = false
                 return@launch
             }
@@ -232,7 +234,7 @@ class TranslationModel : ViewModel() {
         val newSelectedEngine = getCurrentEngine()
         if (newSelectedEngine != engine) {
             engine = newSelectedEngine
-            enqueueTranslation()
+            enqueueTranslation(context)
         }
 
         enabledSimEngines = getEnabledEngines()
@@ -257,7 +259,7 @@ class TranslationModel : ViewModel() {
         Thread {
             TessHelper.getText(context, uri)?.let {
                 insertedText = it
-                translateNow()
+                translateNow(context)
             }
         }.start()
     }

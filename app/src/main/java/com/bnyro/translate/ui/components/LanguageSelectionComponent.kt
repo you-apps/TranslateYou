@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
@@ -43,6 +44,7 @@ import com.bnyro.translate.ui.models.TranslationModel
 @Composable
 fun LanguageSelectionComponent(viewModel: TranslationModel) {
     val orientation = LocalConfiguration.current.orientation
+    val context = LocalContext.current
 
     if (orientation == Configuration.ORIENTATION_PORTRAIT) {
         Row(
@@ -65,7 +67,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.targetLanguage = viewModel.sourceLanguage
                     }
                     viewModel.sourceLanguage = it
-                    viewModel.translateNow()
+                    viewModel.translateNow(context)
                 }
             }
 
@@ -84,7 +86,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.sourceLanguage = viewModel.targetLanguage
                     }
                     viewModel.targetLanguage = it
-                    viewModel.translateNow()
+                    viewModel.translateNow(context)
                 }
             }
         }
@@ -108,7 +110,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.targetLanguage = viewModel.sourceLanguage
                     }
                     viewModel.sourceLanguage = it
-                    viewModel.translateNow()
+                    viewModel.translateNow(context)
                 }
             }
 
@@ -126,7 +128,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.sourceLanguage = viewModel.targetLanguage
                     }
                     viewModel.targetLanguage = it
-                    viewModel.translateNow()
+                    viewModel.translateNow(context)
                 }
             }
         }
@@ -135,6 +137,8 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
 
 @Composable
 fun SwapLanguagesButton(viewModel: TranslationModel) {
+    val context = LocalContext.current
+
     val switchBtnEnabled by remember {
         mutableStateOf(viewModel.sourceLanguage.code.isNotEmpty())
     }
@@ -152,7 +156,7 @@ fun SwapLanguagesButton(viewModel: TranslationModel) {
                 viewModel.translation = Translation("")
             }
 
-            viewModel.translateNow()
+            viewModel.translateNow(context)
         }
     ) {
         Icon(

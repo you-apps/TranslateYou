@@ -36,6 +36,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -55,6 +56,8 @@ fun HistoryRow(
     historyItem: HistoryItem,
     onDelete: () -> Unit
 ) {
+    val context = LocalContext.current
+
     var showDialog by remember {
         mutableStateOf(false)
     }
@@ -62,7 +65,7 @@ fun HistoryRow(
     fun loadTranslation() {
         showDialog = false
         translationModel.insertedText = historyItem.insertedText
-        translationModel.translateNow()
+        translationModel.translateNow(context)
         navController.navigate(Destination.Translate.route)
     }
 

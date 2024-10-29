@@ -104,7 +104,7 @@ fun TranslationComponent(
             ) {
                 viewModel.insertedText = it
                 hasClip = clipboard.hasText()
-                viewModel.enqueueTranslation()
+                viewModel.enqueueTranslation(context)
             }
 
             if (viewModel.translating) {
@@ -130,7 +130,7 @@ fun TranslationComponent(
                         icon = Icons.Default.ContentPaste
                     ) {
                         viewModel.insertedText = clipboard.getText()?.toString().orEmpty()
-                        viewModel.enqueueTranslation()
+                        viewModel.enqueueTranslation(context)
                     }
 
                     Spacer(
@@ -165,7 +165,7 @@ fun TranslationComponent(
                     text = stringResource(R.string.translate),
                     icon = Icons.Default.Translate
                 ) {
-                    viewModel.translateNow()
+                    viewModel.translateNow(context)
                 }
             }
 

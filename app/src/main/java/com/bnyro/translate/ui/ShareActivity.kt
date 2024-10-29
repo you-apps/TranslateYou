@@ -103,7 +103,7 @@ class ShareActivity : BaseActivity() {
     private fun handleIntentData() {
         getIntentText()?.let {
             translationModel.insertedText = it
-            translationModel.translateNow()
+            translationModel.translateNow(this)
         }
         // open links from Google Translate
         if (intent.data?.host == "translate.google.com") {
@@ -112,7 +112,7 @@ class ShareActivity : BaseActivity() {
             translationModel.sourceLanguage = Language(source, source)
             translationModel.targetLanguage = Language(target, target)
             translationModel.insertedText = intent.data?.getQueryParameter("text").orEmpty()
-            translationModel.translateNow()
+            translationModel.translateNow(this)
         }
         if (intent.type?.startsWith("image/") != true) return
 
