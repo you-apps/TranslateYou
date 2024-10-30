@@ -61,4 +61,20 @@
     <string name="clear">Sfeḍ</string>
     <string name="definition">Tabadut</string>
     <string name="clear_favorites">Sfeḍ imenyafen</string>
+    <string name="fetch_delay_summary">Akud gar usekcem n uḍris d tririt n tsuqilt</string>
+    <string name="skip_similar_entries">Zgel isekcam yemṣadan</string>
+    <string name="skip_similar_entries_desc">Ḥrez kan isekcam deg uzray, yebnan ɣef usekcem d tutlayin.</string>
+    <string name="compact_history">Azray yessden</string>
+    <string name="simultaneous_translation">Tasuqilt tanbabbart</string>
+    <string name="use_free_api">Seqdec API ilelli</string>
+    <string name="character_warning_limit">Alɣu n talast n yisekkilen</string>
+    <string name="character_warning_limit_summary">Selɣu mi ara iεeddi uḍris n usuqel teɣzi tafellayt.</string>
+    <string name="accent_color">Ini arnaw</string>
+    <string name="dynamic_colors">Initen ismussanen</string>
+    <string name="server_error">Tuccḍa lawan n teywalt akked uqeddac.</string>
+    <string name="translate_automatically_summary">Ssuter tasuqilt tawurmant seld kra n wakud.</string>
+    <string name="use_free_api_summary">Seqdec API ilelli deg wadeg n API Pro n lexlaṣ.</string>
+    <string name="irreversible">Ayagi ur yettwasfesax ara. D tidet tebɣiḍ ad tkemmleḍ?</string>
+    <string name="missing_api_key">Ma ulac aɣilif mudd-d tasarut API deg yiɣewwaren.</string>
+    <string name="tess_summary">Tesseract d amsedday n uεqal ameẓraw n yisekkilen. D aseɣẓan ilelli, yeffeɣ-d s turagt Apache. Yeffeɣ-d d aɣbalu yeldin deg 2005, taneflit-is yella s lmendad n Google seg 2006. Tesseract yettuneḥsab d amsedday amesdad n uεqal ameẓraw n yisekkilen n uɣbalu yeldin. I wugar n telɣut, wali %1$s.</string>
 </resources>
