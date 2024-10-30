@@ -55,4 +55,10 @@
     <string name="additional_info_summary">Sken-d ugar n telɣut n tsuqilt ma tella.</string>
     <string name="image_translation_summary">Sider-d rnu qdec tutlayin i uɛqal n uḍris seg tugniwin.</string>
     <string name="select_language">Ma ulac aɣilif, fren tutlayt i uɛqal n uḍris n tugniwin deg yiɣewwaren.</string>
+    <string name="language_not_supported">Tutlayt ur tettunefrak ara!</string>
+    <string name="optional">Afrayan</string>
+    <string name="clear_history">Sfeḍ amazray</string>
+    <string name="clear">Sfeḍ</string>
+    <string name="definition">Tabadut</string>
+    <string name="clear_favorites">Sfeḍ imenyafen</string>
 </resources>
