@@ -76,4 +76,5 @@
     <string name="irreversible">Ini tidak dapat diurungkan. Apakah Anda yakin ingin melanjutkan\?</string>
     <string name="tess_summary">Tesseract adalah mesin pengenal karakter optik (OCR). Tesseract adalah perangkat lunak gratis, yang dirilis dengan Lisensi Apache. Tesseract dirilis sebagai mesin OCR sumber terbuka pada tahun 2005 dan pengembangannya disponsori oleh Google sejak tahun 2006. Tesseract dianggap sebagai salah satu mesin OCR sumber terbuka yang paling akurat yang tersedia. Untuk informasi lebih lanjut, lihat %1$s.</string>
     <string name="clear_favorites">Hapus favorit</string>
+    <string name="clear">Hapus</string>
 </resources>
