@@ -18,8 +18,8 @@
 package com.bnyro.translate.ui.models
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -251,13 +251,13 @@ class TranslationModel : ViewModel() {
         bookmarkedLanguages = Db.languageBookmarksDao().getAll()
     }
 
-    fun processImage(context: Context, uri: Uri?) {
+    fun processImage(context: Context, image: Bitmap) {
         if (!TessHelper.areLanguagesDownloaded(context)) {
             Toast.makeText(context, R.string.init_tess_first, Toast.LENGTH_SHORT).show()
             return
         }
         Thread {
-            TessHelper.getText(context, uri)?.let {
+            TessHelper.getText(context, image)?.let {
                 insertedText = it
                 translateNow(context)
             }

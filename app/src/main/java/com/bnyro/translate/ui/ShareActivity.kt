@@ -41,6 +41,7 @@ import com.bnyro.translate.ext.parcelable
 import com.bnyro.translate.ui.components.AppHeader
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.views.TranslationComponent
+import com.bnyro.translate.util.ImageHelper
 
 class ShareActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,7 +118,9 @@ class ShareActivity : BaseActivity() {
         if (intent.type?.startsWith("image/") != true) return
 
         (intent.parcelable<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
-            translationModel.processImage(this, it)
+            ImageHelper.getImage(this, it)?.let { bm ->
+                translationModel.processImage(this, bm)
+            }
         }
     }
 }

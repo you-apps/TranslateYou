@@ -20,6 +20,7 @@ package com.bnyro.translate.ui.views
 import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.speech.SpeechRecognizer
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -40,18 +41,23 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
+import com.bnyro.translate.ui.components.ImageCropDialog
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.TopBarMenu
 import com.bnyro.translate.ui.models.TranslationModel
+import com.bnyro.translate.util.ImageHelper
 import com.bnyro.translate.util.SpeechHelper
 import com.bnyro.translate.util.SpeechResultContract
 import java.util.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,9 +66,17 @@ fun TopBar(
     menuItems: List<MenuItemData>
 ) {
     val context = LocalContext.current
-    val fileChooser = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) {
-        mainModel.processImage(context, it)
+    var bitmapToEdit by remember {
+        mutableStateOf<Bitmap?>(null)
     }
+
+    val scope = rememberCoroutineScope()
+    val fileChooser =
+        rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            scope.launch(Dispatchers.IO) {
+                bitmapToEdit = ImageHelper.getImage(context, uri ?: return@launch)
+            }
+        }
     val speechRecognizer = rememberLauncherForActivityResult(SpeechResultContract()) {
         if (it != null) {
             mainModel.insertedText = it
@@ -77,7 +91,11 @@ fun TopBar(
             )
         },
         actions = {
-            AnimatedVisibility(mainModel.insertedText.isEmpty() && SpeechRecognizer.isRecognitionAvailable(context)) {
+            AnimatedVisibility(
+                mainModel.insertedText.isEmpty() && SpeechRecognizer.isRecognitionAvailable(
+                    context
+                )
+            ) {
                 StyledIconButton(
                     imageVector = Icons.Default.Mic
                 ) {
@@ -140,4 +158,13 @@ fun TopBar(
             TopBarMenu(menuItems)
         }
     )
+
+    bitmapToEdit?.let { bitmap ->
+        ImageCropDialog(
+            bitmap = bitmap,
+            onEditedBitmap = { newBitmap ->
+                mainModel.processImage(context, newBitmap)
+            }
+        ) { bitmapToEdit = null }
+    }
 }

@@ -19,7 +19,7 @@ package com.bnyro.translate.util
 
 import android.app.DownloadManager
 import android.content.Context
-import android.graphics.BitmapFactory
+import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import com.bnyro.translate.R
@@ -51,27 +51,20 @@ object TessHelper {
         }
     }
 
-    fun getText(context: Context, uri: Uri?): String? {
+    fun getText(context: Context, bitmap: Bitmap): String? {
         val tess = TessBaseAPI()
-
-        uri ?: return null
-
-        val language = Preferences.get(Preferences.tessLanguageKey, "eng")
         val rootDir = getRootDir(context)
+        val language = Preferences.get(Preferences.tessLanguageKey, "eng")
 
-        if (!tess.init(rootDir.absolutePath, language)) {
-            context.toastFromMainThread(R.string.select_language)
-            tess.recycle()
-            return null
-        }
+        try {
+            if (!tess.init(rootDir.absolutePath, language)) {
+                context.toastFromMainThread(R.string.select_language)
+                return null
+            }
+            tess.setImage(bitmap)
 
-        val bitmap = context.contentResolver.openInputStream(uri)?.use {
-            BitmapFactory.decodeStream(it)
-        } ?: return null
-
-        tess.setImage(bitmap)
-
-        return tess.utF8Text.also {
+            return tess.utF8Text
+        } finally {
             tess.recycle()
         }
     }

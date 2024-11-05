@@ -28,8 +28,8 @@ import androidx.compose.ui.window.DialogProperties
 @Composable
 fun FullscreenDialog(
     modifier: Modifier = Modifier,
-    onDismissRequest: () -> Unit,
-    topBar: @Composable () -> Unit,
+    onDismissRequest: () -> Unit = {},
+    topBar: @Composable () -> Unit = {},
     content: @Composable () -> Unit
 ) {
     Dialog(
