@@ -29,6 +29,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,6 +53,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.ui.dialogs.FullscreenDialog
 import com.bnyro.translate.util.ImageHelper
+import com.bnyro.translate.util.ImageTransform
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 import kotlinx.coroutines.Dispatchers
@@ -77,9 +79,7 @@ fun ImageCropDialog(
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
 
-    var canvasSize = remember { Size(0f, 0f) }
-    var size = remember { Size(0f, 0f) }
-    var offset = remember { Offset(0f, 0f) }
+    var imageTransform: ImageTransform? = remember { null }
 
     FullscreenDialog(
         onDismissRequest = onDismissRequest,
@@ -96,39 +96,14 @@ fun ImageCropDialog(
                     StyledIconButton(
                         imageVector = Icons.Default.Done,
                         onClick = {
-                            val (imageCanvasWidth, imageCanvasHeight) = fitImageSizeToDimensions(
-                                bitmap,
-                                canvasSize.width,
-                                canvasSize.height
-                            )
-                            val widthFactor = bitmap.width.toFloat() / imageCanvasWidth
-                            val heightFactor = bitmap.height.toFloat() / imageCanvasHeight
-                            val emptyHorizontalSpace = canvasSize.width - imageCanvasWidth
-                            val emptyVerticalSpace = canvasSize.height - imageCanvasHeight
-
-                            val cropSize = Size(
-                                size.width * widthFactor,
-                                size.height * heightFactor
-                            )
-                            val cropOffset = Offset(
-                                (offset.x - emptyHorizontalSpace / 2) * widthFactor,
-                                (offset.y - emptyVerticalSpace / 2) * heightFactor
-                            )
-                            if (arrayOf(
-                                    cropSize.height,
-                                    cropSize.width,
-                                    cropOffset.x,
-                                    cropOffset.y
-                                ).any { it < 0 } || cropOffset.x + cropSize.width > bitmap.width ||
-                                cropOffset.y + cropSize.height > bitmap.height
-                            ) {
+                            val currentTransform = imageTransform ?: run {
                                 context.toastFromMainThread(R.string.invalid_selection_area)
                                 return@StyledIconButton
                             }
 
                             scope.launch(Dispatchers.IO) {
                                 val resizedBitmap =
-                                    ImageHelper.cropImage(bitmap, cropSize, cropOffset)
+                                    ImageHelper.cropImage(bitmap, currentTransform)
 
                                 withContext(Dispatchers.Main) {
                                     onEditedBitmap(resizedBitmap)
@@ -142,12 +117,8 @@ fun ImageCropDialog(
         }
     ) {
         CropImageView(
-            image = ImageHelper.setAlpha(bitmap, 100),
-            onSizeChanged = { size = it },
-            onOffsetChanged = { offset = it },
-            onCanvasSizeChanged = { width, height ->
-                canvasSize = Size(width, height)
-            }
+            bitmap = ImageHelper.setAlpha(bitmap, 100),
+            onImageTransformChanged = { imageTransform = it }
         )
     }
 }
@@ -155,10 +126,8 @@ fun ImageCropDialog(
 @Composable
 fun CropImageView(
     modifier: Modifier = Modifier,
-    image: Bitmap,
-    onSizeChanged: (size: Size) -> Unit,
-    onOffsetChanged: (offset: Offset) -> Unit,
-    onCanvasSizeChanged: (width: Float, height: Float) -> Unit
+    bitmap: Bitmap,
+    onImageTransformChanged: (transform: ImageTransform?) -> Unit,
 ) {
     BoxWithConstraints(
         modifier = modifier
@@ -168,14 +137,11 @@ fun CropImageView(
         val (maxWidth, maxHeight) = remember {
             with(density) {
                 maxWidth.toPx() to maxHeight.toPx()
-            }.also {
-                onCanvasSizeChanged(it.first, it.second)
             }
         }
 
         var selectableAreaSize by remember {
             val size = Size(maxWidth / 3, maxHeight / 3)
-            onSizeChanged(size)
             mutableStateOf(size)
         }
 
@@ -183,12 +149,47 @@ fun CropImageView(
             val offsetX = (maxWidth - selectableAreaSize.width) / 2
             val offsetY = (maxHeight - selectableAreaSize.height) / 2
             val offset = Offset(offsetX, offsetY)
-            onOffsetChanged(offset)
             mutableStateOf(offset)
         }
 
         val (imageWidthScaled, imageHeightScaled) = remember {
-            fitImageSizeToDimensions(image, maxWidth, maxHeight)
+            fitImageSizeToDimensions(bitmap, maxWidth, maxHeight)
+        }
+
+        LaunchedEffect(Unit, selectableAreaSize, selectableAreaOffset) {
+            val widthFactor = bitmap.width.toFloat() / imageWidthScaled
+            val heightFactor = bitmap.height.toFloat() / imageHeightScaled
+            val emptyHorizontalSpace = maxWidth - imageWidthScaled
+            val emptyVerticalSpace = maxHeight - imageHeightScaled
+
+            val cropSize = Size(
+                selectableAreaSize.width * widthFactor,
+                selectableAreaSize.height * heightFactor
+            )
+            val cropOffset = Offset(
+                (selectableAreaOffset.x - emptyHorizontalSpace / 2) * widthFactor,
+                (selectableAreaOffset.y - emptyVerticalSpace / 2) * heightFactor
+            )
+            if (arrayOf(
+                    cropSize.height,
+                    cropSize.width,
+                    cropOffset.x,
+                    cropOffset.y
+                ).any { it < 0 } || cropOffset.x + cropSize.width > bitmap.width ||
+                cropOffset.y + cropSize.height > bitmap.height
+            ) {
+                onImageTransformChanged(null)
+                return@LaunchedEffect
+            }
+
+            onImageTransformChanged(
+                ImageTransform(
+                    cropSize.width.toInt(),
+                    cropSize.height.toInt(),
+                    cropOffset.x.toInt(),
+                    cropOffset.y.toInt()
+                )
+            )
         }
 
         Canvas(modifier = Modifier
@@ -205,22 +206,17 @@ fun CropImageView(
                             if (borders.contains(BorderType.LEFT)) selectableAreaOffset.x + dragAmount.x else selectableAreaOffset.x,
                             if (borders.contains(BorderType.TOP)) selectableAreaOffset.y + dragAmount.y else selectableAreaOffset.y,
                         )
-
-                        onSizeChanged(selectableAreaSize)
-                        onOffsetChanged(selectableAreaOffset)
                     } else if (isInArea(change, selectableAreaSize, selectableAreaOffset)) {
                         selectableAreaOffset = Offset(
                             selectableAreaOffset.x + dragAmount.x,
                             selectableAreaOffset.y + dragAmount.y
                         )
-
-                        onOffsetChanged(selectableAreaOffset)
                     }
                 }
             }
         ) {
             drawImage(
-                image.asImageBitmap(),
+                bitmap.asImageBitmap(),
                 dstOffset = IntOffset(
                     ((maxWidth - imageWidthScaled) / 2).toInt(),
                     ((maxHeight - imageHeightScaled) / 2).toInt()

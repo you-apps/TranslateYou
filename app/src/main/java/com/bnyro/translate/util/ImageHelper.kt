@@ -23,9 +23,13 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.net.Uri
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 
+data class ImageTransform(
+    val width: Int,
+    val height: Int,
+    val offsetX: Int,
+    val offsetY: Int
+)
 
 object ImageHelper {
     fun getImage(context: Context, uri: Uri): Bitmap? {
@@ -48,17 +52,12 @@ object ImageHelper {
 
     fun cropImage(
         targetBitmap: Bitmap,
-        cropSize: Size,
-        cropOffset: Offset,
-    ): Bitmap {
-        val croppedBitmap = Bitmap.createBitmap(
-            targetBitmap,
-            cropOffset.x.toInt(),
-            cropOffset.y.toInt(),
-            cropSize.width.toInt(),
-            cropSize.height.toInt()
-        )
-
-        return croppedBitmap
-    }
+        transform: ImageTransform
+    ): Bitmap = Bitmap.createBitmap(
+        targetBitmap,
+        transform.offsetX,
+        transform.offsetY,
+        transform.width,
+        transform.height
+    )
 }
