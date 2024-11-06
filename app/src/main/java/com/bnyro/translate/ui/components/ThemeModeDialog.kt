@@ -24,6 +24,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.const.ThemeMode
 import com.bnyro.translate.obj.ListPreferenceOption
 import com.bnyro.translate.ui.MainActivity
+import com.bnyro.translate.ui.components.prefs.ListPreferenceDialog
 import com.bnyro.translate.util.Preferences
 
 @Composable

@@ -76,9 +76,7 @@ fun EngineSelectionDialog(
         },
         text = {
             MultiSelectList(
-                titles = simEngines.filter {
-                    it.supportsSimTranslation
-                }.map { it.name },
+                titles = simEngines.map { it.name },
                 selectedItems = selectedItems,
                 onChange = {
                     selectedItems = it

@@ -39,11 +39,11 @@ import com.bnyro.translate.R
 import com.bnyro.translate.ui.MainActivity
 
 @Composable
-fun AppHeader() {
+fun AppHeader(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
     Row(
-        modifier = Modifier.clickable(interactionSource = remember {
+        modifier = modifier.clickable(interactionSource = remember {
             MutableInteractionSource()
         }, indication = null) {
             val intent = Intent(context, MainActivity::class.java)

@@ -41,8 +41,9 @@ import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
 import java.io.File
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
@@ -70,12 +71,13 @@ class TranslationModel : ViewModel() {
     var translation by mutableStateOf(Translation(""))
 
     var translatedTexts = TranslationEngines.engines
-            .associate { it.name to Translation("") }
-            .toMutableMap()
+        .associate { it.name to Translation("") }
+        .toMutableMap()
 
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
     var translating by mutableStateOf(false)
+    private var simTranslationJobs = emptyList<Job>()
 
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
@@ -116,7 +118,7 @@ class TranslationModel : ViewModel() {
             .associate { it.name to Translation("") }
             .toMutableMap()
 
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val translation = try {
                 engine.translate(
                     insertedText,
@@ -141,23 +143,23 @@ class TranslationModel : ViewModel() {
         if (simTranslationEnabled) simTranslation()
     }
 
-    private fun simTranslation() {
-        enabledSimEngines.forEach {
-            if (it != engine) {
-                CoroutineScope(Dispatchers.IO).launch {
-                    val translation = try {
-                        it.translate(
+    private fun simTranslation() = viewModelScope.launch(Dispatchers.IO) {
+        // cancel old jobs from previous translation
+        simTranslationJobs.forEach { if (it.isActive) it.cancel() }
+
+        simTranslationJobs = enabledSimEngines
+            .filter { it != engine }
+            .map {
+                async {
+                    runCatching {
+                        translatedTexts[it.name] = it.translate(
                             insertedText,
                             sourceLanguage.code,
                             targetLanguage.code
                         )
-                    } catch (e: Exception) {
-                        return@launch
                     }
-                    translatedTexts[it.name] = translation
                 }
             }
-        }
     }
 
     private fun saveToHistory() {
@@ -223,7 +225,7 @@ class TranslationModel : ViewModel() {
     }
 
     private fun getCurrentEngine() = TranslationEngines.engines[
-            Preferences.get(Preferences.apiTypeKey, 0)
+        Preferences.get(Preferences.apiTypeKey, 0)
     ]
 
     private fun getEnabledEngines() = TranslationEngines.engines.filter {

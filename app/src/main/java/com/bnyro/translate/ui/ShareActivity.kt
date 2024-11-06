@@ -24,11 +24,15 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.FilterChip
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -40,6 +44,7 @@ import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.parcelable
 import com.bnyro.translate.ui.components.AppHeader
 import com.bnyro.translate.ui.components.DialogButton
+import com.bnyro.translate.ui.views.SimTranslationDialogComponent
 import com.bnyro.translate.ui.views.TranslationComponent
 import com.bnyro.translate.util.ImageHelper
 
@@ -57,31 +62,50 @@ class ShareActivity : BaseActivity() {
                 translationModel.refresh(this@ShareActivity)
             }
 
-            AlertDialog(modifier = Modifier
-                .heightIn(
-                    max = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) screenHeight * 2 / 3 else Dp.Unspecified
-                )
-                .padding(horizontal = 10.dp), properties = DialogProperties(
-                dismissOnClickOutside = false, usePlatformDefaultWidth = false
-            ), onDismissRequest = { finish() }, confirmButton = {
-                DialogButton(
-                    text = stringResource(R.string.okay)
-                ) {
-                    finish()
+            AlertDialog(
+                modifier = Modifier
+                    .heightIn(
+                        max = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+                            screenHeight * 2 / 3 else Dp.Unspecified
+                    )
+                    .padding(horizontal = 10.dp),
+                properties = DialogProperties(
+                    dismissOnClickOutside = false,
+                    usePlatformDefaultWidth = false
+                ),
+                onDismissRequest = { finish() },
+                confirmButton = {
+                    DialogButton(
+                        text = stringResource(R.string.okay)
+                    ) {
+                        finish()
+                    }
+                },
+                dismissButton = {
+                    DialogButton(text = stringResource(R.string.clear)) {
+                        translationModel.clearTranslation()
+                    }
+                },
+                title = {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        AppHeader(modifier = Modifier.weight(1f))
+
+                        if (translationModel.simTranslationEnabled) {
+                            SimTranslationDialogComponent(translationModel)
+                        }
+                    }
+                },
+                text = {
+                    TranslationComponent(
+                        modifier = Modifier.fillMaxSize(),
+                        viewModel = translationModel,
+                        showLanguageSelector = true
+                    )
                 }
-            }, dismissButton = {
-                DialogButton(text = stringResource(R.string.clear)) {
-                    translationModel.clearTranslation()
-                }
-            }, title = {
-                AppHeader()
-            }, text = {
-                TranslationComponent(
-                    modifier = Modifier.fillMaxSize(),
-                    viewModel = translationModel,
-                    showLanguageSelector = true
-                )
-            })
+            )
         }
 
         setFinishOnTouchOutside(false)

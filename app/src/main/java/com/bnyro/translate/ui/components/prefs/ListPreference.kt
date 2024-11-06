@@ -25,7 +25,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.bnyro.translate.obj.ListPreferenceOption
-import com.bnyro.translate.ui.components.ListPreferenceDialog
 import com.bnyro.translate.util.Preferences
 
 @Composable

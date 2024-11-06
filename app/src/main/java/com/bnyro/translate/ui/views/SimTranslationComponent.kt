@@ -28,8 +28,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.bnyro.translate.R
+import com.bnyro.translate.obj.ListPreferenceOption
 import com.bnyro.translate.obj.Translation
+import com.bnyro.translate.ui.components.prefs.ListPreferenceDialog
 import com.bnyro.translate.ui.models.TranslationModel
 
 @Composable
@@ -57,6 +61,45 @@ fun SimTranslationComponent(
                 modifier = Modifier
                     .padding(5.dp, 0.dp)
             )
+        }
+    }
+}
+
+@Composable
+fun SimTranslationDialogComponent(
+    viewModel: TranslationModel
+) {
+    var selected by remember {
+        mutableStateOf(viewModel.engine)
+    }
+    var showSelectionDialog by remember {
+        mutableStateOf(false)
+    }
+
+    ElevatedFilterChip(
+        selected = true,
+        onClick = {
+            showSelectionDialog = true
+        },
+        label = {
+            Text(selected.name)
+        },
+        modifier = Modifier
+            .padding(5.dp, 0.dp)
+    )
+
+    if (showSelectionDialog) {
+        ListPreferenceDialog(
+            preferenceKey = null,
+            title = stringResource(R.string.selected_engine),
+            onDismissRequest = { showSelectionDialog = false },
+            options = viewModel.enabledSimEngines.mapIndexed { index, engine ->
+                ListPreferenceOption(engine.name, index, selected == engine)
+            }
+        ) { engineOption ->
+            selected = viewModel.enabledSimEngines[engineOption.value]
+            viewModel.engine = selected
+            viewModel.translation = viewModel.translatedTexts[selected.name] ?: Translation("")
         }
     }
 }
