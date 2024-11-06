@@ -91,11 +91,12 @@ fun SimTranslationDialogComponent(
     if (showSelectionDialog) {
         ListPreferenceDialog(
             preferenceKey = null,
-            title = stringResource(R.string.selected_engine),
             onDismissRequest = { showSelectionDialog = false },
+            title = stringResource(R.string.selected_engine),
             options = viewModel.enabledSimEngines.mapIndexed { index, engine ->
-                ListPreferenceOption(engine.name, index, selected == engine)
-            }
+                ListPreferenceOption(engine.name, index)
+            },
+            currentValue = viewModel.enabledSimEngines.indexOf(viewModel.engine).takeIf { it >= 0 }
         ) { engineOption ->
             selected = viewModel.enabledSimEngines[engineOption.value]
             viewModel.engine = selected

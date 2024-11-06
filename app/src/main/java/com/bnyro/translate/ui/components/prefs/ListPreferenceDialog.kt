@@ -48,7 +48,7 @@ fun ListPreferenceDialog(
             LazyColumn {
                 items(options) {
                     SelectableItem(
-                        text = if (it.value == currentValue) "${it.name}   ✓" else it.name,
+                        text = it.name,
                         onClick = {
                             if (preferenceKey != null) {
                                 Preferences.put(
@@ -59,7 +59,7 @@ fun ListPreferenceDialog(
                             onOptionSelected.invoke(it)
                             onDismissRequest.invoke()
                         },
-                        isSelected = it.isSelected
+                        isSelected = it.value == currentValue
                     )
                 }
             }
@@ -70,11 +70,7 @@ fun ListPreferenceDialog(
                     onDismissRequest.invoke()
                 }
             ) {
-                Text(
-                    stringResource(
-                        R.string.cancel
-                    )
-                )
+                Text(stringResource(R.string.cancel))
             }
         }
     )

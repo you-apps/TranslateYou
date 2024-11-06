@@ -33,7 +33,6 @@ fun ThemeModeDialog(
 ) {
     val activity = LocalContext.current as MainActivity
     ListPreferenceDialog(
-        title = stringResource(R.string.select_theme),
         preferenceKey = Preferences.themeModeKey,
         onDismissRequest = {
             onDismiss.invoke()
@@ -42,24 +41,22 @@ fun ThemeModeDialog(
             ListPreferenceOption(
                 name = stringResource(R.string.theme_auto),
                 value = ThemeMode.AUTO.value,
-                isSelected = activity.themeMode == ThemeMode.AUTO
             ),
             ListPreferenceOption(
                 name = stringResource(R.string.theme_light),
                 value = ThemeMode.LIGHT.value,
-                isSelected = activity.themeMode == ThemeMode.LIGHT
             ),
             ListPreferenceOption(
                 name = stringResource(R.string.theme_dark),
                 value = ThemeMode.DARK.value,
-                isSelected = activity.themeMode == ThemeMode.DARK
             ),
             ListPreferenceOption(
                 name = stringResource(R.string.theme_black),
                 value = ThemeMode.BLACK.value,
-                isSelected = activity.themeMode == ThemeMode.BLACK
             )
         ),
+        title = stringResource(R.string.select_theme),
+        currentValue = activity.themeMode.value,
         onOptionSelected = {
             activity.themeMode = ThemeMode.values()[it.value]
         }

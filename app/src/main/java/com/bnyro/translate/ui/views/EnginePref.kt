@@ -139,9 +139,10 @@ fun EnginePref() {
                                 ListPreferenceOption(
                                     it.replace("_", " ").capitalize(),
                                     value = index,
-                                    isSelected = selectedAvailableEngine == it
                                 )
-                            }
+                            },
+                            currentValue = engine.supportedEngines.indexOf(selectedAvailableEngine)
+                                .takeIf { it >= 0 }
                         ) { engineOption ->
                             val selectedEngine = engine.supportedEngines[engineOption.value]
                             Preferences.put(engine.selEnginePrefKey, selectedEngine)

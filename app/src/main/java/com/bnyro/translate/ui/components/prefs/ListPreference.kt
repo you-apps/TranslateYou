@@ -20,6 +20,7 @@ package com.bnyro.translate.ui.components.prefs
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -42,7 +43,7 @@ fun ListPreference(
     }
 
     var selectedIndex by remember {
-        mutableStateOf(values.indexOf(Preferences.get(preferenceKey, defaultValue)))
+        mutableIntStateOf(values.indexOf(Preferences.get(preferenceKey, defaultValue)))
     }
 
     PreferenceItem(
