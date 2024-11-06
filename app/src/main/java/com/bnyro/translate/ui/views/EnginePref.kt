@@ -17,12 +17,8 @@
 
 package com.bnyro.translate.ui.views
 
-import android.util.Log
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.AlertDialog
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -37,10 +33,10 @@ import com.bnyro.translate.api.deepl.DeeplEngine
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.capitalize
+import com.bnyro.translate.obj.ListPreferenceOption
 import com.bnyro.translate.ui.components.BlockRadioButton
-import com.bnyro.translate.ui.components.DialogButton
-import com.bnyro.translate.ui.components.SelectableItem
 import com.bnyro.translate.ui.components.prefs.EditTextPreference
+import com.bnyro.translate.ui.components.prefs.ListPreferenceDialog
 import com.bnyro.translate.ui.components.prefs.PreferenceItem
 import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.util.Preferences
@@ -71,7 +67,7 @@ fun EnginePref() {
         onSelect = {
             selected = it
             Preferences.put(Preferences.apiTypeKey, selected)
-            
+
             instanceUrl = engines[selected].getUrl()
             apiKey = engines[selected].getApiKey()
             TranslationEngines.updateAll()
@@ -109,7 +105,7 @@ fun EnginePref() {
             }
 
             when {
-                 engine.supportedEngines.isNotEmpty() -> {
+                engine.supportedEngines.isNotEmpty() -> {
                     var showEngineSelDialog by remember {
                         mutableStateOf(false)
                     }
@@ -127,31 +123,35 @@ fun EnginePref() {
                     }
 
                     if (showEngineSelDialog) {
-                        AlertDialog(
+                        var selectedAvailableEngine by remember {
+                            mutableStateOf(
+                                Preferences.get(
+                                    engine.selEnginePrefKey,
+                                    engine.supportedEngines.first()
+                                )
+                            )
+                        }
+
+                        ListPreferenceDialog(
+                            preferenceKey = null,
                             onDismissRequest = { showEngineSelDialog = false },
-                            confirmButton = {
-                                DialogButton(
-                                    text = stringResource(R.string.cancel)
-                                ) {
-                                    showEngineSelDialog = false
-                                }
-                            },
-                            text = {
-                                LazyColumn {
-                                    items(engine.supportedEngines) { availableEngine ->
-                                        SelectableItem(
-                                            text = availableEngine.replace("_", " ").capitalize()
-                                        ) {
-                                            Preferences.put(engine.selEnginePrefKey, availableEngine)
-                                            engine.createOrRecreate()
-                                            showEngineSelDialog = false
-                                        }
-                                    }
-                                }
+                            options = engine.supportedEngines.mapIndexed { index, it ->
+                                ListPreferenceOption(
+                                    it.replace("_", " ").capitalize(),
+                                    value = index,
+                                    isSelected = selectedAvailableEngine == it
+                                )
                             }
-                        )
+                        ) { engineOption ->
+                            val selectedEngine = engine.supportedEngines[engineOption.value]
+                            Preferences.put(engine.selEnginePrefKey, selectedEngine)
+                            selectedAvailableEngine = selectedEngine
+
+                            engine.createOrRecreate()
+                        }
                     }
                 }
+
                 engine is DeeplEngine -> {
                     Spacer(modifier = Modifier.height(5.dp))
                     SwitchPreference(
