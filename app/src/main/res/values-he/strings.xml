@@ -83,4 +83,6 @@
     <string name="select_theme">בחירת ערכת עיצוב</string>
     <string name="theme_black">שחור</string>
     <string name="irreversible">אי אפשר להשתקם מזה. להמשיך\?</string>
+    <string name="clear_favorites">פינוי המועדפים</string>
+    <string name="clear">פינוי</string>
 </resources>
