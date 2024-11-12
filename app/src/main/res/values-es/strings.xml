@@ -77,4 +77,5 @@
     <string name="tess_summary">Tesseract es un motor de reconocimiento óptico de caracteres. Software libre, publicado bajo la Licencia Apache. Fue publicado como código abierto en 2005 y su desarrollo ha sido patrocinado por Google desde 2006. Tesseract está considerado como uno de los motores de OCR de código abierto más precisos que existen. Para más información, consulte %1$s.</string>
     <string name="clear_favorites">Borrar favoritos</string>
     <string name="clear">Limpiar</string>
+    <string name="invalid_selection_area">¡Área de selección no válida!</string>
 </resources>
