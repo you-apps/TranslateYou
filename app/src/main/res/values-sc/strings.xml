@@ -77,4 +77,5 @@
     <string name="init_tess_first">In antis iscàrriga sos datos de sa limba in sas impostatziones.</string>
     <string name="select_language">Pro praghere seletziona una limba pro su reconnoschimentu de su testu de sas immàgines in sas impostaziones.</string>
     <string name="select_theme">Seletziona su tema</string>
+    <string name="invalid_selection_area">Àrea de seletzione non vàlida!</string>
 </resources>
