@@ -78,4 +78,5 @@
     <string name="clear">Təmizlə</string>
     <string name="clear_favorites">Sevimliləri təmizlə</string>
     <string name="irreversible">Bu geri alına bilməz. Davam etmək istədiyinizə əminsiniz?</string>
+    <string name="invalid_selection_area">Yanlış seçim sahəsi!</string>
 </resources>
