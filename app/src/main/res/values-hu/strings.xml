@@ -77,4 +77,5 @@
     <string name="image_translation_summary">Nyelvek letöltése és alkalmazása a képekről történő szövegfelismeréshez.</string>
     <string name="tess_summary">A Tesseract egy optikai karakterfelismerő motor. Szabad szoftver, mely az Apache licenc alatt jelent meg. Nyílt forráskódúként 2005-ben adták ki, a fejlesztést 2006 óta a Google szponzorálja. A Tesseractot az egyik legpontosabb nyílt forráskódú OCR-motornak tartják. További információért lásd a(z) %1$s.</string>
     <string name="init_tess_first">Először töltse le a nyelvi adatokat a beállításokban.</string>
+    <string name="invalid_selection_area">Érvénytelen kijelölési terület!</string>
 </resources>
