@@ -85,6 +85,6 @@
     <string name="irreversible">אי אפשר להשתקם מזה. להמשיך\?</string>
     <string name="clear_favorites">פינוי המועדפים</string>
     <string name="clear">פינוי</string>
-    <string name="tess_summary">‬Tesseract היא מערכת זיהוי תווים אופטיים. היא תוכנה חופשית, המופצת תחת רישיון Apache. היא שוחררה כקוד פתוח בשנת 2005 והפיתוח שלה ממומן על ידי גוגל מאז 2006. Tesseract נחשבת לאחת ממנועי ה-OCR הפתוחים והמדויקים ביותר הקיימים. למידע נוסף, ראה %1$s.</string>
-    <string name="invalid_selection_area">אזור שנבחר אינו אפשרי!</string>
+    <string name="tess_summary">‬Tesseract היא מערכת זיהוי תווים אופטי במסגרת תוכנה חופשית, המופצת בכפוף לרישיון Apache. היא שוחררה כקוד פתוח בשנת 2005 והפיתוח שלה ממומן על ידי גוגל מאז 2006. Tesseract נחשבת לאחד ממנועי זיהוי התווים האופטי הפתוחים והמדויקים ביותר הקיימים. למידע נוסף: %1$s.</string>
+    <string name="invalid_selection_area">אזור בחירה שגוי!</string>
 </resources>
