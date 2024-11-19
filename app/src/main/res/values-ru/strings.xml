@@ -77,4 +77,5 @@
     <string name="tess_summary">Tesseract — свободный движок распознавания текста с изображений, распространяемый под лицензией Apache. Его исходный код был опубликован в 2005, а с 2006 разработка спонсируется Google. Tesseract считается одним из лучших свободных движков распознания теста. Вы можете узнать больше подробностей по %1$s.</string>
     <string name="clear_favorites">Опустошить список избранных</string>
     <string name="clear">Стереть</string>
+    <string name="invalid_selection_area">Выбранная область недействительна!</string>
 </resources>
