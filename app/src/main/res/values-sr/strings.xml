@@ -12,8 +12,8 @@
     <string name="forget">Заборави</string>
     <string name="translate">Преведи</string>
     <string name="language_not_supported">Језик није подржан!</string>
-    <string name="translate_to">Преведи на</string>
-    <string name="translate_from">Преведи са</string>
+    <string name="translate_to">Преведите на</string>
+    <string name="translate_from">Преведите са</string>
     <!-- Settings -->
     <string name="instance">Инстанца</string>
     <string name="api_key">API кључ</string>
@@ -60,7 +60,7 @@
     <string name="accent_color">Боја за акценат</string>
     <string name="dynamic_colors">Динамичке боје</string>
     <!-- History -->
-    <string name="clear_history">Очисти историју</string>
+    <string name="clear_history">Очистите историју</string>
     <string name="open">Отвори</string>
     <!-- Exception -->
     <string name="server_error">Грешка приликом комуницирања са сервером.</string>
@@ -87,7 +87,7 @@
     <string name="theme_black">Црна</string>
     <string name="irreversible">Ово се не може поништити. Желите ли заиста да наставите\?</string>
     <string name="tess_summary">Tesseract је машина за оптичко препознавање знакова. То је бесплатан софтвер, објављен под Apache лиценцом. Објављен је као софтвер отвореног кода 2005. године и Google је спонзорисао развој 2006. године. Tesseract се сматра једним од најпрецизнијих доступних OCR мотора отвореног кода. За више информација, погледајте %1$s.</string>
-    <string name="clear_favorites">Очисти омиљене</string>
-    <string name="clear">Очисти</string>
+    <string name="clear_favorites">Очистите омиљене</string>
+    <string name="clear">Очистите</string>
     <string name="invalid_selection_area">Неважећа област избора!</string>
 </resources>
