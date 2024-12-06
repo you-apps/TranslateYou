@@ -75,4 +75,7 @@
     <string name="translate_automatically_summary">درخواست خودکار ترجمه پس از تاخیری مشخص.</string>
     <string name="use_free_api">استفاده از API رایگان</string>
     <string name="use_free_api_summary">به جای استفاده از API پولی از API رایگان استفاده کنید.</string>
+    <string name="clear">پاک‌کردن</string>
+    <string name="invalid_selection_area">منطقه انتخاب نامعتبر!</string>
+    <string name="clear_favorites">پاک‌کردن مورد‌علاقه‌ها</string>
 </resources>
