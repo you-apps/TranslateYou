@@ -21,6 +21,7 @@ import android.os.Build
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -29,9 +30,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.ArrowRight
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -125,22 +132,25 @@ fun AccentColorPrefDialog(
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.height(250.dp).alpha(imageAlpha).let {
-                        if (isColorPickerEnabled) {
-                            it
-                        } else {
-                            // disable input
-                            it.pointerInput(Unit){
-                                awaitPointerEventScope {
-                                    while (true) {
-                                        awaitPointerEvent(pass = PointerEventPass.Initial)
-                                            .changes
-                                            .forEach(PointerInputChange::consume)
+                    modifier = Modifier
+                        .height(250.dp)
+                        .alpha(imageAlpha)
+                        .let {
+                            if (isColorPickerEnabled) {
+                                it
+                            } else {
+                                // disable input
+                                it.pointerInput(Unit) {
+                                    awaitPointerEventScope {
+                                        while (true) {
+                                            awaitPointerEvent(pass = PointerEventPass.Initial)
+                                                .changes
+                                                .forEach(PointerInputChange::consume)
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
                 ) {
                     listOf("R", "G", "B").forEachIndexed { index, c ->
                         val startIndex = index * 2
@@ -169,7 +179,12 @@ fun AccentColorPrefDialog(
                                     CircleShape
                                 )
                         )
-                        Text(text = "   =>   ", fontSize = 27.sp)
+                        Icon(
+                            modifier = Modifier.padding(horizontal = 10.dp),
+                            imageVector = Icons.AutoMirrored.Default.ArrowForward,
+                            tint = MaterialTheme.colorScheme.onBackground,
+                            contentDescription = null
+                        )
                         Box(
                             modifier = Modifier
                                 .size(50.dp)
