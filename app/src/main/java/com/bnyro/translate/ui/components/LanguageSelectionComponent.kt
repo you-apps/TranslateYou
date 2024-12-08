@@ -145,18 +145,7 @@ fun SwapLanguagesButton(viewModel: TranslationModel) {
 
     IconButton(
         onClick = {
-            if (viewModel.availableLanguages.isEmpty()) return@IconButton
-            if (!switchBtnEnabled) return@IconButton
-            val temp = viewModel.sourceLanguage
-            viewModel.sourceLanguage = viewModel.targetLanguage
-            viewModel.targetLanguage = temp
-
-            if (viewModel.translation.translatedText.isNotEmpty()) {
-                viewModel.insertedText = viewModel.translation.translatedText
-                viewModel.translation = Translation("")
-            }
-
-            viewModel.translateNow(context)
+            if (switchBtnEnabled) viewModel.swapLanguages(context)
         }
     ) {
         Icon(

@@ -277,6 +277,21 @@ class TranslationModel : ViewModel() {
         )
     }
 
+    fun swapLanguages(context: Context) {
+        if (availableLanguages.isEmpty()) return
+
+        val temp = sourceLanguage
+        sourceLanguage = targetLanguage
+        targetLanguage = temp
+
+        if (translation.translatedText.isNotEmpty()) {
+            insertedText = translation.translatedText
+            translation = Translation("")
+        }
+
+        translateNow(context)
+    }
+
     fun playAudio(languageCode: String, text: String) {
         releaseMediaPlayer()
 
