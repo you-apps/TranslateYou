@@ -78,4 +78,5 @@
     <string name="irreversible">Questa operazione non può essere annullata. Sei sicuro di voler procedere?</string>
     <string name="clear_favorites">Cancella i preferiti</string>
     <string name="clear">Pulisci</string>
+    <string name="invalid_selection_area">Area di selezione non valida!</string>
 </resources>
