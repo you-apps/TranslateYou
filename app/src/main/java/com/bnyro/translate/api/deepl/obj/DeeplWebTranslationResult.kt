@@ -17,7 +17,6 @@
 
 package com.bnyro.translate.api.deepl.obj
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable

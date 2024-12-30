@@ -20,7 +20,6 @@ package com.bnyro.translate.ui.screens
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.view.ViewTreeObserver
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -60,10 +59,10 @@ import com.bnyro.translate.ui.components.LanguageSelectionComponent
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.ui.views.AdditionalInfoComponent
+import com.bnyro.translate.ui.views.SimTranslationComponent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.ui.views.SimTranslationComponent
 
 @SuppressLint("UnrememberedMutableState")
 @Composable

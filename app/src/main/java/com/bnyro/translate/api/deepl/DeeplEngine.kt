@@ -19,9 +19,9 @@ package com.bnyro.translate.api.deepl
 
 import com.bnyro.translate.api.deepl.obj.DeeplWebTranslationRequest
 import com.bnyro.translate.api.deepl.obj.DeeplWebTranslationRequestParams
-import com.bnyro.translate.api.deepl.obj.DeeplWebTranslationRequestParamsText
 import com.bnyro.translate.api.deepl.obj.DeeplWebTranslationRequestParamsLang
 import com.bnyro.translate.api.deepl.obj.DeeplWebTranslationRequestParamsLangPreference
+import com.bnyro.translate.api.deepl.obj.DeeplWebTranslationRequestParamsText
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
@@ -30,8 +30,8 @@ import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 import kotlin.math.floor
 import kotlin.math.roundToInt
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 /**
  * DeepL translator
