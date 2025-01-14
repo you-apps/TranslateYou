@@ -61,11 +61,7 @@ class MhEngine : TranslationEngine(
             engine = getSelectedEngine(),
             source = sourceOrAuto(source.substring(0, 2)),
             query = query,
-            target = (if(target.length==3){
-                target.dropLast(1)
-            } else {
-                target
-            }).toString()
+            target = target.substring(0, 2),
         )
         return Translation(
             translatedText = response.translatedText,
