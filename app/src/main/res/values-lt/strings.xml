@@ -77,4 +77,5 @@
     <string name="general">Bendra</string>
     <string name="translate_automatically_summary">Automatiškai prašyti vertimo po tam delsos.</string>
     <string name="use_free_api_summary">Naudoti nemokamą, o ne mokamą „Pro“ API.</string>
+    <string name="invalid_selection_area">Netinkama pasirinkimo sritis.</string>
 </resources>
