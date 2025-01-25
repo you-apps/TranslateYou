@@ -57,7 +57,7 @@
     <string name="theme_auto">Системски</string>
     <string name="theme_light">Светла</string>
     <string name="theme_dark">Тамна</string>
-    <string name="accent_color">Боја за акценат</string>
+    <string name="accent_color">Боја наглашавања</string>
     <string name="dynamic_colors">Динамичке боје</string>
     <!-- History -->
     <string name="clear_history">Очистите историју</string>
