@@ -8,14 +8,14 @@
     <string name="translate">Fordítás</string>
     <string name="translate_to">Fordítsd erre</string>
     <string name="translate_from">Fordítás erről</string>
-    <string name="instance">Példa</string>
+    <string name="instance">Példány</string>
     <string name="api_key">API kulcs</string>
     <string name="options">Beállítások</string>
-    <string name="history">Előzmény</string>
+    <string name="history">Előzmények</string>
     <string name="fetch_delay_summary">A szöveg beillesztése és a fordítás lekérése közötti késleltetés</string>
     <string name="history_summary">A legutóbb lefordított szövegek nyomon követése</string>
     <string name="required">Szükséges</string>
-    <string name="optional">Opcionális</string>
+    <string name="optional">Választható</string>
     <string name="compact_history">Kompakt előzmények</string>
     <string name="skip_similar_entries">Hasonló bejegyzések kihagyása</string>
     <string name="skip_similar_entries_desc">Csak egyedi bejegyzéseket tárol az előzményekben, a beszúrás és a nyelvek alapján.</string>
@@ -24,12 +24,12 @@
     <string name="enabled_engines">Engedélyezett motorok</string>
     <string name="enabled_engines_summary">A szinkrontolmácsoláshoz használandó motorok.</string>
     <string name="selected_engine">Kiválasztott motor</string>
-    <string name="okay">Oké</string>
+    <string name="okay">Rendben</string>
     <string name="about">Névjegy</string>
     <string name="history_enabled">Előzmények engedélyezve</string>
     <string name="fetch_delay">Fordítási késleltetés</string>
     <string name="additional_info">További információk</string>
-    <string name="cancel">Mégsem</string>
+    <string name="cancel">Mégse</string>
     <string name="additional_info_summary">További fordítási információk megjelenítése, ha rendelkezésre állnak.</string>
     <string name="simultaneous_translation_summary">Egyszerre több motorból is lekérheti az eredményeket.</string>
     <string name="language_not_supported">A nyelv nem támogatott!</string>
@@ -48,7 +48,7 @@
     <string name="dynamic_colors">Dinamikus színek</string>
     <string name="similar">Hasonló</string>
     <string name="transliteration">Átírás</string>
-    <string name="clear">Kiürítés</string>
+    <string name="clear">Törlés</string>
     <string name="all_languages">Minden nyelv</string>
     <string name="clear_favorites">Kedvencek törlése</string>
     <string name="author">Szerző</string>
@@ -63,7 +63,7 @@
     <string name="open">Megnyitás</string>
     <string name="irreversible">Ezt nem vonható vissza. Biztos, hogy folytatni akarja?</string>
     <string name="server_error">Hiba a kiszolgálóval való kommunikáció során.</string>
-    <string name="missing_api_key">Kérjük, adjon meg egy API-kulcsot a beállításokban.</string>
+    <string name="missing_api_key">Adjon meg egy API-kulcsot a beállításokban.</string>
     <string name="unknown_error">Ismeretlen hiba</string>
     <string name="detected_language">Észlelt nyelv</string>
     <string name="definition">Meghatározás</string>
@@ -71,10 +71,11 @@
     <string name="image_translation">Fordítás a képből</string>
     <string name="select_theme">Téma kiválasztása</string>
     <string name="translate_automatically_summary">Fordítás kérése automatikusan egy bizonyos késleltetés után.</string>
-    <string name="select_language">Kérjük, a beállításoknál válassza ki a képek szövegfelismerésének nyelvét.</string>
+    <string name="select_language">A beállításoknál válassza ki a képek szövegfelismerésének nyelvét.</string>
     <string name="search">Keresés</string>
     <string name="favorites">Kedvencek</string>
     <string name="image_translation_summary">Nyelvek letöltése és alkalmazása a képekről történő szövegfelismeréshez.</string>
     <string name="tess_summary">A Tesseract egy optikai karakterfelismerő motor. Szabad szoftver, mely az Apache licenc alatt jelent meg. Nyílt forráskódúként 2005-ben adták ki, a fejlesztést 2006 óta a Google szponzorálja. A Tesseractot az egyik legpontosabb nyílt forráskódú OCR-motornak tartják. További információért lásd a(z) %1$s.</string>
-    <string name="init_tess_first">Kérjük, először töltse le a nyelvi adatokat a beállításokban.</string>
+    <string name="init_tess_first">Először töltse le a nyelvi adatokat a beállításokban.</string>
+    <string name="invalid_selection_area">Érvénytelen kijelölési terület!</string>
 </resources>

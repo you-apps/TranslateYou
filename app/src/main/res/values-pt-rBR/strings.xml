@@ -73,8 +73,9 @@
     <string name="skip_similar_entries_desc">Armazene apenas entradas únicas no histórico, baseado na inserção e nos idiomas.</string>
     <string name="select_theme">Selecione o tema</string>
     <string name="theme_black">Preto</string>
-    <string name="irreversible">Isto não pode ser desfeito. Você tem certeza de que quer continuar\?</string>
+    <string name="irreversible">Isso não pode ser desfeito. Você tem certeza que quer continuar?</string>
     <string name="tess_summary">Tesseract é um mecanismo de reconhecimento óptico de caracteres. É um software livre, lançado sob a licença Apache. Foi lançado como código aberto em 2005 e o desenvolvimento é patrocinado pelo Google desde 2006. O Tesseract é considerado um dos mecanismos de OCR de código aberto mais precisos disponíveis. Para mais informações, veja %1$s.</string>
     <string name="clear">Limpar</string>
     <string name="clear_favorites">Limpar favoritos</string>
+    <string name="invalid_selection_area">Área de seleção inválida!</string>
 </resources>

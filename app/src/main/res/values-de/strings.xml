@@ -77,4 +77,5 @@
     <string name="irreversible">Das kann nicht rückgängig gemacht werden. Sind Sie sicher, dass Sie fortfahren wollen?</string>
     <string name="clear_favorites">Favoriten löschen</string>
     <string name="clear">löschen</string>
+    <string name="invalid_selection_area">Ungültiger Auswahlbereich!</string>
 </resources>

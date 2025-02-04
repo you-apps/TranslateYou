@@ -77,4 +77,5 @@
     <string name="missing_api_key">Palun sisesta seadistustes API võti.</string>
     <string name="clear_favorites">Eemalda lemmikud</string>
     <string name="clear">Tühjenda</string>
+    <string name="invalid_selection_area">Vigane valikuala!</string>
 </resources>
