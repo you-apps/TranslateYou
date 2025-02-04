@@ -20,6 +20,7 @@ package com.bnyro.translate.const
 import com.bnyro.translate.api.ap.ApEngine
 import com.bnyro.translate.api.deepl.DeeplEngine
 import com.bnyro.translate.api.gl.GlEngine
+import com.bnyro.translate.api.la.LaEngine
 import com.bnyro.translate.api.lt.LTEngine
 import com.bnyro.translate.api.lv.LVEngine
 import com.bnyro.translate.api.mh.MhEngine
@@ -43,7 +44,8 @@ object TranslationEngines {
         GlEngine(),
         ApEngine(),
         OneRingEngine(),
-        PonsEngine()
+        PonsEngine(),
+        LaEngine()
     ).map {
         it.createOrRecreate()
     }
