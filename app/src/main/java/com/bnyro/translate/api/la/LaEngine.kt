@@ -49,7 +49,7 @@ class LaEngine : TranslationEngine(
             languagesHtml = languagesHtml.substringAfter("</li>")
 
             val (languageName, languageCodeRaw) = languageInfo.split(" - ")
-            val languageCode = languageCodeRaw.replace("`", "").substring(0, 2)
+            val languageCode = languageCodeRaw.replace("`", "").take(2)
             languages.add(Language(code = languageCode, name = languageName))
         }
 

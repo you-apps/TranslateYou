@@ -61,9 +61,9 @@ class MhEngine : TranslationEngine(
     override suspend fun translate(query: String, source: String, target: String): Translation {
         val response = api.translate(
             engine = getSelectedEngine(),
-            source = sourceOrAuto(source.substring(0, 2)),
+            source = sourceOrAuto(source.take(2)),
             query = query,
-            target = target.substring(0, 2),
+            target = target.take(2),
         )
         return Translation(
             translatedText = response.translatedText,
