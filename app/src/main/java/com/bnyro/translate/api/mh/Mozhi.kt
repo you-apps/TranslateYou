@@ -22,15 +22,19 @@ import com.bnyro.translate.api.mh.obj.MhTranslationResponse
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Multipart
+import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface Mozhi {
-    @GET("api/translate/")
+    @POST("api/translate/")
+    @Multipart
     suspend fun translate(
-        @Query("engine") engine: String? = null,
-        @Query("from") source: String,
-        @Query("to") target: String,
-        @Query("text") query: String
+        @Part("engine") engine: String? = null,
+        @Part("from") source: String,
+        @Part("to") target: String,
+        @Part("text") query: String
     ): MhTranslationResponse
 
     @GET("api/target_languages/")
