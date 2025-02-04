@@ -48,9 +48,9 @@ class LaEngine : TranslationEngine(
             val languageInfo = languagesHtml.substringBefore("</li>")
             languagesHtml = languagesHtml.substringAfter("</li>")
 
-            val (languageName, languageCode) = languageInfo.split(" - ")
-            val lang = Language(code = languageCode.replace("`", ""), name = languageName)
-            languages.add(lang)
+            val (languageName, languageCodeRaw) = languageInfo.split(" - ")
+            val languageCode = languageCodeRaw.replace("`", "").substring(0, 2)
+            languages.add(Language(code = languageCode, name = languageName))
         }
 
         return languages
