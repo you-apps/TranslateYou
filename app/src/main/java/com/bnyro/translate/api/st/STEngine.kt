@@ -44,7 +44,7 @@ class STEngine : TranslationEngine(
     override suspend fun getLanguages(): List<Language> {
         return api.getLanguages(getSelectedEngine()).map { (code, name) ->
             Language(code = code, name = name)
-        }.sortedBy { it.code }
+        }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {

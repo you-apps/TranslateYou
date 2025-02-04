@@ -148,7 +148,7 @@ class ApEngine: TranslationEngine(
             "zh" to "Chinese",
             "zlm" to "Malay",
             "zu" to "Zulu"
-        ).map { Language(it.first, it.second) }.sortedBy { it.name }
+        ).map { Language(it.first, it.second) }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {

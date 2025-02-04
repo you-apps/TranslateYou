@@ -61,7 +61,6 @@ class OneRingEngine: TranslationEngine(
             Language(it.isO3Language, it.getDisplayName(Locale.getDefault()))
         }
             .distinctBy { it.code }
-            .sortedBy { it.name }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {

@@ -139,7 +139,7 @@ class MMEngine : TranslationEngine(
             "zu-ZA" to "Zulu"
         )
             .map { Language(it.first, it.second) }
-            .sortedBy { it.name }
+
 
         /* DEPRECATED endpoint apparently
         val request = Request.Builder()

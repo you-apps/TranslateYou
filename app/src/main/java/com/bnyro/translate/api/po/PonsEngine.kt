@@ -40,7 +40,7 @@ class PonsEngine : TranslationEngine(
     override suspend fun getLanguages(): List<Language> {
         return api.getLanguages().languages.map { (code, langInfo) ->
             Language(code = code, name = langInfo.display)
-        }.sortedBy { it.name }
+        }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
