@@ -93,7 +93,11 @@ fun TranslationComponent(
                 translationModel = viewModel,
                 isSourceField = true,
                 text = viewModel.insertedText,
-                viewModel.sourceLanguage,
+                language = viewModel.sourceLanguage.copy(
+                    code = viewModel.sourceLanguage.code.ifEmpty {
+                        viewModel.translation.detectedLanguage.orEmpty()
+                    }
+                ),
                 showLanguageSelector = showLanguageSelector,
                 setLanguage = {
                     if (it == viewModel.targetLanguage) {

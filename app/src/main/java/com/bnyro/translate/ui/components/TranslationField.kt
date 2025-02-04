@@ -128,7 +128,7 @@ fun TranslationField(
                 }
             )
 
-            if (translationModel.engine.supportsAudio) {
+            if (translationModel.engine.supportsAudio && language.code.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.Default.VolumeUp
                 ) {
