@@ -25,7 +25,6 @@ import com.bnyro.translate.util.TranslationEngine
 import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.json.jsonPrimitive
 
 class STEngine : TranslationEngine(
     name = "SimplyTranslate",
@@ -43,8 +42,8 @@ class STEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
-        return api.getLanguages(getSelectedEngine()).map {
-            Language(it.key, it.value.jsonPrimitive.content)
+        return api.getLanguages(getSelectedEngine()).map { (code, name) ->
+            Language(code = code, name = name)
         }.sortedBy { it.code }
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 You Apps
+ * Copyright (c) 2025 You Apps
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,24 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.api.po
+package com.bnyro.translate.api.po.obj
 
-import com.bnyro.translate.api.po.obj.PonsData
-import com.bnyro.translate.api.po.obj.PonsLanguages
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import kotlinx.serialization.Serializable
 
-interface Pons {
-    @GET("text-translation-web/v4/languages")
-    suspend fun getLanguages(
-        @Query("locale") locale: String = "en"
-    ): PonsLanguages
-
-    @POST("text-translation-web/v4/translate")
-    suspend fun translate(
-        @Query("locale") locale: String = "en",
-        @Body body: PonsData
-    ): PonsData
-}
+@Serializable
+data class PonsLanguage(
+    val dir: String,
+    val display: String
+)

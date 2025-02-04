@@ -25,7 +25,7 @@ import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
 import java.util.*
 
-class WmEngine: TranslationEngine(
+class WmEngine : TranslationEngine(
     name = "MinT",
     apiKeyState = ApiKeyState.DISABLED,
     supportsSimTranslation = true,
@@ -41,9 +41,12 @@ class WmEngine: TranslationEngine(
 
     override suspend fun getLanguages(): List<Language> {
         val json = api.getLanguages()
-        return json.entries.map {
-            val languageName = runCatching { Locale.forLanguageTag(it.key).displayName }.getOrNull()
-            Language(it.key, languageName ?: it.key)
+        return json.keys.map { languageCode ->
+            val languageName = runCatching {
+                Locale.forLanguageTag(languageCode).displayName
+            }.getOrNull()
+
+            Language(code = languageCode, name = languageName ?: languageCode)
         }
     }
 

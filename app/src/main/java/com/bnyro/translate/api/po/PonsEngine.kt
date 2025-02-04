@@ -23,8 +23,6 @@ import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 
 class PonsEngine : TranslationEngine(
     name = "Pons",
@@ -40,10 +38,9 @@ class PonsEngine : TranslationEngine(
     }
 
     override suspend fun getLanguages(): List<Language> {
-        return api.getLanguages()["languages"]?.jsonObject?.map {
-            val langName = it.value.jsonObject["display"]?.jsonPrimitive?.content ?: throw IllegalArgumentException()
-            Language(it.key, langName)
-        }?.sortedBy { it.name } ?: throw IllegalArgumentException()
+        return api.getLanguages().languages.map { (code, langInfo) ->
+            Language(code = code, name = langInfo.display)
+        }.sortedBy { it.name }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {

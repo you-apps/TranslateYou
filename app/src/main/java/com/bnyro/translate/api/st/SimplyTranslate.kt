@@ -18,7 +18,6 @@
 package com.bnyro.translate.api.st
 
 import com.bnyro.translate.api.st.obj.STTranslationResponse
-import kotlinx.serialization.json.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET
@@ -36,7 +35,7 @@ interface SimplyTranslate {
     @GET("api/target_languages/")
     suspend fun getLanguages(
         @Query("engine") engine: String?
-    ): JsonObject
+    ): Map<String, String>
 
     @GET("api/tts")
     suspend fun getAudioFile(
