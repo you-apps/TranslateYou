@@ -17,13 +17,9 @@
 
 package com.bnyro.translate.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -39,19 +35,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import com.bnyro.translate.R
-import com.bnyro.translate.db.obj.Language
-import com.bnyro.translate.ext.parcelable
 import com.bnyro.translate.ui.components.AppHeader
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.views.SimTranslationDialogComponent
 import com.bnyro.translate.ui.views.TranslationComponent
-import com.bnyro.translate.util.ImageHelper
 
-class ShareActivity : BaseActivity() {
+class ShareActivity : TranslationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        handleIntentData()
 
         showContent {
             val configuration = LocalConfiguration.current
@@ -90,7 +81,11 @@ class ShareActivity : BaseActivity() {
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        AppHeader(modifier = Modifier.weight(1f))
+                        AppHeader(modifier = Modifier.weight(1f)) {
+                            val intent = Intent(this@ShareActivity, MainActivity::class.java)
+                                .putExtra(Intent.EXTRA_TEXT, translationModel.insertedText)
+                            this@ShareActivity.startActivity(intent)
+                        }
 
                         if (translationModel.simTranslationEnabled) {
                             SimTranslationDialogComponent(translationModel)
@@ -108,42 +103,5 @@ class ShareActivity : BaseActivity() {
         }
 
         setFinishOnTouchOutside(false)
-    }
-
-    @SuppressLint("InlinedApi")
-    private fun getIntentText(): String? {
-        return intent.getCharSequenceExtra(Intent.EXTRA_TEXT)?.toString()
-            ?: intent.takeIf { Build.VERSION.SDK_INT > Build.VERSION_CODES.M }
-                ?.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.toString()
-            ?: intent.getCharSequenceExtra(Intent.ACTION_SEND)?.toString()
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        this.intent = intent
-        handleIntentData()
-    }
-
-    private fun handleIntentData() {
-        getIntentText()?.let {
-            translationModel.insertedText = it
-            translationModel.translateNow(this)
-        }
-        // open links from Google Translate
-        if (intent.data?.host == "translate.google.com") {
-            val source = intent.data?.getQueryParameter("sl").orEmpty()
-            val target = intent.data?.getQueryParameter("tl").orEmpty()
-            translationModel.sourceLanguage = Language(source, source)
-            translationModel.targetLanguage = Language(target, target)
-            translationModel.insertedText = intent.data?.getQueryParameter("text").orEmpty()
-            translationModel.translateNow(this)
-        }
-        if (intent.type?.startsWith("image/") != true) return
-
-        (intent.parcelable<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
-            ImageHelper.getImage(this, it)?.let { bm ->
-                translationModel.processImage(this, bm)
-            }
-        }
     }
 }

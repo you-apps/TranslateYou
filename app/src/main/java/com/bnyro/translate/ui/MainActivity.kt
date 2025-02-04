@@ -21,7 +21,7 @@ import android.os.Bundle
 import androidx.navigation.compose.rememberNavController
 import com.bnyro.translate.ui.nav.NavigationHost
 
-class MainActivity : BaseActivity() {
+class MainActivity : TranslationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,10 +29,5 @@ class MainActivity : BaseActivity() {
             val navController = rememberNavController()
             NavigationHost(navController, translationModel)
         }
-    }
-
-    override fun onStop() {
-        translationModel.saveSelectedLanguages()
-        super.onStop()
     }
 }

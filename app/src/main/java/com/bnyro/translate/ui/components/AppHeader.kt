@@ -17,7 +17,6 @@
 
 package com.bnyro.translate.ui.components
 
-import android.content.Intent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Row
@@ -31,24 +30,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.ui.MainActivity
 
 @Composable
-fun AppHeader(modifier: Modifier = Modifier) {
-    val context = LocalContext.current
-
+fun AppHeader(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     Row(
         modifier = modifier.clickable(interactionSource = remember {
             MutableInteractionSource()
-        }, indication = null) {
-            val intent = Intent(context, MainActivity::class.java)
-            context.startActivity(intent)
-        },
+        }, indication = null, onClick = onClick),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
