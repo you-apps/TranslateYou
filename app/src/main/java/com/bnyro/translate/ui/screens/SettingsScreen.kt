@@ -225,9 +225,9 @@ fun SettingsScreen(
                         preferenceKey = Preferences.fetchDelay,
                         preferenceTitle = stringResource(R.string.fetch_delay),
                         preferenceSummary = stringResource(R.string.fetch_delay_summary),
-                        defaultValue = 500f,
+                        defaultValue = 800f,
                         minValue = 100f,
-                        maxValue = 1000f,
+                        maxValue = 2000f,
                         stepSize = 100f
                     )
                 }

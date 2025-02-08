@@ -100,7 +100,7 @@ class TranslationModel : ViewModel() {
             },
             Preferences.get(
                 Preferences.fetchDelay,
-                500f
+                800f
             ).toLong()
         )
     }
