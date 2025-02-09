@@ -32,7 +32,7 @@
     <string name="enabled_engines_summary">Преводачи, които да се използват за едновременен превод.</string>
     <string name="detected_language">Разпознат език</string>
     <string name="instance">Сървър</string>
-    <string name="theme_auto">Системна</string>
+    <string name="theme_auto">Система</string>
     <string name="paste">Постави</string>
     <string name="language_not_supported">Езикът не се поддържа!</string>
     <string name="dynamic_colors">Динамични цветове</string>
