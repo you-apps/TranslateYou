@@ -69,4 +69,6 @@
     <string name="all_languages">Lahat ng mga wika</string>
     <string name="use_free_api">Gamitin ang libreng API</string>
     <string name="use_free_api_summary">Gamitin ang libre sa halip na ang bayad na Pro API.</string>
+    <string name="skip_similar_entries">Laktawan ang mga parehong entry</string>
+    <string name="clear">I-clear</string>
 </resources>
