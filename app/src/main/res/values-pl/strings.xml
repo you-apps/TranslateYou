@@ -22,32 +22,32 @@
     <string name="about">O aplikacji</string>
     <string name="history_enabled">Włącz historię</string>
     <string name="fetch_delay">Opóźnienie tłumaczenia</string>
-    <string name="fetch_delay_summary">Opóźnienie między wprowadzeniem tekstu a pobraniem tłumaczenia</string>
+    <string name="fetch_delay_summary">Opóźnienie między wstawieniem tekstu a pobraniem tłumaczenia</string>
     <string name="history_summary">Przechowuj ostatnio przetłumaczone teksty</string>
-    <string name="required">Wymagane</string>
-    <string name="optional">Opcjonalne</string>
+    <string name="required">wymagane</string>
+    <string name="optional">opcjonalne</string>
     <string name="compact_history">Kompaktowa historia</string>
-    <string name="compact_history_summary">Domyślnie pokazuj w historii tylko pierwsze trzy linijki tekstu</string>
-    <string name="simultaneous_translation">Tłumaczenie równoległe</string>
-    <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów jednocześnie.</string>
+    <string name="compact_history_summary">Domyślnie pokazuj w historii tylko pierwsze 3 linijki tekstu</string>
+    <string name="simultaneous_translation">Tłumaczenie równoczesne</string>
+    <string name="simultaneous_translation_summary">Pobieraj wyniki z wielu translatorów jednocześnie</string>
     <string name="enabled_engines">Włączone translatory</string>
-    <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoległym.</string>
+    <string name="enabled_engines_summary">Translatory do użycia przy tłumaczeniu równoczesnym</string>
     <string name="additional_info">Dodatkowe informacje</string>
-    <string name="additional_info_summary">Pokaż dodatkowe informacje o tłumaczeniu, jeśli są dostępne.</string>
-    <string name="selected_engine">Wybrane translatory</string>
+    <string name="additional_info_summary">Pokazuj dodatkowe informacje o tłumaczeniu, jeśli są dostępne</string>
+    <string name="selected_engine">Wybrany translator</string>
     <string name="st_selected_engine">Translator, którego SimplyTranslate używa do tłumaczenia</string>
     <string name="translation">Tłumaczenie</string>
-    <string name="general">Główne</string>
+    <string name="general">Ogólne</string>
     <string name="app_language">Język aplikacji</string>
     <string name="system">Systemowy</string>
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
-    <string name="character_warning_limit_summary">Ostrzegaj, jeśli przetłumaczony tekst przekroczy maksymalną długość.</string>
+    <string name="character_warning_limit_summary">Ostrzegaj, gdy przetłumaczony tekst przekroczy maksymalną długość</string>
     <string name="none">Brak</string>
     <string name="translate_automatically">Przetłumacz automatycznie</string>
-    <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie.</string>
+    <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie</string>
     <string name="nothing_here">Nic tutaj nie ma.</string>
-    <string name="use_free_api">Skorzystaj z darmowego API</string>
-    <string name="use_free_api_summary">Użyj darmowego zamiast płatnego API Pro.</string>
+    <string name="use_free_api">Używaj darmowego API</string>
+    <string name="use_free_api_summary">Używaj darmowego API zamiast płatnego API Pro</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">Autor</string>
@@ -62,8 +62,8 @@
     <string name="clear_history">Wyczyść historię</string>
     <string name="open">Otwórz</string>
     <!-- Exception -->
-    <string name="server_error">Błąd w komunikacji z serwerem.</string>
-    <string name="missing_api_key">Podaj klucz API w ustawieniach.</string>
+    <string name="server_error">Błąd podczas komunikacji z serwerem</string>
+    <string name="missing_api_key">Podaj klucz API w ustawieniach</string>
     <string name="unknown_error">Nieznany błąd</string>
     <!-- Additional Info -->
     <string name="detected_language">Wykryty język</string>
@@ -77,16 +77,16 @@
     <string name="all_languages">Wszystkie języki</string>
     <!-- Tesseract -->
     <string name="image_translation">Tłumaczenie z obrazu</string>
-    <string name="image_translation_summary">Pobierz i zastosuj języki do rozpoznawania tekstu z obrazów.</string>
-    <string name="init_tess_first">Proszę najpierw pobrać dane językowe w ustawieniach.</string>
-    <string name="select_language">Proszę wybrać język używany do wykrywania tekstu w ustawieniach.</string>
+    <string name="image_translation_summary">Pobierz i zastosuj języki do rozpoznawania tekstu z obrazów</string>
+    <string name="init_tess_first">Najpierw pobierz dane językowe w ustawieniach</string>
+    <string name="select_language">Wybierz język do rozpoznawania tekstu z obrazów w ustawieniach</string>
     <string name="theme_light">Jasny</string>
     <string name="skip_similar_entries">Pomiń podobne wpisy</string>
-    <string name="skip_similar_entries_desc">Przechowuj tylko unikalne wpisy w historii na podstawie wstawienia i języka.</string>
+    <string name="skip_similar_entries_desc">Przechowuj w historii tylko unikalne wpisy na podstawie wprowadzenia i języka</string>
     <string name="theme_black">Czarny</string>
     <string name="select_theme">Wybierz motyw</string>
     <string name="irreversible">Tego nie można cofnąć. Czy na pewno chcesz kontynuować\?</string>
-    <string name="tess_summary">Tesseract to silnik optycznego rozpoznawania znaków. Jest to wolne oprogramowanie, wydane na licencji Apache. Został wydany jako open source w 2005 roku, a jego rozwój był sponsorowany przez Google od 2006 roku. Tesseract jest uważany za jeden z najdokładniejszych dostępnych silników OCR o otwartym kodzie źródłowym. Więcej informacji można znaleźć na stronie %1$s.</string>
+    <string name="tess_summary">Tesseract to silnik optycznego rozpoznawania znaków. Jest to wolne oprogramowanie wydane na licencji Apache. Został wydany otwartoźródłowo w 2005 r., a jego rozwój był sponsorowany przez Google od 2006 r. Tesseract jest uważany za jeden z najdokładniejszych dostępnych silników OCR o otwartym kodzie źródłowym. Więcej informacji można znaleźć na %1$s.</string>
     <string name="invalid_selection_area">Nieprawidłowy obszar wyboru!</string>
     <string name="clear">Wyczyść</string>
     <string name="clear_favorites">Wyczyść ulubione</string>
