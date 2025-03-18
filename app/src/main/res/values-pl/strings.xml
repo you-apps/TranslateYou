@@ -10,7 +10,7 @@
     <string name="copy">Kopiuj</string>
     <string name="auto">Automatycznie</string>
     <string name="forget">Zapomnij</string>
-    <string name="translate">Tłumacz</string>
+    <string name="translate">Przetłumacz</string>
     <string name="language_not_supported">Ten język nie jest obsługiwany!</string>
     <string name="translate_to">Przetłumacz na</string>
     <string name="translate_from">Przetłumacz z</string>
@@ -23,7 +23,7 @@
     <string name="history_enabled">Włącz historię</string>
     <string name="fetch_delay">Opóźnienie tłumaczenia</string>
     <string name="fetch_delay_summary">Opóźnienie między wprowadzeniem tekstu a pobraniem tłumaczenia</string>
-    <string name="history_summary">Zachowaj ostatnio przetłumaczone teksty</string>
+    <string name="history_summary">Przechowuj ostatnio przetłumaczone teksty</string>
     <string name="required">Wymagane</string>
     <string name="optional">Opcjonalne</string>
     <string name="compact_history">Kompaktowa historia</string>
@@ -87,4 +87,7 @@
     <string name="select_theme">Wybierz motyw</string>
     <string name="irreversible">Tego nie można cofnąć. Czy na pewno chcesz kontynuować\?</string>
     <string name="tess_summary">Tesseract to silnik optycznego rozpoznawania znaków. Jest to wolne oprogramowanie, wydane na licencji Apache. Został wydany jako open source w 2005 roku, a jego rozwój był sponsorowany przez Google od 2006 roku. Tesseract jest uważany za jeden z najdokładniejszych dostępnych silników OCR o otwartym kodzie źródłowym. Więcej informacji można znaleźć na stronie %1$s.</string>
+    <string name="invalid_selection_area">Nieprawidłowy obszar wyboru!</string>
+    <string name="clear">Wyczyść</string>
+    <string name="clear_favorites">Wyczyść ulubione</string>
 </resources>
