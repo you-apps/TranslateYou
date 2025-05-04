@@ -27,7 +27,6 @@ import com.bnyro.translate.api.mh.MhEngine
 import com.bnyro.translate.api.mm.MMEngine
 import com.bnyro.translate.api.or.OneRingEngine
 import com.bnyro.translate.api.po.PonsEngine
-import com.bnyro.translate.api.reverso.ReversoEngine
 import com.bnyro.translate.api.st.STEngine
 import com.bnyro.translate.api.wm.WmEngine
 
@@ -37,7 +36,6 @@ object TranslationEngines {
         LVEngine(),
         DeeplEngine(),
         MMEngine(),
-        ReversoEngine(),
         STEngine(),
         MhEngine(),
         WmEngine(),
