@@ -29,6 +29,7 @@ import com.bnyro.translate.api.or.OneRingEngine
 import com.bnyro.translate.api.po.PonsEngine
 import com.bnyro.translate.api.st.STEngine
 import com.bnyro.translate.api.wm.WmEngine
+import com.bnyro.translate.api.ya.YandexEngine
 
 object TranslationEngines {
     val engines = listOf(
@@ -36,6 +37,7 @@ object TranslationEngines {
         LVEngine(),
         DeeplEngine(),
         MMEngine(),
+        YandexEngine(),
         STEngine(),
         MhEngine(),
         WmEngine(),
