@@ -136,6 +136,7 @@ fun LanguageSelector(
         FullscreenDialog(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             onDismissRequest = {
+                searchQuery = ""
                 showDialog = false
             },
             topBar = {
