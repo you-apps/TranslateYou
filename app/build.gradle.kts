@@ -12,8 +12,8 @@ android {
         applicationId = "com.bnyro.translate"
         minSdk = 21
         targetSdk = 33
-        versionCode = 43
-        versionName = "12.0"
+        versionCode = 44
+        versionName = "13.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -21,7 +21,7 @@ android {
         }
 
         ksp {
-            arg("room.schemaLocation", "$projectDir/schemas".toString())
+            arg("room.schemaLocation", "$projectDir/schemas")
         }
     }
 
