@@ -37,8 +37,10 @@
     <string name="enabled_engines_summary">Engines to use for the simultaneous translation.</string>
     <string name="additional_info">Additional information</string>
     <string name="additional_info_summary">Show additional translation information if available.</string>
+    <string name="translation_engine">Translation engine</string>
+    <string name="translation_api">Translation API</string>
     <string name="selected_engine">Selected engine</string>
-    <string name="st_selected_engine">Engine that SimplyTranslate uses for translating</string>
+    <string name="st_selected_engine">Engine that the selected server uses for translating</string>
     <string name="translation">Translation</string>
     <string name="general">General</string>
     <string name="app_language">App language</string>

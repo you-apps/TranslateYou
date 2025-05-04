@@ -142,6 +142,10 @@ fun SettingsScreen(
                 .padding(15.dp, 0.dp)
         ) {
             item {
+                SettingsCategory(
+                    title = stringResource(R.string.translation_engine)
+                )
+
                 EnginePref()
             }
 
