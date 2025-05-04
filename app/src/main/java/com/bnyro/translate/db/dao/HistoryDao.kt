@@ -29,7 +29,7 @@ interface HistoryDao {
     @Query("SELECT * FROM HistoryItem WHERE itemType = :type")
     suspend fun getAll(type: HistoryItemType): List<HistoryItem>
 
-    @Query("SELECT EXISTS(SELECT * FROM HistoryItem WHERE insertedText = :insertedText AND sourceLanguageCode = :sourceLanguage AND targetLanguageCode = :targetLanguage AND itemType = :itemType)")
+    @Query("SELECT EXISTS(SELECT * FROM HistoryItem WHERE insertedText LIKE :insertedText AND sourceLanguageCode = :sourceLanguage AND targetLanguageCode = :targetLanguage AND itemType = :itemType)")
     suspend fun existsSimilar(
         insertedText: String,
         sourceLanguage: String,
