@@ -138,9 +138,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
 fun SwapLanguagesButton(viewModel: TranslationModel) {
     val context = LocalContext.current
 
-    val switchBtnEnabled by remember {
-        mutableStateOf(viewModel.sourceLanguage.code.isNotEmpty())
-    }
+    val switchBtnEnabled = viewModel.sourceLanguage.code.isNotEmpty()
 
     IconButton(
         onClick = {
