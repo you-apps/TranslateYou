@@ -257,7 +257,7 @@ class GlEngine : TranslationEngine(
             "yue" to "Cantonese",
             "zh " to "Chinese",
             "zu " to "Zulu",
-        ).map { Language(it.first, it.second) }
+        ).map { Language(it.first.trim(), it.second) }
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
