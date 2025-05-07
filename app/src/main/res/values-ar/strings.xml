@@ -46,7 +46,7 @@
     <string name="transliteration">الترجمة اللفظيَّة</string>
     <string name="search">ابحث</string>
     <string name="additional_info_summary">إظهار معلومات الترجمة الإضافية إن توفَّرت.</string>
-    <string name="st_selected_engine">المحرِّك الذي يستخدمه SimplyTranslate للترجمة</string>
+    <string name="st_selected_engine">المحرك الذي يستخدمه الخادم المُختار للترجمة</string>
     <string name="translation">الترجمة</string>
     <string name="app_language">لغة التطبيق</string>
     <string name="system">النظام</string>
@@ -78,4 +78,6 @@
     <string name="clear_favorites">تنظيف المفضلة</string>
     <string name="clear">مسح</string>
     <string name="invalid_selection_area">منطقة التحديد غير صالحة!</string>
+    <string name="translation_api">واجهة برمجة تطبيقات (API) الترجمة</string>
+    <string name="translation_engine">محرك الترجمة</string>
 </resources>
