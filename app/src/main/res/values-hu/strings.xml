@@ -35,7 +35,7 @@
     <string name="language_not_supported">A nyelv nem támogatott!</string>
     <string name="app_language">Alkalmazás nyelve</string>
     <string name="translation">Fordítás</string>
-    <string name="st_selected_engine">Egy motor, amelyet a SimplyTranslate a fordításhoz használ</string>
+    <string name="st_selected_engine">Egy motor, melyet a kiválasztott kiszolgáló a fordításhoz használ</string>
     <string name="general">Általános</string>
     <string name="system">Rendszer</string>
     <string name="character_warning_limit">Karakterfigyelmeztetés határértéke</string>
