@@ -35,7 +35,7 @@
     <string name="additional_info">Dodatkowe informacje</string>
     <string name="additional_info_summary">Pokazuj dodatkowe informacje o tłumaczeniu, jeśli są dostępne</string>
     <string name="selected_engine">Wybrany translator</string>
-    <string name="st_selected_engine">Translator, którego SimplyTranslate używa do tłumaczenia</string>
+    <string name="st_selected_engine">Translator, którego wybrany serwer używa do tłumaczenia</string>
     <string name="translation">Tłumaczenie</string>
     <string name="general">Ogólne</string>
     <string name="app_language">Język aplikacji</string>
@@ -90,4 +90,6 @@
     <string name="invalid_selection_area">Nieprawidłowy obszar wyboru!</string>
     <string name="clear">Wyczyść</string>
     <string name="clear_favorites">Wyczyść ulubione</string>
+    <string name="translation_api">API tłumaczenia</string>
+    <string name="translation_engine">Silnik tłumaczenia</string>
 </resources>
