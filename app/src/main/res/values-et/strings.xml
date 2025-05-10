@@ -32,7 +32,7 @@
     <string name="additional_info">Lisateave</string>
     <string name="additional_info_summary">Kuva täiendavat teavet tõlke kohta, kui selline on saadaval.</string>
     <string name="selected_engine">Valitud tõlkemootor</string>
-    <string name="st_selected_engine">Tõlkemootor, mida „Translate You“ kasutab tõlkimisel</string>
+    <string name="st_selected_engine">Tõlkemootor, mida valitud server kasutab tõlkimisel</string>
     <string name="translation">Tõlge</string>
     <string name="app_language">Rakenduse keel</string>
     <string name="system">Süsteemi määratud</string>
@@ -78,4 +78,6 @@
     <string name="clear_favorites">Eemalda lemmikud</string>
     <string name="clear">Tühjenda</string>
     <string name="invalid_selection_area">Vigane valikuala!</string>
+    <string name="translation_api">Tõlkimise liidestus (API)</string>
+    <string name="translation_engine">Tõlkemootor</string>
 </resources>
