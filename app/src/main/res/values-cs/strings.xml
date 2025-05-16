@@ -26,7 +26,7 @@
     <string name="enabled_engines">Povolené služby</string>
     <string name="additional_info">Další informace</string>
     <string name="selected_engine">Vybraná služba</string>
-    <string name="st_selected_engine">Služba, kterou SimplyTranslate používá k překladu</string>
+    <string name="st_selected_engine">Služba, kterou vybraný server používá k překladu</string>
     <string name="translation">Překlad</string>
     <string name="general">Obecné</string>
     <string name="app_language">Jazyk aplikace</string>
@@ -78,4 +78,6 @@
     <string name="clear_favorites">Vymazat oblíbené</string>
     <string name="clear">Vymazat</string>
     <string name="invalid_selection_area">Nesprávná oblast výběru!</string>
+    <string name="translation_api">API překladu</string>
+    <string name="translation_engine">Překladač</string>
 </resources>
