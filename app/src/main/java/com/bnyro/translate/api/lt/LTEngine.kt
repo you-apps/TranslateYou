@@ -25,7 +25,7 @@ import com.bnyro.translate.util.TranslationEngine
 
 class LTEngine : TranslationEngine(
     name = "LibreTranslate",
-    defaultUrl = "https://lt.blitzw.in/",
+    defaultUrl = "https://libretranslate.com",
     urlModifiable = true,
     apiKeyState = ApiKeyState.OPTIONAL,
     autoLanguageCode = "auto"

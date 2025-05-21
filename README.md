@@ -39,17 +39,22 @@
 <!-- ---------- Supported translation engines ---------- -->
 ## Supported translation engines
 
-* <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate</a>
+### Open Source / Self-hostable
+* <a href="https://github.com/LibreTranslate/LibreTranslate">LibreTranslate</a> _which requires an API key or alternatively has to be self-hosted._
 * <a href="https://github.com/thedaviddelta/lingva-translate">LingvaTranslate</a> _which uses Google Translate® to fetch translations._
-* <a href="https://www.deepl.com/translator">DeepL translator®</a>.
-* <a href="https://mymemory.translated.net/">MyMemory translator®</a>.
 * <a href="https://simple-web.org/projects/simplytranslate.html">SimplyTranslate</a>
-* <a href="https://www.reverso.net">Reverso®</a>
-* <a href="https://mozhi.aryak.me">Mozhi</a>
-* <a href="https://translate.wmcloud.org">MinT</a>
-* <a href="https://glosbe.com/">Glosbe</a>
+* <a href="https://codeberg.org/aryak/mozhi">Mozhi</a>
+* <a href="https://translate.wmcloud.org">Wikimedia MinT</a>
 * <a href="https://apertium.org/">Apertium</a>
 * <a href="https://github.com/janvarev/OneRingTranslator">OneRingTranslator</a>
+
+### Proprietary
+* <a href="https://www.deepl.com/translator">DeepL translator®</a>.
+* <a href="https://mymemory.translated.net/">MyMemory translator®</a>.
+* <a href="https://translate.yandex.com/">Yandex®</a>
+* <a href="https://en.pons.com/translate">PONS®</a>
+* <a href="https://glosbe.com/">Glosbe®</a>
+* <a href="https://laratranslate.com/translate">LaraTranslate®</a>
 
 <!-- ---------- Screenshots [Plus version] ---------- -->
 ## Screenshots
