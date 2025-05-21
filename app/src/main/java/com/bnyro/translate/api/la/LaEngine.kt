@@ -32,28 +32,24 @@ class LaEngine : TranslationEngine(
     autoLanguageCode = ""
 ) {
     private lateinit var api: LaraTranslate
+    private val langRegex = Regex("""<li>(?<name>.*?) - `(?<code>.*?)`</li>""")
 
     override fun createOrRecreate() = apply {
         api = RetrofitHelper.createApi(this)
     }
 
     override suspend fun getLanguages(): List<Language> {
-        var languagesHtml = api.getLanguages(LANGUAGES_LIST_URL)
+        val languagesHtml = api.getLanguages(LANGUAGES_LIST_URL)
             .data.content.body
 
-        val languages = mutableListOf<Language>()
-
-        while (languagesHtml.isNotBlank() && languagesHtml.contains("<li>")) {
-            languagesHtml = languagesHtml.substringAfter("<li>")
-            val languageInfo = languagesHtml.substringBefore("</li>")
-            languagesHtml = languagesHtml.substringAfter("</li>")
-
-            val (languageName, languageCodeRaw) = languageInfo.split(" - ")
-            val languageCode = languageCodeRaw.replace("`", "").take(2)
-            languages.add(Language(code = languageCode, name = languageName))
+        return langRegex.findAll(languagesHtml).map {
+            Language(
+                code = it.groups["code"]!!.value,
+                name = it.groups["name"]!!.value.substringBefore("(")
+            )
         }
-
-        return languages
+            .toList()
+            .distinct()
     }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
@@ -71,6 +67,6 @@ class LaEngine : TranslationEngine(
 
     companion object {
         private const val LANGUAGES_LIST_URL =
-            "https://developers.laratranslate.com/lara/api-next/v2/versions/1.0/guides/supported-languages"
+            "https://developers.laratranslate.com/lara/api-next/v2/versions/1.5/guides/supported-languages"
     }
 }
