@@ -29,7 +29,7 @@
     <string name="theme_light">Світла</string>
     <string name="additional_info_summary">Показати додаткову інформацію про переклад, якщо вона є.</string>
     <string name="selected_engine">Вибраний рушій</string>
-    <string name="st_selected_engine">Рушій, який SimplyTranslate використовує для перекладу</string>
+    <string name="st_selected_engine">Рушій, який обраний сервер використовує для перекладу</string>
     <string name="author">Автор</string>
     <string name="license">Ліцензія</string>
     <string name="detected_language">Визначена мова</string>
@@ -78,4 +78,6 @@
     <string name="clear_favorites">Очистити обране</string>
     <string name="clear">Очистити</string>
     <string name="invalid_selection_area">Неправильна область вибору!</string>
+    <string name="translation_engine">Рушій перекладу</string>
+    <string name="translation_api">Перекладацький API</string>
 </resources>

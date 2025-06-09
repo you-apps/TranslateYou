@@ -38,7 +38,7 @@
     <string name="additional_info">Əlavə məlumat</string>
     <string name="additional_info_summary">Mövcuddursa əlavə tərcümə məlumatın göstər.</string>
     <string name="selected_engine">Seçilmiş mühərrik</string>
-    <string name="st_selected_engine">SimplyTranslate-in tərcümə üçün istifadə etdiyi mühərrik</string>
+    <string name="st_selected_engine">Seçilən serverin tərcümə üçün istifadə etdiyi mühərrik</string>
     <string name="missing_api_key">Zəhmət olmasa, tənzimləmələrdə API açarı təchiz et.</string>
     <string name="detected_language">Aşkarlanmış dil</string>
     <string name="definition">İzah</string>
@@ -79,4 +79,6 @@
     <string name="clear_favorites">Sevimliləri təmizlə</string>
     <string name="irreversible">Bu geri alına bilməz. Davam etmək istədiyinizə əminsiniz?</string>
     <string name="invalid_selection_area">Yanlış seçim sahəsi!</string>
+    <string name="translation_engine">Tərcümə mühərriki</string>
+    <string name="translation_api">Tərcümə API</string>
 </resources>

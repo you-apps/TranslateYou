@@ -20,7 +20,7 @@
     <string name="additional_info">Informasi tambahan</string>
     <string name="additional_info_summary">Tampilkan informasi terjemahan tambahan jika tersedia.</string>
     <string name="selected_engine">Mesin yang dipilih</string>
-    <string name="st_selected_engine">Mesin yang digunakan oleh SimplyTranslate untuk menerjemahkan</string>
+    <string name="st_selected_engine">Mesin yang digunakan oleh server yang dipilih untuk menerjemahkan</string>
     <string name="translation">Terjemahan</string>
     <string name="general">Umum</string>
     <string name="app_language">Bahasa aplikasi</string>
@@ -78,4 +78,6 @@
     <string name="clear_favorites">Hapus favorit</string>
     <string name="clear">Hapus</string>
     <string name="invalid_selection_area">Area pemilihan tidak valid!</string>
+    <string name="translation_api">API penerjemahan</string>
+    <string name="translation_engine">Mesin penerjemahan</string>
 </resources>
