@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
+import com.bnyro.translate.api.kagi.KagiEngine
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.capitalize
@@ -90,9 +91,7 @@ fun EnginePref() {
             EditTextPreference(
                 preferenceKey = engine.apiPrefKey,
                 value = apiKey,
-                labelText = stringResource(
-                    id = R.string.api_key
-                ) + when (engine.apiKeyState) {
+                labelText = stringResource(id = R.string.api_key) + when (engine.apiKeyState) {
                     ApiKeyState.REQUIRED -> " (${stringResource(R.string.required)})"
                     ApiKeyState.OPTIONAL -> " (${stringResource(R.string.optional)})"
                     else -> ""

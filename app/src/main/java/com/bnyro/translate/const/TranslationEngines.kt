@@ -21,6 +21,7 @@ import com.bnyro.translate.api.ap.ApEngine
 import com.bnyro.translate.api.deepl.DeeplAuthenticatedEngine
 import com.bnyro.translate.api.deepl.DeeplBrowserEngine
 import com.bnyro.translate.api.gl.GlEngine
+import com.bnyro.translate.api.kagi.KagiEngine
 import com.bnyro.translate.api.la.LaEngine
 import com.bnyro.translate.api.lt.LTEngine
 import com.bnyro.translate.api.lv.LVEngine
@@ -38,6 +39,7 @@ object TranslationEngines {
         LVEngine(),
         DeeplAuthenticatedEngine(),
         DeeplBrowserEngine(),
+        KagiEngine(),
         MMEngine(),
         YandexEngine(),
         STEngine(),
