@@ -55,6 +55,7 @@
 * <a href="https://en.pons.com/translate">PONS®</a>
 * <a href="https://glosbe.com/">Glosbe®</a>
 * <a href="https://laratranslate.com/translate">LaraTranslate®</a>
+* <a href="https://translate.kagi.com">Kagi Translate®</a>
 
 <!-- ---------- Screenshots [Plus version] ---------- -->
 ## Screenshots
