@@ -72,7 +72,7 @@ object Preferences {
         }
     }
 
-    fun getThemeMode() = ThemeMode.values()[get(themeModeKey, ThemeMode.AUTO.value.toString()).toInt()]
+    fun getThemeMode() = ThemeMode.entries[get(themeModeKey, ThemeMode.AUTO.value.toString()).toInt()]
 
     fun getAccentColor() = prefs.getString(accentColorKey, null)
 }

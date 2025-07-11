@@ -18,6 +18,7 @@
 package com.bnyro.translate.ui.components.prefs
 
 import android.os.Build
+import androidx.activity.compose.LocalActivity
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -50,7 +51,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.PointerInputChange
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.edit
@@ -66,7 +66,7 @@ import okhttp3.internal.toHexString
 fun AccentColorPrefDialog(
     onDismissRequest: () -> Unit
 ) {
-    val context = LocalContext.current
+    val activity = LocalActivity.current as MainActivity
     val supportsDynamicColors = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
     var color by remember {
@@ -82,7 +82,7 @@ fun AccentColorPrefDialog(
         confirmButton = {
             DialogButton(text = stringResource(R.string.okay)) {
                 Preferences.prefs.edit(true) { putString(Preferences.accentColorKey, color) }
-                (context as MainActivity).accentColor = color
+                activity.accentColor = color
                 onDismissRequest.invoke()
             }
         },
