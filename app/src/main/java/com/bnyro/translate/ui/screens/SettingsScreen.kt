@@ -20,7 +20,6 @@ package com.bnyro.translate.ui.screens
 import android.os.Handler
 import android.os.Looper
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -66,8 +65,7 @@ import com.bnyro.translate.ui.views.TessSettings
 import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
 
-@Suppress("KotlinConstantConditions")
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     navController: NavController

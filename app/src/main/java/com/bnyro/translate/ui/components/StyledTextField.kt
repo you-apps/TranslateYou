@@ -18,7 +18,6 @@
 package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -31,7 +30,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StyledTextField(
     modifier: Modifier = Modifier,
@@ -50,11 +48,13 @@ fun StyledTextField(
         readOnly = readOnly,
         modifier = modifier
             .fillMaxWidth(),
-        colors = TextFieldDefaults.textFieldColors(
+        colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-            containerColor = Color.Transparent
+            focusedContainerColor = Color.Transparent,
+            unfocusedContainerColor = Color.Transparent,
+            disabledContainerColor = Color.Transparent
         ),
         placeholder = {
             if (placeholder != null) {

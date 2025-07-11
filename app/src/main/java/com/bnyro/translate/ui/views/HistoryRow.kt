@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxValue
@@ -48,7 +47,6 @@ import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.util.Preferences
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HistoryRow(
     navController: NavController,

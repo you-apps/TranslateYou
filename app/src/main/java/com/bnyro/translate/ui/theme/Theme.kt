@@ -34,6 +34,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.bnyro.translate.const.ThemeMode
 import com.bnyro.translate.ext.hexToColor
+import com.google.android.material.color.utilities.CorePalette
 import com.google.android.material.color.utilities.Scheme
 
 const val defaultAccentColor = "0088aa"
@@ -61,7 +62,11 @@ fun TranslateYouTheme(
 
         else -> {
             val seed = (accentColor ?: defaultAccentColor.hexToColor()).toArgb()
-            if (darkTheme) Scheme.dark(seed).toColorScheme() else Scheme.light(seed).toColorScheme()
+            val palette = CorePalette.of(seed)
+            if (darkTheme)
+                Scheme.dark(seed).toColorScheme().fixDarkSurfaceColors(palette)
+            else
+                Scheme.light(seed).toColorScheme().fixLightSurfaceColors(palette)
         }
     }
     if (themeMode == ThemeMode.BLACK) colorScheme =
@@ -122,5 +127,39 @@ fun Scheme.toColorScheme() = ColorScheme(
     onErrorContainer = Color(onErrorContainer),
     outline = Color(outline),
     outlineVariant = Color(outlineVariant),
-    scrim = Color(scrim)
+    scrim = Color(scrim),
+    // Scheme from material lib don't have colors below.
+    surfaceBright = Color(surface),
+    surfaceDim = Color(surface),
+    surfaceContainer = Color(surface),
+    surfaceContainerHigh = Color(surface),
+    surfaceContainerHighest = Color(surface),
+    surfaceContainerLow = Color(surface),
+    surfaceContainerLowest = Color(surface)
+)
+
+// Scheme from material lib don't have this colors.
+// Values taken from compose fun dynamicDarkColorScheme31()
+@SuppressLint("RestrictedApi")
+fun ColorScheme.fixDarkSurfaceColors(palette: CorePalette) = copy(
+    surfaceBright = Color(palette.n1.tone(28)),
+    surfaceDim = Color(palette.n1.tone(10)),
+    surfaceContainer = Color(palette.n1.tone(16)),
+    surfaceContainerHigh = Color(palette.n1.tone(21)),
+    surfaceContainerHighest = Color(palette.n1.tone(26)),
+    surfaceContainerLow = Color(palette.n1.tone(14)),
+    surfaceContainerLowest = Color(palette.n1.tone(8))
+)
+
+// Scheme from material lib don't have this colors.
+// Values taken from compose fun dynamicLightColorScheme31()
+@SuppressLint("RestrictedApi")
+fun ColorScheme.fixLightSurfaceColors(palette: CorePalette) = copy(
+    surfaceBright = Color(palette.n1.tone(99)),
+    surfaceDim = Color(palette.n1.tone(88)),
+    surfaceContainer = Color(palette.n1.tone(95)),
+    surfaceContainerHigh = Color(palette.n1.tone(93)),
+    surfaceContainerHighest = Color(palette.n1.tone(91)),
+    surfaceContainerLow = Color(palette.n1.tone(97)),
+    surfaceContainerLowest = Color(palette.n1.tone(100))
 )

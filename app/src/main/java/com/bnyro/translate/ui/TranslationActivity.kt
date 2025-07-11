@@ -18,6 +18,7 @@
 package com.bnyro.translate.ui
 
 import android.annotation.SuppressLint
+import android.app.ComponentCaller
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -69,8 +70,8 @@ open class TranslationActivity: ComponentActivity() {
             ?: intent.getCharSequenceExtra(Intent.ACTION_SEND)?.toString()
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
+    override fun onNewIntent(intent: Intent, caller: ComponentCaller) {
+        super.onNewIntent(intent, caller)
         this.intent = intent
         handleIntentData()
     }

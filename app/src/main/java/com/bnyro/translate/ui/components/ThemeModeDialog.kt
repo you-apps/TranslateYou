@@ -17,8 +17,8 @@
 
 package com.bnyro.translate.ui.components
 
+import androidx.activity.compose.LocalActivity
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.bnyro.translate.R
 import com.bnyro.translate.const.ThemeMode
@@ -31,7 +31,7 @@ import com.bnyro.translate.util.Preferences
 fun ThemeModeDialog(
     onDismiss: () -> Unit
 ) {
-    val activity = LocalContext.current as MainActivity
+    val activity = LocalActivity.current as MainActivity
     ListPreferenceDialog(
         preferenceKey = Preferences.themeModeKey,
         onDismissRequest = {
@@ -58,7 +58,7 @@ fun ThemeModeDialog(
         title = stringResource(R.string.select_theme),
         currentValue = activity.themeMode.value,
         onOptionSelected = {
-            activity.themeMode = ThemeMode.values()[it.value]
+            activity.themeMode = ThemeMode.entries[it.value]
         }
     )
 }

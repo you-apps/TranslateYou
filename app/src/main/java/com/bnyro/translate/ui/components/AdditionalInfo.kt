@@ -17,7 +17,6 @@
 
 package com.bnyro.translate.ui.components
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -42,7 +41,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bnyro.translate.ext.formatHTML
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AdditionalInfo(
     title: String,

@@ -64,6 +64,7 @@ import com.bnyro.translate.ui.components.RoundIconButton
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.ThemeModeDialog
 import com.bnyro.translate.ui.dialogs.PrivacyPolicyDialog
+import androidx.core.net.toUri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -186,7 +187,7 @@ fun AboutPage(
                                     context.startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
-                                            Uri.parse(it.href)
+                                            it.href.toUri()
                                         )
                                     )
                                 }
