@@ -27,8 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun StyledTextField(
@@ -36,8 +34,10 @@ fun StyledTextField(
     text: String,
     placeholder: String? = null,
     readOnly: Boolean = false,
-    fontSize: TextUnit = 23.sp,
-    textColor: Color = MaterialTheme.typography.bodyMedium.color,
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge.copy(
+        fontSize = MaterialTheme.typography.bodyLarge.fontSize * 1.3
+    ),
+    textColor: Color = MaterialTheme.typography.bodyLarge.color,
     onValueChange: (String) -> Unit = {}
 ) {
     TextField(
@@ -60,14 +60,11 @@ fun StyledTextField(
             if (placeholder != null) {
                 Text(
                     text = placeholder,
-                    fontSize = fontSize
+                    style = textStyle
                 )
             }
         },
-        textStyle = TextStyle(
-            fontSize = fontSize,
-            color = textColor
-        )
+        textStyle = textStyle.copy(color = textColor)
     )
 }
 
