@@ -32,9 +32,13 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -63,6 +67,8 @@ import com.bnyro.translate.ui.views.SimTranslationComponent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 import com.bnyro.translate.util.Preferences
+
+private val TRANSLATION_CARD_ELEVATION = 1.dp
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
@@ -165,7 +171,11 @@ fun MainTranslationArea(modifier: Modifier, viewModel: TranslationModel) {
     }
 
     ElevatedCard(
-        modifier = modifier
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(TRANSLATION_CARD_ELEVATION)
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = TRANSLATION_CARD_ELEVATION)
     ) {
         Column(
             modifier = Modifier.padding(16.dp)

@@ -127,15 +127,7 @@ fun Scheme.toColorScheme() = ColorScheme(
     onErrorContainer = Color(onErrorContainer),
     outline = Color(outline),
     outlineVariant = Color(outlineVariant),
-    scrim = Color(scrim),
-    // Scheme from material lib don't have colors below.
-    surfaceBright = Color(surface),
-    surfaceDim = Color(surface),
-    surfaceContainer = Color(surface),
-    surfaceContainerHigh = Color(surface),
-    surfaceContainerHighest = Color(surface),
-    surfaceContainerLow = Color(surface),
-    surfaceContainerLowest = Color(surface)
+    scrim = Color(scrim)
 )
 
 // Scheme from material lib don't have this colors.
