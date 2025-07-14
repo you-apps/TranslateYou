@@ -32,7 +32,7 @@
     <string name="additional_info">附加信息</string>
     <string name="additional_info_summary">可用时展示附加的翻译信息。</string>
     <string name="selected_engine">已选择引擎</string>
-    <string name="st_selected_engine">选择 SimplyTranslate 用于翻译的引擎</string>
+    <string name="st_selected_engine">所选服务器用于翻译的引擎</string>
     <!-- About -->
     <string name="github" translatable="false">GitHub</string>
     <string name="author">作者</string>
@@ -88,4 +88,6 @@
     <string name="clear_favorites">清除收藏</string>
     <string name="clear">清除</string>
     <string name="invalid_selection_area">选中区域无效！</string>
+    <string name="translation_api">翻译 API</string>
+    <string name="translation_engine">翻译引擎</string>
 </resources>

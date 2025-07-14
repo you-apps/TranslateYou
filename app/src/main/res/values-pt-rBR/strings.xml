@@ -24,7 +24,7 @@
     <string name="character_warning_limit_summary">Avisa quando o texto traduzido excede o comprimento máximo.</string>
     <string name="none">Nenhum</string>
     <string name="author">Autor</string>
-    <string name="st_selected_engine">Mecanismo que o SimplyTranslate usa para traduzir</string>
+    <string name="st_selected_engine">Motor que o servidor selecionado usa para traduzir</string>
     <string name="image_translation_summary">Faça download e aplique idiomas para reconhecimento de texto a partir de imagens.</string>
     <string name="init_tess_first">Faça o download dos dados de idioma nas configurações primeiro.</string>
     <string name="license">Licença</string>
@@ -78,4 +78,6 @@
     <string name="clear">Limpar</string>
     <string name="clear_favorites">Apagar favoritos</string>
     <string name="invalid_selection_area">Área de seleção inválida!</string>
+    <string name="translation_engine">Mecanismo de tradução</string>
+    <string name="translation_api">API de tradução</string>
 </resources>

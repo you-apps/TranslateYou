@@ -35,7 +35,7 @@
     <string name="additional_info">Додатне информације</string>
     <string name="additional_info_summary">Приказује додатне информације о преводу, ако су доступне.</string>
     <string name="selected_engine">Изабрани извор</string>
-    <string name="st_selected_engine">Извор који SimplyTranslate користи за превођење</string>
+    <string name="st_selected_engine">Извор који изабрани сервер користи за превођење</string>
     <string name="translation">Превод</string>
     <string name="general">Опште</string>
     <string name="app_language">Језик апликације</string>
@@ -90,4 +90,6 @@
     <string name="clear_favorites">Очистите омиљене</string>
     <string name="clear">Очистите</string>
     <string name="invalid_selection_area">Неважећа област избора!</string>
+    <string name="translation_api">API превода</string>
+    <string name="translation_engine">Извор превода</string>
 </resources>

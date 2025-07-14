@@ -41,7 +41,7 @@
     <string name="use_free_api_summary">Imprea s\'API a indonu in càmbiu de s\'API Pro a pagamentu.</string>
     <string name="author">Autore</string>
     <string name="privacy_policy">Polìtica de riservadesa</string>
-    <string name="st_selected_engine">Motore chi SimplyTranslate impreat pro bortare</string>
+    <string name="st_selected_engine">Motore chi su serbidore seletzionadu impreat pro bortare</string>
     <string name="translation">Tradutzione</string>
     <string name="general">Generale</string>
     <string name="theme_auto">Sistema</string>
@@ -78,4 +78,6 @@
     <string name="select_language">Pro praghere seletziona una limba pro su reconnoschimentu de su testu de sas immàgines in sas impostaziones.</string>
     <string name="select_theme">Seletziona su tema</string>
     <string name="invalid_selection_area">Àrea de seletzione non vàlida!</string>
+    <string name="translation_engine">Motore de tradutzione</string>
+    <string name="translation_api">API de tradutzione</string>
 </resources>

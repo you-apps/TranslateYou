@@ -32,7 +32,7 @@
     <string name="enabled_engines_summary">Serveri, kurus izmantot vairāku serveru vienlaicīgā tulkošanā.</string>
     <string name="additional_info">Papildus informācija</string>
     <string name="selected_engine">Izvēlētie tulkošanas serveri</string>
-    <string name="st_selected_engine">Serveris, ko SimplyTranslate izmanto tulkošanai</string>
+    <string name="st_selected_engine">Dzinējs, ko atlasītais serveris izmanto tulkošanai</string>
     <string name="translation">Tulkojums</string>
     <string name="general">Vispārīgie</string>
     <string name="app_language">Lietotnes valoda</string>
@@ -78,4 +78,6 @@
     <string name="character_warning_limit">Rakstzīmju ierobežojuma brīdinājums</string>
     <string name="translate_automatically_summary">Pēc noteiktas aizkaves automātiski veikt tulkošanu.</string>
     <string name="dynamic_colors">Dinamiskas krāsas</string>
+    <string name="translation_engine">Tulkošanas dzinējs</string>
+    <string name="translation_api">Tulkošanas API</string>
 </resources>
