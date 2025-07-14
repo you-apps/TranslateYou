@@ -41,6 +41,8 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -55,10 +57,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import com.bnyro.translate.R
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
+import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.util.Preferences
 import kotlinx.coroutines.launch
 
@@ -66,7 +70,8 @@ import kotlinx.coroutines.launch
 fun TranslationComponent(
     modifier: Modifier,
     viewModel: TranslationModel,
-    showLanguageSelector: Boolean = false
+    showLanguageSelector: Boolean = false,
+    onTranslationError: (e: Exception) -> Unit
 ) {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
@@ -78,6 +83,12 @@ fun TranslationComponent(
 
     LaunchedEffect(Unit, clipboard) {
         hasClip = clipboard.hasText() && !clipboard.getText()?.toString().isNullOrBlank()
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.apiError.collect { apiError ->
+            if (apiError != null) onTranslationError(apiError)
+        }
     }
 
     Box(

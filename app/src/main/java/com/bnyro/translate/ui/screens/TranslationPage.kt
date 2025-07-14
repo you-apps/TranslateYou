@@ -38,6 +38,10 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -45,6 +49,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,6 +63,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import com.bnyro.translate.R
+import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.LanguageSelectionComponent
 import com.bnyro.translate.ui.models.TranslationModel
@@ -67,6 +73,8 @@ import com.bnyro.translate.ui.views.SimTranslationComponent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 import com.bnyro.translate.util.Preferences
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 private val TRANSLATION_CARD_ELEVATION = 1.dp
 
@@ -77,13 +85,18 @@ fun TranslationPage(
     viewModel: TranslationModel
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
         viewModel.refresh(context)
     }
 
+    val snackbarHostState = remember { SnackbarHostState() }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
         topBar = {
             TopBar(
                 mainModel = viewModel,
@@ -126,13 +139,35 @@ fun TranslationPage(
     ) { pV ->
         val orientation = LocalConfiguration.current.orientation
 
+        fun onTranslationError(apiError: Exception) {
+            scope.launch {
+                if (apiError is HttpException) {
+                    val result = snackbarHostState.showSnackbar(
+                        message = context.getString(R.string.translation_error_hint) + " (${apiError.message.orEmpty()})",
+                        actionLabel = context.getString(R.string.options),
+                        duration = SnackbarDuration.Short
+                    )
+                    when (result) {
+                        SnackbarResult.ActionPerformed -> navHostController.navigate(Destination.Settings.route)
+                        SnackbarResult.Dismissed -> Unit
+                    }
+                } else {
+                    context.toastFromMainThread(apiError.localizedMessage.orEmpty())
+                }
+            }
+        }
+
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(pV)
             ) {
-                MainTranslationArea(modifier = Modifier.weight(1f), viewModel = viewModel)
+                MainTranslationArea(
+                    modifier = Modifier.weight(1f),
+                    viewModel = viewModel,
+                    onTranslationError = ::onTranslationError
+                )
 
                 LanguageSelectionComponent(viewModel = viewModel)
             }
@@ -144,14 +179,22 @@ fun TranslationPage(
             ) {
                 LanguageSelectionComponent(viewModel = viewModel)
 
-                MainTranslationArea(modifier = Modifier.weight(1f), viewModel = viewModel)
+                MainTranslationArea(
+                    modifier = Modifier.weight(1f),
+                    viewModel = viewModel,
+                    onTranslationError = ::onTranslationError
+                )
             }
         }
     }
 }
 
 @Composable
-fun MainTranslationArea(modifier: Modifier, viewModel: TranslationModel) {
+fun MainTranslationArea(
+    modifier: Modifier,
+    viewModel: TranslationModel,
+    onTranslationError: (e: Exception) -> Unit
+) {
     val view = LocalView.current
 
     var isKeyboardOpen by remember {
@@ -173,14 +216,20 @@ fun MainTranslationArea(modifier: Modifier, viewModel: TranslationModel) {
     ElevatedCard(
         modifier = modifier,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(TRANSLATION_CARD_ELEVATION)
+            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(
+                TRANSLATION_CARD_ELEVATION
+            )
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = TRANSLATION_CARD_ELEVATION)
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            TranslationComponent(Modifier.weight(1f), viewModel)
+            TranslationComponent(
+                modifier = Modifier.weight(1f),
+                viewModel = viewModel,
+                onTranslationError = onTranslationError
+            )
 
             if (Preferences.get(Preferences.showAdditionalInfo, true)
                 && !isKeyboardOpen

@@ -35,7 +35,6 @@ import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.db.obj.HistoryItemType
 import com.bnyro.translate.db.obj.Language
-import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
@@ -44,9 +43,10 @@ import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.encodeToString
 
 class TranslationModel : ViewModel() {
     var engine by mutableStateOf(getCurrentEngine())
@@ -77,6 +77,9 @@ class TranslationModel : ViewModel() {
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
     var translating by mutableStateOf(false)
+    private val _apiError = MutableStateFlow<Exception?>(null)
+    val apiError = _apiError.asStateFlow()
+
     private var simTranslationJobs = emptyList<Job>()
 
     private var mediaPlayer: MediaPlayer? = null
@@ -127,7 +130,7 @@ class TranslationModel : ViewModel() {
                 )
             } catch (e: Exception) {
                 Log.e("error", e.message.toString())
-                context.toastFromMainThread(e.message.orEmpty())
+                _apiError.emit(e)
                 translating = false
                 return@launch
             }
@@ -204,14 +207,14 @@ class TranslationModel : ViewModel() {
         translating = false
     }
 
-    private fun fetchLanguages(onError: (Exception) -> Unit = {}) {
+    private fun fetchLanguages() {
         viewModelScope.launch {
             val languages = try {
                 Log.e("engine", engine.name)
                 engine.getLanguages().sortedBy { it.name }
             } catch (e: Exception) {
                 Log.e("Fetching languages", e.toString())
-                onError.invoke(e)
+                _apiError.emit(e)
                 return@launch
             }
             this@TranslationModel.availableLanguages = languages
@@ -242,9 +245,7 @@ class TranslationModel : ViewModel() {
         enabledSimEngines = getEnabledEngines()
         simTranslationEnabled = Preferences.get(Preferences.simultaneousTranslationKey, false)
 
-        fetchLanguages {
-            Toast.makeText(context, R.string.server_error, Toast.LENGTH_LONG).show()
-        }
+        fetchLanguages()
 
         fetchBookmarkedLanguages()
     }

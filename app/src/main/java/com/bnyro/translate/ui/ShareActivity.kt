@@ -30,11 +30,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import com.bnyro.translate.R
+import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.ui.components.AppHeader
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.views.SimTranslationDialogComponent
@@ -45,6 +47,7 @@ class ShareActivity : TranslationActivity() {
         super.onCreate(savedInstanceState)
 
         showContent {
+            val context = LocalContext.current
             val configuration = LocalConfiguration.current
             val screenHeight = configuration.screenHeightDp.dp
 
@@ -97,7 +100,9 @@ class ShareActivity : TranslationActivity() {
                         modifier = Modifier.fillMaxSize(),
                         viewModel = translationModel,
                         showLanguageSelector = true
-                    )
+                    ) { e ->
+                        context.toastFromMainThread(e.localizedMessage.orEmpty())
+                    }
                 }
             )
         }
