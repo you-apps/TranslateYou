@@ -137,12 +137,9 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
 @Composable
 fun SwapLanguagesButton(viewModel: TranslationModel) {
     val context = LocalContext.current
-
-    val switchBtnEnabled = viewModel.sourceLanguage.code.isNotEmpty()
-
     IconButton(
         onClick = {
-            if (switchBtnEnabled) viewModel.swapLanguages(context)
+            viewModel.swapLanguages(context)
         }
     ) {
         Icon(
@@ -150,7 +147,7 @@ fun SwapLanguagesButton(viewModel: TranslationModel) {
             null,
             modifier = Modifier
                 .size(18.dp),
-            tint = if (switchBtnEnabled) MaterialTheme.colorScheme.onSurface else Color.Gray
+            tint = MaterialTheme.colorScheme.onSurface
         )
     }
 }

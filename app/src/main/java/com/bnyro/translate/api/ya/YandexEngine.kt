@@ -47,8 +47,17 @@ class YandexEngine : TranslationEngine(
         ).map { (key, value) -> Language(code = key, name = value) }
     }
 
+    protected fun convertLanguageCode(languageCode: String): String {
+        return when(languageCode){
+            "zh-Hant", "zh-Hans" -> "zh"
+            else -> languageCode
+        }
+    }
+
     override suspend fun translate(query: String, source: String, target: String): Translation {
-        val lang = if (source.isEmpty()) target else "$source-$target"
+        val convertedSource = convertLanguageCode(source)
+        val convertedTarget = convertLanguageCode(target)
+        val lang = if (convertedSource.isEmpty()) convertedTarget else "$convertedSource-$convertedTarget"
 
         val uuid = UUID.randomUUID().toString().replace("-", "") + "-0-0"
         val response = api.translate(lang, query, "android", uuid)

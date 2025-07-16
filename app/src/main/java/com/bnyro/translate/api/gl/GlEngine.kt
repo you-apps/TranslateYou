@@ -260,8 +260,15 @@ class GlEngine : TranslationEngine(
         ).map { Language(it.first.trim(), it.second) }
     }
 
+    protected fun convertLanguageCode(languageCode: String): String {
+        return when(languageCode){
+            "zh-Hant", "zh-Hans" -> "zh"
+            else -> languageCode
+        }
+    }
+
     override suspend fun translate(query: String, source: String, target: String): Translation {
-        val translation = api.translate(source, target, query)
+        val translation = api.translate(convertLanguageCode(source), convertLanguageCode(target), query)
         return Translation(translation.translation)
     }
 }

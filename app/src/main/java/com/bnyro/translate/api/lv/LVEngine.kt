@@ -46,10 +46,17 @@ class LVEngine : TranslationEngine(
         }
     }
 
+    protected fun convertLanguageCode(languageCode: String): String {
+        return when(languageCode){
+            "zh-Hant", "zh-Hans" -> "zh"
+            else -> languageCode
+        }
+    }
+
     override suspend fun translate(query: String, source: String, target: String): Translation {
         val response = api.translate(
-            sourceOrAuto(source),
-            target,
+            convertLanguageCode(sourceOrAuto(source)),
+            convertLanguageCode(target),
             query.replace("/", "")
         )
         return Translation(
