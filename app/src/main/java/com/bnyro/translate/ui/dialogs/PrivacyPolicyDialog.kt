@@ -27,24 +27,25 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import com.bnyro.translate.R
 import com.bnyro.translate.const.AboutLinks
+import com.bnyro.translate.ext.setText
 import java.net.URL
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
 fun PrivacyPolicyDialog(
     onDismissRequest: () -> Unit
 ) {
-    val context = LocalContext.current
-    val clipboard = LocalClipboardManager.current
+    val scope = rememberCoroutineScope()
+    val clipboard = LocalClipboard.current
 
     var privacyPolicyHtml by remember {
         mutableStateOf("")
@@ -86,7 +87,9 @@ fun PrivacyPolicyDialog(
         dismissButton = {
             TextButton(
                 onClick = {
-                    clipboard.setText(AnnotatedString(text = privacyPolicyHtml))
+                    scope.launch {
+                        clipboard.setText(privacyPolicyHtml)
+                    }
                     onDismissRequest.invoke()
                 }
             ) {

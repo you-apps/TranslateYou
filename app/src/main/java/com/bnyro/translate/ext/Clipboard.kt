@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 You Apps
+ * Copyright (c) 2025 You Apps
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,22 @@
 
 package com.bnyro.translate.ext
 
-fun <T> concatenate(vararg lists: List<T>): List<T> {
-    return listOf(*lists).flatten()
+import android.content.ClipData
+import androidx.compose.ui.platform.Clipboard
+import androidx.compose.ui.platform.toClipEntry
+
+suspend fun Clipboard.setText(text: String) {
+    val data = ClipData(null, ClipData.Item(text))
+    setClipEntry(data.toClipEntry())
+}
+
+suspend fun Clipboard.getText(): String? {
+    val clipData = getClipEntry()?.clipData ?: return null
+    if (clipData.itemCount == 0) return null
+
+    return clipData.getItemAt(0).text?.toString()
+}
+
+fun Clipboard.hasText(): Boolean {
+    return nativeClipboard.hasPrimaryClip()
 }

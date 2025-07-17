@@ -28,20 +28,20 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bnyro.translate.ext.formatHTML
+import com.bnyro.translate.ext.setText
+import kotlinx.coroutines.launch
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class)
@@ -50,7 +50,8 @@ fun AdditionalInfo(
     text: String,
     onClick: () -> Unit = {}
 ) {
-    val clipboard = LocalClipboardManager.current
+    val scope = rememberCoroutineScope()
+    val clipboard = LocalClipboard.current
 
     Row(
         modifier = Modifier
@@ -58,7 +59,9 @@ fun AdditionalInfo(
             .combinedClickable(
                 onClick = onClick,
                 onLongClick = {
-                    clipboard.setText(AnnotatedString(text = text))
+                    scope.launch {
+                        clipboard.setText(text)
+                    }
                 }
             ),
         verticalAlignment = Alignment.CenterVertically
