@@ -29,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.api.deepl.DeeplEngine
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.capitalize
@@ -38,7 +37,6 @@ import com.bnyro.translate.ui.components.prefs.DropDownSelectPreference
 import com.bnyro.translate.ui.components.prefs.EditTextPreference
 import com.bnyro.translate.ui.components.prefs.ListPreferenceDialog
 import com.bnyro.translate.ui.components.prefs.PreferenceItem
-import com.bnyro.translate.ui.components.prefs.SwitchPreference
 import com.bnyro.translate.util.Preferences
 
 @Composable
@@ -151,18 +149,6 @@ fun EnginePref() {
 
                         engine.createOrRecreate()
                     }
-                }
-            }
-
-            engine is DeeplEngine -> {
-                Spacer(modifier = Modifier.height(5.dp))
-                SwitchPreference(
-                    preferenceKey = engine.useFreeApiKey,
-                    defaultValue = true,
-                    preferenceTitle = stringResource(R.string.use_free_api),
-                    preferenceSummary = stringResource(R.string.use_free_api_summary)
-                ) {
-                    engine.createOrRecreate()
                 }
             }
         }

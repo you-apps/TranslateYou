@@ -18,7 +18,8 @@
 package com.bnyro.translate.const
 
 import com.bnyro.translate.api.ap.ApEngine
-import com.bnyro.translate.api.deepl.DeeplEngine
+import com.bnyro.translate.api.deepl.DeeplAuthenticatedEngine
+import com.bnyro.translate.api.deepl.DeeplBrowserEngine
 import com.bnyro.translate.api.gl.GlEngine
 import com.bnyro.translate.api.la.LaEngine
 import com.bnyro.translate.api.lt.LTEngine
@@ -35,7 +36,8 @@ object TranslationEngines {
     val engines = listOf(
         LTEngine(),
         LVEngine(),
-        DeeplEngine(),
+        DeeplAuthenticatedEngine(),
+        DeeplBrowserEngine(),
         MMEngine(),
         YandexEngine(),
         STEngine(),
