@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Vigane valikuala!</string>
     <string name="translation_api">Tõlkimise liidestus (API)</string>
     <string name="translation_engine">Tõlkemootor</string>
+    <string name="translation_error_hint">Valitud tõlkemootor ei tundu toimima. Palun vali seadistustest mõnu muu tõlkemootor.</string>
 </resources>
