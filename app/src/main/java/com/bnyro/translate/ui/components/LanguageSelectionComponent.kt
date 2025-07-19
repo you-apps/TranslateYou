@@ -27,9 +27,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -137,8 +139,19 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
 @Composable
 fun SwapLanguagesButton(viewModel: TranslationModel) {
     val context = LocalContext.current
-
-    val switchBtnEnabled = viewModel.sourceLanguage.code.isNotEmpty()
+    var switchBtnEnabled by remember {
+        mutableStateOf(false)
+    }
+    LaunchedEffect(
+        viewModel.availableLanguages,
+        viewModel.sourceLanguage,
+        viewModel.translation,
+        viewModel.translatedTexts
+    ) {
+        // also enable the switch languages button if the translator detected a source language
+        switchBtnEnabled =
+            viewModel.sourceLanguage.code.isNotEmpty() || viewModel.mostDetectedLanguage() != null
+    }
 
     IconButton(
         onClick = {

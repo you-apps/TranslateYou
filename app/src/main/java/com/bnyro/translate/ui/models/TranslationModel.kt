@@ -85,6 +85,19 @@ class TranslationModel : ViewModel() {
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
 
+    fun mostDetectedLanguage(): Language? {
+        if (!simTranslationEnabled) return availableLanguages.find { it.code == translation.detectedLanguage }
+
+        val mostDetectedLangCode = translatedTexts.values
+            .filter { !it.detectedLanguage.isNullOrEmpty() }
+            .ifEmpty { return null }
+            .groupBy { it.detectedLanguage }
+            .maxBy { it.value.size }
+            .key
+
+        return availableLanguages.find { it.code == mostDetectedLangCode }
+    }
+
     private fun getLanguageByPrefKey(key: String): Language? {
         return runCatching {
             JsonHelper.json.decodeFromString<Language>(Preferences.get(key, ""))
@@ -281,7 +294,11 @@ class TranslationModel : ViewModel() {
     fun swapLanguages(context: Context) {
         if (availableLanguages.isEmpty()) return
 
-        val temp = sourceLanguage
+        val temp = if (sourceLanguage.code.isEmpty()) {
+             mostDetectedLanguage() ?: return
+        } else {
+            sourceLanguage
+        }
         sourceLanguage = targetLanguage
         targetLanguage = temp
 
