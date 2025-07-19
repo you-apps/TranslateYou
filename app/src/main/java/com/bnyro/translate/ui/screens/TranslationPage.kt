@@ -241,17 +241,6 @@ fun MainTranslationArea(
                 modifier = Modifier
                     .height(15.dp)
             )
-
-            if (viewModel.simTranslationEnabled) {
-                SimTranslationComponent(viewModel)
-            } else {
-                HorizontalDivider(
-                    color = Color.Gray,
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterHorizontally)
-                        .size(70.dp, 2.dp)
-                )
-            }
         }
     }
 }

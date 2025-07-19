@@ -20,16 +20,21 @@ package com.bnyro.translate.ui.views
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Build
+import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
@@ -41,8 +46,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -52,17 +56,18 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import androidx.navigation.NavController
 import com.bnyro.translate.R
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
-import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.util.Preferences
 import kotlinx.coroutines.launch
 
@@ -184,19 +189,24 @@ fun TranslationComponent(
                 }
             }
 
-            TranslationField(
-                translationModel = viewModel,
-                isSourceField = false,
-                text = viewModel.translation.translatedText,
-                language = viewModel.targetLanguage,
-                showLanguageSelector = showLanguageSelector,
-                setLanguage = {
-                    if (it == viewModel.sourceLanguage) {
-                        viewModel.sourceLanguage = viewModel.targetLanguage
+            val enabledEngines = viewModel.enabledSimEngines
+            for (enabledEngine in enabledEngines){
+                val translatedText = viewModel.translatedTexts[enabledEngine.name]?.translatedText?:""
+                TranslationField(
+                    translationModel = viewModel,
+                    isSourceField = false,
+                    text = translatedText,
+                    language = viewModel.targetLanguage,
+                    showLanguageSelector = showLanguageSelector,
+                    translationEngine = enabledEngine,
+                    setLanguage = {
+                        if (it == viewModel.sourceLanguage) {
+                            viewModel.sourceLanguage = viewModel.targetLanguage
+                        }
+                        viewModel.targetLanguage = it
                     }
-                    viewModel.targetLanguage = it
-                }
-            )
+                )
+            }
         }
 
         if (scrollState.value > 100) {

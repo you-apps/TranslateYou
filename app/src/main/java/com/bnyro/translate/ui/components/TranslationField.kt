@@ -57,6 +57,7 @@ fun TranslationField(
     language: Language,
     setLanguage: (Language) -> Unit = {},
     showLanguageSelector: Boolean = false,
+    translationEngine: TranslationEngine = translationModel.engine,
     onTextChange: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
