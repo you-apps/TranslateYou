@@ -47,6 +47,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.encodeToString
+import androidx.compose.runtime.mutableStateMapOf
+import com.bnyro.translate.ext.toastFromMainThread
 
 class TranslationModel : ViewModel() {
     var engine by mutableStateOf(getCurrentEngine())
@@ -70,9 +73,9 @@ class TranslationModel : ViewModel() {
 
     var translation by mutableStateOf(Translation(""))
 
-    var translatedTexts = TranslationEngines.engines
-        .associate { it.name to Translation("") }
-        .toMutableMap()
+    var translatedTexts = mutableStateMapOf<String, Translation>()
+    
+    var inverseTranslatedTexts = mutableStateMapOf<String, Translation>()
 
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
@@ -84,6 +87,15 @@ class TranslationModel : ViewModel() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
+
+    fun detectedLanguageMostly(): String?{
+        val detectedLanguageList = translatedTexts.filter {
+            it.value.detectedLanguage != null
+        }
+        return detectedLanguageList.maxByOrNull {
+            it.value.detectedLanguage?:""
+        }?.value?.detectedLanguage
+    }
 
     private fun getLanguageByPrefKey(key: String): Language? {
         return runCatching {
@@ -117,10 +129,8 @@ class TranslationModel : ViewModel() {
 
         translating = true
 
-        translatedTexts = TranslationEngines.engines
-            .associate { it.name to Translation("") }
-            .toMutableMap()
-
+        translatedTexts.clear()
+        TranslationEngines.engines.forEach { translatedTexts[it.name] = Translation("") }
         viewModelScope.launch(Dispatchers.IO) {
             val translation = try {
                 engine.translate(
@@ -132,7 +142,7 @@ class TranslationModel : ViewModel() {
                 Log.e("error", e.message.toString())
                 _apiError.emit(e)
                 translating = false
-                return@launch
+                Translation("")
             }
             translating = false
 
@@ -159,6 +169,19 @@ class TranslationModel : ViewModel() {
                             insertedText,
                             sourceLanguage.code,
                             targetLanguage.code
+                        )
+                        //if sourceLanguage "auto" use detectedLanguage
+                        val sourceLanguageCode = if(sourceLanguage.code == ""){
+                            val detectedLanguage = translatedTexts[it.name]?.detectedLanguage
+                            if (detectedLanguage == "" || detectedLanguage == null){
+                                detectedLanguageMostly()
+                            }else{ detectedLanguage }?:""
+                        } else { sourceLanguage.code }
+
+                        inverseTranslatedTexts[it.name] = it.translate(
+                            translatedTexts[it.name]?.translatedText?:return@runCatching,
+                            targetLanguage.code,
+                            sourceLanguageCode
                         )
                     }
                 }

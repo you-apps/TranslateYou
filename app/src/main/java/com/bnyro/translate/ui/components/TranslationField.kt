@@ -20,18 +20,21 @@ package com.bnyro.translate.ui.components
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,11 +46,15 @@ import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
+import com.bnyro.translate.util.TranslationEngine
 
 @Composable
 fun TranslationField(
@@ -57,6 +64,7 @@ fun TranslationField(
     language: Language,
     setLanguage: (Language) -> Unit = {},
     showLanguageSelector: Boolean = false,
+    translationEngine: TranslationEngine = translationModel.engine,
     onTextChange: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -70,8 +78,13 @@ fun TranslationField(
         Preferences.get(Preferences.charCounterLimitKey, "")
     }
 
+    val translationModelTranslation: Translation = translationModel
+        .translatedTexts[translationEngine.name]?:Translation("")
+    val inverseTranslationModelTranslation: Translation = translationModel
+        .inverseTranslatedTexts[translationEngine.name]?:Translation("")
+
     AnimatedVisibility(
-        visible = text.isNotEmpty(),
+        visible = text.isNotEmpty() || !isSourceField,  // 翻譯欄位總是顯示，但源欄位只在有內容時顯示按鈕
         enter = expandVertically(),
         exit = shrinkVertically(),
         label = "text actions fade"
@@ -84,13 +97,26 @@ fun TranslationField(
                 LanguageSelector(
                     translationModel.availableLanguages,
                     language,
-                    autoLanguageEnabled = translationModel.engine.autoLanguageCode != null && isSourceField,
+                    autoLanguageEnabled = translationEngine.autoLanguageCode != null && isSourceField,
                     viewModel = translationModel,
                     useElevatedButton = false
                 ) {
                     setLanguage(it)
                     translationModel.translateNow(context)
                 }
+            }
+
+            if (!isSourceField){
+                Text(
+                    modifier = Modifier.padding(
+                        top = 20.dp,
+                        bottom = 10.dp,
+                        start = 15.dp
+                    ),
+                    text = translationEngine.name,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontSize = 14.sp
+                )
             }
 
             Spacer(modifier = Modifier.weight(1f))
@@ -128,7 +154,7 @@ fun TranslationField(
                 }
             )
 
-            if (translationModel.engine.supportsAudio && language.code.isNotEmpty()) {
+            if (translationEngine.supportsAudio && language.code.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.Default.VolumeUp
                 ) {
@@ -145,11 +171,11 @@ fun TranslationField(
     }
 
     StyledTextField(
-        text = text + (if (!isSourceField) "\n\n\n" else ""),
+        text = text + (if (!isSourceField) "" else ""),
         placeholder = if (isSourceField) stringResource(R.string.enter_text) else null,
         readOnly = !isSourceField,
         textColor = if (
-            charPref.isNotEmpty() && translationModel.translation.translatedText.length >= charPref.toInt()
+            charPref.isNotEmpty() && translationModelTranslation.translatedText.length >= charPref.toInt()
         ) {
             MaterialTheme.colorScheme.error
         } else {
@@ -157,5 +183,18 @@ fun TranslationField(
         }
     ) {
         onTextChange(it)
+    }
+    
+    if (!isSourceField){
+        Text(
+            modifier = Modifier.padding(
+                top = 0.dp,
+                bottom = 10.dp,
+                start = 15.dp
+            ),
+            text = inverseTranslationModelTranslation.translatedText,
+            color = MaterialTheme.colorScheme.secondary,
+            fontSize = 12.sp
+        )
     }
 }
