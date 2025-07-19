@@ -104,11 +104,16 @@ class DeeplEngine : TranslationEngine(
         }
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
+        val convertedTarget = when(target){
+            "zh-Hant", "zh-Hans" -> "zh"
+            else -> target
+        }
+        
         if (getApiKey().isNotEmpty()) {
             val response = api.translate(
                 apiKeyString,
                 sourceOrAuto(source.uppercase()),
-                target.uppercase(),
+                convertedTarget.uppercase(),
                 query
             )
 
@@ -130,7 +135,7 @@ class DeeplEngine : TranslationEngine(
                         ),
                         splitting = "newlines",
                         lang = DeeplWebTranslationRequestParamsLang(
-                            targetLang = target.uppercase(),
+                            targetLang = convertedTarget.uppercase(),
                             sourceLangUserSelected = sourceOrAuto(source.uppercase()).ifEmpty { "auto" },
                             preference = DeeplWebTranslationRequestParamsLangPreference(
                                 weight = emptyMap()

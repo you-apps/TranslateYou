@@ -50,8 +50,15 @@ class WmEngine : TranslationEngine(
         }
     }
 
+    protected fun convertLanguageCode(languageCode: String): String {
+        return when(languageCode){
+            "zh-Hant", "zh-Hans" -> "zh"
+            else -> languageCode
+        }
+    }
+
     override suspend fun translate(query: String, source: String, target: String): Translation {
-        val response = api.translate(source, target, WmTranslationRequest(query))
+        val response = api.translate(convertLanguageCode(source), convertLanguageCode(target), WmTranslationRequest(query))
         return Translation(response.translation)
     }
 }

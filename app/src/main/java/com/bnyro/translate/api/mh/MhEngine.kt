@@ -58,12 +58,20 @@ class MhEngine : TranslationEngine(
             .map { Language(it.id, it.name) }
     }
 
+    protected fun convertLanguageCode(languageCode: String): String {
+        return when(languageCode){
+            "zh-Hant" -> "zh-TW"
+            "zh-Hans" -> "zh-CN"
+            else -> languageCode
+        }
+    }
+
     override suspend fun translate(query: String, source: String, target: String): Translation {
         val response = api.translate(
             engine = getSelectedEngine(),
-            source = sourceOrAuto(source.take(2)),
+            source = convertLanguageCode(sourceOrAuto(source)),
             query = query,
-            target = target.take(2),
+            target = convertLanguageCode(target),
         )
         return Translation(
             translatedText = response.translatedText,
