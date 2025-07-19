@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Неправильна область вибору!</string>
     <string name="translation_engine">Рушій перекладу</string>
     <string name="translation_api">Перекладацький API</string>
+    <string name="translation_error_hint">Вибраний рушій перекладу, схоже, не працює. Виберіть інший у налаштуваннях.</string>
 </resources>

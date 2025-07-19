@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">منطقة التحديد غير صالحة!</string>
     <string name="translation_api">واجهة برمجة تطبيقات (API) الترجمة</string>
     <string name="translation_engine">محرك الترجمة</string>
+    <string name="translation_error_hint">يبدو أن محرك الترجمة المحدّد لا يعمل. يُرجى اختيار محرك آخر من الإعدادات.</string>
 </resources>
