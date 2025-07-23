@@ -41,8 +41,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -52,17 +50,17 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import androidx.navigation.NavController
 import com.bnyro.translate.R
+import com.bnyro.translate.ext.getText
+import com.bnyro.translate.ext.hasText
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
-import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.util.Preferences
 import kotlinx.coroutines.launch
 
@@ -76,13 +74,13 @@ fun TranslationComponent(
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
-    val clipboard = LocalClipboardManager.current
+    val clipboard = LocalClipboard.current
     var hasClip by remember {
         mutableStateOf(false)
     }
 
     LaunchedEffect(Unit, clipboard) {
-        hasClip = clipboard.hasText() && !clipboard.getText()?.toString().isNullOrBlank()
+        hasClip = clipboard.hasText()
     }
 
     LaunchedEffect(Unit) {
@@ -144,7 +142,9 @@ fun TranslationComponent(
                         text = stringResource(R.string.paste),
                         icon = Icons.Default.ContentPaste
                     ) {
-                        viewModel.insertedText = clipboard.getText()?.toString().orEmpty()
+                        coroutineScope.launch {
+                            viewModel.insertedText = clipboard.getText().orEmpty()
+                        }
                         viewModel.enqueueTranslation(context)
                     }
 

@@ -24,13 +24,37 @@ import java.io.File
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
 abstract class TranslationEngine(
+    /**
+     * The canonical name of the translation engine.
+     */
     val name: String,
+    /**
+     * Default HTTPS base url for the engine.
+     */
     val defaultUrl: String,
+    /**
+     * Set to true, if the engine is self-hostable and thus different instance URLs are possible.
+     */
     val urlModifiable: Boolean,
+    /**
+     * Whether an API key is required or supported.
+     */
     val apiKeyState: ApiKeyState,
+    /**
+     * Set to null to disable automatic language detection for this engine.
+     */
     val autoLanguageCode: String?,
+    /**
+     * Set to true if the engine supports normal 2-letter language codes.
+     */
     val supportsSimTranslation: Boolean = true,
+    /**
+     * If set to true, [getAudioFile] has to be implemented as well.
+     */
     val supportsAudio: Boolean = false,
+    /**
+     * If the engine supports different models, provide a list of them here.
+     */
     val supportedEngines: List<String> = emptyList(),
 ) {
 
