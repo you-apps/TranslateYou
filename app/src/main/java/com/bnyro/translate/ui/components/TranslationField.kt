@@ -27,27 +27,29 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.ext.setText
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
+import kotlinx.coroutines.launch
 
 @Composable
 fun TranslationField(
@@ -60,7 +62,8 @@ fun TranslationField(
     onTextChange: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
-    val clipboard = LocalClipboardManager.current
+    val scope = rememberCoroutineScope()
+    val clipboard = LocalClipboard.current
 
     val handler = remember {
         Handler(Looper.getMainLooper())
@@ -105,7 +108,9 @@ fun TranslationField(
             StyledIconButton(
                 imageVector = copyImageVector,
                 onClick = {
-                    clipboard.setText(AnnotatedString(text = text))
+                    scope.launch {
+                        clipboard.setText(text)
+                    }
                     copyImageVector = Icons.Default.DoneAll
                     handler.postDelayed({
                         copyImageVector = Icons.Default.ContentCopy
@@ -130,13 +135,13 @@ fun TranslationField(
 
             if (translationModel.engine.supportsAudio && language.code.isNotEmpty()) {
                 StyledIconButton(
-                    imageVector = Icons.Default.VolumeUp
+                    imageVector = Icons.AutoMirrored.Default.VolumeUp
                 ) {
                     translationModel.playAudio(language.code, text)
                 }
             } else if (SpeechHelper.ttsAvailable) {
                 StyledIconButton(
-                    imageVector = Icons.Default.VolumeUp
+                    imageVector = Icons.AutoMirrored.Default.VolumeUp
                 ) {
                     SpeechHelper.speak(context, text, language.code)
                 }

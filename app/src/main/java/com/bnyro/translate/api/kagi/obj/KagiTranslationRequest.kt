@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 You Apps
+ * Copyright (c) 2025 You Apps
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,8 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.ext
+package com.bnyro.translate.api.kagi.obj
 
-fun <T> concatenate(vararg lists: List<T>): List<T> {
-    return listOf(*lists).flatten()
-}
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class KagiTranslationRequest(
+    val text: String,
+    @SerialName("source_lang") val sourceLang: String,
+    @SerialName("target_lang") val targetLang: String,
+    @SerialName("skip_definition") val skipDefinition: Boolean = false,
+    val model: String? = null
+) 

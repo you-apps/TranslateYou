@@ -52,9 +52,9 @@ interface DeepL {
         "Sec-Fetch-Dest: empty",
         "Sec-Fetch-Mode: cors",
         "Sec-Fetch-Site: none",
-        "User-Agent: DeepLBrowserExtension/${DeeplEngine.WEB_CHROME_EXTENSION_VER} ${DeeplEngine.WEB_CHROME_USER_AGENT}"
+        "User-Agent: DeepLBrowserExtension/${DeeplBrowserEngine.WEB_CHROME_EXTENSION_VER} ${DeeplBrowserEngine.WEB_CHROME_USER_AGENT}"
     )
-    @POST("jsonrpc?client=chrome-extension,${DeeplEngine.WEB_CHROME_EXTENSION_VER}")
+    @POST("jsonrpc?client=chrome-extension,${DeeplBrowserEngine.WEB_CHROME_EXTENSION_VER}")
     suspend fun webTranslate(
         @Body body: String
     ): DeeplWebTranslationResponse
