@@ -59,12 +59,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.Translation
+import com.bnyro.translate.ext.getText
+import com.bnyro.translate.ext.hasText
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
@@ -81,13 +84,13 @@ fun TranslationComponent(
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
-    val clipboard = LocalClipboardManager.current
+    val clipboard = LocalClipboard.current
     var hasClip by remember {
         mutableStateOf(false)
     }
 
     LaunchedEffect(Unit, clipboard) {
-        hasClip = clipboard.hasText() && !clipboard.getText()?.toString().isNullOrBlank()
+        hasClip = clipboard.hasText()
     }
 
     LaunchedEffect(Unit) {
@@ -149,7 +152,9 @@ fun TranslationComponent(
                         text = stringResource(R.string.paste),
                         icon = Icons.Default.ContentPaste
                     ) {
-                        viewModel.insertedText = clipboard.getText()?.toString().orEmpty()
+                        coroutineScope.launch {
+                            viewModel.insertedText = clipboard.getText().orEmpty()
+                        }
                         viewModel.enqueueTranslation(context)
                     }
 
