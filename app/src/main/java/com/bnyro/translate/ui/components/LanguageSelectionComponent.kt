@@ -68,7 +68,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.targetLanguage = viewModel.sourceLanguage
                     }
                     viewModel.sourceLanguage = it
-                    viewModel.translateNow(context)
+                    viewModel.translateNow()
                 }
             }
 
@@ -87,7 +87,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.sourceLanguage = viewModel.targetLanguage
                     }
                     viewModel.targetLanguage = it
-                    viewModel.translateNow(context)
+                    viewModel.translateNow()
                 }
             }
         }
@@ -111,7 +111,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.targetLanguage = viewModel.sourceLanguage
                     }
                     viewModel.sourceLanguage = it
-                    viewModel.translateNow(context)
+                    viewModel.translateNow()
                 }
             }
 
@@ -129,7 +129,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                         viewModel.sourceLanguage = viewModel.targetLanguage
                     }
                     viewModel.targetLanguage = it
-                    viewModel.translateNow(context)
+                    viewModel.translateNow()
                 }
             }
         }
@@ -155,7 +155,7 @@ fun SwapLanguagesButton(viewModel: TranslationModel) {
 
     IconButton(
         onClick = {
-            if (switchBtnEnabled) viewModel.swapLanguages(context)
+            if (switchBtnEnabled) viewModel.swapLanguages()
         }
     ) {
         Icon(

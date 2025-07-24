@@ -63,7 +63,7 @@ fun HistoryRow(
     fun loadTranslation() {
         showDialog = false
         translationModel.insertedText = historyItem.insertedText
-        translationModel.translateNow(context)
+        translationModel.translateNow()
         navController.navigate(Destination.Translate.route)
     }
 

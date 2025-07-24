@@ -39,6 +39,7 @@ import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
+import com.bnyro.translate.util.TranslationEngine
 import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -70,9 +71,10 @@ class TranslationModel : ViewModel() {
 
     var translation by mutableStateOf(Translation(""))
 
-    var translatedTexts = TranslationEngines.engines
-        .associate { it.name to Translation("") }
-        .toMutableMap()
+    var translatedTexts by mutableStateOf(
+        TranslationEngines.engines
+            .associate { it.name to Translation("") }
+    )
 
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
@@ -104,7 +106,7 @@ class TranslationModel : ViewModel() {
         }.getOrNull()
     }
 
-    fun enqueueTranslation(context: Context) {
+    fun enqueueTranslation() {
         if (!Preferences.get(Preferences.translateAutomatically, true)) return
 
         val insertedTextTemp = insertedText
@@ -112,7 +114,7 @@ class TranslationModel : ViewModel() {
             Looper.getMainLooper()
         ).postDelayed(
             {
-                if (insertedTextTemp == insertedText) translateNow(context)
+                if (insertedTextTemp == insertedText) translateNow()
             },
             Preferences.get(
                 Preferences.fetchDelay,
@@ -121,7 +123,7 @@ class TranslationModel : ViewModel() {
         )
     }
 
-    fun translateNow(context: Context) {
+    fun translateNow() {
         if (insertedText.isEmpty() || targetLanguage == sourceLanguage) {
             translation = Translation("")
             return
@@ -130,9 +132,9 @@ class TranslationModel : ViewModel() {
 
         translating = true
 
+        // reset translations
         translatedTexts = TranslationEngines.engines
             .associate { it.name to Translation("") }
-            .toMutableMap()
 
         viewModelScope.launch(Dispatchers.IO) {
             val translation = try {
@@ -151,7 +153,9 @@ class TranslationModel : ViewModel() {
 
             if (insertedText.isNotEmpty()) {
                 this@TranslationModel.translation = translation
-                translatedTexts[engine.name] = translation
+                 translatedTexts = translatedTexts.toMutableMap().also {
+                     it[engine.name] = translation
+                 }.toMap()
                 saveToHistory()
             }
         }
@@ -168,11 +172,14 @@ class TranslationModel : ViewModel() {
             .map {
                 async {
                     runCatching {
-                        translatedTexts[it.name] = it.translate(
+                        val translation = it.translate(
                             insertedText,
                             sourceLanguage.code,
                             targetLanguage.code
                         )
+                        translatedTexts = translatedTexts.toMutableMap().also { translations ->
+                            translations[it.name] = translation
+                        }.toMap()
                     }
                 }
             }
@@ -244,15 +251,21 @@ class TranslationModel : ViewModel() {
         Preferences.get(Preferences.apiTypeKey, 0)
     ]
 
+    fun setCurrentEngine(engine: TranslationEngine) {
+        val engineIndex = TranslationEngines.engines.indexOfFirst { it.name == engine.name }
+        Preferences.put(Preferences.apiTypeKey, engineIndex)
+        this.engine = engine
+    }
+
     private fun getEnabledEngines() = TranslationEngines.engines.filter {
         it.isSimultaneousTranslationEnabled()
     }
 
-    fun refresh(context: Context) {
+    fun refresh() {
         val newSelectedEngine = getCurrentEngine()
         if (newSelectedEngine != engine) {
             engine = newSelectedEngine
-            enqueueTranslation(context)
+            enqueueTranslation()
         }
 
         enabledSimEngines = getEnabledEngines()
@@ -275,7 +288,7 @@ class TranslationModel : ViewModel() {
         Thread {
             TessHelper.getText(context, image)?.let {
                 insertedText = it
-                translateNow(context)
+                translateNow()
             }
         }.start()
     }
@@ -291,11 +304,11 @@ class TranslationModel : ViewModel() {
         )
     }
 
-    fun swapLanguages(context: Context) {
+    fun swapLanguages() {
         if (availableLanguages.isEmpty()) return
 
         val temp = if (sourceLanguage.code.isEmpty()) {
-             mostDetectedLanguage() ?: return
+            mostDetectedLanguage() ?: return
         } else {
             sourceLanguage
         }
@@ -307,7 +320,7 @@ class TranslationModel : ViewModel() {
             translation = Translation("")
         }
 
-        translateNow(context)
+        translateNow()
     }
 
     fun playAudio(languageCode: String, text: String) {

@@ -39,7 +39,6 @@ import com.bnyro.translate.R
 import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.ui.components.AppHeader
 import com.bnyro.translate.ui.components.DialogButton
-import com.bnyro.translate.ui.views.SimTranslationDialogComponent
 import com.bnyro.translate.ui.views.TranslationComponent
 
 class ShareActivity : TranslationActivity() {
@@ -52,7 +51,7 @@ class ShareActivity : TranslationActivity() {
             val screenHeight = configuration.screenHeightDp.dp
 
             LaunchedEffect(Unit) {
-                translationModel.refresh(this@ShareActivity)
+                translationModel.refresh()
             }
 
             AlertDialog(
@@ -88,10 +87,6 @@ class ShareActivity : TranslationActivity() {
                             val intent = Intent(this@ShareActivity, MainActivity::class.java)
                                 .putExtra(Intent.EXTRA_TEXT, translationModel.insertedText)
                             this@ShareActivity.startActivity(intent)
-                        }
-
-                        if (translationModel.simTranslationEnabled) {
-                            SimTranslationDialogComponent(translationModel)
                         }
                     }
                 },
