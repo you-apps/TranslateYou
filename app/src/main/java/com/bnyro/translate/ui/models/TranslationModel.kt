@@ -247,13 +247,12 @@ class TranslationModel : ViewModel() {
         return availableLanguages.firstOrNull { it.code == language.code } ?: language
     }
 
-    private fun getCurrentEngine() = TranslationEngines.engines[
-        Preferences.get(Preferences.apiTypeKey, 0)
-    ]
+    private fun getCurrentEngine() = TranslationEngines.engines.find {
+        it.name == Preferences.get(Preferences.selectedEngineKey, TranslationEngines.engines.first().name)
+    } ?: TranslationEngines.engines.first()
 
     fun setCurrentEngine(engine: TranslationEngine) {
-        val engineIndex = TranslationEngines.engines.indexOfFirst { it.name == engine.name }
-        Preferences.put(Preferences.apiTypeKey, engineIndex)
+        Preferences.put(Preferences.selectedEngineKey, engine.name)
         this.engine = engine
     }
 
