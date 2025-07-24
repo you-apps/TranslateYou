@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Невалидна зона за избор!</string>
     <string name="translation_engine">Преводачески двигател</string>
     <string name="translation_api">API превод</string>
+    <string name="translation_error_hint">Избраният двигател за превод изглежда не работи. Моля, изберете друг в настройките.</string>
 </resources>
