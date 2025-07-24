@@ -43,7 +43,7 @@ class DeeplBrowserEngine : TranslationEngine(
     defaultUrl = "https://www2.deepl.com",
     urlModifiable = false,
     apiKeyState = ApiKeyState.DISABLED,
-    autoLanguageCode = null
+    autoLanguageCode = "auto"
 ) {
     private lateinit var api: DeepL
     override fun createOrRecreate(): TranslationEngine = apply {
@@ -101,7 +101,7 @@ class DeeplBrowserEngine : TranslationEngine(
                     splitting = "newlines",
                     lang = DeeplWebTranslationRequestParamsLang(
                         targetLang = target.uppercase(),
-                        sourceLangUserSelected = sourceOrAuto(source.uppercase()).ifEmpty { "auto" },
+                        sourceLangUserSelected = sourceOrAuto(source.uppercase()),
                         preference = DeeplWebTranslationRequestParamsLangPreference(
                             weight = emptyMap()
                         )
@@ -124,7 +124,7 @@ class DeeplBrowserEngine : TranslationEngine(
 
         return Translation(
             translatedText = webResponse.result.texts.firstOrNull()?.text ?: "",
-            detectedLanguage = webResponse.result.lang
+            detectedLanguage = webResponse.result.lang.lowercase()
         )
     }
 
