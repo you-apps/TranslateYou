@@ -74,9 +74,15 @@ class TranslationModel : ViewModel() {
 
     var translation by mutableStateOf(Translation(""))
 
-    var translatedTexts = mutableStateMapOf<String, Translation>()
+    var translatedTexts by mutableStateOf(
+        TranslationEngines.engines
+            .associate { it.name to Translation("") }
+    )
     
-    var inverseTranslatedTexts = mutableStateMapOf<String, Translation>()
+    var inverseTranslatedTexts by mutableStateOf(
+        TranslationEngines.engines
+            .associate { it.name to Translation("") }
+    )
 
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
@@ -89,14 +95,15 @@ class TranslationModel : ViewModel() {
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
 
-    fun detectedLanguageMostly(): String?{
+    fun detectedLanguageMostly(): String? {
         val detectedLanguageList = translatedTexts.filter {
             it.value.detectedLanguage != null
         }
         return detectedLanguageList.maxByOrNull {
-            it.value.detectedLanguage?:""
+            it.value.detectedLanguage ?: ""
         }?.value?.detectedLanguage
-      
+    }
+
     fun mostDetectedLanguage(): Language? {
         if (!simTranslationEnabled) return availableLanguages.find { it.code == translation.detectedLanguage }
 
@@ -141,9 +148,6 @@ class TranslationModel : ViewModel() {
         saveSelectedLanguages()
 
         translating = true
-
-        translatedTexts.clear()
-        TranslationEngines.engines.forEach { translatedTexts[it.name] = Translation("") }
 
         // reset translations
         translatedTexts = TranslationEngines.engines
@@ -199,11 +203,14 @@ class TranslationModel : ViewModel() {
                             }else{ detectedLanguage }?:""
                         } else { sourceLanguage.code }
 
-                        inverseTranslatedTexts[it.name] = it.translate(
+                        val inverseTranslationEngine = it.translate(
                             translatedTexts[it.name]?.translatedText?:return@runCatching,
                             targetLanguage.code,
                             sourceLanguageCode
                         )
+                        inverseTranslatedTexts = inverseTranslatedTexts.toMutableMap().also {
+                            it[engine.name] = inverseTranslationEngine
+                        }.toMap()
                         
                         translatedTexts = translatedTexts.toMutableMap().also { translations ->
                             translations[it.name] = translation

@@ -60,7 +60,6 @@ import com.bnyro.translate.ext.setText
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
-import com.bnyro.translate.util.TranslationEngine
 import kotlinx.coroutines.launch
 
 @Composable
@@ -72,7 +71,6 @@ fun TranslationField(
     translationEngine: TranslationEngine? = null,
     setLanguage: (Language) -> Unit = {},
     showLanguageSelector: Boolean = false,
-    translationEngine: TranslationEngine = translationModel.engine,
     onEngineNameClick: () -> Unit = {},
     onTextChange: (String) -> Unit = {}
 ) {
@@ -89,9 +87,9 @@ fun TranslationField(
     }
 
     val translationModelTranslation: Translation = translationModel
-        .translatedTexts[translationEngine.name]?:Translation("")
+        .translatedTexts[translationEngine?.name]?:Translation("")
     val inverseTranslationModelTranslation: Translation = translationModel
-        .inverseTranslatedTexts[translationEngine.name]?:Translation("")
+        .inverseTranslatedTexts[translationEngine?.name]?:Translation("")
 
     AnimatedVisibility(
         visible = text.isNotEmpty() || !isSourceField,
@@ -124,7 +122,7 @@ fun TranslationField(
                 LanguageSelector(
                     translationModel.availableLanguages,
                     language,
-                    autoLanguageEnabled = translationEngine.autoLanguageCode != null && isSourceField,
+                    autoLanguageEnabled = translationEngine?.autoLanguageCode != null && isSourceField,
                     viewModel = translationModel,
                     useElevatedButton = false
                 ) {
@@ -140,7 +138,7 @@ fun TranslationField(
                         bottom = 10.dp,
                         start = 15.dp
                     ),
-                    text = translationEngine.name,
+                    text = translationEngine?.name?:"",
                     color = MaterialTheme.colorScheme.primary,
                     fontSize = 14.sp
                 )
@@ -183,7 +181,7 @@ fun TranslationField(
                 }
             )
 
-            if (translationEngine.supportsAudio && language.code.isNotEmpty()) {
+            if (translationEngine?.supportsAudio?:false && language.code.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.AutoMirrored.Default.VolumeUp
                 ) {
