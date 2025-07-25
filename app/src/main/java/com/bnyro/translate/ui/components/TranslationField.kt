@@ -109,7 +109,9 @@ fun TranslationField(
                             onEngineNameClick()
                         }
                         .padding(horizontal = 10.dp, vertical = 6.dp),
-                    text = translationEngine.name
+                    text = translationEngine.name,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontSize = 14.sp
                 )
             }
 
@@ -129,19 +131,6 @@ fun TranslationField(
                     setLanguage(it)
                     translationModel.translateNow()
                 }
-            }
-
-            if (!isSourceField){
-                Text(
-                    modifier = Modifier.padding(
-                        top = 20.dp,
-                        bottom = 10.dp,
-                        start = 15.dp
-                    ),
-                    text = translationEngine?.name?:"",
-                    color = MaterialTheme.colorScheme.primary,
-                    fontSize = 14.sp
-                )
             }
 
             Spacer(modifier = Modifier.weight(1f))
