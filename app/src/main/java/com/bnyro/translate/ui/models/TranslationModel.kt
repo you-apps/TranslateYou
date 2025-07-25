@@ -48,6 +48,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.encodeToString
+import androidx.compose.runtime.mutableStateMapOf
+import com.bnyro.translate.ext.toastFromMainThread
 
 class TranslationModel : ViewModel() {
     var engine by mutableStateOf(getCurrentEngine())
@@ -75,6 +78,11 @@ class TranslationModel : ViewModel() {
         TranslationEngines.engines
             .associate { it.name to Translation("") }
     )
+    
+    var inverseTranslatedTexts by mutableStateOf(
+        TranslationEngines.engines
+            .associate { it.name to Translation("") }
+    )
 
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
@@ -86,6 +94,15 @@ class TranslationModel : ViewModel() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
+
+    fun detectedLanguageMostly(): String? {
+        val detectedLanguageList = translatedTexts.filter {
+            it.value.detectedLanguage != null
+        }
+        return detectedLanguageList.maxByOrNull {
+            it.value.detectedLanguage ?: ""
+        }?.value?.detectedLanguage
+    }
 
     fun mostDetectedLanguage(): Language? {
         if (!simTranslationEnabled) return availableLanguages.find { it.code == translation.detectedLanguage }
@@ -147,7 +164,7 @@ class TranslationModel : ViewModel() {
                 Log.e("error", e.message.toString())
                 _apiError.emit(e)
                 translating = false
-                return@launch
+                Translation("")
             }
             translating = false
 
@@ -177,6 +194,24 @@ class TranslationModel : ViewModel() {
                             sourceLanguage.code,
                             targetLanguage.code
                         )
+
+                        //if sourceLanguage "auto" use detectedLanguage
+                        val sourceLanguageCode = if(sourceLanguage.code == ""){
+                            val detectedLanguage = translatedTexts[it.name]?.detectedLanguage
+                            if (detectedLanguage == "" || detectedLanguage == null){
+                                detectedLanguageMostly()
+                            }else{ detectedLanguage }?:""
+                        } else { sourceLanguage.code }
+
+                        val inverseTranslationEngine = it.translate(
+                            translatedTexts[it.name]?.translatedText?:return@runCatching,
+                            targetLanguage.code,
+                            sourceLanguageCode
+                        )
+                        inverseTranslatedTexts = inverseTranslatedTexts.toMutableMap().also {
+                            it[engine.name] = inverseTranslationEngine
+                        }.toMap()
+                        
                         translatedTexts = translatedTexts.toMutableMap().also { translations ->
                             translations[it.name] = translation
                         }.toMap()

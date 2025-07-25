@@ -20,6 +20,7 @@ package com.bnyro.translate.ui.components
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
@@ -48,6 +49,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.unit.sp
+import com.bnyro.translate.obj.Translation
+import com.bnyro.translate.util.TranslationEngine
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
@@ -55,7 +60,6 @@ import com.bnyro.translate.ext.setText
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
-import com.bnyro.translate.util.TranslationEngine
 import kotlinx.coroutines.launch
 
 @Composable
@@ -82,8 +86,13 @@ fun TranslationField(
         Preferences.get(Preferences.charCounterLimitKey, "")
     }
 
+    val translationModelTranslation: Translation = translationModel
+        .translatedTexts[translationEngine?.name]?:Translation("")
+    val inverseTranslationModelTranslation: Translation = translationModel
+        .inverseTranslatedTexts[translationEngine?.name]?:Translation("")
+
     AnimatedVisibility(
-        visible = text.isNotEmpty(),
+        visible = text.isNotEmpty() || !isSourceField,
         enter = expandVertically(),
         exit = shrinkVertically(),
         label = "text actions fade"
@@ -100,7 +109,9 @@ fun TranslationField(
                             onEngineNameClick()
                         }
                         .padding(horizontal = 10.dp, vertical = 6.dp),
-                    text = translationEngine.name
+                    text = translationEngine.name,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontSize = 14.sp
                 )
             }
 
@@ -113,7 +124,7 @@ fun TranslationField(
                 LanguageSelector(
                     translationModel.availableLanguages,
                     language,
-                    autoLanguageEnabled = translationModel.engine.autoLanguageCode != null && isSourceField,
+                    autoLanguageEnabled = translationEngine?.autoLanguageCode != null && isSourceField,
                     viewModel = translationModel,
                     useElevatedButton = false
                 ) {
@@ -159,7 +170,7 @@ fun TranslationField(
                 }
             )
 
-            if (translationModel.engine.supportsAudio && language.code.isNotEmpty()) {
+            if (translationEngine?.supportsAudio?:false && language.code.isNotEmpty()) {
                 StyledIconButton(
                     imageVector = Icons.AutoMirrored.Default.VolumeUp
                 ) {
@@ -176,11 +187,11 @@ fun TranslationField(
     }
 
     StyledTextField(
-        text = text,
+        text = text + (if (!isSourceField) "" else ""),
         placeholder = if (isSourceField) stringResource(R.string.enter_text) else null,
         readOnly = !isSourceField,
         textColor = if (
-            isSourceField && charPref.isNotEmpty() && text.length >= charPref.toInt()
+            charPref.isNotEmpty() && translationModelTranslation.translatedText.length >= charPref.toInt()
         ) {
             MaterialTheme.colorScheme.error
         } else {
@@ -188,5 +199,18 @@ fun TranslationField(
         }
     ) {
         onTextChange(it)
+    }
+    
+    if (!isSourceField){
+        Text(
+            modifier = Modifier.padding(
+                top = 0.dp,
+                bottom = 10.dp,
+                start = 15.dp
+            ),
+            text = inverseTranslationModelTranslation.translatedText,
+            color = MaterialTheme.colorScheme.secondary,
+            fontSize = 12.sp
+        )
     }
 }
