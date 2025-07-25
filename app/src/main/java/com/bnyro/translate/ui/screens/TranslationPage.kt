@@ -32,7 +32,6 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
@@ -69,7 +68,6 @@ import com.bnyro.translate.ui.components.LanguageSelectionComponent
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.ui.views.AdditionalInfoComponent
-import com.bnyro.translate.ui.views.SimTranslationComponent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 import com.bnyro.translate.util.Preferences
@@ -88,7 +86,7 @@ fun TranslationPage(
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
-        viewModel.refresh(context)
+        viewModel.refresh()
     }
 
     val snackbarHostState = remember { SnackbarHostState() }
@@ -242,16 +240,12 @@ fun MainTranslationArea(
                     .height(15.dp)
             )
 
-            if (viewModel.simTranslationEnabled) {
-                SimTranslationComponent(viewModel)
-            } else {
-                HorizontalDivider(
-                    color = Color.Gray,
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterHorizontally)
-                        .size(70.dp, 2.dp)
-                )
-            }
+            HorizontalDivider(
+                color = Color.Gray,
+                modifier = Modifier
+                    .align(alignment = Alignment.CenterHorizontally)
+                    .size(70.dp, 2.dp)
+            )
         }
     }
 }

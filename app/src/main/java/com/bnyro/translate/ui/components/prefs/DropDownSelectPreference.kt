@@ -18,36 +18,27 @@
 package com.bnyro.translate.ui.components.prefs
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.bnyro.translate.ui.components.BlockButton
 import com.bnyro.translate.util.Preferences
 
 @Composable
 fun DropDownSelectPreference(
     preferenceKey: String,
     title: String,
-    onSelect: (Int) -> Unit,
+    onSelect: (String) -> Unit,
     items: List<String>,
 ) {
     var selected by remember {
-        mutableIntStateOf(Preferences.get(preferenceKey, 0))
+        mutableStateOf(Preferences.get(preferenceKey, items.first()))
     }
 
     var showDropDown by remember {
@@ -57,7 +48,7 @@ fun DropDownSelectPreference(
     Box(
         modifier = Modifier.fillMaxWidth()
     ) {
-        PreferenceItem(title = title, summary = items[selected]) {
+        PreferenceItem(title = title, summary = selected) {
             showDropDown = true
         }
 
@@ -65,16 +56,16 @@ fun DropDownSelectPreference(
             expanded = showDropDown,
             onDismissRequest = { showDropDown = false }
         ) {
-            items.forEachIndexed { index, item ->
+            items.forEach { item ->
                 DropdownMenuItem(
                     text = {
                         Text(item)
                     },
                     onClick = {
-                        Preferences.put(preferenceKey, index)
+                        Preferences.put(preferenceKey, item)
 
-                        selected = index
-                        onSelect(index)
+                        selected = item
+                        onSelect(item)
 
                         showDropDown = false
                     }

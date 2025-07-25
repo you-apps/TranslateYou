@@ -39,6 +39,7 @@ import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
+import com.bnyro.translate.util.TranslationEngine
 import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -95,6 +96,18 @@ class TranslationModel : ViewModel() {
         return detectedLanguageList.maxByOrNull {
             it.value.detectedLanguage?:""
         }?.value?.detectedLanguage
+      
+    fun mostDetectedLanguage(): Language? {
+        if (!simTranslationEnabled) return availableLanguages.find { it.code == translation.detectedLanguage }
+
+        val mostDetectedLangCode = translatedTexts.values
+            .filter { !it.detectedLanguage.isNullOrEmpty() }
+            .ifEmpty { return null }
+            .groupBy { it.detectedLanguage }
+            .maxBy { it.value.size }
+            .key
+
+        return availableLanguages.find { it.code == mostDetectedLangCode }
     }
 
     private fun getLanguageByPrefKey(key: String): Language? {
@@ -103,7 +116,7 @@ class TranslationModel : ViewModel() {
         }.getOrNull()
     }
 
-    fun enqueueTranslation(context: Context) {
+    fun enqueueTranslation() {
         if (!Preferences.get(Preferences.translateAutomatically, true)) return
 
         val insertedTextTemp = insertedText
@@ -111,7 +124,7 @@ class TranslationModel : ViewModel() {
             Looper.getMainLooper()
         ).postDelayed(
             {
-                if (insertedTextTemp == insertedText) translateNow(context)
+                if (insertedTextTemp == insertedText) translateNow()
             },
             Preferences.get(
                 Preferences.fetchDelay,
@@ -120,7 +133,7 @@ class TranslationModel : ViewModel() {
         )
     }
 
-    fun translateNow(context: Context) {
+    fun translateNow() {
         if (insertedText.isEmpty() || targetLanguage == sourceLanguage) {
             translation = Translation("")
             return
@@ -131,6 +144,11 @@ class TranslationModel : ViewModel() {
 
         translatedTexts.clear()
         TranslationEngines.engines.forEach { translatedTexts[it.name] = Translation("") }
+
+        // reset translations
+        translatedTexts = TranslationEngines.engines
+            .associate { it.name to Translation("") }
+
         viewModelScope.launch(Dispatchers.IO) {
             val translation = try {
                 engine.translate(
@@ -148,7 +166,9 @@ class TranslationModel : ViewModel() {
 
             if (insertedText.isNotEmpty()) {
                 this@TranslationModel.translation = translation
-                translatedTexts[engine.name] = translation
+                 translatedTexts = translatedTexts.toMutableMap().also {
+                     it[engine.name] = translation
+                 }.toMap()
                 saveToHistory()
             }
         }
@@ -165,11 +185,12 @@ class TranslationModel : ViewModel() {
             .map {
                 async {
                     runCatching {
-                        translatedTexts[it.name] = it.translate(
+                        val translation = it.translate(
                             insertedText,
                             sourceLanguage.code,
                             targetLanguage.code
                         )
+
                         //if sourceLanguage "auto" use detectedLanguage
                         val sourceLanguageCode = if(sourceLanguage.code == ""){
                             val detectedLanguage = translatedTexts[it.name]?.detectedLanguage
@@ -183,6 +204,10 @@ class TranslationModel : ViewModel() {
                             targetLanguage.code,
                             sourceLanguageCode
                         )
+                        
+                        translatedTexts = translatedTexts.toMutableMap().also { translations ->
+                            translations[it.name] = translation
+                        }.toMap()
                     }
                 }
             }
@@ -250,19 +275,24 @@ class TranslationModel : ViewModel() {
         return availableLanguages.firstOrNull { it.code == language.code } ?: language
     }
 
-    private fun getCurrentEngine() = TranslationEngines.engines[
-        Preferences.get(Preferences.apiTypeKey, 0)
-    ]
+    private fun getCurrentEngine() = TranslationEngines.engines.find {
+        it.name == Preferences.get(Preferences.selectedEngineKey, TranslationEngines.engines.first().name)
+    } ?: TranslationEngines.engines.first()
+
+    fun setCurrentEngine(engine: TranslationEngine) {
+        Preferences.put(Preferences.selectedEngineKey, engine.name)
+        this.engine = engine
+    }
 
     private fun getEnabledEngines() = TranslationEngines.engines.filter {
         it.isSimultaneousTranslationEnabled()
     }
 
-    fun refresh(context: Context) {
+    fun refresh() {
         val newSelectedEngine = getCurrentEngine()
         if (newSelectedEngine != engine) {
             engine = newSelectedEngine
-            enqueueTranslation(context)
+            enqueueTranslation()
         }
 
         enabledSimEngines = getEnabledEngines()
@@ -285,7 +315,7 @@ class TranslationModel : ViewModel() {
         Thread {
             TessHelper.getText(context, image)?.let {
                 insertedText = it
-                translateNow(context)
+                translateNow()
             }
         }.start()
     }
@@ -301,10 +331,14 @@ class TranslationModel : ViewModel() {
         )
     }
 
-    fun swapLanguages(context: Context) {
+    fun swapLanguages() {
         if (availableLanguages.isEmpty()) return
 
-        val temp = sourceLanguage
+        val temp = if (sourceLanguage.code.isEmpty()) {
+            mostDetectedLanguage() ?: return
+        } else {
+            sourceLanguage
+        }
         sourceLanguage = targetLanguage
         targetLanguage = temp
 
@@ -313,7 +347,7 @@ class TranslationModel : ViewModel() {
             translation = Translation("")
         }
 
-        translateNow(context)
+        translateNow()
     }
 
     fun playAudio(languageCode: String, text: String) {

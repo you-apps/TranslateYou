@@ -24,7 +24,7 @@ import com.bnyro.translate.const.ThemeMode
 object Preferences {
     const val instanceUrlKey = "instanceUrl"
     const val apiKey = "apiKey"
-    const val apiTypeKey = "apiTypeKey"
+    const val selectedEngineKey = "selectedEngine"
     const val historyEnabledKey = "historyEnabledKey"
     const val skipSimilarHistoryKey = "skipSimilarHistory"
     const val translateAutomatically = "translateAutomatically"

@@ -80,7 +80,7 @@ fun TopBar(
     val speechRecognizer = rememberLauncherForActivityResult(SpeechResultContract()) {
         if (it != null) {
             mainModel.insertedText = it
-            mainModel.enqueueTranslation(context)
+            mainModel.enqueueTranslation()
         }
     }
 

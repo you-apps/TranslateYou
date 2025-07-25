@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -29,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.api.kagi.KagiEngine
 import com.bnyro.translate.const.ApiKeyState
 import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.capitalize
@@ -44,36 +42,37 @@ import com.bnyro.translate.util.Preferences
 fun EnginePref() {
     val engines = TranslationEngines.engines
 
-    var selected by remember {
-        mutableIntStateOf(Preferences.get(Preferences.apiTypeKey, 0))
+    var selectedName by remember {
+        mutableStateOf(Preferences.get(Preferences.selectedEngineKey, TranslationEngines.engines.first().name))
     }
+    val selectedEngineIndex = engines.indexOfFirst { it.name == selectedName }
 
     var instanceUrl by remember {
         mutableStateOf(
-            engines[selected].getUrl()
+            engines[selectedEngineIndex].getUrl()
         )
     }
 
     var apiKey by remember {
         mutableStateOf(
-            engines[selected].getApiKey()
+            engines[selectedEngineIndex].getApiKey()
         )
     }
 
     DropDownSelectPreference(
-        preferenceKey = Preferences.apiTypeKey,
+        preferenceKey = Preferences.selectedEngineKey,
         title = stringResource(R.string.selected_engine),
         items = engines.map { it.name },
-        onSelect = {
-            selected = it
+        onSelect = { engineName ->
+            selectedName = engineName
 
-            instanceUrl = engines[selected].getUrl()
-            apiKey = engines[selected].getApiKey()
+            instanceUrl = engines[selectedEngineIndex].getUrl()
+            apiKey = engines[selectedEngineIndex].getApiKey()
             TranslationEngines.updateAll()
         }
     )
 
-    engines[selected].let { engine ->
+    engines[selectedEngineIndex].let { engine ->
         Spacer(modifier = Modifier.height(5.dp))
 
         if (engine.urlModifiable) {

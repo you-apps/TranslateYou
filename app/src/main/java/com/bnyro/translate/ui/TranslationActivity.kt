@@ -79,7 +79,7 @@ open class TranslationActivity: ComponentActivity() {
     private fun handleIntentData() {
         getIntentText()?.let {
             translationModel.insertedText = it
-            translationModel.translateNow(this)
+            translationModel.translateNow()
         }
         // open links from Google Translate
         if (intent.data?.host == "translate.google.com") {
@@ -88,7 +88,7 @@ open class TranslationActivity: ComponentActivity() {
             translationModel.sourceLanguage = Language(source, source)
             translationModel.targetLanguage = Language(target, target)
             translationModel.insertedText = intent.data?.getQueryParameter("text").orEmpty()
-            translationModel.translateNow(this)
+            translationModel.translateNow()
         }
         if (intent.type?.startsWith("image/") != true) return
 

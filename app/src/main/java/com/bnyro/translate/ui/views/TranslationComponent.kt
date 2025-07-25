@@ -56,12 +56,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.bnyro.translate.R
+import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.getText
 import com.bnyro.translate.ext.hasText
+import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
+import com.bnyro.translate.util.TranslationEngine
 import kotlinx.coroutines.launch
 
 @Composable
@@ -117,7 +120,7 @@ fun TranslationComponent(
             ) {
                 viewModel.insertedText = it
                 hasClip = clipboard.hasText()
-                viewModel.enqueueTranslation(context)
+                viewModel.enqueueTranslation()
             }
 
             if (viewModel.translating) {
@@ -145,7 +148,7 @@ fun TranslationComponent(
                         coroutineScope.launch {
                             viewModel.insertedText = clipboard.getText().orEmpty()
                         }
-                        viewModel.enqueueTranslation(context)
+                        viewModel.enqueueTranslation()
                     }
 
                     Spacer(
@@ -180,23 +183,37 @@ fun TranslationComponent(
                     text = stringResource(R.string.translate),
                     icon = Icons.Default.Translate
                 ) {
-                    viewModel.translateNow(context)
+                    viewModel.translateNow()
                 }
             }
 
-            TranslationField(
-                translationModel = viewModel,
-                isSourceField = false,
-                text = viewModel.translation.translatedText,
-                language = viewModel.targetLanguage,
-                showLanguageSelector = showLanguageSelector,
-                setLanguage = {
-                    if (it == viewModel.sourceLanguage) {
-                        viewModel.sourceLanguage = viewModel.targetLanguage
+            if (!viewModel.simTranslationEnabled) {
+                TranslationFieldForTranslation(
+                    viewModel,
+                    viewModel.translation,
+                    showLanguageSelector
+                )
+            } else {
+                viewModel.translatedTexts.filter { it.value.translatedText.isNotEmpty() }
+                    .forEach { (engineName, translation) ->
+                        val engine = TranslationEngines.engines.find { it.name == engineName }
+
+                        Column(modifier = Modifier.padding(vertical = 6.dp)) {
+                            TranslationFieldForTranslation(
+                                viewModel,
+                                translation,
+                                showLanguageSelector,
+                                engine
+                            )
+                        }
+
+                        HorizontalDivider(
+                            modifier = Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .width(140.dp)
+                        )
                     }
-                    viewModel.targetLanguage = it
-                }
-            )
+            }
         }
 
         if (scrollState.value > 100) {
@@ -214,4 +231,31 @@ fun TranslationComponent(
             }
         }
     }
+}
+
+@Composable
+private fun TranslationFieldForTranslation(
+    viewModel: TranslationModel,
+    translation: Translation,
+    showLanguageSelector: Boolean,
+    engine: TranslationEngine? = null,
+) {
+    TranslationField(
+        translationModel = viewModel,
+        isSourceField = false,
+        text = translation.translatedText,
+        language = viewModel.targetLanguage,
+        showLanguageSelector = showLanguageSelector,
+        translationEngine = engine,
+        setLanguage = {
+            if (it == viewModel.sourceLanguage) {
+                viewModel.sourceLanguage = viewModel.targetLanguage
+            }
+            viewModel.targetLanguage = it
+        },
+        onEngineNameClick = {
+            viewModel.setCurrentEngine(engine!!)
+            viewModel.translation = translation
+        }
+    )
 }

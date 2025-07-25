@@ -24,10 +24,12 @@ import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.ContentCopy
@@ -43,20 +45,22 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.TranslationEngine
+import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.setText
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
+import com.bnyro.translate.util.TranslationEngine
 import kotlinx.coroutines.launch
 
 @Composable
@@ -65,9 +69,11 @@ fun TranslationField(
     isSourceField: Boolean,
     text: String,
     language: Language,
+    translationEngine: TranslationEngine? = null,
     setLanguage: (Language) -> Unit = {},
     showLanguageSelector: Boolean = false,
     translationEngine: TranslationEngine = translationModel.engine,
+    onEngineNameClick: () -> Unit = {},
     onTextChange: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -88,7 +94,7 @@ fun TranslationField(
         .inverseTranslatedTexts[translationEngine.name]?:Translation("")
 
     AnimatedVisibility(
-        visible = text.isNotEmpty() || !isSourceField,  // 翻譯欄位總是顯示，但源欄位只在有內容時顯示按鈕
+        visible = text.isNotEmpty() || !isSourceField,
         enter = expandVertically(),
         exit = shrinkVertically(),
         label = "text actions fade"
@@ -97,6 +103,23 @@ fun TranslationField(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            if (translationEngine != null) {
+                Text(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(12.dp))
+                        .clickable {
+                            onEngineNameClick()
+                        }
+                        .padding(horizontal = 10.dp, vertical = 6.dp),
+                    text = translationEngine.name
+                )
+            }
+
+            if (translationEngine != null && showLanguageSelector) {
+                // visual separator
+                Text("-")
+            }
+
             if (showLanguageSelector) {
                 LanguageSelector(
                     translationModel.availableLanguages,
@@ -106,7 +129,7 @@ fun TranslationField(
                     useElevatedButton = false
                 ) {
                     setLanguage(it)
-                    translationModel.translateNow(context)
+                    translationModel.translateNow()
                 }
             }
 
