@@ -92,4 +92,5 @@
     <string name="invalid_selection_area">Неважећа област избора!</string>
     <string name="translation_api">API превода</string>
     <string name="translation_engine">Извор превода</string>
+    <string name="translation_error_hint">Изгледа да изабрани извор превођења не ради. Изаберите други у подешавањима.</string>
 </resources>
