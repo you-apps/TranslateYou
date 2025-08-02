@@ -81,4 +81,5 @@
     <string name="invalid_selection_area">Yanlış seçim sahəsi!</string>
     <string name="translation_engine">Tərcümə mühərriki</string>
     <string name="translation_api">Tərcümə API</string>
+    <string name="translation_error_hint">Seçilən tərcümə mühərriki işləmir. Lütfən, tənzimləmədə fərqli birini seçin.</string>
 </resources>
