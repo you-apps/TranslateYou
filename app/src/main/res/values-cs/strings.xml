@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Nesprávná oblast výběru!</string>
     <string name="translation_api">API překladu</string>
     <string name="translation_engine">Překladač</string>
+    <string name="translation_error_hint">Použitý překladatelský modul nefunguje. Vyberte prosím jiný v nastavení.</string>
 </resources>
