@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Zona selectată nevalidă!</string>
     <string name="translation_api">API de traducere</string>
     <string name="translation_engine">Motor de traducere</string>
+    <string name="translation_error_hint">Motorul de traducere selectat nu pare să funcționeze. Selectează unul diferit în setări.</string>
 </resources>
