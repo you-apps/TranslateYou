@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Área de seleção inválida!</string>
     <string name="translation_engine">Mecanismo de tradução</string>
     <string name="translation_api">API de tradução</string>
+    <string name="translation_error_hint">O mecanismo de tradução selecionado não parece funcionar. Selecione um diferente nas configurações.</string>
 </resources>
