@@ -12,7 +12,7 @@
     <string name="api_key">API ключ</string>
     <string name="translate_to">Преведи на</string>
     <string name="skip_similar_entries">Пропусни подобни записи</string>
-    <string name="history_summary">Запазва последните преведени текстове</string>
+    <string name="history_summary">Запазване на последните преведени текстове</string>
     <string name="additional_info">Допълнителна информация</string>
     <string name="translate">Преведи</string>
     <string name="clear_history">Изчисти историята</string>
