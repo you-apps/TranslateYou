@@ -12,7 +12,7 @@
     <string name="api_key">API ключ</string>
     <string name="translate_to">Преведи на</string>
     <string name="skip_similar_entries">Пропусни подобни записи</string>
-    <string name="history_summary">Запазва последните преведени текстове</string>
+    <string name="history_summary">Запазване на последните преведени текстове</string>
     <string name="additional_info">Допълнителна информация</string>
     <string name="translate">Преведи</string>
     <string name="clear_history">Изчисти историята</string>
@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Невалидна зона за избор!</string>
     <string name="translation_engine">Преводачески двигател</string>
     <string name="translation_api">API превод</string>
+    <string name="translation_error_hint">Избраният двигател за превод изглежда не работи. Моля, изберете друг в настройките.</string>
 </resources>
