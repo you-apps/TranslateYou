@@ -68,7 +68,7 @@ class KagiEngine : TranslationEngine(
             sourceLang = sourceOrAuto(source),
             targetLang = target,
             skipDefinition = !fetchDefinitions,
-            model = if (useBestModel) "best" else null
+            model = if (useBestModel) "best" else "standard"
         )
 
         val response = api.translate(

@@ -26,5 +26,5 @@ data class KagiTranslationRequest(
     @SerialName("source_lang") val sourceLang: String,
     @SerialName("target_lang") val targetLang: String,
     @SerialName("skip_definition") val skipDefinition: Boolean = false,
-    val model: String? = null
+    val model: String = "standard" // Default to "standard", can be overridden to "best"
 ) 
