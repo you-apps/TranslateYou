@@ -19,8 +19,11 @@ package com.bnyro.translate.ui.views
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
 import android.speech.SpeechRecognizer
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -28,6 +31,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -46,6 +50,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.ImageCropDialog
@@ -55,6 +61,7 @@ import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ImageHelper
 import com.bnyro.translate.util.SpeechHelper
 import com.bnyro.translate.util.SpeechResultContract
+import java.io.File
 import java.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -77,6 +84,21 @@ fun TopBar(
                 bitmapToEdit = ImageHelper.getImage(context, uri ?: return@launch)
             }
         }
+    val imageCapturePath = File.createTempFile("translate", null, context.externalCacheDir)
+    imageCapturePath.deleteOnExit()
+    val imageCaptureUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", imageCapturePath)
+    val imageCapture = rememberLauncherForActivityResult(object : ActivityResultContracts.TakePicture() {
+        override fun createIntent(context: Context, input: Uri): Intent {
+            return super.createIntent(context, input).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+    }) { success ->
+        if (success) {
+            scope.launch(Dispatchers.IO) {
+                bitmapToEdit = ImageHelper.getImage(context, imageCaptureUri ?: return@launch)
+                imageCapturePath.delete()
+            }
+        }
+    }
     val speechRecognizer = rememberLauncherForActivityResult(SpeechResultContract()) {
         if (it != null) {
             mainModel.insertedText = it
@@ -114,6 +136,14 @@ fun TopBar(
                     } catch (e: Exception) {
                         Log.e(this::javaClass.name, e.stackTraceToString())
                     }
+                }
+            }
+
+            AnimatedVisibility(mainModel.insertedText.isEmpty()) {
+                StyledIconButton(
+                    imageVector = Icons.Default.CameraAlt
+                ) {
+                    imageCapture.launch(imageCaptureUri)
                 }
             }
 
