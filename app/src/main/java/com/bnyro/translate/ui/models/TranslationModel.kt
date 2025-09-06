@@ -48,6 +48,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.encodeToString
+import androidx.compose.runtime.mutableStateMapOf
+import com.bnyro.translate.ext.toastFromMainThread
 
 class TranslationModel : ViewModel() {
     var engine by mutableStateOf(getCurrentEngine())
@@ -71,10 +74,9 @@ class TranslationModel : ViewModel() {
 
     var translation by mutableStateOf(Translation(""))
 
-    var translatedTexts by mutableStateOf(
-        TranslationEngines.engines
-            .associate { it.name to Translation("") }
-    )
+    var translatedTexts = mutableStateMapOf<String, Translation>()
+    
+    var inverseTranslatedTexts = mutableStateMapOf<String, Translation>()
 
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
@@ -86,6 +88,15 @@ class TranslationModel : ViewModel() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
+
+    fun detectedLanguageMostly(): String? {
+        val detectedLanguageList = translatedTexts.filter {
+            it.value.detectedLanguage != null
+        }
+        return detectedLanguageList.maxByOrNull {
+            it.value.detectedLanguage ?: ""
+        }?.value?.detectedLanguage
+    }
 
     fun mostDetectedLanguage(): Language? {
         if (!simTranslationEnabled) return availableLanguages.find { it.code == translation.detectedLanguage }
@@ -133,8 +144,8 @@ class TranslationModel : ViewModel() {
         translating = true
 
         // reset translations
-        translatedTexts = TranslationEngines.engines
-            .associate { it.name to Translation("") }
+        translatedTexts.clear()
+        translatedTexts.putAll(TranslationEngines.engines.associate { it.name to Translation("") })
 
         viewModelScope.launch(Dispatchers.IO) {
             val translation = try {
@@ -147,15 +158,13 @@ class TranslationModel : ViewModel() {
                 Log.e("error", e.message.toString())
                 _apiError.emit(e)
                 translating = false
-                return@launch
+                Translation("")
             }
             translating = false
 
             if (insertedText.isNotEmpty()) {
                 this@TranslationModel.translation = translation
-                 translatedTexts = translatedTexts.toMutableMap().also {
-                     it[engine.name] = translation
-                 }.toMap()
+                 translatedTexts[engine.name] = translation
                 saveToHistory()
             }
         }
@@ -177,9 +186,21 @@ class TranslationModel : ViewModel() {
                             sourceLanguage.code,
                             targetLanguage.code
                         )
-                        translatedTexts = translatedTexts.toMutableMap().also { translations ->
-                            translations[it.name] = translation
-                        }.toMap()
+
+                        //if sourceLanguage "auto" use detectedLanguage
+                        val sourceLanguageCode = if(sourceLanguage.code == ""){
+                            val detectedLanguage = translatedTexts[it.name]?.detectedLanguage
+                            if (detectedLanguage == "" || detectedLanguage == null){
+                                detectedLanguageMostly()
+                            }else{ detectedLanguage }?:""
+                        } else { sourceLanguage.code }
+                        inverseTranslatedTexts[it.name] = it.translate(
+                            translation.translatedText,
+                            targetLanguage.code,
+                            sourceLanguageCode
+                        )
+
+                        translatedTexts[it.name] = translation
                     }
                 }
             }
