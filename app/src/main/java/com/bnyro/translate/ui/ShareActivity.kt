@@ -94,7 +94,8 @@ class ShareActivity : TranslationActivity() {
                     TranslationComponent(
                         modifier = Modifier.fillMaxSize(),
                         viewModel = translationModel,
-                        showLanguageSelector = true
+                        showLanguageSelector = true,
+                        largeTextFields = false
                     ) { e ->
                         context.toastFromMainThread(e.localizedMessage.orEmpty())
                     }

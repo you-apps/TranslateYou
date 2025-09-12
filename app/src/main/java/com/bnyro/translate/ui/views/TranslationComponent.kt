@@ -72,6 +72,7 @@ fun TranslationComponent(
     modifier: Modifier,
     viewModel: TranslationModel,
     showLanguageSelector: Boolean = false,
+    largeTextFields: Boolean = true,
     onTranslationError: (e: Exception) -> Unit
 ) {
     val context = LocalContext.current
@@ -111,6 +112,7 @@ fun TranslationComponent(
                     }
                 ),
                 showLanguageSelector = showLanguageSelector,
+                largeTextFields = largeTextFields,
                 setLanguage = {
                     if (it == viewModel.targetLanguage) {
                         viewModel.targetLanguage = viewModel.sourceLanguage

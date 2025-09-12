@@ -34,9 +34,7 @@ fun StyledTextField(
     text: String,
     placeholder: String? = null,
     readOnly: Boolean = false,
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge.copy(
-        fontSize = MaterialTheme.typography.bodyLarge.fontSize * 1.3
-    ),
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
     textColor: Color = MaterialTheme.typography.bodyLarge.color,
     onValueChange: (String) -> Unit = {}
 ) {

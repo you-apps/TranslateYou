@@ -67,6 +67,7 @@ fun TranslationField(
     translationEngine: TranslationEngine? = null,
     setLanguage: (Language) -> Unit = {},
     showLanguageSelector: Boolean = false,
+    largeTextFields: Boolean = true,
     onEngineNameClick: () -> Unit = {},
     onTextChange: (String) -> Unit = {}
 ) {
@@ -179,12 +180,15 @@ fun TranslationField(
         text = text,
         placeholder = if (isSourceField) stringResource(R.string.enter_text) else null,
         readOnly = !isSourceField,
+        textStyle = MaterialTheme.typography.bodyLarge.copy(
+            fontSize = MaterialTheme.typography.bodyLarge.fontSize * if (largeTextFields) 1.3f else 0.9f
+        ),
         textColor = if (
             isSourceField && charPref.isNotEmpty() && text.length >= charPref.toInt()
         ) {
             MaterialTheme.colorScheme.error
         } else {
-            MaterialTheme.typography.bodyMedium.color
+            MaterialTheme.typography.bodyLarge.color
         }
     ) {
         onTextChange(it)
