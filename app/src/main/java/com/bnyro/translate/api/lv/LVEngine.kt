@@ -24,7 +24,6 @@ import com.bnyro.translate.obj.Definition
 import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.RetrofitHelper
 import com.bnyro.translate.util.TranslationEngine
-import java.io.File
 
 class LVEngine : TranslationEngine(
     name = "Lingva",
@@ -70,12 +69,7 @@ class LVEngine : TranslationEngine(
         )
     }
 
-    override suspend fun getAudioFile(lang: String, query: String): File? {
-        val byteArray = api.getAudio(lang, query).toByteArray()
-        if (byteArray.isEmpty()) return null
-
-        return File.createTempFile("audio", ".mp3").apply {
-            writeBytes(byteArray)
-        }
+    override suspend fun getAudioFile(lang: String, query: String): ByteArray? {
+        return api.getAudio(lang, query).toByteArray()
     }
 }

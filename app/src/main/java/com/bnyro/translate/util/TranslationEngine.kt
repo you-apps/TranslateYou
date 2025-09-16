@@ -76,7 +76,7 @@ abstract class TranslationEngine(
         ).toHttpUrlOrNull()?.toString() ?: defaultUrl
     }
 
-    open suspend fun getAudioFile(lang: String, query: String): File? = null
+    open suspend fun getAudioFile(lang: String, query: String): ByteArray? = null
 
     fun getApiKey() = Preferences.get(
         apiPrefKey,

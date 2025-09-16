@@ -89,6 +89,17 @@ class TranslationModel : ViewModel() {
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
 
+    /**
+     * A cache of audio data that contains at most [MAX_AUDIO_CACHE_SIZE] elements
+     *
+     * The key is the hash of the triple (TranslationEngine, LanguageCode, Text)
+     */
+    private val audioFileCache = object : LinkedHashMap<Int, ByteArray>() {
+        override fun removeEldestEntry(eldest: Map.Entry<Int?, ByteArray?>?): Boolean {
+            return size > MAX_AUDIO_CACHE_SIZE
+        }
+    }
+
     fun mostDetectedLanguage(): Language? {
         if (!simTranslationEnabled) return availableLanguages.find { it.code == translation.detectedLanguage }
 
@@ -345,13 +356,26 @@ class TranslationModel : ViewModel() {
         releaseMediaPlayer()
 
         viewModelScope.launch {
-            audioFile = runCatching {
-                withContext(Dispatchers.IO) {
-                    engine.getAudioFile(languageCode, text)
-                }
-            }.getOrNull()
-            val audioFile = audioFile ?: return@launch
+            val requestId = Triple(engine, languageCode, text).hashCode()
 
+            val rawAudioBytes =  if (audioFileCache.containsKey(requestId)) {
+                audioFileCache[requestId]!!
+            } else {
+                runCatching {
+                    withContext(Dispatchers.IO) {
+                        engine.getAudioFile(languageCode, text)
+                    }
+                }.getOrNull() ?: return@launch
+            }
+            audioFileCache[requestId] = rawAudioBytes
+
+            audioFile = withContext(Dispatchers.IO) {
+                File.createTempFile("tts-voice", ".mp3")
+            }.apply {
+                writeBytes(rawAudioBytes)
+            }
+
+            val audioFile = audioFile ?: return@launch
             mediaPlayer = MediaPlayer().apply {
                 setOnCompletionListener {
                     releaseMediaPlayer()
@@ -372,6 +396,10 @@ class TranslationModel : ViewModel() {
         audioFile = null
         mediaPlayer?.release()
         mediaPlayer = null
+    }
+
+    companion object {
+        private const val MAX_AUDIO_CACHE_SIZE = 10
     }
 }
 
