@@ -18,11 +18,13 @@
 package com.bnyro.translate.ui
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
 import com.bnyro.translate.ui.nav.NavigationHost
 
 class MainActivity : TranslationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         showContent {

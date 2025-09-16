@@ -20,6 +20,7 @@ package com.bnyro.translate.ui
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,6 +32,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -43,12 +46,15 @@ import com.bnyro.translate.ui.views.TranslationComponent
 
 class ShareActivity : TranslationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         showContent {
             val context = LocalContext.current
             val configuration = LocalConfiguration.current
-            val screenHeight = configuration.screenHeightDp.dp
+            val screenHeight = with(LocalDensity.current) {
+                LocalWindowInfo.current.containerSize.height.toDp()
+            }
 
             LaunchedEffect(Unit) {
                 translationModel.refresh()
