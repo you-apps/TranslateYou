@@ -28,7 +28,7 @@ import java.io.File
 
 class LVEngine : TranslationEngine(
     name = "Lingva",
-    defaultUrl = "https://lingva.lunar.icu",
+    defaultUrl = "https://lingva.ml",
     urlModifiable = true,
     apiKeyState = ApiKeyState.DISABLED,
     autoLanguageCode = "auto",
