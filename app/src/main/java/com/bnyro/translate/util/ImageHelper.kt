@@ -21,8 +21,12 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Paint
+import androidx.exifinterface.media.ExifInterface
 import android.net.Uri
+import android.os.Build
+import androidx.core.graphics.createBitmap
 
 data class ImageTransform(
     val width: Int,
@@ -33,17 +37,68 @@ data class ImageTransform(
 
 object ImageHelper {
     fun getImage(context: Context, uri: Uri): Bitmap? {
-        return context.contentResolver.openInputStream(uri)?.use {
+        val bitmap = context.contentResolver.openInputStream(uri)?.use {
             BitmapFactory.decodeStream(it)
+        } ?: return null
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val `is` = context.contentResolver.openInputStream(uri) ?: return bitmap
+            val exifMetadata =
+                ExifInterface(`is`).getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_NORMAL
+                )
+            return rotateBitmap(bitmap, exifMetadata) ?: bitmap
+        }
+
+        return bitmap
+    }
+
+    fun rotateBitmap(bitmap: Bitmap, orientation: Int): Bitmap? {
+        val matrix: Matrix = Matrix()
+        when (orientation) {
+            ExifInterface.ORIENTATION_NORMAL -> return bitmap
+            ExifInterface.ORIENTATION_FLIP_HORIZONTAL -> matrix.setScale(-1F, 1F)
+            ExifInterface.ORIENTATION_ROTATE_180 -> matrix.setRotate(180F)
+            ExifInterface.ORIENTATION_FLIP_VERTICAL -> {
+                matrix.setRotate(180F)
+                matrix.postScale(-1F, 1F)
+            }
+
+            ExifInterface.ORIENTATION_TRANSPOSE -> {
+                matrix.setRotate(90F)
+                matrix.postScale(-1F, 1F)
+            }
+
+            ExifInterface.ORIENTATION_ROTATE_90 -> matrix.setRotate(90F)
+            ExifInterface.ORIENTATION_TRANSVERSE -> {
+                matrix.setRotate(-90F)
+                matrix.postScale(-1F, 1F)
+            }
+
+            ExifInterface.ORIENTATION_ROTATE_270 -> matrix.setRotate(-90F)
+            else -> return bitmap
+        }
+        try {
+            val bmRotated = Bitmap.createBitmap(
+                bitmap,
+                0,
+                0,
+                bitmap.width,
+                bitmap.height,
+                matrix,
+                true
+            )
+            bitmap.recycle()
+            return bmRotated
+        } catch (e: OutOfMemoryError) {
+            e.printStackTrace()
+            return null
         }
     }
 
     fun setAlpha(originalBitmap: Bitmap, alpha: Int): Bitmap {
-        val newBitmap = Bitmap.createBitmap(
-            originalBitmap.getWidth(),
-            originalBitmap.getHeight(),
-            Bitmap.Config.ARGB_8888
-        )
+        val newBitmap = createBitmap(originalBitmap.width, originalBitmap.height)
         val canvas = Canvas(newBitmap)
         val paint = Paint().apply { this.alpha = alpha }
         canvas.drawBitmap(originalBitmap, 0f, 0f, paint)

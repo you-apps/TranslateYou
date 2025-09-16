@@ -17,12 +17,14 @@
 
 package com.bnyro.translate.ui.components
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -88,7 +90,7 @@ fun ImageCropDialog(
                 title = { Text(stringResource(R.string.image_translation)) },
                 navigationIcon = {
                     StyledIconButton(
-                        imageVector = Icons.Default.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         onClick = { onDismissRequest() }
                     )
                 },
@@ -123,6 +125,7 @@ fun ImageCropDialog(
     }
 }
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun CropImageView(
     modifier: Modifier = Modifier,
