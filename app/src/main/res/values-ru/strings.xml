@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Выбранная область недействительна!</string>
     <string name="translation_engine">Механизм перевода</string>
     <string name="translation_api">API перевода</string>
+    <string name="translation_error_hint">Похоже что выбранный движок перевода не работает. Пожалуйста, выберите другой в настройках.</string>
 </resources>

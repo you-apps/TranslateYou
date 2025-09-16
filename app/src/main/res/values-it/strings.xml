@@ -79,4 +79,7 @@
     <string name="clear_favorites">Cancella i preferiti</string>
     <string name="clear">Pulisci</string>
     <string name="invalid_selection_area">Area di selezione non valida!</string>
+    <string name="translation_error_hint">Il motore di traduzione selezionato non sembra funzionare. Si prega di selezionarne un altro nelle impostazioni.</string>
+    <string name="translation_engine">Motore di traduzione</string>
+    <string name="translation_api">API di traduzione</string>
 </resources>

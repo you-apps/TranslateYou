@@ -80,4 +80,5 @@
     <string name="invalid_selection_area">Érvénytelen kijelölési terület!</string>
     <string name="translation_engine">Fordítási motor</string>
     <string name="translation_api">Fordítási API</string>
+    <string name="translation_error_hint">Úgy tűnik, hogy a kiválasztott fordítási motor nem működik. Válasszon egy másikat a beállításokban.</string>
 </resources>
