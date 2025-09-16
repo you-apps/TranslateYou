@@ -66,6 +66,7 @@ import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.LanguageSelectionComponent
 import com.bnyro.translate.ui.models.TranslationModel
+import com.bnyro.translate.ui.models.UnsupportedLanguageException
 import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.ui.views.AdditionalInfoComponent
 import com.bnyro.translate.ui.views.TopBar
@@ -139,18 +140,32 @@ fun TranslationPage(
 
         fun onTranslationError(apiError: Exception) {
             scope.launch {
-                if (apiError is HttpException) {
-                    val result = snackbarHostState.showSnackbar(
-                        message = context.getString(R.string.translation_error_hint) + " (${apiError.message.orEmpty()})",
-                        actionLabel = context.getString(R.string.options),
-                        duration = SnackbarDuration.Short
-                    )
-                    when (result) {
-                        SnackbarResult.ActionPerformed -> navHostController.navigate(Destination.Settings.route)
-                        SnackbarResult.Dismissed -> Unit
+                when (apiError) {
+                    is HttpException -> {
+                        val result = snackbarHostState.showSnackbar(
+                            message = context.getString(R.string.translation_error_hint) + " (${apiError.message.orEmpty()})",
+                            actionLabel = context.getString(R.string.options),
+                            duration = SnackbarDuration.Short
+                        )
+                        when (result) {
+                            SnackbarResult.ActionPerformed -> navHostController.navigate(Destination.Settings.route)
+                            SnackbarResult.Dismissed -> Unit
+                        }
                     }
-                } else {
-                    context.toastFromMainThread(apiError.localizedMessage.orEmpty())
+
+                    is UnsupportedLanguageException -> {
+                        context.toastFromMainThread(
+                            context.getString(
+                                R.string.unsupported_language,
+                                apiError.language.takeIf { !it.isAutoLanguage }?.name
+                                    ?: context.getString(R.string.auto)
+                            )
+                        )
+                    }
+
+                    else -> {
+                        context.toastFromMainThread(apiError.localizedMessage.orEmpty())
+                    }
                 }
             }
         }

@@ -45,9 +45,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -133,6 +131,23 @@ class TranslationModel : ViewModel() {
             return
         }
         saveSelectedLanguages()
+
+        // engine doesn't support automatic source language detection or the provided language
+        if (sourceLanguage.isAutoLanguage && engine.autoLanguageCode == null ||
+            availableLanguages.none { it.code == sourceLanguage.code }) {
+            viewModelScope.launch {
+                _apiError.emit(UnsupportedLanguageException(sourceLanguage))
+            }
+            return
+        }
+
+        // target language is not supported
+        if (availableLanguages.none { it.code == targetLanguage.code }) {
+            viewModelScope.launch {
+                _apiError.emit(UnsupportedLanguageException(targetLanguage))
+            }
+            return
+        }
 
         translating = true
 
@@ -359,3 +374,5 @@ class TranslationModel : ViewModel() {
         mediaPlayer = null
     }
 }
+
+class UnsupportedLanguageException(val language: Language): Exception()

@@ -47,7 +47,7 @@ class DeeplAuthenticatedEngine : TranslationEngine(
 
     private val apiKeyString get() = "DeepL-Auth-Key " + getApiKey()
 
-    override suspend fun getLanguages(): List<Language> = listOf(Language("", "Auto")) +
+    override suspend fun getLanguages(): List<Language> =
             api.getLanguages(
                 apiKeyString
             ).map {

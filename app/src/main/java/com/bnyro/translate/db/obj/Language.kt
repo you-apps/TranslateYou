@@ -19,6 +19,7 @@ package com.bnyro.translate.db.obj
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
@@ -29,6 +30,9 @@ data class Language(
     val code: String = "",
     @ColumnInfo val name: String = ""
 ) {
+    @Ignore
+    val isAutoLanguage = code.isEmpty()
+
     override fun equals(other: Any?): Boolean {
         (other as? Language)?.let { otherLang ->
             return otherLang.name.lowercase() == this.name.lowercase() ||
