@@ -44,7 +44,9 @@ import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -79,8 +81,10 @@ class TranslationModel : ViewModel() {
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
     var translating by mutableStateOf(false)
-    private val _apiError = MutableStateFlow<Exception?>(null)
-    val apiError = _apiError.asStateFlow()
+
+    // make sure to not display error messages multiple times by setting replay to 0
+    private val _apiError = MutableSharedFlow<Exception?>(replay = 0)
+    val apiError = _apiError.asSharedFlow()
 
     private var simTranslationJobs = emptyList<Job>()
 
