@@ -48,10 +48,10 @@
         <activity
             android:name=".ui.ShareActivity"
             android:configChanges="orientation"
+            android:excludeFromRecents="true"
             android:exported="true"
             android:theme="@style/Theme.Material3.DayNight.Dialog"
-            android:windowSoftInputMode="adjustResize"
-            android:excludeFromRecents="true">
+            android:windowSoftInputMode="adjustResize">
 
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -79,12 +79,14 @@
             <!-- Support for opening Google Translate links -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"/>
-                <data android:scheme="http"/>
-                <data android:host="translate.google.com"/>
-                <data android:path="/"/>
+
+                <data android:scheme="https" />
+                <data android:scheme="http" />
+                <data android:host="translate.google.com" />
+                <data android:path="/" />
             </intent-filter>
 
         </activity>
@@ -94,6 +96,10 @@
     <queries>
         <intent>
             <action android:name="android.speech.RecognitionService" />
+        </intent>
+
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
     </queries>
 </manifest>
