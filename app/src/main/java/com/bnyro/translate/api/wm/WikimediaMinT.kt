@@ -26,7 +26,7 @@ import retrofit2.http.Path
 
 interface WikimediaMinT {
     @GET("api/languages")
-    suspend fun getLanguages(): Map<String, Any>
+    suspend fun getLanguages(): Map<String, Map<String, List<String>>>
 
     @POST("api/translate/{source}/{target}")
     suspend fun translate(
