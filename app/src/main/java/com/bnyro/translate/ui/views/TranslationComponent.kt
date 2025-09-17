@@ -193,7 +193,8 @@ fun TranslationComponent(
                 TranslationFieldForTranslation(
                     viewModel,
                     viewModel.translation,
-                    showLanguageSelector
+                    showLanguageSelector = showLanguageSelector,
+                    largeTextFields = largeTextFields
                 )
             } else {
                 viewModel.translatedTexts.filter { it.value.translatedText.isNotEmpty() }
@@ -204,8 +205,9 @@ fun TranslationComponent(
                             TranslationFieldForTranslation(
                                 viewModel,
                                 translation,
-                                showLanguageSelector,
-                                engine
+                                showLanguageSelector = showLanguageSelector,
+                                largeTextFields = largeTextFields,
+                                engine = engine
                             )
                         }
 
@@ -240,11 +242,13 @@ private fun TranslationFieldForTranslation(
     viewModel: TranslationModel,
     translation: Translation,
     showLanguageSelector: Boolean,
+    largeTextFields: Boolean,
     engine: TranslationEngine? = null,
 ) {
     TranslationField(
         translationModel = viewModel,
         isSourceField = false,
+        largeTextFields = largeTextFields,
         text = translation.translatedText,
         language = viewModel.targetLanguage,
         showLanguageSelector = showLanguageSelector,
