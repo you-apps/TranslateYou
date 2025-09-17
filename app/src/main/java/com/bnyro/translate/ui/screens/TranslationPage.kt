@@ -66,14 +66,12 @@ import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.obj.MenuItemData
 import com.bnyro.translate.ui.components.LanguageSelectionComponent
 import com.bnyro.translate.ui.models.TranslationModel
-import com.bnyro.translate.ui.models.UnsupportedLanguageException
 import com.bnyro.translate.ui.nav.Destination
 import com.bnyro.translate.ui.views.AdditionalInfoComponent
 import com.bnyro.translate.ui.views.TopBar
 import com.bnyro.translate.ui.views.TranslationComponent
 import com.bnyro.translate.util.Preferences
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 
 private val TRANSLATION_CARD_ELEVATION = 1.dp
 
@@ -138,35 +136,22 @@ fun TranslationPage(
     ) { pV ->
         val orientation = LocalConfiguration.current.orientation
 
-        fun onTranslationError(apiError: Exception) {
-            scope.launch {
-                when (apiError) {
-                    is HttpException -> {
-                        val result = snackbarHostState.showSnackbar(
-                            message = context.getString(R.string.translation_error_hint) + " (${apiError.message.orEmpty()})",
-                            actionLabel = context.getString(R.string.options),
-                            duration = SnackbarDuration.Short
-                        )
-                        when (result) {
-                            SnackbarResult.ActionPerformed -> navHostController.navigate(Destination.Settings.route)
-                            SnackbarResult.Dismissed -> Unit
-                        }
+        fun onTranslationError(errorMessage: String, important: Boolean) {
+            if (important) {
+                scope.launch {
+                    val result = snackbarHostState.showSnackbar(
+                        message = errorMessage,
+                        actionLabel = context.getString(R.string.options),
+                        duration = SnackbarDuration.Short
+                    )
+                    when (result) {
+                        SnackbarResult.ActionPerformed -> navHostController.navigate(Destination.Settings.route)
+                        SnackbarResult.Dismissed -> Unit
                     }
 
-                    is UnsupportedLanguageException -> {
-                        context.toastFromMainThread(
-                            context.getString(
-                                R.string.unsupported_language,
-                                apiError.language.takeIf { !it.isAutoLanguage }?.name
-                                    ?: context.getString(R.string.auto)
-                            )
-                        )
-                    }
-
-                    else -> {
-                        context.toastFromMainThread(apiError.localizedMessage.orEmpty())
-                    }
                 }
+            } else {
+                context.toastFromMainThread(errorMessage)
             }
         }
 
@@ -206,7 +191,7 @@ fun TranslationPage(
 fun MainTranslationArea(
     modifier: Modifier,
     viewModel: TranslationModel,
-    onTranslationError: (e: Exception) -> Unit
+    onTranslationError: (e: String, important: Boolean) -> Unit
 ) {
     val view = LocalView.current
 

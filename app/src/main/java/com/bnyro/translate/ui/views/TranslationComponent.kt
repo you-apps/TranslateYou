@@ -63,9 +63,11 @@ import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
+import com.bnyro.translate.ui.models.UnsupportedLanguageException
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TranslationEngine
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 @Composable
 fun TranslationComponent(
@@ -73,7 +75,7 @@ fun TranslationComponent(
     viewModel: TranslationModel,
     showLanguageSelector: Boolean = false,
     largeTextFields: Boolean = true,
-    onTranslationError: (e: Exception) -> Unit
+    onTranslationError: (e: String, important: Boolean) -> Unit
 ) {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
@@ -89,7 +91,25 @@ fun TranslationComponent(
 
     LaunchedEffect(Unit) {
         viewModel.apiError.collect { apiError ->
-            if (apiError != null) onTranslationError(apiError)
+            when (apiError) {
+                is HttpException -> {
+                    onTranslationError(context.getString(R.string.translation_error_hint) + " (${apiError.message.orEmpty()})", true)
+                }
+
+                is UnsupportedLanguageException -> {
+                    onTranslationError(context.getString(
+                        R.string.unsupported_language,
+                        apiError.language.takeIf { !it.isAutoLanguage }?.name
+                            ?: context.getString(R.string.auto)
+                    ), false)
+                }
+
+                null -> Unit
+
+                else -> {
+                    onTranslationError(apiError.localizedMessage.orEmpty(), false)
+                }
+            }
         }
     }
 

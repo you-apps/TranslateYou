@@ -403,4 +403,5 @@ class TranslationModel : ViewModel() {
     }
 }
 
-class UnsupportedLanguageException(val language: Language): Exception()
+class UnsupportedLanguageException(val language: Language):
+    Exception("Language $language not supported by currently selected translation engine")

@@ -102,8 +102,8 @@ class ShareActivity : TranslationActivity() {
                         viewModel = translationModel,
                         showLanguageSelector = true,
                         largeTextFields = false
-                    ) { e ->
-                        context.toastFromMainThread(e.localizedMessage.orEmpty())
+                    ) { e, important ->
+                        context.toastFromMainThread(e)
                     }
                 }
             )
