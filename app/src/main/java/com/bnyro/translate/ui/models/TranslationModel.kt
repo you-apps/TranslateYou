@@ -144,8 +144,9 @@ class TranslationModel : ViewModel() {
         saveSelectedLanguages()
 
         // engine doesn't support automatic source language detection or the provided language
-        if (sourceLanguage.isAutoLanguage && engine.autoLanguageCode == null ||
-            availableLanguages.none { it.code == sourceLanguage.code }) {
+        if ((sourceLanguage.isAutoLanguage && engine.autoLanguageCode == null) ||
+            (!sourceLanguage.isAutoLanguage && availableLanguages.none { it.code == sourceLanguage.code })
+        ) {
             viewModelScope.launch {
                 _apiError.emit(UnsupportedLanguageException(sourceLanguage))
             }
@@ -183,9 +184,9 @@ class TranslationModel : ViewModel() {
 
             if (insertedText.isNotEmpty()) {
                 this@TranslationModel.translation = translation
-                 translatedTexts = translatedTexts.toMutableMap().also {
-                     it[engine.name] = translation
-                 }.toMap()
+                translatedTexts = translatedTexts.toMutableMap().also {
+                    it[engine.name] = translation
+                }.toMap()
                 saveToHistory()
             }
         }
@@ -278,7 +279,10 @@ class TranslationModel : ViewModel() {
     }
 
     private fun getCurrentEngine() = TranslationEngines.engines.find {
-        it.name == Preferences.get(Preferences.selectedEngineKey, TranslationEngines.engines.first().name)
+        it.name == Preferences.get(
+            Preferences.selectedEngineKey,
+            TranslationEngines.engines.first().name
+        )
     } ?: TranslationEngines.engines.first()
 
     fun setCurrentEngine(engine: TranslationEngine) {
@@ -358,7 +362,7 @@ class TranslationModel : ViewModel() {
         viewModelScope.launch {
             val requestId = Triple(engine, languageCode, text).hashCode()
 
-            val rawAudioBytes =  if (audioFileCache.containsKey(requestId)) {
+            val rawAudioBytes = if (audioFileCache.containsKey(requestId)) {
                 audioFileCache[requestId]!!
             } else {
                 runCatching {
@@ -403,5 +407,5 @@ class TranslationModel : ViewModel() {
     }
 }
 
-class UnsupportedLanguageException(val language: Language):
+class UnsupportedLanguageException(val language: Language) :
     Exception("Language $language not supported by currently selected translation engine")
