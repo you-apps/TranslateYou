@@ -136,7 +136,7 @@ class TranslationModel : ViewModel() {
         )
     }
 
-    fun translateNow() {
+    fun translateNow(cancelOnUnsupportedLanguages: Boolean = true) {
         if (insertedText.isEmpty() || targetLanguage == sourceLanguage) {
             translation = Translation("")
             return
@@ -144,21 +144,23 @@ class TranslationModel : ViewModel() {
         saveSelectedLanguages()
 
         // engine doesn't support automatic source language detection or the provided language
-        if ((sourceLanguage.isAutoLanguage && engine.autoLanguageCode == null) ||
-            (!sourceLanguage.isAutoLanguage && availableLanguages.none { it.code == sourceLanguage.code })
-        ) {
-            viewModelScope.launch {
-                _apiError.emit(UnsupportedLanguageException(sourceLanguage))
+        if (cancelOnUnsupportedLanguages) {
+            if ((sourceLanguage.isAutoLanguage && engine.autoLanguageCode == null) ||
+                (!sourceLanguage.isAutoLanguage && availableLanguages.none { it.code == sourceLanguage.code })
+            ) {
+                viewModelScope.launch {
+                    _apiError.emit(UnsupportedLanguageException(sourceLanguage))
+                }
+                return
             }
-            return
-        }
 
-        // target language is not supported
-        if (availableLanguages.none { it.code == targetLanguage.code }) {
-            viewModelScope.launch {
-                _apiError.emit(UnsupportedLanguageException(targetLanguage))
+            // target language is not supported
+            if (availableLanguages.none { it.code == targetLanguage.code }) {
+                viewModelScope.launch {
+                    _apiError.emit(UnsupportedLanguageException(targetLanguage))
+                }
+                return
             }
-            return
         }
 
         translating = true

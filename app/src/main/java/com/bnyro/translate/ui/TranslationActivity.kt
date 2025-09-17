@@ -79,7 +79,9 @@ open class TranslationActivity: ComponentActivity() {
     private fun handleIntentData() {
         getIntentText()?.let {
             translationModel.insertedText = it
-            translationModel.translateNow()
+            // ignore language errors because they might be loaded async at the same time,
+            // so no languages are loaded yet
+            translationModel.translateNow(cancelOnUnsupportedLanguages = false)
         }
         // open links from Google Translate
         if (intent.data?.host == "translate.google.com") {
@@ -88,7 +90,7 @@ open class TranslationActivity: ComponentActivity() {
             translationModel.sourceLanguage = Language(source, source)
             translationModel.targetLanguage = Language(target, target)
             translationModel.insertedText = intent.data?.getQueryParameter("text").orEmpty()
-            translationModel.translateNow()
+            translationModel.translateNow(cancelOnUnsupportedLanguages = false)
         }
         if (intent.type?.startsWith("image/") != true) return
 
