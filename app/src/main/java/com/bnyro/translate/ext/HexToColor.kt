@@ -18,5 +18,6 @@
 package com.bnyro.translate.ext
 
 import androidx.compose.ui.graphics.Color
+import androidx.core.graphics.toColorInt
 
-fun String.hexToColor() = Color(android.graphics.Color.parseColor("#$this"))
+fun String.hexToColor() = Color("#$this".toColorInt())

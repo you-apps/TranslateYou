@@ -82,6 +82,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling:$compose_version")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
     implementation("androidx.navigation:navigation-compose:2.9.1")
+    implementation("com.materialkolor:material-kolor:3.0.1")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:3.0.0")

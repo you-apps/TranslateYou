@@ -21,7 +21,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -34,8 +33,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.bnyro.translate.const.ThemeMode
 import com.bnyro.translate.ext.hexToColor
-import com.google.android.material.color.utilities.CorePalette
-import com.google.android.material.color.utilities.Scheme
+import com.materialkolor.dynamicColorScheme
 
 const val defaultAccentColor = "0088aa"
 
@@ -61,12 +59,8 @@ fun TranslateYouTheme(
         }
 
         else -> {
-            val seed = (accentColor ?: defaultAccentColor.hexToColor()).toArgb()
-            val palette = CorePalette.of(seed)
-            if (darkTheme)
-                Scheme.dark(seed).toColorScheme().fixDarkSurfaceColors(palette)
-            else
-                Scheme.light(seed).toColorScheme().fixLightSurfaceColors(palette)
+            val seed = (accentColor ?: defaultAccentColor.hexToColor())
+            dynamicColorScheme(primary = seed, isDark = darkTheme)
         }
     }
     if (themeMode == ThemeMode.BLACK) colorScheme =
@@ -96,62 +90,3 @@ fun TranslateYouTheme(
         content = content
     )
 }
-
-@SuppressLint("RestrictedApi")
-fun Scheme.toColorScheme() = ColorScheme(
-    primary = Color(primary),
-    onPrimary = Color(onPrimary),
-    primaryContainer = Color(primaryContainer),
-    onPrimaryContainer = Color(onPrimaryContainer),
-    inversePrimary = Color(inversePrimary),
-    secondary = Color(secondary),
-    onSecondary = Color(onSecondary),
-    secondaryContainer = Color(secondaryContainer),
-    onSecondaryContainer = Color(onSecondaryContainer),
-    tertiary = Color(tertiary),
-    onTertiary = Color(onTertiary),
-    tertiaryContainer = Color(tertiaryContainer),
-    onTertiaryContainer = Color(onTertiaryContainer),
-    background = Color(background),
-    onBackground = Color(onBackground),
-    surface = Color(surface),
-    onSurface = Color(onSurface),
-    surfaceVariant = Color(surfaceVariant),
-    onSurfaceVariant = Color(onSurfaceVariant),
-    surfaceTint = Color(primary),
-    inverseSurface = Color(inverseSurface),
-    inverseOnSurface = Color(inverseOnSurface),
-    error = Color(error),
-    onError = Color(onError),
-    errorContainer = Color(errorContainer),
-    onErrorContainer = Color(onErrorContainer),
-    outline = Color(outline),
-    outlineVariant = Color(outlineVariant),
-    scrim = Color(scrim)
-)
-
-// Scheme from material lib don't have this colors.
-// Values taken from compose fun dynamicDarkColorScheme31()
-@SuppressLint("RestrictedApi")
-fun ColorScheme.fixDarkSurfaceColors(palette: CorePalette) = copy(
-    surfaceBright = Color(palette.n1.tone(28)),
-    surfaceDim = Color(palette.n1.tone(10)),
-    surfaceContainer = Color(palette.n1.tone(16)),
-    surfaceContainerHigh = Color(palette.n1.tone(21)),
-    surfaceContainerHighest = Color(palette.n1.tone(26)),
-    surfaceContainerLow = Color(palette.n1.tone(14)),
-    surfaceContainerLowest = Color(palette.n1.tone(8))
-)
-
-// Scheme from material lib don't have this colors.
-// Values taken from compose fun dynamicLightColorScheme31()
-@SuppressLint("RestrictedApi")
-fun ColorScheme.fixLightSurfaceColors(palette: CorePalette) = copy(
-    surfaceBright = Color(palette.n1.tone(99)),
-    surfaceDim = Color(palette.n1.tone(88)),
-    surfaceContainer = Color(palette.n1.tone(95)),
-    surfaceContainerHigh = Color(palette.n1.tone(93)),
-    surfaceContainerHighest = Color(palette.n1.tone(91)),
-    surfaceContainerLow = Color(palette.n1.tone(97)),
-    surfaceContainerLowest = Color(palette.n1.tone(100))
-)
