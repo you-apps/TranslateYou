@@ -41,6 +41,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -93,15 +94,20 @@ fun TranslationComponent(
         viewModel.apiError.collect { apiError ->
             when (apiError) {
                 is HttpException -> {
-                    onTranslationError(context.getString(R.string.translation_error_hint) + " (${apiError.message.orEmpty()})", true)
+                    onTranslationError(
+                        context.getString(R.string.translation_error_hint) + " (${apiError.message.orEmpty()})",
+                        true
+                    )
                 }
 
                 is UnsupportedLanguageException -> {
-                    onTranslationError(context.getString(
-                        R.string.unsupported_language,
-                        apiError.language.takeIf { !it.isAutoLanguage }?.name
-                            ?: context.getString(R.string.auto)
-                    ), false)
+                    onTranslationError(
+                        context.getString(
+                            R.string.unsupported_language,
+                            apiError.language.takeIf { !it.isAutoLanguage }?.name
+                                ?: context.getString(R.string.auto)
+                        ), false
+                    )
                 }
 
                 null -> Unit
@@ -241,17 +247,32 @@ fun TranslationComponent(
         }
 
         if (scrollState.value > 100) {
-            FloatingActionButton(
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(16.dp),
-                onClick = {
-                    coroutineScope.launch {
-                        scrollState.animateScrollTo(0)
+            val fabModifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp)
+
+            if (largeTextFields) {
+                FloatingActionButton(
+                    modifier = fabModifier,
+                    onClick = {
+                        coroutineScope.launch {
+                            scrollState.animateScrollTo(0)
+                        }
                     }
+                ) {
+                    Icon(Icons.Default.ArrowUpward, null)
                 }
-            ) {
-                Icon(Icons.Default.ArrowUpward, null)
+            } else {
+                SmallFloatingActionButton(
+                    modifier = fabModifier,
+                    onClick = {
+                        coroutineScope.launch {
+                            scrollState.animateScrollTo(0)
+                        }
+                    }
+                ) {
+                    Icon(Icons.Default.ArrowUpward, null)
+                }
             }
         }
     }
