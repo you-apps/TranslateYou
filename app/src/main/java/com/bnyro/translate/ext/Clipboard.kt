@@ -18,11 +18,12 @@
 package com.bnyro.translate.ext
 
 import android.content.ClipData
+import android.content.ClipDescription
 import androidx.compose.ui.platform.Clipboard
 import androidx.compose.ui.platform.toClipEntry
 
 suspend fun Clipboard.setText(text: String) {
-    val data = ClipData(null, ClipData.Item(text))
+    val data = ClipData(ClipDescription(null, arrayOf("text/plain")), ClipData.Item(text))
     setClipEntry(data.toClipEntry())
 }
 
