@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="cancel">Ακύρωση</string>
+    <string name="paste">Επικόλληση</string>
+    <string name="copy">Αντιγραφή</string>
+    <string name="auto">Αυτόματο</string>
+    <string name="clear">Καθαρισμός</string>
+    <string name="translate">Μετάφραση</string>
+    <string name="language_not_supported">Η γλώσσα δεν υποστηρίζεται!</string>
+    <string name="translate_to">Μετάφραση σε</string>
+    <string name="translate_from">Μετάφραση από</string>
+    <string name="api_key">Κλειδί API</string>
+    <string name="options">Ρυθμίσεις</string>
+    <string name="history">Ιστορικό</string>
+    <string name="about">Σχετικά</string>
+    <string name="history_enabled">Το ιστορικό ενεργοποιήθηκε</string>
+    <string name="fetch_delay">Καθυστέρηση μετάφρασης</string>
+</resources>
