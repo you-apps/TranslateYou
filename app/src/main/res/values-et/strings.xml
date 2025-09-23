@@ -81,4 +81,5 @@
     <string name="translation_api">Tõlkimise liidestus (API)</string>
     <string name="translation_engine">Tõlkemootor</string>
     <string name="translation_error_hint">Valitud tõlkemootor ei tundu toimima. Palun vali seadistustest mõnu muu tõlkemootor.</string>
+    <string name="unsupported_language">Tõlkemootor ei toeta valitud keelt: %1$s</string>
 </resources>
