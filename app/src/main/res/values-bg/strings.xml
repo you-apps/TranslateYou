@@ -81,4 +81,5 @@
     <string name="translation_engine">Преводачески двигател</string>
     <string name="translation_api">API превод</string>
     <string name="translation_error_hint">Избраният двигател за превод изглежда не работи. Моля, изберете друг в настройките.</string>
+    <string name="unsupported_language">Двигателят не поддържа език %1$s</string>
 </resources>
