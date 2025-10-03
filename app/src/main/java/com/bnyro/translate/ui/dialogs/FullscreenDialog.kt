@@ -17,13 +17,23 @@
 
 package com.bnyro.translate.ui.dialogs
 
+import androidx.activity.compose.PredictiveBackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.DialogWindowProvider
+import kotlinx.coroutines.CancellationException
 
 @Composable
 fun FullscreenDialog(
@@ -32,6 +42,10 @@ fun FullscreenDialog(
     topBar: @Composable () -> Unit = {},
     content: @Composable () -> Unit
 ) {
+    var alpha by remember {
+        mutableFloatStateOf(1f)
+    }
+
     Dialog(
         onDismissRequest = onDismissRequest,
         properties = DialogProperties(
@@ -39,8 +53,25 @@ fun FullscreenDialog(
             decorFitsSystemWindows = false
         )
     ) {
+        val windowProvider = LocalView.current.parent as DialogWindowProvider
+        LaunchedEffect(Unit) {
+            windowProvider.window.setDimAmount(0f)
+        }
+
+        PredictiveBackHandler { progress ->
+            try {
+                progress.collect { state ->
+                    alpha = 1 - 1.3f * state.progress
+                }
+                onDismissRequest.invoke()
+            } catch (_: CancellationException) {
+                alpha = 1f
+            }
+        }
+
         Scaffold(
-            modifier = modifier,
+            modifier = modifier
+                .alpha(alpha),
             topBar = topBar
         ) { pV ->
             Box(Modifier.padding(pV)) {
