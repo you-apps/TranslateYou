@@ -81,4 +81,5 @@
     <string name="translation_engine">Tulkošanas dzinējs</string>
     <string name="translation_api">Tulkošanas API</string>
     <string name="translation_error_hint">Šķiet, ka atlasītais tulkošanas dzinējs nedarbojas. Lūgums iestatījumos atlasīt citu.</string>
+    <string name="unsupported_language">Dzinējs neatbalsta %1$s valodu</string>
 </resources>
