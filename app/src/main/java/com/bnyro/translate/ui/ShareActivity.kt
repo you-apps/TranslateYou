@@ -68,7 +68,6 @@ class ShareActivity : TranslationActivity() {
                     )
                     .padding(horizontal = 10.dp),
                 properties = DialogProperties(
-                    dismissOnClickOutside = false,
                     usePlatformDefaultWidth = false
                 ),
                 onDismissRequest = { finish() },
@@ -109,6 +108,6 @@ class ShareActivity : TranslationActivity() {
             )
         }
 
-        setFinishOnTouchOutside(false)
+        setFinishOnTouchOutside(true)
     }
 }
