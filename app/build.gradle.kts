@@ -15,17 +15,17 @@ android {
         applicationId = "com.bnyro.translate"
         minSdk = 21
         targetSdk = 35
-        versionCode = 49
-        versionName = "15.3"
+        versionCode = 50
+        versionName = "16.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
+    }
 
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
     }
 
     buildTypes {
