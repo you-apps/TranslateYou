@@ -155,11 +155,14 @@ fun TopBar(
                 }
             }
 
-            AnimatedVisibility(mainModel.insertedText.isEmpty()) {
-                StyledIconButton(
-                    imageVector = Icons.Default.CameraAlt
-                ) {
-                    cameraCapture?.launch(cameraCaptureUri)
+            // not available for removable drives, see above
+            if (cameraCaptureUri != null) {
+                AnimatedVisibility(mainModel.insertedText.isEmpty()) {
+                    StyledIconButton(
+                        imageVector = Icons.Default.CameraAlt
+                    ) {
+                        cameraCapture?.launch(cameraCaptureUri)
+                    }
                 }
             }
 
