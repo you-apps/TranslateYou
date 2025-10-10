@@ -53,7 +53,7 @@
     <string name="example">نمونه</string>
     <string name="app_language">زبان برنامه</string>
     <string name="definition">معنی</string>
-    <string name="st_selected_engine">موتوری که SimplyTranslate برای ترجمه کردن استفاده می کند</string>
+    <string name="st_selected_engine">موتوری که سرور انتخاب شده برای ترجمه کردن استفاده می کند</string>
     <string name="simultaneous_translation_summary">واکشیدن نتایج از چند موتور جستجو به طور همزمان.</string>
     <string name="server_error">خطا در برقراری ارتباط با سرور.</string>
     <string name="tess_summary">Tesseract موتور جستجوی اختیاری تشخیص وات(واج) است. برنامه ای آزاد است که زیر پروانه Apache منتشر شده است. به عنوان یک سرویس متن باز در سال ۲۰۰۵ و توسعه ی آن توسط گوگل از سال ۲۰۰۶ حمایت مالی شده است. Tesseract به عنوان یکی از دقیق ترین موتور های OCR (نویسه‌خوان نوری) متن باز موجود شناخته شده است. برای اطلاعات بیشتر، به %1$s مراجعه کنید.</string>
@@ -78,4 +78,6 @@
     <string name="clear">پاک‌کردن</string>
     <string name="invalid_selection_area">منطقه انتخاب نامعتبر!</string>
     <string name="clear_favorites">پاک‌کردن مورد‌علاقه‌ها</string>
+    <string name="translation_engine">موتور ترجمه</string>
+    <string name="translation_api">رابط برنامه نویسی ترجمه</string>
 </resources>

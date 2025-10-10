@@ -78,4 +78,6 @@
     <string name="clear_favorites">Favoriten löschen</string>
     <string name="clear">löschen</string>
     <string name="invalid_selection_area">Ungültiger Auswahlbereich!</string>
+    <string name="translation_error_hint">Die ausgewählte Übersetzungs-Engine scheint nicht zu funktionieren. Bitte wählen Sie in den Einstellungen eine andere aus.</string>
+    <string name="unsupported_language">Die Engine unterstützt die Sprache %1$s nicht</string>
 </resources>

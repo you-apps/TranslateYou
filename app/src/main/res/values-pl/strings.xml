@@ -93,4 +93,5 @@
     <string name="translation_api">API tłumaczenia</string>
     <string name="translation_engine">Silnik tłumaczenia</string>
     <string name="translation_error_hint">Wygląda na to, że wybrany silnik tłumaczenia nie działa. Wybierz inny w ustawieniach.</string>
+    <string name="unsupported_language">Translator nie obsługuje języka %1$s</string>
 </resources>

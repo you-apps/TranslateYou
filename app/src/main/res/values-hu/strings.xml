@@ -81,4 +81,5 @@
     <string name="translation_engine">Fordítási motor</string>
     <string name="translation_api">Fordítási API</string>
     <string name="translation_error_hint">Úgy tűnik, hogy a kiválasztott fordítási motor nem működik. Válasszon egy másikat a beállításokban.</string>
+    <string name="unsupported_language">A motor nem támogatja a(z) %1$s nyelvet</string>
 </resources>

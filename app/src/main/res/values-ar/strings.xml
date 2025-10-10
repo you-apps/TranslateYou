@@ -81,4 +81,5 @@
     <string name="translation_api">واجهة برمجة تطبيقات (API) الترجمة</string>
     <string name="translation_engine">محرك الترجمة</string>
     <string name="translation_error_hint">يبدو أن محرك الترجمة المحدّد لا يعمل. يُرجى اختيار محرك آخر من الإعدادات.</string>
+    <string name="unsupported_language">المحرك لا يدعم اللغة %1$s</string>
 </resources>
