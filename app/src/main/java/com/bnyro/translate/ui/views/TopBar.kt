@@ -84,21 +84,37 @@ fun TopBar(
                 bitmapToEdit = ImageHelper.getImage(context, uri ?: return@launch)
             }
         }
-    val imageCapturePath = File.createTempFile("translate", null, context.externalCacheDir)
-    imageCapturePath.deleteOnExit()
-    val imageCaptureUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", imageCapturePath)
-    val imageCapture = rememberLauncherForActivityResult(object : ActivityResultContracts.TakePicture() {
-        override fun createIntent(context: Context, input: Uri): Intent {
-            return super.createIntent(context, input).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        }
-    }) { success ->
-        if (success) {
-            scope.launch(Dispatchers.IO) {
-                bitmapToEdit = ImageHelper.getImage(context, imageCaptureUri ?: return@launch)
-                imageCapturePath.delete()
+
+    val cameraCapturePath = File.createTempFile("translate", null, context.externalCacheDir).apply {
+        deleteOnExit()
+    }
+    // this might fail on some ROMs where the external cache directory is not available
+    // as of now, this doesn't work if filesDir returns an removable storage (i.e. sdcard) path
+    val cameraCaptureUri = runCatching {
+        FileProvider.getUriForFile(
+            context,
+            BuildConfig.APPLICATION_ID + ".provider",
+            cameraCapturePath
+        )
+    }.onFailure {
+        Log.e("camera capture", "failed to setup FileProvider for $cameraCapturePath")
+    }.getOrNull()
+    val cameraCapture = cameraCaptureUri?.let {
+        rememberLauncherForActivityResult(object : ActivityResultContracts.TakePicture() {
+            override fun createIntent(context: Context, input: Uri): Intent {
+                return super.createIntent(context, input)
+                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+        }) { success ->
+            if (success) {
+                scope.launch(Dispatchers.IO) {
+                    bitmapToEdit = ImageHelper.getImage(context, cameraCaptureUri)
+                    cameraCapturePath.delete()
+                }
             }
         }
     }
+
     val speechRecognizer = rememberLauncherForActivityResult(SpeechResultContract()) {
         if (it != null) {
             mainModel.insertedText = it
@@ -143,7 +159,7 @@ fun TopBar(
                 StyledIconButton(
                     imageVector = Icons.Default.CameraAlt
                 ) {
-                    imageCapture.launch(imageCaptureUri)
+                    cameraCapture?.launch(cameraCaptureUri)
                 }
             }
 
