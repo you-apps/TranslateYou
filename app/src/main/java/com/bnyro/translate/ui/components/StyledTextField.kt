@@ -18,6 +18,7 @@
 package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -53,6 +54,9 @@ fun StyledTextField(
             focusedContainerColor = Color.Transparent,
             unfocusedContainerColor = Color.Transparent,
             disabledContainerColor = Color.Transparent
+        ),
+        keyboardOptions = KeyboardOptions(
+            showKeyboardOnFocus = false
         ),
         placeholder = {
             if (placeholder != null) {
