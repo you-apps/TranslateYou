@@ -80,4 +80,6 @@
     <string name="clear_favorites">پاک‌کردن مورد‌علاقه‌ها</string>
     <string name="translation_engine">موتور ترجمه</string>
     <string name="translation_api">رابط برنامه نویسی ترجمه</string>
+    <string name="translation_error_hint">به نظر میرسد موتور ترجمه انتخابی شما کار نمیکند. لطفا یک مورد دیگر را در تنظیمات انتخاب کنید.</string>
+    <string name="unsupported_language">موتور ترجمه از زبان %1$s پشتیبانی نمیکند</string>
 </resources>
