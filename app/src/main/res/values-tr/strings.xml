@@ -41,7 +41,7 @@
     <string name="definition">Tanım</string>
     <string name="example">Örnek</string>
     <string name="similar">Benzer</string>
-    <string name="st_selected_engine">SimplyTranslate\'in çeviri için kullandığı motor</string>
+    <string name="st_selected_engine">Seçilen sunucunun çeviri için kullandığı motor</string>
     <string name="detected_language">Algılanan dil</string>
     <string name="missing_api_key">Lütfen ayarlarda bir API anahtarı belirtin.</string>
     <string name="search">Arama</string>
@@ -79,4 +79,8 @@
     <string name="clear_favorites">Sık kullanılanları temizle</string>
     <string name="clear">Temizle</string>
     <string name="invalid_selection_area">Geçersiz seçim alanı!</string>
+    <string name="translation_error_hint">Seçilen çeviri motoru çalışmıyor gibi görünüyor. Lütfen ayarlardan başka bir tane seçin.</string>
+    <string name="unsupported_language">Motor %1$s dilini desteklemiyor</string>
+    <string name="translation_engine">Çeviri motoru</string>
+    <string name="translation_api">Çeviri API\'si</string>
 </resources>
