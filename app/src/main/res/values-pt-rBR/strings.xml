@@ -81,4 +81,5 @@
     <string name="translation_engine">Mecanismo de tradução</string>
     <string name="translation_api">API de tradução</string>
     <string name="translation_error_hint">O mecanismo de tradução selecionado não parece funcionar. Selecione um diferente nas configurações.</string>
+    <string name="unsupported_language">O mecanismo não suporta o idioma %1$s</string>
 </resources>
