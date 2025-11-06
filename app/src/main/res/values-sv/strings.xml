@@ -1,12 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Dialog -->
+    <string name="okay">Okej</string>
+    <string name="cancel">Avbryt</string>
+    <!-- Text -->
+    <string name="enter_text">Ange text</string>
+    <string name="paste">Klistra in</string>
+    <string name="copy">Kopiera</string>
+    <string name="auto">Automatisk</string>
+    <string name="forget">Glöm</string>
+    <string name="clear">Rensa</string>
+    <string name="translate">Översätt</string>
+    <string name="language_not_supported">Språket stöds inte!</string>
+    <string name="translate_to">Översätt till</string>
+    <string name="translate_from">Översätt från</string>
+    <string name="translation_error_hint">Den valda översättningsmotorn verkar inte fungera. Var god välj en annan i inställningarna.</string>
+    <string name="unsupported_language">Översättningsmotorn stöder ej språket %1$s</string>
+    <!-- Settings -->
+    <string name="instance">Instans</string>
+    <string name="api_key">API-nyckel</string>
+    <string name="options">Inställningar</string>
+    <string name="history">Historik</string>
+    <string name="about">Om</string>
+    <string name="history_enabled">Historik aktiverad</string>
+    <string name="fetch_delay">Fördröjning för översättning</string>
+    <string name="fetch_delay_summary">Fördröjningen mellan att texten skrivs in och att översättningen hämtas</string>
+    <string name="history_summary">Håll reda på de senast översatta texterna</string>
+    <string name="required">Obligatorisk</string>
+    <string name="optional">Valfri</string>
+    <string name="compact_history">Kompakt historik</string>
+    <string name="skip_similar_entries">Hoppa över liknande poster</string>
+    <string name="skip_similar_entries_desc">Spara endast unika poster i historiken, baserat på inmatning och språk.</string>
+    <string name="compact_history_summary">Visa endast de första tre raderna av texten som standard i historiken</string>
+    <string name="simultaneous_translation">Parallell översättning</string>
+    <string name="simultaneous_translation_summary">Hämta resultat från flera översättningsmotorer samtidigt.</string>
+    <string name="enabled_engines">Aktiverade översättningsmotorer</string>
+    <string name="enabled_engines_summary">Översättningsmotorer att tillgå vid parallell översättning.</string>
+    <string name="additional_info">Ytterligare information</string>
+    <string name="additional_info_summary">Visa ytterligare översättningsinformation om tillgängligt.</string>
+    <string name="translation_engine">Översättningsmotor</string>
+    <string name="translation_api">Översättnings-API</string>
+    <string name="selected_engine">Vald översättningsmotor</string>
+    <string name="st_selected_engine">Översättningsmotor som den valda servern använder för översättning</string>
+    <string name="translation">Översättning</string>
+    <string name="general">Allmänt</string>
+    <string name="app_language">Appspråk</string>
+    <string name="system">System</string>
+    <string name="character_warning_limit">Teckenvarningsgräns</string>
+    <string name="character_warning_limit_summary">Varna när den översatta texten överskrider maximal längd.</string>
+    <string name="none">Ingen</string>
+    <string name="translate_automatically">Översätt automatiskt</string>
+    <string name="translate_automatically_summary">Begär en översättning automatiskt efter en viss fördröjning.</string>
+    <string name="nothing_here">Ingenting här.</string>
+    <string name="use_free_api">Använd gratis-API</string>
+    <string name="use_free_api_summary">Använd det kostnadsfria API:t istället för det betalda Pro-API:t.</string>
+    <!-- About -->
+    <string name="author">Upphovsman</string>
+    <string name="license">Programvarulicens</string>
+    <string name="privacy_policy">Integritetspolicy</string>
+    <!-- Theme -->
+    <string name="theme_auto">System</string>
     <string name="theme_light">Ljust</string>
     <string name="theme_dark">Mörkt</string>
-    <string name="translate_to">Översätt till</string>
-    <string name="translate">Översätt</string>
-    <string name="nothing_here">Ingenting här.</string>
-    <string name="copy">Kopiera</string>
-    <string name="paste">Klistra in</string>
-    <string name="options">Inställningar</string>
-    <string name="cancel">Avbryt</string>
+    <string name="theme_black">Nattsvart</string>
+    <string name="accent_color">Accentfärg</string>
+    <string name="dynamic_colors">Dynamiska färger</string>
+    <!-- History -->
+    <string name="clear_history">Rensa historik</string>
+    <string name="open">Öppna</string>
+    <string name="irreversible">Denna åtgärd kan inte ångras. Är du säker på att du vill fortsätta?</string>
+    <!-- Exception -->
+    <string name="server_error">Fel uppstod vid kommunikation med servern.</string>
+    <string name="missing_api_key">Var god ange en API-nyckel i inställningarna.</string>
+    <string name="unknown_error">Okänt fel</string>
+    <!-- Additional Info -->
+    <string name="detected_language">Identifierat språk</string>
+    <string name="definition">Definition</string>
+    <string name="example">Exempel</string>
+    <string name="similar">Liknande</string>
+    <string name="transliteration">Translitteration</string>
+    <!-- Languages -->
+    <string name="search">Sök</string>
+    <string name="favorites">Favoriter</string>
+    <string name="clear_favorites">Rensa favoritmarkerade</string>
+    <string name="all_languages">Alla språk</string>
+    <!-- Tesseract -->
+    <string name="image_translation">Översättning från bild</string>
+    <string name="image_translation_summary">Ladda ned och använd språk för textigenkänning från bilder.</string>
+    <string name="tess_summary">Tesseract är en optisk teckenigenkänningsmotor (OCR). Tesseract är fri programvara under Apache-licensen. Projektet släpptes som öppen källkod 2005 och utvecklingen har sponsrats av Google sedan 2006. Tesseract anses vara en av de mest exakta OCR-motorerna med öppen källkod. För mer information, se %1$s.</string>
+    <string name="init_tess_first">Var god ladda ned språkdata i inställningarna först.</string>
+    <string name="select_language">Var god välj ett språk för textigenkänning av bilder i inställningarna.</string>
+    <string name="select_theme">Välj tema</string>
+    <string name="invalid_selection_area">Ogiltigt markeringsområde!</string>
 </resources>
