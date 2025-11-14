@@ -61,7 +61,7 @@
     <string name="example">Beispiel</string>
     <string name="transliteration">Transliteration</string>
     <string name="image_translation">Übersetzung aus Bild</string>
-    <string name="st_selected_engine">Engine, die SimplyTranslate zum Übersetzen verwendet</string>
+    <string name="st_selected_engine">Dienst, den der ausgewählte Server für die Übersetzung verwendet</string>
     <string name="general">Allgemein</string>
     <string name="dynamic_colors">Dynamische Farben</string>
     <string name="accent_color">Akzentfarbe</string>
@@ -80,4 +80,6 @@
     <string name="invalid_selection_area">Ungültiger Auswahlbereich!</string>
     <string name="translation_error_hint">Die ausgewählte Übersetzungs-Engine scheint nicht zu funktionieren. Bitte wählen Sie in den Einstellungen eine andere aus.</string>
     <string name="unsupported_language">Die Engine unterstützt die Sprache %1$s nicht</string>
+    <string name="translation_engine">Übersetzungsdienst</string>
+    <string name="translation_api">Übersetzungs-API</string>
 </resources>

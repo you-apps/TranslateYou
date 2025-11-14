@@ -12,7 +12,7 @@
     <string name="history_summary">Simpan teks yang terakhir diterjemahkan</string>
     <string name="required">Dibutuhkan</string>
     <string name="optional">Opsional</string>
-    <string name="compact_history_summary">Secara default, hanya tampilkan 3 baris teks pertama dalam riwayat</string>
+    <string name="compact_history_summary">Hanya tampilkan 3 baris teks pertama secara bawaan dalam riwayat</string>
     <string name="simultaneous_translation">Terjemahan bersamaan</string>
     <string name="simultaneous_translation_summary">Dapatkan hasil dari beberapa mesin dalam waktu yang sama.</string>
     <string name="enabled_engines">Mesin yang aktif</string>
@@ -81,4 +81,5 @@
     <string name="translation_api">API penerjemahan</string>
     <string name="translation_engine">Mesin penerjemahan</string>
     <string name="translation_error_hint">Mesin terjemahan yang dipilih tampaknya tidak berfungsi. Silakan pilih yang lain di pengaturan.</string>
+    <string name="unsupported_language">Mesin tidak mendukung bahasa %1$s</string>
 </resources>
