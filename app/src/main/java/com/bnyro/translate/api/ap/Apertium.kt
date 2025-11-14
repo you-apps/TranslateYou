@@ -17,7 +17,9 @@
 
 package com.bnyro.translate.api.ap
 
+import com.bnyro.translate.api.ap.obj.ApertiumLanguagesResponse
 import com.bnyro.translate.api.ap.obj.ApertiumResponse
+import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
@@ -32,4 +34,7 @@ interface Apertium {
         @Part("markUnknown") markUnknown: String = "no",
         @Part("prefs") prefs: String = "",
     ): ApertiumResponse
+
+    @GET("apy/listPairs")
+    suspend fun getLanguages(): ApertiumLanguagesResponse
 }
