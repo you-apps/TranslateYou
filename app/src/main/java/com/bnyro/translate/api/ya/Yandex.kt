@@ -15,10 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.api.ya.obj
+package com.bnyro.translate.api.ya
 
+import com.bnyro.translate.api.ya.obj.YandexResponse
+import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface Yandex {
     @POST("/api/v1/tr.json/translate")
@@ -28,4 +33,9 @@ interface Yandex {
         @Query("srv") client: String,
         @Query("sid") clientId: String
     ): YandexResponse
+
+    @GET()
+    suspend fun getMainPage(
+        @Url url: String = "https://translate.yandex.com" // not .net like the API
+    ): String
 }
