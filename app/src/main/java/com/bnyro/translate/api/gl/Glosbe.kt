@@ -17,10 +17,13 @@
 
 package com.bnyro.translate.api.gl
 
+import com.bnyro.translate.api.gl.obj.GlLanguagesResponse
 import com.bnyro.translate.api.gl.obj.GlTranslationResponse
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface Glosbe {
     @POST("translateByLangDetect")
@@ -29,4 +32,9 @@ interface Glosbe {
         @Query("targetLang") target: String,
         @Body text: String
     ): GlTranslationResponse
+
+    @GET
+    suspend fun getLanguages(
+        @Url url: String = "https://iapi.glosbe.com/iapi3/languages"
+    ): GlLanguagesResponse
 }
