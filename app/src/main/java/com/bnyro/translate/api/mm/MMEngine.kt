@@ -138,7 +138,10 @@ class MMEngine : TranslationEngine(
             "yi-YD" to "Yiddish",
             "zu-ZA" to "Zulu"
         )
-            .map { Language(it.first, it.second) }
+            .map {
+                // normalize language code to not contain a country
+                Language(it.first.substringBefore("-"), it.second)
+            }
 
 
         /* DEPRECATED endpoint apparently

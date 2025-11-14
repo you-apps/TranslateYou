@@ -58,7 +58,7 @@ class OneRingEngine: TranslationEngine(
 
     override suspend fun getLanguages(): List<Language> {
         return Locale.getAvailableLocales().map {
-            Language(it.isO3Language, it.getDisplayName(Locale.getDefault()))
+            Language(it.language, it.getDisplayName(Locale.getDefault()))
         }
             .distinctBy { it.code }
     }

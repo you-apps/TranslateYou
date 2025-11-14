@@ -265,6 +265,7 @@ class TranslationModel : ViewModel() {
             val languages = try {
                 Log.e("engine", engine.name)
                 engine.getLanguages().sortedBy { it.name }
+                    .also { Log.e("languages", it.toString()) }
             } catch (e: Exception) {
                 Log.e("Fetching languages", e.toString())
                 _apiError.emit(e)

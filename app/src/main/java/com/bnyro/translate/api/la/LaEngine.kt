@@ -44,8 +44,8 @@ class LaEngine : TranslationEngine(
 
         return langRegex.findAll(languagesHtml).map {
             Language(
-                code = it.groups["code"]!!.value,
-                name = it.groups["name"]!!.value.substringBefore("(")
+                code = it.groups["code"]!!.value.substringBefore("-"), // remove country info
+                name = it.groups["name"]!!.value.substringBefore("(").trim()
             )
         }
             .toList()

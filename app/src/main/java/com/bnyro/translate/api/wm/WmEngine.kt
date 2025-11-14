@@ -28,7 +28,6 @@ import java.util.*
 class WmEngine : TranslationEngine(
     name = "MinT",
     apiKeyState = ApiKeyState.DISABLED,
-    supportsSimTranslation = true,
     autoLanguageCode = null,
     defaultUrl = "https://translate.wmcloud.org/",
     urlModifiable = true

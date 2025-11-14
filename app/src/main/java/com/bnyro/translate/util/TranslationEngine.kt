@@ -45,10 +45,6 @@ abstract class TranslationEngine(
      */
     val autoLanguageCode: String?,
     /**
-     * Set to true if the engine supports normal 2-letter language codes.
-     */
-    val supportsSimTranslation: Boolean = true,
-    /**
      * If set to true, [getAudioFile] has to be implemented as well.
      */
     val supportsAudio: Boolean = false,

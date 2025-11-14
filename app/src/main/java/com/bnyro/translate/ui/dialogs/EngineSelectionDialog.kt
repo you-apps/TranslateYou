@@ -35,9 +35,7 @@ import com.bnyro.translate.util.Preferences
 fun EngineSelectionDialog(
     onDismissRequest: () -> Unit
 ) {
-    val simEngines = TranslationEngines.engines.filter {
-        it.supportsSimTranslation
-    }
+    val simEngines = TranslationEngines.engines
 
     var selectedItems by remember {
         mutableStateOf(

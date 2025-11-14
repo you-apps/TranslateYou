@@ -51,7 +51,6 @@ class GlEngine : TranslationEngine(
     autoLanguageCode = null,
     defaultUrl = "https://translator-api.glosbe.com/",
     urlModifiable = false,
-    supportsSimTranslation = true
 ) {
     lateinit var api: Glosbe
 
