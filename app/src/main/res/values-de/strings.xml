@@ -76,7 +76,7 @@
     <string name="tess_summary">Tesseract ist eine optische Zeichenerkennungsmaschine. Es ist kostenlose Software, die unter der Apache-Lizenz veröffentlicht wird. Es wurde 2005 als Open Source veröffentlicht und die Entwicklung wurde von Google seit 2006 gesponsert. Tesseract gilt als einer der genausten Open-Source-OCR-Anwendung. Weitere Informationen finden Sie unter %1$s.</string>
     <string name="irreversible">Das kann nicht rückgängig gemacht werden. Sind Sie sicher, dass Sie fortfahren wollen?</string>
     <string name="clear_favorites">Favoriten löschen</string>
-    <string name="clear">löschen</string>
+    <string name="clear">Löschen</string>
     <string name="invalid_selection_area">Ungültiger Auswahlbereich!</string>
     <string name="translation_error_hint">Die ausgewählte Übersetzungs-Engine scheint nicht zu funktionieren. Bitte wählen Sie in den Einstellungen eine andere aus.</string>
     <string name="unsupported_language">Die Engine unterstützt die Sprache %1$s nicht</string>
