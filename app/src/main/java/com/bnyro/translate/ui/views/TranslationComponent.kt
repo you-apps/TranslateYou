@@ -175,8 +175,8 @@ fun TranslationComponent(
                     ) {
                         coroutineScope.launch {
                             viewModel.insertedText = clipboard.getText().orEmpty()
+                            viewModel.translateNow()
                         }
-                        viewModel.enqueueTranslation()
                     }
 
                     Spacer(
