@@ -19,9 +19,16 @@ package com.bnyro.translate.api
 
 import com.bnyro.translate.obj.TessLanguageResponse
 import com.bnyro.translate.util.TessHelper
+import okhttp3.ResponseBody
 import retrofit2.http.GET
+import retrofit2.http.Streaming
+import retrofit2.http.Url
 
 interface ExternalApi {
     @GET(TessHelper.tessTreePath)
     suspend fun getAvailableTessLanguages(): TessLanguageResponse
+
+    @Streaming
+    @GET
+    suspend fun downloadTessLanguageData(@Url url: String): ResponseBody
 }
