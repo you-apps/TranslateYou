@@ -81,4 +81,5 @@
     <string name="translation_engine">Механизм перевода</string>
     <string name="translation_api">API перевода</string>
     <string name="translation_error_hint">Похоже что выбранный движок перевода не работает. Пожалуйста, выберите другой в настройках.</string>
+    <string name="unsupported_language">Движок не поддерживает язык %1$s</string>
 </resources>
