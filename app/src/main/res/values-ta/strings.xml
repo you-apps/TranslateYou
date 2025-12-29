@@ -34,7 +34,7 @@
     <string name="additional_info">கூடுதல் செய்தி</string>
     <string name="additional_info_summary">கிடைத்தால் கூடுதல் மொழிபெயர்ப்பு தகவல்களைக் காட்டு.</string>
     <string name="selected_engine">தேர்ந்தெடுக்கப்பட்ட இயந்திரம்</string>
-    <string name="st_selected_engine">மொழிபெயர்ப்பதற்கு எளிமைப்படுத்தும் இயந்திரம்</string>
+    <string name="st_selected_engine">தேர்ந்தெடுக்கப்பட்ட சேவையகம் மொழிபெயர்ப்பதற்குப் பயன்படுத்தும் இயந்திரம்</string>
     <string name="translation">மொழிபெயர்ப்பு</string>
     <string name="general">பொது</string>
     <string name="app_language">பயன்பாட்டு மொழி</string>
@@ -78,4 +78,8 @@
     <string name="select_language">அமைப்புகளில் படங்களின் உரை அங்கீகாரத்திற்கு ஒரு மொழியைத் தேர்ந்தெடுக்கவும்.</string>
     <string name="select_theme">கருப்பொருள் தேர்ந்தெடுக்கவும்</string>
     <string name="invalid_selection_area">தவரான தேர்வுப் பகுதி!</string>
+    <string name="translation_error_hint">தேர்ந்தெடுத்த மொழிபெயர்ப்பு இயந்திரம் வேலை செய்வதாகத் தெரியவில்லை. அமைப்புகளில் வேறொன்றைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="unsupported_language">பொறி இயந்திரம் மொழி %1$s ஐ ஆதரிக்கவில்லை</string>
+    <string name="translation_engine">மொழிபெயர்ப்புப் பொறி இயந்திரம்</string>
+    <string name="translation_api">மொழிபெயர்ப்புப் பநிஇ</string>
 </resources>
