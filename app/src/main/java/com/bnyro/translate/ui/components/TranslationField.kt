@@ -50,13 +50,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.db.obj.DbLanguage
 import com.bnyro.translate.ext.setText
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
-import com.bnyro.translate.util.TranslationEngine
 import kotlinx.coroutines.launch
+import net.youapps.translation_engines.Language
+import net.youapps.translation_engines.TranslationEngine
 
 @Composable
 fun TranslationField(

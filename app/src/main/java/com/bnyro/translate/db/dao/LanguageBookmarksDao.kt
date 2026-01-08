@@ -21,18 +21,18 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.db.obj.DbLanguage
 
 @Dao
 interface LanguageBookmarksDao {
     @Query("SELECT * FROM Language")
-    suspend fun getAll(): List<Language>
+    suspend fun getAll(): List<DbLanguage>
 
     @Insert
-    suspend fun insertAll(vararg languages: Language)
+    suspend fun insertAll(vararg languages: DbLanguage)
 
     @Delete
-    suspend fun delete(language: Language)
+    suspend fun delete(language: DbLanguage)
 
     @Query("DELETE FROM Language")
     suspend fun deleteAll()

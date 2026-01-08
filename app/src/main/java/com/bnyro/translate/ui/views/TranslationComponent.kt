@@ -56,18 +56,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import com.bnyro.translate.App
 import com.bnyro.translate.R
-import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.getText
 import com.bnyro.translate.ext.hasText
-import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.components.ButtonWithIcon
 import com.bnyro.translate.ui.components.TranslationField
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.models.UnsupportedLanguageException
 import com.bnyro.translate.util.Preferences
-import com.bnyro.translate.util.TranslationEngine
 import kotlinx.coroutines.launch
+import net.youapps.translation_engines.Translation
+import net.youapps.translation_engines.TranslationEngine
 import retrofit2.HttpException
 
 @Composable
@@ -104,7 +104,7 @@ fun TranslationComponent(
                     onTranslationError(
                         context.getString(
                             R.string.unsupported_language,
-                            apiError.language.takeIf { !it.isAutoLanguage }?.name
+                            apiError.language.takeIf { !it.code.isEmpty() }?.name
                                 ?: context.getString(R.string.auto)
                         ), false
                     )
@@ -225,7 +225,7 @@ fun TranslationComponent(
             } else {
                 viewModel.translatedTexts.filter { it.value.translatedText.isNotEmpty() }
                     .forEach { (engineName, translation) ->
-                        val engine = TranslationEngines.engines.find { it.name == engineName }
+                        val engine = App.translationEngines.find { it.name == engineName }
 
                         Column(modifier = Modifier.padding(vertical = 6.dp)) {
                             TranslationFieldForTranslation(

@@ -21,7 +21,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
 import com.bnyro.translate.R
-import com.bnyro.translate.api.ExternalApi
+import com.bnyro.translate.RetrofitHelper
 import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.obj.TessLanguage
 import com.googlecode.tesseract.android.TessBaseAPI

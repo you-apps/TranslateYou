@@ -31,7 +31,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModelProvider
-import com.bnyro.translate.db.obj.Language
 import com.bnyro.translate.ext.hexToColor
 import com.bnyro.translate.ext.parcelable
 import com.bnyro.translate.ui.models.TranslationModel
@@ -39,6 +38,7 @@ import com.bnyro.translate.ui.theme.TranslateYouTheme
 import com.bnyro.translate.util.ImageHelper
 import com.bnyro.translate.util.LocaleHelper
 import com.bnyro.translate.util.Preferences
+import net.youapps.translation_engines.Language
 
 open class TranslationActivity: ComponentActivity() {
     lateinit var translationModel: TranslationModel

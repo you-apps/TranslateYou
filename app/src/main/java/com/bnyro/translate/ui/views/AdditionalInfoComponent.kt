@@ -29,9 +29,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.ui.components.AdditionalInfo
 import com.bnyro.translate.ui.models.TranslationModel
+import net.youapps.translation_engines.Translation
 
 @Composable
 fun AdditionalInfoComponent(

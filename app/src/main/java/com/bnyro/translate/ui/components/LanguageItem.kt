@@ -37,7 +37,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.db.obj.DbLanguage
+import net.youapps.translation_engines.Language
 
 @Composable
 fun LanguageItem(

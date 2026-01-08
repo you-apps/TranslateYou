@@ -26,8 +26,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import com.bnyro.translate.App
 import com.bnyro.translate.R
-import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ui.components.MultiSelectList
 import com.bnyro.translate.util.Preferences
 
@@ -35,12 +35,12 @@ import com.bnyro.translate.util.Preferences
 fun EngineSelectionDialog(
     onDismissRequest: () -> Unit
 ) {
-    val simEngines = TranslationEngines.engines
+    val simEngines = App.translationEngines
 
     var selectedItems by remember {
         mutableStateOf(
             simEngines.map {
-                it.isSimultaneousTranslationEnabled()
+                Preferences.isSimultaneousTranslationEnabled(it)
             }.toBooleanArray()
         )
     }
@@ -55,7 +55,7 @@ fun EngineSelectionDialog(
                 onClick = {
                     simEngines.forEachIndexed { index, it ->
                         Preferences.put(
-                            it.simPrefKey,
+                            Preferences.simTranslationPrefKey(it),
                             selectedItems[index]
                         )
                     }

@@ -20,10 +20,11 @@ package com.bnyro.translate.util
 import android.content.Context
 import android.content.SharedPreferences
 import com.bnyro.translate.const.ThemeMode
+import net.youapps.translation_engines.EngineSettingsProvider
+import net.youapps.translation_engines.TranslationEngine
+import androidx.core.content.edit
 
 object Preferences {
-    const val instanceUrlKey = "instanceUrl"
-    const val apiKey = "apiKey"
     const val selectedEngineKey = "selectedEngine"
     const val historyEnabledKey = "historyEnabledKey"
     const val skipSimilarHistoryKey = "skipSimilarHistory"
@@ -35,12 +36,16 @@ object Preferences {
     const val appLanguageKey = "appLanguage"
     const val charCounterLimitKey = "charCountLimit"
     const val tessLanguageKey = "tessLanguage"
-    const val selectedEngine = "selectedEngine"
 
     const val themeModeKey = "themeModeKey"
     const val accentColorKey = "accentColor"
     const val sourceLanguage = "sourceLanguage"
     const val targetLanguage = "targetLanguage"
+
+    // Engine specific
+    private const val instanceUrlKey = "instanceUrl"
+    private const val apiKey = "apiKey"
+    private const val selectedModel = "selectedEngine"
 
     lateinit var prefs: SharedPreferences
 
@@ -53,11 +58,11 @@ object Preferences {
 
     fun <T> put(key: String, value: T) {
         when (value) {
-            is Boolean -> prefs.edit().putBoolean(key, value).apply()
-            is String -> prefs.edit().putString(key, value).apply()
-            is Int -> prefs.edit().putInt(key, value).apply()
-            is Float -> prefs.edit().putFloat(key, value).apply()
-            is Long -> prefs.edit().putLong(key, value).apply()
+            is Boolean -> prefs.edit { putBoolean(key, value) }
+            is String -> prefs.edit { putString(key, value) }
+            is Int -> prefs.edit { putInt(key, value) }
+            is Float -> prefs.edit { putFloat(key, value) }
+            is Long -> prefs.edit { putLong(key, value) }
         }
     }
 
@@ -72,7 +77,41 @@ object Preferences {
         }
     }
 
-    fun getThemeMode() = ThemeMode.entries[get(themeModeKey, ThemeMode.AUTO.value.toString()).toInt()]
+    fun getThemeMode() =
+        ThemeMode.entries[get(themeModeKey, ThemeMode.AUTO.value.toString()).toInt()]
 
     fun getAccentColor() = prefs.getString(accentColorKey, null)
+
+    // Engine specific settings
+    fun apiKeyPrefKey(engine: TranslationEngine): String = engine.name + apiKey
+    fun apiUrlPrefKey(engine: TranslationEngine): String = engine.name + instanceUrlKey
+    fun selectedModelPrefKey(engine: TranslationEngine): String = engine.name + selectedModel
+    fun simTranslationPrefKey(engine: TranslationEngine): String = engine.name + simultaneousTranslationKey
+
+    fun isSimultaneousTranslationEnabled(engine: TranslationEngine): Boolean {
+        val simTranslationKey = engine.name + simultaneousTranslationKey
+
+        return get(simTranslationKey, false)
+    }
+}
+
+class EnginePreferencesProviderImpl : EngineSettingsProvider {
+    override fun getApiUrl(engine: TranslationEngine): String? {
+        val urlPrefKey = Preferences.apiUrlPrefKey(engine)
+
+        return Preferences.get(urlPrefKey, "").ifEmpty { null }
+    }
+
+    override fun getApiKey(engine: TranslationEngine): String? {
+        val apiKeyPrefKey = Preferences.apiKeyPrefKey(engine)
+
+        return Preferences.get(apiKeyPrefKey, "").ifEmpty { null }
+    }
+
+    override fun getSelectedModel(engine: TranslationEngine): String? {
+        val selectedModelPrefKey = Preferences.selectedModelPrefKey(engine)
+
+        return Preferences.get(selectedModelPrefKey, "").ifEmpty { null }
+    }
+
 }

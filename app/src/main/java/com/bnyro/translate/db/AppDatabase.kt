@@ -23,12 +23,12 @@ import androidx.room.RoomDatabase
 import com.bnyro.translate.db.dao.HistoryDao
 import com.bnyro.translate.db.dao.LanguageBookmarksDao
 import com.bnyro.translate.db.obj.HistoryItem
-import com.bnyro.translate.db.obj.Language
+import com.bnyro.translate.db.obj.DbLanguage
 
 @Database(
     entities = [
         HistoryItem::class,
-        Language::class
+        DbLanguage::class
     ],
     version = 3,
     autoMigrations = [

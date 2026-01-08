@@ -27,9 +27,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.bnyro.translate.App
 import com.bnyro.translate.R
-import com.bnyro.translate.const.ApiKeyState
-import com.bnyro.translate.const.TranslationEngines
 import com.bnyro.translate.ext.capitalize
 import com.bnyro.translate.obj.ListPreferenceOption
 import com.bnyro.translate.ui.components.prefs.DropDownSelectPreference
@@ -37,13 +36,14 @@ import com.bnyro.translate.ui.components.prefs.EditTextPreference
 import com.bnyro.translate.ui.components.prefs.ListPreferenceDialog
 import com.bnyro.translate.ui.components.prefs.PreferenceItem
 import com.bnyro.translate.util.Preferences
+import net.youapps.translation_engines.ApiKeyState
 
 @Composable
 fun EnginePref() {
-    val engines = TranslationEngines.engines
+    val engines = App.translationEngines
 
     var selectedName by remember {
-        mutableStateOf(Preferences.get(Preferences.selectedEngineKey, TranslationEngines.engines.first().name))
+        mutableStateOf(Preferences.get(Preferences.selectedEngineKey, App.translationEngines.first().name))
     }
     val selectedEngineIndex = engines.indexOfFirst { it.name == selectedName }
 
@@ -68,7 +68,7 @@ fun EnginePref() {
 
             instanceUrl = engines[selectedEngineIndex].getUrl()
             apiKey = engines[selectedEngineIndex].getApiKey()
-            TranslationEngines.updateAll()
+            App.updateAllTranslationEngines()
         }
     )
 
@@ -77,7 +77,7 @@ fun EnginePref() {
 
         if (engine.urlModifiable) {
             EditTextPreference(
-                preferenceKey = engine.urlPrefKey,
+                preferenceKey = Preferences.apiUrlPrefKey(engine),
                 value = instanceUrl,
                 labelText = stringResource(R.string.instance)
             ) {
@@ -88,8 +88,8 @@ fun EnginePref() {
 
         if (engine.apiKeyState != ApiKeyState.DISABLED) {
             EditTextPreference(
-                preferenceKey = engine.apiPrefKey,
-                value = apiKey,
+                preferenceKey = Preferences.apiKeyPrefKey(engine),
+                value = apiKey.orEmpty(),
                 labelText = stringResource(id = R.string.api_key) + when (engine.apiKeyState) {
                     ApiKeyState.REQUIRED -> " (${stringResource(R.string.required)})"
                     ApiKeyState.OPTIONAL -> " (${stringResource(R.string.optional)})"
@@ -102,7 +102,7 @@ fun EnginePref() {
         }
 
         when {
-            engine.supportedEngines.isNotEmpty() -> {
+            engine.supportedModels.isNotEmpty() -> {
                 var showEngineSelDialog by remember {
                     mutableStateOf(false)
                 }
@@ -123,8 +123,8 @@ fun EnginePref() {
                     var selectedAvailableEngine by remember {
                         mutableStateOf(
                             Preferences.get(
-                                engine.selEnginePrefKey,
-                                engine.supportedEngines.first()
+                                Preferences.selectedModelPrefKey(engine),
+                                engine.supportedModels.first()
                             )
                         )
                     }
@@ -132,18 +132,18 @@ fun EnginePref() {
                     ListPreferenceDialog(
                         preferenceKey = null,
                         onDismissRequest = { showEngineSelDialog = false },
-                        options = engine.supportedEngines.mapIndexed { index, it ->
+                        options = engine.supportedModels.mapIndexed { index, it ->
                             ListPreferenceOption(
                                 it.replace("_", " ").capitalize(),
                                 value = index,
                             )
                         },
-                        currentValue = engine.supportedEngines.indexOf(selectedAvailableEngine)
+                        currentValue = engine.supportedModels.indexOf(selectedAvailableEngine)
                             .takeIf { it >= 0 }
-                    ) { engineOption ->
-                        val selectedEngine = engine.supportedEngines[engineOption.value]
-                        Preferences.put(engine.selEnginePrefKey, selectedEngine)
-                        selectedAvailableEngine = selectedEngine
+                    ) { selectedModel ->
+                        val selectedModel = engine.supportedModels[selectedModel.value]
+                        Preferences.put(Preferences.selectedModelPrefKey(engine), selectedModel)
+                        selectedAvailableEngine = selectedModel
 
                         engine.createOrRecreate()
                     }

@@ -29,17 +29,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bnyro.translate.App
 import com.bnyro.translate.DatabaseHolder.Companion.Db
 import com.bnyro.translate.R
-import com.bnyro.translate.const.TranslationEngines
+import com.bnyro.translate.db.obj.DbLanguage
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.db.obj.HistoryItemType
-import com.bnyro.translate.db.obj.Language
-import com.bnyro.translate.obj.Translation
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
-import com.bnyro.translate.util.TranslationEngine
 import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -48,6 +46,10 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import net.youapps.translation_engines.Language
+import net.youapps.translation_engines.Translation
+import net.youapps.translation_engines.TranslationEngine
+import net.youapps.translation_engines.TranslationEngines
 
 class TranslationModel : ViewModel() {
     var engine by mutableStateOf(getCurrentEngine())
@@ -72,7 +74,7 @@ class TranslationModel : ViewModel() {
     var translation by mutableStateOf(Translation(""))
 
     var translatedTexts by mutableStateOf(
-        TranslationEngines.engines
+        App.translationEngines
             .associate { it.name to Translation("") }
     )
 
@@ -145,8 +147,8 @@ class TranslationModel : ViewModel() {
 
         // engine doesn't support automatic source language detection or the provided language
         if (cancelOnUnsupportedLanguages) {
-            if ((sourceLanguage.isAutoLanguage && engine.autoLanguageCode == null) ||
-                (!sourceLanguage.isAutoLanguage && availableLanguages.none { it.code == sourceLanguage.code })
+            if ((sourceLanguage.code.isEmpty() && engine.autoLanguageCode == null) ||
+                (!sourceLanguage.code.isEmpty() && availableLanguages.none { it.code == sourceLanguage.code })
             ) {
                 viewModelScope.launch {
                     _apiError.emit(UnsupportedLanguageException(sourceLanguage))
@@ -166,7 +168,7 @@ class TranslationModel : ViewModel() {
         translating = true
 
         // reset translations
-        translatedTexts = TranslationEngines.engines
+        translatedTexts = App.translationEngines
             .associate { it.name to Translation("") }
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -281,20 +283,20 @@ class TranslationModel : ViewModel() {
         return availableLanguages.firstOrNull { it.code == language.code } ?: language
     }
 
-    private fun getCurrentEngine() = TranslationEngines.engines.find {
+    private fun getCurrentEngine() = App.translationEngines.find {
         it.name == Preferences.get(
             Preferences.selectedEngineKey,
-            TranslationEngines.engines.first().name
+            App.translationEngines.first().name
         )
-    } ?: TranslationEngines.engines.first()
+    } ?: App.translationEngines.first()
 
     fun setCurrentEngine(engine: TranslationEngine) {
         Preferences.put(Preferences.selectedEngineKey, engine.name)
         this.engine = engine
     }
 
-    private fun getEnabledEngines() = TranslationEngines.engines.filter {
-        it.isSimultaneousTranslationEnabled()
+    private fun getEnabledEngines() = App.translationEngines.filter {
+        Preferences.isSimultaneousTranslationEnabled(it)
     }
 
     fun refresh() {
@@ -313,7 +315,7 @@ class TranslationModel : ViewModel() {
     }
 
     private fun fetchBookmarkedLanguages() = viewModelScope.launch(Dispatchers.IO) {
-        bookmarkedLanguages = Db.languageBookmarksDao().getAll()
+        bookmarkedLanguages = Db.languageBookmarksDao().getAll().map(DbLanguage::toLanguage)
     }
 
     fun processImage(context: Context, image: Bitmap) {

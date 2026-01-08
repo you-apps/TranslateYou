@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Translate You"
 include(":app")
+include(":translation-engines")

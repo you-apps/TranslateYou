@@ -20,9 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class com.bnyro.translate.obj.** { *; }
--keep class com.bnyro.translate.api.**.** { *; }
--keep class com.bnyro.translate.db.obj.** { *; }
+-keep class net.youapps.translation_engines.** { *; }
 
 # Keep rules required by Kotlinx Serialization
 -if @kotlinx.serialization.Serializable class **

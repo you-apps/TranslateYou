@@ -84,11 +84,11 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.9.1")
     implementation("com.materialkolor:material-kolor:3.0.1")
 
-    // Retrofit
+    // Retrofit & API
+    implementation(project(":translation-engines"))
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
-    implementation("com.squareup.retrofit2:converter-scalars:3.0.0")
     // retrofit:3.0.0 based on okhttp3:4.12.0
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
