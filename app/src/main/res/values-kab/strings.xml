@@ -51,7 +51,7 @@
     <string name="enabled_engines">Imsaddayen yettwaremden</string>
     <string name="compact_history_summary">Yeskanay-d 3 n tseddarin timezwura kan n uḍris deg wudem amezwer deg umezruy</string>
     <string name="additional_info">Talɣut tamernant</string>
-    <string name="st_selected_engine">Amsadday-nni ay yesseqdac SimplyTranslate i tsuqilt</string>
+    <string name="st_selected_engine">Amsadday i yesseqdac i tsuqilt uqeddac-nni i yettwafernen</string>
     <string name="additional_info_summary">Sken-d ugar n telɣut n tsuqilt ma tella.</string>
     <string name="image_translation_summary">Sider-d rnu qdec tutlayin i uɛqal n uḍris seg tugniwin.</string>
     <string name="select_language">Ma ulac aɣilif, fren tutlayt i uɛqal n uḍris n tugniwin deg yiɣewwaren.</string>
@@ -78,4 +78,6 @@
     <string name="missing_api_key">Ma ulac aɣilif mudd-d tasarut API deg yiɣewwaren.</string>
     <string name="tess_summary">Tesseract d amsedday n uɛqal ameẓraw n yisekkilen. D aseɣẓan ilelli, yeffeɣ-d s turagt Apache. Yeffeɣ-d d aɣbalu yeldin deg 2005, taneflit-is yella s lmendad n Google seg 2006. Tesseract yettuneḥsab d amsedday amesdad n uɛqal ameẓraw n yisekkilen n uɣbalu yeldin. I wugar n telɣut, wali %1$s.</string>
     <string name="invalid_selection_area">Tamnaḍt n ufran d tarameɣtutt!</string>
+    <string name="translation_engine">Amsedday n tsuqilt</string>
+    <string name="translation_api">API n tsuqilt</string>
 </resources>
