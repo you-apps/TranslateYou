@@ -55,7 +55,7 @@
     <string name="selected_engine">Motor seleccionado</string>
     <string name="system">Sistema</string>
     <string name="character_warning_limit_summary">Avisa cuando el texto traducido supera la longitud máxima.</string>
-    <string name="st_selected_engine">Motor que SimplyTranslate utiliza para traducir</string>
+    <string name="st_selected_engine">Motor que el servidor seleccionado usa para traducir</string>
     <string name="translation">Traducción</string>
     <string name="app_language">Idioma de la aplicación</string>
     <string name="privacy_policy">Política de privacidad</string>
@@ -78,4 +78,8 @@
     <string name="clear_favorites">Borrar favoritos</string>
     <string name="clear">Limpiar</string>
     <string name="invalid_selection_area">¡Área de selección no válida!</string>
+    <string name="translation_engine">Motor de traducción</string>
+    <string name="translation_api">API de Traducción</string>
+    <string name="unsupported_language">El motor no soporta el idioma %1$s</string>
+    <string name="translation_error_hint">El motor de traducción seleccionado parece no funcionar. Por favor, selecciona uno diferente en los ajustes.</string>
 </resources>
