@@ -38,12 +38,16 @@ class ApEngine(settingsProvider: EngineSettingsProvider): TranslationEngine(sett
         api = RetrofitHelper.createApi(this)
     }
 
-    private val iso3ToIso2Map = Locale.getAvailableLocales().associate {
-        it.isO3Language to it.language
+    private val iso3ToIso2Map: Map<String, String> by lazy {
+        Locale.getISOLanguages().associate { iso2 ->
+            Locale.forLanguageTag(iso2).isO3Language to iso2
+        }
     }
 
-    private val iso2ToIso3Map = Locale.getAvailableLocales().associate {
-        it.language to it.isO3Language
+    private val iso2ToIso3Map: Map<String, String> by lazy {
+        Locale.getISOLanguages().associateWith { iso2 ->
+            Locale.forLanguageTag(iso2).isO3Language
+        }
     }
 
     override suspend fun getLanguages(): List<Language> {
