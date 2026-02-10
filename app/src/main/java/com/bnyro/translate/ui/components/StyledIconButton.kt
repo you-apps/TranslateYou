@@ -19,6 +19,7 @@ package com.bnyro.translate.ui.components
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,7 +30,7 @@ fun StyledIconButton(
     modifier: Modifier = Modifier,
     imageVector: ImageVector,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
     onClick: () -> Unit = {}
 ) {
     IconButton(
