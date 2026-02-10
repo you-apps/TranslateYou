@@ -46,7 +46,7 @@
     <string name="simultaneous_translation_summary">Récupérez les résultats de plusieurs moteurs de traductions en même temps.</string>
     <string name="enabled_engines_summary">Moteurs à utiliser pour la traduction simultanée.</string>
     <string name="selected_engine">Moteur sélectionné</string>
-    <string name="st_selected_engine">Moteur utilisé par SimplyTranslate pour la traduction</string>
+    <string name="st_selected_engine">Moteur utilisé par le serveur sélectionné pour la traduction</string>
     <string name="detected_language">Langue détectée</string>
     <string name="definition">Définition</string>
     <string name="example">Exemple</string>
@@ -86,4 +86,9 @@
     <string name="tess_summary">Tesseract est un moteur de reconnaissance optique de caractères. Il s\'agit d\'un logiciel libre, publié sous la licence Apache. Il a été publié en tant que source ouverte en 2005 et son développement est parrainé par Google depuis 2006. Tesseract est considéré comme l\'un des moteurs de reconnaissance optique de caractères open-source les plus précis qui soient. Pour plus d\'informations, voir %1$s.</string>
     <string name="clear_favorites">Supprimer les favoris</string>
     <string name="clear">Effacer</string>
+    <string name="translation_error_hint">Le moteur de traduction sélectionné ne semble pas fonctionner. Veuillez en sélectionner un autre dans les paramètres.</string>
+    <string name="unsupported_language">Le moteur ne prend pas en charge la langue %1$s</string>
+    <string name="translation_engine">Moteur de traduction</string>
+    <string name="translation_api">API de traduction</string>
+    <string name="invalid_selection_area">Zone de sélection invalide !</string>
 </resources>
