@@ -83,9 +83,11 @@ object TessHelper {
                     val buffer = ByteArray(DOWNLOAD_BUFFER_SIZE)
                     var bytesRead = 0
 
-                    while (bytesRead >= 0) {
+                    while (true) {
                         bytesRead = inputStream.read(buffer)
-                        fileOutputStream.write(bytesRead)
+                        if (bytesRead < 0) break
+
+                        fileOutputStream.write(buffer, 0, bytesRead)
 
                         currentDownloadSize += bytesRead
                         onProgress(currentDownloadSize.toFloat() / fullSize)
