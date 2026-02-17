@@ -154,7 +154,7 @@ fun TessSettings(
                         TessSettingsRow(
                             packName = "$it${TessHelper.DATA_FILE_SUFFIX}",
                             size = null,
-                            selectedLanguage = selectedLanguage,
+                            isSelected = selectedLanguage == it,
                             onSelect = { selectedLanguage = it }
                         ) {
                             StyledIconButton(imageVector = Icons.Default.Delete) {
@@ -185,7 +185,7 @@ fun TessSettings(
                         TessSettingsRow(
                             packName = it.path,
                             size = it.size,
-                            selectedLanguage = selectedLanguage
+                            isSelected = false // only downloaded languages can be selected
                         ) {
                             when (val downloadProgress = tessModel.downloadProgress[it]) {
                                 null -> { // no download in progress

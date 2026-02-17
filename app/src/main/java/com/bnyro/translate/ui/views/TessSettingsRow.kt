@@ -38,7 +38,7 @@ import com.bnyro.translate.util.TessHelper
 fun TessSettingsRow(
     packName: String,
     size: Long?,
-    selectedLanguage: String,
+    isSelected: Boolean,
     onSelect: () -> Unit = {},
     actions: @Composable () -> Unit
 ) {
@@ -64,7 +64,7 @@ fun TessSettingsRow(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = if (selectedLanguage == langName) "$packName  ✓"
+                text = if (isSelected) "$packName  ✓"
                 else if (size != null) "$packName (${size.formatBytes()})"
                 else packName,
                 modifier = Modifier
