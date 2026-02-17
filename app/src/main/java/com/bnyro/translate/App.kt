@@ -37,6 +37,9 @@ class App : Application() {
         )
 
         SpeechHelper.initTTS(this)
+
+        // initialize all translation engines
+        updateAllTranslationEngines()
     }
 
     companion object {
