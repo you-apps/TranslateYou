@@ -17,7 +17,15 @@
 
 package com.bnyro.translate.ui.views
 
+import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -47,21 +55,15 @@ fun EnginePref() {
     val engines = App.translationEngines
 
     var selectedName by remember {
-        mutableStateOf(Preferences.get(Preferences.selectedEngineKey, App.translationEngines.first().name))
+        mutableStateOf(
+            Preferences.get(
+                Preferences.selectedEngineKey,
+                App.translationEngines.first().name
+            )
+        )
     }
     val selectedEngineIndex = engines.indexOfFirst { it.name == selectedName }
-
-    var instanceUrl by remember {
-        mutableStateOf(
-            engines[selectedEngineIndex].getUrl()
-        )
-    }
-
-    var apiKey by remember {
-        mutableStateOf(
-            engines[selectedEngineIndex].getApiKey()
-        )
-    }
+    val selectedEngine = engines[selectedEngineIndex]
 
     DropDownSelectPreference(
         preferenceKey = Preferences.selectedEngineKey,
@@ -70,15 +72,21 @@ fun EnginePref() {
         onSelect = { engineName ->
             selectedName = engineName
 
-            instanceUrl = engines[selectedEngineIndex].getUrl()
-            apiKey = engines[selectedEngineIndex].getApiKey()
-            App.updateAllTranslationEngines()
+            selectedEngine.createOrRecreate()
         }
     )
 
     val context = LocalContext.current
-    engines[selectedEngineIndex].let { engine ->
-        var engineModified = remember { false }
+    var engineModified = remember { false }
+    for (engine in engines) {
+        var instanceUrl by remember {
+            mutableStateOf(engine.getUrl())
+        }
+
+        var apiKey by remember {
+            mutableStateOf(engine.getApiKey())
+        }
+
         DisposableEffect(Unit) {
             onDispose {
                 // when the screen is closed, automatically refresh the engine if it was modified
@@ -93,79 +101,89 @@ fun EnginePref() {
                 }
             }
         }
-        Spacer(modifier = Modifier.height(5.dp))
 
-        if (engine.urlModifiable) {
-            EditTextPreference(
-                preferenceKey = Preferences.apiUrlPrefKey(engine),
-                value = instanceUrl,
-                labelText = stringResource(R.string.instance)
-            ) {
-                instanceUrl = it
-                engineModified = true
-            }
-        }
+        if (selectedEngine == engine) {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Spacer(modifier = Modifier.height(5.dp))
 
-        if (engine.apiKeyState != ApiKeyState.DISABLED) {
-            EditTextPreference(
-                preferenceKey = Preferences.apiKeyPrefKey(engine),
-                value = apiKey.orEmpty(),
-                labelText = stringResource(id = R.string.api_key) + when (engine.apiKeyState) {
-                    ApiKeyState.REQUIRED -> " (${stringResource(R.string.required)})"
-                    ApiKeyState.OPTIONAL -> " (${stringResource(R.string.optional)})"
-                    else -> ""
-                }
-            ) {
-                apiKey = it
-                engineModified = true
-            }
-        }
-
-        when {
-            engine.supportedModels.isNotEmpty() -> {
-                var showEngineSelDialog by remember {
-                    mutableStateOf(false)
-                }
-
-                Spacer(
-                    modifier = Modifier
-                        .height(10.dp)
-                )
-
-                PreferenceItem(
-                    title = stringResource(R.string.translation_api),
-                    summary = stringResource(R.string.st_selected_engine)
-                ) {
-                    showEngineSelDialog = true
-                }
-
-                if (showEngineSelDialog) {
-                    var selectedAvailableEngine by remember {
-                        mutableStateOf(
-                            Preferences.get(
-                                Preferences.selectedModelPrefKey(engine),
-                                engine.supportedModels.first()
-                            )
-                        )
-                    }
-
-                    ListPreferenceDialog(
-                        preferenceKey = null,
-                        onDismissRequest = { showEngineSelDialog = false },
-                        options = engine.supportedModels.mapIndexed { index, it ->
-                            ListPreferenceOption(
-                                it.replace("_", " ").capitalize(),
-                                value = index,
-                            )
-                        },
-                        currentValue = engine.supportedModels.indexOf(selectedAvailableEngine)
-                            .takeIf { it >= 0 }
-                    ) { selectedModel ->
-                        val selectedModel = engine.supportedModels[selectedModel.value]
-                        Preferences.put(Preferences.selectedModelPrefKey(engine), selectedModel)
-                        selectedAvailableEngine = selectedModel
-
+                if (engine.urlModifiable) {
+                    EditTextPreference(
+                        preferenceKey = Preferences.apiUrlPrefKey(engine),
+                        value = instanceUrl,
+                        labelText = stringResource(R.string.instance)
+                    ) {
+                        instanceUrl = it
                         engineModified = true
+                    }
+                }
+
+                if (engine.apiKeyState != ApiKeyState.DISABLED) {
+                    EditTextPreference(
+                        preferenceKey = Preferences.apiKeyPrefKey(engine),
+                        value = apiKey.orEmpty(),
+                        labelText = stringResource(id = R.string.api_key) + when (engine.apiKeyState) {
+                            ApiKeyState.REQUIRED -> " (${stringResource(R.string.required)})"
+                            ApiKeyState.OPTIONAL -> " (${stringResource(R.string.optional)})"
+                            else -> ""
+                        }
+                    ) {
+                        apiKey = it
+                        engineModified = true
+                    }
+                }
+
+                when {
+                    engine.supportedModels.isNotEmpty() -> {
+                        var showEngineSelDialog by remember {
+                            mutableStateOf(false)
+                        }
+
+                        Spacer(
+                            modifier = Modifier
+                                .height(10.dp)
+                        )
+
+                        PreferenceItem(
+                            title = stringResource(R.string.translation_api),
+                            summary = stringResource(R.string.st_selected_engine)
+                        ) {
+                            showEngineSelDialog = true
+                        }
+
+                        if (showEngineSelDialog) {
+                            var selectedAvailableEngine by remember {
+                                mutableStateOf(
+                                    Preferences.get(
+                                        Preferences.selectedModelPrefKey(engine),
+                                        engine.supportedModels.first()
+                                    )
+                                )
+                            }
+
+                            ListPreferenceDialog(
+                                preferenceKey = null,
+                                onDismissRequest = { showEngineSelDialog = false },
+                                options = engine.supportedModels.mapIndexed { index, it ->
+                                    ListPreferenceOption(
+                                        it.replace("_", " ").capitalize(),
+                                        value = index,
+                                    )
+                                },
+                                currentValue = engine.supportedModels.indexOf(
+                                    selectedAvailableEngine
+                                )
+                                    .takeIf { it >= 0 }
+                            ) { selectedModel ->
+                                val selectedModel = engine.supportedModels[selectedModel.value]
+                                Preferences.put(
+                                    Preferences.selectedModelPrefKey(engine),
+                                    selectedModel
+                                )
+                                selectedAvailableEngine = selectedModel
+
+                                engineModified = true
+                            }
+                        }
                     }
                 }
             }
