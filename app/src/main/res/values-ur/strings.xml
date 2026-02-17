@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="okay">ٹھیک</string>
+    <string name="cancel">کینسل</string>
+    <string name="enter_text">تحریر درج کریں</string>
+    <string name="paste">پیسٹ کریں</string>
+    <string name="copy">کاپی کریں</string>
+    <string name="auto">آٹو</string>
+    <string name="forget">بھول جائیں</string>
+    <string name="clear">صاف کریں</string>
+    <string name="translate">ترجمہ</string>
+    <string name="language_not_supported">زبان غیر معاون ہے!</string>
+    <string name="translate_to">میں ترجمہ کریں</string>
+    <string name="translate_from">سے ترجمہ کریں</string>
+    <string name="translation_error_hint">منتخب کردہ ٹرانسلیشن انجن لگتا ہے کہ کام کے لائق نہیں۔ از کرم ترتیبات میں کوئی دوسرا منتخب کریں۔</string>
+    <string name="unsupported_language">انجن %1$s زبان کے لیے موافق نہیں</string>
 </resources>
