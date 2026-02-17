@@ -20,16 +20,20 @@ package com.bnyro.translate.ui.views
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.bnyro.translate.App
 import com.bnyro.translate.R
 import com.bnyro.translate.ext.capitalize
+import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.obj.ListPreferenceOption
 import com.bnyro.translate.ui.components.prefs.DropDownSelectPreference
 import com.bnyro.translate.ui.components.prefs.EditTextPreference
@@ -72,7 +76,23 @@ fun EnginePref() {
         }
     )
 
+    val context = LocalContext.current
     engines[selectedEngineIndex].let { engine ->
+        var engineModified = remember { false }
+        DisposableEffect(Unit) {
+            onDispose {
+                // when the screen is closed, automatically refresh the engine if it was modified
+                if (engineModified) {
+                    try {
+                        engine.createOrRecreate()
+                    } catch (e: Exception) {
+                        context.toastFromMainThread(e.localizedMessage.orEmpty())
+                    }
+
+                    engineModified = false
+                }
+            }
+        }
         Spacer(modifier = Modifier.height(5.dp))
 
         if (engine.urlModifiable) {
@@ -82,7 +102,7 @@ fun EnginePref() {
                 labelText = stringResource(R.string.instance)
             ) {
                 instanceUrl = it
-                engine.createOrRecreate()
+                engineModified = true
             }
         }
 
@@ -97,7 +117,7 @@ fun EnginePref() {
                 }
             ) {
                 apiKey = it
-                engine.createOrRecreate()
+                engineModified = true
             }
         }
 
@@ -145,7 +165,7 @@ fun EnginePref() {
                         Preferences.put(Preferences.selectedModelPrefKey(engine), selectedModel)
                         selectedAvailableEngine = selectedModel
 
-                        engine.createOrRecreate()
+                        engineModified = true
                     }
                 }
             }
