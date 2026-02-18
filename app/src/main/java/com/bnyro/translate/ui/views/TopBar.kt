@@ -54,9 +54,10 @@ import androidx.core.content.FileProvider
 import com.bnyro.translate.BuildConfig
 import com.bnyro.translate.R
 import com.bnyro.translate.obj.MenuItemData
-import com.bnyro.translate.ui.components.ImageCropDialog
+import com.bnyro.translate.ui.dialogs.ImageCropDialog
 import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.components.TopBarMenu
+import com.bnyro.translate.ui.dialogs.TessAnnotatedImageViewer
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.ImageHelper
 import com.bnyro.translate.util.SpeechHelper
@@ -215,5 +216,18 @@ fun TopBar(
                 mainModel.processImage(context, newBitmap)
             }
         ) { bitmapToEdit = null }
+    }
+
+    mainModel.annotatedBitmap?.let {
+        TessAnnotatedImageViewer(
+            it,
+            isLoading = mainModel.annotatedBitmapTranslationsLoading,
+            onConfirmRequest = {
+                mainModel.insertedText = it.fullText
+                mainModel.translateNow()
+            }
+        ) {
+            mainModel.annotatedBitmap = null
+        }
     }
 }

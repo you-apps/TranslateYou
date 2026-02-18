@@ -19,11 +19,11 @@ package com.bnyro.translate.ui.models
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.media.MediaPlayer
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -35,6 +35,7 @@ import com.bnyro.translate.R
 import com.bnyro.translate.db.obj.DbLanguage
 import com.bnyro.translate.db.obj.HistoryItem
 import com.bnyro.translate.db.obj.HistoryItemType
+import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.util.JsonHelper
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.TessHelper
@@ -42,6 +43,7 @@ import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -49,7 +51,6 @@ import kotlinx.coroutines.withContext
 import net.youapps.translation_engines.Language
 import net.youapps.translation_engines.Translation
 import net.youapps.translation_engines.TranslationEngine
-import net.youapps.translation_engines.TranslationEngines
 
 class TranslationModel : ViewModel() {
     var engine by mutableStateOf(getCurrentEngine())
@@ -90,6 +91,9 @@ class TranslationModel : ViewModel() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var audioFile: File? = null
+
+    var annotatedBitmap: AnnotatedBitmap? by mutableStateOf(null)
+    var annotatedBitmapTranslationsLoading by mutableStateOf(false)
 
     /**
      * A cache of audio data that contains at most [MAX_AUDIO_CACHE_SIZE] elements
@@ -318,17 +322,38 @@ class TranslationModel : ViewModel() {
         bookmarkedLanguages = Db.languageBookmarksDao().getAll().map(DbLanguage::toLanguage)
     }
 
-    fun processImage(context: Context, image: Bitmap) {
+    fun processImage(context: Context, image: Bitmap) = viewModelScope.launch {
         if (!TessHelper.areLanguagesDownloaded(context)) {
-            Toast.makeText(context, R.string.init_tess_first, Toast.LENGTH_SHORT).show()
-            return
+            context.toastFromMainThread(R.string.init_tess_first)
+            return@launch
         }
-        Thread {
-            TessHelper.getText(context, image)?.let {
-                insertedText = it
-                translateNow()
+
+        withContext(Dispatchers.IO) {
+            // in the beginning, only show the detected texts and not its translation
+            annotatedBitmap = TessHelper.getText(context, image)?.let { (text, components) ->
+                AnnotatedBitmap(
+                    image = image,
+                    components = components,
+                    fullText = text
+                )
             }
-        }.start()
+
+            // asynchronously translate the image components
+            annotatedBitmapTranslationsLoading = true
+            val translatedComponents = annotatedBitmap?.components.orEmpty().map { (rect, text) ->
+                async {
+                    runCatching {
+                        rect to engine.translate(
+                            text,
+                            sourceLanguage.code,
+                            targetLanguage.code
+                        ).translatedText
+                    }.getOrNull()
+                }
+            }.awaitAll().filterNotNull().toMap()
+            annotatedBitmap = annotatedBitmap?.copy(components = translatedComponents)
+             annotatedBitmapTranslationsLoading = false
+        }
     }
 
     fun saveSelectedLanguages() {
@@ -414,3 +439,9 @@ class TranslationModel : ViewModel() {
 
 class UnsupportedLanguageException(val language: Language) :
     Exception("Language $language not supported by currently selected translation engine")
+
+data class AnnotatedBitmap(
+    val image: Bitmap,
+    val components: Map<Rect, String>,
+    val fullText: String,
+)

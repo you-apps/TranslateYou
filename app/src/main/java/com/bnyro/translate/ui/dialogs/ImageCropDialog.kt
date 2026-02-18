@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 You Apps
+ * Copyright (c) 2026 You Apps
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.bnyro.translate.ui.components
+package com.bnyro.translate.ui.dialogs
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
@@ -25,7 +25,6 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,7 +52,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import com.bnyro.translate.R
 import com.bnyro.translate.ext.toastFromMainThread
-import com.bnyro.translate.ui.dialogs.FullscreenDialog
+import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.util.ImageHelper
 import com.bnyro.translate.util.ImageTransform
 import kotlin.math.absoluteValue
@@ -156,7 +155,7 @@ fun CropImageView(
         }
 
         val (imageWidthScaled, imageHeightScaled) = remember {
-            fitImageSizeToDimensions(bitmap, maxWidth, maxHeight)
+            ImageHelper.fitImageSizeToDimensions(bitmap, maxWidth, maxHeight)
         }
 
         LaunchedEffect(Unit, selectableAreaSize, selectableAreaOffset) {
@@ -294,18 +293,4 @@ private fun getCloseBorders(
 
 private fun diffSmallerThanMaxFrameClickDist(a: Float, b: Float): Boolean {
     return (a - b).absoluteValue < MAX_FRAME_CLICK_DIST
-}
-
-private fun fitImageSizeToDimensions(
-    bitmap: Bitmap,
-    maxWidth: Float,
-    maxHeight: Float
-): Pair<Float, Float> {
-    val imageRatio = bitmap.height.toFloat() / bitmap.width.toFloat()
-    val boxRatio = maxHeight / maxWidth
-    return if (imageRatio > boxRatio) {
-        maxHeight / imageRatio to maxHeight
-    } else {
-        maxWidth to maxWidth * imageRatio
-    }
 }

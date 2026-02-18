@@ -19,6 +19,7 @@ package com.bnyro.translate.util
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.util.Log
 import com.bnyro.translate.R
 import com.bnyro.translate.RetrofitHelper
@@ -51,7 +52,7 @@ object TessHelper {
         }
     }
 
-    fun getText(context: Context, bitmap: Bitmap): String? {
+    fun getText(context: Context, bitmap: Bitmap): Pair<String, Map<Rect, String>>? {
         val tess = TessBaseAPI()
         val rootDir = getRootDir(context)
         val language = Preferences.get(Preferences.tessLanguageKey, "eng")
@@ -63,7 +64,21 @@ object TessHelper {
             }
             tess.setImage(bitmap)
 
-            return tess.utF8Text
+            // trigger detection
+            val text = tess.utF8Text ?: return null
+
+            // collect all detected text segments in the image
+            val regions = mutableMapOf<Rect, String>()
+            val level = TessBaseAPI.PageIteratorLevel.RIL_TEXTLINE
+            val it = tess.resultIterator
+            it.begin()
+            while (it.next(level)) {
+                val text = it.getUTF8Text(level)
+                regions[it.getBoundingRect(level)] = text
+            }
+            it.delete()
+
+            return text to regions
         } finally {
             tess.recycle()
         }
