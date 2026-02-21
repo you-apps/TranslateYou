@@ -36,6 +36,7 @@ import net.youapps.translation_engines.ya.YandexEngine
 
 object TranslationEngines {
     fun getAllEngines(settingsProvider: EngineSettingsProvider) = listOf(
+        MhEngine(settingsProvider),
         LTEngine(settingsProvider),
         LVEngine(settingsProvider),
         DeeplAuthenticatedFreeApiEngine(settingsProvider),
@@ -45,7 +46,6 @@ object TranslationEngines {
         MMEngine(settingsProvider),
         YandexEngine(settingsProvider),
         STEngine(settingsProvider),
-        MhEngine(settingsProvider),
         WmEngine(settingsProvider),
         GlEngine(settingsProvider),
         ApEngine(settingsProvider),
