@@ -5,7 +5,7 @@
     <string name="enter_text">تحریر لکھیں</string>
     <string name="paste">پیسٹ کریں</string>
     <string name="copy">کاپی کریں</string>
-    <string name="auto">آٹو (خودکار)</string>
+    <string name="auto">آٹو</string>
     <string name="forget">بھول جائیں</string>
     <string name="clear">صاف کریں</string>
     <string name="translate">ترجمہ کریں</string>
@@ -15,7 +15,7 @@
     <string name="translation_error_hint">منتخب کردہ ٹرانسلیشن انجن لگتا ہے کہ کام کے لائق نہیں۔ از کرم ترتیبات میں کوئی دوسرا منتخب کریں۔</string>
     <string name="unsupported_language">انجن %1$s زبان کو سپورٹ نہیں کرتا</string>
     <string name="instance">انسٹینس (سرور)</string>
-    <string name="api_key">API کی (Key)</string>
+    <string name="api_key">API کی</string>
     <string name="options">سیٹنگز</string>
     <string name="history">ہسٹری</string>
     <string name="about">کے بارے میں</string>
@@ -27,9 +27,9 @@
     <string name="optional">اختیاری</string>
     <string name="compact_history">مختصر ہسٹری</string>
     <string name="skip_similar_entries">ملتے جلتے اندراج چھوڑ دیں</string>
-    <string name="skip_similar_entries_desc">ہسٹری میں صرف منفرد اندراج محفوظ کریں (جو پہلے سے موجود نہ ہوں)۔</string>
+    <string name="skip_similar_entries_desc">زبان اور اندراج کی بنیاد پر ہسٹری میں صرف منفرد اندراج محفوظ کریں۔</string>
     <string name="compact_history_summary">ہسٹری میں بائی ڈیفالٹ صرف ٹیکسٹ کی پہلی 3 لائنیں دکھائیں</string>
-    <string name="simultaneous_translation">ایک ساتھ ترجمہ</string>
+    <string name="simultaneous_translation">ایک ساتھ کئی ترجمے</string>
     <string name="simultaneous_translation_summary">ایک ہی وقت میں کئی انجنوں سے نتائج حاصل کریں۔</string>
     <string name="enabled_engines">فعال انجن</string>
     <string name="enabled_engines_summary">وہ انجن جو ایک ساتھ ترجمہ کے لیے استعمال ہوں گے۔</string>
@@ -50,12 +50,12 @@
     <string name="nothing_here">یہاں کچھ نہیں ہے۔</string>
     <string name="use_free_api">مفت API استعمال کریں</string>
     <string name="use_free_api_summary">پیسوں والی Pro API کے بجائے مفت والی استعمال کریں۔</string>
-    <string name="author">بنانے والا (Author)</string>
+    <string name="author">بنانے والا</string>
     <string name="license">لائسنس</string>
     <string name="privacy_policy">پرائیویسی پالیسی</string>
-    <string name="theme_light">لائٹ (روشن)</string>
-    <string name="theme_dark">ڈارک (تاریک)</string>
-    <string name="theme_black">بلیک (سیاہ)</string>
+    <string name="theme_light">لائٹ</string>
+    <string name="theme_dark">ڈارک</string>
+    <string name="theme_black">سیاہ</string>
     <string name="accent_color">ایکسنٹ رنگ</string>
     <string name="dynamic_colors">ڈائنامک رنگ</string>
     <string name="clear_history">ہسٹری صاف کریں</string>
@@ -67,7 +67,7 @@
     <string name="definition">تعریف</string>
     <string name="example">مثال</string>
     <string name="similar">ملتے جلتے</string>
-    <string name="transliteration">تلفظ (Transliteration)</string>
+    <string name="transliteration">تلفظ</string>
     <string name="search">تلاش کریں</string>
     <string name="favorites">پسندیدہ</string>
     <string name="clear_favorites">پسندیدہ صاف کریں</string>
@@ -77,9 +77,9 @@
     <string name="init_tess_first">براہ کرم پہلے سیٹنگز میں لینگویج ڈیٹا ڈاؤن لوڈ کریں۔</string>
     <string name="select_language">براہ کرم سیٹنگز میں تصاویر کی متن کی شناخت کے لیے کوئی زبان منتخب کریں۔</string>
     <string name="select_theme">تھیم منتخب کریں</string>
-    <string name="invalid_selection_area">انتخاب کا رقبہ درست نہیں!</string>
-    <string name="irreversible">اسے واپس نہیں کیا جا سکتا۔ کیا آپ واقعی آگے بڑھنا چاہتے ہیں؟</string>
+    <string name="invalid_selection_area">انتخاب کی جگہ درست نہیں!</string>
+    <string name="irreversible">اسے واپس نہیں کیا جا سکتا۔ کیا آپ واقعی ایسا کرنا چاہتے ہیں؟</string>
     <string name="tess_summary">ٹیسریکٹ (Tesseract) متن کو پہچاننے والا ایک انجن ہے۔ یہ ایک مفت سافٹ ویئر ہے، جسے اپاچی لائسنس کے تحت جاری کیا گیا ہے۔ اسے 2005 میں اوپن سورس کیا گیا تھا اور 2006 سے گوگل اس کی سرپرستی کر رہا ہے۔ ٹیسریکٹ کو دستیاب سب سے درست اوپن سورس OCR انجنوں میں سے ایک سمجھا جاتا ہے۔ مزید معلومات کے لیے، %1$s دیکھیں.</string>
-    <string name="none">کوئی نہیں</string>
+    <string name="none">کچھ نہیں</string>
     <string name="theme_auto">سسٹم</string>
 </resources>
