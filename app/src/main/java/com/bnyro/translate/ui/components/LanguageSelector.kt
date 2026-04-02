@@ -129,12 +129,7 @@ fun LanguageSelector(
     val languages = availableLanguages.toMutableList()
 
     if (showDialog) {
-        val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
-            rememberTopAppBarState()
-        )
-
         FullscreenDialog(
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             onDismissRequest = {
                 searchQuery = ""
                 showDialog = false
@@ -152,8 +147,7 @@ fun LanguageSelector(
                             onClick = { showDialog = false }
                         )
                     },
-                    actions = {},
-                    scrollBehavior = scrollBehavior
+                    actions = {}
                 )
             },
             content = {

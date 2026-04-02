@@ -74,9 +74,6 @@ fun HistoryScreen(
     @StringRes clearItemsHintId: Int
 ) {
     val viewModel: HistoryModel = viewModel()
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
-        rememberTopAppBarState()
-    )
 
     var showDeleteHistoryDialog by remember {
         mutableStateOf(false)
@@ -92,7 +89,6 @@ fun HistoryScreen(
 
     Scaffold(
         modifier = Modifier
-            .nestedScroll(scrollBehavior.nestedScrollConnection)
             .imePadding(),
         topBar = {
             SearchAppBar(
@@ -117,8 +113,7 @@ fun HistoryScreen(
                             contentDescription = stringResource(id = clearItemsHintId)
                         )
                     }
-                },
-                scrollBehavior = scrollBehavior
+                }
             )
         },
         content = { pV ->

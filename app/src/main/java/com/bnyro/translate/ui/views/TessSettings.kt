@@ -69,7 +69,6 @@ fun TessSettings(
 ) {
     val context = LocalContext.current
     val tessModel: TessModel = viewModel()
-    val topAppBarBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     var query by remember {
         mutableStateOf("")
@@ -119,7 +118,6 @@ fun TessSettings(
                 title = stringResource(R.string.image_translation),
                 value = query,
                 onValueChange = { query = it },
-                scrollBehavior = topAppBarBehavior,
                 navigationIcon = {
                     StyledIconButton(
                         imageVector = Icons.Default.ArrowBack,
@@ -133,7 +131,6 @@ fun TessSettings(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .nestedScroll(topAppBarBehavior.nestedScrollConnection)
             ) {
                 LazyColumn(
                     modifier = Modifier
