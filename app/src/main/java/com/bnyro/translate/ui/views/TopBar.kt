@@ -86,20 +86,29 @@ fun TopBar(
             }
         }
 
-    val cameraCapturePath = File.createTempFile("translate", null, context.externalCacheDir).apply {
-        deleteOnExit()
+    val cameraCapturePath = remember {
+        val targetDir = context.externalCacheDir ?: return@remember null
+
+        // required because apparently, some ROMs don't create this directory automatically
+        targetDir.mkdirs()
+
+        File.createTempFile("translate", null, targetDir).apply {
+            deleteOnExit()
+        }
     }
     // this might fail on some ROMs where the external cache directory is not available
     // as of now, this doesn't work if filesDir returns an removable storage (i.e. sdcard) path
-    val cameraCaptureUri = runCatching {
-        FileProvider.getUriForFile(
-            context,
-            BuildConfig.APPLICATION_ID + ".provider",
-            cameraCapturePath
-        )
-    }.onFailure {
-        Log.e("camera capture", "failed to setup FileProvider for $cameraCapturePath")
-    }.getOrNull()
+    val cameraCaptureUri = remember {
+        runCatching {
+            FileProvider.getUriForFile(
+                context,
+                BuildConfig.APPLICATION_ID + ".provider",
+                cameraCapturePath ?: return@remember null
+            )
+        }.onFailure {
+            Log.e("camera capture", "failed to setup FileProvider for $cameraCapturePath")
+        }.getOrNull()
+    }
     val cameraCapture = cameraCaptureUri?.let {
         rememberLauncherForActivityResult(object : ActivityResultContracts.TakePicture() {
             override fun createIntent(context: Context, input: Uri): Intent {
@@ -110,7 +119,7 @@ fun TopBar(
             if (success) {
                 scope.launch(Dispatchers.IO) {
                     bitmapToEdit = ImageHelper.getImage(context, cameraCaptureUri)
-                    cameraCapturePath.delete()
+                    cameraCapturePath?.delete()
                 }
             }
         }
