@@ -22,5 +22,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class LTTranslation(
     val translatedText: String = "",
-    val detectedLanguage: LTDetectedLanguage? = null
+    val detectedLanguage: LTDetectedLanguage? = null,
+    val alternatives: List<String> = emptyList()
 )

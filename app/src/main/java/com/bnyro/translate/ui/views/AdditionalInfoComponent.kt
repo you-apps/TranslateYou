@@ -95,6 +95,14 @@ fun AdditionalInfoComponent(
                     )
                 }
             }
+            translation.alternativeTranslations?.let { translations ->
+                items(translations) {
+                    AdditionalInfo(
+                        title = stringResource(R.string.alternative_translations),
+                        text = it
+                    )
+                }
+            }
         }
     }
 }

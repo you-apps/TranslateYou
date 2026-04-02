@@ -26,7 +26,8 @@ data class Translation(
     val transliterations: List<String>? = null,
     val definitions: List<Definition>? = null,
     val similar: List<String>? = null,
-    val examples: List<String>? = null
+    val examples: List<String>? = null,
+    val alternativeTranslations: List<String>? = null,
 )
 
 @Serializable

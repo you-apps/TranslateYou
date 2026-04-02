@@ -33,6 +33,7 @@ interface LibreTranslate {
         @Query("source") source: String,
         @Query("target") target: String,
         @Query("api_key") apikey: String?,
-        @Query("format") format: String = "text"
+        @Query("format") format: String = "text",
+        @Query("alternatives") alternatives: Int = 3
     ): LTTranslation
 }

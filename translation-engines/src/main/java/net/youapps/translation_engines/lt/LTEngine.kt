@@ -55,7 +55,8 @@ class LTEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
         )
         return Translation(
             translatedText = response.translatedText,
-            detectedLanguage = response.detectedLanguage?.language
+            detectedLanguage = response.detectedLanguage?.language,
+            alternativeTranslations = response.alternatives.takeIf { it.isNotEmpty() }
         )
     }
 }
