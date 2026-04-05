@@ -4,7 +4,7 @@
 
     <!-- Allow genai-prompt library (minSdk 26) to be included in an app with minSdk 21.
          The engine performs a runtime API level check before using the library. -->
-    <uses-sdk tools:overrideLibrary="com.google.mlkit.genai.prompt" />
+    <uses-sdk tools:overrideLibrary="com.google.mlkit.genai.prompt,com.google.mlkit.genai.common,com.google.mlkit.genai,com.google.mlkit" />
 
     <!-- Internet permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
