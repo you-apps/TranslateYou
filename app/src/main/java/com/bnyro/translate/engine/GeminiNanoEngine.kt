@@ -17,6 +17,8 @@
 
 package com.bnyro.translate.engine
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.mlkit.genai.prompt.Generation
 import com.google.mlkit.genai.prompt.GenerativeModel
 import net.youapps.translation_engines.ApiKeyState
@@ -38,12 +40,17 @@ class GeminiNanoEngine(
     private var model: GenerativeModel? = null
 
     override fun createOrRecreate(): TranslationEngine = apply {
-        model = Generation.getClient()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            model = Generation.getClient()
+        }
     }
 
     override suspend fun getLanguages(): List<Language> = SUPPORTED_LANGUAGES
 
     override suspend fun translate(query: String, source: String, target: String): Translation {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            throw IllegalStateException("Gemini Nano requires Android 8.0 (API 26) or higher")
+        }
         val currentModel = model
             ?: throw IllegalStateException("Gemini Nano model is not initialized")
 
