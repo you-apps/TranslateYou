@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bnyro.translate"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 35
         versionCode = 55
         versionName = "18.0"
