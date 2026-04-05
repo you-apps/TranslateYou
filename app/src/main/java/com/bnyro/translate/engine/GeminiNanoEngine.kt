@@ -102,7 +102,7 @@ class GeminiNanoEngine(
             Language("id", "Indonesian"),
             Language("it", "Italian"),
             Language("ja", "Japanese"),
-            Language("kn", "Kannada"),
+            
             Language("ko", "Korean"),
             Language("lv", "Latvian"),
             Language("lt", "Lithuanian"),
