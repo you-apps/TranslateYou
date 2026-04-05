@@ -59,4 +59,19 @@
     <string name="select_theme">テーマを選択</string>
     <string name="favorites">お気に入り</string>
     <string name="translate_from">原文の言語</string>
+    <string name="clear">削除</string>
+    <string name="translation_error_hint">選択された翻訳エンジンが動作していないようです、設定で別のを選んでください。</string>
+    <string name="unsupported_language">エンジンは%1$sを対応しません</string>
+    <string name="skip_similar_entries">類似のエントリをスキップ</string>
+    <string name="translation_engine">翻訳エンジン</string>
+    <string name="translation_api">翻訳API</string>
+    <string name="character_warning_limit">文字数制限の警告</string>
+    <string name="none">なし</string>
+    <string name="translate_automatically">自動で翻訳</string>
+    <string name="translate_automatically_summary">一定の遅延のあと自動で翻訳をリクエストします。</string>
+    <string name="use_free_api">無料のAPIを使う</string>
+    <string name="use_free_api_summary">有料のPro APIのかわりに無料のAPIを使用する</string>
+    <string name="irreversible">この操作は元に戻せません。続行してもよろしいですか？</string>
+    <string name="transliteration">翻字</string>
+    <string name="image_translation">画像から翻訳</string>
 </resources>
