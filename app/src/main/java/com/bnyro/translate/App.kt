@@ -41,7 +41,7 @@ class App : Application() {
 
         val settingsProvider = EnginePreferencesProviderImpl()
         translationEngines = TranslationEngines.getAllEngines(settingsProvider) +
-            listOf(GeminiNanoEngine(applicationContext, settingsProvider))
+            listOf(GeminiNanoEngine(settingsProvider))
 
         // initialize all translation engines
         updateAllTranslationEngines()

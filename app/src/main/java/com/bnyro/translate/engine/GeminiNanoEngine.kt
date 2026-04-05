@@ -17,10 +17,8 @@
 
 package com.bnyro.translate.engine
 
-import android.content.Context
-import com.google.ai.edge.aicore.GenerativeModel
-import com.google.ai.edge.aicore.GenerativeModelAvailability
-import com.google.ai.edge.aicore.generationConfig
+import com.google.mlkit.genai.prompt.Generation
+import com.google.mlkit.genai.prompt.GenerativeModel
 import net.youapps.translation_engines.ApiKeyState
 import net.youapps.translation_engines.EngineSettingsProvider
 import net.youapps.translation_engines.Language
@@ -28,7 +26,6 @@ import net.youapps.translation_engines.Translation
 import net.youapps.translation_engines.TranslationEngine
 
 class GeminiNanoEngine(
-    private val context: Context,
     settingsProvider: EngineSettingsProvider
 ) : TranslationEngine(settingsProvider) {
     override val name = "Gemini Nano (On-Device)"
@@ -41,13 +38,7 @@ class GeminiNanoEngine(
     private var model: GenerativeModel? = null
 
     override fun createOrRecreate(): TranslationEngine = apply {
-        val config = generationConfig {
-            this.context = this@GeminiNanoEngine.context
-            temperature = 0.2f
-            topK = 16
-            maxOutputTokens = 512
-        }
-        model = GenerativeModel(generationConfig = config)
+        model = Generation.getClient()
     }
 
     override suspend fun getLanguages(): List<Language> = SUPPORTED_LANGUAGES
@@ -55,14 +46,6 @@ class GeminiNanoEngine(
     override suspend fun translate(query: String, source: String, target: String): Translation {
         val currentModel = model
             ?: throw IllegalStateException("Gemini Nano model is not initialized")
-
-        val availability = currentModel.checkAvailability()
-        if (availability != GenerativeModelAvailability.AVAILABLE) {
-            throw IllegalStateException(
-                "Gemini Nano is not available on this device (status: $availability). " +
-                    "This feature requires a device with AICore support (e.g., Pixel 8 or newer with Android 14+)."
-            )
-        }
 
         val sourceName = if (source.isEmpty() || source == "auto") {
             "the detected source language"
@@ -75,7 +58,10 @@ class GeminiNanoEngine(
             "Output only the translated text with no additional commentary or explanation:\n\n$query"
 
         val response = currentModel.generateContent(prompt)
-        return Translation(translatedText = response.text?.trim() ?: "")
+        val text = response.candidates.firstOrNull()?.text
+            ?: throw IllegalStateException("Gemini Nano returned an empty response")
+
+        return Translation(translatedText = text.trim())
     }
 
     companion object {
@@ -102,7 +88,6 @@ class GeminiNanoEngine(
             Language("id", "Indonesian"),
             Language("it", "Italian"),
             Language("ja", "Japanese"),
-            
             Language("ko", "Korean"),
             Language("lv", "Latvian"),
             Language("lt", "Lithuanian"),
