@@ -101,4 +101,7 @@ dependencies {
 
     // Dynamic color scheme
     implementation("com.google.android.material:material:1.12.0")
+
+    // Gemini Nano on-device AI via AICore
+    implementation("com.google.ai.edge.aicore:aicore:0.0.1-exp01")
 }

@@ -18,6 +18,7 @@
 package com.bnyro.translate
 
 import android.app.Application
+import com.bnyro.translate.engine.GeminiNanoEngine
 import com.bnyro.translate.util.EnginePreferencesProviderImpl
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
@@ -38,14 +39,16 @@ class App : Application() {
 
         SpeechHelper.initTTS(this)
 
+        val settingsProvider = EnginePreferencesProviderImpl()
+        translationEngines = TranslationEngines.getAllEngines(settingsProvider) +
+            listOf(GeminiNanoEngine(applicationContext, settingsProvider))
+
         // initialize all translation engines
         updateAllTranslationEngines()
     }
 
     companion object {
-        val translationEngines: List<TranslationEngine> = TranslationEngines.getAllEngines(
-            EnginePreferencesProviderImpl()
-        )
+        lateinit var translationEngines: List<TranslationEngine>
 
         fun updateAllTranslationEngines() {
             for (engine in translationEngines) engine.createOrRecreate()
