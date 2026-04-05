@@ -18,7 +18,6 @@
 package com.bnyro.translate.engine
 
 import android.os.Build
-import com.google.mlkit.genai.prompt.Generation
 import com.google.mlkit.genai.prompt.GenerativeModel
 import net.youapps.translation_engines.ApiKeyState
 import net.youapps.translation_engines.EngineSettingsProvider
@@ -40,7 +39,7 @@ class GeminiNanoEngine(
 
     override fun createOrRecreate(): TranslationEngine = apply {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            model = Generation.getClient()
+            model = com.google.mlkit.genai.prompt.Generation.getClient()
         }
     }
 
