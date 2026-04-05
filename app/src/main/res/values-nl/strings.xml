@@ -1,2 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="okay">Oke</string>
+    <string name="cancel">Annuleren</string>
+    <string name="enter_text">Tekst invoeren</string>
+    <string name="paste">Plakken</string>
+    <string name="copy">Kopiëren</string>
+    <string name="auto">Auto</string>
+    <string name="forget">Vergeten</string>
+    <string name="clear">Wissen</string>
+    <string name="translate">Vertalen</string>
+    <string name="language_not_supported">Deze taal wordt niet ondersteund!</string>
+    <string name="translate_to">Vertalen naar</string>
+    <string name="translate_from">Vertalen van</string>
+    <string name="translation_error_hint">De geselecteerde vertaalengine lijkt niet te werken. Selecteer een andere in de instellingen.</string>
+    <string name="unsupported_language">%1$s wordt niet understeund door de vertaalengine</string>
+    <string name="instance">Instantie</string>
+    <string name="api_key">API sleutel</string>
+    <string name="options">Instellingen</string>
+    <string name="history">Geschiedenis</string>
+    <string name="about">Over</string>
+    <string name="history_enabled">Geschiedenis ingeschakeld</string>
+    <string name="fetch_delay_summary">De vertraging tussen het tekstinvoer en het ophalen van de vertaling</string>
+    <string name="required">Verplicht</string>
+    <string name="optional">Optioneel</string>
+    <string name="compact_history">Compacte geschiedenis</string>
+    <string name="skip_similar_entries">Vergelijkbare berichten overslaan</string>
+    <string name="simultaneous_translation">Simultaanvertaling</string>
+    <string name="enabled_engines">Ingeschakelde engines</string>
+</resources>
