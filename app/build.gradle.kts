@@ -103,5 +103,5 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
 
     // Gemini Nano on-device AI via ML Kit GenAI Prompt API
-    implementation("com.google.mlkit:genai-prompt:1.0.0-beta2")
+    implementation("com.google.mlkit:genai-prompt:1.0.0-beta1")
 }

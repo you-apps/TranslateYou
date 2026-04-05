@@ -18,7 +18,6 @@
 package com.bnyro.translate.engine
 
 import android.os.Build
-import androidx.annotation.RequiresApi
 import com.google.mlkit.genai.prompt.Generation
 import com.google.mlkit.genai.prompt.GenerativeModel
 import net.youapps.translation_engines.ApiKeyState
