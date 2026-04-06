@@ -82,4 +82,5 @@
     <string name="unsupported_language">Die Engine unterstützt die Sprache %1$s nicht</string>
     <string name="translation_engine">Übersetzungsdienst</string>
     <string name="translation_api">Übersetzungs-API</string>
+    <string name="alternative_translations">Alternative Übersetzungen</string>
 </resources>
