@@ -82,4 +82,5 @@
     <string name="select_theme">Výber témy</string>
     <string name="invalid_selection_area">Nesprávna oblasť výberu!</string>
     <string name="forget">Zabudnúť</string>
+    <string name="alternative_translations">Alternatívne preklady</string>
 </resources>
