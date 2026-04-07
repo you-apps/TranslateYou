@@ -80,6 +80,7 @@
     <string name="dynamic_colors">Dinamiskas krāsas</string>
     <string name="translation_engine">Tulkošanas dzinējs</string>
     <string name="translation_api">Tulkošanas API</string>
-    <string name="translation_error_hint">Šķiet, ka atlasītais tulkošanas dzinējs nedarbojas. Lūgums iestatījumos atlasīt citu.</string>
+    <string name="translation_error_hint">Šķiet, ka atlasītais tulkošanas serveris nedarbojas. Lūgums iestatījumos atlasīt citu.</string>
     <string name="unsupported_language">Dzinējs neatbalsta %1$s valodu</string>
+    <string name="alternative_translations">Alternatīvie tulkojumi</string>
 </resources>
