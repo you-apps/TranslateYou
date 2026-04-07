@@ -27,4 +27,5 @@
     <string name="skip_similar_entries">Vergelijkbare berichten overslaan</string>
     <string name="simultaneous_translation">Simultaanvertaling</string>
     <string name="enabled_engines">Ingeschakelde engines</string>
+    <string name="history_summary">Houd bij de laatst vertaalde teksten</string>
 </resources>
