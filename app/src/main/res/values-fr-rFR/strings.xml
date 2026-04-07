@@ -91,4 +91,5 @@
     <string name="translation_engine">Moteur de traduction</string>
     <string name="translation_api">API de traduction</string>
     <string name="invalid_selection_area">Zone de sélection invalide !</string>
+    <string name="alternative_translations">Traductions alternatives</string>
 </resources>
