@@ -25,7 +25,7 @@
     <string name="compact_history">コンパクトな履歴</string>
     <string name="optional">任意</string>
     <string name="simultaneous_translation_summary">複数の翻訳エンジンから同時に結果を取得します。</string>
-    <string name="st_selected_engine">SimplyTranslateが翻訳に使用するエンジン</string>
+    <string name="st_selected_engine">選択されたサーバーが翻訳用に使用するエンジン</string>
     <string name="privacy_policy">プライバシーポリシー</string>
     <string name="theme_dark">ダーク</string>
     <string name="simultaneous_translation">同時に翻訳</string>
@@ -70,8 +70,17 @@
     <string name="translate_automatically">自動で翻訳</string>
     <string name="translate_automatically_summary">一定の遅延のあと自動で翻訳をリクエストします。</string>
     <string name="use_free_api">無料のAPIを使う</string>
-    <string name="use_free_api_summary">有料のPro APIのかわりに無料のAPIを使用する</string>
+    <string name="use_free_api_summary">有料のPro APIのかわりに無料のAPIを使用する。</string>
     <string name="irreversible">この操作は元に戻せません。続行してもよろしいですか？</string>
     <string name="transliteration">翻字</string>
     <string name="image_translation">画像から翻訳</string>
+    <string name="skip_similar_entries_desc">入力と言語に基づいて、固有な項目のみを履歴に保存する。</string>
+    <string name="character_warning_limit_summary">翻訳されたテキストが最大の長さを超える場合は警告する。</string>
+    <string name="alternative_translations">代案</string>
+    <string name="clear_favorites">お気に入りリストを削除</string>
+    <string name="image_translation_summary">画像からのテキスト認識に使用する言語をダウンロードして適用する。</string>
+    <string name="tess_summary">Tesseractは光学文字認識エンジンです。Apacheライセンスの下でリリースされたフリーソフトウェアです。2005年にオープンソースとしてリリースされ、2006年以降Googleが開発を支援しています。TesseractはオープンソースOCRエンジンの中で最も精度が高いものの1つと考えられています。詳細は%1$sを参照してください。</string>
+    <string name="init_tess_first">始めに設定で言語データーをダウンロードしてください。</string>
+    <string name="select_language">設定で画像のテキスト認識の言語を選択してください。</string>
+    <string name="invalid_selection_area">選択範囲が無効です！</string>
 </resources>
