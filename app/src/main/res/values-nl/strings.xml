@@ -9,7 +9,7 @@
     <string name="forget">Vergeten</string>
     <string name="clear">Wissen</string>
     <string name="translate">Vertalen</string>
-    <string name="language_not_supported">Deze taal wordt niet ondersteund!</string>
+    <string name="language_not_supported">Deze taal wordt niet ondersteund</string>
     <string name="translate_to">Vertalen naar</string>
     <string name="translate_from">Vertalen van</string>
     <string name="translation_error_hint">De geselecteerde vertaalengine lijkt niet te werken. Selecteer een andere in de instellingen.</string>
