@@ -47,7 +47,7 @@
     <string name="additional_info">अतिरिक्त जानकारी</string>
     <string name="additional_info_summary">उपलब्ध होने पर अतिरिक्त अनुवाद जानकारी दिखाएं।</string>
     <string name="selected_engine">चयनित इंजन</string>
-    <string name="st_selected_engine">इंजन जो कि सिंपलीट्रांसलेट अनुवाद के लिए उपयोग करता है</string>
+    <string name="st_selected_engine">इंजन जो चयनित सर्वर अनुवाद के लिए उपयोग करता है</string>
     <string name="translation">अनुवाद</string>
     <string name="general">सामान्य</string>
     <string name="app_language">ऐप भाषा</string>
@@ -77,4 +77,10 @@
     <string name="tess_summary">Tesseract एक ऑप्टिकल कैरेक्टर रिकग्निशन इंजन है। यह मुफ़्त सॉफ़्टवेयर है, जो अपाचे लाइसेंस के अंतर्गत जारी किया गया है। इसे 2005 में ओपन सोर्स के रूप में जारी किया गया था और 2006 से इसका विकास Google द्वारा प्रायोजित किया गया है। Tesseract को उपलब्ध सबसे सटीक ओपन-सोर्स OCR इंजनों में से एक माना जाता है। अधिक जानकारी के लिए, %1$s देखें।</string>
     <string name="clear_favorites">पसंदीदा साफ़ करें</string>
     <string name="clear">साफ करे</string>
+    <string name="translation_error_hint">चयनित अनुवाद इंजन काम नहीं कर रहा है। कृपया सेटिंग में से कोई दूसरा चुनें।</string>
+    <string name="unsupported_language">इंजन %1$s भाषा का समर्थन नहीं करता है</string>
+    <string name="translation_engine">अनुवाद इंजन</string>
+    <string name="translation_api">अनुवाद API</string>
+    <string name="alternative_translations">वैकल्पिक अनुवाद</string>
+    <string name="invalid_selection_area">अमान्य चयन क्षेत्र!</string>
 </resources>
