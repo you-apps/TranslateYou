@@ -82,4 +82,5 @@
     <string name="unsupported_language">பொறி இயந்திரம் மொழி %1$s ஐ ஆதரிக்கவில்லை</string>
     <string name="translation_engine">மொழிபெயர்ப்புப் பொறி இயந்திரம்</string>
     <string name="translation_api">மொழிபெயர்ப்புப் பநிஇ</string>
+    <string name="alternative_translations">மாற்று மொழிபெயர்ப்புகள்</string>
 </resources>
