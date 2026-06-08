@@ -83,4 +83,5 @@
     <string name="unsupported_language">Motor %1$s dilini desteklemiyor</string>
     <string name="translation_engine">Çeviri motoru</string>
     <string name="translation_api">Çeviri API\'si</string>
+    <string name="alternative_translations">Alternatif çeviriler</string>
 </resources>
