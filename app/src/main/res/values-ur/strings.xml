@@ -82,4 +82,5 @@
     <string name="tess_summary">ٹیسریکٹ (Tesseract) متن کو پہچاننے والا ایک انجن ہے۔ یہ ایک مفت سافٹ ویئر ہے، جسے اپاچی لائسنس کے تحت جاری کیا گیا ہے۔ اسے 2005 میں اوپن سورس کیا گیا تھا اور 2006 سے گوگل اس کی سرپرستی کر رہا ہے۔ ٹیسریکٹ کو دستیاب سب سے درست اوپن سورس OCR انجنوں میں سے ایک سمجھا جاتا ہے۔ مزید معلومات کے لیے، %1$s دیکھیں.</string>
     <string name="none">کچھ نہیں</string>
     <string name="theme_auto">سسٹم</string>
+    <string name="alternative_translations">متبادل ترجمے</string>
 </resources>
