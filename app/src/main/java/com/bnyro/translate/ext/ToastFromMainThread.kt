@@ -23,10 +23,10 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.annotation.StringRes
 
-fun Context.toastFromMainThread(text: String) {
+fun Context.toastFromMainThread(text: String, length: Int = Toast.LENGTH_SHORT) {
     Handler(Looper.getMainLooper())
         .post {
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, text, length).show()
         }
 }
 

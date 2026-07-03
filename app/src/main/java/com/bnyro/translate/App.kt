@@ -18,6 +18,9 @@
 package com.bnyro.translate
 
 import android.app.Application
+import android.content.Context
+import android.widget.Toast
+import com.bnyro.translate.ext.toastFromMainThread
 import com.bnyro.translate.util.EnginePreferencesProviderImpl
 import com.bnyro.translate.util.Preferences
 import com.bnyro.translate.util.SpeechHelper
@@ -42,13 +45,26 @@ class App : Application() {
         updateAllTranslationEngines()
     }
 
+    private fun updateAllTranslationEngines() {
+        for (engine in translationEngines) {
+            try {
+                engine.createOrRecreate()
+            } catch (e: Exception) {
+                toastFromMainThread(
+                    getString(
+                        R.string.failed_to_initialize_engine,
+                        engine.name,
+                        e.message.orEmpty()
+                    ),
+                    length = Toast.LENGTH_LONG
+                )
+            }
+        }
+    }
+
     companion object {
         val translationEngines: List<TranslationEngine> = TranslationEngines.getAllEngines(
             EnginePreferencesProviderImpl()
         )
-
-        fun updateAllTranslationEngines() {
-            for (engine in translationEngines) engine.createOrRecreate()
-        }
     }
 }
