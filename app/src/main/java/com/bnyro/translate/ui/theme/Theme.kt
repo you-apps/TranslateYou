@@ -43,7 +43,6 @@ fun TranslateYouTheme(
     accentColor: Color? = null,
     content: @Composable () -> Unit
 ) {
-    val view = LocalView.current
     val context = LocalContext.current
 
     val darkTheme = when (themeMode) {
@@ -64,22 +63,6 @@ fun TranslateYouTheme(
     }
     if (themeMode == ThemeMode.BLACK) colorScheme =
         colorScheme.copy(background = Color.Black, surface = Color.Black)
-
-    if (!view.isInEditMode) {
-        SideEffect {
-            val activity = view.context as Activity
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowCompat.getInsetsController(
-                    activity.window,
-                    view
-                ).isAppearanceLightStatusBars = !darkTheme
-                WindowCompat.getInsetsController(
-                    activity.window,
-                    view
-                ).isAppearanceLightNavigationBars = !darkTheme
-            }
-        }
-    }
 
     MaterialTheme(
         colorScheme = colorScheme,
