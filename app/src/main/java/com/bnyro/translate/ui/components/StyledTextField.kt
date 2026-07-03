@@ -18,6 +18,8 @@
 package com.bnyro.translate.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -28,7 +30,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -40,8 +45,11 @@ fun StyledTextField(
     readOnly: Boolean = false,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
     textColor: Color = MaterialTheme.typography.bodyLarge.color,
-    onValueChange: (String) -> Unit = {}
+    onValueChange: (String) -> Unit = {},
+    onSubmit: () -> Unit = {}
 ) {
+    val focusManager = LocalFocusManager.current
+
     TextField(
         modifier = modifier.fillMaxWidth(),
         value = text,
@@ -65,7 +73,11 @@ fun StyledTextField(
                 )
             }
         },
-        textStyle = textStyle.copy(color = textColor, textDirection = TextDirection.Content)
+        textStyle = textStyle.copy(color = textColor, textDirection = TextDirection.Content),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(onDone = {
+            focusManager.clearFocus()
+        })
     )
 }
 

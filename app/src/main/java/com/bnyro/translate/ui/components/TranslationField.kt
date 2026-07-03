@@ -42,6 +42,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,7 +54,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnyro.translate.R
-import com.bnyro.translate.db.obj.DbLanguage
 import com.bnyro.translate.ext.setText
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.util.Preferences
@@ -182,8 +182,13 @@ fun TranslationField(
     }
 
     val focusRequester = remember { FocusRequester() }
+    var alreadyRequestedFocus = rememberSaveable { false }
     LaunchedEffect(Unit) {
-        if (autoFocus) focusRequester.requestFocus()
+        // only focus automatically on initial app launch, not when switching tabs
+        if (autoFocus && !alreadyRequestedFocus) {
+            alreadyRequestedFocus = true
+            focusRequester.requestFocus()
+        }
     }
 
     StyledTextField(
@@ -200,8 +205,8 @@ fun TranslationField(
             MaterialTheme.colorScheme.error
         } else {
             MaterialTheme.typography.bodyLarge.color
-        }
-    ) {
-        onTextChange(it)
-    }
+        },
+        onValueChange = { onTextChange(it) },
+        onSubmit = { translationModel.translateNow() }
+    )
 }
