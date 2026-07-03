@@ -23,7 +23,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDirection
@@ -40,13 +43,12 @@ fun StyledTextField(
     onValueChange: (String) -> Unit = {}
 ) {
     TextField(
+        modifier = modifier.fillMaxWidth(),
         value = text,
         onValueChange = {
             onValueChange.invoke(it)
         },
         readOnly = readOnly,
-        modifier = modifier
-            .fillMaxWidth(),
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,

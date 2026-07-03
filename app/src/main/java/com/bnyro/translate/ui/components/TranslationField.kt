@@ -37,6 +37,7 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,6 +46,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -69,6 +72,7 @@ fun TranslationField(
     setLanguage: (Language) -> Unit = {},
     showLanguageSelector: Boolean = false,
     largeTextFields: Boolean = true,
+    autoFocus: Boolean = false,
     onEngineNameClick: () -> Unit = {},
     onTextChange: (String) -> Unit = {}
 ) {
@@ -177,7 +181,13 @@ fun TranslationField(
         }
     }
 
+    val focusRequester = remember { FocusRequester() }
+    LaunchedEffect(Unit) {
+        if (autoFocus) focusRequester.requestFocus()
+    }
+
     StyledTextField(
+        modifier = Modifier.focusRequester(focusRequester),
         text = text,
         placeholder = if (isSourceField) stringResource(R.string.enter_text) else null,
         readOnly = !isSourceField,

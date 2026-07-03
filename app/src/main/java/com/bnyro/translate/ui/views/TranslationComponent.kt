@@ -139,6 +139,7 @@ fun TranslationComponent(
                 ),
                 showLanguageSelector = showLanguageSelector,
                 largeTextFields = largeTextFields,
+                autoFocus = true,
                 setLanguage = {
                     if (it == viewModel.targetLanguage) {
                         viewModel.targetLanguage = viewModel.sourceLanguage
