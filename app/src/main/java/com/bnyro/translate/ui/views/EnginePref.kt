@@ -92,6 +92,12 @@ fun EnginePref() {
                 // when the screen is closed, automatically refresh the engine if it was modified
                 if (engineModified) {
                     try {
+                        // append "/" suffix to base URL, otherwise Retrofit crashes when
+                        // having base urls with paths, e.g. example.com/translate
+                        if (!instanceUrl.endsWith("/")) {
+                            Preferences.put(Preferences.apiUrlPrefKey(engine), "$instanceUrl/")
+                        }
+
                         engine.createOrRecreate()
                     } catch (e: Exception) {
                         context.toastFromMainThread(e.localizedMessage.orEmpty())
