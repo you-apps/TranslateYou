@@ -77,6 +77,7 @@ fun StyledTextField(
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(onDone = {
             focusManager.clearFocus()
+            onSubmit()
         })
     )
 }

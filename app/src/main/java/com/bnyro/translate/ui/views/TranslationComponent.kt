@@ -51,6 +51,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -128,6 +129,15 @@ fun TranslationComponent(
                 .verticalScroll(scrollState)
                 .fillMaxSize()
         ) {
+            val focusRequester = remember { FocusRequester() }
+            LaunchedEffect(Unit) {
+                // only focus automatically on initial app launch, not when switching tabs
+                if (!viewModel.alreadyAutoFocusedInputField) {
+                    viewModel.alreadyAutoFocusedInputField = true
+                    focusRequester.requestFocus()
+                }
+            }
+
             TranslationField(
                 translationModel = viewModel,
                 isSourceField = true,
@@ -139,7 +149,7 @@ fun TranslationComponent(
                 ),
                 showLanguageSelector = showLanguageSelector,
                 largeTextFields = largeTextFields,
-                autoFocus = true,
+                focusRequester = focusRequester,
                 setLanguage = {
                     if (it == viewModel.targetLanguage) {
                         viewModel.targetLanguage = viewModel.sourceLanguage

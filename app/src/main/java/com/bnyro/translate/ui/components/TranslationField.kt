@@ -72,7 +72,7 @@ fun TranslationField(
     setLanguage: (Language) -> Unit = {},
     showLanguageSelector: Boolean = false,
     largeTextFields: Boolean = true,
-    autoFocus: Boolean = false,
+    focusRequester: FocusRequester = remember { FocusRequester() },
     onEngineNameClick: () -> Unit = {},
     onTextChange: (String) -> Unit = {}
 ) {
@@ -178,16 +178,6 @@ fun TranslationField(
                     SpeechHelper.speak(context, text, language.code)
                 }
             }
-        }
-    }
-
-    val focusRequester = remember { FocusRequester() }
-    var alreadyRequestedFocus = rememberSaveable { false }
-    LaunchedEffect(Unit) {
-        // only focus automatically on initial app launch, not when switching tabs
-        if (autoFocus && !alreadyRequestedFocus) {
-            alreadyRequestedFocus = true
-            focusRequester.requestFocus()
         }
     }
 

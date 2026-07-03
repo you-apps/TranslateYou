@@ -96,6 +96,9 @@ class TranslationModel : ViewModel() {
     var annotatedBitmap: AnnotatedBitmap? by mutableStateOf(null)
     var annotatedBitmapTranslationsLoading by mutableStateOf(false)
 
+    // used to auto-focus the translation input field on initial app startup
+    var alreadyAutoFocusedInputField = false
+
     /**
      * A cache of audio data that contains at most [MAX_AUDIO_CACHE_SIZE] elements
      *
