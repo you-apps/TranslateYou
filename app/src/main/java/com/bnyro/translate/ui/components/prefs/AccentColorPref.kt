@@ -60,7 +60,6 @@ import com.bnyro.translate.ui.MainActivity
 import com.bnyro.translate.ui.components.DialogButton
 import com.bnyro.translate.ui.theme.defaultAccentColor
 import com.bnyro.translate.util.Preferences
-import okhttp3.internal.toHexString
 
 @Composable
 fun AccentColorPrefDialog(
