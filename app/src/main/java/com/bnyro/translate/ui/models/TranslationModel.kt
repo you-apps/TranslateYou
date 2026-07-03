@@ -82,6 +82,7 @@ class TranslationModel : ViewModel() {
     var bookmarkedLanguages by mutableStateOf(listOf<Language>())
 
     var translating by mutableStateOf(false)
+    var languagesLoadInProgress by mutableStateOf(false)
 
     // make sure to not display error messages multiple times by setting replay to 0
     private val _apiError = MutableSharedFlow<Exception?>(replay = 0)
@@ -149,8 +150,9 @@ class TranslationModel : ViewModel() {
         }
         saveSelectedLanguages()
 
-        // engine doesn't support automatic source language detection or the provided language
-        if (cancelOnUnsupportedLanguages) {
+        // check if engine supports the provided language
+        // only run if languages were already loaded from the engine
+        if (cancelOnUnsupportedLanguages && !languagesLoadInProgress) {
             if ((sourceLanguage.code.isEmpty() && engine.autoLanguageCode == null) ||
                 (!sourceLanguage.code.isEmpty() && availableLanguages.none { it.code == sourceLanguage.code })
             ) {
@@ -267,6 +269,8 @@ class TranslationModel : ViewModel() {
     }
 
     private fun fetchLanguages() {
+        languagesLoadInProgress = true
+
         viewModelScope.launch {
             val languages = try {
                 Log.e("engine", engine.name)
@@ -280,6 +284,8 @@ class TranslationModel : ViewModel() {
             this@TranslationModel.availableLanguages = languages
             sourceLanguage = replaceLanguageName(sourceLanguage)
             targetLanguage = replaceLanguageName(targetLanguage)
+
+            languagesLoadInProgress = false
         }
     }
 
