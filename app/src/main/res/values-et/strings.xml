@@ -83,4 +83,7 @@
     <string name="translation_error_hint">Valitud tõlkemootor ei tundu toimima. Palun vali seadistustest mõnu muu tõlkemootor.</string>
     <string name="unsupported_language">Tõlkemootor ei toeta valitud keelt: %1$s</string>
     <string name="alternative_translations">Alternatiivsed tõlked</string>
+    <string name="failed_to_initialize_engine">„%1$s“ tõlkemootori valmendamine ei õnnestunud: %2$s</string>
+    <string name="export_to_text_file">Ekspordi tekstifaili</string>
+    <string name="successfully_exported">Eksportimine õnnestus!</string>
 </resources>
