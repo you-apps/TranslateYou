@@ -95,4 +95,7 @@
     <string name="translation_error_hint">Wygląda na to, że wybrany silnik tłumaczenia nie działa. Wybierz inny w ustawieniach.</string>
     <string name="unsupported_language">Translator nie obsługuje języka %1$s</string>
     <string name="alternative_translations">Alternatywne tłumaczenia</string>
+    <string name="failed_to_initialize_engine">Nie udało się zainicjować translatora %1$s: %2$s</string>
+    <string name="export_to_text_file">Eksportuj do pliku tekstowego</string>
+    <string name="successfully_exported">Wyeksportowano pomyślnie!</string>
 </resources>
