@@ -83,4 +83,7 @@
     <string name="translation_error_hint">Избраният двигател за превод изглежда не работи. Моля, изберете друг в настройките.</string>
     <string name="unsupported_language">Двигателят не поддържа език %1$s</string>
     <string name="alternative_translations">Алтернативни преводи</string>
+    <string name="failed_to_initialize_engine">Неуспешна инициализация на двигателя %1$s: %2$s</string>
+    <string name="export_to_text_file">Изнасяне в текстов файл</string>
+    <string name="successfully_exported">Изнасянето е успешно!</string>
 </resources>
