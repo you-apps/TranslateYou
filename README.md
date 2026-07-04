@@ -35,6 +35,7 @@
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.bnyro.translate/)
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="80">](https://apt.izzysoft.de/fdroid/index/apk/com.bnyro.translate)
 [<img src="ghbadge.png" alt="Get it on GitHub" height="80">](https://github.com/you-apps/translateyou/releases)
+[<img src="obtainiumbadge.png" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/you-apps/TranslateYou/)
 
 <!-- ---------- Supported translation engines ---------- -->
 ## Supported translation engines
