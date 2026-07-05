@@ -84,4 +84,7 @@
     <string name="translation_api">API di traduzione</string>
     <string name="unsupported_language">Il motore non supporta la lingua %1$s</string>
     <string name="alternative_translations">Traduzioni alternative</string>
+    <string name="failed_to_initialize_engine">Impossibile inizializzare il motore %1$s: %2$s</string>
+    <string name="export_to_text_file">Esporta come file di testo</string>
+    <string name="successfully_exported">Esportazione riuscita!</string>
 </resources>
