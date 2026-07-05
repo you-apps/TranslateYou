@@ -93,4 +93,7 @@
     <string name="translation_error_hint">所选翻译引擎似乎不工作。请在设置中选择一个不同的引擎。</string>
     <string name="unsupported_language">引擎不支持 %1$s 语言</string>
     <string name="alternative_translations">备选翻译</string>
+    <string name="failed_to_initialize_engine">无法初始化 %1$s 引擎：%2$s</string>
+    <string name="export_to_text_file">导出到文本文件</string>
+    <string name="successfully_exported">导出成功！</string>
 </resources>
