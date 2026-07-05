@@ -83,4 +83,7 @@
     <string name="unsupported_language">El motor no soporta el idioma %1$s</string>
     <string name="translation_error_hint">El motor de traducción seleccionado parece no funcionar. Por favor, selecciona uno diferente en los ajustes.</string>
     <string name="alternative_translations">Tradiciones alternativas</string>
+    <string name="failed_to_initialize_engine">Error al iniciar %1$s motor: %2$s</string>
+    <string name="export_to_text_file">Exportar a archivo de texto</string>
+    <string name="successfully_exported">Correctamente exportado!</string>
 </resources>
