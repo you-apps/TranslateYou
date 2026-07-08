@@ -83,4 +83,7 @@
     <string name="invalid_selection_area">Nesprávna oblasť výberu!</string>
     <string name="forget">Zabudnúť</string>
     <string name="alternative_translations">Alternatívne preklady</string>
+    <string name="failed_to_initialize_engine">Nepodarilo sa inicializovať prekladač %1$s: %2$s</string>
+    <string name="export_to_text_file">Export do textového súboru</string>
+    <string name="successfully_exported">Export prebehol úspešne!</string>
 </resources>
