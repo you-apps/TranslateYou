@@ -83,4 +83,7 @@
     <string name="translation_error_hint">Použitý překladatelský modul nefunguje. Vyberte prosím jiný v nastavení.</string>
     <string name="unsupported_language">Překladač nepodporuje jazyk %1$s</string>
     <string name="alternative_translations">Alternativní překlady</string>
+    <string name="failed_to_initialize_engine">Nepodařilo se inicializovat překladač %1$s: %2$s</string>
+    <string name="export_to_text_file">Export do textového souboru</string>
+    <string name="successfully_exported">Export proběhl úspěšně!</string>
 </resources>
