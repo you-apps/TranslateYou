@@ -83,4 +83,7 @@
     <string name="translation_error_hint">Вибраний рушій перекладу, схоже, не працює. Виберіть інший у налаштуваннях.</string>
     <string name="unsupported_language">Рушій не підтримує %1$s мову</string>
     <string name="alternative_translations">Варіанти перекладу</string>
+    <string name="failed_to_initialize_engine">Не вдалося ініціалізувати перекладача %1$s: %2$s</string>
+    <string name="export_to_text_file">Експортувати в текстовий файл</string>
+    <string name="successfully_exported">Успішно експортовано!</string>
 </resources>
