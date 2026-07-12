@@ -31,7 +31,7 @@
     <string name="enabled_engines">Izmantot serverus</string>
     <string name="enabled_engines_summary">Atlasiet serverus, kurus izmantot vairāku serveru vienlaicīgā tulkošanā.</string>
     <string name="additional_info">Papildus informācija</string>
-    <string name="selected_engine">Lietot sekojošo tulkošanas serveri</string>
+    <string name="selected_engine">Atlasītais dzinējs</string>
     <string name="st_selected_engine">Dzinējs, ko atlasītais serveris izmanto tulkošanai</string>
     <string name="translation">Tulkojums</string>
     <string name="general">Vispārīgie</string>
@@ -68,11 +68,11 @@
     <string name="all_languages">Visas valodas</string>
     <string name="image_translation">Tulkot attēla datnes</string>
     <string name="image_translation_summary">Lejupielādēt valodu pakotnes teksta atpazīšanai attēlos.</string>
-    <string name="tess_summary">Tesseract — brīva attēlu teksta atpazīšanas programma, kas tiek izplatīta saskaņā ar Apache licenci. Tā pirmkods tika publicēts 2005. gadā, un kopš 2006. gada izstrādi sponsorē Google. Tesseract tiek uzskatīts par vienu no labākajiem un visprecīzākajiem bezmaksas attēlu teksta atpazīšanas (OCR) dzinējiem. Plašāku informāciju variet iegūt %1$s vietnē.</string>
-    <string name="init_tess_first">Lūdzu, vispirms lejupielādējiet valodu pakotnes iestatījumos.</string>
-    <string name="select_language">Lūdzu, izvēlieties valodu attēlu teksta atpazīšanai iestatījumos.</string>
-    <string name="select_theme">Atlasiet motīvu</string>
-    <string name="invalid_selection_area">Atlasītais apgabals nederīgs!</string>
+    <string name="tess_summary">Tesseract ir optisks rakstzīmju atpazīšanas dzinējs. Tā ir brīva programmatūra, kas tiek izplatīta ar Apache licenci. Tā tika laista klajā ar atvērtu pirmkodu 2005. gadā, un kopš 2006. gada izstrādi atbalsta Google. Tesseract tiek uzskatīts par vienu no visakurātākajiem pieejamajiem atvērtā pirmkoda OCR dzinējiem. Vairāk informācijas var iegūt %1$s.</string>
+    <string name="init_tess_first">Lūgums vispirms lejupielādēt valodas datus iestatījumos.</string>
+    <string name="select_language">Lūgums iestatījumos atlasīt attēlu teksta atpazīšanas valodu.</string>
+    <string name="select_theme">Atlasīt izskatu</string>
+    <string name="invalid_selection_area">Nederīgs atlasīšanas apgabals.</string>
     <string name="translate">Tulkot</string>
     <string name="additional_info_summary">Rādīt papildu tulkošanas informāciju, ja tā ir pieejama.</string>
     <string name="character_warning_limit">Rakstzīmju ierobežojuma brīdinājums</string>
@@ -83,7 +83,7 @@
     <string name="translation_error_hint">Šķiet, ka atlasītais tulkošanas dzinējs nedarbojas. Lūgums iestatījumos atlasīt citu.</string>
     <string name="unsupported_language">Dzinējs neatbalsta %1$s valodu</string>
     <string name="alternative_translations">Citi tulkojumi</string>
-    <string name="export_to_text_file">Izgūt kā teksta datni</string>
-    <string name="successfully_exported">Veiksmīgi izgūta!</string>
-    <string name="failed_to_initialize_engine">Neizdevās iedarbināt %1$s dzinēju: %2$s</string>
+    <string name="export_to_text_file">Izgūt teksta datnē</string>
+    <string name="successfully_exported">Izgūšana sekmīga.</string>
+    <string name="failed_to_initialize_engine">Neizdevās sāknēt %1$s dzinēju: %2$s</string>
 </resources>
