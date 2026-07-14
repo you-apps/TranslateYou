@@ -92,4 +92,7 @@
     <string name="translation_api">API de traduction</string>
     <string name="invalid_selection_area">Zone de sélection invalide !</string>
     <string name="alternative_translations">Traductions alternatives</string>
+    <string name="failed_to_initialize_engine">Échec de l\'initialisation du moteur de traduction %1$s : %2$s</string>
+    <string name="export_to_text_file">Exporter au format texte</string>
+    <string name="successfully_exported">Exportation réussie !</string>
 </resources>
