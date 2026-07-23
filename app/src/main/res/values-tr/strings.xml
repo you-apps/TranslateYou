@@ -84,4 +84,7 @@
     <string name="translation_engine">Çeviri motoru</string>
     <string name="translation_api">Çeviri API\'si</string>
     <string name="alternative_translations">Alternatif çeviriler</string>
+    <string name="failed_to_initialize_engine">%1$s motoru başlatılamadı: %2$s</string>
+    <string name="export_to_text_file">Metin dosyasına aktar</string>
+    <string name="successfully_exported">Başarıyla dışa aktarıldı!</string>
 </resources>
