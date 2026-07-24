@@ -43,7 +43,7 @@
     <string name="character_warning_limit">Ostrzeżenie o limicie znaków</string>
     <string name="character_warning_limit_summary">Ostrzegaj, gdy przetłumaczony tekst przekroczy maksymalną długość</string>
     <string name="none">Brak</string>
-    <string name="translate_automatically">Przetłumacz automatycznie</string>
+    <string name="translate_automatically">Tłumacz automatycznie</string>
     <string name="translate_automatically_summary">Tłumacz automatycznie po pewnym czasie</string>
     <string name="nothing_here">Nic tutaj nie ma.</string>
     <string name="use_free_api">Używaj darmowego API</string>
@@ -81,7 +81,7 @@
     <string name="init_tess_first">Najpierw pobierz dane językowe w ustawieniach</string>
     <string name="select_language">Wybierz język do rozpoznawania tekstu z obrazów w ustawieniach</string>
     <string name="theme_light">Jasny</string>
-    <string name="skip_similar_entries">Pomiń podobne wpisy</string>
+    <string name="skip_similar_entries">Pomijaj podobne wpisy</string>
     <string name="skip_similar_entries_desc">Przechowuj w historii tylko unikalne wpisy na podstawie wprowadzenia i języka</string>
     <string name="theme_black">Czarny</string>
     <string name="select_theme">Wybierz motyw</string>
@@ -95,4 +95,7 @@
     <string name="translation_error_hint">Wygląda na to, że wybrany silnik tłumaczenia nie działa. Wybierz inny w ustawieniach.</string>
     <string name="unsupported_language">Translator nie obsługuje języka %1$s</string>
     <string name="alternative_translations">Alternatywne tłumaczenia</string>
+    <string name="failed_to_initialize_engine">Nie udało się zainicjować translatora %1$s: %2$s</string>
+    <string name="export_to_text_file">Eksportuj do pliku tekstowego</string>
+    <string name="successfully_exported">Wyeksportowano pomyślnie!</string>
 </resources>

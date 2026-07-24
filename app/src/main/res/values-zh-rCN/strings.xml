@@ -5,12 +5,12 @@
     <string name="okay">确定</string>
     <string name="cancel">取消</string>
     <!-- Text -->
-    <string name="enter_text">输入文字</string>
+    <string name="enter_text">输入文本</string>
     <string name="paste">粘贴</string>
     <string name="copy">复制</string>
     <string name="auto">自动</string>
-    <string name="forget">忘掉</string>
-    <string name="language_not_supported">该语言不受支持！</string>
+    <string name="forget">忘记</string>
+    <string name="language_not_supported">不支持该语言！</string>
     <!-- Settings -->
     <string name="instance">实例</string>
     <string name="api_key">API 密钥</string>
@@ -20,7 +20,7 @@
     <string name="history_enabled">启用历史记录</string>
     <string name="fetch_delay">翻译延迟</string>
     <string name="fetch_delay_summary">插入文本与获取翻译结果之间的延迟</string>
-    <string name="history_summary">追踪最近翻译的文本</string>
+    <string name="history_summary">跟踪最近翻译的文本</string>
     <string name="required">必需</string>
     <string name="optional">可选</string>
     <string name="compact_history">紧凑历史视图</string>
@@ -39,9 +39,9 @@
     <string name="license">许可</string>
     <string name="privacy_policy">隐私政策</string>
     <!-- Theme -->
-    <string name="theme_auto">跟随系统</string>
-    <string name="theme_light">亮色</string>
-    <string name="theme_dark">暗色</string>
+    <string name="theme_auto">系统</string>
+    <string name="theme_light">浅色</string>
+    <string name="theme_dark">深色</string>
     <!-- History -->
     <string name="clear_history">清除历史</string>
     <string name="open">打开</string>
@@ -57,8 +57,8 @@
     <string name="general">常规</string>
     <string name="translation">翻译</string>
     <string name="app_language">应用语言</string>
-    <string name="system">跟随系统</string>
-    <string name="character_warning_limit">字符长度警告界限</string>
+    <string name="system">系统</string>
+    <string name="character_warning_limit">字符警告限制</string>
     <string name="character_warning_limit_summary">当翻译的文本超出最大长度时发出警告。</string>
     <string name="none">无</string>
     <string name="unknown_error">未知错误</string>
@@ -70,27 +70,30 @@
     <string name="translate">翻译</string>
     <string name="translate_automatically">自动翻译</string>
     <string name="translate_automatically_summary">在特定延迟后自动请求翻译。</string>
-    <string name="nothing_here">这里空无一物。</string>
-    <string name="use_free_api">使用免费版 API</string>
-    <string name="use_free_api_summary">使用免费版 API 而非收费的 Pro API。</string>
-    <string name="dynamic_colors">动态取色</string>
+    <string name="nothing_here">此处无内容。</string>
+    <string name="use_free_api">使用免费 API</string>
+    <string name="use_free_api_summary">使用免费 API 代替付费的 Pro API。</string>
+    <string name="dynamic_colors">动态配色</string>
     <string name="accent_color">强调色</string>
     <string name="translate_to">翻译为</string>
     <string name="translate_from">翻译自</string>
     <string name="all_languages">所有语言</string>
-    <string name="favorites">收藏夹</string>
+    <string name="favorites">收藏</string>
     <string name="skip_similar_entries">跳过相似条目</string>
     <string name="skip_similar_entries_desc">根据插入内容和语种，仅将独特的条目存储在历史记录中。</string>
     <string name="select_theme">选择主题</string>
-    <string name="theme_black">黑色</string>
-    <string name="irreversible">此操作无法撤销。你确定要继续吗？</string>
-    <string name="tess_summary">Tesseract 是一个光学字符识别引擎。 它是根据 Apache 许可证分发的自由软件。其于 2005 年开源发布，自 2006 年以来一直由 Google 赞助开发。Tesseract 被认为是可用的最准确的开源 OCR 引擎之一。 更多信息，请参阅 %1$s.</string>
+    <string name="theme_black">纯黑</string>
+    <string name="irreversible">此操作无法撤销。您确定要继续吗？</string>
+    <string name="tess_summary">Tesseract 是一款光学字符识别引擎。它是自由软件，采用 Apache 许可，于 2005 年开源发布，自 2006 年起由 Google 赞助开发。Tesseract 被认为是目前最准确的开源 OCR 引擎之一。如需更多信息，请参阅 %1$s。</string>
     <string name="clear_favorites">清除收藏</string>
     <string name="clear">清除</string>
-    <string name="invalid_selection_area">选中区域无效！</string>
+    <string name="invalid_selection_area">选择区域无效！</string>
     <string name="translation_api">翻译 API</string>
     <string name="translation_engine">翻译引擎</string>
-    <string name="translation_error_hint">所选翻译引擎似乎不工作。请在设置中选择一个不同的引擎。</string>
+    <string name="translation_error_hint">所选翻译引擎似乎无法工作。请在设置中选择其他引擎。</string>
     <string name="unsupported_language">引擎不支持 %1$s 语言</string>
     <string name="alternative_translations">备选翻译</string>
+    <string name="failed_to_initialize_engine">无法初始化 %1$s 引擎：%2$s</string>
+    <string name="export_to_text_file">导出到文本文件</string>
+    <string name="successfully_exported">导出成功！</string>
 </resources>
