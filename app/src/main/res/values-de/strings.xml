@@ -83,4 +83,7 @@
     <string name="translation_engine">Übersetzungsdienst</string>
     <string name="translation_api">Übersetzungs-API</string>
     <string name="alternative_translations">Alternative Übersetzungen</string>
+    <string name="failed_to_initialize_engine">%1$s-Engine konnte nicht initialisiert werden: %2$s</string>
+    <string name="export_to_text_file">Exportiere zur Textdatei</string>
+    <string name="successfully_exported">Erfolgreich exportiert!</string>
 </resources>
