@@ -85,5 +85,5 @@
     <string name="alternative_translations">ترجمات بديلة</string>
     <string name="successfully_exported">تم التصدير بنجاح!</string>
     <string name="export_to_text_file">تصدير إلى ملف نصي</string>
-    <string name="failed_to_initialize_engine">فشل تهيئة محرك %1$s: %2$s</string>
+    <string name="failed_to_initialize_engine">فشل في تهيئة %1$s محرك : %2$s</string>
 </resources>
