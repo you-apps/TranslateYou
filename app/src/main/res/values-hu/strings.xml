@@ -83,4 +83,7 @@
     <string name="translation_error_hint">Úgy tűnik, hogy a kiválasztott fordítási motor nem működik. Válasszon egy másikat a beállításokban.</string>
     <string name="unsupported_language">A motor nem támogatja a(z) %1$s nyelvet</string>
     <string name="alternative_translations">Alternatív fordítások</string>
+    <string name="failed_to_initialize_engine">A %2$s sikertelenül próbálta elindítani a %1$s motort</string>
+    <string name="export_to_text_file">Exportálás szöveg fájlba</string>
+    <string name="successfully_exported">Sikeres exportálás!</string>
 </resources>
