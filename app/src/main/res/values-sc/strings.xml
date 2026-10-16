@@ -80,4 +80,10 @@
     <string name="invalid_selection_area">Àrea de seletzione non vàlida!</string>
     <string name="translation_engine">Motore de tradutzione</string>
     <string name="translation_api">API de tradutzione</string>
+    <string name="translation_error_hint">Su motore de tradutzione seletzionadu paret chi non funtzionet. Seletziona·nde un\'àteru in sas impostatziones.</string>
+    <string name="unsupported_language">Su motore non suportat sa limba %1$s</string>
+    <string name="failed_to_initialize_engine">Initzializatzione de su motore %1$s fallida: %2$s</string>
+    <string name="export_to_text_file">Esporta a unu documentu de testu</string>
+    <string name="successfully_exported">Esportatzione fata!</string>
+    <string name="alternative_translations">Tradutziones alternativas</string>
 </resources>
