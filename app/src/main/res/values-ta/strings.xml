@@ -81,6 +81,6 @@
     <string name="translation_error_hint">தேர்ந்தெடுத்த மொழிபெயர்ப்பு பொறி வேலை செய்வதாகத் தெரியவில்லை. அமைப்புகளில் வேறொன்றைத் தேர்ந்தெடுக்கவும்.</string>
     <string name="unsupported_language">பொறி மொழி %1$s ஐ ஆதரிக்கவில்லை</string>
     <string name="translation_engine">மொழிபெயர்ப்புப் பொறி</string>
-    <string name="translation_api">மொழிபெயர்ப்புப் பநிஇ</string>
+    <string name="translation_api">மொழிபெயர்ப்பு ஏபிஐ</string>
     <string name="alternative_translations">மாற்று மொழிபெயர்ப்புகள்</string>
 </resources>
