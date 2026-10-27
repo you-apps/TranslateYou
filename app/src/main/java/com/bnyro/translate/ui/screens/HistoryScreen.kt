@@ -20,7 +20,6 @@ package com.bnyro.translate.ui.screens
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
-import androidx.compose.foundation.BasicTooltipBox
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,7 +32,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberBasicTooltipState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DeleteForever
@@ -49,9 +47,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTooltipState
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -60,11 +56,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.PopupPositionProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bnyro.translate.R
@@ -76,7 +70,6 @@ import com.bnyro.translate.ui.components.StyledIconButton
 import com.bnyro.translate.ui.models.HistoryModel
 import com.bnyro.translate.ui.models.TranslationModel
 import com.bnyro.translate.ui.views.HistoryRow
-import kotlin.math.exp
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -106,8 +99,16 @@ fun HistoryScreen(
         rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
             if (uri == null) return@rememberLauncherForActivityResult
 
+            fun quoteIfNeeded(text: String): String {
+                if (text.contains(";") || text.contains("\n")) return "\"$text\""
+
+                return text
+            }
+
             context.contentResolver.openOutputStream(uri)?.use { os ->
-                os.write(viewModel.items.joinToString("\n") { it.insertedText }.toByteArray())
+                os.write(viewModel.items.joinToString("\n") {
+                    "${quoteIfNeeded(it.insertedText)};${quoteIfNeeded(it.translatedText)}"
+                }.toByteArray())
             }
 
             context.toastFromMainThread(R.string.successfully_exported)
@@ -143,7 +144,7 @@ fun HistoryScreen(
                     TooltipBox(
                         positionProvider = TooltipDefaults.rememberTooltipPositionProvider(4.dp),
                         tooltip = {
-                            PlainTooltip() { Text(stringResource(R.string.export_to_text_file)) }
+                            PlainTooltip { Text(stringResource(R.string.export_to_text_file)) }
                         },
                         state = rememberTooltipState()
                     ) {

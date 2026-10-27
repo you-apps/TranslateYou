@@ -72,7 +72,7 @@
     <string name="clear_history">Clear history</string>
     <string name="open">Open</string>
     <string name="irreversible">This can\'t be undone. Are you sure that you want to proceed?</string>
-    <string name="export_to_text_file">Export to text file</string>
+    <string name="export_to_text_file">Export (compatible with Anki)</string>
     <string name="successfully_exported">Successfully exported!</string>
     <!-- Exception -->
     <string name="server_error">Error in communicating with the server.</string>
