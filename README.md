@@ -93,6 +93,32 @@ If **Translate You** is not in your language, feel free to participate by:
 
 **Translate You's privacy policy is available** [**here**](https://github.com/you-apps/TranslateYou/blob/master/PRIVACY%20POLICY.md)
 
+## Usage as a Library
+You can use the translation engines implemented in Translate You in your own Kotlin or Java projects.
+
+See [here](https://repo1.maven.org/maven2/io/github/you-apps/translation-engines/) for the latest version number.
+```kts
+dependencies {
+  implementation("io.github.you-apps:translation-engines:<version>")
+}
+```
+
+```kotlin
+class MySettingsProvider : EngineSettingsProvider {
+    // can be used to set a custom URL
+    fun getApiUrl(engine: TranslationEngine): String? = null
+    fun getApiKey(engine: TranslationEngine): String? = null
+    fun getSelectedModel(engine: TranslationEngine): String? = null
+}
+val engine = LTEngine(settingsProvider).createOrRecreate()
+
+val supportedLanguages = engine.getLanguages()
+...
+val translationResult = engine.translate("hello world", "en", "de")
+```
+
+See [here](https://github.com/you-apps/TranslateYou/blob/master/translation-engines/src/main/java/net/youapps/translation_engines/TranslationEngine.kt) for more information on the settings configuration and supported features by the engines.
+
 ## Credits
 * Icon design by [M00NJ](https://github.com/M00NJ)
 
