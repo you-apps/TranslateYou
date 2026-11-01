@@ -41,6 +41,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -72,11 +73,11 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
 
-    var showThemeOptions by remember {
+    var showThemeOptions by rememberSaveable {
         mutableStateOf(false)
     }
 
-    var showAccentColorDialog by remember {
+    var showAccentColorDialog by rememberSaveable {
         mutableStateOf(false)
     }
 
