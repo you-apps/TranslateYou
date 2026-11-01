@@ -31,7 +31,7 @@ class STEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
     override val apiKeyState = ApiKeyState.DISABLED
     override val autoLanguageCode = "auto"
     override val supportsAudio = true
-    override val supportedModels: List<String> = listOf("google", "libre", "reverso", "iciba")
+    override val supportedModels: List<String> = listOf("iciba", "google", "reverso")
 
     lateinit var api: SimplyTranslate
 
