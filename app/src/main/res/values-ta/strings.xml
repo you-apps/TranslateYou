@@ -1,86 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name" translatable="false">Translate You</string>
+    <!-- Dialog -->
     <string name="okay">சரி</string>
-    <string name="cancel">ரத்துசெய்</string>
-    <string name="enter_text">உரையை உள்ளிடவும்</string>
+    <string name="cancel">ரத்துசெய்க</string>
+    <!-- Text -->
+    <string name="enter_text">வாசகத்தை நிரப்புக</string>
     <string name="paste">ஒட்டு</string>
-    <string name="copy">நகலெடு</string>
-    <string name="auto">தானி</string>
-    <string name="forget">மறந்துவிடு</string>
-    <string name="clear">தெளிவான</string>
-    <string name="translate">மொழிபெயர்த்திடு</string>
+    <string name="copy">நகல்</string>
+    <string name="auto">அதுவே செய்யட்டும்</string>
+    <string name="forget">மறந்திடுக</string>
+    <string name="clear">துடைத்திடுக</string>
+    <string name="translate">மொழிபெயர்த்திடுக</string>
     <string name="language_not_supported">மொழி ஆதரிக்கப்படவில்லை!</string>
-    <string name="translate_to">மொழிபெயர்க்கவும்</string>
-    <string name="translate_from">இருந்து மொழிபெயர்க்கவும்</string>
-    <string name="instance">சான்று</string>
-    <string name="api_key">பநிஇ விசை</string>
+    <string name="translate_to">இம்மொழிக்கு</string>
+    <string name="translate_from">இதில் இருந்து</string>
+    <string name="translation_error_hint">தேர்ந்தெடுத்த மொழிபெயர்ப்புப் பொறி வேலை செய்வதாகத் தெரியவில்லை. அமைப்புகளில் வேறொன்றைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="unsupported_language">பொறி மொழி %1$s ஐ ஆதரிக்கவில்லை</string>
+    <string name="failed_to_initialize_engine">%1$s பொறியைத் தொடங்குவதில் தோல்வி: %2$s</string>
+    <!-- Settings -->
+    <string name="instance">தருணம்</string>
+    <string name="api_key">ஏபிஐ விசை</string>
     <string name="options">அமைப்புகள்</string>
     <string name="history">வரலாறு</string>
-    <string name="about">பற்றி</string>
+    <string name="about">அறிமுகம்</string>
     <string name="history_enabled">வரலாறு செயல்படுத்தப்பட்டது</string>
-    <string name="fetch_delay">மொழிபெயர்ப்பு நேரந்தவறுகை</string>
-    <string name="fetch_delay_summary">உரையைச் செருகுவதற்கும் மொழிபெயர்ப்பதற்கும் இடையிலான நேரந்தவறுகை</string>
-    <string name="history_summary">கடைசியாக மொழிபெயர்க்கப்பட்ட நூல்களைக் கண்காணிக்கவும்</string>
+    <string name="fetch_delay">எடுப்பதில் தாமதம்</string>
+    <string name="fetch_delay_summary">வாசகத்தை நிரப்பியதில் இருந்து மொழிபெயர்ப்பு பெறப்படுவது வரையிலான தாமதம்</string>
+    <string name="history_summary">கடைசியாக மொழிபெயர்த்த வாசகங்களின் தடமறிக</string>
     <string name="required">தேவை</string>
     <string name="optional">விரும்பினால்</string>
     <string name="compact_history">சிறிய வரலாறு</string>
-    <string name="skip_similar_entries">ஒத்த உள்ளீடுகளைத் தவிர்க்கவும்</string>
-    <string name="skip_similar_entries_desc">செருகல் மற்றும் மொழிகளின் அடிப்படையில் வரலாற்றில் தனித்துவமான உள்ளீடுகளை மட்டுமே சேமிக்கவும்.</string>
-    <string name="compact_history_summary">வரலாற்றில் இயல்புநிலைக்கு முதல் 3 உரை வரிகளை மட்டும் காட்டுங்கள்</string>
-    <string name="simultaneous_translation">ஒரே நேரத்தில் மொழிபெயர்ப்பு</string>
-    <string name="simultaneous_translation_summary">ஒரே நேரத்தில் பல இயந்திரங்களிலிருந்து முடிவுகளைப் பெறுங்கள்.</string>
-    <string name="enabled_engines">இயக்கப்பட்ட இயந்திரங்கள்</string>
-    <string name="enabled_engines_summary">ஒரே நேரத்தில் மொழிபெயர்ப்புக்கு பயன்படுத்த இயந்திரங்கள்.</string>
-    <string name="additional_info">கூடுதல் செய்தி</string>
-    <string name="additional_info_summary">கிடைத்தால் கூடுதல் மொழிபெயர்ப்பு தகவல்களைக் காட்டு.</string>
-    <string name="selected_engine">தேர்ந்தெடுக்கப்பட்ட இயந்திரம்</string>
-    <string name="st_selected_engine">தேர்ந்தெடுக்கப்பட்ட சேவையகம் மொழிபெயர்ப்பதற்குப் பயன்படுத்தும் இயந்திரம்</string>
+    <string name="skip_similar_entries">ஒரே மாதிரி கொடுப்பதைத் தவிர்த்திடுக</string>
+    <string name="skip_similar_entries_desc">நிரப்பியவை மற்றும் மொழியின் அடிப்படையில், தனித்துவமானவற்றை மட்டும் வரலாற்றில் சேமித்திடுக</string>
+    <string name="compact_history_summary">வரலாற்றில் ஒவ்வொன்றுக்கும் இயல்பாக 3 எழுதப்பட்ட வாக்கியங்களை மட்டும் காட்டுக</string>
+    <string name="simultaneous_translation">ஒரே நேரத்திலான மொழிபெயர்ப்பு</string>
+    <string name="simultaneous_translation_summary">ஒரே நேரத்தில் பல இயந்திரங்களிலிருந்து முடிவுகளை எடுத்திடுக.</string>
+    <string name="enabled_engines">செயல்படுத்தப்பட்ட பொறிகள்</string>
+    <string name="enabled_engines_summary">ஒரே நேரத்தில் மொழிபெயர்ப்புக்குப் பயன்படுத்திய பொறிகள்.</string>
+    <string name="additional_info">கூடுதல் தகவல்</string>
+    <string name="additional_info_summary">கிடைத்தால் கூடுதல் மொழிபெயர்ப்புத் தகவல்களைக் காட்டுக.</string>
+    <string name="translation_engine">மொழிபெயர்ப்புப் பொறி</string>
+    <string name="translation_api">மொழிபெயர்ப்பு ஏபிஐ</string>
+    <string name="selected_engine">தேர்ந்தெடுக்கப்பட்ட பொறி</string>
+    <string name="st_selected_engine">மொழிபெயர்ப்புக்காகச் சேவையகம் தேர்வுசெய்த பொறி</string>
     <string name="translation">மொழிபெயர்ப்பு</string>
-    <string name="general">பொது</string>
-    <string name="app_language">பயன்பாட்டு மொழி</string>
+    <string name="general">பொது</string>
+    <string name="app_language">செயலி மொழி</string>
     <string name="system">மண்டலம்</string>
-    <string name="character_warning_limit">எழுத்து எச்சரிக்கை வரம்பு</string>
-    <string name="character_warning_limit_summary">மொழிபெயர்க்கப்பட்ட உரை அதிகபட்ச நீளத்தை மீறும் போது எச்சரிக்கவும்.</string>
+    <string name="character_warning_limit">எழுத்துறுப்பு வரம்பு எச்சரிக்கை</string>
+    <string name="character_warning_limit_summary">மொழிபெயர்க்கப்பட்ட வாசகம் அதிகபட்ச நீளத்தை மீறும் போது எச்சரிக்கவும்.</string>
     <string name="none">எதுவுமில்லை</string>
-    <string name="translate_automatically">தானாக மொழிபெயர்க்கவும்</string>
-    <string name="translate_automatically_summary">ஒரு குறிப்பிட்ட தாமதத்திற்குப் பிறகு தானாக மொழிபெயர்ப்பைக் கோருங்கள்.</string>
+    <string name="translate_automatically">அதுவாகவே மொழிபெயர்க்கச்செய்க</string>
+    <string name="translate_automatically_summary">ஒரு குறிப்பிட்ட தாமதத்திற்குப் பிறகு அதுவாகவே மொழிபெயர்க்கக் கோருங்கள்.</string>
     <string name="nothing_here">இங்கு எதுவுமில்லை.</string>
-    <string name="use_free_api">இலவச பநிஇ ஐப் பயன்படுத்தவும்</string>
-    <string name="use_free_api_summary">கட்டண சார்பு பநிஇ க்கு பதிலாக இலவசத்தைப் பயன்படுத்தவும்.</string>
-    <string name="author">நூலாசிரியர்</string>
+    <string name="use_free_api">இலவச ஏபிஐ-ஐப் பயன்படுத்துக</string>
+    <string name="use_free_api_summary">கட்டண சார்பு ஏபிஐ-க்கு பதிலாக இலவசத்தைப் பயன்படுத்துக.</string>
+    <!-- About -->
+    <string name="github" translatable="false">GitHub</string>
+    <string name="author">உருவாக்கியவர்</string>
     <string name="license">உரிமம்</string>
     <string name="privacy_policy">தனியுரிமைக் கொள்கை</string>
+    <!-- Theme -->
     <string name="theme_auto">மண்டலம்</string>
     <string name="theme_light">ஒளி</string>
     <string name="theme_dark">இருள்</string>
-    <string name="theme_black">கருப்பு</string>
-    <string name="accent_color">உச்சரிப்பு நிறம்</string>
-    <string name="dynamic_colors">மாறும் வண்ணங்கள்</string>
-    <string name="clear_history">வரலாற்றை அழிக்கவும்</string>
-    <string name="open">திற</string>
-    <string name="irreversible">இதை செயல்தவிர்க்க முடியாது. நீங்கள் தொடர விரும்புகிறீர்கள் என்று உறுதியாக இருக்கிறீர்களா?</string>
+    <string name="theme_black">கறுமை</string>
+    <string name="accent_color">கவனயீர்ப்பு நிறம்</string>
+    <string name="dynamic_colors">மாறும் நிறங்கள்</string>
+    <!-- History -->
+    <string name="clear_history">வரலாற்றைத் துடைத்திடுக</string>
+    <string name="open">திறந்திடுக</string>
+    <string name="irreversible">இதைச் செயல்தவிர்க்க முடியாது. நீங்கள் உறுதியாகத் தொடர விரும்புகிறீர்களா?</string>
+    <string name="export_to_text_file">வாசகக் கோப்பாக ஏற்றுமதி செய்க</string>
+    <string name="successfully_exported">வெற்றிகரமாக ஏற்றுமதி செய்யப்பட்டது!</string>
+    <!-- Exception -->
     <string name="server_error">சேவையகத்துடன் தொடர்புகொள்வதில் பிழை.</string>
-    <string name="missing_api_key">அமைப்புகளில் பநிஇ விசையை வழங்கவும்.</string>
+    <string name="missing_api_key">அமைப்புகளில் ஏபிஐ விசையை வழங்கவும்.</string>
     <string name="unknown_error">அறியப்படாத பிழை</string>
+    <!-- Additional Info -->
     <string name="detected_language">கண்டறியப்பட்ட மொழி</string>
     <string name="definition">வரையறை</string>
-    <string name="example">உதாரணமாக</string>
-    <string name="similar">ஒத்த</string>
-    <string name="transliteration">மொழிபெயர்ப்பு</string>
+    <string name="example">உதாரணம்</string>
+    <string name="similar">ஒன்றுபோல் இருப்பவை</string>
+    <string name="transliteration">ஒலிபெயர்ப்பு</string>
+    <string name="alternative_translations">மாற்று மொழிபெயர்ப்புகள்</string>
+    <!-- Languages -->
     <string name="search">தேடல்</string>
     <string name="favorites">பிடித்தவை</string>
-    <string name="clear_favorites">தெளிவான பிடித்தவை</string>
+    <string name="clear_favorites">பிடித்தவற்றைத் துடைத்திடுக</string>
     <string name="all_languages">அனைத்து மொழிகளும்</string>
+    <!-- Tesseract -->
     <string name="image_translation">படத்திலிருந்து மொழிபெயர்ப்பு</string>
-    <string name="image_translation_summary">படங்களிலிருந்து உரை அங்கீகாரத்திற்காக மொழிகளைப் பதிவிறக்கம் செய்து பயன்படுத்துங்கள்.</string>
-    <string name="tess_summary">டெசெராக்ட் ஒரு ஆப்டிகல் கேரக்டர் அங்கீகார இயந்திரம். இது இலவச மென்பொருள், அப்பாச்சி உரிமத்தின் கீழ் வெளியிடப்பட்டது. இது 2005 ஆம் ஆண்டில் திறந்த மூலமாக வெளியிடப்பட்டது மற்றும் வளர்ச்சியை 2006 முதல் கூகிள் வழங்கியுள்ளது. டெசெராக்ட் கிடைக்கக்கூடிய மிகத் துல்லியமான திறந்த-மூல ஓ.சி.ஆர் என்சின்களில் ஒன்றாக கருதப்படுகிறது. மேலும் தகவலுக்கு, %1$s ஐப் பார்க்கவும்.</string>
-    <string name="init_tess_first">அமைப்புகளில் முதலில் மொழி தரவை பதிவிறக்கவும்.</string>
-    <string name="select_language">அமைப்புகளில் படங்களின் உரை அங்கீகாரத்திற்கு ஒரு மொழியைத் தேர்ந்தெடுக்கவும்.</string>
-    <string name="select_theme">கருப்பொருள் தேர்ந்தெடுக்கவும்</string>
-    <string name="invalid_selection_area">தவரான தேர்வுப் பகுதி!</string>
-    <string name="translation_error_hint">தேர்ந்தெடுத்த மொழிபெயர்ப்பு இயந்திரம் வேலை செய்வதாகத் தெரியவில்லை. அமைப்புகளில் வேறொன்றைத் தேர்ந்தெடுக்கவும்.</string>
-    <string name="unsupported_language">பொறி இயந்திரம் மொழி %1$s ஐ ஆதரிக்கவில்லை</string>
-    <string name="translation_engine">மொழிபெயர்ப்புப் பொறி இயந்திரம்</string>
-    <string name="translation_api">மொழிபெயர்ப்புப் பநிஇ</string>
-    <string name="alternative_translations">மாற்று மொழிபெயர்ப்புகள்</string>
+    <string name="image_translation_summary">படங்களில் வாசகத்தை அடையாளமறிய மொழியைப் பதிவிறக்கிப் பயன்படுத்துக.</string>
+    <string name="tess_summary">டெசெராக்ட் என்பது எழுத்துறுப்புகளைக் கண்டு அடையாளமறியும் பொறி. இது அப்பாச்சே உரிமத்தின் கீழ் வெளியிடப்பட்ட ஒரு இலவச மென்பொருள். இது 2005 ஆம் ஆண்டில் திறந்த மூலமாக வெளியிடப்பட்டது மற்றும் வளர்ச்சியை 2006 முதல் கூகிள் வழங்கியுள்ளது. டெசெராக்ட் கிடைக்கக்கூடிய மிகத் துல்லியமான திறந்த-மூல ஓ.சி.ஆர் பொறிகளில் ஒன்றாகக் கருதப்படுகிறது. மேலும் தகவலுக்கு, %1$s ஐப் பார்க்கவும்.</string>
+    <string name="init_tess_first">அமைப்புகளில் முதலில் மொழித் தரவைப் பதிவிறக்கவும்.</string>
+    <string name="select_language">அமைப்புகளில் படங்களின் வாசகங்களை அடையாளமறிய ஒரு மொழியைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="select_theme">கருப்பொருளைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="invalid_selection_area">தவறான தேர்வுப் பகுதி!</string>
 </resources>
