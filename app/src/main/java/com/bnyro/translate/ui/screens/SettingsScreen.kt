@@ -91,11 +91,11 @@ fun SettingsScreen(
         rememberTopAppBarState()
     )
 
-    var showEngineSelectDialog by remember {
+    var showEngineSelectDialog by rememberSaveable {
         mutableStateOf(false)
     }
 
-    var showTessSettings by remember {
+    var showTessSettings by rememberSaveable {
         mutableStateOf(false)
     }
 
