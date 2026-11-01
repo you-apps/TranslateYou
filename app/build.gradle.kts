@@ -27,6 +27,13 @@ android {
         ndk {
             abiFilters.addAll(listOf("arm64-v8a", "armeabi-v7a"))
         }
+
+        packaging {
+            jniLibs {
+                // compresses the native .so libraries
+                useLegacyPackaging = true
+            }
+        }
     }
 
     buildTypes {
