@@ -39,9 +39,7 @@ class ApEngine(settingsProvider: EngineSettingsProvider): TranslationEngine(sett
     }
 
     private val iso3ToIso2Map: Map<String, String> by lazy {
-        Locale.getISOLanguages().associate { iso2 ->
-            Locale.forLanguageTag(iso2).isO3Language to iso2
-        }
+        Locale.getISOLanguages().associateBy { iso2 -> Locale.forLanguageTag(iso2).isO3Language }
     }
 
     private val iso2ToIso3Map: Map<String, String> by lazy {

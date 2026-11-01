@@ -22,6 +22,7 @@ import net.youapps.translation_engines.deepl.DeeplAuthenticatedFreeApiEngine
 import net.youapps.translation_engines.deepl.DeeplAuthenticatedPaidApiEngine
 import net.youapps.translation_engines.deepl.DeeplBrowserEngine
 import net.youapps.translation_engines.gl.GlEngine
+import net.youapps.translation_engines.iciba.IcibaEngine
 import net.youapps.translation_engines.kagi.KagiEngine
 import net.youapps.translation_engines.la.LaEngine
 import net.youapps.translation_engines.lt.LTEngine
@@ -51,6 +52,7 @@ object TranslationEngines {
         ApEngine(settingsProvider),
         OneRingEngine(settingsProvider),
         PonsEngine(settingsProvider),
-        LaEngine(settingsProvider)
+        LaEngine(settingsProvider),
+        IcibaEngine(settingsProvider)
     )
 }
