@@ -18,6 +18,7 @@
 package net.youapps.translation_engines
 
 import net.youapps.translation_engines.ap.ApEngine
+import net.youapps.translation_engines.bi.BingEngine
 import net.youapps.translation_engines.deepl.DeeplAuthenticatedFreeApiEngine
 import net.youapps.translation_engines.deepl.DeeplAuthenticatedPaidApiEngine
 import net.youapps.translation_engines.deepl.DeeplBrowserEngine
@@ -53,6 +54,7 @@ object TranslationEngines {
         OneRingEngine(settingsProvider),
         PonsEngine(settingsProvider),
         LaEngine(settingsProvider),
-        IcibaEngine(settingsProvider)
+        IcibaEngine(settingsProvider),
+        BingEngine(settingsProvider)
     )
 }
