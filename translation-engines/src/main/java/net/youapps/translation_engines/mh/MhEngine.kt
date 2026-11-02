@@ -31,7 +31,6 @@ class MhEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
     override val defaultUrl = "https://mozhi.aryak.me/"
     override val urlModifiable = true
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = "auto"
 
     override val supportsAudio = true
 
@@ -59,10 +58,10 @@ class MhEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
         "yandex"
     )
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val response = api.translate(
             engine = getSelectedModel(),
-            source = sourceOrAuto(source.take(2)),
+            source = source?.take(2) ?: "auto",
             query = query,
             target = target.take(2),
         )

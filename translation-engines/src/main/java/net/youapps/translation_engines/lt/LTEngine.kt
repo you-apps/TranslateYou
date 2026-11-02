@@ -29,7 +29,6 @@ class LTEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
     override val defaultUrl = "https://libretranslate.com"
     override val urlModifiable = true
     override val apiKeyState = ApiKeyState.OPTIONAL
-    override val autoLanguageCode = "auto"
 
     private lateinit var api: LibreTranslate
     override fun createOrRecreate(): TranslationEngine = apply {
@@ -44,12 +43,12 @@ class LTEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
 
     override suspend fun translate(
         query: String,
-        source: String,
+        source: String?,
         target: String
     ): Translation {
         val response = api.translate(
             query,
-            sourceOrAuto(source),
+            source ?: "auto",
             target,
             getApiKey()
         )

@@ -38,7 +38,6 @@ class KagiEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
     override val defaultUrl = "https://translate.kagi.com"
     override val urlModifiable = false
     override val apiKeyState = ApiKeyState.REQUIRED
-    override val autoLanguageCode = "auto"
 
     // don't touch these values, the code must be adapted when changing!
     override val supportedModels = listOf(
@@ -63,7 +62,7 @@ class KagiEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
         }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val model = getSelectedModel() ?: throw IllegalArgumentException("No model selected")
 
         val fetchDefinitions = model.contains("definitions")
@@ -71,7 +70,7 @@ class KagiEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
 
         val request = KagiTranslationRequest(
             text = query,
-            sourceLang = sourceOrAuto(source),
+            sourceLang = source ?: "auto",
             targetLang = target,
             skipDefinition = !fetchDefinitions,
             model = if (useBestModel) "best" else "standard"

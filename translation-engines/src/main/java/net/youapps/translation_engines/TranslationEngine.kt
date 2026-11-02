@@ -69,9 +69,10 @@ abstract class TranslationEngine(private val settingsProvider: EngineSettingsPro
     abstract val apiKeyState: ApiKeyState
 
     /**
-     * Set to null to disable automatic language detection for this engine.
+     * Set to `false` to disable automatic language detection for this engine.
+     * This guarantees that the `source` passed to [translate] is never `null`.
      */
-    abstract val autoLanguageCode: String?
+    open val supportsLanguageDetection: Boolean = true
 
     /**
      * If set to true, [getAudioFile] has to be implemented as well.
@@ -99,10 +100,11 @@ abstract class TranslationEngine(private val settingsProvider: EngineSettingsPro
 
     /**
      * Translate the [query] text from the given two-letter [source] language code to the given two-letter [target] language code.
+     * If [source] is `null`, the engine tries to automatically detect the language of the [query] text.
      *
-     * This method might crash if there are errors during the API request or when parsing the response.
+     * This method may crash if there are errors during the API request or when parsing the response.
      */
-    abstract suspend fun translate(query: String, source: String, target: String): Translation
+    abstract suspend fun translate(query: String, source: String?, target: String): Translation
 
     /**
      * Run Text To Speech on a given [query] text.
@@ -120,10 +122,6 @@ abstract class TranslationEngine(private val settingsProvider: EngineSettingsPro
     fun getUrl() = settingsProvider.getApiUrl(this) ?: defaultUrl
     fun getApiKey() = settingsProvider.getApiKey(this)
     fun getSelectedModel() = settingsProvider.getSelectedModel(this) ?: supportedModels.firstOrNull()
-
-    protected fun sourceOrAuto(source: String): String {
-        return source.ifEmpty { autoLanguageCode }.orEmpty()
-    }
 
     override fun equals(other: Any?): Boolean {
         if (other is TranslationEngine) {

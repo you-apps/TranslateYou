@@ -28,7 +28,7 @@ import net.youapps.translation_engines.TranslationEngine
 class ApEngine(settingsProvider: EngineSettingsProvider): TranslationEngine(settingsProvider) {
     override val name = "Apertium"
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = null
+    override val supportsLanguageDetection = false
     override val defaultUrl = "https://apertium.org"
     override val urlModifiable = false
 
@@ -64,7 +64,7 @@ class ApEngine(settingsProvider: EngineSettingsProvider): TranslationEngine(sett
             .filterNotNull()
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         // Apertium can only deal with 3 letter language codes, hence converting them here
         val source3 = iso2ToIso3Map[source] ?: throw IllegalArgumentException("unsupported languages $source")
         val target3 = iso2ToIso3Map[target] ?: throw IllegalArgumentException("unsupported language $target")

@@ -31,7 +31,6 @@ class OneRingEngine(settingsProvider: EngineSettingsProvider) :
     override val apiKeyState = ApiKeyState.OPTIONAL
     override val urlModifiable = true
     override val defaultUrl = "https://your.instance.domain"
-    override val autoLanguageCode = ""
     override val supportedModels = listOf(
         "no_translate2",
         "no_translate",
@@ -65,10 +64,10 @@ class OneRingEngine(settingsProvider: EngineSettingsProvider) :
             .distinctBy { it.code }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val response = api.translate(
             text = query,
-            from = source,
+            from = source ?: "",
             to = target,
             apiKey = getApiKey(),
             plugin = getSelectedModel() ?: throw IllegalArgumentException("No model selected")

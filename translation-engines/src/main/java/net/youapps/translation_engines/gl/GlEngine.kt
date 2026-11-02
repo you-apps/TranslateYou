@@ -27,7 +27,7 @@ import net.youapps.translation_engines.TranslationEngine
 class GlEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(settingsProvider) {
     override val apiKeyState = ApiKeyState.DISABLED
     override val name = "Glosbe"
-    override val autoLanguageCode = null
+    override val supportsLanguageDetection = false
     override val defaultUrl = "https://translator-api.glosbe.com/"
     override val  urlModifiable = false
 
@@ -43,7 +43,7 @@ class GlEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
         }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
-        return Translation(api.translate(source, target, query).translation)
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
+        return Translation(api.translate(source!!, target, query).translation)
     }
 }

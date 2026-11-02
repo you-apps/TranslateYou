@@ -61,7 +61,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                 LanguageSelector(
                     viewModel.availableLanguages,
                     viewModel.sourceLanguage,
-                    autoLanguageEnabled = viewModel.engine.autoLanguageCode != null,
+                    autoLanguageEnabled = viewModel.engine.supportsLanguageDetection,
                     viewModel = viewModel
                 ) {
                     if (it == viewModel.targetLanguage) {
@@ -104,7 +104,7 @@ fun LanguageSelectionComponent(viewModel: TranslationModel) {
                 LanguageSelector(
                     viewModel.availableLanguages,
                     viewModel.sourceLanguage,
-                    autoLanguageEnabled = viewModel.engine.autoLanguageCode != null,
+                    autoLanguageEnabled = viewModel.engine.supportsLanguageDetection,
                     viewModel = viewModel
                 ) {
                     if (it == viewModel.targetLanguage) {

@@ -30,7 +30,6 @@ class LVEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
     override val defaultUrl = "https://lingva.ml"
     override val urlModifiable = true
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = "auto"
     override val supportsAudio = true
 
     private lateinit var api: LingvaTranslate
@@ -44,9 +43,9 @@ class LVEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
         return languages.subList(1, languages.size)
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val response = api.translate(
-            sourceOrAuto(source),
+            source ?: "auto",
             target,
             query.replace("/", "")
         )

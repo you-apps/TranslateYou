@@ -31,7 +31,6 @@ class LaEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
     override val defaultUrl = "https://webapi.laratranslate.com"
     override val urlModifiable = false
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = ""
 
     private lateinit var api: LaraTranslate
     private val langRegex = Regex("""<li>(?<name>.*?) - `(?<code>.*?)`</li>""")
@@ -54,9 +53,9 @@ class LaEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
             .distinct()
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val requestBody =
-            LaraTranslateRequest(q = query, source = sourceOrAuto(source), target = target)
+            LaraTranslateRequest(q = query, source = source ?: "", target = target)
         val translation = api.translate(requestBody)
 
         if (translation.status != 200) throw Exception("Received error response from LaraTranslate.")

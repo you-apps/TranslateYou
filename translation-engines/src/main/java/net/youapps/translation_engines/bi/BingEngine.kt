@@ -30,7 +30,6 @@ class BingEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
     override val defaultUrl: String = "https://www.bing.com"
     override val urlModifiable: Boolean = false
     override val apiKeyState: ApiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode: String = "auto-detect"
 
     private lateinit var api: Bing
 
@@ -59,7 +58,7 @@ class BingEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
 
     override suspend fun translate(
         query: String,
-        source: String,
+        source: String?,
         target: String
     ): Translation {
         val translatorPage = api.getTranslatorPage().string()
@@ -76,7 +75,7 @@ class BingEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
             iid = iid,
             key = key,
             token = token,
-            fromLang = sourceOrAuto(source),
+            fromLang = source ?: "auto-detect",
             toLang = target,
             text = query
         )[0]

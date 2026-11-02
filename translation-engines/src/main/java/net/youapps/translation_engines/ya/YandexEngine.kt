@@ -32,7 +32,6 @@ class YandexEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine
     override val defaultUrl = "https://translate.yandex.net"
     override val urlModifiable = false
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = ""
 
     private lateinit var api: Yandex
 
@@ -48,8 +47,8 @@ class YandexEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine
         ).map { (key, value) -> Language(code = key, name = value) }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
-        val lang = if (source.isEmpty()) target else "$source-$target"
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
+        val lang = if (source == null) target else "$source-$target"
 
         val uuid = UUID.randomUUID().toString().replace("-", "") + "-0-0"
         val response = api.translate(lang, query, "android", uuid)

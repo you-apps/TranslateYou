@@ -29,7 +29,6 @@ import net.youapps.translation_engines.wm.obj.WmTranslationRequest
 class WmEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(settingsProvider) {
     override val name = "MinT"
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = null
     override val defaultUrl = "https://translate.wmcloud.org/"
     override val urlModifiable = true
 
@@ -50,8 +49,8 @@ class WmEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
         }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
-        val response = api.translate(source, target, WmTranslationRequest(query))
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
+        val response = api.translate(source!!, target, WmTranslationRequest(query))
         return Translation(response.translation)
     }
 }

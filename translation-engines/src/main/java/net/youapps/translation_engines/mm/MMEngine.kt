@@ -29,7 +29,6 @@ class MMEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
     override val defaultUrl = "https://api.mymemory.translated.net"
     override val urlModifiable = false
     override val apiKeyState = ApiKeyState.OPTIONAL
-    override val autoLanguageCode = "Autodetect"
 
     lateinit var api: MyMemory
     override fun createOrRecreate(): TranslationEngine = apply {
@@ -170,10 +169,10 @@ class MMEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
         */
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val response = api.translate(
             query,
-            "${sourceOrAuto(source)}|$target",
+            "${source ?: "Autodetect"}|$target",
             getApiKey()?.ifEmpty { null }
 
         )

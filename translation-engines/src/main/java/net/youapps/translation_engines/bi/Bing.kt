@@ -17,7 +17,6 @@
 
 package net.youapps.translation_engines.bi
 
-import net.youapps.translation_engines.bi.obj.BingResponse
 import net.youapps.translation_engines.bi.obj.BingResponseItem
 import okhttp3.ResponseBody
 import retrofit2.http.Field

@@ -33,7 +33,6 @@ import net.youapps.translation_engines.TranslationEngine
 abstract class DeeplAuthenticatedEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(settingsProvider) {
     override val urlModifiable = false
     override val apiKeyState = ApiKeyState.REQUIRED
-    override val autoLanguageCode = ""
 
     private lateinit var api: DeepL
     override fun createOrRecreate(): TranslationEngine = apply {
@@ -52,10 +51,10 @@ abstract class DeeplAuthenticatedEngine(settingsProvider: EngineSettingsProvider
                 )
             }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val response = api.translate(
             apiKeyString,
-            sourceOrAuto(source.uppercase()),
+            source?.uppercase() ?: "",
             target.uppercase(),
             query
         )

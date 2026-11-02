@@ -29,7 +29,6 @@ class STEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
     override val defaultUrl = "https://simplytranslate.org/"
     override val urlModifiable = true
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = "auto"
     override val supportsAudio = true
     override val supportedModels: List<String> = listOf("iciba", "google", "reverso")
 
@@ -45,10 +44,10 @@ class STEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(set
         }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val response = api.translate(
             engine = getSelectedModel(),
-            source = sourceOrAuto(source),
+            source = source ?: "auto",
             query = query,
             target = target
         )

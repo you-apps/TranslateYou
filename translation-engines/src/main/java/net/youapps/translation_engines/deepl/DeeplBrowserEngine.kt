@@ -43,7 +43,6 @@ class DeeplBrowserEngine(settingsProvider: EngineSettingsProvider) : Translation
     override val defaultUrl = "https://www2.deepl.com"
     override val urlModifiable = false
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = "auto"
 
     private lateinit var api: DeepL
     override fun createOrRecreate(): TranslationEngine = apply {
@@ -86,7 +85,7 @@ class DeeplBrowserEngine(settingsProvider: EngineSettingsProvider) : Translation
             Language("uk", "Ukrainian")
         )
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
         val id = (floor(Math.random().times(99999)) + 100000).roundToInt().times(1000)
         val body = Json.encodeToString(
             DeeplWebTranslationRequest(
@@ -101,7 +100,7 @@ class DeeplBrowserEngine(settingsProvider: EngineSettingsProvider) : Translation
                     splitting = "newlines",
                     lang = DeeplWebTranslationRequestParamsLang(
                         targetLang = target.uppercase(),
-                        sourceLangUserSelected = sourceOrAuto(source.uppercase()),
+                        sourceLangUserSelected = source?.uppercase() ?: "auto",
                         preference = DeeplWebTranslationRequestParamsLangPreference(
                             weight = emptyMap()
                         )

@@ -156,8 +156,8 @@ class TranslationModel : ViewModel() {
         // check if engine supports the provided language
         // only run if languages were already loaded from the engine
         if (cancelOnUnsupportedLanguages && !languagesLoadInProgress) {
-            if ((sourceLanguage.code.isEmpty() && engine.autoLanguageCode == null) ||
-                (!sourceLanguage.code.isEmpty() && availableLanguages.none { it.code == sourceLanguage.code })
+            if ((sourceLanguage.code.isEmpty() && !engine.supportsLanguageDetection) ||
+                (sourceLanguage.code.isNotEmpty() && availableLanguages.none { it.code == sourceLanguage.code })
             ) {
                 viewModelScope.launch {
                     _apiError.emit(UnsupportedLanguageException(sourceLanguage))
@@ -184,7 +184,7 @@ class TranslationModel : ViewModel() {
             val translation = try {
                 engine.translate(
                     insertedText,
-                    sourceLanguage.code,
+                    sourceLanguage.code.takeIf { it.isNotEmpty() },
                     targetLanguage.code
                 )
             } catch (e: Exception) {
@@ -218,7 +218,7 @@ class TranslationModel : ViewModel() {
                     runCatching {
                         val translation = it.translate(
                             insertedText,
-                            sourceLanguage.code,
+                            sourceLanguage.code.takeIf { c -> c.isNotEmpty() },
                             targetLanguage.code
                         )
                         translatedTexts = translatedTexts.toMutableMap().also { translations ->
@@ -354,7 +354,7 @@ class TranslationModel : ViewModel() {
                     runCatching {
                         rect to engine.translate(
                             text,
-                            sourceLanguage.code,
+                            sourceLanguage.code.takeIf { it.isNotEmpty() },
                             targetLanguage.code
                         ).translatedText
                     }.getOrNull()

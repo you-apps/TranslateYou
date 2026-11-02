@@ -30,7 +30,6 @@ class PonsEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
     override val defaultUrl = "https://api.pons.com"
     override val urlModifiable = false
     override val apiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode = ""
 
     private lateinit var api: Pons
 
@@ -44,8 +43,8 @@ class PonsEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(s
         }
     }
 
-    override suspend fun translate(query: String, source: String, target: String): Translation {
-        val requestBody = PonsData(source.takeIf { it.isNotEmpty() }, target, query)
+    override suspend fun translate(query: String, source: String?, target: String): Translation {
+        val requestBody = PonsData(source, target, query)
         val response = api.translate(body = requestBody)
 
         return Translation(response.text, response.sourceLanguage)

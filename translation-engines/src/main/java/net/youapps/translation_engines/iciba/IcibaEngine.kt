@@ -32,7 +32,6 @@ class IcibaEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(
     override val defaultUrl: String = "https://dictionary.iciba.com"
     override val urlModifiable: Boolean = false
     override val apiKeyState: ApiKeyState = ApiKeyState.DISABLED
-    override val autoLanguageCode: String = "auto"
 
     private lateinit var api: Iciba
 
@@ -52,11 +51,10 @@ class IcibaEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(
 
     override suspend fun translate(
         query: String,
-        source: String,
+        source: String?,
         target: String
     ): Translation {
-        // val now = System.currentTimeMillis().toString()
-        val now = "1793554459306"
+        val now = System.currentTimeMillis().toString()
 
         val md5 = MessageDigest.getInstance("MD5")
         val hashInput =
@@ -68,7 +66,7 @@ class IcibaEngine(settingsProvider: EngineSettingsProvider) : TranslationEngine(
             timestamp = now,
             signature = signature.lowercase(),
             request = IcibaRequest(
-                from = source,
+                from = source ?: "auto",
                 to = target,
                 textList = listOf(query)
             )
