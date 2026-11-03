@@ -30,6 +30,7 @@ import net.youapps.translation_engines.lt.LTEngine
 import net.youapps.translation_engines.lv.LVEngine
 import net.youapps.translation_engines.mh.MhEngine
 import net.youapps.translation_engines.mm.MMEngine
+import net.youapps.translation_engines.na.PapagoEngine
 import net.youapps.translation_engines.or.OneRingEngine
 import net.youapps.translation_engines.po.PonsEngine
 import net.youapps.translation_engines.st.STEngine
@@ -55,6 +56,7 @@ object TranslationEngines {
         PonsEngine(settingsProvider),
         LaEngine(settingsProvider),
         IcibaEngine(settingsProvider),
-        BingEngine(settingsProvider)
+        BingEngine(settingsProvider),
+        PapagoEngine(settingsProvider),
     )
 }
