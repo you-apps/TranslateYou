@@ -19,7 +19,7 @@ package net.youapps.translation_engines.deepl
 
 import net.youapps.translation_engines.deepl.obj.DeeplLanguage
 import net.youapps.translation_engines.deepl.obj.DeeplTranslationResponse
-import net.youapps.translation_engines.deepl.obj.DeeplWebTranslationResponse
+import net.youapps.translation_engines.deepl.obj.DeeplWebRequest
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -41,21 +41,9 @@ interface DeepL {
         @Query("text") query: String
     ): DeeplTranslationResponse
 
-    @Headers(
-        "Accept: */*",
-        "Accept-Language: en-US,en;q=0.5",
-        "Authorization: None",
-        "Content-Type: application/json; charset=utf-8",
-        "Host: www2.deepl.com",
-        "Origin: chrome-extension://cofdbpoegempjloogbagkncekinflcnj",
-        "referer: https://www.deepl.com/",
-        "Sec-Fetch-Dest: empty",
-        "Sec-Fetch-Mode: cors",
-        "Sec-Fetch-Site: none",
-        "User-Agent: DeepLBrowserExtension/${DeeplBrowserEngine.WEB_CHROME_EXTENSION_VER} ${DeeplBrowserEngine.WEB_CHROME_USER_AGENT}"
-    )
-    @POST("jsonrpc?client=chrome-extension,${DeeplBrowserEngine.WEB_CHROME_EXTENSION_VER}")
+    @Headers("Authorization: None", "Content-Type: application/json; charset=utf-8")
+    @POST("v1/translate")
     suspend fun webTranslate(
-        @Body body: String
-    ): DeeplWebTranslationResponse
+        @Body body: DeeplWebRequest
+    ): DeeplTranslationResponse
 }
