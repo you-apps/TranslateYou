@@ -17,16 +17,13 @@
 
 package net.youapps.translation_engines.deepl
 
-import kotlinx.serialization.json.add
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
-import kotlinx.serialization.json.putJsonArray
 import net.youapps.translation_engines.ApiKeyState
 import net.youapps.translation_engines.EngineSettingsProvider
 import net.youapps.translation_engines.Language
 import net.youapps.translation_engines.RetrofitHelper
 import net.youapps.translation_engines.Translation
 import net.youapps.translation_engines.TranslationEngine
+import net.youapps.translation_engines.deepl.obj.DeeplWebRequest
 
 /**
  * DeepL translator using its unauthenticated browser endpoint.
@@ -79,11 +76,19 @@ class DeeplBrowserEngine(settingsProvider: EngineSettingsProvider) : Translation
         )
 
     override suspend fun translate(query: String, source: String?, target: String): Translation {
-        val body = buildJsonObject {
-            putJsonArray("text") { add(query) }
-            put("target_lang", target.uppercase())
-            source?.let { put("source_lang", it.uppercase()) }
-        }.toString()
+        val body = DeeplWebRequest(
+            text = listOf(query),
+            targetLang = when (target.lowercase()) {
+                "en" -> "en-US"
+                "pt" -> "pt-BR"
+                "zh" -> "zh-Hans"
+                else -> target.lowercase()
+            },
+            sourceLang = when (source?.lowercase()) {
+                "zh" -> "zh-Hans"
+                else -> source?.lowercase()
+            }
+        )
         val result = api.webTranslate(body).translations.first()
         return Translation(
             translatedText = result.text,
