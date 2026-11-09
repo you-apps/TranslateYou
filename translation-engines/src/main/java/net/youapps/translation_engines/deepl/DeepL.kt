@@ -19,6 +19,7 @@ package net.youapps.translation_engines.deepl
 
 import net.youapps.translation_engines.deepl.obj.DeeplLanguage
 import net.youapps.translation_engines.deepl.obj.DeeplTranslationResponse
+import net.youapps.translation_engines.deepl.obj.DeeplWebRequest
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
