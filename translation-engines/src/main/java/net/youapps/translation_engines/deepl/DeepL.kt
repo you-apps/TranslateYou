@@ -44,6 +44,6 @@ interface DeepL {
     @Headers("Authorization: None", "Content-Type: application/json; charset=utf-8")
     @POST("v1/translate")
     suspend fun webTranslate(
-        @Body body: String
+        @Body body: DeeplWebRequest
     ): DeeplTranslationResponse
 }
